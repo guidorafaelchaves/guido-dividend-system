@@ -1,0 +1,15 @@
+{
+  "name": "guido-dividend-system",
+  "version": "1.8.9",
+  "private": true,
+  "description": "Guido Dividend System - sistema local de inteligencia patrimonial, dividendos, B3 Ledger e FIIs.",
+  "scripts": {
+    "start": "npx serve public",
+    "dev": "npx serve public",
+    "check": "node -e \"const fs=require('fs'); const html=fs.readFileSync('public/index.html','utf8'); if(!html.includes('Guido Dividend System')) process.exit(1); console.log('OK: public/index.html encontrado');\""
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
+
