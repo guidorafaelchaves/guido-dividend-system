@@ -116,12 +116,11 @@ async function gdsMemorySyncCurrentAssets() {
 
 function buildMemoryAssetsFromState() {
   const state = getGdsRuntimeState();
-  const runtime = window.gdsRuntime || {};
-  const assets = state.assets || {};
-  if (typeof runtime.buildPositions === 'function') {
-    runtime.buildPositions();
-  }
-  const positions = state.positions || {};
+  const assets = isPlainMemoryObject(state.assets) ? state.assets : {};
+  const positions = isPlainMemoryObject(state.positions) && Object.keys(state.positions).length
+    ? state.positions
+    : buildSafePositionsFromState(state);
+  const quotes = isPlainMemoryObject(state.quotes) ? state.quotes : {};
   const tickers = new Set([
     ...Object.keys(assets),
     ...Object.keys(positions || {})
@@ -133,7 +132,7 @@ function buildMemoryAssetsFromState() {
     .map(ticker => {
       const asset = assets[ticker] || {};
       const position = positions[ticker] || {};
-      const quote = (state.quotes || {})[ticker] || {};
+      const quote = quotes[ticker] || {};
       const quantity = Number(position.quantidade || position.qty || asset.quantidade_atual || 0);
       const averagePrice = Number(position.precoMedio || position.preco_medio || asset.preco_medio || 0);
       const currentPrice = Number(quote.precoAtual || quote.price || asset.preco_atual || 0);
@@ -166,6 +165,84 @@ function buildMemoryAssetsFromState() {
         ativo: asset.ativo !== false
       };
     });
+}
+
+function buildSafePositionsFromState(state) {
+  const map = {};
+  const trades = Array.isArray(state.trades) ? state.trades : [];
+  const quotes = isPlainMemoryObject(state.quotes) ? state.quotes : {};
+  const ordered = trades
+    .filter(trade => normalizeTickerForMemory(trade && trade.ticker))
+    .slice()
+    .sort((a, b) => String(a.data || '').localeCompare(String(b.data || '')));
+
+  for (const trade of ordered) {
+    const ticker = normalizeTickerForMemory(trade.ticker);
+    if (!map[ticker]) {
+      map[ticker] = {
+        ticker,
+        quantidade: 0,
+        precoMedio: 0,
+        capitalInvestido: 0,
+        custoTotal: 0,
+        valorMercado: 0,
+        lucroNaoRealizado: 0,
+        lucroRealizado: 0,
+        precoAtual: safeNumber(quotes[ticker] && quotes[ticker].precoAtual),
+        primeiraCompra: '',
+        ultimaCompra: ''
+      };
+    }
+
+    const position = map[ticker];
+    const qty = safeNumber(trade.quantidade);
+    const price = safeNumber(trade.precoUnitario);
+    const fees = safeNumber(trade.custos);
+    const type = String(trade.tipo || '').toUpperCase();
+
+    if (type === 'COMPRA') {
+      const totalCost = (qty * price) + fees;
+      position.quantidade += qty;
+      position.custoTotal += totalCost;
+      position.precoMedio = position.quantidade > 0 ? position.custoTotal / position.quantidade : 0;
+      if (!position.primeiraCompra || trade.data < position.primeiraCompra) position.primeiraCompra = trade.data || '';
+      if (!position.ultimaCompra || trade.data > position.ultimaCompra) position.ultimaCompra = trade.data || '';
+    } else if (type === 'VENDA' && position.quantidade > 0) {
+      const sellQty = Math.min(qty, position.quantidade);
+      const averageCost = position.quantidade > 0 ? position.custoTotal / position.quantidade : 0;
+      const writtenDownCost = averageCost * sellQty;
+      const netRevenue = (sellQty * price) - fees;
+      position.quantidade -= sellQty;
+      position.custoTotal -= writtenDownCost;
+      position.lucroRealizado += netRevenue - writtenDownCost;
+      position.precoMedio = position.quantidade > 0 ? position.custoTotal / position.quantidade : 0;
+      if (position.quantidade <= 0) {
+        position.quantidade = 0;
+        position.custoTotal = 0;
+      }
+    }
+  }
+
+  Object.keys(map).forEach(ticker => {
+    const position = map[ticker];
+    position.capitalInvestido = position.custoTotal;
+    position.precoAtual = safeNumber(quotes[ticker] && quotes[ticker].precoAtual);
+    position.valorMercado = position.quantidade * position.precoAtual;
+    position.lucroNaoRealizado = position.valorMercado - position.custoTotal;
+  });
+
+  return map;
+}
+
+function isPlainMemoryObject(value) {
+  return value && typeof value === 'object' && !Array.isArray(value);
+}
+
+function safeNumber(value) {
+  if (typeof value === 'number') return Number.isFinite(value) ? value : 0;
+  if (value === null || value === undefined || value === '') return 0;
+  const parsed = Number(String(value).replace(/\s/g, '').replace(/R\$/gi, '').replace(/\./g, '').replace(',', '.'));
+  return Number.isFinite(parsed) ? parsed : 0;
 }
 
 function normalizeTickerForMemory(value) {
@@ -257,8 +334,9 @@ async function gdsMemoryWriteStrategicNoteFromUI() {
   try {
     const runtime = window.gdsRuntime || {};
     const state = getGdsRuntimeState() || {};
-    if (typeof runtime.buildPositions === 'function') runtime.buildPositions();
-    const positions = state.positions || {};
+    const positions = isPlainMemoryObject(state.positions) && Object.keys(state.positions).length
+      ? state.positions
+      : buildSafePositionsFromState(state);
     const decisions = typeof runtime.buildDecisionRows === 'function' ? runtime.buildDecisionRows() : [];
     const fiiRows = typeof runtime.buildFIIIntelligenceRows === 'function' ? runtime.buildFIIIntelligenceRows() : [];
     const positionCount = Object.keys(positions || {}).length;
