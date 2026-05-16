@@ -89,20 +89,27 @@ async function gdsMemorySyncCurrentAssets() {
 
   const assets = buildMemoryAssetsFromState();
   const results = [];
+  const failures = [];
 
   for (const asset of assets) {
-    results.push(await gdsMemoryUpsertAsset(asset));
+    try {
+      results.push(await gdsMemoryUpsertAsset(asset));
+    } catch (err) {
+      failures.push({ ticker: asset.ticker, error: err.message });
+    }
   }
 
   await gdsMemoryAddDocNote({
     title: 'Sincronizacao de ativos',
-    text: `Foram sincronizados ${assets.length} ativos do Dividend System para a memoria real.`,
+    text: `Foram sincronizados ${results.length} ativos do Dividend System para a memoria real. Falhas: ${failures.length}.`,
     origem: 'dividend_system'
   });
 
   return {
-    ok: true,
-    count: assets.length,
+    ok: failures.length === 0,
+    count: results.length,
+    attempted: assets.length,
+    failures,
     results
   };
 }
@@ -111,7 +118,10 @@ function buildMemoryAssetsFromState() {
   const state = getGdsRuntimeState();
   const runtime = window.gdsRuntime || {};
   const assets = state.assets || {};
-  const positions = typeof runtime.buildPositions === 'function' ? runtime.buildPositions() : {};
+  if (typeof runtime.buildPositions === 'function') {
+    runtime.buildPositions();
+  }
+  const positions = state.positions || {};
   const tickers = new Set([
     ...Object.keys(assets),
     ...Object.keys(positions || {})
@@ -223,7 +233,10 @@ async function gdsMemorySyncAssetsFromUI() {
   try {
     gdsMemoryStatus('Sincronizando ativos com Google Sheets...');
     const result = await gdsMemorySyncCurrentAssets();
-    gdsMemoryStatus(`Ativos sincronizados: ${result.count}.`, 'ok');
+    const suffix = result.failures && result.failures.length
+      ? ` Falhas: ${result.failures.length} (${result.failures.slice(0, 3).map(f => f.ticker).join(', ')}).`
+      : '';
+    gdsMemoryStatus(`Ativos sincronizados: ${result.count}/${result.attempted}.${suffix}`, result.failures && result.failures.length ? 'warn' : 'ok');
   } catch (err) {
     gdsMemoryStatus('Erro ao sincronizar ativos: ' + err.message, 'error');
   }
@@ -244,7 +257,8 @@ async function gdsMemoryWriteStrategicNoteFromUI() {
   try {
     const runtime = window.gdsRuntime || {};
     const state = getGdsRuntimeState() || {};
-    const positions = typeof runtime.buildPositions === 'function' ? runtime.buildPositions() : {};
+    if (typeof runtime.buildPositions === 'function') runtime.buildPositions();
+    const positions = state.positions || {};
     const decisions = typeof runtime.buildDecisionRows === 'function' ? runtime.buildDecisionRows() : [];
     const fiiRows = typeof runtime.buildFIIIntelligenceRows === 'function' ? runtime.buildFIIIntelligenceRows() : [];
     const positionCount = Object.keys(positions || {}).length;
