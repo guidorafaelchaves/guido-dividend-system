@@ -83,7 +83,7 @@ async function gdsMemoryAddDocNote(note) {
 }
 
 async function gdsMemorySyncCurrentAssets() {
-  if (typeof state === 'undefined') {
+  if (!getGdsRuntimeState()) {
     throw new Error('Estado local do Dividend System nao encontrado.');
   }
 
@@ -108,8 +108,10 @@ async function gdsMemorySyncCurrentAssets() {
 }
 
 function buildMemoryAssetsFromState() {
+  const state = getGdsRuntimeState();
+  const runtime = window.gdsRuntime || {};
   const assets = state.assets || {};
-  const positions = typeof buildPositions === 'function' ? buildPositions() : {};
+  const positions = typeof runtime.buildPositions === 'function' ? runtime.buildPositions() : {};
   const tickers = new Set([
     ...Object.keys(assets),
     ...Object.keys(positions || {})
@@ -166,3 +168,112 @@ function classifyTickerForMemory(ticker) {
     : 'ACAO';
 }
 
+function getGdsRuntimeState() {
+  if (window.gdsRuntime && typeof window.gdsRuntime.getState === 'function') {
+    return window.gdsRuntime.getState();
+  }
+  return null;
+}
+
+function gdsMemoryStatus(message, type = 'info') {
+  const el = document.getElementById('realMemoryStatus');
+  if (!el) return;
+  const color = type === 'ok' ? '#9affcb' : type === 'error' ? '#ffb3b3' : type === 'warn' ? '#ffd18a' : '#9fefff';
+  el.innerHTML = `<span style="color:${color}">${escapeMemoryHtml(message)}</span>`;
+}
+
+function escapeMemoryHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function gdsMemoryInitUI() {
+  const input = document.getElementById('memoryApiUrl');
+  const savedUrl = gdsMemoryGetApiUrl();
+  if (input && savedUrl) input.value = savedUrl;
+  gdsMemoryStatus(savedUrl ? 'Memoria real configurada. Teste a conexao ou sincronize ativos.' : 'Memoria real: cole a URL /exec do Apps Script para ativar Sheets + Docs.');
+}
+
+function gdsMemorySaveUrlFromInput() {
+  try {
+    const input = document.getElementById('memoryApiUrl');
+    const url = gdsMemorySetApiUrl(input ? input.value : '');
+    gdsMemoryStatus('URL salva: ' + url, 'ok');
+  } catch (err) {
+    gdsMemoryStatus(err.message, 'error');
+    alert(err.message);
+  }
+}
+
+async function gdsMemoryTestFromUI() {
+  try {
+    gdsMemoryStatus('Testando memoria real...');
+    const data = await gdsMemorySetup();
+    gdsMemoryStatus(`Memoria OK. Sheets: ${data.spreadsheetId}. Docs: ${data.documentId}.`, 'ok');
+  } catch (err) {
+    gdsMemoryStatus('Erro ao testar memoria: ' + err.message, 'error');
+  }
+}
+
+async function gdsMemorySyncAssetsFromUI() {
+  try {
+    gdsMemoryStatus('Sincronizando ativos com Google Sheets...');
+    const result = await gdsMemorySyncCurrentAssets();
+    gdsMemoryStatus(`Ativos sincronizados: ${result.count}.`, 'ok');
+  } catch (err) {
+    gdsMemoryStatus('Erro ao sincronizar ativos: ' + err.message, 'error');
+  }
+}
+
+async function gdsMemoryLoadAssetsFromUI() {
+  try {
+    gdsMemoryStatus('Carregando ativos da memoria real...');
+    const data = await gdsMemoryLoadAssets();
+    const count = Array.isArray(data.ativos) ? data.ativos.length : 0;
+    gdsMemoryStatus(`Memoria carregada: ${count} ativo(s) no Google Sheets.`, 'ok');
+  } catch (err) {
+    gdsMemoryStatus('Erro ao carregar ativos: ' + err.message, 'error');
+  }
+}
+
+async function gdsMemoryWriteStrategicNoteFromUI() {
+  try {
+    const runtime = window.gdsRuntime || {};
+    const state = getGdsRuntimeState() || {};
+    const positions = typeof runtime.buildPositions === 'function' ? runtime.buildPositions() : {};
+    const decisions = typeof runtime.buildDecisionRows === 'function' ? runtime.buildDecisionRows() : [];
+    const fiiRows = typeof runtime.buildFIIIntelligenceRows === 'function' ? runtime.buildFIIIntelligenceRows() : [];
+    const positionCount = Object.keys(positions || {}).length;
+    const decisionCount = Array.isArray(decisions) ? decisions.length : 0;
+    const fiiCount = Array.isArray(fiiRows) ? fiiRows.length : 0;
+    const radarCount = Array.isArray(state.dividends) ? state.dividends.length : 0;
+    const riskItems = (decisions || [])
+      .filter(item => ['VENDER_PARCIAL', 'EVITAR', 'INVESTIGAR'].includes(item.action))
+      .slice(0, 5)
+      .map(item => `${item.ticker}: ${item.action} - ${item.motivo || 'sem motivo'}`);
+
+    const lines = [
+      `Posicoes acompanhadas: ${positionCount}.`,
+      `Eventos/proventos no radar: ${radarCount}.`,
+      `Ativos analisados pelo Decision Engine: ${decisionCount}.`,
+      `FIIs analisados: ${fiiCount}.`,
+      riskItems.length ? 'Alertas principais: ' + riskItems.join(' | ') : 'Sem alertas criticos destacados no momento.'
+    ];
+
+    gdsMemoryStatus('Registrando leitura estrategica no Google Docs...');
+    await gdsMemoryAddDocNote({
+      title: 'Leitura estrategica do Dividend System',
+      text: lines.join('\n'),
+      origem: 'dividend_system_pages'
+    });
+    gdsMemoryStatus('Leitura estrategica registrada no Google Docs.', 'ok');
+  } catch (err) {
+    gdsMemoryStatus('Erro ao registrar leitura estrategica: ' + err.message, 'error');
+  }
+}
+
+window.addEventListener('load', gdsMemoryInitUI);

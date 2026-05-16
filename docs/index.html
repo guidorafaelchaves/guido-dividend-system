@@ -736,6 +736,31 @@
               <button class="btn-red" style="margin-left:auto" onclick="hardReset()">Hard Reset Total</button>
             </div>
           </div>
+
+          <div class="card" style="border-left:5px solid var(--green)">
+            <h2 class="section-title">Memoria Real - Sheets + Docs</h2>
+            <div class="section-note">
+              Conecta este navegador ao Google Apps Script da memoria patrimonial. O Sheets guarda os dados estruturados; o Docs guarda a memoria narrativa, teses e decisoes importantes.
+            </div>
+            <div class="controls" style="grid-template-columns:2fr 1fr 1fr">
+              <div class="field">
+                <label>Memory API URL</label>
+                <input type="text" id="memoryApiUrl" placeholder="https://script.google.com/macros/s/.../exec" />
+              </div>
+              <div class="field">
+                <button class="btn-primary" style="width:100%" onclick="gdsMemorySaveUrlFromInput()">Salvar URL</button>
+              </div>
+              <div class="field">
+                <button class="btn-secondary" style="width:100%" onclick="gdsMemoryTestFromUI()">Testar memoria</button>
+              </div>
+            </div>
+            <div class="toolbar" style="margin-top:14px">
+              <button class="btn-green" onclick="gdsMemorySyncAssetsFromUI()">Sincronizar ativos</button>
+              <button class="btn-secondary" onclick="gdsMemoryLoadAssetsFromUI()">Carregar ativos</button>
+              <button class="btn-outline" onclick="gdsMemoryWriteStrategicNoteFromUI()">Registrar leitura estrategica</button>
+            </div>
+            <div id="realMemoryStatus" class="muted" style="margin-top:10px;line-height:1.55">Memoria real: aguardando configuracao.</div>
+          </div>
         </div>
 
         <div class="stack">
@@ -7040,6 +7065,14 @@ Preencha integralmente os campos do JSON solicitado.`;
       var hash = (window.location.hash || '').replace('#','');
       if(hash === 'demo' || hash === 'sistema' || hash === 'manifesto') GWI_showPage(hash);
     });
+    window.gdsRuntime = {
+      getState: function(){ return state; },
+      buildPositions: typeof buildPositions === 'function' ? buildPositions : null,
+      buildDecisionRows: typeof buildDecisionRows === 'function' ? buildDecisionRows : null,
+      buildFIIIntelligenceRows: typeof buildFIIIntelligenceRows === 'function' ? buildFIIIntelligenceRows : null,
+      renderTudo: typeof renderTudo === 'function' ? renderTudo : null,
+      saveAll: typeof saveAll === 'function' ? saveAll : null
+    };
   </script>
   <script src="./memory-client.js"></script>
 
