@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.8.9 — Mobile Responsivo</title>
+  <title>Guido Dividend System v1.9.0 — Inteligência Integrada</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,6 +111,15 @@
     .status-usable{background:var(--soft-blue);color:#8ee8ff;border-color:rgba(0,212,255,.22)}
     .status-stale{background:var(--soft-yellow);color:#ffd18a;border-color:rgba(245,158,11,.24)}
     .status-critical{background:var(--soft-red);color:#ffb1b1;border-color:rgba(255,77,77,.24)}
+    .integration-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0}
+    .integration-tile{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(255,255,255,.025)}
+    .integration-tile span{display:block;font-size:10px;color:var(--muted);font-weight:900;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
+    .integration-tile b{font-size:18px}
+    .alert-list{display:grid;gap:8px;margin-top:10px}
+    .alert-item{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:9px 10px;background:rgba(255,255,255,.025);font-size:12px;line-height:1.4}
+    .alert-item .badge{flex:0 0 auto}
+    @media(max-width:900px){.integration-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.integration-grid{grid-template-columns:1fr}}
     #tab-b3 .b3-hero{border-left:5px solid var(--green);padding:0;overflow:hidden}
     #tab-b3 .b3-hero-head{padding:20px 22px 14px;background:linear-gradient(135deg,rgba(0,255,136,.09),rgba(0,212,255,.06) 48%,rgba(18,24,33,.25));border-bottom:1px solid rgba(0,255,136,.13)}
     #tab-b3 .b3-hero-title{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:12px}
@@ -245,7 +254,7 @@
 
 
     /* =========================================================
-       v1.8.9 — Camada responsiva mobile/smartphone
+       v1.9.0 — Inteligência integrada patrimonial
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -676,9 +685,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.8.8 · Sistema proprietário de inteligência patrimonial: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3 e motor de decisão para transformar dados reais em clareza patrimonial.</p>
+        <p>v1.9.0 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI e motor de decisão para transformar dados reais em clareza patrimonial.</p>
       </div>
-      <div class="version-pill">v1.8.8 · 3 páginas</div>
+      <div class="version-pill">v1.9.0 · inteligência integrada</div>
     </div>
 
     <div class="grid-5">
@@ -847,6 +856,7 @@
             <h2 class="section-title">🧠 Estado do Motor</h2>
             <div id="memoryBadge" class="section-note" style="margin-bottom:10px">Memória local: inicializando...</div>
             <div id="refreshStatusBadge" class="section-note" style="margin-bottom:10px">Refresh inteligente v24.2: inicializando...</div>
+            <div id="integratedIntelligenceBox" class="section-note" style="margin-bottom:10px">Inteligência integrada: inicializando...</div>
             <div id="engineSummary" class="muted" style="line-height:1.6"></div>
           </div>
         </div>
@@ -1345,7 +1355,7 @@
     </div>
 
 
-    <div class="footer">Guido Dividend System v1.8.8 · Demonstração visual guiada, privacidade e sistema operacional completo</div>
+    <div class="footer">Guido Dividend System v1.9.0 · Inteligência integrada, privacidade e sistema operacional completo</div>
   </div>
 
   </section>
@@ -4043,7 +4053,108 @@ async function fetchSingleTickerBrapi(tk, opts={}){
     }
 
     
+function integrationSeverityBadge(level){
+  const map = { critical:'b-red', warning:'b-yellow', info:'b-blue', good:'b-green' };
+  const label = { critical:'Crítico', warning:'Atenção', info:'Info', good:'OK' };
+  return `<span class="badge ${map[level] || 'b-gray'}">${label[level] || level}</span>`;
+}
+
+function buildIntegratedViewModel(){
+  const tickers = new Set([
+    ...Object.keys(state.assets || {}),
+    ...Object.keys(state.positions || {}),
+    ...Object.keys(state.b3Portfolio || {}),
+    ...(state.trades || []).map(x=>x.ticker),
+    ...(state.b3Movements || []).map(x=>x.ticker),
+    ...(state.dividends || []).map(x=>x.ticker),
+    ...Object.keys(state.quotes || {})
+  ].map(normalizeTicker).filter(Boolean));
+  const b3IncomeByTicker = (state.b3Income || []).reduce((acc,x)=>{
+    const tk = normalizeTicker(x.ticker);
+    if(!tk) return acc;
+    acc[tk] = (acc[tk] || 0) + Number(x.valor || 0);
+    return acc;
+  }, {});
+  const rows = [...tickers].map(ticker => {
+    const b3 = state.b3Portfolio?.[ticker] || {};
+    const manual = state.positions?.[ticker] || {};
+    const quote = state.quotes?.[ticker] || {};
+    const b3Qty = parseNumber(b3.quantidade);
+    const manualQty = parseNumber(manual.quantidade);
+    const quantidade = b3Qty > 0 ? b3Qty : manualQty;
+    const custo = parseNumber(b3.custoTotal || manual.custoTotal || manual.capitalInvestido);
+    const precoAtual = parseNumber(quote.precoAtual || b3.precoAtual || manual.precoAtual);
+    const valorMercado = parseNumber(b3.valorMercado || manual.valorMercado) || quantidade * precoAtual;
+    const rendaReal = parseNumber(b3IncomeByTicker[ticker]);
+    const hasB3 = b3Qty > 0 || (state.b3Movements || []).some(x=>normalizeTicker(x.ticker)===ticker);
+    const hasManual = manualQty > 0;
+    const hasQuote = precoAtual > 0;
+    const fresh = state.marketMeta?.[ticker] || quote.updatedAt ? getTickerFreshnessMeta(ticker) : null;
+    return { ticker, b3, manual, quote, quantidade, custo, precoAtual, valorMercado, rendaReal, hasB3, hasManual, hasQuote, freshness:fresh };
+  });
+  const openRows = rows.filter(x=>x.quantidade > 0 || x.valorMercado > 0 || x.custo > 0);
+  const totalMarket = openRows.reduce((a,x)=>a+Number(x.valorMercado || 0),0);
+  const totalCost = openRows.reduce((a,x)=>a+Number(x.custo || 0),0);
+  const totalIncome = rows.reduce((a,x)=>a+Number(x.rendaReal || 0),0);
+  const alerts = [];
+  for(const row of openRows){
+    const weight = totalMarket > 0 ? (row.valorMercado / totalMarket) * 100 : 0;
+    const b3Qty = parseNumber(row.b3.quantidade);
+    const manualQty = parseNumber(row.manual.quantidade);
+    if(row.hasB3 && row.hasManual && Math.abs(b3Qty - manualQty) > 0.0001){
+      alerts.push({ level:'warning', ticker:row.ticker, message:`Quantidade B3 (${round(b3Qty,4)}) diverge da carteira manual (${round(manualQty,4)}).` });
+    }
+    if(row.quantidade > 0 && !row.hasQuote){
+      alerts.push({ level:'critical', ticker:row.ticker, message:'Posição aberta sem preço atual local/Brapi.' });
+    }
+    if(row.freshness && ['stale','critical'].includes(row.freshness.overallState) && row.quantidade > 0){
+      alerts.push({ level:'warning', ticker:row.ticker, message:`Dados de mercado ${refreshStateLabel(row.freshness.overallState).toLowerCase()} para posição aberta.` });
+    }
+    if(weight > 20){
+      alerts.push({ level:'warning', ticker:row.ticker, message:`Concentração estimada de ${formatPct(weight)} do patrimônio monitorado.` });
+    }
+    if(row.custo > 0 && row.rendaReal <= 0 && row.hasB3){
+      alerts.push({ level:'info', ticker:row.ticker, message:'Capital identificado na B3 ainda sem renda recebida no histórico importado.' });
+    }
+  }
+  const b3WithoutTicker = (state.b3Movements || []).filter(x=>!normalizeTicker(x.ticker)).length;
+  if(b3WithoutTicker) alerts.push({ level:'warning', ticker:'B3', message:`Há ${b3WithoutTicker} movimentos B3 sem ticker normalizado.` });
+  const pendingRecon = (state.b3Reconciliation || []).filter(x=>String(x.status || '').includes('PENDENTE')).length;
+  if(pendingRecon) alerts.push({ level:'info', ticker:'Proventos', message:`Conciliação possui ${pendingRecon} evento(s) previsto(s) ainda não localizado(s) no Ledger.` });
+  const sourceCoverage = {
+    b3: rows.filter(x=>x.hasB3).length,
+    manual: rows.filter(x=>x.hasManual).length,
+    quotes: rows.filter(x=>x.hasQuote).length,
+    income: rows.filter(x=>x.rendaReal > 0).length
+  };
+  const healthPenalty = alerts.reduce((a,x)=>a+(x.level==='critical'?18:x.level==='warning'?8:2),0);
+  const healthScore = clamp(100 - healthPenalty, 0, 100);
+  return { rows, openRows, totals:{ totalMarket, totalCost, totalIncome }, sourceCoverage, alerts, healthScore };
+}
+
+function renderIntegratedIntelligence(vm){
+  const el = $('integratedIntelligenceBox');
+  if(!el) return;
+  const topAlerts = vm.alerts.slice(0,5);
+  const healthClass = vm.healthScore >= 80 ? 'b-green' : vm.healthScore >= 55 ? 'b-yellow' : 'b-red';
+  el.innerHTML = `
+    <b>Inteligência integrada v1.9.0:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
+    <div class="integration-grid">
+      <div class="integration-tile"><span>Saúde dos dados</span><b><span class="badge ${healthClass}">${round(vm.healthScore,0)}/100</span></b></div>
+      <div class="integration-tile"><span>Patrimônio integrado</span><b>${formatBRL(vm.totals.totalMarket)}</b></div>
+      <div class="integration-tile"><span>Renda B3 integrada</span><b>${formatBRL(vm.totals.totalIncome)}</b></div>
+      <div class="integration-tile"><span>Alertas cruzados</span><b>${vm.alerts.length}</b></div>
+    </div>
+    <span class="mini">Cobertura: B3 ${vm.sourceCoverage.b3} ativos · manual ${vm.sourceCoverage.manual} · preços ${vm.sourceCoverage.quotes} · renda real ${vm.sourceCoverage.income}.</span>
+    <div class="alert-list">
+      ${topAlerts.length ? topAlerts.map(a=>`<div class="alert-item">${integrationSeverityBadge(a.level)} <div><b>${escapeHtml(a.ticker)}:</b> ${escapeHtml(a.message)}</div></div>`).join('') : '<div class="alert-item"><span class="badge b-green">OK</span><div>Nenhuma inconsistência integrada relevante detectada agora.</div></div>'}
+    </div>
+  `;
+}
+
 function renderEngineSummary(){
+  const integrated = buildIntegratedViewModel();
+  renderIntegratedIntelligence(integrated);
   const divs = state.dividends.length;
   const tracked = Object.keys(state.marketMeta || {}).length;
   const staleCritical = Object.keys(state.marketMeta || {}).filter(tk => ['stale','critical'].includes(getTickerFreshnessMeta(tk).overallState)).length;
@@ -4056,7 +4167,8 @@ function renderEngineSummary(){
     Dividendos: <b>${divs}</b><br>
     Históricos 12m: <b>${Object.keys(state.priceHistory).length}</b><br>
     Refresh mode: <b>${getRefreshMode()}</b> | monitorados: <b>${tracked}</b> | vencidos/críticos: <b>${staleCritical}</b><br>
-    Economia de API (cache hits): <b>${cacheHits}</b> | chamadas Brapi registradas: <b>${apiCalls}</b>
+    Economia de API (cache hits): <b>${cacheHits}</b> | chamadas Brapi registradas: <b>${apiCalls}</b><br>
+    View Model integrado: <b>${integrated.rows.length}</b> tickers consolidados | posições abertas: <b>${integrated.openRows.length}</b>
   `;
 }
 
