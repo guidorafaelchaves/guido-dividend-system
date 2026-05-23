@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.9.2 — Token Brapi Local</title>
+  <title>Guido Dividend System v1.9.3 — Dossiês por Ativo</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,7 +254,7 @@
 
 
     /* =========================================================
-       v1.9.2 — Token Brapi local salvo
+       v1.9.3 — Dossiês locais por ativo
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -685,9 +685,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.9.2 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI e motor de decisão para transformar dados reais em clareza patrimonial.</p>
+        <p>v1.9.3 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI e motor de decisão para transformar dados reais em clareza patrimonial.</p>
       </div>
-      <div class="version-pill">v1.9.2 · token brapi local</div>
+      <div class="version-pill">v1.9.3 · dossiês por ativo</div>
     </div>
 
     <div class="grid-5">
@@ -864,6 +864,22 @@
             <div id="refreshStatusBadge" class="section-note" style="margin-bottom:10px">Refresh inteligente v24.2: inicializando...</div>
             <div id="integratedIntelligenceBox" class="section-note" style="margin-bottom:10px">Inteligência integrada: inicializando...</div>
             <div id="engineSummary" class="muted" style="line-height:1.6"></div>
+          </div>
+
+          <div class="card">
+            <h2 class="section-title">🧬 Asset Intelligence Profiles</h2>
+            <div id="assetProfileSummary" class="section-note">Perfis por ativo: inicializando...</div>
+            <div class="table-wrap" style="max-height:320px;margin-top:10px">
+              <table>
+                <thead><tr><th>Ativo</th><th>Função</th><th class="right">Valor</th><th class="right">Renda</th><th class="right">Score dados</th><th class="right">Atenção</th><th class="center">Dossiê</th></tr></thead>
+                <tbody id="tbodyAssetProfiles"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="section-title">🚨 Radar de Incongruências</h2>
+            <div id="incongruenceRadarBox" class="section-note">Radar: inicializando...</div>
           </div>
         </div>
       </div>
@@ -1361,7 +1377,7 @@
     </div>
 
 
-    <div class="footer">Guido Dividend System v1.9.2 · Token Brapi salvo localmente, inteligência integrada e privacidade local-first</div>
+    <div class="footer">Guido Dividend System v1.9.3 · Dossiês locais por ativo, inteligência integrada e privacidade local-first</div>
   </div>
 
   </section>
@@ -4187,7 +4203,7 @@ function renderIntegratedIntelligence(vm){
   const topAlerts = vm.alerts.slice(0,5);
   const healthClass = vm.healthScore >= 80 ? 'b-green' : vm.healthScore >= 55 ? 'b-yellow' : 'b-red';
   el.innerHTML = `
-    <b>Inteligência integrada v1.9.2:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
+    <b>Inteligência integrada v1.9.3:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
     <div class="integration-grid">
       <div class="integration-tile"><span>Saúde dos dados</span><b><span class="badge ${healthClass}">${round(vm.healthScore,0)}/100</span></b></div>
       <div class="integration-tile"><span>Patrimônio integrado</span><b>${formatBRL(vm.totals.totalMarket)}</b></div>
@@ -4201,9 +4217,148 @@ function renderIntegratedIntelligence(vm){
   `;
 }
 
+function buildAssetIntelligenceProfiles(integrated){
+  const decisionRows = typeof buildDecisionRows === 'function' ? buildDecisionRows() : [];
+  const decisionMap = Object.fromEntries(decisionRows.map(x=>[x.ticker, x]));
+  const b3EventsByTicker = (state.b3Movements || []).reduce((acc,x)=>{
+    const tk = normalizeTicker(x.ticker);
+    if(!tk) return acc;
+    if(!acc[tk]) acc[tk] = [];
+    acc[tk].push(x);
+    return acc;
+  }, {});
+  const dividendEventsByTicker = (state.dividends || []).reduce((acc,x)=>{
+    const tk = normalizeTicker(x.ticker);
+    if(!tk) return acc;
+    if(!acc[tk]) acc[tk] = [];
+    acc[tk].push(x);
+    return acc;
+  }, {});
+  const alertMap = (integrated.alerts || []).reduce((acc,a)=>{
+    const tk = normalizeTicker(a.ticker);
+    if(!acc[tk]) acc[tk] = [];
+    acc[tk].push(a);
+    return acc;
+  }, {});
+  return (integrated.rows || []).map(row => {
+    const ticker = row.ticker;
+    const asset = state.assets?.[ticker] || {};
+    const decision = decisionMap[ticker] || {};
+    const b3Events = (b3EventsByTicker[ticker] || []).slice().sort((a,b)=>String(b.data).localeCompare(String(a.data)));
+    const dividendEvents = (dividendEventsByTicker[ticker] || []).slice().sort((a,b)=>String(b.dataPagamento || b.dataCom).localeCompare(String(a.dataPagamento || a.dataCom)));
+    const alerts = alertMap[ticker] || [];
+    const hasPersonal = row.hasB3 || row.hasManual || row.rendaReal > 0;
+    const hasMarket = row.hasQuote || Boolean(asset.setor || asset.tipo);
+    const dataScore = clamp(
+      (row.hasB3 ? 25 : 0) +
+      (row.hasManual ? 15 : 0) +
+      (row.hasQuote ? 20 : 0) +
+      (row.rendaReal > 0 ? 15 : 0) +
+      (dividendEvents.length ? 10 : 0) +
+      (row.freshness && !['stale','critical'].includes(row.freshness.overallState) ? 15 : 0),
+      0, 100
+    );
+    const riskScore = clamp(
+      alerts.reduce((a,x)=>a+(x.level==='critical'?35:x.level==='warning'?18:7),0) +
+      (decision.action && ['EVITAR','INVESTIGAR','VENDER_PARCIAL'].includes(decision.action) ? 20 : 0),
+      0, 100
+    );
+    const incomeScore = clamp(row.rendaReal > 0 && row.custo > 0 ? (row.rendaReal / row.custo) * 1000 : 0, 0, 100);
+    const portfolioFitScore = clamp(100 - riskScore + (hasPersonal ? 10 : -10), 0, 100);
+    const functionLabel = row.rendaReal > 0 ? 'Renda' : row.valorMercado > 0 ? 'Capital' : hasMarket ? 'Radar' : 'Dados parciais';
+    return {
+      ticker,
+      nome: asset.nome || decision.nome || ticker,
+      tipo: asset.tipo || classifyTickerType(ticker),
+      setor: asset.setor || '',
+      hasPersonal,
+      hasMarket,
+      quantidade: row.quantidade,
+      precoMedio: parseNumber(row.b3.precoMedio || row.manual.precoMedio),
+      precoAtual: row.precoAtual,
+      custo: row.custo,
+      valorMercado: row.valorMercado,
+      lucroNaoRealizado: parseNumber(row.b3.lucroNaoRealizado || row.manual.lucroNaoRealizado),
+      lucroRealizado: parseNumber(row.b3.lucroRealizado || row.manual.lucroRealizado),
+      rendaReal: row.rendaReal,
+      dividendosEventos: dividendEvents.length,
+      b3Eventos: b3Events.length,
+      ultimosEventosB3: b3Events.slice(0,8),
+      ultimosDividendos: dividendEvents.slice(0,8),
+      decision,
+      alerts,
+      dataScore,
+      riskScore,
+      incomeScore,
+      portfolioFitScore,
+      attentionScore: clamp((100 - dataScore) * .35 + riskScore * .65, 0, 100),
+      functionLabel,
+      freshness: row.freshness
+    };
+  }).sort((a,b)=>Number(b.attentionScore)-Number(a.attentionScore) || Number(b.valorMercado)-Number(a.valorMercado));
+}
+
+function renderAssetProfiles(profiles){
+  const summary = $('assetProfileSummary');
+  const tb = $('tbodyAssetProfiles');
+  if(summary){
+    const personal = profiles.filter(x=>x.hasPersonal).length;
+    const highAttention = profiles.filter(x=>x.attentionScore >= 60).length;
+    summary.innerHTML = `<b>Dossiês locais:</b> ${profiles.length} ativos mapeados, ${personal} com vida pessoal/B3 e ${highAttention} exigindo atenção. Esta etapa usa apenas dados internos já salvos.`;
+  }
+  if(!tb) return;
+  const rows = profiles.slice(0,18);
+  tb.innerHTML = rows.map(p => `<tr><td><b>${escapeHtml(p.ticker)}</b><span class="mini">${escapeHtml(p.tipo || '')}</span></td><td>${escapeHtml(p.functionLabel)}</td><td class="right">${formatBRL(p.valorMercado)}</td><td class="right">${formatBRL(p.rendaReal)}</td><td class="right">${round(p.dataScore,0)}</td><td class="right"><span class="badge ${p.attentionScore>=70?'b-red':p.attentionScore>=45?'b-yellow':'b-blue'}">${round(p.attentionScore,0)}</span></td><td class="center"><button class="btn-secondary" onclick="openAssetProfileDossier('${p.ticker}')">Abrir</button></td></tr>`).join('') || '<tr><td colspan="7" class="center muted">Nenhum perfil de ativo disponível ainda.</td></tr>';
+}
+
+function renderIncongruenceRadar(integrated){
+  const el = $('incongruenceRadarBox');
+  if(!el) return;
+  const alerts = (integrated.alerts || []).slice(0,10);
+  el.innerHTML = alerts.length
+    ? `<b>${integrated.alerts.length} incongruências/sinais cruzados:</b><div class="alert-list">${alerts.map(a=>`<div class="alert-item">${integrationSeverityBadge(a.level)} <div><b>${escapeHtml(a.ticker)}:</b> ${escapeHtml(a.message)}</div></div>`).join('')}</div>`
+    : '<b>Radar limpo:</b> nenhuma incongruência relevante detectada com os dados locais atuais.';
+}
+
+function openAssetProfileDossier(ticker){
+  const integrated = buildIntegratedViewModel();
+  const profile = buildAssetIntelligenceProfiles(integrated).find(x=>x.ticker === normalizeTicker(ticker));
+  if(!profile){ alert('Dossiê não encontrado para este ativo.'); return; }
+  const publicFacts = [
+    profile.hasMarket ? 'Preço/mercado disponível no cache local ou BRAPI.' : 'Sem preço/fundamentos recentes no cache local.',
+    profile.freshness ? `Freshness de mercado: ${refreshStateLabel(profile.freshness.overallState)}.` : 'Sem metadado de atualização de mercado.',
+    profile.dividendosEventos ? `${profile.dividendosEventos} evento(s) de dividendos no calendário local.` : 'Sem eventos de dividendos previstos/importados.'
+  ];
+  const personalFacts = [
+    profile.hasPersonal ? 'Existe histórico pessoal/B3 para este ativo.' : 'Ainda não há vida pessoal do usuário identificada neste ativo.',
+    `Quantidade: ${round(profile.quantidade,4)} | preço médio: ${formatBRL(profile.precoMedio)} | preço atual: ${formatBRL(profile.precoAtual)}.`,
+    `Renda real localizada: ${formatBRL(profile.rendaReal)} | lucro realizado: ${formatBRL(profile.lucroRealizado)} | lucro não realizado: ${formatBRL(profile.lucroNaoRealizado)}.`
+  ];
+  const b3Rows = profile.ultimosEventosB3.map(x=>`<tr><td>${formatDateBR(x.data)}</td><td>${escapeHtml(x.movimentoOriginal || '')}</td><td>${escapeHtml(x.natureza || x.classeMovimento || '')}</td><td class="right">${formatBRL(x.valor)}</td></tr>`).join('') || '<tr><td colspan="4" class="center muted">Sem eventos B3 recentes.</td></tr>';
+  const alerts = profile.alerts.length ? profile.alerts.map(a=>`<div class="alert-item">${integrationSeverityBadge(a.level)} <div>${escapeHtml(a.message)}</div></div>`).join('') : '<div class="alert-item"><span class="badge b-green">OK</span><div>Sem alertas cruzados relevantes.</div></div>';
+  openModal(`
+    <h2 style="margin-top:0">Dossiê de Inteligência — ${escapeHtml(profile.ticker)}</h2>
+    <div class="split-3">
+      <div class="card"><div class="kpi-title">Score dados</div><div class="kpi-value">${round(profile.dataScore,0)}/100</div></div>
+      <div class="card"><div class="kpi-title">Score renda</div><div class="kpi-value">${round(profile.incomeScore,0)}/100</div></div>
+      <div class="card"><div class="kpi-title">Atenção</div><div class="kpi-value">${round(profile.attentionScore,0)}/100</div></div>
+    </div>
+    <div class="split-2">
+      <div class="card"><h3 class="section-title">Visão pessoal</h3><p>${personalFacts.map(escapeHtml).join('<br>')}</p></div>
+      <div class="card"><h3 class="section-title">Visão pública/cache</h3><p>${publicFacts.map(escapeHtml).join('<br>')}</p></div>
+    </div>
+    <div class="card"><h3 class="section-title">Incongruências e alertas</h3><div class="alert-list">${alerts}</div></div>
+    <div class="card" style="padding:0"><div class="table-wrap"><table><thead><tr><th>Data</th><th>Evento B3</th><th>Natureza</th><th class="right">Valor</th></tr></thead><tbody>${b3Rows}</tbody></table></div></div>
+    <div class="section-note"><b>IA segura:</b> este dossiê está pronto para ser enviado a um backend/proxy OpenAI seguro. No GitHub Pages, nenhuma chave deve ser embutida no HTML público; use Cloudflare Worker/Vercel Function/Netlify Function com variável de ambiente, cache e rate limit.</div>
+  `);
+}
+
 function renderEngineSummary(){
   const integrated = buildIntegratedViewModel();
   renderIntegratedIntelligence(integrated);
+  const profiles = buildAssetIntelligenceProfiles(integrated);
+  renderAssetProfiles(profiles);
+  renderIncongruenceRadar(integrated);
   const divs = state.dividends.length;
   const tracked = Object.keys(state.marketMeta || {}).length;
   const staleCritical = Object.keys(state.marketMeta || {}).filter(tk => ['stale','critical'].includes(getTickerFreshnessMeta(tk).overallState)).length;
