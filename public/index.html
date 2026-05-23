@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.9.0 — Inteligência Integrada</title>
+  <title>Guido Dividend System v1.9.1 — Yield B3 Conservador</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,7 +254,7 @@
 
 
     /* =========================================================
-       v1.9.0 — Inteligência integrada patrimonial
+       v1.9.1 — Yield B3 conservador e auditável
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -685,9 +685,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.9.0 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI e motor de decisão para transformar dados reais em clareza patrimonial.</p>
+        <p>v1.9.1 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI e motor de decisão para transformar dados reais em clareza patrimonial.</p>
       </div>
-      <div class="version-pill">v1.9.0 · inteligência integrada</div>
+      <div class="version-pill">v1.9.1 · yield b3 conservador</div>
     </div>
 
     <div class="grid-5">
@@ -1157,21 +1157,21 @@
       <div class="card b3-yield-panel">
         <div class="b3-yield-head">
           <div>
-            <h2 class="section-title">📈 Yield Realizado B3</h2>
-            <div class="b3-yield-copy">Mede quanto retorno efetivo já voltou para o caixa em relação ao capital historicamente aportado. Retorno efetivo = proventos recebidos + lucro/prejuízo realizado em vendas. O yield anualizado usa o custo médio que ficou exposto ao longo do tempo.</div>
+            <h2 class="section-title">📈 Yield de Renda Real B3</h2>
+            <div class="b3-yield-copy">Mede renda efetivamente recebida em relação ao capital aportado reconhecido no histórico B3. Vendas e lucros realizados ficam separados como resultado de negociação; não entram no yield para evitar percentuais irreais. A anualização só aparece com histórico mínimo suficiente.</div>
           </div>
           <span id="b3YieldStatus" class="status-chip">Yield: aguardando histórico</span>
         </div>
         <div class="b3-yield-grid">
           <div class="b3-yield-metric"><span>Capital aportado</span><b id="b3YieldInvested">R$ 0,00</b></div>
           <div class="b3-yield-metric"><span>Capital médio exposto</span><b id="b3YieldAvgCapital">R$ 0,00</b></div>
-          <div class="b3-yield-metric"><span>Retorno recebido</span><b id="b3YieldReceived">R$ 0,00</b></div>
-          <div class="b3-yield-metric"><span>Yield realizado</span><b id="b3YieldRealized">0%</b></div>
-          <div class="b3-yield-metric"><span>Yield anualizado</span><b id="b3YieldAnnualized">0%</b></div>
+          <div class="b3-yield-metric"><span>Renda recebida</span><b id="b3YieldReceived">R$ 0,00</b></div>
+          <div class="b3-yield-metric"><span>Yield renda</span><b id="b3YieldRealized">0%</b></div>
+          <div class="b3-yield-metric"><span>Anual confiável</span><b id="b3YieldAnnualized">N/D</b></div>
         </div>
         <div class="table-wrap b3-yield-table">
           <table>
-            <thead><tr><th>Ativo</th><th class="right">Aportado</th><th class="right">Médio exposto</th><th class="right">Proventos</th><th class="right">Lucro realizado</th><th class="right">Retorno recebido</th><th class="right">Yield</th><th class="right">Yield anual</th><th>Leitura</th></tr></thead>
+            <thead><tr><th>Ativo</th><th class="right">Aportado</th><th class="right">Médio exposto</th><th class="right">Renda usada</th><th class="right">Renda sem base</th><th class="right">Resultado vendas</th><th class="right">Yield renda</th><th class="right">Anual</th><th>Confiabilidade</th></tr></thead>
             <tbody id="tbodyB3Yield"></tbody>
           </table>
         </div>
@@ -1355,7 +1355,7 @@
     </div>
 
 
-    <div class="footer">Guido Dividend System v1.9.0 · Inteligência integrada, privacidade e sistema operacional completo</div>
+    <div class="footer">Guido Dividend System v1.9.1 · Yield B3 conservador, inteligência integrada e privacidade local-first</div>
   </div>
 
   </section>
@@ -4138,7 +4138,7 @@ function renderIntegratedIntelligence(vm){
   const topAlerts = vm.alerts.slice(0,5);
   const healthClass = vm.healthScore >= 80 ? 'b-green' : vm.healthScore >= 55 ? 'b-yellow' : 'b-red';
   el.innerHTML = `
-    <b>Inteligência integrada v1.9.0:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
+    <b>Inteligência integrada v1.9.1:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
     <div class="integration-grid">
       <div class="integration-tile"><span>Saúde dos dados</span><b><span class="badge ${healthClass}">${round(vm.healthScore,0)}/100</span></b></div>
       <div class="integration-tile"><span>Patrimônio integrado</span><b>${formatBRL(vm.totals.totalMarket)}</b></div>
@@ -7511,11 +7511,23 @@ Preencha integralmente os campos do JSON solicitado.`;
     }
 
     function b3YieldLabel(v){
-      if(v > 12) return '<span class="badge b-green">Forte</span>';
-      if(v > 6) return '<span class="badge b-blue">Saudável</span>';
+      if(v > 12) return '<span class="badge b-green">Alta</span>';
+      if(v > 6) return '<span class="badge b-blue">Boa</span>';
       if(v > 0) return '<span class="badge b-yellow">Positivo</span>';
       if(v < 0) return '<span class="badge b-red">Negativo</span>';
       return '<span class="badge b-gray">Neutro</span>';
+    }
+
+    function b3YieldReliabilityBadge(r){
+      if(r.compras <= 0) return '<span class="badge b-red">Sem base</span>';
+      if(r.proventosSemBase > 0) return '<span class="badge b-yellow">Parcial</span>';
+      if(r.periodDays >= 365) return '<span class="badge b-green">Alta</span>';
+      if(r.periodDays >= 180) return '<span class="badge b-blue">Média</span>';
+      return '<span class="badge b-yellow">Curta</span>';
+    }
+
+    function formatB3AnnualYield(v){
+      return Number.isFinite(v) ? formatPct(v) : 'N/D';
     }
 
     function buildB3YieldAnalysis(movs){
@@ -7523,7 +7535,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       const ordered = (movs || []).slice().filter(x=>x && x.data && x.ticker).sort((a,b)=>String(a.data).localeCompare(String(b.data)) || String(a.ticker).localeCompare(String(b.ticker)));
       const endIso = todayIso();
       function ensure(t){
-        if(!byTicker[t]) byTicker[t] = { ticker:t, firstDate:'', lastDate:'', lotQtd:0, lotCost:0, area:0, compras:0, vendas:0, proventos:0, lucroRealizado:0 };
+        if(!byTicker[t]) byTicker[t] = { ticker:t, firstDate:'', lastDate:'', lotQtd:0, lotCost:0, area:0, compras:0, vendas:0, proventos:0, proventosSemBase:0, lucroRealizado:0, lucroConfiavel:true };
         return byTicker[t];
       }
       function accrue(s, date){
@@ -7546,13 +7558,15 @@ Preencha integralmente os campos do JSON solicitado.`;
           }else if(m.tipoOperacao === 'VENDA'){
             const pm = s.lotQtd > 0 ? s.lotCost / s.lotQtd : 0;
             const custoBaixado = Math.min(qtd, Math.max(s.lotQtd,0)) * pm;
+            if(!(s.lotQtd > 0 && qtd <= s.lotQtd * 1.0001)) s.lucroConfiavel = false;
             s.lotQtd -= qtd;
             s.lotCost -= custoBaixado;
             s.vendas += val;
             s.lucroRealizado += val - custoBaixado;
           }
         }else if((m.classeMovimento === 'PROVENTO' || m.classeMovimento === 'RENDA_FIXA') && m.afetaCaixa && val > 0){
-          s.proventos += val;
+          if(s.lotCost > 0 || s.lotQtd > 0) s.proventos += val;
+          else s.proventosSemBase += val;
         }
       }
       Object.values(byTicker).forEach(s => {
@@ -7562,23 +7576,23 @@ Preencha integralmente os campos do JSON solicitado.`;
         }
         const periodDays = Math.max(1, diffDays(s.firstDate, endIso) || 1);
         s.capitalMedio = s.area > 0 ? s.area / periodDays : Math.max(0, s.lotCost);
-        s.retornoRecebido = s.proventos + s.lucroRealizado;
-        s.yieldAportado = s.compras > 0 ? (s.retornoRecebido / s.compras) * 100 : 0;
-        s.yieldMedio = s.capitalMedio > 0 ? (s.retornoRecebido / s.capitalMedio) * 100 : 0;
-        s.yieldAnualizado = s.capitalMedio > 0 ? (s.retornoRecebido / s.capitalMedio) * (365 / periodDays) * 100 : 0;
+        s.rendaUsada = s.proventos;
+        s.yieldAportado = s.compras > 0 ? (s.rendaUsada / s.compras) * 100 : 0;
+        s.yieldMedio = s.capitalMedio > 0 ? (s.rendaUsada / s.capitalMedio) * 100 : 0;
+        s.yieldAnualizado = (periodDays >= 365 && s.capitalMedio > 0) ? (s.rendaUsada / s.capitalMedio) * (365 / periodDays) * 100 : null;
         s.periodDays = periodDays;
       });
-      const rows = Object.values(byTicker).filter(x=>x.compras > 0 || x.proventos !== 0 || x.lucroRealizado !== 0);
+      const rows = Object.values(byTicker).filter(x=>x.compras > 0 || x.proventos !== 0 || x.proventosSemBase !== 0 || x.lucroRealizado !== 0);
       const firstDate = rows.map(x=>x.firstDate).filter(Boolean).sort()[0] || '';
       const totalDays = Math.max(1, diffDays(firstDate, endIso) || 1);
       const totals = rows.reduce((acc,x)=>{
-        acc.compras += x.compras; acc.vendas += x.vendas; acc.proventos += x.proventos; acc.lucroRealizado += x.lucroRealizado; acc.area += x.area; acc.retornoRecebido += x.retornoRecebido;
+        acc.compras += x.compras; acc.vendas += x.vendas; acc.proventos += x.proventos; acc.proventosSemBase += x.proventosSemBase; acc.lucroRealizado += x.lucroRealizado; acc.area += x.area; acc.rendaUsada += x.rendaUsada;
         return acc;
-      }, { compras:0, vendas:0, proventos:0, lucroRealizado:0, area:0, retornoRecebido:0 });
+      }, { compras:0, vendas:0, proventos:0, proventosSemBase:0, lucroRealizado:0, area:0, rendaUsada:0 });
       totals.capitalMedio = totals.area > 0 ? totals.area / totalDays : rows.reduce((a,x)=>a+Math.max(0,x.lotCost),0);
-      totals.yieldAportado = totals.compras > 0 ? (totals.retornoRecebido / totals.compras) * 100 : 0;
-      totals.yieldMedio = totals.capitalMedio > 0 ? (totals.retornoRecebido / totals.capitalMedio) * 100 : 0;
-      totals.yieldAnualizado = totals.capitalMedio > 0 ? (totals.retornoRecebido / totals.capitalMedio) * (365 / totalDays) * 100 : 0;
+      totals.yieldAportado = totals.compras > 0 ? (totals.rendaUsada / totals.compras) * 100 : 0;
+      totals.yieldMedio = totals.capitalMedio > 0 ? (totals.rendaUsada / totals.capitalMedio) * 100 : 0;
+      totals.yieldAnualizado = (totalDays >= 365 && totals.capitalMedio > 0) ? (totals.rendaUsada / totals.capitalMedio) * (365 / totalDays) * 100 : null;
       totals.periodDays = totalDays;
       totals.firstDate = firstDate;
       return { rows, totals };
@@ -7591,12 +7605,12 @@ Preencha integralmente os campos do JSON solicitado.`;
       const t = analysis.totals;
       if($('b3YieldInvested')) $('b3YieldInvested').textContent = formatBRL(t.compras);
       if($('b3YieldAvgCapital')) $('b3YieldAvgCapital').textContent = formatBRL(t.capitalMedio);
-      if($('b3YieldReceived')) $('b3YieldReceived').textContent = formatBRL(t.retornoRecebido);
+      if($('b3YieldReceived')) $('b3YieldReceived').textContent = formatBRL(t.rendaUsada);
       if($('b3YieldRealized')) $('b3YieldRealized').textContent = formatPct(t.yieldAportado);
-      if($('b3YieldAnnualized')) $('b3YieldAnnualized').textContent = formatPct(t.yieldAnualizado);
+      if($('b3YieldAnnualized')) $('b3YieldAnnualized').textContent = formatB3AnnualYield(t.yieldAnualizado);
       if($('b3YieldStatus')) $('b3YieldStatus').textContent = analysis.rows.length ? `Yield: ${analysis.rows.length} ativos analisados desde ${formatDateBR(t.firstDate)}` : 'Yield: aguardando histórico';
-      const rows = analysis.rows.slice().sort((a,b)=>Number(b.yieldAnualizado||0)-Number(a.yieldAnualizado||0)).slice(0,20);
-      tb.innerHTML = rows.map(r => `<tr><td><b>${escapeHtml(r.ticker)}</b><span class="mini">${r.periodDays} dias de histórico</span></td><td class="right">${formatBRL(r.compras)}</td><td class="right">${formatBRL(r.capitalMedio)}</td><td class="right">${formatBRL(r.proventos)}</td><td class="right">${formatBRL(r.lucroRealizado)}</td><td class="right"><b>${formatBRL(r.retornoRecebido)}</b></td><td class="right">${formatPct(r.yieldAportado)}</td><td class="right"><b>${formatPct(r.yieldAnualizado)}</b></td><td>${b3YieldLabel(r.yieldAnualizado)}</td></tr>`).join('') || '<tr><td colspan="9" class="center muted">Importe movimentações com compras e retornos recebidos para ativar a análise de yield realizado.</td></tr>';
+      const rows = analysis.rows.slice().sort((a,b)=>Number(b.yieldAportado||0)-Number(a.yieldAportado||0)).slice(0,20);
+      tb.innerHTML = rows.map(r => `<tr><td><b>${escapeHtml(r.ticker)}</b><span class="mini">${r.periodDays} dias de histórico</span></td><td class="right">${formatBRL(r.compras)}</td><td class="right">${formatBRL(r.capitalMedio)}</td><td class="right"><b>${formatBRL(r.rendaUsada)}</b></td><td class="right">${r.proventosSemBase ? formatBRL(r.proventosSemBase) : '---'}</td><td class="right">${formatBRL(r.lucroRealizado)}${r.lucroConfiavel?'':'<span class="mini">base parcial</span>'}</td><td class="right">${formatPct(r.yieldAportado)}</td><td class="right"><b>${formatB3AnnualYield(r.yieldAnualizado)}</b></td><td>${b3YieldReliabilityBadge(r)} ${b3YieldLabel(r.yieldAportado)}</td></tr>`).join('') || '<tr><td colspan="9" class="center muted">Importe movimentações com compras e renda recebida para ativar a análise de yield de renda real.</td></tr>';
     }
 
     function renderB3(){
