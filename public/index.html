@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.9.1 — Yield B3 Conservador</title>
+  <title>Guido Dividend System v1.9.2 — Token Brapi Local</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,7 +254,7 @@
 
 
     /* =========================================================
-       v1.9.1 — Yield B3 conservador e auditável
+       v1.9.2 — Token Brapi local salvo
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -685,9 +685,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.9.1 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI e motor de decisão para transformar dados reais em clareza patrimonial.</p>
+        <p>v1.9.2 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI e motor de decisão para transformar dados reais em clareza patrimonial.</p>
       </div>
-      <div class="version-pill">v1.9.1 · yield b3 conservador</div>
+      <div class="version-pill">v1.9.2 · token brapi local</div>
     </div>
 
     <div class="grid-5">
@@ -721,7 +721,7 @@
             <div class="controls" style="grid-template-columns:1fr 2.2fr 1fr 1fr 1fr 1fr">
               <div class="field">
                 <label>Token Brapi</label>
-                <input type="text" id="brapiToken" value="" placeholder="Cole seu token Brapi" />
+                <input type="password" id="brapiToken" value="" placeholder="Cole seu token Brapi" />
               </div>
               <div class="field">
                 <label>Tickers Alvo</label>
@@ -744,6 +744,12 @@
               <div class="field">
                 <button class="btn-secondary" style="width:100%" onclick="fetchBrapi(true)">🧨 Forçar Tudo</button>
               </div>
+            </div>
+            <div class="toolbar" style="margin-top:10px">
+              <button class="btn-primary" onclick="saveBrapiTokenFromInput()">Salvar token Brapi</button>
+              <button class="btn-outline" onclick="toggleBrapiTokenVisibility()">Mostrar/Ocultar</button>
+              <button class="btn-outline-red" onclick="clearBrapiToken()">Limpar token</button>
+              <span id="brapiTokenStatus" class="status-chip">Token Brapi: não salvo</span>
             </div>
             <div class="section-note" id="refreshHubStatus" style="margin-top:10px">
               v24.2: datas blindadas contra placeholders irreais e gaps impossíveis. Cache primeiro, Brapi depois. O motor atualiza apenas tickers críticos, vencidos ou prioritários.
@@ -1355,7 +1361,7 @@
     </div>
 
 
-    <div class="footer">Guido Dividend System v1.9.1 · Yield B3 conservador, inteligência integrada e privacidade local-first</div>
+    <div class="footer">Guido Dividend System v1.9.2 · Token Brapi salvo localmente, inteligência integrada e privacidade local-first</div>
   </div>
 
   </section>
@@ -1798,6 +1804,9 @@
           extraordinario: 0.15,
           instabilidade: 0.15
         }
+      },
+      brapi: {
+        token: ''
       }
     };
 
@@ -2809,7 +2818,7 @@ async function fetchBrapi(force=true){
 }
 
 async function fetchSingleTickerBrapi(tk, opts={}){
-  const token = $('brapiToken').value.trim();
+  const token = getBrapiToken();
   const ticker = normalizeTicker(tk);
   const today = todayIso();
   const lookback = new Date();
@@ -3382,6 +3391,46 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       $('pesoCarteira').value = 'Ignorado no Radar';
       $('janelaFluxo').value = state.settings.radar.diasJanelaFluxo;
       $('bonusDataComMaxDias').value = state.settings.radar.bonusDataComMaxDias;
+      syncBrapiTokenInput();
+    }
+
+    function maskToken(token){
+      if(!token) return 'não salvo';
+      if(token.length <= 10) return token.slice(0,3) + '••••';
+      return `${token.slice(0,6)}••••${token.slice(-4)}`;
+    }
+
+    function syncBrapiTokenInput(){
+      state.settings.brapi = state.settings.brapi || { token:'' };
+      const token = state.settings.brapi.token || '';
+      if($('brapiToken')) $('brapiToken').value = token;
+      updateBrapiTokenStatus(token ? `Token Brapi salvo localmente: ${maskToken(token)}` : 'Token Brapi: não salvo');
+    }
+
+    function updateBrapiTokenStatus(message){
+      const el = $('brapiTokenStatus');
+      if(el) el.textContent = message;
+    }
+
+    function saveBrapiTokenFromInput(){
+      state.settings.brapi = state.settings.brapi || {};
+      state.settings.brapi.token = ($('brapiToken')?.value || '').trim();
+      saveAll();
+      updateBrapiTokenStatus(state.settings.brapi.token ? `Token Brapi salvo localmente: ${maskToken(state.settings.brapi.token)}` : 'Token Brapi: não salvo');
+    }
+
+    function clearBrapiToken(){
+      state.settings.brapi = state.settings.brapi || {};
+      state.settings.brapi.token = '';
+      if($('brapiToken')) $('brapiToken').value = '';
+      saveAll();
+      updateBrapiTokenStatus('Token Brapi removido.');
+    }
+
+    function toggleBrapiTokenVisibility(){
+      const input = $('brapiToken');
+      if(!input) return;
+      input.type = input.type === 'password' ? 'text' : 'password';
     }
 
     function syncAISettingsInputs(){
@@ -4138,7 +4187,7 @@ function renderIntegratedIntelligence(vm){
   const topAlerts = vm.alerts.slice(0,5);
   const healthClass = vm.healthScore >= 80 ? 'b-green' : vm.healthScore >= 55 ? 'b-yellow' : 'b-red';
   el.innerHTML = `
-    <b>Inteligência integrada v1.9.1:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
+    <b>Inteligência integrada v1.9.2:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
     <div class="integration-grid">
       <div class="integration-tile"><span>Saúde dos dados</span><b><span class="badge ${healthClass}">${round(vm.healthScore,0)}/100</span></b></div>
       <div class="integration-tile"><span>Patrimônio integrado</span><b>${formatBRL(vm.totals.totalMarket)}</b></div>
@@ -4175,7 +4224,7 @@ function renderEngineSummary(){
 
 
     function getBrapiToken(){
-      return $('brapiToken')?.value?.trim() || '';
+      return ($('brapiToken')?.value || '').trim() || state.settings?.brapi?.token || '';
     }
 
     async function fetchPriceHistory12m(ticker, force=false, context='history'){
@@ -5651,7 +5700,7 @@ function renderEngineSummary(){
       const sourcesUsed = [];
 
       try{
-        const token = ($('brapiToken')?.value || '').trim();
+        const token = getBrapiToken();
         if(token){
           const res = await fetch(`https://brapi.dev/api/quote/${encodeURIComponent(tk)}?range=1y&interval=1d&fundamental=true&dividends=true&token=${encodeURIComponent(token)}`);
           if(res.ok){
@@ -6820,7 +6869,7 @@ Preencha integralmente os campos do JSON solicitado.`;
     }
 
     async function fetchBrapiFIIIndicatorsBatch(tickers){
-      const token = ($('brapiToken')?.value || '').trim();
+      const token = getBrapiToken();
       if(!token || !tickers.length) return {};
       const symbols = tickers.join(',');
       const urls = [
@@ -6849,7 +6898,7 @@ Preencha integralmente os campos do JSON solicitado.`;
     }
 
     async function fetchBrapiFIIQuotesBatch(tickers){
-      const token = ($('brapiToken')?.value || '').trim();
+      const token = getBrapiToken();
       if(!token || !tickers.length) return {};
       try{
         const url = `https://brapi.dev/api/quote/${encodeURIComponent(tickers.join(','))}?range=12mo&interval=1d&fundamental=true&dividends=true&token=${encodeURIComponent(token)}`;
@@ -6911,7 +6960,7 @@ Preencha integralmente os campos do JSON solicitado.`;
     }
 
     async function refreshFIIUniverseFromBrapi(){
-      const token = ($('brapiToken')?.value || '').trim();
+      const token = getBrapiToken();
       if(!token){
         alert('Cole/configure um token Brapi na Central API antes de buscar indicadores.');
         return;
