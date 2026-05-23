@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.9.4 — Manifesto Premium</title>
+  <title>Guido Dividend System v1.9.5 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -147,6 +147,37 @@
     #tab-b3 .kpi-title{min-height:24px}
     @media(max-width:1100px){#tab-b3 .b3-import-grid,#tab-b3 .b3-signal-grid,#tab-b3 .b3-yield-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:700px){#tab-b3 .b3-import-grid,#tab-b3 .b3-signal-grid,#tab-b3 .b3-yield-grid{grid-template-columns:1fr}#tab-b3 .b3-table-top{align-items:flex-start;flex-direction:column}}
+    #tab-raw-dossier .raw-hero{border-left:5px solid var(--primary);overflow:hidden}
+    #tab-raw-dossier .raw-hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;align-items:stretch}
+    #tab-raw-dossier .raw-hero-copy{padding:4px 0}
+    #tab-raw-dossier .raw-hero-copy h2{font-size:28px;margin:0 0 10px;letter-spacing:-.04em}
+    #tab-raw-dossier .raw-hero-copy p{max-width:980px;color:#b9c7d5;line-height:1.55}
+    #tab-raw-dossier .raw-principle{border:1px solid rgba(0,212,255,.18);border-radius:18px;padding:16px;background:linear-gradient(180deg,rgba(0,212,255,.08),rgba(255,255,255,.02));color:#d8f6ff}
+    #tab-raw-dossier .raw-source-strip{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    #tab-raw-dossier .raw-source-chip{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);border-radius:999px;padding:6px 9px;font-size:11px;font-weight:850;color:#dce8f2}
+    #tab-raw-dossier .raw-source-chip.missing{color:#ffd18a;border-color:rgba(245,158,11,.22);background:rgba(245,158,11,.08)}
+    #tab-raw-dossier .raw-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+    #tab-raw-dossier .raw-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:14px}
+    #tab-raw-dossier .raw-asset-card{border:1px solid var(--line);border-radius:18px;padding:16px;background:linear-gradient(180deg,rgba(18,24,33,.96),rgba(10,15,22,.98));box-shadow:var(--shadow);cursor:pointer;transition:.16s ease}
+    #tab-raw-dossier .raw-asset-card:hover{transform:translateY(-1px);border-color:rgba(0,212,255,.38)}
+    #tab-raw-dossier .raw-asset-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px}
+    #tab-raw-dossier .raw-asset-title b{font-size:19px}.raw-asset-title span{display:block;color:#8fa2b3;font-size:11px;margin-top:3px}
+    #tab-raw-dossier .raw-status{border:1px solid rgba(0,212,255,.18);background:rgba(0,212,255,.08);color:#a9f0ff;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:900;text-transform:uppercase;white-space:nowrap}
+    #tab-raw-dossier .raw-status.zero{border-color:rgba(139,148,158,.24);background:rgba(139,148,158,.10);color:#c4cbd3}
+    #tab-raw-dossier .raw-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+    #tab-raw-dossier .raw-metrics div{border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:9px;background:rgba(255,255,255,.025)}
+    #tab-raw-dossier .raw-metrics span{display:block;font-size:10px;color:#8fa2b3;font-weight:900;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+    #tab-raw-dossier .raw-metrics b{font-size:14px}
+    #tab-raw-dossier .raw-source-list{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+    #tab-raw-dossier .raw-flag{display:inline-flex;border:1px solid rgba(255,255,255,.10);border-radius:999px;padding:4px 7px;font-size:10px;font-weight:800;color:#c9d7e4;background:rgba(255,255,255,.035)}
+    #tab-raw-dossier .raw-flag.warn{border-color:rgba(245,158,11,.24);color:#ffd18a;background:rgba(245,158,11,.08)}
+    .raw-dossier-modal .raw-modal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 16px}
+    .raw-dossier-modal .raw-modal-section{margin-top:16px}
+    .raw-dossier-modal .raw-timeline{display:grid;gap:8px;max-height:420px;overflow:auto;padding-right:4px}
+    .raw-dossier-modal .raw-event{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:rgba(255,255,255,.025)}
+    .raw-dossier-modal .raw-event b{display:block}.raw-dossier-modal .raw-event span{display:block;color:#8fa2b3;font-size:12px;margin-top:3px}
+    @media(max-width:1100px){#tab-raw-dossier .raw-hero-grid,#tab-raw-dossier .raw-kpis,.raw-dossier-modal .raw-modal-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:700px){#tab-raw-dossier .raw-hero-grid,#tab-raw-dossier .raw-kpis,.raw-dossier-modal .raw-modal-grid{grid-template-columns:1fr}#tab-raw-dossier .raw-asset-card{padding:14px}}
     .footer{margin-top:18px;padding:16px 4px 2px;color:var(--muted);font-size:12px;text-align:center;letter-spacing:.06em;text-transform:uppercase}
     @media(max-width:1200px){.grid-5{grid-template-columns:repeat(2,1fr)}.split-2,.split-3{grid-template-columns:1fr}.version-pill{margin-left:0}}
     @media(max-width:700px){.grid-5{grid-template-columns:1fr}.header{padding:20px;flex-direction:column;align-items:flex-start}.logo-badge{width:52px;height:52px;font-size:18px}.header h1{font-size:28px}}
@@ -276,7 +307,7 @@
 
 
     /* =========================================================
-       v1.9.4 — Manifesto premium de inteligência patrimonial
+       v1.9.5 — Dossiê bruto de ativos
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -742,9 +773,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.9.4 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI e manifesto premium para transformar dados reais em clareza patrimonial.</p>
+        <p>v1.9.5 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
       </div>
-      <div class="version-pill">v1.9.4 · manifesto premium</div>
+      <div class="version-pill">v1.9.5 · dossiê bruto</div>
     </div>
 
     <div class="grid-5">
@@ -765,6 +796,7 @@
       <button class="tab" data-tab="tab-b3">7. B3 Ledger</button>
       <button class="tab" data-tab="tab-decision">8. Motor de Decisão</button>
       <button class="tab" data-tab="tab-fii">9. FII Intelligence</button>
+      <button class="tab" data-tab="tab-raw-dossier">10. Dossiê Bruto</button>
     </div>
 
     <div id="tab-config" class="panel active">
@@ -1434,7 +1466,51 @@
     </div>
 
 
-    <div class="footer">Guido Dividend System v1.9.4 · Manifesto premium, dossiês locais por ativo, inteligência integrada e privacidade local-first</div>
+    <div id="tab-raw-dossier" class="panel">
+      <div class="card raw-hero">
+        <div class="raw-hero-grid">
+          <div class="raw-hero-copy">
+            <div class="kpi-title">Aba 10 · Dossiê Bruto de Ativos</div>
+            <h2>Antes de interpretar, reunir. Antes de julgar, verificar.</h2>
+            <p>Cada ticker identificado na B3, na carteira, nos proventos ou nas cotações ganha um arquivo factual próprio. Esta aba mostra dados pessoais, públicos, fontes disponíveis, ausências e divergências sem criar score, recomendação ou avaliação interna.</p>
+            <div class="raw-source-strip">
+              <span class="raw-source-chip">B3 Ledger</span>
+              <span class="raw-source-chip">Carteira reconstruída</span>
+              <span class="raw-source-chip">Proventos</span>
+              <span class="raw-source-chip">BRAPI/cache</span>
+              <span class="raw-source-chip missing">Fontes externas preparadas</span>
+            </div>
+          </div>
+          <div class="raw-principle">
+            <b>Frase-guia da aba</b>
+            <p style="margin-top:8px">Aqui o sistema mostra o que existe, de onde veio, quando foi coletado e onde faltam dados. A interpretação estratégica fica para uma etapa posterior.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="raw-kpis">
+        <div class="card"><div class="kpi-title">Ativos identificados</div><div class="kpi-value" id="rawKpiAssets">0</div></div>
+        <div class="card"><div class="kpi-title">Com posição atual</div><div class="kpi-value" id="rawKpiOpen">0</div></div>
+        <div class="card"><div class="kpi-title">Com BRAPI/cache</div><div class="kpi-value" id="rawKpiBrapi">0</div></div>
+        <div class="card"><div class="kpi-title">Com divergência factual</div><div class="kpi-value" id="rawKpiDivergences">0</div></div>
+      </div>
+
+      <div class="card">
+        <div class="controls" style="grid-template-columns:2fr 1fr 1fr 1fr 1fr auto">
+          <div class="field"><label>Busca</label><input id="rawAssetSearch" placeholder="Ticker, nome, fonte..." onkeyup="renderRawAssetDossier()" /></div>
+          <div class="field"><label>Tipo</label><select id="rawAssetTypeFilter" onchange="renderRawAssetDossier()"><option value="TODOS">Todos</option><option value="ACAO">Ações</option><option value="FII">FIIs</option><option value="OUTROS">Outros</option></select></div>
+          <div class="field"><label>Status</label><select id="rawAssetStatusFilter" onchange="renderRawAssetDossier()"><option value="TODOS">Todos</option><option value="ABERTA">Posição atual</option><option value="ZERADA">Posição zerada / histórico</option></select></div>
+          <div class="field"><label>Fonte</label><select id="rawAssetSourceFilter" onchange="renderRawAssetDossier()"><option value="TODOS">Todas</option><option value="B3">B3 encontrado</option><option value="BRAPI">BRAPI/cache</option><option value="PROVENTOS">Proventos</option><option value="PENDENTE">Dados externos pendentes</option></select></div>
+          <div class="field"><label>Ordenar por</label><select id="rawAssetSort" onchange="renderRawAssetDossier()"><option value="value">Valor atual</option><option value="weight">Peso carteira</option><option value="dividends">Dividendos recebidos</option><option value="return">Rentabilidade pessoal</option><option value="updated">Última atualização</option><option value="ticker">Ticker</option></select></div>
+          <div class="field"><label>&nbsp;</label><button class="btn-secondary" onclick="renderRawAssetDossier()">Atualizar</button></div>
+        </div>
+      </div>
+
+      <div id="rawAssetStatus" class="section-note">Dossiê bruto: aguardando dados.</div>
+      <div id="rawAssetGrid" class="raw-card-grid"></div>
+    </div>
+
+    <div class="footer">Guido Dividend System v1.9.5 · Dossiê bruto de ativos, manifesto premium, inteligência integrada e privacidade local-first</div>
   </div>
 
   </section>
@@ -4260,7 +4336,7 @@ function renderIntegratedIntelligence(vm){
   const topAlerts = vm.alerts.slice(0,5);
   const healthClass = vm.healthScore >= 80 ? 'b-green' : vm.healthScore >= 55 ? 'b-yellow' : 'b-red';
   el.innerHTML = `
-    <b>Inteligência integrada v1.9.4:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
+    <b>Inteligência integrada v1.9.5:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
     <div class="integration-grid">
       <div class="integration-tile"><span>Saúde dos dados</span><b><span class="badge ${healthClass}">${round(vm.healthScore,0)}/100</span></b></div>
       <div class="integration-tile"><span>Patrimônio integrado</span><b>${formatBRL(vm.totals.totalMarket)}</b></div>
@@ -5636,6 +5712,340 @@ function renderEngineSummary(){
       downloadTextFile('guido_decision_engine.csv', toCSV(rows));
     }
 
+    // =========================
+    // ABA 10 · DOSSIÊ BRUTO DE ATIVOS
+    // Camada factual isolada: não cria score, nota, ranking ou recomendação.
+    // =========================
+    const RAW_ASSET_SNAPSHOT_KEY = 'guido_raw_asset_snapshots_v1';
+    const RAW_ASSET_EXTERNAL_REGISTRY = [
+      { id:'statusinvest', name:'Status Invest', url:'https://statusinvest.com.br/', status:'preparado' },
+      { id:'fundamentus', name:'Fundamentus', url:'https://www.fundamentus.com.br/', status:'preparado' },
+      { id:'yahoo', name:'Yahoo Finance', url:'https://finance.yahoo.com/', status:'preparado' },
+      { id:'b3', name:'B3', url:'https://www.b3.com.br/', status:'referência pública' },
+      { id:'cvm', name:'CVM', url:'https://www.gov.br/cvm/', status:'referência pública' }
+    ];
+
+    function rawAssetGuessType(ticker, asset={}, b3={}){
+      const tk = normalizeTicker(ticker);
+      if(asset.tipo) return asset.tipo;
+      if(b3.tipo) return b3.tipo;
+      if(isFIITicker(tk)) return 'FII';
+      if(/[0-9]$/.test(tk)) return 'ACAO';
+      return 'OUTROS';
+    }
+
+    function rawAssetAllTickers(){
+      const set = new Set();
+      Object.keys(state.b3Portfolio || {}).forEach(t => set.add(normalizeTicker(t)));
+      (state.b3Movements || []).forEach(x => { const t = normalizeTicker(x.ticker); if(t) set.add(t); });
+      (state.dividends || []).forEach(x => { const t = normalizeTicker(x.ticker); if(t) set.add(t); });
+      Object.keys(state.quotes || {}).forEach(t => set.add(normalizeTicker(t)));
+      Object.keys(state.assets || {}).forEach(t => set.add(normalizeTicker(t)));
+      Object.keys(state.positions || {}).forEach(t => set.add(normalizeTicker(t)));
+      return [...set].filter(Boolean).sort();
+    }
+
+    function rawAssetSourceLabels(item){
+      const labels = [];
+      if(item.hasB3) labels.push('Histórico B3 encontrado');
+      if(item.hasBrapi) labels.push('BRAPI/cache disponível');
+      if(item.hasDividends) labels.push('Proventos encontrados');
+      if(item.hasAssetRecord) labels.push('Cadastro interno');
+      if(item.missingDataFlags.length) labels.push('Dados externos pendentes');
+      if(item.divergenceFlags.length) labels.push('Divergência factual detectada');
+      return labels;
+    }
+
+    function buildRawAssetIndex(){
+      const totalPortfolio = Object.values(state.b3Portfolio || {}).reduce((a,x)=>a+parseNumber(x.valorMercado || x.custoTotal),0) ||
+        Object.values(state.positions || {}).reduce((a,x)=>a+parseNumber(x.valorMercado || x.custoTotal),0);
+      return rawAssetAllTickers().map(ticker => {
+        const asset = state.assets?.[ticker] || {};
+        const b3 = state.b3Portfolio?.[ticker] || {};
+        const pos = state.positions?.[ticker] || {};
+        const quote = state.quotes?.[ticker] || {};
+        const movs = (state.b3Movements || []).filter(x => normalizeTicker(x.ticker) === ticker);
+        const divs = (state.dividends || []).filter(x => normalizeTicker(x.ticker) === ticker);
+        const b3Income = (state.b3Income || []).filter(x => normalizeTicker(x.ticker) === ticker);
+        const qty = parseNumber(b3.quantidade || pos.quantidade || 0);
+        const avg = parseNumber(b3.precoMedio || pos.precoMedio || 0);
+        const price = parseNumber(quote.precoAtual || b3.precoAtual || pos.precoAtual || 0);
+        const currentValue = parseNumber(b3.valorMercado || pos.valorMercado || (qty * price));
+        const cost = parseNumber(b3.custoTotal || pos.custoTotal || (qty * avg));
+        const totalDividends = parseNumber(b3.proventosRecebidos) || b3Income.reduce((a,x)=>a+parseNumber(x.valor),0);
+        const result = parseNumber(b3.retornoTotal || ((currentValue - cost) + totalDividends + parseNumber(b3.lucroRealizado)));
+        const missingDataFlags = [];
+        const divergenceFlags = [];
+        if(!price) missingDataFlags.push('Preço atual ausente');
+        if(!asset.nome && !quote.nome && !quote.longName) missingDataFlags.push('Nome público ausente');
+        if(!quote.source) missingDataFlags.push('Fonte externa de cotação pendente');
+        if(!movs.length) missingDataFlags.push('Histórico B3 ausente');
+        if(!divs.length && !b3Income.length) missingDataFlags.push('Proventos não encontrados');
+        const posQty = parseNumber(pos.quantidade);
+        if(qty && posQty && Math.abs(qty - posQty) > 0.0001) divergenceFlags.push('Quantidade B3 difere da carteira manual');
+        const quotePrice = parseNumber(quote.precoAtual);
+        const b3Price = parseNumber(b3.precoAtual);
+        if(quotePrice && b3Price && Math.abs(quotePrice - b3Price) / Math.max(quotePrice, b3Price) > 0.01) divergenceFlags.push('Preço atual divergente entre registros internos');
+        return {
+          ticker,
+          name: quote.longName || quote.nome || asset.nome || asset.name || ticker,
+          type: rawAssetGuessType(ticker, asset, b3),
+          currentQuantity: qty,
+          averagePrice: avg,
+          currentPrice: price,
+          currentValue,
+          investedValue: cost,
+          personalReturn: result,
+          personalReturnPct: cost > 0 ? (result / cost) * 100 : 0,
+          totalDividends,
+          portfolioWeight: totalPortfolio > 0 ? (currentValue / totalPortfolio) * 100 : 0,
+          status: qty > 0 ? 'ABERTA' : 'ZERADA',
+          lastUpdated: quote.updatedAt || b3.updatedAt || '',
+          hasB3: movs.length > 0 || !!state.b3Portfolio?.[ticker],
+          hasBrapi: !!quote.source,
+          hasDividends: divs.length > 0 || b3Income.length > 0,
+          hasAssetRecord: !!state.assets?.[ticker],
+          missingDataFlags,
+          divergenceFlags
+        };
+      });
+    }
+
+    function rawAssetFilterIndex(rows){
+      const q = normalizeTicker($('rawAssetSearch')?.value || '');
+      const type = $('rawAssetTypeFilter')?.value || 'TODOS';
+      const status = $('rawAssetStatusFilter')?.value || 'TODOS';
+      const source = $('rawAssetSourceFilter')?.value || 'TODOS';
+      const sort = $('rawAssetSort')?.value || 'value';
+      let filtered = rows.filter(r => {
+        const hay = `${r.ticker} ${r.name} ${rawAssetSourceLabels(r).join(' ')}`.toUpperCase();
+        if(q && !hay.includes(q)) return false;
+        if(type !== 'TODOS' && r.type !== type) return false;
+        if(status !== 'TODOS' && r.status !== status) return false;
+        if(source === 'B3' && !r.hasB3) return false;
+        if(source === 'BRAPI' && !r.hasBrapi) return false;
+        if(source === 'PROVENTOS' && !r.hasDividends) return false;
+        if(source === 'PENDENTE' && !r.missingDataFlags.length) return false;
+        return true;
+      });
+      const sorters = {
+        value: (a,b)=>b.currentValue-a.currentValue,
+        weight: (a,b)=>b.portfolioWeight-a.portfolioWeight,
+        dividends: (a,b)=>b.totalDividends-a.totalDividends,
+        return: (a,b)=>b.personalReturnPct-a.personalReturnPct,
+        updated: (a,b)=>String(b.lastUpdated).localeCompare(String(a.lastUpdated)),
+        ticker: (a,b)=>a.ticker.localeCompare(b.ticker)
+      };
+      return filtered.sort(sorters[sort] || sorters.value);
+    }
+
+    function renderRawAssetDossier(){
+      const grid = $('rawAssetGrid');
+      if(!grid) return;
+      const all = buildRawAssetIndex();
+      const rows = rawAssetFilterIndex(all);
+      if($('rawKpiAssets')) $('rawKpiAssets').textContent = String(all.length);
+      if($('rawKpiOpen')) $('rawKpiOpen').textContent = String(all.filter(x=>x.status === 'ABERTA').length);
+      if($('rawKpiBrapi')) $('rawKpiBrapi').textContent = String(all.filter(x=>x.hasBrapi).length);
+      if($('rawKpiDivergences')) $('rawKpiDivergences').textContent = String(all.filter(x=>x.divergenceFlags.length).length);
+      if($('rawAssetStatus')) $('rawAssetStatus').textContent = all.length ? `Dossiê bruto: ${rows.length} de ${all.length} ativos exibidos. Sem score, sem recomendação, apenas dados factuais e fontes.` : 'Dossiê bruto: importe B3, carteira, proventos ou cotações para formar o índice.';
+      grid.innerHTML = rows.map(r => {
+        const flags = rawAssetSourceLabels(r).slice(0,6).map(label => `<span class="raw-flag ${label.includes('pendentes') || label.includes('Divergência') ? 'warn' : ''}">${escapeHtml(label)}</span>`).join('');
+        return `<div class="raw-asset-card" onclick="openRawAssetDossier('${r.ticker}')">
+          <div class="raw-asset-top">
+            <div class="raw-asset-title"><b>${escapeHtml(r.ticker)}</b><span>${escapeHtml(r.name || r.ticker)} · ${escapeHtml(r.type)}</span></div>
+            <span class="raw-status ${r.status === 'ZERADA' ? 'zero' : ''}">${r.status === 'ABERTA' ? 'posição atual' : 'histórico'}</span>
+          </div>
+          <div class="raw-metrics">
+            <div><span>Quantidade</span><b>${round(r.currentQuantity,4)}</b></div>
+            <div><span>Preço médio</span><b>${r.averagePrice ? formatBRL(r.averagePrice) : '---'}</b></div>
+            <div><span>Valor atual</span><b>${formatBRL(r.currentValue)}</b></div>
+            <div><span>Dividendos</span><b>${formatBRL(r.totalDividends)}</b></div>
+            <div><span>Retorno pessoal</span><b>${formatBRL(r.personalReturn)}</b></div>
+            <div><span>Peso carteira</span><b>${formatPct(r.portfolioWeight)}</b></div>
+          </div>
+          <div class="mini">Última atualização: ${r.lastUpdated ? new Date(r.lastUpdated).toLocaleString('pt-BR') : 'não registrada'}</div>
+          <div class="raw-source-list">${flags || '<span class="raw-flag warn">Dados externos pendentes</span>'}</div>
+        </div>`;
+      }).join('') || '<div class="card"><p class="muted">Nenhum ativo encontrado para os filtros atuais.</p></div>';
+    }
+
+    function rawAssetSourceTableRows(dossier){
+      const quote = dossier.publicMarketData.quote || {};
+      const rows = [
+        { field:'Preço atual', brapi: quote.precoAtual ? formatBRL(quote.precoAtual) : 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
+        { field:'Nome', brapi: dossier.identity.name || quote.longName || quote.nome || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
+        { field:'Setor', brapi: dossier.identity.sector || quote.sector || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
+        { field:'Dividend yield', brapi: quote.dividendYield ? formatPct(parseNumber(quote.dividendYield)) : 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
+        { field:'P/L', brapi: quote.priceEarnings || quote.pe || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
+        { field:'P/VP', brapi: quote.priceToBook || quote.pb || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' }
+      ];
+      return rows.map(r => `<tr><td>${escapeHtml(r.field)}</td><td>${escapeHtml(r.brapi)}</td><td>${escapeHtml(r.fundamentus)}</td><td>${escapeHtml(r.statusinvest)}</td><td>${escapeHtml(r.yahoo)}</td><td>${r.updated ? new Date(r.updated).toLocaleString('pt-BR') : '---'}</td></tr>`).join('');
+    }
+
+    function buildRawAssetTimeline(ticker){
+      const events = [];
+      (state.b3Movements || []).filter(x=>normalizeTicker(x.ticker)===ticker).forEach(x => {
+        events.push({ date:x.data || '', type:x.classeMovimento || 'B3', title:x.movimentoOriginal || x.tipoOperacao || 'Movimento B3', description:`Instituição: ${x.instituicao || '---'}`, source:'B3 Ledger', value:x.valor ? formatBRL(x.valor) : '' });
+      });
+      (state.dividends || []).filter(x=>normalizeTicker(x.ticker)===ticker).forEach(x => {
+        events.push({ date:x.dataPagamento || x.dataCom || '', type:'PROVENTO', title:x.tipoProvento || 'Provento informado', description:`Data-com: ${formatDateBR(x.dataCom)} · origem: ${x.origem || 'calendário/cache'}`, source:x.origem || 'Proventos', value:x.valorUnitario ? formatBRL(x.valorUnitario) : '' });
+      });
+      const quote = state.quotes?.[ticker];
+      if(quote?.updatedAt) events.push({ date:quote.updatedAt.slice(0,10), type:'COTAÇÃO', title:'Cotação atualizada', description:`Fonte: ${quote.source || 'cache local'}`, source:quote.source || 'cache', value:quote.precoAtual ? formatBRL(quote.precoAtual) : '' });
+      return events.filter(x=>x.date).sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,160);
+    }
+
+    function loadRawAssetSnapshots(){
+      try{ return JSON.parse(localStorage.getItem(RAW_ASSET_SNAPSHOT_KEY) || '{}') || {}; }catch{ return {}; }
+    }
+
+    function saveRawAssetSnapshot(ticker, dossier){
+      const all = loadRawAssetSnapshots();
+      all[ticker] = all[ticker] || [];
+      all[ticker].unshift({
+        ticker,
+        collectedAt: new Date().toISOString(),
+        sources: dossier.externalSources.map(x=>x.name),
+        missingData: dossier.missingData,
+        factualDivergences: dossier.factualDivergences,
+        currentPosition: dossier.currentPosition,
+        publicMarketData: dossier.publicMarketData
+      });
+      all[ticker] = all[ticker].slice(0,12);
+      try{ localStorage.setItem(RAW_ASSET_SNAPSHOT_KEY, JSON.stringify(all)); }catch(err){ console.warn('Snapshot bruto não salvo:', err); }
+    }
+
+    function buildRawAssetDossier(ticker){
+      const tk = normalizeTicker(ticker);
+      const index = buildRawAssetIndex().find(x=>x.ticker === tk) || { ticker:tk, missingDataFlags:[], divergenceFlags:[] };
+      const asset = state.assets?.[tk] || {};
+      const quote = state.quotes?.[tk] || {};
+      const b3 = state.b3Portfolio?.[tk] || {};
+      const movs = (state.b3Movements || []).filter(x=>normalizeTicker(x.ticker)===tk).sort((a,b)=>String(a.data).localeCompare(String(b.data)));
+      const buys = movs.filter(x=>x.classeMovimento === 'OPERACAO' && x.tipoOperacao === 'COMPRA');
+      const sells = movs.filter(x=>x.classeMovimento === 'OPERACAO' && x.tipoOperacao === 'VENDA');
+      const income = (state.b3Income || []).filter(x=>normalizeTicker(x.ticker)===tk);
+      const calendarDivs = (state.dividends || []).filter(x=>normalizeTicker(x.ticker)===tk).sort((a,b)=>String(b.dataPagamento || b.dataCom).localeCompare(String(a.dataPagamento || a.dataCom)));
+      const timeline = buildRawAssetTimeline(tk);
+      const snapshots = loadRawAssetSnapshots()[tk] || [];
+      const totalBought = buys.reduce((a,x)=>a+parseNumber(x.valor),0);
+      const totalSold = sells.reduce((a,x)=>a+parseNumber(x.valor),0);
+      const maxQty = movs.reduce((acc,x)=>{
+        if(x.classeMovimento === 'OPERACAO' && x.tipoOperacao === 'COMPRA') acc.running += parseNumber(x.quantidade);
+        if(x.classeMovimento === 'OPERACAO' && x.tipoOperacao === 'VENDA') acc.running -= parseNumber(x.quantidade);
+        acc.max = Math.max(acc.max, acc.running);
+        return acc;
+      }, { running:0, max:0 }).max;
+      const firstBuy = buys[0]?.data || '';
+      const lastBuy = buys[buys.length - 1]?.data || '';
+      const lastSell = sells[sells.length - 1]?.data || '';
+      const externalSources = [
+        { name:'B3 Ledger', status:index.hasB3 ? 'encontrado' : 'ausente', collectedAt: movs.at(-1)?.data || '', url:'área do investidor B3 / arquivo importado' },
+        { name:'BRAPI/cache local', status:index.hasBrapi ? 'disponível' : 'pendente', collectedAt: quote.updatedAt || '', url:'https://brapi.dev/' },
+        { name:'Proventos internos', status:index.hasDividends ? 'encontrado' : 'ausente', collectedAt: calendarDivs[0]?.dataPagamento || '', url:'calendário importado/cache' },
+        ...RAW_ASSET_EXTERNAL_REGISTRY.map(x => ({ name:x.name, status:'preparado para integração futura', collectedAt:'', url:x.url }))
+      ];
+      const dossier = {
+        ticker: tk,
+        identity: {
+          ticker: tk,
+          name: index.name || quote.longName || asset.nome || tk,
+          type: index.type || rawAssetGuessType(tk, asset, b3),
+          sector: quote.sector || asset.setor || '',
+          company: quote.longName || asset.nome || '',
+          cnpj: asset.cnpj || '',
+          riSite: asset.riSite || '',
+          description: quote.longBusinessSummary || ''
+        },
+        personalHistory: { buys, sells, firstBuy, lastBuy, lastSell, maxQty, totalBought, totalSold, movements:movs },
+        currentPosition: {
+          quantity:index.currentQuantity || 0,
+          averagePrice:index.averagePrice || 0,
+          currentPrice:index.currentPrice || 0,
+          investedValue:index.investedValue || 0,
+          currentValue:index.currentValue || 0,
+          portfolioWeight:index.portfolioWeight || 0,
+          status:index.status || 'ZERADA'
+        },
+        incomeHistory: { received:income, calendar:calendarDivs, totalReceived:index.totalDividends || 0 },
+        result: { personalReturn:index.personalReturn || 0, personalReturnPct:index.personalReturnPct || 0, unrealized:parseNumber(b3.lucroNaoRealizado), realized:parseNumber(b3.lucroRealizado), yieldOnCost:index.investedValue > 0 ? (index.totalDividends / index.investedValue) * 100 : 0 },
+        publicMarketData: { quote },
+        fundamentalsBySource: { brapi: quote, statusInvest:null, fundamentus:null, yahoo:null },
+        externalSources,
+        sourceComparison: [],
+        factualDivergences:index.divergenceFlags || [],
+        missingData:index.missingDataFlags || [],
+        timeline,
+        dataSnapshots:snapshots,
+        lastUpdated:new Date().toISOString()
+      };
+      saveRawAssetSnapshot(tk, dossier);
+      return dossier;
+    }
+
+    function openRawAssetDossier(ticker){
+      const d = buildRawAssetDossier(ticker);
+      const timelineHtml = d.timeline.map(ev => `<div class="raw-event"><b>${formatDateBR(ev.date)} · ${escapeHtml(ev.type)} · ${escapeHtml(ev.title)}</b><span>${escapeHtml(ev.description || '')}${ev.value ? ' · ' + escapeHtml(ev.value) : ''} · fonte: ${escapeHtml(ev.source || '')}</span></div>`).join('') || '<p class="muted">Nenhum evento factual localizado.</p>';
+      const sourceRows = d.externalSources.map(s => `<tr><td>${escapeHtml(s.name)}</td><td>${escapeHtml(s.status)}</td><td>${s.collectedAt ? escapeHtml(s.collectedAt) : '---'}</td><td>${escapeHtml(s.url || '')}</td></tr>`).join('');
+      const missing = d.missingData.map(x=>`<span class="raw-flag warn">${escapeHtml(x)}</span>`).join('') || '<span class="raw-flag">Sem ausências detectadas nos dados locais atuais</span>';
+      const divergences = d.factualDivergences.map(x=>`<span class="raw-flag warn">${escapeHtml(x)}</span>`).join('') || '<span class="raw-flag">Sem divergências factuais simples detectadas</span>';
+      const divRows = d.incomeHistory.received.slice().reverse().slice(0,50).map(x=>`<tr><td>${formatDateBR(x.data)}</td><td>${escapeHtml(x.movimentoOriginal || x.classeMovimento || '')}</td><td>${escapeHtml(x.natureza || '')}</td><td class="right">${formatBRL(x.valor)}</td><td>${escapeHtml(x.instituicao || '')}</td></tr>`).join('') || '<tr><td colspan="5" class="center muted">Sem proventos recebidos no B3 Ledger.</td></tr>';
+      const movRows = d.personalHistory.movements.slice().reverse().slice(0,80).map(x=>`<tr><td>${formatDateBR(x.data)}</td><td>${escapeHtml(x.movimentoOriginal || '')}</td><td>${escapeHtml(x.classeMovimento || '')}</td><td class="right">${round(x.quantidade || 0,4)}</td><td class="right">${x.valor ? formatBRL(x.valor) : '---'}</td><td>${escapeHtml(x.instituicao || '')}</td></tr>`).join('') || '<tr><td colspan="6" class="center muted">Sem movimentações B3 localizadas.</td></tr>';
+      openModal(`<div class="raw-dossier-modal">
+        <h2 style="margin-top:0">Dossiê Bruto de Ativo · ${escapeHtml(d.ticker)}</h2>
+        <div class="section-note">Síntese factual descritiva. Esta tela não cria nota, score, recomendação, ranking ou julgamento proprietário.</div>
+        <div class="raw-modal-grid">
+          <div class="card"><div class="kpi-title">Quantidade atual</div><div class="kpi-value">${round(d.currentPosition.quantity,4)}</div></div>
+          <div class="card"><div class="kpi-title">Preço médio</div><div class="kpi-value">${d.currentPosition.averagePrice ? formatBRL(d.currentPosition.averagePrice) : '---'}</div></div>
+          <div class="card"><div class="kpi-title">Valor atual estimado</div><div class="kpi-value">${formatBRL(d.currentPosition.currentValue)}</div></div>
+          <div class="card"><div class="kpi-title">Dividendos recebidos</div><div class="kpi-value">${formatBRL(d.incomeHistory.totalReceived)}</div></div>
+          <div class="card"><div class="kpi-title">Retorno pessoal factual</div><div class="kpi-value">${formatBRL(d.result.personalReturn)}</div></div>
+          <div class="card"><div class="kpi-title">Peso na carteira</div><div class="kpi-value">${formatPct(d.currentPosition.portfolioWeight)}</div></div>
+        </div>
+        <div class="toolbar" style="margin-bottom:12px">
+          <button class="btn-api" onclick="refreshRawAssetBrapi('${d.ticker}')">Atualizar BRAPI deste ativo</button>
+          <button class="btn-secondary" onclick="exportRawAssetDossier('${d.ticker}')">Exportar dossiê JSON</button>
+        </div>
+        <div class="split-2">
+          <div class="card raw-modal-section"><h3>Identidade do ativo</h3><p><b>Nome:</b> ${escapeHtml(d.identity.name || '---')}<br><b>Tipo:</b> ${escapeHtml(d.identity.type || '---')}<br><b>Setor:</b> ${escapeHtml(d.identity.sector || '---')}<br><b>CNPJ:</b> ${escapeHtml(d.identity.cnpj || '---')}<br><b>RI:</b> ${escapeHtml(d.identity.riSite || '---')}</p></div>
+          <div class="card raw-modal-section"><h3>Minha história com o ativo</h3><p><b>Primeira compra:</b> ${formatDateBR(d.personalHistory.firstBuy)}<br><b>Última compra:</b> ${formatDateBR(d.personalHistory.lastBuy)}<br><b>Última venda:</b> ${formatDateBR(d.personalHistory.lastSell)}<br><b>Quantidade máxima histórica:</b> ${round(d.personalHistory.maxQty,4)}<br><b>Total comprado:</b> ${formatBRL(d.personalHistory.totalBought)}<br><b>Total vendido:</b> ${formatBRL(d.personalHistory.totalSold)}</p></div>
+        </div>
+        <div class="card raw-modal-section"><h3>Divergências e dados ausentes</h3><div class="raw-source-list">${divergences}</div><div class="raw-source-list" style="margin-top:8px">${missing}</div></div>
+        <div class="card raw-modal-section" style="padding:0"><div style="padding:16px"><h3>Fundamentos por fonte</h3><p class="muted">Comparação factual. Campos pendentes indicam fonte preparada, ainda sem coleta automática segura nesta versão.</p></div><div class="table-wrap"><table><thead><tr><th>Indicador</th><th>BRAPI/cache</th><th>Fundamentus</th><th>Status Invest</th><th>Yahoo</th><th>Última atualização</th></tr></thead><tbody>${rawAssetSourceTableRows(d)}</tbody></table></div></div>
+        <div class="card raw-modal-section" style="padding:0"><div style="padding:16px"><h3>Fontes consultadas ou preparadas</h3></div><div class="table-wrap"><table><thead><tr><th>Fonte</th><th>Status</th><th>Coletado em</th><th>Origem/URL</th></tr></thead><tbody>${sourceRows}</tbody></table></div></div>
+        <div class="split-2">
+          <div class="card raw-modal-section" style="padding:0"><div style="padding:16px"><h3>Proventos recebidos</h3></div><div class="table-wrap"><table><thead><tr><th>Data</th><th>Movimento</th><th>Natureza</th><th class="right">Valor</th><th>Instituição</th></tr></thead><tbody>${divRows}</tbody></table></div></div>
+          <div class="card raw-modal-section"><h3>Linha do tempo factual</h3><div class="raw-timeline">${timelineHtml}</div></div>
+        </div>
+        <div class="card raw-modal-section" style="padding:0"><div style="padding:16px"><h3>Movimentações B3</h3></div><div class="table-wrap"><table><thead><tr><th>Data</th><th>Movimento</th><th>Classe</th><th class="right">Qtd</th><th class="right">Valor</th><th>Instituição</th></tr></thead><tbody>${movRows}</tbody></table></div></div>
+        <div class="card raw-modal-section"><h3>Memória factual do ativo</h3><p>Snapshots locais armazenados para este ticker: <b>${d.dataSnapshots.length}</b>. O histórico guarda fontes, ausências e divergências recentes sem sobrescrever dados originais.</p></div>
+      </div>`);
+    }
+
+    async function refreshRawAssetBrapi(ticker){
+      const tk = normalizeTicker(ticker);
+      if(!tk) return;
+      try{
+        if(!getBrapiToken()){
+          alert('Configure o token BRAPI na Aba 1 antes de atualizar este ativo.');
+          return;
+        }
+        await fetchSingleTickerBrapi(tk, { force:true, forceHistory:true, context:'raw_asset_dossier' });
+        saveAll();
+        renderTudo();
+        openRawAssetDossier(tk);
+      }catch(err){
+        console.error('Falha ao atualizar BRAPI no dossiê bruto:', err);
+        alert('Não foi possível atualizar BRAPI para este ativo: ' + (err?.message || String(err)));
+      }
+    }
+
+    function exportRawAssetDossier(ticker){
+      const dossier = buildRawAssetDossier(ticker);
+      downloadTextFile(`guido_dossie_bruto_${dossier.ticker}.json`, JSON.stringify(dossier, null, 2), 'application/json');
+    }
+
 
     function renderTudo(){
       normalizeState();
@@ -5649,6 +6059,7 @@ function renderEngineSummary(){
       renderB3();
       renderDecisionEngine();
       renderFIIIntelligence();
+      renderRawAssetDossier();
       renderEngineSummary();
     }
 
@@ -6962,6 +7373,7 @@ Preencha integralmente os campos do JSON solicitado.`;
         document.querySelectorAll('.tab, .panel').forEach(el => el.classList.remove('active'));
         btn.classList.add('active');
         $(btn.dataset.tab).classList.add('active');
+        if(btn.dataset.tab === 'tab-raw-dossier') renderRawAssetDossier();
       });
     });
 
