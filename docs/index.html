@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.9.3 — Dossiês por Ativo</title>
+  <title>Guido Dividend System v1.9.4 — Manifesto Premium</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -201,6 +201,28 @@
     .gwi-system-page{padding:0;min-height:auto}.gwi-system-page .wrap{padding-top:26px}
     .gwi-notice{border:1px solid rgba(0,255,136,.18);background:rgba(0,255,136,.08);border-radius:18px;padding:14px 16px;color:#caffdf;line-height:1.55;margin:14px 0}
     @media(max-width:1000px){.gwi-col-4,.gwi-col-5,.gwi-col-6,.gwi-col-7,.gwi-col-8{grid-column:span 12}.gwi-flow{grid-template-columns:1fr}.gwi-fake-app{grid-template-columns:1fr}.gwi-topbar-inner{align-items:flex-start;flex-direction:column}.gwi-nav{justify-content:flex-start}}
+    .gwi-hero-premium{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:28px;align-items:center;min-height:calc(100vh - 124px)}
+    .gwi-hero-copy{position:relative;z-index:2}
+    .gwi-hero-proof{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .gwi-proof-pill{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.045);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:850;color:#dce8f2}
+    .gwi-intel-visual{position:relative;border:1px solid rgba(0,212,255,.22);border-radius:28px;padding:18px;background:linear-gradient(180deg,rgba(12,19,29,.90),rgba(5,9,14,.98));box-shadow:0 30px 90px rgba(0,0,0,.42);overflow:hidden}
+    .gwi-intel-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(130deg,rgba(0,212,255,.08),transparent 38%,rgba(0,255,136,.05));pointer-events:none}
+    .gwi-cockpit-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:16px;position:relative}
+    .gwi-cockpit-title{font-size:12px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;color:#9fefff}
+    .gwi-cockpit-live{font-size:11px;color:#9affcb;border:1px solid rgba(0,255,136,.20);border-radius:999px;padding:5px 8px;background:rgba(0,255,136,.08)}
+    .gwi-radar-visual{position:relative;aspect-ratio:1.18;border-radius:24px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));display:grid;place-items:center;overflow:hidden}
+    .gwi-radar-visual:before{content:"";position:absolute;inset:8%;border-radius:50%;border:1px solid rgba(0,212,255,.18);box-shadow:0 0 0 58px rgba(0,212,255,.025),0 0 0 116px rgba(124,140,255,.025)}
+    .gwi-radar-visual:after{content:"";position:absolute;width:68%;height:2px;background:linear-gradient(90deg,rgba(0,212,255,.85),transparent);transform-origin:left center;left:50%;top:50%;animation:gwiSweep 7s linear infinite}
+    @keyframes gwiSweep{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    .gwi-node{position:absolute;display:flex;align-items:center;justify-content:center;width:74px;height:34px;border-radius:999px;font-size:11px;font-weight:900;border:1px solid rgba(255,255,255,.12);background:rgba(10,17,25,.86);backdrop-filter:blur(10px)}
+    .gwi-node.n1{left:9%;top:18%;color:#9affcb}.gwi-node.n2{right:10%;top:23%;color:#9fefff}.gwi-node.n3{left:13%;bottom:18%;color:#ffd18a}.gwi-node.n4{right:11%;bottom:16%;color:#c8ceff}.gwi-node.n5{left:50%;top:50%;transform:translate(-50%,-50%);width:92px;height:42px;color:#fff;border-color:rgba(0,212,255,.26)}
+    .gwi-mini-insights{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;position:relative}
+    .gwi-mini-insights div{border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:10px;background:rgba(255,255,255,.035)}
+    .gwi-mini-insights span{display:block;font-size:10px;color:#8fa2b3;text-transform:uppercase;font-weight:900;letter-spacing:.07em}.gwi-mini-insights b{display:block;margin-top:5px;font-size:15px}
+    .gwi-principle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .gwi-principle{border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.018))}
+    .gwi-principle small{display:block;color:#9fefff;font-weight:950;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}.gwi-principle b{font-size:18px}.gwi-principle p{margin-top:8px}
+    @media(max-width:1050px){.gwi-hero-premium{grid-template-columns:1fr;min-height:auto}.gwi-intel-visual{max-width:760px}.gwi-principle-grid{grid-template-columns:1fr}}
 
 
     .gwi-guide-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
@@ -254,7 +276,7 @@
 
 
     /* =========================================================
-       v1.9.3 — Dossiês locais por ativo
+       v1.9.4 — Manifesto premium de inteligência patrimonial
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -373,12 +395,42 @@
     <section id="gwiPageManifesto" class="gwi-page active">
     <div class="gwi-container">
       <div class="gwi-hero">
-        <div class="gwi-kicker">◆ Guido Dividend System · Radar de Oportunidades</div>
-        <h1 class="gwi-title">Transforme dados da B3 em <span class="gradient">renda, decisão e liberdade financeira.</span></h1>
-        <p class="gwi-subtitle">Um sistema proprietário de inteligência patrimonial que integra eventos futuros, movimentações reais, FIIs, cotações, indicadores e histórico da carteira para responder: o que merece estudo, o que precisa acompanhamento e onde o capital pode trabalhar melhor.</p>
-        <div class="gwi-cta-row">
-          <button class="btn-primary gwi-btn-xl" onclick="GWI_showPage('demo')">Ver demonstração guiada</button>
-          <button class="gwi-btn-ghost gwi-btn-xl" onclick="GWI_showPage('sistema')">Abrir sistema completo</button>
+        <div class="gwi-hero-premium">
+          <div class="gwi-hero-copy">
+            <div class="gwi-kicker">◆ Guido Wealth Intelligence · Central privada de leitura patrimonial</div>
+            <h1 class="gwi-title">Seu patrimônio também conta uma história. <span class="gradient">O sistema mostra o significado.</span></h1>
+            <p class="gwi-subtitle">O mercado mostra preços. A B3 mostra o que aconteceu. O Guido Dividend System cruza carteira, renda, eventos, risco, comportamento e contexto para transformar dados dispersos em consciência patrimonial.</p>
+            <div class="gwi-cta-row">
+              <button class="btn-primary gwi-btn-xl" onclick="GWI_showPage('demo')">Ver demonstração guiada</button>
+              <button class="gwi-btn-ghost gwi-btn-xl" onclick="GWI_showPage('sistema')">Abrir sistema completo</button>
+            </div>
+            <div class="gwi-hero-proof">
+              <span class="gwi-proof-pill">Local-first</span>
+              <span class="gwi-proof-pill">B3 Ledger</span>
+              <span class="gwi-proof-pill">BRAPI opcional</span>
+              <span class="gwi-proof-pill">Dossiê por ativo</span>
+              <span class="gwi-proof-pill">Radar de incongruências</span>
+            </div>
+          </div>
+          <div class="gwi-intel-visual" aria-label="Radar visual de inteligência patrimonial">
+            <div class="gwi-cockpit-top">
+              <span class="gwi-cockpit-title">Patrimonial Intelligence Cockpit</span>
+              <span class="gwi-cockpit-live">leitura ativa</span>
+            </div>
+            <div class="gwi-radar-visual">
+              <span class="gwi-node n1">B3</span>
+              <span class="gwi-node n2">Renda</span>
+              <span class="gwi-node n3">Risco</span>
+              <span class="gwi-node n4">Preço</span>
+              <span class="gwi-node n5">Contexto</span>
+            </div>
+            <div class="gwi-mini-insights">
+              <div><span>Memória</span><b>compras, vendas e proventos</b></div>
+              <div><span>Leitura</span><b>capital, retorno e coerência</b></div>
+              <div><span>Sinais</span><b>dados ausentes e divergências</b></div>
+              <div><span>Decisão</span><b>clareza antes da ação</b></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -387,6 +439,11 @@
           <div class="gwi-kicker">◆ Filosofia central</div>
           <p class="gwi-quote">A B3 mostra o que aconteceu. <span class="gwi-cyan">O Guido Dividend System mostra o que isso significa</span> para o seu patrimônio.</p>
           <p style="margin-top:16px">O investidor não precisa de mais ruído. Precisa de clareza: renda real, retorno total, capital improdutivo, eventos futuros, risco de concentração e decisões acompanhadas depois que o dinheiro entra ou deixa de entrar.</p>
+          <div class="gwi-principle-grid" style="margin-top:18px">
+            <div class="gwi-principle"><small>Dados</small><b>Dados isolados confundem.</b><p>Uma cotação, um dividendo ou uma compra só ganha sentido quando entra na história completa do patrimônio.</p></div>
+            <div class="gwi-principle"><small>Contexto</small><b>Sistemas integrados revelam.</b><p>Preço médio, renda recebida, eventos futuros, risco e comportamento passam a falar a mesma língua.</p></div>
+            <div class="gwi-principle"><small>Consciência</small><b>Acompanhar é diferente de entender.</b><p>O sistema transforma registro em diagnóstico: onde há força, ruído, concentração, desperdício ou tese a revisar.</p></div>
+          </div>
         </div>
 
         <div class="gwi-card gwi-col-12">
@@ -685,9 +742,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.9.3 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI e motor de decisão para transformar dados reais em clareza patrimonial.</p>
+        <p>v1.9.4 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI e manifesto premium para transformar dados reais em clareza patrimonial.</p>
       </div>
-      <div class="version-pill">v1.9.3 · dossiês por ativo</div>
+      <div class="version-pill">v1.9.4 · manifesto premium</div>
     </div>
 
     <div class="grid-5">
@@ -1377,7 +1434,7 @@
     </div>
 
 
-    <div class="footer">Guido Dividend System v1.9.3 · Dossiês locais por ativo, inteligência integrada e privacidade local-first</div>
+    <div class="footer">Guido Dividend System v1.9.4 · Manifesto premium, dossiês locais por ativo, inteligência integrada e privacidade local-first</div>
   </div>
 
   </section>
@@ -4203,7 +4260,7 @@ function renderIntegratedIntelligence(vm){
   const topAlerts = vm.alerts.slice(0,5);
   const healthClass = vm.healthScore >= 80 ? 'b-green' : vm.healthScore >= 55 ? 'b-yellow' : 'b-red';
   el.innerHTML = `
-    <b>Inteligência integrada v1.9.3:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
+    <b>Inteligência integrada v1.9.4:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
     <div class="integration-grid">
       <div class="integration-tile"><span>Saúde dos dados</span><b><span class="badge ${healthClass}">${round(vm.healthScore,0)}/100</span></b></div>
       <div class="integration-tile"><span>Patrimônio integrado</span><b>${formatBRL(vm.totals.totalMarket)}</b></div>
