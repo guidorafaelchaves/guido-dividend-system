@@ -111,6 +111,33 @@
     .status-usable{background:var(--soft-blue);color:#8ee8ff;border-color:rgba(0,212,255,.22)}
     .status-stale{background:var(--soft-yellow);color:#ffd18a;border-color:rgba(245,158,11,.24)}
     .status-critical{background:var(--soft-red);color:#ffb1b1;border-color:rgba(255,77,77,.24)}
+    #tab-b3 .b3-hero{border-left:5px solid var(--green);padding:0;overflow:hidden}
+    #tab-b3 .b3-hero-head{padding:20px 22px 14px;background:linear-gradient(135deg,rgba(0,255,136,.09),rgba(0,212,255,.06) 48%,rgba(18,24,33,.25));border-bottom:1px solid rgba(0,255,136,.13)}
+    #tab-b3 .b3-hero-title{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+    #tab-b3 .b3-hero-title .section-title{margin:0}
+    #tab-b3 .b3-hero-body{padding:18px 22px 20px}
+    #tab-b3 .b3-import-grid{display:grid;grid-template-columns:minmax(280px,2fr) minmax(180px,.75fr) minmax(160px,.65fr) minmax(150px,.55fr);gap:12px;align-items:end}
+    #tab-b3 .b3-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+    #tab-b3 .b3-signal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+    #tab-b3 .b3-signal{background:linear-gradient(180deg,rgba(18,24,33,.96),rgba(13,18,25,.98));border:1px solid var(--line);border-radius:16px;padding:14px 16px;min-height:86px}
+    #tab-b3 .b3-signal span{display:block;font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+    #tab-b3 .b3-signal b{font-size:18px;line-height:1.2;color:var(--text)}
+    #tab-b3 .b3-table-card{padding:0;overflow:hidden}
+    #tab-b3 .b3-table-top{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(18,24,33,.82)}
+    #tab-b3 .b3-table-title{font-weight:900;letter-spacing:-.02em}
+    #tab-b3 .b3-result-meta{font-size:12px;color:var(--muted);font-weight:800}
+    #tab-b3 .b3-yield-panel{border:1px solid rgba(0,255,136,.16);background:linear-gradient(180deg,rgba(18,24,33,.96),rgba(9,14,20,.98))}
+    #tab-b3 .b3-yield-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px}
+    #tab-b3 .b3-yield-head .section-title{margin:0 0 6px}
+    #tab-b3 .b3-yield-copy{color:#aebdca;font-size:13px;line-height:1.45;max-width:980px}
+    #tab-b3 .b3-yield-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px}
+    #tab-b3 .b3-yield-metric{border:1px solid var(--line);border-radius:14px;padding:13px 14px;background:rgba(255,255,255,.025);min-height:82px}
+    #tab-b3 .b3-yield-metric span{display:block;font-size:10px;color:var(--muted);font-weight:900;letter-spacing:.07em;text-transform:uppercase;margin-bottom:7px}
+    #tab-b3 .b3-yield-metric b{font-size:20px;letter-spacing:-.02em}
+    #tab-b3 .b3-yield-table{max-height:300px}
+    #tab-b3 .kpi-title{min-height:24px}
+    @media(max-width:1100px){#tab-b3 .b3-import-grid,#tab-b3 .b3-signal-grid,#tab-b3 .b3-yield-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:700px){#tab-b3 .b3-import-grid,#tab-b3 .b3-signal-grid,#tab-b3 .b3-yield-grid{grid-template-columns:1fr}#tab-b3 .b3-table-top{align-items:flex-start;flex-direction:column}}
     .footer{margin-top:18px;padding:16px 4px 2px;color:var(--muted);font-size:12px;text-align:center;letter-spacing:.06em;text-transform:uppercase}
     @media(max-width:1200px){.grid-5{grid-template-columns:repeat(2,1fr)}.split-2,.split-3{grid-template-columns:1fr}.version-pill{margin-left:0}}
     @media(max-width:700px){.grid-5{grid-template-columns:1fr}.header{padding:20px;flex-direction:column;align-items:flex-start}.logo-badge{width:52px;height:52px;font-size:18px}.header h1{font-size:28px}}
@@ -1062,12 +1089,18 @@
 
 
     <div id="tab-b3" class="panel">
-      <div class="card" style="border-left:5px solid var(--green)">
-        <h2 class="section-title">🏛️ B3 Ledger Engine</h2>
-        <div class="section-note">
-          Importe o arquivo <b>Movimentação</b> da área do investidor da B3. Esta versão cria um livro-mestre separado, classifica cada evento, reconstrói uma carteira B3 paralela, separa renda real por natureza e prepara a conciliação com o calendário de proventos sem substituir automaticamente suas operações manuais.
+      <div class="card b3-hero">
+        <div class="b3-hero-head">
+          <div class="b3-hero-title">
+            <h2 class="section-title">🏛️ B3 Ledger Engine</h2>
+            <span id="b3Status" class="status-chip">B3: aguardando importação</span>
+          </div>
+          <div class="section-note">
+            Importe o arquivo <b>Movimentação</b> da área do investidor da B3. O Ledger mantém um livro-mestre separado, classifica cada evento, reconstrói uma carteira B3 paralela e prepara a conciliação com proventos sem substituir automaticamente suas operações manuais.
+          </div>
         </div>
-        <div class="controls" style="grid-template-columns:2fr 1fr 1fr 1fr">
+        <div class="b3-hero-body">
+        <div class="b3-import-grid">
           <div class="field">
             <label>Arquivo Movimentação B3 (.xlsx/.csv)</label>
             <input type="file" id="b3FileInput" accept=".xlsx,.xls,.csv,.txt" />
@@ -1082,11 +1115,12 @@
           <div class="field"><button class="btn-green" style="width:100%" onclick="handleB3FileFromInput()">Importar B3</button></div>
           <div class="field"><button class="btn-outline-red" style="width:100%" onclick="clearB3Ledger()">Limpar B3</button></div>
         </div>
-        <div class="toolbar" style="margin-top:12px">
+        <div class="b3-toolbar">
           <button class="btn-secondary" onclick="rebuildB3Derived(); saveAll(); renderTudo(); alert('B3 Ledger recalculado.');">Recalcular Ledger</button>
           <button class="btn-outline" onclick="exportB3LedgerCSV()">Exportar B3 Ledger CSV</button>
           <button class="btn-outline" onclick="exportB3PortfolioCSV()">Exportar Carteira B3 CSV</button>
-          <span id="b3Status" class="status-chip">B3: aguardando importação</span>
+        </div>
+        <div id="b3McMount"></div>
         </div>
       </div>
 
@@ -1103,6 +1137,36 @@
         <div id="b3InsightBox" class="section-note">Importe a movimentação para gerar leitura estratégica.</div>
       </div>
 
+      <div class="b3-signal-grid">
+        <div class="b3-signal"><span>Renda total lida</span><b id="b3SignalTotalIncome">R$ 0,00</b></div>
+        <div class="b3-signal"><span>Qualidade da renda</span><b id="b3SignalRecurringShare">0% recorrente</b></div>
+        <div class="b3-signal"><span>Maior pagador</span><b id="b3SignalTopPayer">---</b></div>
+        <div class="b3-signal"><span>Melhor retorno</span><b id="b3SignalBestReturn">---</b></div>
+      </div>
+
+      <div class="card b3-yield-panel">
+        <div class="b3-yield-head">
+          <div>
+            <h2 class="section-title">📈 Yield Realizado B3</h2>
+            <div class="b3-yield-copy">Mede quanto retorno efetivo já voltou para o caixa em relação ao capital historicamente aportado. Retorno efetivo = proventos recebidos + lucro/prejuízo realizado em vendas. O yield anualizado usa o custo médio que ficou exposto ao longo do tempo.</div>
+          </div>
+          <span id="b3YieldStatus" class="status-chip">Yield: aguardando histórico</span>
+        </div>
+        <div class="b3-yield-grid">
+          <div class="b3-yield-metric"><span>Capital aportado</span><b id="b3YieldInvested">R$ 0,00</b></div>
+          <div class="b3-yield-metric"><span>Capital médio exposto</span><b id="b3YieldAvgCapital">R$ 0,00</b></div>
+          <div class="b3-yield-metric"><span>Retorno recebido</span><b id="b3YieldReceived">R$ 0,00</b></div>
+          <div class="b3-yield-metric"><span>Yield realizado</span><b id="b3YieldRealized">0%</b></div>
+          <div class="b3-yield-metric"><span>Yield anualizado</span><b id="b3YieldAnnualized">0%</b></div>
+        </div>
+        <div class="table-wrap b3-yield-table">
+          <table>
+            <thead><tr><th>Ativo</th><th class="right">Aportado</th><th class="right">Médio exposto</th><th class="right">Proventos</th><th class="right">Lucro realizado</th><th class="right">Retorno recebido</th><th class="right">Yield</th><th class="right">Yield anual</th><th>Leitura</th></tr></thead>
+            <tbody id="tbodyB3Yield"></tbody>
+          </table>
+        </div>
+      </div>
+
       <div class="card">
         <div class="controls" style="grid-template-columns:1.4fr 1fr 1fr 1fr 1fr">
           <div class="field"><label>Busca</label><input id="b3Search" placeholder="Ticker, movimento, instituição..." onkeyup="renderB3()" /></div>
@@ -1113,7 +1177,11 @@
         </div>
       </div>
 
-      <div class="card" style="padding:0">
+      <div class="card b3-table-card">
+        <div class="b3-table-top">
+          <div class="b3-table-title">Livro B3</div>
+          <div id="b3ResultMeta" class="b3-result-meta">0 registros na visão atual</div>
+        </div>
         <div class="table-wrap">
           <table>
             <thead id="theadB3"></thead>
@@ -7311,6 +7379,114 @@ Preencha integralmente os campos do JSON solicitado.`;
       el.innerHTML = `<b>${MC_CONTEXT_LABELS[context]}:</b> multicritério ativo ${pills}<span class="mini">Score MC normaliza os fatores escolhidos de 0 a 100 e ranqueia pela média. Para FIIs, P/VP equilibrado privilegia proximidade de 0,95.</span>`;
     }
 
+    function updateB3SignalPanel(movs, income, portfolio){
+      const totalIncome = income.reduce((a,x)=>a+Number(x.valor||0),0);
+      const recurring = income.filter(x=>x.natureza==='RECORRENTE').reduce((a,x)=>a+Number(x.valor||0),0);
+      const recurringShare = totalIncome ? (recurring / totalIncome) * 100 : 0;
+      const topIncome = Object.entries(income.reduce((acc,x)=>{ acc[x.ticker || '---'] = (acc[x.ticker || '---'] || 0) + Number(x.valor||0); return acc; },{})).sort((a,b)=>b[1]-a[1])[0];
+      const bestReturn = portfolio.slice().sort((a,b)=>Number(b.retornoTotal||0)-Number(a.retornoTotal||0))[0];
+      if($('b3SignalTotalIncome')) $('b3SignalTotalIncome').textContent = movs.length ? formatBRL(totalIncome) : 'R$ 0,00';
+      if($('b3SignalRecurringShare')) $('b3SignalRecurringShare').textContent = movs.length ? `${formatPct(recurringShare)} recorrente` : '0% recorrente';
+      if($('b3SignalTopPayer')) $('b3SignalTopPayer').textContent = topIncome ? `${topIncome[0]} ${formatBRL(topIncome[1])}` : '---';
+      if($('b3SignalBestReturn')) $('b3SignalBestReturn').textContent = bestReturn ? `${bestReturn.ticker} ${formatBRL(bestReturn.retornoTotal)}` : '---';
+    }
+
+    function setB3ResultMeta(label, count){
+      const title = document.querySelector('#tab-b3 .b3-table-title');
+      const meta = $('b3ResultMeta');
+      if(title) title.textContent = label;
+      if(meta) meta.textContent = `${count} ${count === 1 ? 'registro' : 'registros'} na visão atual`;
+    }
+
+    function b3YieldLabel(v){
+      if(v > 12) return '<span class="badge b-green">Forte</span>';
+      if(v > 6) return '<span class="badge b-blue">Saudável</span>';
+      if(v > 0) return '<span class="badge b-yellow">Positivo</span>';
+      if(v < 0) return '<span class="badge b-red">Negativo</span>';
+      return '<span class="badge b-gray">Neutro</span>';
+    }
+
+    function buildB3YieldAnalysis(movs){
+      const byTicker = {};
+      const ordered = (movs || []).slice().filter(x=>x && x.data && x.ticker).sort((a,b)=>String(a.data).localeCompare(String(b.data)) || String(a.ticker).localeCompare(String(b.ticker)));
+      const endIso = todayIso();
+      function ensure(t){
+        if(!byTicker[t]) byTicker[t] = { ticker:t, firstDate:'', lastDate:'', lotQtd:0, lotCost:0, area:0, compras:0, vendas:0, proventos:0, lucroRealizado:0 };
+        return byTicker[t];
+      }
+      function accrue(s, date){
+        if(!s.lastDate){ s.firstDate = date; s.lastDate = date; return; }
+        const days = Math.max(0, diffDays(s.lastDate, date) || 0);
+        s.area += Math.max(0, s.lotCost) * days;
+        s.lastDate = date;
+      }
+      for(const m of ordered){
+        const t = normalizeTicker(m.ticker || 'SEM_TICKER');
+        const s = ensure(t);
+        accrue(s, m.data);
+        const val = Number(m.valor || 0);
+        const qtd = Number(m.quantidade || 0);
+        if(m.classeMovimento === 'OPERACAO'){
+          if(m.tipoOperacao === 'COMPRA'){
+            s.lotQtd += qtd;
+            s.lotCost += val;
+            s.compras += val;
+          }else if(m.tipoOperacao === 'VENDA'){
+            const pm = s.lotQtd > 0 ? s.lotCost / s.lotQtd : 0;
+            const custoBaixado = Math.min(qtd, Math.max(s.lotQtd,0)) * pm;
+            s.lotQtd -= qtd;
+            s.lotCost -= custoBaixado;
+            s.vendas += val;
+            s.lucroRealizado += val - custoBaixado;
+          }
+        }else if((m.classeMovimento === 'PROVENTO' || m.classeMovimento === 'RENDA_FIXA') && m.afetaCaixa && val > 0){
+          s.proventos += val;
+        }
+      }
+      Object.values(byTicker).forEach(s => {
+        if(s.lastDate){
+          const days = Math.max(0, diffDays(s.lastDate, endIso) || 0);
+          s.area += Math.max(0, s.lotCost) * days;
+        }
+        const periodDays = Math.max(1, diffDays(s.firstDate, endIso) || 1);
+        s.capitalMedio = s.area > 0 ? s.area / periodDays : Math.max(0, s.lotCost);
+        s.retornoRecebido = s.proventos + s.lucroRealizado;
+        s.yieldAportado = s.compras > 0 ? (s.retornoRecebido / s.compras) * 100 : 0;
+        s.yieldMedio = s.capitalMedio > 0 ? (s.retornoRecebido / s.capitalMedio) * 100 : 0;
+        s.yieldAnualizado = s.capitalMedio > 0 ? (s.retornoRecebido / s.capitalMedio) * (365 / periodDays) * 100 : 0;
+        s.periodDays = periodDays;
+      });
+      const rows = Object.values(byTicker).filter(x=>x.compras > 0 || x.proventos !== 0 || x.lucroRealizado !== 0);
+      const firstDate = rows.map(x=>x.firstDate).filter(Boolean).sort()[0] || '';
+      const totalDays = Math.max(1, diffDays(firstDate, endIso) || 1);
+      const totals = rows.reduce((acc,x)=>{
+        acc.compras += x.compras; acc.vendas += x.vendas; acc.proventos += x.proventos; acc.lucroRealizado += x.lucroRealizado; acc.area += x.area; acc.retornoRecebido += x.retornoRecebido;
+        return acc;
+      }, { compras:0, vendas:0, proventos:0, lucroRealizado:0, area:0, retornoRecebido:0 });
+      totals.capitalMedio = totals.area > 0 ? totals.area / totalDays : rows.reduce((a,x)=>a+Math.max(0,x.lotCost),0);
+      totals.yieldAportado = totals.compras > 0 ? (totals.retornoRecebido / totals.compras) * 100 : 0;
+      totals.yieldMedio = totals.capitalMedio > 0 ? (totals.retornoRecebido / totals.capitalMedio) * 100 : 0;
+      totals.yieldAnualizado = totals.capitalMedio > 0 ? (totals.retornoRecebido / totals.capitalMedio) * (365 / totalDays) * 100 : 0;
+      totals.periodDays = totalDays;
+      totals.firstDate = firstDate;
+      return { rows, totals };
+    }
+
+    function renderB3YieldInstrument(movs){
+      const tb = $('tbodyB3Yield');
+      if(!tb) return;
+      const analysis = buildB3YieldAnalysis(movs);
+      const t = analysis.totals;
+      if($('b3YieldInvested')) $('b3YieldInvested').textContent = formatBRL(t.compras);
+      if($('b3YieldAvgCapital')) $('b3YieldAvgCapital').textContent = formatBRL(t.capitalMedio);
+      if($('b3YieldReceived')) $('b3YieldReceived').textContent = formatBRL(t.retornoRecebido);
+      if($('b3YieldRealized')) $('b3YieldRealized').textContent = formatPct(t.yieldAportado);
+      if($('b3YieldAnnualized')) $('b3YieldAnnualized').textContent = formatPct(t.yieldAnualizado);
+      if($('b3YieldStatus')) $('b3YieldStatus').textContent = analysis.rows.length ? `Yield: ${analysis.rows.length} ativos analisados desde ${formatDateBR(t.firstDate)}` : 'Yield: aguardando histórico';
+      const rows = analysis.rows.slice().sort((a,b)=>Number(b.yieldAnualizado||0)-Number(a.yieldAnualizado||0)).slice(0,20);
+      tb.innerHTML = rows.map(r => `<tr><td><b>${escapeHtml(r.ticker)}</b><span class="mini">${r.periodDays} dias de histórico</span></td><td class="right">${formatBRL(r.compras)}</td><td class="right">${formatBRL(r.capitalMedio)}</td><td class="right">${formatBRL(r.proventos)}</td><td class="right">${formatBRL(r.lucroRealizado)}</td><td class="right"><b>${formatBRL(r.retornoRecebido)}</b></td><td class="right">${formatPct(r.yieldAportado)}</td><td class="right"><b>${formatPct(r.yieldAnualizado)}</b></td><td>${b3YieldLabel(r.yieldAnualizado)}</td></tr>`).join('') || '<tr><td colspan="9" class="center muted">Importe movimentações com compras e retornos recebidos para ativar a análise de yield realizado.</td></tr>';
+    }
+
     function renderB3(){
       const th = $('theadB3'), tb = $('tbodyB3');
       if(!th || !tb) return;
@@ -7327,18 +7503,21 @@ Preencha integralmente os campos do JSON solicitado.`;
       if($('b3KpiRealizado')) $('b3KpiRealizado').textContent = formatBRL(realizado);
       if($('b3KpiAtivos')) $('b3KpiAtivos').textContent = String(portfolio.filter(x=>x.quantidade>0).length);
       if($('b3Status')) $('b3Status').textContent = movs.length ? `B3: ${movs.length} movimentos carregados` : 'B3: aguardando importação';
+      updateB3SignalPanel(movs, income, portfolio);
+      renderB3YieldInstrument(movs);
       renderB3Insights();
       const view = $('b3ViewMode')?.value || 'ledger';
       const q = normalizeHeaderB3($('b3Search')?.value || '');
       const cls = $('b3FilterClass')?.value || 'TODOS';
       const nat = $('b3FilterNature')?.value || 'TODOS';
-      mcRenderStatus('b3', [], 'b3Status');
+      mcRenderStatus('b3', [], 'b3McMount');
       if(view === 'portfolio') return renderB3PortfolioTable(portfolio, q, th, tb);
       if(view === 'income') return renderB3IncomeTable(income, q, cls, nat, th, tb);
       if(view === 'recon') return renderB3ReconTable(state.b3Reconciliation || [], q, th, tb);
       if(view === 'tax') return renderB3TaxTable(Object.values(state.b3TaxPreview || {}), th, tb);
       let rows = movs.filter(x => (cls==='TODOS' || x.classeMovimento===cls) && (nat==='TODOS' || x.natureza===nat));
       if(q) rows = rows.filter(x => normalizeHeaderB3([x.ticker,x.movimentoOriginal,x.instituicao,x.produtoOriginal,x.classeMovimento,x.natureza].join(' ')).includes(q));
+      setB3ResultMeta('Livro B3', rows.length);
       rows = mcSortRows('b3', rows, 'data', 'desc').slice(0,800);
       th.innerHTML = '<tr>' + [mcHeader('b3','data','Data'), mcHeader('b3','ticker','Ativo'), '<th>Movimento</th>', mcHeader('b3','classeMovimento','Classe'), mcHeader('b3','natureza','Natureza'), '<th>Instituição</th>', mcHeader('b3','quantidade','Qtd','right'), mcHeader('b3','precoUnitario','Preço','right'), mcHeader('b3','valor','Valor','right'), '<th>Efeito</th>'].join('') + '</tr>';
       tb.innerHTML = rows.map(x => `<tr><td>${formatDateBR(x.data)}</td><td><b>${x.ticker || '-'}</b><span class="mini">${x.nome || ''}</span></td><td>${x.movimentoOriginal}</td><td><span class="badge b-blue">${x.classeMovimento}</span></td><td><span class="badge ${x.natureza==='RECORRENTE'?'b-green':x.natureza==='EXTRAORDINARIA'?'b-yellow':'b-gray'}">${x.natureza}</span></td><td>${x.instituicao || '-'}</td><td class="right">${round(x.quantidade,4)}</td><td class="right">${x.precoUnitario?formatBRL(x.precoUnitario):'---'}</td><td class="right">${x.valor?formatBRL(x.valor):'---'}</td><td>${x.tipoOperacao || (x.afetaCaixa?'Caixa':'Técnico')}${x.mcScore!==undefined?`<span class="mini" style="color:#9affcb">MC ${round(x.mcScore,1)}</span>`:''}</td></tr>`).join('') || '<tr><td colspan="10" class="center muted">Nenhum movimento B3 carregado.</td></tr>';
@@ -7346,6 +7525,7 @@ Preencha integralmente os campos do JSON solicitado.`;
 
     function renderB3PortfolioTable(rows, q, th, tb){
       if(q) rows = rows.filter(x => normalizeHeaderB3(x.ticker).includes(q));
+      setB3ResultMeta('Carteira B3 reconstruída', rows.length);
       rows = mcSortRows('b3', rows, 'retornoTotal', 'desc');
       th.innerHTML = '<tr>' + [mcHeader('b3','ticker','Ativo'),mcHeader('b3','quantidade','Qtd','right'),mcHeader('b3','precoMedio','Preço Médio','right'),mcHeader('b3','precoAtual','Preço Atual','right'),mcHeader('b3','custoTotal','Custo','right'),mcHeader('b3','valorMercado','Valor Atual','right'),mcHeader('b3','lucroNaoRealizado','Lucro Não Real.','right'),mcHeader('b3','lucroRealizado','Lucro Real.','right'),mcHeader('b3','proventosRecebidos','Proventos','right'),mcHeader('b3','retornoTotal','Retorno Total','right')].join('') + '</tr>';
       tb.innerHTML = rows.map(x => `<tr><td><b>${x.ticker}</b>${x.mcScore!==undefined?`<span class="mini" style="color:#9affcb">MC ${round(x.mcScore,1)}</span>`:''}</td><td class="right">${round(x.quantidade,4)}</td><td class="right">${formatBRL(x.precoMedio)}</td><td class="right">${x.precoAtual?formatBRL(x.precoAtual):'---'}</td><td class="right">${formatBRL(x.custoTotal)}</td><td class="right">${formatBRL(x.valorMercado)}</td><td class="right">${formatBRL(x.lucroNaoRealizado)}</td><td class="right">${formatBRL(x.lucroRealizado)}</td><td class="right">${formatBRL(x.proventosRecebidos)}</td><td class="right"><b>${formatBRL(x.retornoTotal)}</b></td></tr>`).join('') || '<tr><td colspan="10" class="center muted">Sem carteira B3 reconstruída.</td></tr>';
@@ -7355,6 +7535,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       if(cls !== 'TODOS') rows = rows.filter(x=>x.classeMovimento===cls);
       if(nat !== 'TODOS') rows = rows.filter(x=>x.natureza===nat);
       if(q) rows = rows.filter(x => normalizeHeaderB3([x.ticker,x.movimentoOriginal,x.instituicao,x.produtoOriginal].join(' ')).includes(q));
+      setB3ResultMeta('Proventos recebidos', rows.length);
       rows = mcSortRows('b3', rows, 'data', 'desc').slice(0,800);
       th.innerHTML = '<tr>' + [mcHeader('b3','data','Data'),mcHeader('b3','ticker','Ativo'),'<th>Tipo</th>',mcHeader('b3','natureza','Natureza'),'<th>Instituição</th>',mcHeader('b3','valor','Valor recebido','right'),'<th>Tributação</th>'].join('') + '</tr>';
       tb.innerHTML = rows.map(x => `<tr><td>${formatDateBR(x.data)}</td><td><b>${x.ticker}</b><span class="mini">${x.nome||''}${x.mcScore!==undefined?` · MC ${round(x.mcScore,1)}`:''}</span></td><td>${x.movimentoOriginal}</td><td><span class="badge ${x.natureza==='RECORRENTE'?'b-green':'b-yellow'}">${x.natureza}</span></td><td>${x.instituicao||'-'}</td><td class="right"><b>${formatBRL(x.valor)}</b></td><td>${x.afetaIR?'Pode ter IR/retido':'Provável isento/confirmar informe'}</td></tr>`).join('') || '<tr><td colspan="7" class="center muted">Sem proventos recebidos importados.</td></tr>';
@@ -7362,12 +7543,14 @@ Preencha integralmente os campos do JSON solicitado.`;
 
     function renderB3ReconTable(rows, q, th, tb){
       if(q) rows = rows.filter(x => normalizeHeaderB3(x.ticker).includes(q));
+      setB3ResultMeta('Conciliação de proventos', rows.length);
       rows = mcSortRows('b3', rows, 'dataPrevista', 'desc').slice(0,800);
       th.innerHTML = '<tr>' + [mcHeader('b3','ticker','Ativo'),mcHeader('b3','dataPrevista','Pagamento previsto'),mcHeader('b3','valorPrevistoUnitario','Valor unit. previsto','right'),mcHeader('b3','valorRecebidoTotal','Valor recebido total','right'),'<th>Status</th>',mcHeader('b3','ocorrencias','Ocorrências','center')].join('') + '</tr>';
       tb.innerHTML = rows.map(x => `<tr><td><b>${x.ticker}</b>${x.mcScore!==undefined?`<span class="mini" style="color:#9affcb">MC ${round(x.mcScore,1)}</span>`:''}</td><td>${formatDateBR(x.dataPrevista)}</td><td class="right">${formatBRL(x.valorPrevistoUnitario)}</td><td class="right">${formatBRL(x.valorRecebidoTotal)}</td><td><span class="badge ${x.status.includes('RECEBIDO')?'b-green':'b-yellow'}">${x.status}</span></td><td class="center">${x.ocorrencias}</td></tr>`).join('') || '<tr><td colspan="6" class="center muted">Sem calendário de eventos para conciliar.</td></tr>';
     }
 
     function renderB3TaxTable(rows, th, tb){
+      setB3ResultMeta('Pré-IR mensal', rows.length);
       rows = mcSortRows('b3', rows, 'mes', 'desc');
       th.innerHTML = '<tr>' + [mcHeader('b3','mes','Mês'),mcHeader('b3','vendasAcoes','Vendas ações','right'),mcHeader('b3','lucroAcoes','Lucro ações','right'),mcHeader('b3','vendasFII','Vendas FIIs','right'),mcHeader('b3','lucroFII','Lucro FIIs','right'),mcHeader('b3','irEstimado','IR estimado','right'),'<th>Observação</th>'].join('') + '</tr>';
       tb.innerHTML = rows.map(x => `<tr><td><b>${x.mes}</b>${x.mcScore!==undefined?`<span class="mini" style="color:#9affcb">MC ${round(x.mcScore,1)}</span>`:''}</td><td class="right">${formatBRL(x.vendasAcoes)}</td><td class="right">${formatBRL(x.lucroAcoes)}</td><td class="right">${formatBRL(x.vendasFII)}</td><td class="right">${formatBRL(x.lucroFII)}</td><td class="right"><b>${formatBRL(x.irEstimado)}</b></td><td>Pré-cálculo estimativo. Conferir notas de corretagem, prejuízos acumulados e informes.</td></tr>`).join('') || '<tr><td colspan="7" class="center muted">Sem vendas detectadas para pré-IR.</td></tr>';
