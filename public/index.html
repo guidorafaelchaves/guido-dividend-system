@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.10.1 — Dossiê Bruto de Ativos</title>
+  <title>Guido Dividend System v1.10.2 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -307,7 +307,7 @@
 
 
     /* =========================================================
-       v1.10.1 — Dossiê bruto de ativos
+       v1.10.2 — Dossiê bruto de ativos
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -773,9 +773,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.10.1 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
+        <p>v1.10.2 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
       </div>
-      <div class="version-pill">v1.10.1 · dossiê com relação capital/retorno</div>
+      <div class="version-pill">v1.10.2 · dossiê prioriza posição</div>
     </div>
 
     <div class="grid-5">
@@ -1516,7 +1516,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.10.1 · Fluxo do app separado da B3, caixa confirmado, lucro concreto por período, dossiê capital/retorno e radar conservador</div>
+    <div class="footer">Guido Dividend System v1.10.2 · Fluxo do app separado da B3, caixa confirmado, lucro concreto por período, dossiê capital/retorno e radar conservador</div>
   </div>
 
   </section>
@@ -6250,6 +6250,10 @@ function renderEngineSummary(){
       return `${formatBRL(ratio).replace('R$ ', 'R$ ')} / R$ 1`;
     }
 
+    function rawAssetQuantityPriority(row){
+      return parseNumber(row?.currentQuantity) > 0 ? 1 : 0;
+    }
+
     function buildRawAssetIndex(){
       const totalPortfolio = Object.values(state.b3Portfolio || {}).reduce((a,x)=>a+parseNumber(x.valorMercado || x.custoTotal),0) ||
         Object.values(state.positions || {}).reduce((a,x)=>a+parseNumber(x.valorMercado || x.custoTotal),0);
@@ -6330,7 +6334,14 @@ function renderEngineSummary(){
         updated: (a,b)=>String(b.lastUpdated).localeCompare(String(a.lastUpdated)),
         ticker: (a,b)=>a.ticker.localeCompare(b.ticker)
       };
-      return filtered.sort(sorters[sort] || sorters.value);
+      const selectedSorter = sorters[sort] || sorters.value;
+      return filtered.sort((a,b) => {
+        const quantityDiff = rawAssetQuantityPriority(b) - rawAssetQuantityPriority(a);
+        if(quantityDiff) return quantityDiff;
+        const sorted = selectedSorter(a,b);
+        if(sorted) return sorted;
+        return String(a.ticker || '').localeCompare(String(b.ticker || ''));
+      });
     }
 
     function renderRawAssetDossier(){
