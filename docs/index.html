@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.9.9 — Dossiê Bruto de Ativos</title>
+  <title>Guido Dividend System v1.10.0 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -307,7 +307,7 @@
 
 
     /* =========================================================
-       v1.9.9 — Dossiê bruto de ativos
+       v1.10.0 — Dossiê bruto de ativos
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -773,9 +773,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.9.9 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
+        <p>v1.10.0 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
       </div>
-      <div class="version-pill">v1.9.9 · lucro concreto</div>
+      <div class="version-pill">v1.10.0 · lucro por período</div>
     </div>
 
     <div class="grid-5">
@@ -1516,7 +1516,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.9.9 · Fluxo do app separado da B3, caixa confirmado, lucro concreto e radar conservador</div>
+    <div class="footer">Guido Dividend System v1.10.0 · Fluxo do app separado da B3, caixa confirmado, lucro concreto por período e radar conservador</div>
   </div>
 
   </section>
@@ -4233,7 +4233,45 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       return map;
     }
 
-    function buildAppRealizedSaleSummary(){
+    let closedFlowPeriod = { from:'', to:'' };
+
+    function isDateInClosedFlowPeriod(iso, period=closedFlowPeriod){
+      if(!iso) return false;
+      if(period.from && iso < period.from) return false;
+      if(period.to && iso > period.to) return false;
+      return true;
+    }
+
+    function closedFlowPeriodLabel(period=closedFlowPeriod){
+      if(period.from && period.to) return `${formatDateBR(period.from)} ate ${formatDateBR(period.to)}`;
+      if(period.from) return `desde ${formatDateBR(period.from)}`;
+      if(period.to) return `ate ${formatDateBR(period.to)}`;
+      return 'todo o historico do app';
+    }
+
+    function setClosedFlowPeriodPreset(mode){
+      const today = todayIso();
+      if(mode === 'all'){
+        closedFlowPeriod = { from:'', to:'' };
+      }else if(mode === 'year'){
+        closedFlowPeriod = { from: today.slice(0,4) + '-01-01', to: today };
+      }else if(mode === '12m'){
+        const start = dateFromIsoUTC(today);
+        start.setFullYear(start.getFullYear() - 1);
+        closedFlowPeriod = { from: start.toISOString().slice(0,10), to: today };
+      }
+      renderFluxo();
+    }
+
+    function setClosedFlowPeriodFromInputs(){
+      closedFlowPeriod = {
+        from: $('closedFlowFrom')?.value || '',
+        to: $('closedFlowTo')?.value || ''
+      };
+      renderFluxo();
+    }
+
+    function buildAppRealizedSaleSummary(period=closedFlowPeriod){
       const lots = {};
       const summary = {
         vendasEncerradas: 0,
@@ -4287,6 +4325,8 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           lot.custoTotal = 0;
         }
 
+        if(!isDateInClosedFlowPeriod(t.data || '', period)) continue;
+
         summary.vendasEncerradas += 1;
         summary.quantidadeVendida += sellQty;
         summary.receitaLiquida += receitaLiquida;
@@ -4303,10 +4343,14 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       };
     }
 
-    function buildClosedAppFlowSummary(rows){
-      const paidRows = rows.filter(r => r.status === 'PAGO' && parseNumber(r.proventoNoCaixa) > 0);
+    function buildClosedAppFlowSummary(rows, period=closedFlowPeriod){
+      const paidRows = rows.filter(r =>
+        r.status === 'PAGO' &&
+        parseNumber(r.proventoNoCaixa) > 0 &&
+        isDateInClosedFlowPeriod(r.dataPagamento || r.dataCom || '', period)
+      );
       const dividendosCapturados = paidRows.reduce((s,r) => s + parseNumber(r.proventoNoCaixa), 0);
-      const venda = buildAppRealizedSaleSummary();
+      const venda = buildAppRealizedSaleSummary(period);
       const lucroConcreto = dividendosCapturados + venda.lucroRealizado;
       const capitalBase = venda.custoBaixado;
       return {
@@ -4318,7 +4362,8 @@ async function fetchSingleTickerBrapi(tk, opts={}){
         tickers: [...new Set([...paidRows.map(r => r.ticker), ...venda.tickers])],
         primeiraCompra: venda.primeiraCompra || paidRows.map(r => r.compraBase).filter(Boolean).sort()[0] || '',
         ultimaFinalizacao: venda.ultimaFinalizacao || paidRows.map(r => r.dataPagamento).filter(Boolean).sort().slice(-1)[0] || '',
-        lucroRealizadoPct: capitalBase > 0 ? (venda.lucroRealizado / capitalBase) * 100 : 0
+        lucroRealizadoPct: capitalBase > 0 ? (venda.lucroRealizado / capitalBase) * 100 : 0,
+        period
       };
     }
 
@@ -4331,12 +4376,26 @@ async function fetchSingleTickerBrapi(tk, opts={}){
         : 'periodo ainda em formacao';
       el.innerHTML = `
         <div style="display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap">
-          <div>
+          <div style="min-width:300px;flex:1">
             <div class="kpi-title" style="color:#b7ffd8">Lucro concreto de fluxo encerrado</div>
             <div class="kpi-value" style="font-size:34px;color:${totalClass};margin-top:8px">${formatBRL(summary.lucroConcreto)}</div>
             <div class="section-note" style="margin-top:8px;margin-bottom:0">
               Soma simples do que ja virou caixa no app: dividendos pagos + valorizacao realizada em venda. Marcacao a mercado nao entra aqui.
             </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:end">
+              <div class="field" style="min-width:150px;margin:0">
+                <label>De</label>
+                <input id="closedFlowFrom" type="date" value="${summary.period?.from || ''}" onclick="event.stopPropagation()" onchange="setClosedFlowPeriodFromInputs()" />
+              </div>
+              <div class="field" style="min-width:150px;margin:0">
+                <label>Ate</label>
+                <input id="closedFlowTo" type="date" value="${summary.period?.to || ''}" onclick="event.stopPropagation()" onchange="setClosedFlowPeriodFromInputs()" />
+              </div>
+              <button class="btn-secondary" onclick="event.stopPropagation();setClosedFlowPeriodPreset('12m')">12m</button>
+              <button class="btn-secondary" onclick="event.stopPropagation();setClosedFlowPeriodPreset('year')">Ano</button>
+              <button class="btn-outline" onclick="event.stopPropagation();setClosedFlowPeriodPreset('all')">Tudo</button>
+            </div>
+            <div class="mini" style="margin-top:8px;color:#b7ffd8">Filtro atual: ${closedFlowPeriodLabel(summary.period)}</div>
           </div>
           <div class="grid-5" style="flex:1;min-width:520px;margin:0">
             <div class="card" style="margin:0;background:rgba(0,0,0,.16)"><div class="kpi-title">Dividendos capturados</div><div class="kpi-value" style="font-size:20px">${formatBRL(summary.dividendosCapturados)}</div></div>
