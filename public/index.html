@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.10.0 — Dossiê Bruto de Ativos</title>
+  <title>Guido Dividend System v1.10.1 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -307,7 +307,7 @@
 
 
     /* =========================================================
-       v1.10.0 — Dossiê bruto de ativos
+       v1.10.1 — Dossiê bruto de ativos
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -773,9 +773,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.10.0 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
+        <p>v1.10.1 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
       </div>
-      <div class="version-pill">v1.10.0 · lucro por período</div>
+      <div class="version-pill">v1.10.1 · dossiê com relação capital/retorno</div>
     </div>
 
     <div class="grid-5">
@@ -1507,7 +1507,7 @@
           <div class="field"><label>Tipo</label><select id="rawAssetTypeFilter" onchange="renderRawAssetDossier()"><option value="TODOS">Todos</option><option value="ACAO">Ações</option><option value="FII">FIIs</option><option value="OUTROS">Outros</option></select></div>
           <div class="field"><label>Status</label><select id="rawAssetStatusFilter" onchange="renderRawAssetDossier()"><option value="TODOS">Todos</option><option value="ABERTA">Posição atual</option><option value="ZERADA">Posição zerada / histórico</option></select></div>
           <div class="field"><label>Fonte</label><select id="rawAssetSourceFilter" onchange="renderRawAssetDossier()"><option value="TODOS">Todas</option><option value="B3">B3 encontrado</option><option value="BRAPI">BRAPI/cache</option><option value="PROVENTOS">Proventos</option><option value="PENDENTE">Dados externos pendentes</option></select></div>
-          <div class="field"><label>Ordenar por</label><select id="rawAssetSort" onchange="renderRawAssetDossier()"><option value="value">Valor atual</option><option value="weight">Peso carteira</option><option value="dividends">Dividendos recebidos</option><option value="return">Rentabilidade pessoal</option><option value="updated">Última atualização</option><option value="ticker">Ticker</option></select></div>
+          <div class="field"><label>Ordenar por</label><select id="rawAssetSort" onchange="renderRawAssetDossier()"><option value="value">Valor atual</option><option value="weight">Retorno por capital</option><option value="dividends">Dividendos recebidos</option><option value="return">Rentabilidade pessoal</option><option value="updated">Última atualização</option><option value="ticker">Ticker</option></select></div>
           <div class="field"><label>&nbsp;</label><button class="btn-secondary" onclick="renderRawAssetDossier()">Atualizar</button></div>
         </div>
       </div>
@@ -1516,7 +1516,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.10.0 · Fluxo do app separado da B3, caixa confirmado, lucro concreto por período e radar conservador</div>
+    <div class="footer">Guido Dividend System v1.10.1 · Fluxo do app separado da B3, caixa confirmado, lucro concreto por período, dossiê capital/retorno e radar conservador</div>
   </div>
 
   </section>
@@ -6237,6 +6237,19 @@ function renderEngineSummary(){
       return labels;
     }
 
+    function rawAssetReturnPerReal(item){
+      const invested = parseNumber(item?.investedValue);
+      if(invested <= 0) return 0;
+      return parseNumber(item?.personalReturn) / invested;
+    }
+
+    function formatRawAssetCapitalReturn(item){
+      const invested = parseNumber(item?.investedValue);
+      if(invested <= 0) return '---';
+      const ratio = rawAssetReturnPerReal(item);
+      return `${formatBRL(ratio).replace('R$ ', 'R$ ')} / R$ 1`;
+    }
+
     function buildRawAssetIndex(){
       const totalPortfolio = Object.values(state.b3Portfolio || {}).reduce((a,x)=>a+parseNumber(x.valorMercado || x.custoTotal),0) ||
         Object.values(state.positions || {}).reduce((a,x)=>a+parseNumber(x.valorMercado || x.custoTotal),0);
@@ -6311,7 +6324,7 @@ function renderEngineSummary(){
       });
       const sorters = {
         value: (a,b)=>b.currentValue-a.currentValue,
-        weight: (a,b)=>b.portfolioWeight-a.portfolioWeight,
+        weight: (a,b)=>rawAssetReturnPerReal(b)-rawAssetReturnPerReal(a),
         dividends: (a,b)=>b.totalDividends-a.totalDividends,
         return: (a,b)=>b.personalReturnPct-a.personalReturnPct,
         updated: (a,b)=>String(b.lastUpdated).localeCompare(String(a.lastUpdated)),
@@ -6343,7 +6356,7 @@ function renderEngineSummary(){
             <div><span>Valor atual</span><b>${formatBRL(r.currentValue)}</b></div>
             <div><span>Dividendos</span><b>${formatBRL(r.totalDividends)}</b></div>
             <div><span>Retorno pessoal</span><b>${formatBRL(r.personalReturn)}</b></div>
-            <div><span>Peso carteira</span><b>${formatPct(r.portfolioWeight)}</b></div>
+            <div><span>Retorno / capital</span><b>${formatRawAssetCapitalReturn(r)}</b></div>
           </div>
           <div class="mini">Última atualização: ${r.lastUpdated ? new Date(r.lastUpdated).toLocaleString('pt-BR') : 'não registrada'}</div>
           <div class="raw-source-list">${flags || '<span class="raw-flag warn">Dados externos pendentes</span>'}</div>

@@ -1,6 +1,6 @@
 {
   "name": "guido-dividend-system",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "private": true,
   "description": "Guido Dividend System - sistema local de inteligencia patrimonial, dividendos, B3 Ledger e FIIs.",
   "scripts": {
