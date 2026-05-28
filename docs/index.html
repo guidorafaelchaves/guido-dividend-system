@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.9.6 — Dossiê Bruto de Ativos</title>
+  <title>Guido Dividend System v1.9.7 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -307,7 +307,7 @@
 
 
     /* =========================================================
-       v1.9.6 — Dossiê bruto de ativos
+       v1.9.7 — Dossiê bruto de ativos
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -773,9 +773,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.9.6 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
+        <p>v1.9.7 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
       </div>
-      <div class="version-pill">v1.9.6 · dossiê bruto</div>
+      <div class="version-pill">v1.9.7 · modelo realista</div>
     </div>
 
     <div class="grid-5">
@@ -1036,9 +1036,9 @@
         <div class="grid-5" style="margin-bottom:0">
           <div class="card" style="margin-bottom:0"><div class="kpi-title">Proventos a Receber</div><div class="kpi-value" id="fluxoKpiReceber">R$ 0,00</div></div>
           <div class="card" style="margin-bottom:0"><div class="kpi-title">Proventos Já Pagos</div><div class="kpi-value" id="fluxoKpiPago">R$ 0,00</div></div>
-          <div class="card" style="margin-bottom:0"><div class="kpi-title">Lucro de Preço Atual</div><div class="kpi-value" id="fluxoKpiLucroPreco">R$ 0,00</div></div>
-          <div class="card" style="margin-bottom:0"><div class="kpi-title">Total Capturado</div><div class="kpi-value" id="fluxoKpiCapturado">R$ 0,00</div></div>
-          <div class="card" style="margin-bottom:0"><div class="kpi-title">Sinais de Venda</div><div class="kpi-value" id="fluxoKpiVenda">0</div></div>
+          <div class="card" style="margin-bottom:0"><div class="kpi-title">Marcação a Mercado</div><div class="kpi-value" id="fluxoKpiLucroPreco">R$ 0,00</div></div>
+          <div class="card" style="margin-bottom:0"><div class="kpi-title">Caixa Confirmado</div><div class="kpi-value" id="fluxoKpiCapturado">R$ 0,00</div></div>
+          <div class="card" style="margin-bottom:0"><div class="kpi-title">Alertas de Revisão</div><div class="kpi-value" id="fluxoKpiVenda">0</div></div>
         </div>
       </div>
 
@@ -1058,7 +1058,7 @@
                 <th class="right">Lucro Preço</th>
                 <th class="right">Lucro Preço %</th>
                 <th class="right">Provento no Caixa</th>
-                <th class="right">Total Capturado</th>
+                <th class="right">Caixa Confirmado</th>
                 <th class="center">Decisão</th>
               </tr>
             </thead>
@@ -1510,7 +1510,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.9.6 · Dossiê bruto de ativos, manifesto premium, inteligência integrada e privacidade local-first</div>
+    <div class="footer">Guido Dividend System v1.9.7 · Modelo realista: caixa confirmado, marcação a mercado separada e radar conservador</div>
   </div>
 
   </section>
@@ -3328,6 +3328,69 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       return clamp(((value - min) / (max - min)) * 10, 0, 10);
     }
 
+    function eventDyLimitByType(tipo){
+      return tipo === 'FII' ? 3.0 : 8.0;
+    }
+
+    function eventDyTargetByType(tipo){
+      return tipo === 'FII' ? 1.0 : 2.5;
+    }
+
+    function assessDividendEventRealism(row){
+      const flags = [];
+      const dyLimit = eventDyLimitByType(row.tipo);
+      const targetDy = eventDyTargetByType(row.tipo);
+      const dy = parseNumber(row.dyEvento);
+      const value = parseNumber(row.valorUnitario);
+      const price = parseNumber(row.precoAtual);
+      const freq = parseNumber(row.freq12m);
+      const confidence = parseNumber(row.confiancaDadoPct);
+      const avg = parseNumber(row.mediaProvento12m);
+      const ratioToAverage = avg > 0 ? value / avg : 0;
+      let scoreCap = 10;
+      let scorePenalty = 1;
+
+      if(price <= 0 || value <= 0 || dy <= 0){
+        flags.push('SEM PRECO/PROVENTO');
+        scoreCap = Math.min(scoreCap, 2.5);
+        scorePenalty *= 0.35;
+      }
+      if(dy > dyLimit){
+        flags.push('DY IRREAL');
+        scoreCap = Math.min(scoreCap, 3.0);
+        scorePenalty *= 0.25;
+      }else if(dy > targetDy * 2.2){
+        flags.push('DY FORA DO NORMAL');
+        scoreCap = Math.min(scoreCap, 6.0);
+        scorePenalty *= 0.65;
+      }
+      if(ratioToAverage > 3 && freq >= 3){
+        flags.push('PROVENTO ATIPICO');
+        scoreCap = Math.min(scoreCap, 5.5);
+        scorePenalty *= 0.70;
+      }
+      if(confidence < 50){
+        flags.push('DADO FRACO');
+        scoreCap = Math.min(scoreCap, 6.0);
+        scorePenalty *= 0.80;
+      }
+      if(freq < 2){
+        flags.push('HISTORICO CURTO');
+        scoreCap = Math.min(scoreCap, 7.0);
+      }
+
+      return {
+        flags,
+        scoreCap,
+        scorePenalty,
+        dyLimit,
+        targetDy,
+        dyCapped: clamp(dy, 0, dyLimit),
+        yieldTempoCapped: clamp(parseNumber(row.yieldTempo), 0, targetDy * 1.5),
+        reliable: scoreCap >= 6
+      };
+    }
+
     function buildRadarRows(){
       const today = todayIso();
       const todayDate = dateFromIsoUTC(today);
@@ -3389,15 +3452,14 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           };
         });
 
-      const maxYieldTempo = Math.max(1, ...rows.map(r => r.yieldTempo));
-      const maxDyEvento = Math.max(1, ...rows.map(r => r.dyEvento));
       const maxMedia12m = Math.max(1, ...rows.map(r => r.mediaProvento12m));
       const maxFluxo90 = Math.max(1, ...rows.map(r => r.fluxo90));
       const bonusDataComMaxDias = parseNumber(state.settings.radar.bonusDataComMaxDias || 5);
 
       return rows.map(r => {
-        const normYieldTempo = normByRange(r.yieldTempo, 0, maxYieldTempo);
-        const normDyEvento = normByRange(r.dyEvento, 0, maxDyEvento);
+        const realism = assessDividendEventRealism(r);
+        const normYieldTempo = clamp((realism.yieldTempoCapped / Math.max(0.01, realism.targetDy * 1.5)) * 10, 0, 10);
+        const normDyEvento = clamp((realism.dyCapped / Math.max(0.01, realism.targetDy)) * 10, 0, 10);
         const normProximidade = r.diasCom === 999 ? 0 : clamp(10 - ((r.diasCom / Math.max(1, bonusDataComMaxDias)) * 10), 0, 10);
         const normDescontoPM = clamp(r.descontoVsPrecoMedioPct > 0 ? r.descontoVsPrecoMedioPct : 0, 0, 10);
         const normFluxo90 = normByRange(r.fluxo90, 0, maxFluxo90);
@@ -3413,23 +3475,25 @@ async function fetchSingleTickerBrapi(tk, opts={}){
 
         const isFII = r.tipo === 'FII';
 
-        const scoreCaptura = isFII
+        const rawScoreCaptura = isFII
           ? (
-              normYieldTempo * 0.30 +
-              normDyEvento * 0.12 +
-              normProximidade * 0.08 +
+              normDyEvento * 0.34 +
+              normYieldTempo * 0.10 +
+              normProximidade * 0.10 +
               normDescontoPM * 0.10 +
-              normFluxo90 * 0.10 +
-              normFreq12m * 0.15 +
-              normPrevisibilidade * 0.15
+              normFluxo90 * 0.06 +
+              normFreq12m * 0.16 +
+              normPrevisibilidade * 0.14
             )
           : (
-              normYieldTempo * 0.38 +
-              normDyEvento * 0.22 +
-              normProximidade * (0.12 + (parseNumber(state.settings.radar.pesos.timing || 0.20) * 0.20)) +
+              normDyEvento * 0.38 +
+              normYieldTempo * 0.08 +
+              normProximidade * (0.14 + (parseNumber(state.settings.radar.pesos.timing || 0.20) * 0.10)) +
               normDescontoPM * 0.18 +
-              normFluxo90 * 0.10
+              normFluxo90 * 0.06 +
+              normConfiancaDado * 0.08
             );
+        const scoreCaptura = Math.min(rawScoreCaptura * realism.scorePenalty, realism.scoreCap);
 
         const scoreQualidade = isFII
           ? (
@@ -3456,25 +3520,28 @@ async function fetchSingleTickerBrapi(tk, opts={}){
         const pesoCaptura = pesoCapturaRaw / somaPesosRadar;
         const pesoQualidade = pesoQualidadeRaw / somaPesosRadar;
 
-        const scoreFinal = (
+        const rawScoreFinal = (
           scoreCaptura * pesoCaptura +
           scoreQualidade * pesoQualidade
         );
+        const scoreFinal = Math.min(rawScoreFinal, realism.scoreCap);
 
-        const flags = [];
+        const flags = [...realism.flags];
         if(r.extraordinario) flags.push('EXTRA');
         if(foraDaCurva) flags.push('FORA DA CURVA');
         if(r.freq12m >= 10) flags.push('RECORRENTE');
         if(r.diasCom <= 3) flags.push('COM PRÓXIMA');
         if(scoreQualidade < 4.5) flags.push('QUALIDADE FRACA');
         if(r.previsibilidadePct >= 75) flags.push('PREVISÍVEL');
-        if(r.confiancaDadoNome === 'Baixa') flags.push('DADO FRACO');
+        if(r.confiancaDadoNome === 'Baixa' && !flags.includes('DADO FRACO')) flags.push('DADO FRACO');
 
         const diagnostico = classifyRadarDiagnostic(scoreCaptura, scoreQualidade, r.extraordinario || foraDaCurva);
         if(diagnostico.flag && !flags.includes(diagnostico.flag)) flags.push(diagnostico.flag);
 
         return {
           ...r,
+          yieldTempoBruto: round(r.yieldTempo, 2),
+          yieldTempo: round(realism.yieldTempoCapped, 2),
           scoreCaptura: round(scoreCaptura, 2),
           scoreQualidade: round(scoreQualidade, 2),
           scoreMetodo: diagnostico.nome,
@@ -3486,8 +3553,10 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           confiancaDadoNome: r.confiancaDadoNome || 'Baixa',
           padraoPagamento: r.padraoPagamento || 'Insuficiente',
           foraDaCurva,
+          scoreCap: round(realism.scoreCap, 2),
+          eventoConfiavel: realism.reliable,
           scoreFinal: round(scoreFinal, 2),
-          flags
+          flags: [...new Set(flags)]
         };
       });
     }
@@ -3839,6 +3908,13 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       el.innerHTML = `Multicritério ativo: ${items}<span class="mini">O radar ranqueia pela equivalência normalizada 50/50 entre os fatores ligados.</span>`;
     }
 
+    function radarFlagBadgeClass(flag){
+      if(['EXTRA','EXTRAORDINARIO','EXTRAORDINÁRIO','FORA DA CURVA','DY IRREAL'].includes(flag)) return 'b-red';
+      if(['RECORRENTE','PREMIUM','CONSISTENTE','PREVISIVEL','PREVISÍVEL'].includes(flag)) return 'b-green';
+      if(['QUALIDADE FRACA','YIELD ESPECULATIVO','DADO FRACO','DY FORA DO NORMAL','HISTORICO CURTO','PROVENTO ATIPICO','SEM PRECO/PROVENTO'].includes(flag)) return 'b-yellow';
+      return 'b-blue';
+    }
+
     function resetSort(){
       multiCriteriaColumns = [];
       sortStack = [{ column:'scoreFinal', direction:'desc' }];
@@ -3964,9 +4040,11 @@ async function fetchSingleTickerBrapi(tk, opts={}){
             </div>
           </td>
           <td class="right"><div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px"><span style="display:inline-block;min-width:64px;padding:8px 10px;border-radius:12px;font-weight:900;background:linear-gradient(135deg,rgba(0,212,255,.18),rgba(124,140,255,.16));border:1px solid rgba(0,212,255,.22);color:var(--text);text-align:center">${(Number.isFinite(r.scoreFinal)?r.scoreFinal:0).toFixed(2)}</span>${multiCriteriaColumns.length ? `<span class="mini" style="color:#9affcb">MC ${(Number.isFinite(r.multiCriteriaScore)?r.multiCriteriaScore:0).toFixed(1)}</span>` : ''}</div></td>
-          <td class="center">${r.flags.map(f => `<span class="badge ${f==='EXTRA'||f==='EXTRAORDINÁRIO'||f==='FORA DA CURVA'?'b-red':f==='RECORRENTE'||f==='PREMIUM'||f==='CONSISTENTE'||f==='PREVISÍVEL'?'b-green':f==='QUALIDADE FRACA'||f==='YIELD ESPECULATIVO'||f==='DADO FRACO'?'b-yellow':'b-blue'}">${f}</span>`).join(' ')}</td>
+          <td class="center">${r.flags.map(f => `<span class="badge ${radarFlagBadgeClass(f)}">${f}</span>`).join(' ')}</td>
           <td class="center">
-            <button class="btn-api" onclick="openTradeModal('${r.ticker}','COMPRA', ${r.precoAtual || 0}, '${r.id}')">Capturar</button>
+            ${r.eventoConfiavel && r.scoreFinal >= 6
+              ? `<button class="btn-api" onclick="openTradeModal('${r.ticker}','COMPRA', ${r.precoAtual || 0}, '${r.id}')">Estudar compra</button>`
+              : `<span class="badge b-yellow">Auditar dado</span>`}
           </td>
         </tr>
       `).join('');
@@ -4114,6 +4192,41 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       };
     }
 
+    function buildUniqueDividendEventsForFluxo(){
+      const byKey = {};
+      const ordered = [...state.dividends].sort((a,b) => {
+        const da = a.dataPagamento || a.dataCom || '';
+        const db = b.dataPagamento || b.dataCom || '';
+        return da.localeCompare(db);
+      });
+
+      for(const d of ordered){
+        const ticker = normalizeTicker(d.ticker);
+        const pay = d.dataPagamento || '';
+        const dataCom = d.dataCom || '';
+        const value = round(parseNumber(d.valorUnitario), 6);
+        const looseKey = [ticker, pay || dataCom, value].join('|');
+        const existingKey = looseKey;
+        const existing = byKey[existingKey];
+
+        if(!existing){
+          byKey[existingKey] = { ...d, ticker };
+          continue;
+        }
+
+        byKey[existingKey] = {
+          ...existing,
+          ...d,
+          ticker,
+          dataCom: existing.dataCom || d.dataCom || '',
+          dataPagamento: existing.dataPagamento || d.dataPagamento || '',
+          valorUnitario: Math.max(parseNumber(existing.valorUnitario), parseNumber(d.valorUnitario))
+        };
+      }
+
+      return Object.values(byKey);
+    }
+
     function classifyFluxoDecision(row){
       if(row.custoConfiavel === false) return { label:'INVESTIGAR CUSTO', badge:'b-yellow' };
       if(row.status === 'A RECEBER') return { label:'SEGURAR ATÉ CRÉDITO', badge:'b-blue' };
@@ -4123,8 +4236,7 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       }
       if(row.status === 'PAGO'){
         if(row.quantidadeAtual <= 0) return { label:'CICLO ENCERRADO', badge:'b-gray' };
-        if(row.lucroPrecoPct >= 7 || row.totalCapturadoPct >= 10) return { label:'AVALIAR VENDA', badge:'b-green' };
-        if(row.totalCapturado > 0) return { label:'LUCRO CAPTURADO / AVALIAR PARCIAL', badge:'b-yellow' };
+        if(row.lucroPrecoPct >= 12) return { label:'LUCRO NAO REALIZADO / REBALANCEAR', badge:'b-yellow' };
         if(row.lucroPrecoPct <= -5) return { label:'REAVALIAR POSIÇÃO', badge:'b-red' };
         return { label:'MANTER', badge:'b-blue' };
       }
@@ -4140,11 +4252,7 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       const cutoffPastIso = cutoffPast.toISOString().slice(0,10);
       const rows = [];
 
-      const uniqueEvents = [...state.dividends].sort((a,b) => {
-        const da = a.dataPagamento || a.dataCom || '';
-        const db = b.dataPagamento || b.dataCom || '';
-        return da.localeCompare(db);
-      });
+      const uniqueEvents = buildUniqueDividendEventsForFluxo();
 
       for(const d of uniqueEvents){
         const currentPos = state.positions[d.ticker] || {
@@ -4180,7 +4288,7 @@ async function fetchSingleTickerBrapi(tk, opts={}){
         const lucroPreco = currentPos.quantidade > 0 ? parseNumber(currentPos.lucroNaoRealizado) : 0;
         const lucroPrecoPct = currentPos.quantidade > 0 ? parseNumber(currentPos.lucroNaoRealizadoPct) : 0;
         const proventoNoCaixa = status === 'PAGO' ? valorEvento : 0;
-        const totalCapturado = lucroPreco + proventoNoCaixa;
+        const totalCapturado = proventoNoCaixa;
         const capitalAtual = parseNumber(currentPos.capitalInvestido);
         const totalCapturadoPct = capitalAtual > 0 ? (totalCapturado / capitalAtual) * 100 : 0;
 
@@ -4227,8 +4335,8 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       const totalLucroPreco = Object.values(state.positions)
         .filter(p => parseNumber(p.quantidade) > 0)
         .reduce((s,p) => s + parseNumber(p.lucroNaoRealizado), 0);
-      const totalCapturado = rows.reduce((s,r) => s + r.totalCapturado, 0);
-      const sinaisVenda = rows.filter(r => r.decisao.includes('VENDA')).length;
+      const totalCapturado = totalPago;
+      const sinaisVenda = rows.filter(r => r.decisao.includes('REAVALIAR') || r.decisao.includes('REBALANCEAR') || r.decisao.includes('INVESTIGAR')).length;
 
       if($('fluxoKpiReceber')) $('fluxoKpiReceber').innerText = formatBRL(totalReceber);
       if($('fluxoKpiPago')) $('fluxoKpiPago').innerText = formatBRL(totalPago);
