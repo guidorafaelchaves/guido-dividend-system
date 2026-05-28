@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.10.3 — Dossiê Bruto de Ativos</title>
+  <title>Guido Dividend System v1.10.4 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -307,7 +307,7 @@
 
 
     /* =========================================================
-       v1.10.3 — Dossiê bruto de ativos
+       v1.10.4 — Dossiê bruto de ativos
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -773,9 +773,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.10.3 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
+        <p>v1.10.4 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
       </div>
-      <div class="version-pill">v1.10.3 · captura restaurada</div>
+      <div class="version-pill">v1.10.4 · diário com ciclos encerrados</div>
     </div>
 
     <div class="grid-5">
@@ -1516,7 +1516,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.10.3 · Fluxo do app separado da B3, caixa confirmado, lucro concreto por período, dossiê capital/retorno e radar conservador</div>
+    <div class="footer">Guido Dividend System v1.10.4 · Fluxo do app separado da B3, caixa confirmado, lucro concreto por período, diário com ciclos encerrados e radar conservador</div>
   </div>
 
   </section>
@@ -4076,6 +4076,81 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       return result;
     }
 
+    function buildDiarioClosedCycleRows(){
+      const lots = {};
+      const rows = [];
+      const ordered = getAppFlowTrades().sort((a,b) => {
+        const dateCmp = (a.data || '').localeCompare(b.data || '');
+        if(dateCmp) return dateCmp;
+        return String(a.id || '').localeCompare(String(b.id || ''));
+      });
+
+      function lotFor(ticker){
+        if(!lots[ticker]) lots[ticker] = { quantidade:0, custoTotal:0, primeiraCompra:'' };
+        return lots[ticker];
+      }
+
+      for(const t of ordered){
+        const ticker = normalizeTicker(t.ticker);
+        if(!ticker) continue;
+        const lot = lotFor(ticker);
+        const qty = parseNumber(t.quantidade);
+        const price = parseNumber(t.precoUnitario);
+        const fees = parseNumber(t.custos);
+        if(qty <= 0) continue;
+
+        if(t.tipo === 'COMPRA'){
+          lot.quantidade += qty;
+          lot.custoTotal += (qty * price) + fees;
+          if(!lot.primeiraCompra || (t.data && t.data < lot.primeiraCompra)) lot.primeiraCompra = t.data || '';
+          continue;
+        }
+
+        if(t.tipo !== 'VENDA' || lot.quantidade <= 0) continue;
+        const sellQty = Math.min(qty, lot.quantidade);
+        const pm = lot.quantidade > 0 ? lot.custoTotal / lot.quantidade : 0;
+        const custoBaixado = pm * sellQty;
+        const feesProporcionais = qty > 0 ? fees * (sellQty / qty) : 0;
+        const receitaLiquida = (sellQty * price) - feesProporcionais;
+        const resultado = receitaLiquida - custoBaixado;
+
+        lot.quantidade -= sellQty;
+        lot.custoTotal -= custoBaixado;
+        if(lot.quantidade <= 0){
+          lot.quantidade = 0;
+          lot.custoTotal = 0;
+        }
+
+        rows.push({
+          ticker,
+          quantidade: 0,
+          precoMedio: pm,
+          precoAtual: price,
+          capitalInvestido: custoBaixado,
+          valorMercado: 0,
+          lucroNaoRealizado: resultado,
+          lucroNaoRealizadoPct: custoBaixado > 0 ? (resultado / custoBaixado) * 100 : 0,
+          dividendosFuturos90d: 0,
+          yieldOnCost12mPct: 0,
+          pesoCarteiraPct: 0,
+          freq12m: 0,
+          extraordinario: false,
+          scoreRisco: 0,
+          riscoCategoria: 'ENCERRADO',
+          flagsRisco: [
+            `Venda ${formatDateBR(t.data || '')}`,
+            resultado >= 0 ? 'RESULTADO POSITIVO' : 'RESULTADO NEGATIVO'
+          ],
+          closedCycle: true,
+          dataFinalizacao: t.data || '',
+          qtdBaixada: sellQty,
+          primeiraCompra: lot.primeiraCompra
+        });
+      }
+
+      return rows.sort((a,b) => String(b.dataFinalizacao || '').localeCompare(String(a.dataFinalizacao || '')));
+    }
+
     function renderDiario(){
       let head = '<tr>';
       for(const c of colunasDiario){
@@ -4085,7 +4160,7 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       $('theadDiario').innerHTML = head;
 
       const fluxo90Map = buildDividendosFuturos90dMap();
-      const rows = Object.values(state.positions)
+      const openRows = Object.values(state.positions)
         .filter(p => p.quantidade > 0)
         .map(p => {
           const an = state.analytics[p.ticker] || {};
@@ -4110,19 +4185,23 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           };
         })
         .sort((a,b) => b.scoreRisco - a.scoreRisco);
+      const closedRows = buildDiarioClosedCycleRows();
+      const rows = [...openRows, ...closedRows];
 
       let totalCapital = 0, totalMercado = 0, totalLucro = 0, totalProv90 = 0;
       $('tbodyDiario').innerHTML = rows.map(r => {
-        totalCapital += r.capitalInvestido;
-        totalMercado += r.valorMercado;
+        if(!r.closedCycle){
+          totalCapital += r.capitalInvestido;
+          totalMercado += r.valorMercado;
+          totalProv90 += r.dividendosFuturos90d;
+        }
         totalLucro += r.lucroNaoRealizado;
-        totalProv90 += r.dividendosFuturos90d;
         const clsLucro = r.lucroNaoRealizado >= 0 ? 'b-green' : 'b-red';
-        const clsRisk = r.riscoCategoria === 'BAIXO' ? 'b-green' : r.riscoCategoria === 'ATENÇÃO' ? 'b-yellow' : 'b-red';
+        const clsRisk = r.riscoCategoria === 'ENCERRADO' ? 'b-gray' : r.riscoCategoria === 'BAIXO' ? 'b-green' : r.riscoCategoria === 'ATENÇÃO' ? 'b-yellow' : 'b-red';
         return `
-          <tr>
+          <tr${r.closedCycle ? ' style="opacity:.86"' : ''}>
             <td onclick="openAudit('${r.ticker}')" style="cursor:pointer;color:var(--violet)"><strong>${r.ticker}</strong></td>
-            <td class="center">${r.quantidade}</td>
+            <td class="center">${r.closedCycle ? '<span class="badge b-gray">0</span>' : r.quantidade}</td>
             <td class="right">${formatBRL(r.precoMedio)}</td>
             <td class="right">${formatBRL(r.precoAtual)}</td>
             <td class="right">${formatBRL(r.capitalInvestido)}</td>
@@ -4130,10 +4209,10 @@ async function fetchSingleTickerBrapi(tk, opts={}){
             <td class="right"><span class="badge ${clsLucro}">${formatBRL(r.lucroNaoRealizado)}</span></td>
             <td class="right">${formatPct(r.lucroNaoRealizadoPct)}</td>
             <td class="right" style="color:var(--violet);font-weight:800">${formatBRL(r.dividendosFuturos90d)}</td>
-            <td class="right">${formatPct(r.yieldOnCost12mPct)}</td>
-            <td class="right">${formatPct(r.pesoCarteiraPct)}</td>
-            <td class="center">${r.freq12m}</td>
-            <td class="center">${r.extraordinario ? '<span class="badge b-red">SIM</span>' : '<span class="badge b-green">NÃO</span>'}</td>
+            <td class="right">${r.closedCycle ? '---' : formatPct(r.yieldOnCost12mPct)}</td>
+            <td class="right">${r.closedCycle ? '---' : formatPct(r.pesoCarteiraPct)}</td>
+            <td class="center">${r.closedCycle ? '---' : r.freq12m}</td>
+            <td class="center">${r.closedCycle ? '<span class="badge b-gray">N/A</span>' : (r.extraordinario ? '<span class="badge b-red">SIM</span>' : '<span class="badge b-green">NÃO</span>')}</td>
             <td class="right" style="font-weight:900">${r.scoreRisco.toFixed(2)}</td>
             <td class="center"><span class="badge ${clsRisk}">${r.riscoCategoria}</span></td>
             <td class="center">${r.flagsRisco.map(f => `<span class="badge b-gray">${f}</span>`).join(' ')}</td>
