@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.9.7 — Dossiê Bruto de Ativos</title>
+  <title>Guido Dividend System v1.9.8 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -307,7 +307,7 @@
 
 
     /* =========================================================
-       v1.9.7 — Dossiê bruto de ativos
+       v1.9.8 — Dossiê bruto de ativos
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -773,9 +773,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.9.7 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
+        <p>v1.9.8 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
       </div>
-      <div class="version-pill">v1.9.7 · modelo realista</div>
+      <div class="version-pill">v1.9.8 · fluxo do app</div>
     </div>
 
     <div class="grid-5">
@@ -1510,7 +1510,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.9.7 · Modelo realista: caixa confirmado, marcação a mercado separada e radar conservador</div>
+    <div class="footer">Guido Dividend System v1.9.8 · Fluxo do app separado da B3, caixa confirmado e radar conservador</div>
   </div>
 
   </section>
@@ -4148,8 +4148,18 @@ async function fetchSingleTickerBrapi(tk, opts={}){
     }
 
 
-    function getPositionSnapshotAtDate(ticker, cutoffIso){
-      const ordered = [...state.trades]
+    function isAppFlowTrade(trade){
+      const origem = String(trade?.origem || 'manual').toLowerCase();
+      if(origem.startsWith('import') || origem.includes('b3')) return false;
+      return ['manual','demo','legacy','app','radar'].includes(origem) || origem.startsWith('manual:') || origem.startsWith('app:');
+    }
+
+    function getAppFlowTrades(){
+      return [...(state.trades || [])].filter(isAppFlowTrade);
+    }
+
+    function getPositionSnapshotAtDate(ticker, cutoffIso, tradesSource=getAppFlowTrades()){
+      const ordered = [...tradesSource]
         .filter(t => t.ticker === ticker && (!cutoffIso || (t.data || '') <= cutoffIso))
         .sort((a,b) => (a.data || '').localeCompare(b.data || ''));
 
@@ -4190,6 +4200,31 @@ async function fetchSingleTickerBrapi(tk, opts={}){
         precoMedio: quantidade > 0 ? (custoTotal / quantidade) : 0,
         primeiraCompra
       };
+    }
+
+    function buildAppFlowPositions(){
+      const map = {};
+      const tickers = [...new Set(getAppFlowTrades().map(t => normalizeTicker(t.ticker)).filter(Boolean))];
+      for(const ticker of tickers){
+        const snap = getPositionSnapshotAtDate(ticker, todayIso());
+        const precoAtual = parseNumber(state.quotes[ticker]?.precoAtual);
+        const valorMercado = snap.quantidade * precoAtual;
+        const lucroNaoRealizado = valorMercado - snap.custoTotal;
+        map[ticker] = {
+          ticker,
+          quantidade: snap.quantidade,
+          precoMedio: snap.precoMedio,
+          precoAtual,
+          capitalInvestido: snap.custoTotal,
+          custoTotal: snap.custoTotal,
+          valorMercado,
+          lucroNaoRealizado,
+          lucroNaoRealizadoPct: snap.custoTotal > 0 ? (lucroNaoRealizado / snap.custoTotal) * 100 : 0,
+          custoConfiavel: true,
+          origemFluxo: 'app'
+        };
+      }
+      return map;
     }
 
     function buildUniqueDividendEventsForFluxo(){
@@ -4251,11 +4286,13 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       cutoffPast.setDate(cutoffPast.getDate() - 120);
       const cutoffPastIso = cutoffPast.toISOString().slice(0,10);
       const rows = [];
+      const appPositions = buildAppFlowPositions();
+      const appTrades = getAppFlowTrades();
 
       const uniqueEvents = buildUniqueDividendEventsForFluxo();
 
       for(const d of uniqueEvents){
-        const currentPos = state.positions[d.ticker] || {
+        const currentPos = appPositions[d.ticker] || {
           ticker: d.ticker,
           quantidade: 0,
           precoMedio: 0,
@@ -4269,7 +4306,7 @@ async function fetchSingleTickerBrapi(tk, opts={}){
         const payDate = d.dataPagamento || d.dataCom || '';
         if(!eventDate && !payDate) continue;
 
-        const snapshotAtEvent = getPositionSnapshotAtDate(d.ticker, eventDate || payDate);
+        const snapshotAtEvent = getPositionSnapshotAtDate(d.ticker, eventDate || payDate, appTrades);
         const qtdDireito = snapshotAtEvent.quantidade;
         const valorEvento = parseNumber(d.valorUnitario) * qtdDireito;
         const isPaid = !!payDate && payDate < today;
@@ -4329,10 +4366,11 @@ async function fetchSingleTickerBrapi(tk, opts={}){
 
     function renderFluxo(){
       const rows = buildFluxoRows();
+      const appPositions = buildAppFlowPositions();
 
       const totalReceber = rows.filter(r => r.status === 'A RECEBER').reduce((s,r) => s + r.valorEvento, 0);
       const totalPago = rows.filter(r => r.status === 'PAGO').reduce((s,r) => s + r.proventoNoCaixa, 0);
-      const totalLucroPreco = Object.values(state.positions)
+      const totalLucroPreco = Object.values(appPositions)
         .filter(p => parseNumber(p.quantidade) > 0)
         .reduce((s,p) => s + parseNumber(p.lucroNaoRealizado), 0);
       const totalCapturado = totalPago;
@@ -4367,7 +4405,7 @@ async function fetchSingleTickerBrapi(tk, opts={}){
         `;
       }).join('') || `
         <tr>
-          <td colspan="13" class="center muted" style="padding:24px">Nenhum evento relevante para exibir no fluxo de caixa inteligente.</td>
+          <td colspan="13" class="center muted" style="padding:24px">Nenhum evento relevante para as operaÃ§Ãµes realizadas dentro do aplicativo. ImportaÃ§Ãµes da B3 ficam fora desta aba.</td>
         </tr>
       `;
     }
