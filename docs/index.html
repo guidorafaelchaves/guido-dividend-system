@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.9.8 — Dossiê Bruto de Ativos</title>
+  <title>Guido Dividend System v1.9.9 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -307,7 +307,7 @@
 
 
     /* =========================================================
-       v1.9.8 — Dossiê bruto de ativos
+       v1.9.9 — Dossiê bruto de ativos
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -773,9 +773,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.9.8 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
+        <p>v1.9.9 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
       </div>
-      <div class="version-pill">v1.9.8 · fluxo do app</div>
+      <div class="version-pill">v1.9.9 · lucro concreto</div>
     </div>
 
     <div class="grid-5">
@@ -1012,6 +1012,7 @@
           </table>
         </div>
       </div>
+
     </div>
 
     <div id="tab-diario" class="panel">
@@ -1024,6 +1025,7 @@
           </table>
         </div>
       </div>
+
     </div>
 
     
@@ -1065,6 +1067,10 @@
             <tbody id="tbodyFluxo"></tbody>
           </table>
         </div>
+      </div>
+
+      <div id="fluxoClosedProfitBox" class="card" style="border:1px solid rgba(0,255,136,.30);background:linear-gradient(135deg,rgba(0,255,136,.16),rgba(0,212,255,.08));box-shadow:0 18px 55px rgba(0,255,136,.08)">
+        <div class="section-note">Lucro concreto de fluxo encerrado: aguardando operacoes finalizadas do aplicativo.</div>
       </div>
     </div>
 
@@ -1510,7 +1516,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.9.8 · Fluxo do app separado da B3, caixa confirmado e radar conservador</div>
+    <div class="footer">Guido Dividend System v1.9.9 · Fluxo do app separado da B3, caixa confirmado, lucro concreto e radar conservador</div>
   </div>
 
   </section>
@@ -4227,6 +4233,122 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       return map;
     }
 
+    function buildAppRealizedSaleSummary(){
+      const lots = {};
+      const summary = {
+        vendasEncerradas: 0,
+        quantidadeVendida: 0,
+        receitaLiquida: 0,
+        custoBaixado: 0,
+        lucroRealizado: 0,
+        tickers: new Set(),
+        primeiraCompra: '',
+        ultimaFinalizacao: ''
+      };
+      const ordered = getAppFlowTrades().sort((a,b) => {
+        const dateCmp = (a.data || '').localeCompare(b.data || '');
+        if(dateCmp) return dateCmp;
+        return String(a.id || '').localeCompare(String(b.id || ''));
+      });
+
+      function lotFor(ticker){
+        if(!lots[ticker]) lots[ticker] = { quantidade:0, custoTotal:0 };
+        return lots[ticker];
+      }
+
+      for(const t of ordered){
+        const ticker = normalizeTicker(t.ticker);
+        if(!ticker) continue;
+        const lot = lotFor(ticker);
+        const qty = parseNumber(t.quantidade);
+        const price = parseNumber(t.precoUnitario);
+        const fees = parseNumber(t.custos);
+        if(qty <= 0) continue;
+
+        if(t.tipo === 'COMPRA'){
+          lot.quantidade += qty;
+          lot.custoTotal += (qty * price) + fees;
+          if(!summary.primeiraCompra || (t.data && t.data < summary.primeiraCompra)) summary.primeiraCompra = t.data || '';
+          continue;
+        }
+
+        if(t.tipo !== 'VENDA' || lot.quantidade <= 0) continue;
+        const sellQty = Math.min(qty, lot.quantidade);
+        const pm = lot.quantidade > 0 ? lot.custoTotal / lot.quantidade : 0;
+        const custoBaixado = pm * sellQty;
+        const feesProporcionais = qty > 0 ? fees * (sellQty / qty) : 0;
+        const receitaLiquida = (sellQty * price) - feesProporcionais;
+        const lucro = receitaLiquida - custoBaixado;
+
+        lot.quantidade -= sellQty;
+        lot.custoTotal -= custoBaixado;
+        if(lot.quantidade <= 0){
+          lot.quantidade = 0;
+          lot.custoTotal = 0;
+        }
+
+        summary.vendasEncerradas += 1;
+        summary.quantidadeVendida += sellQty;
+        summary.receitaLiquida += receitaLiquida;
+        summary.custoBaixado += custoBaixado;
+        summary.lucroRealizado += lucro;
+        summary.tickers.add(ticker);
+        if(!summary.ultimaFinalizacao || (t.data && t.data > summary.ultimaFinalizacao)) summary.ultimaFinalizacao = t.data || '';
+      }
+
+      return {
+        ...summary,
+        tickers: [...summary.tickers],
+        lucroRealizadoPct: summary.custoBaixado > 0 ? (summary.lucroRealizado / summary.custoBaixado) * 100 : 0
+      };
+    }
+
+    function buildClosedAppFlowSummary(rows){
+      const paidRows = rows.filter(r => r.status === 'PAGO' && parseNumber(r.proventoNoCaixa) > 0);
+      const dividendosCapturados = paidRows.reduce((s,r) => s + parseNumber(r.proventoNoCaixa), 0);
+      const venda = buildAppRealizedSaleSummary();
+      const lucroConcreto = dividendosCapturados + venda.lucroRealizado;
+      const capitalBase = venda.custoBaixado;
+      return {
+        dividendosCapturados,
+        lucroRealizadoVenda: venda.lucroRealizado,
+        lucroConcreto,
+        eventosPagos: paidRows.length,
+        vendasEncerradas: venda.vendasEncerradas,
+        tickers: [...new Set([...paidRows.map(r => r.ticker), ...venda.tickers])],
+        primeiraCompra: venda.primeiraCompra || paidRows.map(r => r.compraBase).filter(Boolean).sort()[0] || '',
+        ultimaFinalizacao: venda.ultimaFinalizacao || paidRows.map(r => r.dataPagamento).filter(Boolean).sort().slice(-1)[0] || '',
+        lucroRealizadoPct: capitalBase > 0 ? (venda.lucroRealizado / capitalBase) * 100 : 0
+      };
+    }
+
+    function renderClosedAppFlowSummary(summary){
+      const el = $('fluxoClosedProfitBox');
+      if(!el) return;
+      const totalClass = summary.lucroConcreto >= 0 ? 'var(--green)' : 'var(--red)';
+      const periodo = summary.primeiraCompra && summary.ultimaFinalizacao
+        ? `${formatDateBR(summary.primeiraCompra)} ate ${formatDateBR(summary.ultimaFinalizacao)}`
+        : 'periodo ainda em formacao';
+      el.innerHTML = `
+        <div style="display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap">
+          <div>
+            <div class="kpi-title" style="color:#b7ffd8">Lucro concreto de fluxo encerrado</div>
+            <div class="kpi-value" style="font-size:34px;color:${totalClass};margin-top:8px">${formatBRL(summary.lucroConcreto)}</div>
+            <div class="section-note" style="margin-top:8px;margin-bottom:0">
+              Soma simples do que ja virou caixa no app: dividendos pagos + valorizacao realizada em venda. Marcacao a mercado nao entra aqui.
+            </div>
+          </div>
+          <div class="grid-5" style="flex:1;min-width:520px;margin:0">
+            <div class="card" style="margin:0;background:rgba(0,0,0,.16)"><div class="kpi-title">Dividendos capturados</div><div class="kpi-value" style="font-size:20px">${formatBRL(summary.dividendosCapturados)}</div></div>
+            <div class="card" style="margin:0;background:rgba(0,0,0,.16)"><div class="kpi-title">Valorizacao realizada</div><div class="kpi-value" style="font-size:20px;color:${summary.lucroRealizadoVenda >= 0 ? 'var(--green)' : 'var(--red)'}">${formatBRL(summary.lucroRealizadoVenda)}</div></div>
+            <div class="card" style="margin:0;background:rgba(0,0,0,.16)"><div class="kpi-title">Fluxos encerrados</div><div class="kpi-value" style="font-size:20px">${summary.eventosPagos + summary.vendasEncerradas}</div></div>
+            <div class="card" style="margin:0;background:rgba(0,0,0,.16)"><div class="kpi-title">Ativos</div><div class="kpi-value" style="font-size:20px">${summary.tickers.length}</div></div>
+            <div class="card" style="margin:0;background:rgba(0,0,0,.16)"><div class="kpi-title">Periodo</div><div class="kpi-value" style="font-size:13px;line-height:1.25">${periodo}</div></div>
+          </div>
+        </div>
+      `;
+    }
+
     function buildUniqueDividendEventsForFluxo(){
       const byKey = {};
       const ordered = [...state.dividends].sort((a,b) => {
@@ -4381,6 +4503,7 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       if($('fluxoKpiLucroPreco')) $('fluxoKpiLucroPreco').innerText = formatBRL(totalLucroPreco);
       if($('fluxoKpiCapturado')) $('fluxoKpiCapturado').innerText = formatBRL(totalCapturado);
       if($('fluxoKpiVenda')) $('fluxoKpiVenda').innerText = String(sinaisVenda);
+      renderClosedAppFlowSummary(buildClosedAppFlowSummary(rows));
 
       $('tbodyFluxo').innerHTML = rows.map(r => {
         const statusBadge = r.status === 'A RECEBER' ? 'b-blue' : r.status === 'PAGO' ? 'b-green' : 'b-red';
