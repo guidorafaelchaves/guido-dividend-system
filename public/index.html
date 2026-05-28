@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guido Dividend System v1.9.5 — Dossiê Bruto de Ativos</title>
+  <title>Guido Dividend System v1.9.6 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -307,7 +307,7 @@
 
 
     /* =========================================================
-       v1.9.5 — Dossiê bruto de ativos
+       v1.9.6 — Dossiê bruto de ativos
        Não altera lógica, funções, IndexedDB ou motores de cálculo.
        Apenas adapta visualização, toque, rolagem e leitura em telas pequenas.
        ========================================================= */
@@ -773,9 +773,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.9.5 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
+        <p>v1.9.6 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
       </div>
-      <div class="version-pill">v1.9.5 · dossiê bruto</div>
+      <div class="version-pill">v1.9.6 · dossiê bruto</div>
     </div>
 
     <div class="grid-5">
@@ -1510,7 +1510,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.9.5 · Dossiê bruto de ativos, manifesto premium, inteligência integrada e privacidade local-first</div>
+    <div class="footer">Guido Dividend System v1.9.6 · Dossiê bruto de ativos, manifesto premium, inteligência integrada e privacidade local-first</div>
   </div>
 
   </section>
@@ -2470,6 +2470,46 @@ function normalizeState(){
       return row?.[idx] ?? '';
     }
 
+    function sampleColumnValues(rows, headerIndex, idx, limit=40){
+      if(idx === undefined || idx === null) return [];
+      return rows.slice(headerIndex + 1, headerIndex + 1 + limit).map(r => String(getCell(r, idx) || '').trim()).filter(Boolean);
+    }
+
+    function hasOperationWords(values){
+      return values.some(v => {
+        const s = normalizeHeaderKey(v);
+        return s.includes('compra') || s.includes('venda') || s.includes('transferencia liquidacao');
+      });
+    }
+
+    function headerAt(headers, idx){
+      return idx === undefined || idx === null ? '' : normalizeHeaderKey(headers[idx] || '');
+    }
+
+    function isDividendLikeImportSheet(map, headers){
+      const proventoHeader = headerAt(headers, map.provento);
+      return map.dataCom !== undefined ||
+        map.dataPag !== undefined ||
+        map.tipoProvento !== undefined ||
+        ['valor do provento','valor provento','valor unitario','preco unitario bruto','preco unitario liquido','rendimento','dividendo','jcp','juros sobre capital'].some(term => proventoHeader.includes(term));
+    }
+
+    function isB3MovementLedgerSheet(headers){
+      const headerText = (headers || []).map(normalizeHeaderKey).join(' ');
+      return headerText.includes('entrada saida') && headerText.includes('movimentacao') && headerText.includes('valor da operacao');
+    }
+
+    function isStrongTradeImportSheet(rows, header, map){
+      const headers = rows[header.index] || [];
+      const priceHeader = headerAt(headers, map.precoCompra);
+      const typeValues = sampleColumnValues(rows, header.index, map.tipo);
+      const headerText = (headers || []).map(normalizeHeaderKey).join(' ');
+      const explicitOperationType = hasOperationWords(typeValues);
+      const explicitTradeHeader = headerText.includes('operacao') || headerText.includes('compra') || headerText.includes('venda');
+      const costHeader = priceHeader.includes('preco compra') || priceHeader.includes('preco medio') || priceHeader.includes('preco de compra');
+      return explicitOperationType || explicitTradeHeader || costHeader;
+    }
+
     function rowsToMarket(rows){
       if(rows.length < 2) return { rows: [], diagnostics: 'Planilha com menos de 2 linhas.' };
       const header = findBestHeaderRow(rows);
@@ -2512,13 +2552,25 @@ function normalizeState(){
       if(map.ticker === undefined || map.qtd === undefined || map.precoCompra === undefined){
         return { rows: [], diagnostics: 'Não parece ser uma planilha de operações: faltam ticker, quantidade ou preço de compra.' };
       }
+      const headers = rows[header.index] || [];
+      if(isB3MovementLedgerSheet(headers)){
+        return { rows: [], diagnostics: 'Arquivo de Movimentação B3 detectado. Use a aba B3 Ledger; o importador genérico não cria operações manuais a partir desse layout para evitar preço médio distorcido.' };
+      }
+      const dividendLike = isDividendLikeImportSheet(map, headers);
+      const strongTrade = isStrongTradeImportSheet(rows, header, map);
+      if(dividendLike && !strongTrade){
+        return { rows: [], diagnostics: 'Planilha parece ser de proventos/eventos, não de operações. Nenhuma compra foi criada a partir de valor unitário de provento.' };
+      }
       const out = rows.slice(header.index + 1).map(r => {
         const ticker = normalizeTicker(String(getCell(r, map.ticker) || '').split(' - ')[0].replace(/\.SA$/i,''));
         if(!ticker) return null;
+        const tipoRaw = String(getCell(r, map.tipo) || '').toUpperCase();
+        const tipoNormalizado = tipoRaw.includes('VENDA') ? 'VENDA' : tipoRaw.includes('COMPRA') ? 'COMPRA' : (strongTrade && !dividendLike ? 'COMPRA' : '');
+        if(!tipoNormalizado) return null;
         return {
           id: uid(),
           ticker,
-          tipo: ((getCell(r, map.tipo) || 'COMPRA').toString().toUpperCase().includes('VENDA')) ? 'VENDA' : 'COMPRA',
+          tipo: tipoNormalizado,
           data: sanitizeMarketDate(getCell(r, map.data)) || todayIso(),
           quantidade: parseNumber(getCell(r, map.qtd)),
           precoUnitario: parseNumber(getCell(r, map.precoCompra)),
@@ -3070,6 +3122,14 @@ async function fetchSingleTickerBrapi(tk, opts={}){
     // =========================
     // MOTOR DE POSIÇÕES
     // =========================
+    function isSuspiciousImportedTradePrice(trade){
+      if(!trade || trade.origem !== 'importado' || trade.tipo !== 'COMPRA') return false;
+      const price = parseNumber(trade.precoUnitario);
+      const quote = parseNumber(state.quotes?.[trade.ticker]?.precoAtual);
+      if(!(price > 0 && quote >= 5)) return false;
+      return price < 1 && price < quote * 0.05;
+    }
+
     function buildPositions(){
       const map = {};
       const ordered = [...state.trades].sort((a,b) => (a.data || '').localeCompare(b.data || ''));
@@ -3089,7 +3149,9 @@ async function fetchSingleTickerBrapi(tk, opts={}){
             lucroRealizado: 0,
             precoAtual: state.quotes[ticker]?.precoAtual || 0,
             primeiraCompra: null,
-            ultimaCompra: null
+            ultimaCompra: null,
+            custoConfiavel: true,
+            alertasCusto: []
           };
         }
 
@@ -3097,6 +3159,12 @@ async function fetchSingleTickerBrapi(tk, opts={}){
         const qty = parseNumber(t.quantidade);
         const price = parseNumber(t.precoUnitario);
         const fees = parseNumber(t.custos);
+
+        if(isSuspiciousImportedTradePrice(t)){
+          p.custoConfiavel = false;
+          p.alertasCusto.push(`Compra importada ignorada: preço ${formatBRL(price)} incompatível com cotação ${formatBRL(state.quotes[ticker]?.precoAtual || 0)}. Provável linha de provento/evento.`);
+          continue;
+        }
 
         if(t.tipo === 'COMPRA'){
           const totalCost = (qty * price) + fees;
@@ -4016,6 +4084,8 @@ async function fetchSingleTickerBrapi(tk, opts={}){
         const price = parseNumber(t.precoUnitario);
         const fees = parseNumber(t.custos);
 
+        if(isSuspiciousImportedTradePrice(t)) continue;
+
         if(t.tipo === 'COMPRA'){
           quantidade += qty;
           custoTotal += (qty * price) + fees;
@@ -4045,6 +4115,7 @@ async function fetchSingleTickerBrapi(tk, opts={}){
     }
 
     function classifyFluxoDecision(row){
+      if(row.custoConfiavel === false) return { label:'INVESTIGAR CUSTO', badge:'b-yellow' };
       if(row.status === 'A RECEBER') return { label:'SEGURAR ATÉ CRÉDITO', badge:'b-blue' };
       if(row.status === 'SEM DIREITO'){
         if(row.lucroPrecoPct >= 5) return { label:'SEM DIREITO / AVALIAR VENDA', badge:'b-yellow' };
@@ -4130,7 +4201,8 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           totalCapturadoPct,
           quantidadeAtual: parseNumber(currentPos.quantidade),
           precoMedioAtual: parseNumber(currentPos.precoMedio),
-          precoAtual: parseNumber(currentPos.precoAtual)
+          precoAtual: parseNumber(currentPos.precoAtual),
+          custoConfiavel: currentPos.custoConfiavel !== false
         };
         const decision = classifyFluxoDecision(row);
         row.decisao = decision.label;
@@ -4172,7 +4244,7 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           <tr>
             <td>${r.dataCom ? formatDateBR(r.dataCom) : '---'}</td>
             <td>${r.dataPagamento ? formatDateBR(r.dataPagamento) : '---'}</td>
-            <td><strong>${r.ticker}</strong><span class="mini">PM atual ${formatBRL(r.precoMedioAtual)} | preço ${formatBRL(r.precoAtual)}</span></td>
+            <td><strong>${r.ticker}</strong><span class="mini">PM atual ${formatBRL(r.precoMedioAtual)} | preço ${formatBRL(r.precoAtual)}${r.custoConfiavel ? '' : ' | custo em auditoria'}</span></td>
             <td class="center">${r.compraBase ? formatDateBR(r.compraBase) : '---'}</td>
             <td class="center">${r.qtdDireito}</td>
             <td class="right">${formatBRL(r.valorUnitario)}</td>
@@ -4302,6 +4374,12 @@ function buildIntegratedViewModel(){
     if(row.hasB3 && row.hasManual && Math.abs(b3Qty - manualQty) > 0.0001){
       alerts.push({ level:'warning', ticker:row.ticker, message:`Quantidade B3 (${round(b3Qty,4)}) diverge da carteira manual (${round(manualQty,4)}).` });
     }
+    if(row.b3 && row.b3.custoConfiavel === false){
+      alerts.push({ level:'warning', ticker:row.ticker, message:`Custo médio B3 com base parcial: ${(row.b3.alertasCusto || []).slice(-1)[0] || 'há divergência entre valor total e quantidade x preço.'}` });
+    }
+    if(row.manual && row.manual.custoConfiavel === false){
+      alerts.push({ level:'warning', ticker:row.ticker, message:`Operações importadas suspeitas foram ignoradas no cálculo manual: ${(row.manual.alertasCusto || []).slice(-1)[0] || 'possível arquivo de proventos importado como operação.'}` });
+    }
     if(row.quantidade > 0 && !row.hasQuote){
       alerts.push({ level:'critical', ticker:row.ticker, message:'Posição aberta sem preço atual local/Brapi.' });
     }
@@ -4336,7 +4414,7 @@ function renderIntegratedIntelligence(vm){
   const topAlerts = vm.alerts.slice(0,5);
   const healthClass = vm.healthScore >= 80 ? 'b-green' : vm.healthScore >= 55 ? 'b-yellow' : 'b-red';
   el.innerHTML = `
-    <b>Inteligência integrada v1.9.5:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
+    <b>Inteligência integrada v1.9.6:</b> camada central de leitura patrimonial ativa, sem substituir os motores existentes.
     <div class="integration-grid">
       <div class="integration-tile"><span>Saúde dos dados</span><b><span class="badge ${healthClass}">${round(vm.healthScore,0)}/100</span></b></div>
       <div class="integration-tile"><span>Patrimônio integrado</span><b>${formatBRL(vm.totals.totalMarket)}</b></div>
@@ -4865,6 +4943,42 @@ function renderEngineSummary(){
       if(v === '-' || v === null || v === undefined || v === '') return 0;
       return parseNumber(v);
     }
+    function inferB3OperationValue({ quantidade=0, precoUnitario=0, valor=0, classeMovimento='', tipoOperacao='' } = {}){
+      const qtd = parseB3Quantity(quantidade);
+      const unit = parseB3Money(precoUnitario);
+      const raw = parseB3Money(valor);
+      const expected = qtd > 0 && unit > 0 ? qtd * unit : 0;
+      const isTrade = classeMovimento === 'OPERACAO' || tipoOperacao === 'COMPRA' || tipoOperacao === 'VENDA';
+      const notes = [];
+      let finalValue = raw;
+      let reliable = raw > 0;
+
+      if(isTrade){
+        if(expected > 0 && raw <= 0){
+          finalValue = expected;
+          reliable = true;
+          notes.push('Valor total inferido por quantidade x preço unitário.');
+        }else if(expected > 0 && raw > 0){
+          const ratio = raw / expected;
+          if(ratio < 0.50 || ratio > 1.50){
+            finalValue = expected;
+            reliable = true;
+            notes.push(`Valor total substituído por quantidade x preço unitário; divergência original ${formatPct((ratio - 1) * 100)}.`);
+          }
+        }else if(raw <= 0){
+          reliable = false;
+          notes.push('Operação sem valor total confiável.');
+        }
+      }
+
+      return {
+        valor: round(finalValue, 6),
+        valorOriginal: raw,
+        valorEsperado: round(expected, 6),
+        confiavel: reliable,
+        observacao: notes.join(' ')
+      };
+    }
     function b3MovementId(row){
       return ['B3', row.data, row.entradaSaida, row.movimentoOriginal, row.ticker, row.instituicao, row.quantidade, row.precoUnitario, row.valor].join('|');
     }
@@ -4903,6 +5017,10 @@ function renderEngineSummary(){
       };
       if(m.includes('TRANSFERENCIA - LIQUIDACAO') || m === 'COMPRA' || m.includes('COMPRA / VENDA') || m.includes('COMPRA/VENDA')){
         out.classeMovimento = 'OPERACAO'; out.natureza = 'OPERACIONAL'; out.afetaPosicao = true; out.afetaCustoMedio = true; out.afetaCaixa = true;
+        if(!isCredit && !isDebit){
+          out.classeMovimento = 'OUTRO'; out.natureza = 'TECNICA'; out.afetaPosicao = false; out.afetaCustoMedio = false; out.afetaCaixa = false; out.observacao = 'Operação sem Entrada/Saída confiável; preservada sem afetar carteira.';
+          return out;
+        }
         out.tipoOperacao = isCredit ? 'COMPRA' : 'VENDA'; out.sinalQuantidade = isCredit ? 1 : -1; out.sinalCaixa = isCredit ? -1 : 1; out.afetaIR = isDebit;
         return out;
       }
@@ -4944,12 +5062,16 @@ function renderEngineSummary(){
         const entradaSaida = String(row[map.entradaSaida] || '').trim();
         const quantidade = parseNumber(row[map.quantidade]);
         const precoUnitario = parseB3Money(row[map.precoUnitario]);
-        const valor = parseB3Money(row[map.valor]);
+        const valorOriginal = parseB3Money(row[map.valor]);
         const classe = classifyB3Movement(movimentoOriginal, entradaSaida, produto);
+        const valorInfo = inferB3OperationValue({ quantidade, precoUnitario, valor: valorOriginal, ...classe });
         const item = {
           source:'B3_MOVIMENTACAO', sheetName, data, entradaSaida, movimentoOriginal, produtoOriginal: produto,
           ticker, nome: cleanB3ProductName(produto), instituicao: String(row[map.instituicao] || '').trim(),
-          quantidade, precoUnitario, valor, ...classe, createdAt: new Date().toISOString()
+          quantidade, precoUnitario, valor: valorInfo.valor, valorOriginal, valorEsperado: valorInfo.valorEsperado,
+          valorConfiavel: valorInfo.confiavel, ...classe,
+          observacao: [classe.observacao, valorInfo.observacao].filter(Boolean).join(' '),
+          createdAt: new Date().toISOString()
         };
         item.id = b3MovementId(item);
         out.push(item);
@@ -4995,20 +5117,39 @@ function renderEngineSummary(){
     function rebuildB3Derived(){
       const movements = [...(state.b3Movements || [])].sort((a,b) => String(a.data).localeCompare(String(b.data)) || String(a.ticker).localeCompare(String(b.ticker)));
       const lots = {}, portfolio = {}, income = [], realized = {}, monthly = {}, recon = [];
-      function ensureLot(t){ if(!lots[t]) lots[t] = { qtd:0, custo:0, realizado:0, vendas:0, compras:0 }; return lots[t]; }
+      function ensureLot(t){ if(!lots[t]) lots[t] = { qtd:0, custo:0, realizado:0, vendas:0, compras:0, alertas:[], custoConfiavel:true }; return lots[t]; }
       for(const m of movements){
         const t = m.ticker || 'SEM_TICKER';
         const lot = ensureLot(t);
-        const val = Number(m.valor || 0);
+        const valorInfo = inferB3OperationValue(m);
+        const val = Number(valorInfo.valor || 0);
         const qtd = Number(m.quantidade || 0);
+        if(valorInfo.observacao) lot.alertas.push(`${formatDateBR(m.data)} ${m.movimentoOriginal || ''}: ${valorInfo.observacao}`);
+        if(!valorInfo.confiavel) lot.custoConfiavel = false;
         if(m.classeMovimento === 'OPERACAO'){
           if(m.tipoOperacao === 'COMPRA'){
-            lot.qtd += qtd; lot.custo += val; lot.compras += val;
+            if(qtd > 0 && val > 0){
+              lot.qtd += qtd; lot.custo += val; lot.compras += val;
+            }else{
+              lot.custoConfiavel = false;
+              lot.alertas.push(`${formatDateBR(m.data)} compra ignorada por falta de quantidade ou custo confiável.`);
+            }
           }else if(m.tipoOperacao === 'VENDA'){
+            if(qtd <= 0 || val <= 0){
+              lot.custoConfiavel = false;
+              lot.alertas.push(`${formatDateBR(m.data)} venda ignorada por falta de quantidade ou valor confiável.`);
+              continue;
+            }
             const pm = lot.qtd > 0 ? lot.custo / lot.qtd : 0;
             const custoBaixado = Math.min(qtd, Math.max(lot.qtd,0)) * pm;
+            if(!(lot.qtd > 0 && qtd <= lot.qtd * 1.0001)){
+              lot.custoConfiavel = false;
+              lot.alertas.push(`${formatDateBR(m.data)} venda maior que a posição conciliada; lucro realizado marcado como parcial.`);
+            }
             const lucro = val - custoBaixado;
             lot.qtd -= qtd; lot.custo -= custoBaixado; lot.realizado += lucro; lot.vendas += val;
+            if(lot.qtd < 0) lot.qtd = 0;
+            if(lot.custo < 0) lot.custo = 0;
             const ym = (m.data || '').slice(0,7);
             if(!monthly[ym]) monthly[ym] = { id:ym, mes:ym, vendasAcoes:0, vendasFII:0, lucroAcoes:0, lucroFII:0, irEstimado:0 };
             const isFii = isFIITicker(t);
@@ -5031,7 +5172,7 @@ function renderEngineSummary(){
         const valorMercado = Math.max(0, lot.qtd) * quote;
         const lucroNaoRealizado = quote ? valorMercado - Math.max(0, lot.custo) : 0;
         const rendas = income.filter(x => x.ticker === ticker).reduce((a,x)=>a+Number(x.valor||0),0);
-        portfolio[ticker] = { ticker, quantidade: round(lot.qtd, 6), custoTotal: round(lot.custo, 2), precoMedio: lot.qtd>0 ? round(lot.custo/lot.qtd, 4) : 0, precoAtual: quote, valorMercado: round(valorMercado,2), lucroNaoRealizado: round(lucroNaoRealizado,2), lucroRealizado: round(lot.realizado,2), proventosRecebidos: round(rendas,2), retornoTotal: round(lucroNaoRealizado + lot.realizado + rendas,2), compras: round(lot.compras,2), vendas: round(lot.vendas,2) };
+        portfolio[ticker] = { ticker, quantidade: round(lot.qtd, 6), custoTotal: round(lot.custo, 2), precoMedio: lot.qtd>0 ? round(lot.custo/lot.qtd, 4) : 0, precoAtual: quote, valorMercado: round(valorMercado,2), lucroNaoRealizado: round(lucroNaoRealizado,2), lucroRealizado: round(lot.realizado,2), proventosRecebidos: round(rendas,2), retornoTotal: round(lucroNaoRealizado + lot.realizado + rendas,2), compras: round(lot.compras,2), vendas: round(lot.vendas,2), custoConfiavel: Boolean(lot.custoConfiavel), alertasCusto: lot.alertas.slice(-5) };
       }
       // Conciliação preliminar: calendário B3 previsto x renda recebida em janela de 7 dias por ticker.
       for(const d of (state.dividends || [])){
@@ -5367,6 +5508,18 @@ function renderEngineSummary(){
       const ev = normalizeHeaderB3(x.tipoEvento || '');
       return (ev.includes('rendimento') || ev.includes('dividendo') || ev.includes('juros sobre capital proprio')) && !isAmortizationEvent(x);
     }
+    function inferCentralTradeTotal(x){
+      const qtd = parseB3Quantity(x?.quantidade);
+      const unit = parseB3Money(x?.valorUnitario);
+      const raw = parseB3Money(x?.valorTotal);
+      const expected = qtd > 0 && unit > 0 ? qtd * unit : 0;
+      if(expected > 0 && raw <= 0) return expected;
+      if(expected > 0 && raw > 0){
+        const ratio = raw / expected;
+        if(ratio < 0.50 || ratio > 1.50) return expected;
+      }
+      return raw;
+    }
     function buildCentralFIIScores(){
       const rows = state.b3CentralRows || [];
       const fiiRows = rows.filter(x => normalizeTicker(x.ticker) && (x.classeAtivo === 'FII' || x.classeAtivo === 'FIAGRO' || isFIITicker(x.ticker)));
@@ -5387,7 +5540,7 @@ function renderEngineSummary(){
           }, 0);
         }
         const buys = tradeRows.filter(x => !normalizeHeaderB3(x.tipoEvento || '').includes('venda'));
-        const totalBuyValue = buys.reduce((a,x)=>a+parseNumber(x.valorTotal),0);
+        const totalBuyValue = buys.reduce((a,x)=>a+inferCentralTradeTotal(x),0);
         const totalBuyQty = buys.reduce((a,x)=>a+parseB3Quantity(x.quantidade),0);
         const precoMedio = totalBuyQty > 0 ? totalBuyValue / totalBuyQty : null;
         const incomeByMonth = {};
@@ -8221,7 +8374,7 @@ Preencha integralmente os campos do JSON solicitado.`;
         const t = normalizeTicker(m.ticker || 'SEM_TICKER');
         const s = ensure(t);
         accrue(s, m.data);
-        const val = Number(m.valor || 0);
+        const val = Number(inferB3OperationValue(m).valor || 0);
         const qtd = Number(m.quantidade || 0);
         if(m.classeMovimento === 'OPERACAO'){
           if(m.tipoOperacao === 'COMPRA'){
@@ -8327,7 +8480,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       setB3ResultMeta('Carteira B3 reconstruída', rows.length);
       rows = mcSortRows('b3', rows, 'retornoTotal', 'desc');
       th.innerHTML = '<tr>' + [mcHeader('b3','ticker','Ativo'),mcHeader('b3','quantidade','Qtd','right'),mcHeader('b3','precoMedio','Preço Médio','right'),mcHeader('b3','precoAtual','Preço Atual','right'),mcHeader('b3','custoTotal','Custo','right'),mcHeader('b3','valorMercado','Valor Atual','right'),mcHeader('b3','lucroNaoRealizado','Lucro Não Real.','right'),mcHeader('b3','lucroRealizado','Lucro Real.','right'),mcHeader('b3','proventosRecebidos','Proventos','right'),mcHeader('b3','retornoTotal','Retorno Total','right')].join('') + '</tr>';
-      tb.innerHTML = rows.map(x => `<tr><td><b>${x.ticker}</b>${x.mcScore!==undefined?`<span class="mini" style="color:#9affcb">MC ${round(x.mcScore,1)}</span>`:''}</td><td class="right">${round(x.quantidade,4)}</td><td class="right">${formatBRL(x.precoMedio)}</td><td class="right">${x.precoAtual?formatBRL(x.precoAtual):'---'}</td><td class="right">${formatBRL(x.custoTotal)}</td><td class="right">${formatBRL(x.valorMercado)}</td><td class="right">${formatBRL(x.lucroNaoRealizado)}</td><td class="right">${formatBRL(x.lucroRealizado)}</td><td class="right">${formatBRL(x.proventosRecebidos)}</td><td class="right"><b>${formatBRL(x.retornoTotal)}</b></td></tr>`).join('') || '<tr><td colspan="10" class="center muted">Sem carteira B3 reconstruída.</td></tr>';
+      tb.innerHTML = rows.map(x => `<tr><td><b>${x.ticker}</b>${x.mcScore!==undefined?`<span class="mini" style="color:#9affcb">MC ${round(x.mcScore,1)}</span>`:''}${x.custoConfiavel===false?`<span class="mini" style="color:#ffd18a">custo em auditoria</span>`:''}</td><td class="right">${round(x.quantidade,4)}</td><td class="right">${formatBRL(x.precoMedio)}</td><td class="right">${x.precoAtual?formatBRL(x.precoAtual):'---'}</td><td class="right">${formatBRL(x.custoTotal)}</td><td class="right">${formatBRL(x.valorMercado)}</td><td class="right">${formatBRL(x.lucroNaoRealizado)}</td><td class="right">${formatBRL(x.lucroRealizado)}</td><td class="right">${formatBRL(x.proventosRecebidos)}</td><td class="right"><b>${formatBRL(x.retornoTotal)}</b></td></tr>`).join('') || '<tr><td colspan="10" class="center muted">Sem carteira B3 reconstruída.</td></tr>';
     }
 
     function renderB3IncomeTable(rows, q, cls, nat, th, tb){
