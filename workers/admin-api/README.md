@@ -92,7 +92,7 @@ npx wrangler d1 execute radar-admin-finops --remote --file seed.sql
 - CORS é limitado por `ADMIN_ALLOWED_ORIGINS`.
 - Sessões expiram em 30 minutos.
 - Tokens são assinados com HMAC SHA-256 por `ADMIN_JWT_SECRET`.
-- Senha é validada por PBKDF2 SHA-256.
+- Senha é validada por hash SHA-256 com salt armazenado em secret do Worker.
 - Secrets de Brapi, IA e provedores devem ser usados apenas no Worker ou em jobs de ingestão.
 
 ## Shape dos dados

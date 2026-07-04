@@ -6,20 +6,12 @@ if (!password) {
   process.exit(1);
 }
 
-const iterations = 210000;
 const salt = crypto.getRandomValues(new Uint8Array(16));
-const key = await crypto.subtle.importKey(
-  'raw',
-  new TextEncoder().encode(password),
-  'PBKDF2',
-  false,
-  ['deriveBits']
-);
-const bits = await crypto.subtle.deriveBits(
-  { name: 'PBKDF2', hash: 'SHA-256', salt, iterations },
-  key,
-  256
-);
+const passwordBytes = new TextEncoder().encode(password);
+const payload = new Uint8Array(salt.byteLength + passwordBytes.byteLength);
+payload.set(salt, 0);
+payload.set(passwordBytes, salt.byteLength);
+const bits = await crypto.subtle.digest('SHA-256', payload);
 
 function b64url(bytes) {
   return Buffer.from(bytes)
@@ -29,4 +21,4 @@ function b64url(bytes) {
     .replace(/=+$/, '');
 }
 
-console.log(`pbkdf2$${iterations}$${b64url(salt)}$${b64url(new Uint8Array(bits))}`);
+console.log(`sha256$1$${b64url(salt)}$${b64url(new Uint8Array(bits))}`);

@@ -75,7 +75,19 @@ async function verifySession(env, token) {
 }
 
 async function verifyPassword(password, encodedHash) {
-  const [scheme, iterRaw, saltB64, hashB64] = String(encodedHash || '').split('$');
+  const [scheme, iterRaw, saltB64, hashB64] = String(encodedHash || '').trim().split('$').map(part => part.trim());
+  if (scheme === 'sha256') {
+    const salt = fromB64url(saltB64);
+    const expected = fromB64url(hashB64);
+    const payload = new Uint8Array(salt.byteLength + new TextEncoder().encode(password).byteLength);
+    payload.set(salt, 0);
+    payload.set(new TextEncoder().encode(password), salt.byteLength);
+    const actual = new Uint8Array(await crypto.subtle.digest('SHA-256', payload));
+    if (actual.byteLength !== expected.byteLength) return false;
+    let diff = 0;
+    for (let i = 0; i < actual.byteLength; i++) diff |= actual[i] ^ expected[i];
+    return diff === 0;
+  }
   if (scheme !== 'pbkdf2') throw new Error('Invalid password hash scheme');
   const iterations = Number(iterRaw);
   const salt = fromB64url(saltB64);
