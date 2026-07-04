@@ -1,12 +1,12 @@
 {
   "name": "guido-dividend-system",
-  "version": "1.10.10",
+  "version": "1.10.11",
   "private": true,
   "description": "Guido Dividend System - sistema local de inteligencia patrimonial, dividendos, B3 Ledger e FIIs.",
   "scripts": {
     "start": "npx serve public",
     "dev": "npx serve public",
-    "check": "node -e \"const fs=require('fs'); const index=fs.readFileSync('public/index.html','utf8'); const dash=fs.readFileSync('public/dashboard.html','utf8'); if(!index.includes('Radar de Proventos') || !index.includes('dashboard.html#sistema') || !dash.includes('quantEngine')) process.exit(1); console.log('OK: entrada e dashboard encontrados');\""
+    "check": "node -e \"const fs=require('fs'); const index=fs.readFileSync('public/index.html','utf8'); const dash=fs.readFileSync('public/dashboard.html','utf8'); const admin=fs.readFileSync('public/admin.html','utf8'); if(!index.includes('Radar de Proventos') || !index.includes('dashboard.html#sistema') || !dash.includes('quantEngine') || !admin.includes('unitEconomics')) process.exit(1); console.log('OK: entrada, dashboard e admin encontrados');\""
   },
   "devDependencies": {
     "serve": "^14.2.4"
