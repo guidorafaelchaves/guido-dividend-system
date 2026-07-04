@@ -1,6 +1,6 @@
 {
   "name": "guido-dividend-system",
-  "version": "1.10.16",
+  "version": "1.10.17",
   "private": true,
   "description": "Guido Dividend System - sistema local de inteligencia patrimonial, dividendos, B3 Ledger e FIIs.",
   "scripts": {
@@ -10,7 +10,8 @@
     "admin:hash": "node workers/admin-api/scripts/hash-password.mjs",
     "admin:dev": "cd workers/admin-api && npx wrangler dev",
     "admin:migrate": "cd workers/admin-api && npx wrangler d1 migrations apply radar-admin-finops --remote",
-    "admin:deploy": "cd workers/admin-api && npx wrangler deploy"
+    "admin:deploy": "cd workers/admin-api && npx wrangler deploy",
+    "saas:deploy": "cd workers/saas-gateway && npx wrangler deploy"
   },
   "devDependencies": {
     "serve": "^14.2.4"

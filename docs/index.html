@@ -74,6 +74,7 @@
     </main>
     <footer><span>v1.10.10 front door · O motor principal permanece preservado em dashboard.html</span><span>Privacidade local, autenticação moderna e redirect limpo.</span></footer>
   </div>
+  <script src="./authService.js?v=20260704-1"></script>
   <script>
     const DASHBOARD_URL = 'dashboard.html#sistema';
     const SESSION_TTL_MS = 1000 * 60 * 60 * 8;
@@ -95,8 +96,25 @@
       async postJson(url, body){ const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify(body||{})}); if(!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); },
       async passkey(){ if(!window.PublicKeyCredential || !navigator.credentials) throw new Error('Passkeys indisponíveis neste navegador.'); let challenge; try{ challenge=await authApi.postJson(AUTH_ENDPOINTS.webauthnChallenge,{intent:'login'}); }catch(err){ challenge={publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),timeout:60000,userVerification:'preferred'},localOnly:true}; } const publicKey={...challenge.publicKey,challenge:challenge.publicKey.challenge instanceof Uint8Array ? challenge.publicKey.challenge : Uint8Array.from(atob(challenge.publicKey.challenge),c=>c.charCodeAt(0))}; const credential=await navigator.credentials.get({publicKey}); if(!credential) throw new Error('Autenticação cancelada.'); if(challenge.localOnly) return { token:`local-passkey-${Date.now()}`, user:{provider:'passkey-local'} }; return authApi.postJson(AUTH_ENDPOINTS.webauthnVerify,{id:credential.id,type:credential.type}); },
       oauth(provider){ const target=provider==='apple' ? AUTH_ENDPOINTS.apple : AUTH_ENDPOINTS.google; const redirect=encodeURIComponent(`${location.origin}${location.pathname.replace(/index\.html$/,'')}dashboard.html#sistema`); window.location.assign(`${target}?redirect_uri=${redirect}`); },
-      async password(email,password){ try{ return await authApi.postJson(AUTH_ENDPOINTS.password,{email,password}); }catch(err){ return { token:`local-password-${Date.now()}`, user:{email,provider:'password-local'}, localFallback:true }; } },
-      async magicLink(email){ try{ return await authApi.postJson(AUTH_ENDPOINTS.magicLink,{email,redirect:DASHBOARD_URL}); }catch(err){ return { queued:true, localFallback:true }; } }
+      async password(email,password){
+        try{
+          if(window.RadarAuthService?.isEnabled()){
+            const session = await window.RadarAuthService.signInWithPassword(email, password);
+            return { token:session.access_token, user:session.user || { email, provider:'supabase' }, saas:true };
+          }
+          return await authApi.postJson(AUTH_ENDPOINTS.password,{email,password});
+        }catch(err){
+          return { token:`local-password-${Date.now()}`, user:{email,provider:'password-local'}, localFallback:true };
+        }
+      },
+      async magicLink(email){
+        try{
+          if(window.RadarAuthService?.isEnabled()){
+            return await window.RadarAuthService.requestMagicLink(email, `${location.origin}${location.pathname.replace(/index\.html$/,'')}dashboard.html#sistema`);
+          }
+          return await authApi.postJson(AUTH_ENDPOINTS.magicLink,{email,redirect:DASHBOARD_URL});
+        }catch(err){ return { queued:true, localFallback:true }; }
+      }
     };
     function wireAuth(){
       $('skipToApp').addEventListener('click', ui.redirect);

@@ -80,6 +80,31 @@
     return cfg;
   }
 
+  function isCloudConfigEnabled(){
+    return Boolean(global.RadarAuthService?.isEnabled?.() && global.RadarAuthService?.isSessionFresh?.());
+  }
+
+  function sanitizeForCloud(input){
+    const cfg = normalizeConfig(input);
+    return {
+      ...cfg,
+      external: {
+        ...cfg.external,
+        brapiToken: '',
+        sheetsApiKey: ''
+      },
+      ai: {
+        ...cfg.ai,
+        openaiApiKey: ''
+      },
+      cloud: {
+        sourceOfTruth: 'supabase_rls',
+        secrets: 'serverless_gateway',
+        cachedAt: new Date().toISOString()
+      }
+    };
+  }
+
   function toBase64(bytes){
     return btoa(String.fromCharCode(...new Uint8Array(bytes)));
   }
@@ -172,6 +197,9 @@
 
   async function save(config){
     const normalized = normalizeConfig({ ...config, updatedAt:new Date().toISOString() });
+    if(isCloudConfigEnabled()){
+      await global.RadarAuthService.saveTenantConfig(sanitizeForCloud(normalized));
+    }
     const record = await encryptConfig(normalized);
     try{
       await idbPut(record);
@@ -182,6 +210,19 @@
   }
 
   async function load(){
+    if(isCloudConfigEnabled()){
+      try{
+        const cloudConfig = await global.RadarAuthService.getTenantConfig();
+        if(cloudConfig){
+          const normalized = normalizeConfig(cloudConfig);
+          const record = await encryptConfig({ ...normalized, updatedAt:cloudConfig.updatedAt || new Date().toISOString() });
+          try{ await idbPut(record); }catch{ localStorage.setItem(FALLBACK_KEY, JSON.stringify(record)); }
+          return { config:normalized, configured:true, source:'supabase_rls' };
+        }
+      }catch(err){
+        console.warn('Config cloud indisponivel, usando cache local.', err);
+      }
+    }
     let record = null;
     try{ record = await idbGet(); }catch{}
     if(!record){
@@ -252,6 +293,8 @@
     clear,
     validate,
     normalizeConfig,
+    sanitizeForCloud,
+    isCloudConfigEnabled,
     applyToDashboardState
   };
 })(window);

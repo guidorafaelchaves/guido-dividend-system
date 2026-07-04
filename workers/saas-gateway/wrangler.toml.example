@@ -1,0 +1,13 @@
+name = "radar-saas-gateway"
+main = "src/index.js"
+compatibility_date = "2026-07-04"
+
+[vars]
+ALLOWED_ORIGINS = "https://guido-dividend-system.pages.dev,https://guidorafaelchaves.github.io"
+SUPABASE_URL = "https://SEU-PROJETO.supabase.co"
+OPENAI_DEFAULT_MODEL = "gpt-4o-mini"
+
+# Secrets:
+# npx wrangler secret put SUPABASE_ANON_KEY
+# npx wrangler secret put BRAPI_TOKEN
+# npx wrangler secret put OPENAI_API_KEY
