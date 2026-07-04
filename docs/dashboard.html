@@ -6,6 +6,7 @@
   <title>Guido Dividend System v1.10.4 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="./configManager.js?v=20260704-1"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -821,7 +822,7 @@
 
     <div class="tabs">
       <button class="tab active" data-tab="tab-command">0. Centro de Comando</button>
-      <button class="tab" data-tab="tab-config">1. Central API & Importação</button>
+      <button class="tab" data-tab="tab-config">1. Ingestão & Controle</button>
       <button class="tab" data-tab="tab-radar">2. Radar de Oportunidades</button>
       <button class="tab" data-tab="tab-diario">3. Diário de Risco</button>
       <button class="tab" data-tab="tab-fluxo">4. Fluxo de Caixa</button>
@@ -880,7 +881,7 @@
     <div id="tab-config" class="panel">
       <div class="split-2">
         <div class="stack">
-          <div class="card" style="border-left:5px solid var(--violet)">
+          <div class="card admin-config-retired hidden" style="border-left:5px solid var(--violet)">
             <h2 class="section-title">📡 Brapi Data Hub</h2>
             <div class="section-note">
               A sincronização atualiza <b>cotações</b>, tenta trazer <b>eventos de proventos futuros</b> e agora a memória principal do aplicativo passa a ser persistida em <b>IndexedDB</b>, com espelhamento em localStorage para compatibilidade e backup.
@@ -947,7 +948,7 @@
             </div>
           </div>
 
-          <div class="card" style="border-left:5px solid var(--green)">
+          <div class="card admin-config-retired hidden" style="border-left:5px solid var(--green)">
             <h2 class="section-title">Memoria Real - Sheets + Docs</h2>
             <div class="section-note">
               Conecta este navegador ao Google Apps Script da memoria patrimonial. O Sheets guarda os dados estruturados; o Docs guarda a memoria narrativa, teses e decisoes importantes.
@@ -974,7 +975,7 @@
         </div>
 
         <div class="stack">
-          <div class="card">
+          <div class="card admin-config-retired hidden">
             <h2 class="section-title">⚙️ Parâmetros do Score do Radar</h2>
             <div class="section-note">O Radar continua ignorando a exposição da sua carteira real para evitar assimetria de informação. Na v23, a qualidade também incorpora <b>previsibilidade</b>, <b>padrão de pagamento</b>, <b>detecção de provento fora da curva</b> e <b>confiança do dado Brapi</b>.</div>
             <div class="split-3">
@@ -993,7 +994,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card admin-config-retired hidden">
             <h2 class="section-title">🤖 Integração IA Local</h2>
             <div class="section-note">Modo single-file local: agora o app oferece duas leituras por ticker — <b>Análise completa</b> (mais ampla, focada no ativo como um todo) e <b>Análise de captura</b> (focada no evento atual). Antes de chamar a IA, o app tenta enriquecer o ticker com <b>Brapi</b> e depois com <b>Status Invest</b>, <b>Investidor10</b>, <b>Fundamentus</b> e <b>Yahoo Finance</b> em modo best-effort, salvando cache local. A chave fica salva apenas no <b>localStorage</b> deste navegador neste computador.</div>
             <div class="controls" style="grid-template-columns:2fr 1fr 1fr 1fr">
@@ -1594,7 +1595,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.10.4 · Fluxo do app separado da B3, caixa confirmado, lucro concreto por período, diário com ciclos encerrados e radar conservador</div>
+    <div class="footer">Guido Dividend System v1.10.14 · Configurações sistêmicas desacopladas no Admin Console, dashboard focado em ingestão B3 e insights</div>
   </div>
 
   </section>
@@ -1928,6 +1929,23 @@
       await txDone(tx);
     }
 
+    function buildPersistableSettings(){
+      const settings = structuredClone(state.settings || {});
+      if(settings.brapi){
+        settings.brapi.token = '';
+      }
+      if(settings.memory){
+        settings.memory.apiKey = '';
+      }
+      return settings;
+    }
+
+    function buildPersistableAISettings(){
+      const ai = structuredClone(state.aiSettings || {});
+      ai.apiKey = '';
+      return ai;
+    }
+
     function buildStateSnapshot(){
       return {
         assets: state.assets,
@@ -1936,7 +1954,7 @@
         trades: state.trades,
         positions: state.positions,
         analytics: state.analytics,
-        settings: state.settings,
+        settings: buildPersistableSettings(),
         priceHistory: state.priceHistory,
         marketMeta: state.marketMeta,
         refreshTelemetry: state.refreshTelemetry,
@@ -2677,8 +2695,8 @@ function isSuspiciousDividendGap(dataCom, dataPagamento){
       pruneHeavyLocalStorage();
 
       // Mantém no localStorage apenas preferências pequenas e compatíveis.
-      saveJSON(KEYS.settings, state.settings);
-      saveJSON(KEYS.aiSettings, state.aiSettings);
+      saveJSON(KEYS.settings, buildPersistableSettings());
+      saveJSON(KEYS.aiSettings, buildPersistableAISettings());
       saveJSON(KEYS.aiEnrichmentCache, state.aiEnrichmentCache);
     }
 
@@ -3395,6 +3413,7 @@ async function processRefreshQueue(){
   }
 }
 async function refreshTickerSmart(ticker, context='radar_sync', force=false){
+  if(!ensureBrapiConfigured(true)) return;
   const tk = normalizeTicker(ticker);
   const fresh = getTickerFreshnessMeta(tk);
   const needsQuote = force || ['stale','critical'].includes(fresh.quoteState) || context === 'popup_open';
@@ -3412,10 +3431,11 @@ async function refreshTickerSmart(ticker, context='radar_sync', force=false){
   renderTudo();
 }
 function syncBrapiSmart(){
+  if(!ensureBrapiConfigured()) return;
   normalizeState();
   rebuildDerived();
   const tickers = [...new Set([
-    ...$('brapiTickers').value.split(',').map(x => normalizeTicker(x)).filter(Boolean),
+    ...getConfiguredBrapiTickers(),
     ...state.trades.map(t => t.ticker),
     ...getOpenPositionTickers()
   ])];
@@ -3425,7 +3445,8 @@ function syncBrapiSmart(){
   // não apenas aceitar cache recente. Por isso o sync manual força quote nova.
   enqueueManyRefresh(tickers, 'radar_sync', true);
 }
-function refreshTopRadar(){
+function refreshTopRadar(silent=false){
+  if(!ensureBrapiConfigured(silent)) return;
   const rows = getRadarRows().slice(0, 20).map(r => r.ticker);
   enqueueManyRefresh(rows, 'top_radar', false);
 }
@@ -3448,13 +3469,14 @@ function updateRefreshBadge(){
     // =========================
 
 async function fetchBrapi(force=true){
+  if(!ensureBrapiConfigured()) return;
   normalizeState();
   rebuildDerived();
   const lucroAntes = getTotalLucroNaoRealizado();
   const beforeQuotes = structuredClone(state.quotes || {});
 
   const tickers = [...new Set([
-    ...$('brapiTickers').value.split(',').map(x => normalizeTicker(x)).filter(Boolean),
+    ...getConfiguredBrapiTickers(),
     ...state.trades.map(t => t.ticker)
   ])];
 
@@ -3485,6 +3507,7 @@ async function fetchBrapi(force=true){
 
 async function fetchSingleTickerBrapi(tk, opts={}){
   const token = getBrapiToken();
+  if(!token) throw new Error('Sistema em manutenção ou token Brapi não configurado pelo administrador.');
   const ticker = normalizeTicker(tk);
   const today = todayIso();
   const lookback = new Date();
@@ -4180,6 +4203,47 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       syncBrapiTokenInput();
     }
 
+    async function loadAdminSystemConfig(){
+      state.adminConfigStatus = { ok:false, missing:['ConfigManager'], message:'Sistema em manutencao ou parametros nao configurados pelo administrador.' };
+      try{
+        if(!window.RadarConfigManager) return state.adminConfigStatus;
+        const { config, configured } = await window.RadarConfigManager.load();
+        const status = window.RadarConfigManager.applyToDashboardState(state, config);
+        state.adminConfigStatus = {
+          ...status,
+          configured,
+          loadedAt: new Date().toISOString()
+        };
+        return state.adminConfigStatus;
+      }catch{
+        return state.adminConfigStatus;
+      }
+    }
+
+    function showAdminConfigWarning(message, silent=false){
+      const finalMessage = message || 'Sistema em manutencao ou parametros nao configurados pelo administrador.';
+      updateBrapiTokenStatus(finalMessage);
+      updateAIStatus(finalMessage, true);
+      const refresh = $('refreshStatusBadge');
+      if(refresh) refresh.innerHTML = `⚠️ <b>${escapeHtml(finalMessage)}</b>`;
+      if(!silent) alert(finalMessage);
+    }
+
+    function ensureBrapiConfigured(silent=false){
+      if(getBrapiToken()) return true;
+      showAdminConfigWarning('Sistema em manutenção ou token Brapi não configurado pelo administrador.', silent);
+      return false;
+    }
+
+    function getConfiguredBrapiTickers(){
+      const fromAdmin = state.settings?.brapi?.tickers || '';
+      const fromUi = $('brapiTickers')?.value || '';
+      return String(fromAdmin || fromUi || '')
+        .split(',')
+        .map(x => normalizeTicker(x))
+        .filter(Boolean);
+    }
+
     function maskToken(token){
       if(!token) return 'não salvo';
       if(token.length <= 10) return token.slice(0,3) + '••••';
@@ -4189,8 +4253,8 @@ async function fetchSingleTickerBrapi(tk, opts={}){
     function syncBrapiTokenInput(){
       state.settings.brapi = state.settings.brapi || { token:'' };
       const token = state.settings.brapi.token || '';
-      if($('brapiToken')) $('brapiToken').value = token;
-      updateBrapiTokenStatus(token ? `Token Brapi salvo localmente: ${maskToken(token)}` : 'Token Brapi: não salvo');
+      if($('brapiTickers')) $('brapiTickers').value = state.settings.brapi.tickers || $('brapiTickers').value || '';
+      updateBrapiTokenStatus(token ? `Token Brapi carregado do Admin Console: ${maskToken(token)}` : 'Sistema em manutenção ou token Brapi não configurado pelo administrador.');
     }
 
     function updateBrapiTokenStatus(message){
@@ -4220,11 +4284,11 @@ async function fetchSingleTickerBrapi(tk, opts={}){
     }
 
     function syncAISettingsInputs(){
-      if($('aiApiKey')) $('aiApiKey').value = state.aiSettings?.apiKey || '';
+      if($('aiApiKey')) $('aiApiKey').value = '';
       if($('aiModel')) $('aiModel').value = state.aiSettings?.model || 'gpt-4o-mini';
       if($('aiTimeout')) $('aiTimeout').value = state.aiSettings?.timeoutMs || 90000;
       if($('aiOpenNewTab')) $('aiOpenNewTab').value = String(Boolean(state.aiSettings?.autoOpenNewTab));
-      updateAIStatus('Pronto para gerar análise por ticker.');
+      updateAIStatus((state.aiSettings?.apiKey || '').trim() ? 'OpenAI carregada do Admin Console.' : 'Sistema em manutenção ou OpenAI não configurada pelo administrador.', !(state.aiSettings?.apiKey || '').trim());
     }
 
     function updateAIStatus(message, isError=false){
@@ -4234,8 +4298,9 @@ async function fetchSingleTickerBrapi(tk, opts={}){
     }
 
     function saveAISettingsFromInputs(){
+      const rawApiKey = ($('aiApiKey')?.value || '').trim();
       state.aiSettings = {
-        apiKey: ($('aiApiKey')?.value || '').trim(),
+        apiKey: rawApiKey || (state.aiSettings?.apiKey || ''),
         model: ($('aiModel')?.value || '').trim() || 'gpt-4o-mini',
         timeoutMs: Math.max(5000, parseInt($('aiTimeout')?.value || '90000', 10)),
         autoOpenNewTab: String($('aiOpenNewTab')?.value || 'true') === 'true'
@@ -5492,7 +5557,7 @@ function renderEngineSummary(){
 
 
     function getBrapiToken(){
-      return ($('brapiToken')?.value || '').trim() || state.settings?.brapi?.token || '';
+      return (state.settings?.brapi?.token || '').trim();
     }
 
     async function fetchPriceHistory12m(ticker, force=false, context='history'){
@@ -7995,7 +8060,7 @@ Preencha integralmente os campos do JSON solicitado.`;
     async function requestOpenAIAnalysis(payload, mode='completa'){
       const apiKey = (state.aiSettings?.apiKey || '').trim();
       const model = (state.aiSettings?.model || 'gpt-4o-mini').trim() || 'gpt-4o-mini';
-      if(!apiKey) throw new Error('Cole e salve sua chave da API OpenAI antes de gerar a análise.');
+      if(!apiKey) throw new Error('Sistema em manutenção ou OpenAI não configurada pelo administrador.');
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), Number(state.aiSettings?.timeoutMs || 90000));
       try{
@@ -8262,7 +8327,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       try{
         saveAISettingsFromInputs();
         if(!(state.aiSettings?.apiKey || '').trim()){
-          alert('Cole e salve sua chave da API OpenAI primeiro.');
+          showAdminConfigWarning('Sistema em manutenção ou OpenAI não configurada pelo administrador.');
           return;
         }
 
@@ -8619,7 +8684,7 @@ Preencha integralmente os campos do JSON solicitado.`;
         trades: state.trades,
         positions: state.positions,
         analytics: state.analytics,
-        settings: state.settings,
+        settings: buildPersistableSettings(),
         priceHistory: state.priceHistory,
         b3Movements: state.b3Movements,
         b3Portfolio: state.b3Portfolio,
@@ -8629,7 +8694,7 @@ Preencha integralmente os campos do JSON solicitado.`;
         b3CentralFiles: state.b3CentralFiles,
         b3CentralRows: state.b3CentralRows,
         b3FiiScores: state.b3FiiScores,
-        aiSettings: state.aiSettings
+        aiSettings: buildPersistableAISettings()
       };
       const a = document.createElement('a');
       a.href = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type:'application/json' }));
@@ -8890,7 +8955,7 @@ Preencha integralmente os campos do JSON solicitado.`;
     async function refreshFIIUniverseFromBrapi(){
       const token = getBrapiToken();
       if(!token){
-        alert('Cole/configure um token Brapi na Central API antes de buscar indicadores.');
+        showAdminConfigWarning('Sistema em manutenção ou token Brapi não configurado pelo administrador.');
         return;
       }
       const universe = getFIIUniverseForAnalysis();
@@ -9766,13 +9831,14 @@ Preencha integralmente os campos do JSON solicitado.`;
     // =========================
     async function boot(){
       try{
-        syncSettingsInputs();
-        syncAISettingsInputs();
-        ensureRefreshSettings();
         $('tradeData').value = todayIso();
         await initializePersistence();
         pruneHeavyLocalStorage();
         migrateLegacyData(true);
+        await loadAdminSystemConfig();
+        syncSettingsInputs();
+        syncAISettingsInputs();
+        ensureRefreshSettings();
         normalizeState();
         rebuildDerived();
         rebuildB3Derived();
@@ -9782,7 +9848,7 @@ Preencha integralmente os campos do JSON solicitado.`;
         updateMemoryBadge();
         updateRefreshBadge();
         renderEngineSummary();
-        refreshTopRadar();
+        refreshTopRadar(true);
       } catch(err){
         console.error('Falha no boot do app:', err);
         alert('O app encontrou um erro na inicialização. Abra o console (F12) para ver detalhes.');
