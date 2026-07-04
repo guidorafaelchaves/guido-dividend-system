@@ -314,7 +314,7 @@
     .mobile-scroll-hint{display:none}
 
     /* =========================
-       v1.10.5 - Centro de Comando B3
+       v1.10.6 - Quant Analytics de Proventos
        Entrada produtiva sem alterar motores existentes.
        ========================= */
     .command-center{display:grid;gap:16px;margin-bottom:18px}
@@ -806,9 +806,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.10.5 · Sistema proprietário de inteligência patrimonial integrada: Centro de Comando B3, Ledger, Radar de Oportunidades, FIIs, multicritérios, BRAPI e dossiê bruto factual por ativo.</p>
+        <p>v1.10.6 · Sistema proprietário de inteligência patrimonial integrada: Centro de Comando B3, Ledger, Radar de Oportunidades, FIIs, multicritérios, BRAPI e análise quantitativa de proventos.</p>
       </div>
-      <div class="version-pill">v1.10.5 · centro de comando B3</div>
+      <div class="version-pill">v1.10.6 · quant analytics de proventos</div>
     </div>
 
     <div class="grid-5">
@@ -2241,6 +2241,147 @@ function isSuspiciousDividendGap(dataCom, dataPagamento){
       const p = 10 ** d;
       return Math.round((Number(v) || 0) * p) / p;
     }
+    const mathUtils = Object.freeze({
+      sum: rows => (rows || []).reduce((acc, value) => acc + parseNumber(value), 0),
+      sumBy: (rows, selector) => (rows || []).reduce((acc, row) => acc + parseNumber(selector(row)), 0),
+      mean: values => {
+        const clean = (values || []).map(parseNumber).filter(Number.isFinite);
+        return clean.length ? clean.reduce((acc, value) => acc + value, 0) / clean.length : 0;
+      },
+      stddev: values => {
+        const clean = (values || []).map(parseNumber).filter(Number.isFinite);
+        if(!clean.length) return 0;
+        const avg = clean.reduce((acc, value) => acc + value, 0) / clean.length;
+        return Math.sqrt(clean.reduce((acc, value) => acc + ((value - avg) ** 2), 0) / clean.length);
+      },
+      safeRatio: (numerator, denominator, fallback=0) => {
+        const den = parseNumber(denominator);
+        return den ? parseNumber(numerator) / den : fallback;
+      },
+      cagr: (initialValue, finalValue, years) => {
+        const initial = parseNumber(initialValue);
+        const final = parseNumber(finalValue);
+        const y = parseNumber(years);
+        if(!(initial > 0 && final > 0 && y > 0)) return null;
+        return ((final / initial) ** (1 / y) - 1) * 100;
+      },
+      groupBy: (rows, selector) => (rows || []).reduce((acc, row) => {
+        const key = selector(row);
+        if(key === null || key === undefined || key === '') return acc;
+        (acc[key] ||= []).push(row);
+        return acc;
+      }, {})
+    });
+
+    const dateUtils = Object.freeze({
+      monthKey: value => {
+        const iso = sanitizeMarketDate(value);
+        return iso ? iso.slice(0, 7) : '';
+      },
+      yearKey: value => {
+        const iso = sanitizeMarketDate(value);
+        return iso ? iso.slice(0, 4) : '';
+      },
+      monthNumber: value => {
+        const iso = sanitizeMarketDate(value);
+        return iso ? Number(iso.slice(5, 7)) : 0;
+      },
+      sortIso: rows => (rows || []).slice().sort((a,b) => String(a || '').localeCompare(String(b || '')))
+    });
+
+    const financialUtils = Object.freeze({
+      recurringIncomeMovements: ['RENDIMENTO','DIVIDENDO','JCP','JUROS SOBRE CAPITAL','JUROS SOBRE CAPITAL PROPRIO','JUROS'],
+      monthNames: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+      isRecurringIncome(row){
+        const nat = String(row?.natureza || '').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+        const mov = String(row?.movimentoOriginal || row?.tipoProvento || row?.tipoEvento || '').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+        return nat === 'RECORRENTE' || this.recurringIncomeMovements.some(token => mov.includes(token));
+      },
+      eventDate(row){
+        return sanitizeMarketDate(row?.dataPagamento || row?.data || row?.dataCom || row?.dataPrevista || '');
+      },
+      eventAmount(row){
+        return parseNumber(row?.valor || row?.valorTotal || row?.valorUnitario || 0);
+      },
+      normalizeIncomeEvents(rows){
+        return (rows || []).map(row => ({
+          ticker: normalizeTicker(row.ticker),
+          date: this.eventDate(row),
+          amount: this.eventAmount(row),
+          recurring: this.isRecurringIncome(row),
+          raw: row
+        })).filter(row => row.ticker && row.date && row.amount > 0);
+      },
+      analyzeSeasonality(events){
+        const recurring = (events || []).filter(row => row.recurring !== false && row.amount > 0 && row.date);
+        const monthlyTotals = Array.from({length:12}, (_, i) => ({
+          month: i + 1,
+          label: this.monthNames[i],
+          total: 0,
+          count: 0
+        }));
+        recurring.forEach(row => {
+          const month = dateUtils.monthNumber(row.date);
+          if(month >= 1 && month <= 12){
+            monthlyTotals[month - 1].total += row.amount;
+            monthlyTotals[month - 1].count += 1;
+          }
+        });
+        const active = monthlyTotals.filter(m => m.total > 0);
+        const avgActive = mathUtils.mean(active.map(m => m.total));
+        const stdActive = mathUtils.stddev(active.map(m => m.total));
+        const cv = avgActive > 0 ? stdActive / avgActive : 0;
+        const harvest = monthlyTotals.filter(m => avgActive > 0 && m.total >= avgActive * 1.25).map(m => m.label);
+        const dry = monthlyTotals.filter(m => m.total <= 0).map(m => m.label);
+        const dateRefs = dateUtils.sortIso(recurring.map(row => row.date));
+        const intervals = [];
+        for(let i=1; i<dateRefs.length; i++){
+          const gap = diffDays(dateRefs[i-1], dateRefs[i]);
+          if(gap !== null) intervals.push(Math.abs(gap));
+        }
+        const avgInterval = mathUtils.mean(intervals);
+        const stdInterval = mathUtils.stddev(intervals);
+        const intervalCv = avgInterval > 0 ? stdInterval / avgInterval : 1;
+        const coverageScore = clamp((active.length / 12) * 100, 0, 100);
+        const intervalScore = intervals.length ? clamp((1 - Math.min(intervalCv, 1)) * 100, 0, 100) : (recurring.length >= 2 ? 45 : 0);
+        const amountScore = active.length ? clamp((1 - Math.min(cv, 1)) * 100, 0, 100) : 0;
+        const predictabilityScore = round((coverageScore * 0.45) + (intervalScore * 0.35) + (amountScore * 0.20), 2);
+        let pattern = 'Insuficiente';
+        if(active.length >= 10 && avgInterval >= 24 && avgInterval <= 40) pattern = 'Mensal';
+        else if(active.length >= 4 && avgInterval >= 70 && avgInterval <= 115) pattern = 'Trimestral';
+        else if(active.length >= 2 && avgInterval >= 145 && avgInterval <= 225) pattern = 'Semestral';
+        else if(active.length) pattern = 'Irregular';
+        return { monthlyTotals, dryMonths:dry, harvestMonths:harvest, activeMonths:active.length, avgActive, cv, avgInterval, stdInterval, predictabilityScore, pattern };
+      },
+      analyzeDividendCagr(events){
+        const recurring = (events || []).filter(row => row.recurring !== false && row.amount > 0 && row.date);
+        const yearlyTotals = Object.entries(recurring.reduce((acc, row) => {
+          const year = dateUtils.yearKey(row.date);
+          if(year) acc[year] = (acc[year] || 0) + row.amount;
+          return acc;
+        }, {})).map(([year,total]) => ({ year:Number(year), total })).sort((a,b) => a.year - b.year);
+        if(yearlyTotals.length < 2) return { yearlyTotals, cagrPct:null, trend:'Insuficiente' };
+        const first = yearlyTotals[0];
+        const last = yearlyTotals[yearlyTotals.length - 1];
+        const years = Math.max(1, last.year - first.year);
+        const cagrPct = mathUtils.cagr(first.total, last.total, years);
+        const trend = cagrPct === null ? 'Insuficiente' : cagrPct > 5 ? 'Crescendo' : cagrPct < -5 ? 'Caindo' : 'Estável';
+        return { yearlyTotals, cagrPct, trend };
+      },
+      analyzeIncomeProfile(rows){
+        const events = this.normalizeIncomeEvents(rows);
+        const recurringEvents = events.filter(row => row.recurring);
+        const total = mathUtils.sumBy(events, row => row.amount);
+        const recurringTotal = mathUtils.sumBy(recurringEvents, row => row.amount);
+        const seasonality = this.analyzeSeasonality(recurringEvents);
+        const growth = this.analyzeDividendCagr(recurringEvents);
+        return { events, total, recurringTotal, seasonality, growth };
+      },
+      profilesByTicker(rows){
+        const grouped = mathUtils.groupBy(rows || [], row => normalizeTicker(row.ticker));
+        return Object.fromEntries(Object.entries(grouped).map(([ticker, tickerRows]) => [ticker, this.analyzeIncomeProfile(tickerRows)]));
+      }
+    });
     function uid(){
       if(window.crypto?.randomUUID) return crypto.randomUUID();
       return `id_${Date.now()}_${Math.random().toString(16).slice(2)}`;
@@ -3344,15 +3485,21 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           ? Math.sqrt(intervalos.reduce((s,v) => s + ((v - mediaIntervalos) ** 2), 0) / intervalos.length)
           : 999;
 
-        let padraoPagamento = 'Insuficiente';
-        if(freq12m >= 8 && mediaIntervalos >= 24 && mediaIntervalos <= 40) padraoPagamento = 'Mensal';
-        else if(freq12m >= 3 && mediaIntervalos >= 75 && mediaIntervalos <= 110) padraoPagamento = 'Trimestral';
-        else if(freq12m >= 2 && mediaIntervalos >= 150 && mediaIntervalos <= 220) padraoPagamento = 'Semestral';
-        else if(freq12m >= 1) padraoPagamento = 'Irregular';
+        const dividendProfile = financialUtils.analyzeIncomeProfile(tickerDivs);
+        const seasonality = dividendProfile.seasonality;
+        const growth = dividendProfile.growth;
 
-        const previsibilidadePct = intervalos.length
+        let padraoPagamento = seasonality.pattern;
+        if(padraoPagamento === 'Insuficiente'){
+          if(freq12m >= 8 && mediaIntervalos >= 24 && mediaIntervalos <= 40) padraoPagamento = 'Mensal';
+          else if(freq12m >= 3 && mediaIntervalos >= 75 && mediaIntervalos <= 110) padraoPagamento = 'Trimestral';
+          else if(freq12m >= 2 && mediaIntervalos >= 150 && mediaIntervalos <= 220) padraoPagamento = 'Semestral';
+          else if(freq12m >= 1) padraoPagamento = 'Irregular';
+        }
+
+        const previsibilidadePct = seasonality.predictabilityScore || (intervalos.length
           ? clamp(10 - ((desvioIntervalos / Math.max(1, mediaIntervalos)) * 10), 0, 10) * 10
-          : (freq12m >= 2 ? 45 : 0);
+          : (freq12m >= 2 ? 45 : 0));
 
         const histPoints = Array.isArray(state.priceHistory[ticker]?.points) ? state.priceHistory[ticker].points.length : 0;
         const confiancaRaw = (freq12m >= 8 ? 4 : freq12m >= 4 ? 2.5 : freq12m >= 2 ? 1.5 : 0) + (histPoints >= 200 ? 4 : histPoints >= 120 ? 3 : histPoints >= 60 ? 2 : histPoints >= 20 ? 1 : 0) + (refs.length >= 4 ? 2 : refs.length >= 2 ? 1 : 0);
@@ -3378,6 +3525,13 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           extraordinario,
           padraoPagamento,
           previsibilidadePct,
+          previsibilidadeGuruPct: seasonality.predictabilityScore,
+          mesesSafra: seasonality.harvestMonths,
+          mesesSeca: seasonality.dryMonths,
+          mesesAtivosRenda: seasonality.activeMonths,
+          dividendCagrPct: growth.cagrPct,
+          tendenciaProventos: growth.trend,
+          dividendosPorAno: growth.yearlyTotals,
           mediaIntervalos,
           desvioIntervalos,
           confiancaDadoPct,
@@ -3527,6 +3681,12 @@ async function fetchSingleTickerBrapi(tk, opts={}){
             recorrenciaPct: parseNumber(an.recorrenciaPct),
             padraoPagamento: an.padraoPagamento || 'Insuficiente',
             previsibilidadePct: parseNumber(an.previsibilidadePct),
+            previsibilidadeGuruPct: parseNumber(an.previsibilidadeGuruPct),
+            mesesSafra: an.mesesSafra || [],
+            mesesSeca: an.mesesSeca || [],
+            mesesAtivosRenda: parseNumber(an.mesesAtivosRenda),
+            dividendCagrPct: an.dividendCagrPct,
+            tendenciaProventos: an.tendenciaProventos || 'Insuficiente',
             confiancaDadoPct: parseNumber(an.confiancaDadoPct),
             confiancaDadoNome: an.confiancaDadoNome || 'Baixa',
             yieldOnCost12mPct: parseNumber(an.yieldOnCost12mPct),
@@ -6325,12 +6485,16 @@ function renderEngineSummary(){
       const months = new Set(income.map(x => String(x.data || '').slice(0,7)).filter(Boolean));
       const recurrence = months.size ? Math.min(100, Math.round((months.size / 12) * 100)) : 0;
       const yoc = invested > 0 ? confirmedIncome / invested : 0;
-      const byTickerIncome = income.reduce((acc,x) => {
-        const t = normalizeTicker(x.ticker);
-        if(t) acc[t] = (acc[t] || 0) + parseNumber(x.valor || 0);
-        return acc;
-      }, {});
-      const topIncome = Object.entries(byTickerIncome).sort((a,b)=>b[1]-a[1]).slice(0,3);
+      const incomeProfiles = financialUtils.profilesByTicker(income);
+      const topIncome = Object.entries(incomeProfiles).map(([ticker, profile]) => [ticker, profile.recurringTotal || profile.total || 0]).sort((a,b)=>b[1]-a[1]).slice(0,3);
+      const bestPredictability = Object.entries(incomeProfiles)
+        .map(([ticker, profile]) => ({ ticker, score:profile.seasonality.predictabilityScore, pattern:profile.seasonality.pattern, safra:profile.seasonality.harvestMonths, seca:profile.seasonality.dryMonths }))
+        .filter(x => x.score > 0)
+        .sort((a,b)=>b.score-a.score)[0];
+      const bestGrowth = Object.entries(incomeProfiles)
+        .map(([ticker, profile]) => ({ ticker, cagr:profile.growth.cagrPct, trend:profile.growth.trend }))
+        .filter(x => Number.isFinite(x.cagr))
+        .sort((a,b)=>b.cagr-a.cagr)[0];
       const bestYoc = portfolio
         .map(p => ({ ticker:p.ticker, yoc: parseNumber(p.proventosRecebidos || 0) / Math.max(parseNumber(p.compras || p.custoTotal || 0), 1) }))
         .filter(x => x.ticker && x.yoc > 0)
@@ -6342,8 +6506,10 @@ function renderEngineSummary(){
       if(pendingIncome > 0) insights.push(`Renda futura/eventos provisionados: ${formatBRL(pendingIncome)} para conciliação com o fluxo.`);
       if(topIncome.length) insights.push(`Maiores pagadores: ${topIncome.map(x => `${x[0]} ${formatBRL(x[1])}`).join(' · ')}.`);
       if(bestYoc) insights.push(`Melhor YOC por custo carregado: ${bestYoc.ticker} com ${(bestYoc.yoc*100).toFixed(2)}%.`);
+      if(bestPredictability) insights.push(`Maior previsibilidade de renda: ${bestPredictability.ticker} com ${formatPct(bestPredictability.score)} e padrão ${bestPredictability.pattern}. Safra: ${bestPredictability.safra.join('/') || 'sem concentração'}; seca: ${bestPredictability.seca.slice(0,4).join('/') || 'sem seca detectada'}.`);
+      if(bestGrowth) insights.push(`CAGR de proventos em destaque: ${bestGrowth.ticker} ${formatPct(bestGrowth.cagr)} ao ano, tendência ${bestGrowth.trend}.`);
       if(!insights.length) insights.push('Importe movimentação, negociação e proventos para ativar a leitura guru.');
-      return { files:files.length, rows:rows.length + movements.length, assets:tickers.size, invested, confirmedIncome, pendingIncome, recurrence, yoc, insights };
+      return { files:files.length, rows:rows.length + movements.length, assets:tickers.size, invested, confirmedIncome, pendingIncome, recurrence, yoc, incomeProfiles, insights };
     }
     function renderCommandCenter(){
       const a = buildCommandCenterAnalytics();
@@ -9083,7 +9249,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       const ordered = (movs || []).slice().filter(x=>x && x.data && x.ticker).sort((a,b)=>String(a.data).localeCompare(String(b.data)) || String(a.ticker).localeCompare(String(b.ticker)));
       const endIso = todayIso();
       function ensure(t){
-        if(!byTicker[t]) byTicker[t] = { ticker:t, firstDate:'', lastDate:'', lotQtd:0, lotCost:0, area:0, compras:0, vendas:0, proventos:0, proventosSemBase:0, lucroRealizado:0, lucroConfiavel:true };
+        if(!byTicker[t]) byTicker[t] = { ticker:t, firstDate:'', lastDate:'', lotQtd:0, lotCost:0, area:0, compras:0, vendas:0, proventos:0, proventosSemBase:0, lucroRealizado:0, lucroConfiavel:true, incomeEvents:[] };
         return byTicker[t];
       }
       function accrue(s, date){
@@ -9115,6 +9281,7 @@ Preencha integralmente os campos do JSON solicitado.`;
         }else if((m.classeMovimento === 'PROVENTO' || m.classeMovimento === 'RENDA_FIXA') && m.afetaCaixa && val > 0){
           if(s.lotCost > 0 || s.lotQtd > 0) s.proventos += val;
           else s.proventosSemBase += val;
+          s.incomeEvents.push({ ticker:t, data:m.data, valor:val, natureza:m.natureza, movimentoOriginal:m.movimentoOriginal });
         }
       }
       Object.values(byTicker).forEach(s => {
@@ -9129,6 +9296,13 @@ Preencha integralmente os campos do JSON solicitado.`;
         s.yieldMedio = s.capitalMedio > 0 ? (s.rendaUsada / s.capitalMedio) * 100 : 0;
         s.yieldAnualizado = (periodDays >= 365 && s.capitalMedio > 0) ? (s.rendaUsada / s.capitalMedio) * (365 / periodDays) * 100 : null;
         s.periodDays = periodDays;
+        const profile = financialUtils.analyzeIncomeProfile(s.incomeEvents);
+        s.previsibilidadeGuruPct = profile.seasonality.predictabilityScore;
+        s.padraoPagamentoGuru = profile.seasonality.pattern;
+        s.mesesSafra = profile.seasonality.harvestMonths;
+        s.mesesSeca = profile.seasonality.dryMonths;
+        s.dividendCagrPct = profile.growth.cagrPct;
+        s.tendenciaProventos = profile.growth.trend;
       });
       const rows = Object.values(byTicker).filter(x=>x.compras > 0 || x.proventos !== 0 || x.proventosSemBase !== 0 || x.lucroRealizado !== 0);
       const firstDate = rows.map(x=>x.firstDate).filter(Boolean).sort()[0] || '';
@@ -9158,7 +9332,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       if($('b3YieldAnnualized')) $('b3YieldAnnualized').textContent = formatB3AnnualYield(t.yieldAnualizado);
       if($('b3YieldStatus')) $('b3YieldStatus').textContent = analysis.rows.length ? `Yield: ${analysis.rows.length} ativos analisados desde ${formatDateBR(t.firstDate)}` : 'Yield: aguardando histórico';
       const rows = analysis.rows.slice().sort((a,b)=>Number(b.yieldAportado||0)-Number(a.yieldAportado||0)).slice(0,20);
-      tb.innerHTML = rows.map(r => `<tr><td><b>${escapeHtml(r.ticker)}</b><span class="mini">${r.periodDays} dias de histórico</span></td><td class="right">${formatBRL(r.compras)}</td><td class="right">${formatBRL(r.capitalMedio)}</td><td class="right"><b>${formatBRL(r.rendaUsada)}</b></td><td class="right">${r.proventosSemBase ? formatBRL(r.proventosSemBase) : '---'}</td><td class="right">${formatBRL(r.lucroRealizado)}${r.lucroConfiavel?'':'<span class="mini">base parcial</span>'}</td><td class="right">${formatPct(r.yieldAportado)}</td><td class="right"><b>${formatB3AnnualYield(r.yieldAnualizado)}</b></td><td>${b3YieldReliabilityBadge(r)} ${b3YieldLabel(r.yieldAportado)}</td></tr>`).join('') || '<tr><td colspan="9" class="center muted">Importe movimentações com compras e renda recebida para ativar a análise de yield de renda real.</td></tr>';
+      tb.innerHTML = rows.map(r => `<tr><td><b>${escapeHtml(r.ticker)}</b><span class="mini">${r.periodDays} dias de histórico</span></td><td class="right">${formatBRL(r.compras)}</td><td class="right">${formatBRL(r.capitalMedio)}</td><td class="right"><b>${formatBRL(r.rendaUsada)}</b></td><td class="right">${r.proventosSemBase ? formatBRL(r.proventosSemBase) : '---'}</td><td class="right">${formatBRL(r.lucroRealizado)}${r.lucroConfiavel?'':'<span class="mini">base parcial</span>'}</td><td class="right">${formatPct(r.yieldAportado)}</td><td class="right"><b>${formatB3AnnualYield(r.yieldAnualizado)}</b></td><td>${b3YieldReliabilityBadge(r)} ${b3YieldLabel(r.yieldAportado)}<span class="mini">Prev. ${formatPct(r.previsibilidadeGuruPct)} · ${escapeHtml(r.tendenciaProventos)}${r.mesesSafra?.length ? ' · Safra ' + escapeHtml(r.mesesSafra.join('/')) : ''}</span></td></tr>`).join('') || '<tr><td colspan="9" class="center muted">Importe movimentações com compras e renda recebida para ativar a análise de yield de renda real.</td></tr>';
     }
 
     function renderB3(){
