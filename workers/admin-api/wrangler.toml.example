@@ -3,7 +3,7 @@ main = "src/index.js"
 compatibility_date = "2026-07-04"
 
 [vars]
-ADMIN_ALLOWED_ORIGINS = "https://guidorafaelchaves.github.io"
+ADMIN_ALLOWED_ORIGINS = "https://guidorafaelchaves.github.io,https://guido-dividend-system.pages.dev"
 DEFAULT_CAC_BRL = "64"
 THRESHOLD_BRAPI_COST_PER_USER = "1.20"
 THRESHOLD_AI_COST_PER_USER = "2.40"

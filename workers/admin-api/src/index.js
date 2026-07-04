@@ -14,11 +14,17 @@ function json(data, status = 200, cors = {}) {
 
 function corsHeaders(request, env) {
   const origin = request.headers.get('origin') || '';
+  const defaultAllowed = [
+    'https://guidorafaelchaves.github.io',
+    'https://guido-dividend-system.pages.dev'
+  ];
   const allowed = String(env.ADMIN_ALLOWED_ORIGINS || '')
     .split(',')
     .map(x => x.trim())
     .filter(Boolean);
-  if (!origin || !allowed.includes(origin)) return {};
+  const allowedOrigins = new Set([...defaultAllowed, ...allowed]);
+  const isProjectPreview = /^https:\/\/[a-z0-9-]+\.guido-dividend-system\.pages\.dev$/i.test(origin);
+  if (!origin || (!allowedOrigins.has(origin) && !isProjectPreview)) return {};
   return {
     'access-control-allow-origin': origin,
     'access-control-allow-methods': 'GET,POST,OPTIONS',
