@@ -313,6 +313,35 @@
        ========================================================= */
     .mobile-scroll-hint{display:none}
 
+    /* =========================
+       v1.10.5 - Centro de Comando B3
+       Entrada produtiva sem alterar motores existentes.
+       ========================= */
+    .command-center{display:grid;gap:16px;margin-bottom:18px}
+    .command-hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:18px;align-items:stretch;border:1px solid rgba(0,212,255,.20);border-radius:18px;padding:20px;background:linear-gradient(135deg,rgba(0,212,255,.10),rgba(124,140,255,.09) 42%,rgba(0,255,136,.06));box-shadow:var(--shadow)}
+    .command-eyebrow{display:inline-flex;width:max-content;border:1px solid rgba(0,212,255,.24);border-radius:999px;padding:6px 10px;background:rgba(0,212,255,.08);color:#9fefff;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+    .command-hero h2{font-size:clamp(28px,3.5vw,48px);line-height:1.03;letter-spacing:-.045em;margin:0;color:#fff}
+    .command-hero p{color:#c5d5e2;line-height:1.55;margin:12px 0 0;max-width:980px}
+    .command-action-panel{display:grid;gap:10px;align-content:end}
+    .command-action-panel button{width:100%}
+    .command-kpi-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+    .command-kpi{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(18,24,33,.96),rgba(10,15,22,.98));padding:14px;min-width:0}
+    .command-kpi span{display:block;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    .command-kpi b{display:block;margin-top:7px;font-size:22px;letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .b3-ingestion-grid{display:grid;grid-template-columns:repeat(7,minmax(145px,1fr));gap:12px}
+    .b3-ingest-card{border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:14px;background:linear-gradient(180deg,rgba(18,24,33,.95),rgba(10,15,22,.98));box-shadow:0 10px 28px rgba(0,0,0,.22);min-width:0}
+    .b3-ingest-card.drag-active{border-color:rgba(0,212,255,.58);box-shadow:0 0 0 2px rgba(0,212,255,.20),0 18px 42px rgba(0,0,0,.30)}
+    .b3-ingest-card h3{margin:0 0 7px;font-size:15px;color:#fff}
+    .b3-ingest-card p{margin:0 0 12px;color:#93a4b5;font-size:12px;line-height:1.45}
+    .b3-ingest-card input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+    .b3-ingest-card label{display:flex;align-items:center;justify-content:center;min-height:42px;border-radius:12px;border:1px solid rgba(0,212,255,.22);background:rgba(0,212,255,.09);color:#a9f2ff;font-size:12px;font-weight:900;cursor:pointer;text-align:center}
+    .b3-ingest-card small{display:block;margin-top:9px;color:#8fa2b3;font-size:11px;line-height:1.35;overflow-wrap:anywhere}
+    .guru-panel{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(0,1.2fr);gap:14px;border:1px solid rgba(0,255,136,.18);border-radius:18px;padding:16px;background:linear-gradient(135deg,rgba(0,255,136,.07),rgba(0,212,255,.06));box-shadow:0 18px 46px rgba(0,0,0,.22)}
+    .guru-panel h3{margin:0 0 8px;font-size:20px;color:#fff}
+    .guru-panel p{margin:0;color:#c6d7e2;line-height:1.55}
+    .guru-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .guru-list li{border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.035);color:#d7e5ef;line-height:1.45}
+
     @media (max-width: 980px){
       html,body{max-width:100%;overflow-x:hidden}
       body{font-size:14px;background:#070b11}
@@ -389,6 +418,10 @@
 
       #tab-config .controls[style],#tab-central-b3 .controls[style],#tab-b3 .controls[style],#tab-fii .controls[style],#tab-decision .controls[style],#tab-radar .controls[style]{grid-template-columns:1fr!important}
       #brapiTickers,#fiiUniverseInput,textarea{min-height:48px}
+      .command-hero,.guru-panel{grid-template-columns:1fr}
+      .command-kpi-grid{grid-template-columns:1fr 1fr}
+      .b3-ingestion-grid{grid-template-columns:1fr}
+      .b3-ingest-card{padding:13px;border-radius:14px}
     }
 
     @media (max-width: 430px){
@@ -405,6 +438,8 @@
       table{min-width:980px}
       .table-wrap{max-height:64vh}
       .gwi-shot-tabs span{font-size:9px;padding:4px 6px}
+      .command-kpi-grid{grid-template-columns:1fr}
+      .command-hero{padding:16px}
     }
 
 </style>
@@ -416,14 +451,12 @@
     <div class="gwi-topbar-inner">
       <div class="gwi-brand"><div class="gwi-brand-mark">◆</div><span>Guido Dividend System</span></div>
       <div class="gwi-nav">
-        <button id="gwiNavManifesto" class="active" onclick="GWI_showPage('manifesto')">1. Manifesto</button>
-        <button id="gwiNavDemo" onclick="GWI_showPage('demo')">2. Demonstração</button>
-        <button id="gwiNavSistema" onclick="GWI_showPage('sistema')">3. Sistema completo</button>
+        <button id="gwiNavSistema" class="active" onclick="GWI_showPage('sistema')">Centro de Comando</button>
       </div>
     </div>
   </div>
 
-    <section id="gwiPageManifesto" class="gwi-page active">
+    <section id="gwiPageManifesto" class="gwi-page" hidden aria-hidden="true">
     <div class="gwi-container">
       <div class="gwi-hero">
         <div class="gwi-hero-premium">
@@ -576,7 +609,7 @@
 
   
   
-  <section id="gwiPageDemo" class="gwi-page">
+  <section id="gwiPageDemo" class="gwi-page" hidden aria-hidden="true">
     <div class="gwi-container">
       <div class="gwi-hero">
         <div class="gwi-kicker">◆ Página 2 · Demonstração guiada</div>
@@ -766,16 +799,16 @@
   </section>
 
 
-  <section id="gwiPageSistema" class="gwi-page gwi-system-page">
+  <section id="gwiPageSistema" class="gwi-page gwi-system-page active">
 
   <div class="wrap">
     <div class="header">
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.10.4 · Sistema proprietário de inteligência patrimonial integrada: B3 Ledger, Radar de Oportunidades, FIIs, multicritérios, dados da B3, BRAPI, manifesto premium e dossiê bruto factual por ativo.</p>
+        <p>v1.10.5 · Sistema proprietário de inteligência patrimonial integrada: Centro de Comando B3, Ledger, Radar de Oportunidades, FIIs, multicritérios, BRAPI e dossiê bruto factual por ativo.</p>
       </div>
-      <div class="version-pill">v1.10.4 · diário com ciclos encerrados</div>
+      <div class="version-pill">v1.10.5 · centro de comando B3</div>
     </div>
 
     <div class="grid-5">
@@ -787,7 +820,8 @@
     </div>
 
     <div class="tabs">
-      <button class="tab active" data-tab="tab-config">1. Central API & Importação</button>
+      <button class="tab active" data-tab="tab-command">0. Centro de Comando</button>
+      <button class="tab" data-tab="tab-config">1. Central API & Importação</button>
       <button class="tab" data-tab="tab-radar">2. Radar de Oportunidades</button>
       <button class="tab" data-tab="tab-diario">3. Diário de Risco</button>
       <button class="tab" data-tab="tab-fluxo">4. Fluxo de Caixa</button>
@@ -799,7 +833,51 @@
       <button class="tab" data-tab="tab-raw-dossier">10. Dossiê Bruto</button>
     </div>
 
-    <div id="tab-config" class="panel active">
+    <div id="tab-command" class="panel active">
+      <section class="command-center" aria-labelledby="commandTitle">
+        <div class="command-hero">
+          <div>
+            <span class="command-eyebrow">Centro de Comando B3</span>
+            <h2 id="commandTitle">Ingestão, diagnóstico e decisão patrimonial em uma única entrada.</h2>
+            <p>Envie os arquivos oficiais da B3, normalize cada tipo de dado e alimente a engine existente sem alterar as abas, cálculos ou algoritmos validados.</p>
+          </div>
+          <div class="command-action-panel">
+            <button class="btn-api" onclick="runCommandCenterAnalysis()">Analisar agora</button>
+            <button class="btn-green" onclick="injectCommandCenterIntoEngines()">Enviar para engine</button>
+            <button class="btn-outline" onclick="exportCommandCenterJSON()">Exportar JSON normalizado</button>
+          </div>
+        </div>
+
+        <div class="command-kpi-grid">
+          <div class="command-kpi"><span>Arquivos B3</span><b id="cmdKpiFiles">0</b></div>
+          <div class="command-kpi"><span>Linhas normalizadas</span><b id="cmdKpiRows">0</b></div>
+          <div class="command-kpi"><span>Ativos detectados</span><b id="cmdKpiAssets">0</b></div>
+          <div class="command-kpi"><span>Renda confirmada</span><b id="cmdKpiIncome" style="color:var(--green)">R$ 0,00</b></div>
+          <div class="command-kpi"><span>Yield on cost</span><b id="cmdKpiYoc">0%</b></div>
+          <div class="command-kpi"><span>Recorrência</span><b id="cmdKpiRecurrence">0%</b></div>
+        </div>
+
+        <div class="b3-ingestion-grid">
+          <div class="b3-ingest-card" data-command-zone="extratos"><h3>Extratos</h3><p>Custódia, saldos e fotografia patrimonial.</p><input id="cmdFileExtratos" type="file" accept=".xlsx,.xls,.csv,.txt" multiple><label for="cmdFileExtratos">Importar extratos</label><small id="cmdStatusExtratos">Aguardando arquivo</small></div>
+          <div class="b3-ingest-card" data-command-zone="movimentacao"><h3>Movimentação</h3><p>Livro operacional para o B3 Ledger.</p><input id="cmdFileMovimentacao" type="file" accept=".xlsx,.xls,.csv,.txt" multiple><label for="cmdFileMovimentacao">Importar movimentação</label><small id="cmdStatusMovimentacao">Aguardando arquivo</small></div>
+          <div class="b3-ingest-card" data-command-zone="negociacao"><h3>Negociação</h3><p>Execuções, preços, custos e instituição.</p><input id="cmdFileNegociacao" type="file" accept=".xlsx,.xls,.csv,.txt" multiple><label for="cmdFileNegociacao">Importar negociação</label><small id="cmdStatusNegociacao">Aguardando arquivo</small></div>
+          <div class="b3-ingest-card" data-command-zone="eventos_corporativos"><h3>Eventos Corporativos</h3><p>Desdobro, grupamento, bonificação e técnicos.</p><input id="cmdFileEventos" type="file" accept=".xlsx,.xls,.csv,.txt" multiple><label for="cmdFileEventos">Importar eventos</label><small id="cmdStatusEventos">Aguardando arquivo</small></div>
+          <div class="b3-ingest-card" data-command-zone="proventos_recebidos"><h3>Proventos Recebidos</h3><p>Renda confirmada no caixa.</p><input id="cmdFileRecebidos" type="file" accept=".xlsx,.xls,.csv,.txt" multiple><label for="cmdFileRecebidos">Importar recebidos</label><small id="cmdStatusRecebidos">Aguardando arquivo</small></div>
+          <div class="b3-ingest-card" data-command-zone="proventos_a_receber"><h3>Proventos A Receber</h3><p>Renda futura, datas-com e pagamentos.</p><input id="cmdFileAReceber" type="file" accept=".xlsx,.xls,.csv,.txt" multiple><label for="cmdFileAReceber">Importar a receber</label><small id="cmdStatusAReceber">Aguardando arquivo</small></div>
+          <div class="b3-ingest-card" data-command-zone="radar"><h3>Radar</h3><p>Calendário, oportunidades e watchlist.</p><input id="cmdFileRadar" type="file" accept=".xlsx,.xls,.csv,.txt" multiple><label for="cmdFileRadar">Importar radar</label><small id="cmdStatusRadar">Aguardando arquivo</small></div>
+        </div>
+
+        <div class="guru-panel">
+          <div>
+            <h3>Análise Guru</h3>
+            <p id="cmdGuruSummary">Importe arquivos B3 para cruzar negociação, movimentação, extratos e proventos em uma leitura preditiva de renda, recorrência, eficiência e risco.</p>
+          </div>
+          <ul id="cmdGuruInsights" class="guru-list"><li>Base aguardando ingestão.</li></ul>
+        </div>
+      </section>
+    </div>
+
+    <div id="tab-config" class="panel">
       <div class="split-2">
         <div class="stack">
           <div class="card" style="border-left:5px solid var(--violet)">
@@ -6099,6 +6177,216 @@ function renderEngineSummary(){
     }
     function exportB3CentralNormalizedCSV(){ downloadTextFile('guido_b3_central_normalizados.csv', toCSV(state.b3CentralRows || [])); }
 
+    // =========================
+    // V1.10.5 - CENTRO DE COMANDO B3
+    // Camada de entrada: normaliza e injeta nos estados existentes.
+    // =========================
+    const COMMAND_CENTER_UPLOADS = {
+      extratos: { input:'cmdFileExtratos', status:'cmdStatusExtratos', centralType:'posicao_anual' },
+      movimentacao: { input:'cmdFileMovimentacao', status:'cmdStatusMovimentacao', centralType:'movimentacao', ledger:true },
+      negociacao: { input:'cmdFileNegociacao', status:'cmdStatusNegociacao', centralType:'negociacao' },
+      eventos_corporativos: { input:'cmdFileEventos', status:'cmdStatusEventos', centralType:'eventos_corporativos' },
+      proventos_recebidos: { input:'cmdFileRecebidos', status:'cmdStatusRecebidos', centralType:'proventos_recebidos' },
+      proventos_a_receber: { input:'cmdFileAReceber', status:'cmdStatusAReceber', centralType:'proventos_a_receber', dividends:true },
+      radar: { input:'cmdFileRadar', status:'cmdStatusRadar', centralType:'calendario_eventos', dividends:true }
+    };
+    function forceCommandCenterType(row, forcedType){
+      if(!row || !forcedType || row.tipoArquivo === forcedType) return row;
+      return {
+        ...row,
+        tipoArquivo: forcedType,
+        estrutura: b3TypeToStructure(forcedType),
+        observacoes: [row.observacoes, 'Tipo definido pelo Centro de Comando.'].filter(Boolean).join(' ')
+      };
+    }
+    function readCommandMovementFile(file){
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onerror = () => reject(new Error('Falha ao ler ' + file.name));
+        reader.onload = e => {
+          try{
+            if(typeof XLSX === 'undefined') throw new Error('Biblioteca XLSX não carregou.');
+            const isText = /\.(csv|txt)$/i.test(file.name);
+            const wb = isText ? XLSX.read(e.target.result, { type:'string', raw:true }) : XLSX.read(e.target.result, { type:'array', cellDates:false, raw:true });
+            const all = [];
+            wb.SheetNames.forEach(name => {
+              const rows = XLSX.utils.sheet_to_json(wb.Sheets[name], { header:1, raw:false });
+              all.push(...normalizeB3Rows(rows, name));
+            });
+            resolve(all);
+          }catch(err){ reject(err); }
+        };
+        if(/\.(csv|txt)$/i.test(file.name)) reader.readAsText(file); else reader.readAsArrayBuffer(file);
+      });
+    }
+    async function handleCommandCenterFiles(kind, files){
+      const cfg = COMMAND_CENTER_UPLOADS[kind];
+      if(!cfg || !files?.length) return;
+      const status = $(cfg.status);
+      if(status) status.textContent = 'Processando...';
+      let importedFiles = 0, centralRows = 0, ledgerRows = 0, dividendRows = 0;
+      const failures = [];
+      for(const file of Array.from(files)){
+        try{
+          if(cfg.ledger){
+            const movements = await readCommandMovementFile(file);
+            const existing = new Set((state.b3Movements || []).map(x => x.id));
+            for(const row of movements){
+              if(!existing.has(row.id)){
+                state.b3Movements.push(row);
+                existing.add(row.id);
+                ledgerRows++;
+              }
+            }
+          }
+          const result = await readB3CentralFile(file);
+          const fileMeta = {
+            ...result.fileMeta,
+            commandCenterKind: kind,
+            typeDetected: cfg.centralType || result.fileMeta.typeDetected
+          };
+          const normalized = result.normalized.map(row => forceCommandCenterType(row, cfg.centralType));
+          const oldFileIdx = state.b3CentralFiles.findIndex(x => x.id === fileMeta.id);
+          if(oldFileIdx >= 0) state.b3CentralFiles[oldFileIdx] = fileMeta;
+          else state.b3CentralFiles.push(fileMeta);
+          const existingRows = new Set((state.b3CentralRows || []).map(x => x.id));
+          for(const row of normalized){
+            if(!existingRows.has(row.id)){
+              state.b3CentralRows.push(row);
+              existingRows.add(row.id);
+              centralRows++;
+            }
+          }
+          if(cfg.dividends){
+            dividendRows += injectCommandDividends(normalized, kind);
+          }
+          importedFiles++;
+        }catch(err){
+          console.error('Falha no Centro de Comando B3:', err);
+          failures.push(file.name + ': ' + (err.message || err));
+        }
+      }
+      rebuildB3Derived();
+      rebuildB3Intelligence();
+      saveAll();
+      renderTudo();
+      if(status){
+        status.textContent = failures.length
+          ? `${importedFiles} arquivo(s), ${centralRows + ledgerRows} linha(s), ${failures.length} falha(s)`
+          : `${importedFiles} arquivo(s), ${centralRows + ledgerRows} linha(s) normalizadas`;
+      }
+      if(failures.length) alert('Falhas na ingestão B3:\n' + failures.join('\n'));
+    }
+    function injectCommandDividends(rows, kind){
+      const existing = new Set((state.dividends || []).map(x => x.id));
+      let inserted = 0;
+      rows.forEach(row => {
+        const ticker = normalizeTicker(row.ticker);
+        if(!ticker) return;
+        const valorUnitario = parseNumber(row.valorUnitario || row.valorTotal || 0);
+        const dataPagamento = row.dataPagamento || row.data || '';
+        const dataCom = row.dataCom || '';
+        if(!(valorUnitario || dataPagamento || dataCom)) return;
+        const d = {
+          id: ['CMD', kind, ticker, dataCom, dataPagamento, row.tipoEvento || '', valorUnitario].join('|'),
+          ticker,
+          tipoProvento: row.tipoEvento || (kind === 'radar' ? 'EVENTO' : 'PROVENTO'),
+          dataCom,
+          dataPagamento,
+          valorUnitario,
+          moeda:'BRL',
+          origem:'centro_comando_b3'
+        };
+        if(!existing.has(d.id)){
+          state.dividends.push(d);
+          existing.add(d.id);
+          inserted++;
+        }
+      });
+      return inserted;
+    }
+    function buildCommandCenterAnalytics(){
+      rebuildB3Derived();
+      const files = state.b3CentralFiles || [];
+      const rows = state.b3CentralRows || [];
+      const movements = state.b3Movements || [];
+      const portfolio = Object.values(state.b3Portfolio || {});
+      const income = state.b3Income || [];
+      const tickers = new Set([
+        ...rows.map(x => normalizeTicker(x.ticker)).filter(Boolean),
+        ...movements.map(x => normalizeTicker(x.ticker)).filter(Boolean),
+        ...portfolio.map(x => normalizeTicker(x.ticker)).filter(Boolean)
+      ]);
+      const invested = portfolio.reduce((acc,x) => acc + parseNumber(x.compras || x.custoTotal || 0), 0);
+      const confirmedIncome = income.reduce((acc,x) => acc + parseNumber(x.valor || 0), 0);
+      const pendingIncome = rows
+        .filter(x => ['proventos_a_receber','calendario_eventos'].includes(x.tipoArquivo))
+        .reduce((acc,x) => acc + parseNumber(x.valorTotal || x.valorUnitario || 0), 0);
+      const months = new Set(income.map(x => String(x.data || '').slice(0,7)).filter(Boolean));
+      const recurrence = months.size ? Math.min(100, Math.round((months.size / 12) * 100)) : 0;
+      const yoc = invested > 0 ? confirmedIncome / invested : 0;
+      const byTickerIncome = income.reduce((acc,x) => {
+        const t = normalizeTicker(x.ticker);
+        if(t) acc[t] = (acc[t] || 0) + parseNumber(x.valor || 0);
+        return acc;
+      }, {});
+      const topIncome = Object.entries(byTickerIncome).sort((a,b)=>b[1]-a[1]).slice(0,3);
+      const bestYoc = portfolio
+        .map(p => ({ ticker:p.ticker, yoc: parseNumber(p.proventosRecebidos || 0) / Math.max(parseNumber(p.compras || p.custoTotal || 0), 1) }))
+        .filter(x => x.ticker && x.yoc > 0)
+        .sort((a,b)=>b.yoc-a.yoc)[0];
+      const insights = [];
+      if(files.length) insights.push(`${files.length} arquivo(s) B3 sustentam ${rows.length} linha(s) normalizadas na Central.`);
+      if(invested > 0) insights.push(`Capital histórico detectado: ${formatBRL(invested)}; yield on cost realizado: ${(yoc*100).toFixed(2)}%.`);
+      if(confirmedIncome > 0) insights.push(`Renda confirmada em caixa: ${formatBRL(confirmedIncome)}; recorrência estimada: ${recurrence}% dos últimos 12 meses.`);
+      if(pendingIncome > 0) insights.push(`Renda futura/eventos provisionados: ${formatBRL(pendingIncome)} para conciliação com o fluxo.`);
+      if(topIncome.length) insights.push(`Maiores pagadores: ${topIncome.map(x => `${x[0]} ${formatBRL(x[1])}`).join(' · ')}.`);
+      if(bestYoc) insights.push(`Melhor YOC por custo carregado: ${bestYoc.ticker} com ${(bestYoc.yoc*100).toFixed(2)}%.`);
+      if(!insights.length) insights.push('Importe movimentação, negociação e proventos para ativar a leitura guru.');
+      return { files:files.length, rows:rows.length + movements.length, assets:tickers.size, invested, confirmedIncome, pendingIncome, recurrence, yoc, insights };
+    }
+    function renderCommandCenter(){
+      const a = buildCommandCenterAnalytics();
+      if($('cmdKpiFiles')) $('cmdKpiFiles').textContent = String(a.files);
+      if($('cmdKpiRows')) $('cmdKpiRows').textContent = String(a.rows);
+      if($('cmdKpiAssets')) $('cmdKpiAssets').textContent = String(a.assets);
+      if($('cmdKpiIncome')) $('cmdKpiIncome').textContent = formatBRL(a.confirmedIncome);
+      if($('cmdKpiYoc')) $('cmdKpiYoc').textContent = (a.yoc*100).toFixed(2) + '%';
+      if($('cmdKpiRecurrence')) $('cmdKpiRecurrence').textContent = a.recurrence + '%';
+      if($('cmdGuruSummary')) $('cmdGuruSummary').innerHTML = `Carteira analisada com <b>${a.assets}</b> ativo(s), renda confirmada de <b>${formatBRL(a.confirmedIncome)}</b> e renda futura mapeada de <b>${formatBRL(a.pendingIncome)}</b>.`;
+      if($('cmdGuruInsights')) $('cmdGuruInsights').innerHTML = a.insights.map(x => `<li>${escapeHtml(x)}</li>`).join('');
+      return a;
+    }
+    function runCommandCenterAnalysis(){
+      renderCommandCenter();
+      alert('Análise guru atualizada com os dados B3 disponíveis.');
+    }
+    function injectCommandCenterIntoEngines(){
+      rebuildB3Derived();
+      rebuildB3Intelligence();
+      saveAll();
+      renderTudo();
+      window.dispatchEvent(new CustomEvent('gds:command-center-injected', { detail:{ analytics:buildCommandCenterAnalytics(), rows:state.b3CentralRows || [], movements:state.b3Movements || [] } }));
+      alert('Centro de Comando enviado para Central B3, B3 Ledger e motores existentes.');
+    }
+    function exportCommandCenterJSON(){
+      const payload = { generatedAt:new Date().toISOString(), analytics:buildCommandCenterAnalytics(), b3CentralFiles:state.b3CentralFiles || [], b3CentralRows:state.b3CentralRows || [], b3Movements:state.b3Movements || [], dividends:state.dividends || [] };
+      downloadTextFile('guido_centro_comando_b3.json', JSON.stringify(payload, null, 2), 'application/json');
+    }
+    function wireCommandCenterUpload(kind, cfg){
+      const input = $(cfg.input);
+      if(input) input.addEventListener('change', e => handleCommandCenterFiles(kind, e.target.files));
+      const zone = document.querySelector(`[data-command-zone="${kind}"]`);
+      if(!zone) return;
+      zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-active'); });
+      zone.addEventListener('dragleave', () => zone.classList.remove('drag-active'));
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        zone.classList.remove('drag-active');
+        handleCommandCenterFiles(kind, e.dataTransfer.files);
+      });
+    }
+
 
 
     // =========================
@@ -6636,6 +6924,7 @@ function renderEngineSummary(){
       normalizeState();
       rebuildDerived();
       renderKPIs();
+      renderCommandCenter();
       renderRadar();
       renderDiario();
       renderFluxo();
@@ -7964,6 +8253,7 @@ Preencha integralmente os campos do JSON solicitado.`;
 
     $('fileInput').addEventListener('change', e => handleUpload(e.target.files[0]));
     if($('b3FileInput')) $('b3FileInput').addEventListener('change', e => handleB3Upload(e.target.files[0]));
+    Object.entries(COMMAND_CENTER_UPLOADS).forEach(([kind, cfg]) => wireCommandCenterUpload(kind, cfg));
     $('modalOverlay').addEventListener('click', e => {
       if(e.target === $('modalOverlay')) closeModal();
     });
@@ -9065,6 +9355,7 @@ Preencha integralmente os campos do JSON solicitado.`;
 
   <script>
     function GWI_showPage(page){
+      page = 'sistema';
       var pages = ['manifesto','demo','sistema'];
       pages.forEach(function(p){
         var el = document.getElementById('gwiPage' + (p === 'manifesto' ? 'Manifesto' : p === 'demo' ? 'Demo' : 'Sistema'));
@@ -9151,7 +9442,7 @@ Preencha integralmente os campos do JSON solicitado.`;
     }
     window.addEventListener('load', function(){
       var hash = (window.location.hash || '').replace('#','');
-      if(hash === 'demo' || hash === 'sistema' || hash === 'manifesto') GWI_showPage(hash);
+      GWI_showPage('sistema');
     });
     window.gdsRuntime = {
       getState: function(){ return state; },
