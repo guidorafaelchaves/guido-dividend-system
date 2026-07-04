@@ -948,6 +948,21 @@
             </div>
           </div>
 
+          <div class="card" style="border-left:5px solid var(--cyan)">
+            <h2 class="section-title">⚡ Análise Autorizada pelo Admin</h2>
+            <div class="section-note">
+              Executa, em um único comando, os motores liberados no Centro de Comando: atualização Brapi dos ativos prioritários, recálculo do radar e análise IA do ativo selecionado ou do melhor sinal atual.
+            </div>
+            <div class="toolbar" style="margin-top:14px">
+              <button class="btn-api" id="forceAuthorizedAnalysisBtn" onclick="forceAuthorizedAnalysis()">Forçar Brapi + IA</button>
+              <button class="btn-secondary" onclick="forceAuthorizedBrapiOnly()">Forçar apenas Brapi</button>
+              <span id="authorizedAnalysisStatus" class="status-chip">Motores aguardando comando do usuário.</span>
+            </div>
+            <div class="section-note" style="margin-top:10px">
+              Dica: para escolher um ativo específico, digite o ticker no campo de busca do Radar antes de acionar a análise.
+            </div>
+          </div>
+
           <div class="card admin-config-retired hidden" style="border-left:5px solid var(--green)">
             <h2 class="section-title">Memoria Real - Sheets + Docs</h2>
             <div class="section-note">
@@ -1595,7 +1610,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.10.14 · Configurações sistêmicas desacopladas no Admin Console, dashboard focado em ingestão B3 e insights</div>
+    <div class="footer">Guido Dividend System v1.10.15 · Análise autorizada pelo Admin com Brapi e IA sob comando do usuário</div>
   </div>
 
   </section>
@@ -3449,6 +3464,99 @@ function refreshTopRadar(silent=false){
   if(!ensureBrapiConfigured(silent)) return;
   const rows = getRadarRows().slice(0, 20).map(r => r.ticker);
   enqueueManyRefresh(rows, 'top_radar', false);
+}
+
+function setAuthorizedAnalysisStatus(message, isError=false){
+  const el = $('authorizedAnalysisStatus');
+  if(!el) return;
+  el.textContent = message;
+  el.style.color = isError ? 'var(--red)' : 'var(--muted)';
+}
+
+function getAuthorizedAnalysisTarget(){
+  const requested = normalizeTicker($('buscaRadar')?.value || '');
+  const rows = sortRadarRows(buildRadarRows());
+  if(requested){
+    const match = rows.find(r => r.ticker === requested);
+    return match || { ticker: requested, id: '' };
+  }
+  return rows.find(r => r?.ticker) || { ticker: getOpenPositionTickers()[0] || getConfiguredBrapiTickers()[0] || '', id: '' };
+}
+
+function getAuthorizedBrapiBatch(targetTicker=''){
+  const radarRows = sortRadarRows(buildRadarRows()).slice(0, 8).map(r => r.ticker);
+  return [...new Set([
+    targetTicker,
+    ...radarRows,
+    ...getOpenPositionTickers(),
+    ...getConfiguredBrapiTickers()
+  ].map(normalizeTicker).filter(Boolean))].slice(0, 18);
+}
+
+async function runAuthorizedBrapiBatch(tickers){
+  let ok = 0;
+  let fail = 0;
+  const list = [...new Set((tickers || []).map(normalizeTicker).filter(Boolean))];
+  if(!list.length) throw new Error('Nenhum ticker disponível para análise autorizada.');
+  for(const tk of list){
+    try{
+      setAuthorizedAnalysisStatus(`Brapi autorizado: atualizando ${tk} (${ok + fail + 1}/${list.length})...`);
+      await fetchSingleTickerBrapi(tk, { forceHistory:true, context:'user_authorized_analysis', force:true });
+      ok += 1;
+    }catch(err){
+      fail += 1;
+      patchMarketMeta(tk, { inFlight:false, lastError: err?.message || String(err), lastErrorAt: new Date().toISOString() });
+      logRefreshTelemetry(tk, 'user_authorized_analysis', 'refresh_error', 'brapi', false, err?.message || String(err));
+    }
+  }
+  normalizeState();
+  rebuildDerived();
+  rebuildB3Derived();
+  saveAll();
+  renderTudo();
+  updateRefreshBadge();
+  return { ok, fail, total:list.length };
+}
+
+async function forceAuthorizedBrapiOnly(){
+  if(!ensureBrapiConfigured()) return;
+  const btn = $('forceAuthorizedAnalysisBtn');
+  const previous = btn?.textContent || '';
+  try{
+    if(btn){ btn.disabled = true; btn.textContent = 'Atualizando Brapi...'; }
+    const target = getAuthorizedAnalysisTarget();
+    const result = await runAuthorizedBrapiBatch(getAuthorizedBrapiBatch(target.ticker));
+    setAuthorizedAnalysisStatus(`Brapi concluído: ${result.ok}/${result.total} ativos atualizados${result.fail ? `, ${result.fail} com falha` : ''}.`, result.ok === 0);
+  }catch(err){
+    setAuthorizedAnalysisStatus(err?.message || String(err), true);
+    showAdminConfigWarning(err?.message || String(err));
+  }finally{
+    if(btn){ btn.disabled = false; btn.textContent = previous || 'Forçar Brapi + IA'; }
+  }
+}
+
+async function forceAuthorizedAnalysis(){
+  if(!ensureBrapiConfigured()) return;
+  if(!(state.aiSettings?.apiKey || '').trim()){
+    showAdminConfigWarning('Sistema em manutenção ou OpenAI não configurada pelo administrador.');
+    return;
+  }
+  const btn = $('forceAuthorizedAnalysisBtn');
+  const previous = btn?.textContent || '';
+  try{
+    if(btn){ btn.disabled = true; btn.textContent = 'Rodando motores...'; }
+    const target = getAuthorizedAnalysisTarget();
+    if(!target.ticker) throw new Error('Nenhum ativo disponível para acionar a análise IA.');
+    const result = await runAuthorizedBrapiBatch(getAuthorizedBrapiBatch(target.ticker));
+    setAuthorizedAnalysisStatus(`Brapi ${result.ok}/${result.total}. Abrindo IA autorizada para ${target.ticker}...`);
+    await openAIAnalysis(target.ticker, target.id || '', 'completa');
+  }catch(err){
+    console.error(err);
+    setAuthorizedAnalysisStatus(err?.message || String(err), true);
+    showAdminConfigWarning(err?.message || String(err));
+  }finally{
+    if(btn){ btn.disabled = false; btn.textContent = previous || 'Forçar Brapi + IA'; }
+  }
 }
 function updateRefreshBadge(){
   const el = $('refreshStatusBadge');
