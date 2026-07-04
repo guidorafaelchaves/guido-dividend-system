@@ -55,7 +55,7 @@
           </div>
           <span class="badge mid" id="configHealth">Configuração pendente</span>
         </div>
-        <div class="notice">As credenciais ficam no storage do mesmo domínio usando Web Crypto quando disponível. Chaves definitivas de backend continuam fora do GitHub Pages.</div>
+        <div class="notice" id="adminOriginNotice">As credenciais ficam no storage do mesmo domínio usando Web Crypto quando disponível. Abra o dashboard neste mesmo domínio para consumir os tokens.</div>
         <div class="settings-grid" style="margin-top:14px">
           <article class="card">
             <h3>Integrações Externas</h3>
@@ -93,6 +93,7 @@
           <button class="btn primary" id="saveSystemConfig">Salvar Configuração</button>
           <button class="btn" id="reloadSystemConfig">Recarregar</button>
           <button class="btn" id="clearSystemConfig">Limpar Configuração</button>
+          <button class="btn" id="openSameOriginDashboard">Abrir Dashboard deste domínio</button>
           <span class="status" id="configStatus">Aguardando leitura do storage administrativo.</span>
         </div>
       </section>
@@ -162,6 +163,7 @@
       if(s.length <= 10) return `${s.slice(0,3)}••••`;
       return `${s.slice(0,6)}••••${s.slice(-4)}`;
     };
+    const sameOriginDashboardUrl = () => new URL('./dashboard.html#sistema', location.href).href;
 
     const adminConfigUi = (() => {
       const ids = {
@@ -185,7 +187,7 @@
       const set = (id, value) => { const el = byId(id); if(el) el.value = value ?? ''; };
       function status(message, ok=false){
         const el = byId('configStatus');
-        if(el) el.textContent = message;
+        if(el) el.textContent = `${message} Domínio atual: ${location.origin}.`;
         const health = byId('configHealth');
         if(health){
           health.textContent = ok ? 'Configuração ativa' : 'Configuração incompleta';
@@ -261,6 +263,9 @@
         byId('saveSystemConfig')?.addEventListener('click', save);
         byId('reloadSystemConfig')?.addEventListener('click', load);
         byId('clearSystemConfig')?.addEventListener('click', clear);
+        byId('openSameOriginDashboard')?.addEventListener('click', () => window.open(sameOriginDashboardUrl(), '_blank'));
+        const notice = byId('adminOriginNotice');
+        if(notice) notice.innerHTML = `As credenciais ficam no storage de <b>${location.origin}</b>. Abra o dashboard deste mesmo domínio para consumir Brapi/OpenAI.`;
       }
       return { wire, load, save };
     })();

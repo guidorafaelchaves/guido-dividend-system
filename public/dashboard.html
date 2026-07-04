@@ -956,7 +956,11 @@
             <div class="toolbar" style="margin-top:14px">
               <button class="btn-api" id="forceAuthorizedAnalysisBtn" onclick="forceAuthorizedAnalysis()">Forçar Brapi + IA</button>
               <button class="btn-secondary" onclick="forceAuthorizedBrapiOnly()">Forçar apenas Brapi</button>
+              <button class="btn-outline" onclick="openAdminSameOrigin()">Abrir Admin deste domínio</button>
               <span id="authorizedAnalysisStatus" class="status-chip">Motores aguardando comando do usuário.</span>
+            </div>
+            <div id="configBridgeStatus" class="section-note" style="margin-top:10px">
+              Vínculo Admin-Dashboard: verificando cofre deste domínio.
             </div>
             <div class="section-note" style="margin-top:10px">
               Dica: para escolher um ativo específico, digite o ticker no campo de busca do Radar antes de acionar a análise.
@@ -1610,7 +1614,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.10.15 · Análise autorizada pelo Admin com Brapi e IA sob comando do usuário</div>
+    <div class="footer">Guido Dividend System v1.10.16 · Vínculo Admin-Dashboard validado por domínio com Brapi e IA autorizados</div>
   </div>
 
   </section>
@@ -3473,6 +3477,22 @@ function setAuthorizedAnalysisStatus(message, isError=false){
   el.style.color = isError ? 'var(--red)' : 'var(--muted)';
 }
 
+function getSameOriginAdminUrl(){
+  return new URL('./admin.html', location.href).href;
+}
+
+function openAdminSameOrigin(){
+  window.open(getSameOriginAdminUrl(), '_blank');
+}
+
+function updateConfigBridgeStatus(status){
+  const el = $('configBridgeStatus');
+  if(!el) return;
+  const missing = status?.missing?.length ? ` Pendências: ${status.missing.join(', ')}.` : '';
+  const ok = Boolean(status?.ok);
+  el.innerHTML = `${ok ? '✅' : '⚠️'} <b>Vínculo Admin-Dashboard:</b> lendo configuração em <b>${escapeHtml(location.origin)}</b>.${missing} Use sempre o Admin deste mesmo domínio para salvar tokens.`;
+}
+
 function getAuthorizedAnalysisTarget(){
   const requested = normalizeTicker($('buscaRadar')?.value || '');
   const rows = sortRadarRows(buildRadarRows());
@@ -4314,7 +4334,10 @@ async function fetchSingleTickerBrapi(tk, opts={}){
     async function loadAdminSystemConfig(){
       state.adminConfigStatus = { ok:false, missing:['ConfigManager'], message:'Sistema em manutencao ou parametros nao configurados pelo administrador.' };
       try{
-        if(!window.RadarConfigManager) return state.adminConfigStatus;
+        if(!window.RadarConfigManager){
+          updateConfigBridgeStatus(state.adminConfigStatus);
+          return state.adminConfigStatus;
+        }
         const { config, configured } = await window.RadarConfigManager.load();
         const status = window.RadarConfigManager.applyToDashboardState(state, config);
         state.adminConfigStatus = {
@@ -4322,8 +4345,13 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           configured,
           loadedAt: new Date().toISOString()
         };
+        updateConfigBridgeStatus(state.adminConfigStatus);
+        if(!state.adminConfigStatus.ok){
+          setAuthorizedAnalysisStatus(`Configuração incompleta neste domínio (${location.host}). Abra o Admin deste domínio.`, true);
+        }
         return state.adminConfigStatus;
       }catch{
+        updateConfigBridgeStatus(state.adminConfigStatus);
         return state.adminConfigStatus;
       }
     }
