@@ -314,7 +314,7 @@
     .mobile-scroll-hint{display:none}
 
     /* =========================
-       v1.10.6 - Quant Analytics de Proventos
+       v1.10.7 - Heuristicas Quantitativas Institucionais
        Entrada produtiva sem alterar motores existentes.
        ========================= */
     .command-center{display:grid;gap:16px;margin-bottom:18px}
@@ -806,9 +806,9 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.10.6 · Sistema proprietário de inteligência patrimonial integrada: Centro de Comando B3, Ledger, Radar de Oportunidades, FIIs, multicritérios, BRAPI e análise quantitativa de proventos.</p>
+        <p>v1.10.7 · Sistema proprietário de inteligência patrimonial integrada: Centro de Comando B3, Ledger, Radar de Oportunidades, FIIs, multicritérios, BRAPI e heurísticas quantitativas de proventos.</p>
       </div>
-      <div class="version-pill">v1.10.6 · quant analytics de proventos</div>
+      <div class="version-pill">v1.10.7 · heurísticas quant de renda</div>
     </div>
 
     <div class="grid-5">
@@ -2382,6 +2382,246 @@ function isSuspiciousDividendGap(dataCom, dataPagamento){
         return Object.fromEntries(Object.entries(grouped).map(([ticker, tickerRows]) => [ticker, this.analyzeIncomeProfile(tickerRows)]));
       }
     });
+
+    const quantMemo = (() => {
+      const store = new Map();
+      const MAX = 240;
+      function get(key, fingerprint, calc){
+        const id = `${key}:${fingerprint}`;
+        if(store.has(id)) return store.get(id);
+        const value = calc();
+        store.set(id, value);
+        if(store.size > MAX) store.delete(store.keys().next().value);
+        return value;
+      }
+      function clear(){ store.clear(); }
+      return { get, clear };
+    })();
+
+    function quantHash(str){
+      let h = 2166136261;
+      const s = String(str || '');
+      for(let i=0; i<s.length; i++){
+        h ^= s.charCodeAt(i);
+        h += (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24);
+      }
+      return (h >>> 0).toString(36);
+    }
+
+    function quantRowsFingerprint(rows, selector){
+      const list = Array.isArray(rows) ? rows : [];
+      if(!list.length) return '0';
+      const pick = typeof selector === 'function' ? selector : row => row;
+      const first = pick(list[0]);
+      const mid = pick(list[Math.floor(list.length / 2)]);
+      const last = pick(list[list.length - 1]);
+      return `${list.length}:${quantHash(JSON.stringify([first, mid, last]))}`;
+    }
+
+    function quantRating(score){
+      const s = parseNumber(score);
+      if(s >= 90) return 'AAA';
+      if(s >= 80) return 'AA';
+      if(s >= 70) return 'A';
+      if(s >= 60) return 'BBB';
+      if(s >= 45) return 'BB';
+      if(s >= 30) return 'B';
+      return 'C';
+    }
+
+    function quantCorporateEventDate(row){
+      return sanitizeMarketDate(row?.data || row?.dataCom || row?.dataPagamento || row?.dataPrevista || row?.dataBase || '');
+    }
+
+    function quantNormalizeCorporateEvents(rows){
+      return (rows || []).map(row => ({
+        ticker: normalizeTicker(row.ticker),
+        date: quantCorporateEventDate(row),
+        type: String(row.tipoEvento || row.tipoArquivo || row.evento || row.movimentoOriginal || row.descricao || '').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''),
+        raw: row
+      })).filter(row => row.ticker && row.date);
+    }
+
+    function quantNormalizePurchases(movements){
+      return (movements || []).map(row => ({
+        ticker: normalizeTicker(row.ticker),
+        date: sanitizeMarketDate(row.data),
+        value: parseNumber(inferB3OperationValue(row).valor || row.valor || row.valorTotal || 0),
+        quantity: parseNumber(row.quantidade || 0),
+        raw: row
+      })).filter(row => row.ticker && row.date && row.value > 0 && row.raw?.classeMovimento === 'OPERACAO' && row.raw?.tipoOperacao === 'COMPRA')
+        .sort((a,b) => a.date.localeCompare(b.date));
+    }
+
+    const quantEngine = Object.freeze({
+      dividendTrap(ticker, incomeRows, corporateRows){
+        const tk = normalizeTicker(ticker);
+        const fingerprint = `${tk}|${quantRowsFingerprint(incomeRows, r => [r.ticker,r.data,r.dataPagamento,r.dataCom,r.valor,r.valorTotal,r.valorUnitario,r.movimentoOriginal,r.natureza])}|${quantRowsFingerprint(corporateRows, r => [r.ticker,r.data,r.dataCom,r.tipoEvento,r.tipoArquivo,r.descricao])}`;
+        return quantMemo.get('trap', fingerprint, () => {
+          const events = financialUtils.normalizeIncomeEvents(incomeRows).filter(e => e.ticker === tk);
+          const recurring = events.filter(e => e.recurring !== false).sort((a,b) => a.date.localeCompare(b.date));
+          const amounts = recurring.map(e => e.amount).filter(v => v > 0).sort((a,b) => a-b);
+          if(amounts.length < 3) return { riskScore:0, level:'Baixo', flagged:false, reasons:['Histórico curto para trap estatístico'], outliers:[] };
+          const median = amounts[Math.floor(amounts.length / 2)];
+          const avg = mathUtils.mean(amounts);
+          const std = mathUtils.stddev(amounts);
+          const total = mathUtils.sum(amounts);
+          const corp = quantNormalizeCorporateEvents(corporateRows).filter(e => e.ticker === tk);
+          const eventTokens = ['AMORTIZACAO','BONIFICACAO','DESDOBRAMENTO','GRUPAMENTO','RESTITUICAO','REDUCAO DE CAPITAL','SUBSCRICAO'];
+          const outliers = recurring.filter(e => {
+            const z = std > 0 ? (e.amount - avg) / std : 0;
+            return e.amount > Math.max(median * 2.5, avg + (std * 2)) || z >= 2.25;
+          });
+          const concentration = total > 0 ? Math.max(...amounts) / total : 0;
+          const nearCorporate = outliers.some(o => corp.some(c => Math.abs(diffDays(c.date, o.date) || 9999) <= 75 && eventTokens.some(token => c.type.includes(token))));
+          const nonRecurringOutlier = outliers.some(o => o.recurring === false || !financialUtils.isRecurringIncome(o.raw || {}));
+          const reasons = [];
+          if(outliers.length) reasons.push(`${outliers.length} provento(s) fora da curva histórica`);
+          if(concentration >= 0.42) reasons.push(`Concentração de ${(concentration*100).toFixed(1)}% em um único pagamento`);
+          if(nearCorporate) reasons.push('Pagamento atípico próximo de evento corporativo');
+          if(nonRecurringOutlier) reasons.push('Evento com baixa evidência de recorrência');
+          const riskScore = clamp((outliers.length ? 38 : 0) + (concentration >= 0.42 ? 28 : 0) + (nearCorporate ? 24 : 0) + (nonRecurringOutlier ? 10 : 0), 0, 100);
+          const level = riskScore >= 70 ? 'Alto' : riskScore >= 40 ? 'Médio' : 'Baixo';
+          return { riskScore, level, flagged:riskScore >= 40, reasons:reasons.length ? reasons : ['Sem sinal estatístico relevante de dividend trap'], outliers };
+        });
+      },
+      incomeQuality(ticker, incomeRows, corporateRows){
+        const tk = normalizeTicker(ticker);
+        const fingerprint = `${tk}|${quantRowsFingerprint(incomeRows, r => [r.ticker,r.data,r.dataPagamento,r.dataCom,r.valor,r.valorTotal,r.valorUnitario,r.movimentoOriginal,r.natureza])}|${quantRowsFingerprint(corporateRows, r => [r.ticker,r.data,r.tipoEvento,r.tipoArquivo])}`;
+        return quantMemo.get('quality', fingerprint, () => {
+          const profile = financialUtils.analyzeIncomeProfile((incomeRows || []).filter(row => normalizeTicker(row.ticker) === tk));
+          const trap = this.dividendTrap(tk, incomeRows, corporateRows);
+          const yearly = profile.growth.yearlyTotals || [];
+          const yearlyValues = yearly.map(x => x.total).filter(v => v > 0);
+          const avgYear = mathUtils.mean(yearlyValues);
+          const minYear = yearlyValues.length ? Math.min(...yearlyValues) : 0;
+          const resilienceScore = avgYear > 0 ? clamp((minYear / avgYear) * 100, 0, 100) : 0;
+          const frequencyScore = clamp((profile.seasonality.activeMonths / 12) * 100, 0, 100);
+          const growthScore = profile.growth.cagrPct === null ? 45 : clamp(50 + profile.growth.cagrPct, 0, 100);
+          const historyScore = clamp((profile.events.length / 12) * 100, 0, 100);
+          const score = round(
+            (profile.seasonality.predictabilityScore * 0.34) +
+            (frequencyScore * 0.20) +
+            (resilienceScore * 0.18) +
+            (growthScore * 0.14) +
+            (historyScore * 0.09) -
+            (trap.riskScore * 0.15),
+            2
+          );
+          return { score:clamp(score, 0, 100), rating:quantRating(score), resilienceScore, frequencyScore, growthScore, historyScore, trap };
+        });
+      },
+      compoundingVelocity(incomeRows, movements){
+        const fingerprint = `${quantRowsFingerprint(incomeRows, r => [r.ticker,r.data,r.dataPagamento,r.dataCom,r.valor,r.valorTotal,r.valorUnitario])}|${quantRowsFingerprint(movements, r => [r.ticker,r.data,r.classeMovimento,r.tipoOperacao,r.valor,r.valorTotal,r.quantidade])}`;
+        return quantMemo.get('compounding', fingerprint, () => {
+          const incomes = financialUtils.normalizeIncomeEvents(incomeRows).filter(e => e.amount > 0).sort((a,b) => a.date.localeCompare(b.date));
+          const buys = quantNormalizePurchases(movements);
+          if(!incomes.length || !buys.length) return { score:0, matched:0, events:incomes.length, avgDays:null, medianDays:null, quickRate:0, reinvestedValue:0, label:'Sem evidência suficiente' };
+          const gaps = [];
+          let reinvestedValue = 0;
+          for(const inc of incomes){
+            const next = buys.find(b => b.ticker === inc.ticker && b.date >= inc.date && (diffDays(inc.date, b.date) || 9999) <= 45)
+              || buys.find(b => b.date >= inc.date && (diffDays(inc.date, b.date) || 9999) <= 30);
+            if(next){
+              const gap = Math.max(0, diffDays(inc.date, next.date) || 0);
+              gaps.push(gap);
+              reinvestedValue += Math.min(next.value, inc.amount);
+            }
+          }
+          const sorted = gaps.slice().sort((a,b)=>a-b);
+          const matched = gaps.length;
+          const quick = gaps.filter(g => g <= 10).length;
+          const avgDays = matched ? mathUtils.mean(gaps) : null;
+          const medianDays = matched ? sorted[Math.floor(sorted.length / 2)] : null;
+          const matchRate = incomes.length ? matched / incomes.length : 0;
+          const quickRate = matched ? quick / matched : 0;
+          const speedScore = matched ? clamp((matchRate * 62) + (quickRate * 26) + (avgDays !== null ? Math.max(0, 12 - Math.min(avgDays, 45) / 4) : 0), 0, 100) : 0;
+          const label = speedScore >= 75 ? 'Acelerado' : speedScore >= 45 ? 'Moderado' : speedScore > 0 ? 'Lento' : 'Sem evidência suficiente';
+          return { score:round(speedScore, 2), matched, events:incomes.length, avgDays, medianDays, quickRate:round(quickRate * 100, 2), reinvestedValue, label };
+        });
+      },
+      tickerSnapshot(ticker, incomeRows, corporateRows, movements){
+        const tk = normalizeTicker(ticker);
+        const quality = this.incomeQuality(tk, incomeRows, corporateRows);
+        const compounding = this.compoundingVelocity((incomeRows || []).filter(row => normalizeTicker(row.ticker) === tk), movements);
+        return { ticker:tk, quality, trap:quality.trap, compounding };
+      },
+      portfolioSnapshot(incomeRows, corporateRows, movements){
+        const tickers = new Set((incomeRows || []).map(row => normalizeTicker(row.ticker)).filter(Boolean));
+        const assets = [...tickers].map(ticker => this.tickerSnapshot(ticker, incomeRows, corporateRows, movements));
+        const traps = assets.filter(x => x.trap.flagged).sort((a,b)=>b.trap.riskScore-a.trap.riskScore);
+        const bestQuality = assets.slice().sort((a,b)=>b.quality.score-a.quality.score)[0] || null;
+        const compounding = this.compoundingVelocity(incomeRows, movements);
+        return { assets, traps, bestQuality, compounding };
+      }
+    });
+
+    const quantWorkerBridge = (() => {
+      let worker = null;
+      let busyKey = '';
+      function makeWorker(){
+        if(worker || typeof Worker === 'undefined' || typeof Blob === 'undefined' || typeof URL === 'undefined') return worker;
+        const source = `
+          function n(v){ const x=Number(String(v||0).replace(/\\./g,'').replace(',','.').replace(/[^0-9.-]/g,'')); return Number.isFinite(x)?x:0; }
+          function t(v){ return String(v||'').toUpperCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').match(/[A-Z]{4}[0-9]{1,2}/)?.[0] || ''; }
+          self.onmessage = function(ev){
+            const started = Date.now();
+            const p = ev.data || {};
+            const income = Array.isArray(p.income) ? p.income : [];
+            const movements = Array.isArray(p.movements) ? p.movements : [];
+            const byTicker = {};
+            for(const row of income){
+              const tk = t(row.ticker);
+              if(!tk) continue;
+              const slot = byTicker[tk] || (byTicker[tk] = { ticker:tk, incomeRows:0, incomeTotal:0, months:{} });
+              const date = String(row.data || row.dataPagamento || row.dataCom || '').slice(0, 7);
+              slot.incomeRows += 1;
+              slot.incomeTotal += n(row.valor || row.valorTotal || row.valorUnitario);
+              if(date) slot.months[date] = 1;
+            }
+            let buys = 0;
+            for(const row of movements){
+              if(row && row.classeMovimento === 'OPERACAO' && row.tipoOperacao === 'COMPRA') buys += 1;
+            }
+            const assets = Object.values(byTicker).map(x => ({ ticker:x.ticker, incomeRows:x.incomeRows, incomeTotal:x.incomeTotal, activeMonths:Object.keys(x.months).length }));
+            self.postMessage({ key:p.key, generatedAt:new Date().toISOString(), elapsedMs:Date.now()-started, assets, buys, rows:income.length + movements.length });
+          };`;
+        try{
+          worker = new Worker(URL.createObjectURL(new Blob([source], { type:'text/javascript' })));
+        }catch(err){
+          console.warn('Quant worker indisponivel', err);
+          worker = null;
+        }
+        return worker;
+      }
+      function analyze(payload, onResult){
+        const w = makeWorker();
+        if(!w) return false;
+        const key = `${quantRowsFingerprint(payload?.income, r => [r.ticker,r.data,r.valor,r.valorTotal])}|${quantRowsFingerprint(payload?.movements, r => [r.ticker,r.data,r.classeMovimento,r.tipoOperacao,r.valor,r.quantidade])}`;
+        if(key === busyKey) return true;
+        busyKey = key;
+        w.onmessage = ev => {
+          busyKey = '';
+          if(ev.data?.key === key && typeof onResult === 'function') onResult(ev.data);
+        };
+        w.onerror = err => {
+          busyKey = '';
+          console.warn('Quant worker falhou', err);
+        };
+        w.postMessage({ ...(payload || {}), key });
+        return true;
+      }
+      return { analyze };
+    })();
+
+    function scheduleQuantWorkerSnapshot(income, corporateRows, movements){
+      const scheduled = quantWorkerBridge.analyze({ income, corporateRows, movements }, snapshot => {
+        state.quantWorkerSnapshot = snapshot;
+        const el = $('cmdWorkerStatus');
+        if(el) el.textContent = `Worker quant: ${snapshot.rows} linhas em ${snapshot.elapsedMs}ms`;
+      });
+      if(!scheduled) state.quantWorkerSnapshot = { fallback:true, generatedAt:new Date().toISOString() };
+    }
     function uid(){
       if(window.crypto?.randomUUID) return crypto.randomUUID();
       return `id_${Date.now()}_${Math.random().toString(16).slice(2)}`;
@@ -3445,11 +3685,18 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       for(const ticker of new Set([
         ...Object.keys(state.assets),
         ...Object.keys(state.positions),
-        ...state.dividends.map(d => d.ticker)
+        ...state.dividends.map(d => d.ticker),
+        ...(state.b3Income || []).map(d => d.ticker)
       ])){
         const tickerDivs = state.dividends
           .filter(d => d.ticker === ticker)
           .sort((a,b) => (a.dataCom || a.dataPagamento || '').localeCompare(b.dataCom || b.dataPagamento || ''));
+        const tickerB3Income = (state.b3Income || [])
+          .filter(d => normalizeTicker(d.ticker) === ticker)
+          .sort((a,b) => String(a.data || a.dataPagamento || a.dataCom || '').localeCompare(String(b.data || b.dataPagamento || b.dataCom || '')));
+        const tickerIncomeRows = tickerB3Income.length ? tickerB3Income : tickerDivs;
+        const tickerCorporateRows = (state.b3CentralRows || [])
+          .filter(d => normalizeTicker(d.ticker) === ticker && ['calendario_eventos','eventos_corporativos'].includes(d.tipoArquivo));
 
         const last12m = tickerDivs.filter(d => {
           const ref = d.dataPagamento || d.dataCom;
@@ -3485,9 +3732,10 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           ? Math.sqrt(intervalos.reduce((s,v) => s + ((v - mediaIntervalos) ** 2), 0) / intervalos.length)
           : 999;
 
-        const dividendProfile = financialUtils.analyzeIncomeProfile(tickerDivs);
+        const dividendProfile = financialUtils.analyzeIncomeProfile(tickerIncomeRows);
         const seasonality = dividendProfile.seasonality;
         const growth = dividendProfile.growth;
+        const quantSnapshot = quantEngine.tickerSnapshot(ticker, tickerIncomeRows, tickerCorporateRows, state.b3Movements || []);
 
         let padraoPagamento = seasonality.pattern;
         if(padraoPagamento === 'Insuficiente'){
@@ -3532,6 +3780,14 @@ async function fetchSingleTickerBrapi(tk, opts={}){
           dividendCagrPct: growth.cagrPct,
           tendenciaProventos: growth.trend,
           dividendosPorAno: growth.yearlyTotals,
+          rendaQualityScore: quantSnapshot.quality.score,
+          rendaRating: quantSnapshot.quality.rating,
+          dividendTrapRiskScore: quantSnapshot.trap.riskScore,
+          dividendTrapLevel: quantSnapshot.trap.level,
+          dividendTrapReasons: quantSnapshot.trap.reasons,
+          compoundingScore: quantSnapshot.compounding.score,
+          compoundingLabel: quantSnapshot.compounding.label,
+          compoundingAvgDays: quantSnapshot.compounding.avgDays,
           mediaIntervalos,
           desvioIntervalos,
           confiancaDadoPct,
@@ -6486,6 +6742,8 @@ function renderEngineSummary(){
       const recurrence = months.size ? Math.min(100, Math.round((months.size / 12) * 100)) : 0;
       const yoc = invested > 0 ? confirmedIncome / invested : 0;
       const incomeProfiles = financialUtils.profilesByTicker(income);
+      const corporateRows = rows.filter(x => ['calendario_eventos','eventos_corporativos'].includes(x.tipoArquivo));
+      const quantSnapshot = quantEngine.portfolioSnapshot(income, corporateRows, movements);
       const topIncome = Object.entries(incomeProfiles).map(([ticker, profile]) => [ticker, profile.recurringTotal || profile.total || 0]).sort((a,b)=>b[1]-a[1]).slice(0,3);
       const bestPredictability = Object.entries(incomeProfiles)
         .map(([ticker, profile]) => ({ ticker, score:profile.seasonality.predictabilityScore, pattern:profile.seasonality.pattern, safra:profile.seasonality.harvestMonths, seca:profile.seasonality.dryMonths }))
@@ -6508,8 +6766,12 @@ function renderEngineSummary(){
       if(bestYoc) insights.push(`Melhor YOC por custo carregado: ${bestYoc.ticker} com ${(bestYoc.yoc*100).toFixed(2)}%.`);
       if(bestPredictability) insights.push(`Maior previsibilidade de renda: ${bestPredictability.ticker} com ${formatPct(bestPredictability.score)} e padrão ${bestPredictability.pattern}. Safra: ${bestPredictability.safra.join('/') || 'sem concentração'}; seca: ${bestPredictability.seca.slice(0,4).join('/') || 'sem seca detectada'}.`);
       if(bestGrowth) insights.push(`CAGR de proventos em destaque: ${bestGrowth.ticker} ${formatPct(bestGrowth.cagr)} ao ano, tendência ${bestGrowth.trend}.`);
+      if(quantSnapshot.bestQuality) insights.push(`Rating de renda mais forte: ${quantSnapshot.bestQuality.ticker} ${quantSnapshot.bestQuality.quality.rating} (${formatPct(quantSnapshot.bestQuality.quality.score)}), combinando consistência, resiliência e frequência de pagamento.`);
+      if(quantSnapshot.traps.length) insights.push(`Atenção a possível dividend trap: ${quantSnapshot.traps.slice(0,3).map(x => `${x.ticker} risco ${x.trap.level}`).join(' · ')}. Motivo principal: ${quantSnapshot.traps[0].trap.reasons[0]}.`);
+      if(quantSnapshot.compounding.events) insights.push(`Bola de neve: ${quantSnapshot.compounding.label} com score ${formatPct(quantSnapshot.compounding.score)}; ${quantSnapshot.compounding.matched}/${quantSnapshot.compounding.events} proventos tiveram compra subsequente detectada.`);
+      if(state.quantWorkerSnapshot && !state.quantWorkerSnapshot.fallback) insights.push(`Worker quant processou ${state.quantWorkerSnapshot.rows} linha(s) em ${state.quantWorkerSnapshot.elapsedMs}ms sem bloquear a interface.`);
       if(!insights.length) insights.push('Importe movimentação, negociação e proventos para ativar a leitura guru.');
-      return { files:files.length, rows:rows.length + movements.length, assets:tickers.size, invested, confirmedIncome, pendingIncome, recurrence, yoc, incomeProfiles, insights };
+      return { files:files.length, rows:rows.length + movements.length, assets:tickers.size, invested, confirmedIncome, pendingIncome, recurrence, yoc, incomeProfiles, quantSnapshot, insights };
     }
     function renderCommandCenter(){
       const a = buildCommandCenterAnalytics();
@@ -6521,6 +6783,7 @@ function renderEngineSummary(){
       if($('cmdKpiRecurrence')) $('cmdKpiRecurrence').textContent = a.recurrence + '%';
       if($('cmdGuruSummary')) $('cmdGuruSummary').innerHTML = `Carteira analisada com <b>${a.assets}</b> ativo(s), renda confirmada de <b>${formatBRL(a.confirmedIncome)}</b> e renda futura mapeada de <b>${formatBRL(a.pendingIncome)}</b>.`;
       if($('cmdGuruInsights')) $('cmdGuruInsights').innerHTML = a.insights.map(x => `<li>${escapeHtml(x)}</li>`).join('');
+      scheduleQuantWorkerSnapshot(state.b3Income || [], (state.b3CentralRows || []).filter(x => ['calendario_eventos','eventos_corporativos'].includes(x.tipoArquivo)), state.b3Movements || []);
       return a;
     }
     function runCommandCenterAnalysis(){
@@ -9303,6 +9566,14 @@ Preencha integralmente os campos do JSON solicitado.`;
         s.mesesSeca = profile.seasonality.dryMonths;
         s.dividendCagrPct = profile.growth.cagrPct;
         s.tendenciaProventos = profile.growth.trend;
+        const corporateRows = (state.b3CentralRows || []).filter(row => normalizeTicker(row.ticker) === s.ticker && ['calendario_eventos','eventos_corporativos'].includes(row.tipoArquivo));
+        const heuristic = quantEngine.tickerSnapshot(s.ticker, s.incomeEvents, corporateRows, ordered);
+        s.rendaQualityScore = heuristic.quality.score;
+        s.rendaRating = heuristic.quality.rating;
+        s.dividendTrapRiskScore = heuristic.trap.riskScore;
+        s.dividendTrapLevel = heuristic.trap.level;
+        s.compoundingScore = heuristic.compounding.score;
+        s.compoundingLabel = heuristic.compounding.label;
       });
       const rows = Object.values(byTicker).filter(x=>x.compras > 0 || x.proventos !== 0 || x.proventosSemBase !== 0 || x.lucroRealizado !== 0);
       const firstDate = rows.map(x=>x.firstDate).filter(Boolean).sort()[0] || '';
@@ -9332,7 +9603,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       if($('b3YieldAnnualized')) $('b3YieldAnnualized').textContent = formatB3AnnualYield(t.yieldAnualizado);
       if($('b3YieldStatus')) $('b3YieldStatus').textContent = analysis.rows.length ? `Yield: ${analysis.rows.length} ativos analisados desde ${formatDateBR(t.firstDate)}` : 'Yield: aguardando histórico';
       const rows = analysis.rows.slice().sort((a,b)=>Number(b.yieldAportado||0)-Number(a.yieldAportado||0)).slice(0,20);
-      tb.innerHTML = rows.map(r => `<tr><td><b>${escapeHtml(r.ticker)}</b><span class="mini">${r.periodDays} dias de histórico</span></td><td class="right">${formatBRL(r.compras)}</td><td class="right">${formatBRL(r.capitalMedio)}</td><td class="right"><b>${formatBRL(r.rendaUsada)}</b></td><td class="right">${r.proventosSemBase ? formatBRL(r.proventosSemBase) : '---'}</td><td class="right">${formatBRL(r.lucroRealizado)}${r.lucroConfiavel?'':'<span class="mini">base parcial</span>'}</td><td class="right">${formatPct(r.yieldAportado)}</td><td class="right"><b>${formatB3AnnualYield(r.yieldAnualizado)}</b></td><td>${b3YieldReliabilityBadge(r)} ${b3YieldLabel(r.yieldAportado)}<span class="mini">Prev. ${formatPct(r.previsibilidadeGuruPct)} · ${escapeHtml(r.tendenciaProventos)}${r.mesesSafra?.length ? ' · Safra ' + escapeHtml(r.mesesSafra.join('/')) : ''}</span></td></tr>`).join('') || '<tr><td colspan="9" class="center muted">Importe movimentações com compras e renda recebida para ativar a análise de yield de renda real.</td></tr>';
+      tb.innerHTML = rows.map(r => `<tr><td><b>${escapeHtml(r.ticker)}</b><span class="mini">${r.periodDays} dias de histórico</span></td><td class="right">${formatBRL(r.compras)}</td><td class="right">${formatBRL(r.capitalMedio)}</td><td class="right"><b>${formatBRL(r.rendaUsada)}</b></td><td class="right">${r.proventosSemBase ? formatBRL(r.proventosSemBase) : '---'}</td><td class="right">${formatBRL(r.lucroRealizado)}${r.lucroConfiavel?'':'<span class="mini">base parcial</span>'}</td><td class="right">${formatPct(r.yieldAportado)}</td><td class="right"><b>${formatB3AnnualYield(r.yieldAnualizado)}</b></td><td>${b3YieldReliabilityBadge(r)} ${b3YieldLabel(r.yieldAportado)}<span class="mini">Prev. ${formatPct(r.previsibilidadeGuruPct)} · ${escapeHtml(r.tendenciaProventos)}${r.mesesSafra?.length ? ' · Safra ' + escapeHtml(r.mesesSafra.join('/')) : ''}</span><span class="mini">Rating ${escapeHtml(r.rendaRating || 'N/D')} · Trap ${escapeHtml(r.dividendTrapLevel || 'Baixo')} · Bola de neve ${escapeHtml(r.compoundingLabel || 'N/D')}</span></td></tr>`).join('') || '<tr><td colspan="9" class="center muted">Importe movimentações com compras e renda recebida para ativar a análise de yield de renda real.</td></tr>';
     }
 
     function renderB3(){
