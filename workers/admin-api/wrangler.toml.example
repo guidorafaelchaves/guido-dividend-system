@@ -1,0 +1,18 @@
+name = "radar-admin-api"
+main = "src/index.js"
+compatibility_date = "2026-07-04"
+
+[vars]
+ADMIN_ALLOWED_ORIGINS = "https://guidorafaelchaves.github.io"
+DEFAULT_CAC_BRL = "64"
+THRESHOLD_BRAPI_COST_PER_USER = "1.20"
+THRESHOLD_AI_COST_PER_USER = "2.40"
+THRESHOLD_GROSS_MARGIN_MIN = "72"
+THRESHOLD_LTV_CAC_MIN = "3"
+THRESHOLD_BURN_MULTIPLE_MAX = "1.5"
+THRESHOLD_RETENTION_MIN = "42"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "radar-admin-finops"
+database_id = "COLE_AQUI_O_DATABASE_ID_DO_D1"

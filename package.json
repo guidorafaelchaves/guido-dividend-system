@@ -1,12 +1,16 @@
 {
   "name": "guido-dividend-system",
-  "version": "1.10.11",
+  "version": "1.10.12",
   "private": true,
   "description": "Guido Dividend System - sistema local de inteligencia patrimonial, dividendos, B3 Ledger e FIIs.",
   "scripts": {
     "start": "npx serve public",
     "dev": "npx serve public",
-    "check": "node -e \"const fs=require('fs'); const index=fs.readFileSync('public/index.html','utf8'); const dash=fs.readFileSync('public/dashboard.html','utf8'); const admin=fs.readFileSync('public/admin.html','utf8'); if(!index.includes('Radar de Proventos') || !index.includes('dashboard.html#sistema') || !dash.includes('quantEngine') || !admin.includes('unitEconomics')) process.exit(1); console.log('OK: entrada, dashboard e admin encontrados');\""
+    "check": "node -e \"const fs=require('fs'); const index=fs.readFileSync('public/index.html','utf8'); const dash=fs.readFileSync('public/dashboard.html','utf8'); const admin=fs.readFileSync('public/admin.html','utf8'); if(!index.includes('Radar de Proventos') || !index.includes('dashboard.html#sistema') || !dash.includes('quantEngine') || !admin.includes('unitEconomics')) process.exit(1); console.log('OK: entrada, dashboard e admin encontrados');\"",
+    "admin:hash": "node workers/admin-api/scripts/hash-password.mjs",
+    "admin:dev": "cd workers/admin-api && npx wrangler dev",
+    "admin:migrate": "cd workers/admin-api && npx wrangler d1 migrations apply radar-admin-finops --remote",
+    "admin:deploy": "cd workers/admin-api && npx wrangler deploy"
   },
   "devDependencies": {
     "serve": "^14.2.4"
