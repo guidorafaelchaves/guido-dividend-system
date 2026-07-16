@@ -1,0 +1,75 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "guido-financial-platform-api-dev",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-13",
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "ENVIRONMENT": "development",
+    "ALLOWED_ORIGINS": "http://localhost:4173,http://localhost:8787",
+    "SESSION_TTL_MINUTES": "480",
+    "PBKDF2_ITERATIONS": "60000",
+    "EMAIL_ENABLED": "false",
+    "BILLING_ENABLED": "false",
+    "BRAPI_SYNC_ENABLED": "false"
+  },
+  "triggers": {
+    "crons": [
+      "*/30 * * * *",
+      "0 11 * * 1-5"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "guido-financial-platform-dev",
+      "database_id": "local-dev-only",
+      "migrations_dir": "./migrations"
+    }
+  ],
+  "env": {
+    "preview": {
+      "name": "guido-financial-platform-api-preview",
+      "vars": {
+        "ENVIRONMENT": "preview",
+        "ALLOWED_ORIGINS": "https://guidorafaelchaves.github.io,https://guido-dividend-system.pages.dev,http://localhost:4173",
+        "SESSION_TTL_MINUTES": "480",
+        "PBKDF2_ITERATIONS": "60000",
+        "EMAIL_ENABLED": "false",
+        "BILLING_ENABLED": "false",
+        "BRAPI_SYNC_ENABLED": "false"
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "guido-financial-platform-preview",
+          "database_id": "3c1067a2-8806-4283-8dbd-8c71e2f36b2a",
+          "migrations_dir": "./migrations"
+        }
+      ]
+    },
+    "production": {
+      "name": "guido-financial-platform-api",
+      "vars": {
+        "ENVIRONMENT": "production",
+        "ALLOWED_ORIGINS": "https://guidorafaelchaves.github.io,https://guido-dividend-system.pages.dev",
+        "SESSION_TTL_MINUTES": "480",
+        "PBKDF2_ITERATIONS": "120000",
+        "EMAIL_ENABLED": "false",
+        "BILLING_ENABLED": "false",
+        "BRAPI_SYNC_ENABLED": "false"
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "guido-financial-platform-production",
+          "database_id": "replace-with-production-d1-id",
+          "migrations_dir": "./migrations"
+        }
+      ]
+    }
+  }
+}

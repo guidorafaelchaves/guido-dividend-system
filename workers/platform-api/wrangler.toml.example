@@ -1,0 +1,15 @@
+name = "guido-financial-platform-api"
+main = "src/index.js"
+compatibility_date = "2026-07-13"
+
+[vars]
+ALLOWED_ORIGINS = "https://guidorafaelchaves.github.io,https://guido-dividend-system.pages.dev,http://localhost:4173"
+SESSION_TTL_MINUTES = "480"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "guido-financial-platform"
+database_id = "replace-with-d1-id"
+
+# Secrets:
+# wrangler secret put SESSION_SECRET

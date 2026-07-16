@@ -3,131 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Radar de Proventos: inteligência quantitativa institucional para fluxo de caixa, dividendos e renda recorrente B3.">
-  <title>Radar de Proventos | Login Seguro</title>
-  <style>
-    :root{color-scheme:dark;--bg:#03070d;--panel:rgba(10,18,30,.70);--panel2:rgba(12,24,40,.86);--line:rgba(139,216,255,.20);--line2:rgba(139,216,255,.38);--text:#eef7ff;--muted:#9fb2c8;--cyan:#4dd8ff;--mint:#78ffc8;--gold:#ffd166;--red:#ff6b7a;--shadow:0 30px 100px rgba(0,0,0,.46);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text)}body{overflow-x:hidden}
-    #networkCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;background:radial-gradient(circle at 14% 16%,rgba(77,216,255,.18),transparent 29%),radial-gradient(circle at 86% 18%,rgba(120,255,200,.12),transparent 31%),linear-gradient(135deg,#03070d 0%,#07111d 50%,#03070d 100%)}
-    .shell{position:relative;z-index:1;min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}.shell:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(180deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 78%)}
-    header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:24px clamp(18px,4vw,56px)}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.02em}.brand-mark{width:38px;height:38px;border-radius:8px;display:grid;place-items:center;color:#06111d;background:linear-gradient(135deg,var(--cyan),var(--mint));box-shadow:0 0 42px rgba(77,216,255,.30);font-weight:950}.nav-actions{display:flex;align-items:center;gap:10px}.trust-pill{border:1px solid var(--line);background:rgba(255,255,255,.045);border-radius:999px;padding:8px 12px;color:#cfe7f6;font-size:12px;font-weight:780}.link-btn{background:none;border:0;color:var(--cyan);font:inherit;font-weight:840;cursor:pointer;padding:0}
-    .layout{width:min(1220px,calc(100% - 36px));margin:0 auto;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(350px,.72fr);gap:30px;align-items:center;padding:28px 0 42px}.hero{padding:18px 0}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(77,216,255,.08);color:var(--cyan);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:880;text-transform:uppercase;letter-spacing:.12em}
-    h1{font-size:clamp(42px,7vw,88px);line-height:.94;margin:22px 0 20px;letter-spacing:0;font-weight:950;max-width:820px}.gradient-text{background:linear-gradient(100deg,#fff 0%,#b9efff 42%,#78ffc8 76%,#ffd166 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{max-width:760px;color:#c7d7e6;font-size:clamp(17px,2vw,22px);line-height:1.55;margin:0 0 20px}.proof-strip{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}.proof-strip span{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.045);border-radius:999px;padding:8px 11px;color:#d4eaf8;font-size:12px;font-weight:780}
-    .value-panel{max-width:940px;border:1px solid var(--line);background:rgba(9,18,31,.46);backdrop-filter:blur(18px);border-radius:10px;padding:14px;box-shadow:0 18px 46px rgba(0,0,0,.16);overflow:hidden}.rolling-window{height:304px;overflow:hidden;mask-image:linear-gradient(to bottom,transparent 0%,#000 12%,#000 88%,transparent 100%)}.rolling-track{display:grid;gap:12px;animation:rollCards 24s linear infinite;will-change:transform}.rolling-track:hover,.rolling-track.is-paused{animation-play-state:paused}.roll-card{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:flex-start;border:1px solid rgba(139,216,255,.20);background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035));backdrop-filter:blur(16px);border-radius:8px;padding:15px;min-height:82px}.roll-card strong{display:block;color:var(--text);font-size:16px;line-height:1.18;margin-bottom:4px}.roll-card span{display:block;color:var(--muted);font-size:13px;line-height:1.42}.roll-icon{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;background:rgba(77,216,255,.12);border:1px solid rgba(77,216,255,.22);color:var(--mint);font-weight:900}.roll-hint{margin:10px 2px 0;color:#b7cadc;font-size:12px}@keyframes rollCards{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 6px))}}
-    .login-card{border:1px solid var(--line2);background:linear-gradient(180deg,var(--panel2),rgba(8,14,24,.74));backdrop-filter:blur(24px);box-shadow:var(--shadow);border-radius:12px;padding:24px;position:relative;overflow:hidden}.login-card:before{content:"";position:absolute;inset:0;border-top:1px solid rgba(255,255,255,.22);pointer-events:none}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:20px}.card-head h2{margin:0;font-size:24px;letter-spacing:0}.card-head p{margin:6px 0 0;color:var(--muted);font-size:14px;line-height:1.45}.secure-dot{width:12px;height:12px;border-radius:50%;background:var(--mint);box-shadow:0 0 24px rgba(120,255,200,.76);margin-top:8px;flex:0 0 auto}
-    .auth-stack{display:grid;gap:10px}button,.btn{appearance:none;font:inherit}.auth-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text);border-radius:8px;min-height:48px;padding:0 14px;font-weight:840;cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease}.auth-btn:hover{transform:translateY(-1px);border-color:rgba(77,216,255,.60);background:rgba(77,216,255,.11)}.auth-btn.primary{background:linear-gradient(135deg,rgba(77,216,255,.96),rgba(120,255,200,.92));color:#03101b;border-color:transparent;box-shadow:0 16px 44px rgba(77,216,255,.22)}.auth-btn svg{width:18px;height:18px;flex:0 0 auto}.divider{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin:16px 0}.divider:before,.divider:after{content:"";height:1px;background:var(--line);flex:1}
-    .field{display:grid;gap:8px;margin-bottom:12px}label{font-size:13px;color:#c6d8e8;font-weight:760}input{width:100%;height:48px;border:1px solid var(--line);border-radius:8px;background:rgba(0,0,0,.22);color:var(--text);padding:0 14px;font:inherit;outline:none}input:focus{border-color:rgba(77,216,255,.72);box-shadow:0 0 0 3px rgba(77,216,255,.10)}.status{min-height:40px;border:1px solid transparent;border-radius:8px;padding:10px 12px;color:var(--muted);font-size:13px;line-height:1.45;margin-top:14px}.status.is-ok{border-color:rgba(120,255,200,.28);background:rgba(120,255,200,.08);color:#c9ffe9}.status.is-warn{border-color:rgba(255,209,102,.30);background:rgba(255,209,102,.08);color:#ffe7a8}.status.is-error{border-color:rgba(255,107,122,.32);background:rgba(255,107,122,.08);color:#ffd2d7}
-    .security-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.security-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);border-radius:8px;padding:11px;color:var(--muted);font-size:12px;line-height:1.4}.security-item b{display:block;color:var(--text);font-size:13px;margin-bottom:3px}footer{position:relative;z-index:1;color:var(--muted);font-size:12px;padding:0 clamp(18px,4vw,56px) 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    @media(max-width:980px){header{padding:18px}.layout{grid-template-columns:1fr;padding-top:8px}.trust-pill{display:none}}@media(max-width:560px){.layout{width:min(100% - 24px,1220px)}h1{font-size:42px}.rolling-window{height:330px}.security-list{grid-template-columns:1fr}.login-card{padding:18px}.nav-actions{display:none}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}#networkCanvas{display:none}.rolling-track{animation:none}}
-  </style>
+  <meta name="description" content="Radar de Proventos: plataforma publica de inteligencia para dividendos, renda passiva e fluxo de caixa B3.">
+  <title>Radar de Proventos | Dividend System</title>
+  <meta name="theme-color" content="#07110f">
+  <link rel="stylesheet" href="/platform/portal.css">
 </head>
 <body>
-  <canvas id="networkCanvas" aria-hidden="true"></canvas>
-  <div class="shell">
-    <header>
-      <div class="brand" aria-label="Radar de Proventos"><div class="brand-mark">R</div><span>Radar de Proventos</span></div>
-      <div class="nav-actions"><span class="trust-pill">Passkeys biométricas</span><span class="trust-pill">Web Crypto vault</span><button class="link-btn" id="skipToApp" type="button">Entrar no dashboard</button></div>
+  <div id="portalApp" class="portal-shell" data-app="dividend-system-public">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">R</span>
+        <span>
+          <strong>Radar de Proventos</strong>
+          <small>Dividend System</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Navegacao principal">
+        <a href="/ativos/">Ativos</a>
+        <a href="/calendario/">Calendario</a>
+        <a href="/mapa-da-renda/">Mapa da renda</a>
+        <a href="/metodologia/">Metodologia</a>
+        <a href="/meu-painel/">Meu painel</a>
+      </nav>
+      <a class="system-link" href="/entrar/">Entrar</a>
     </header>
-    <main class="layout">
-      <section class="hero" aria-labelledby="heroTitle">
-        <span class="eyebrow">Clareza, segurança e oportunidades no seu fluxo de dividendos</span>
-        <h1 id="heroTitle"><span class="gradient-text">Invista em dividendos com mais visão, menos ruído e decisões mais seguras.</span></h1>
-        <p class="lead">O Radar de Proventos organiza seus dados da B3 para mostrar quando comprar melhor, quando reduzir exposição, onde a renda pode crescer e quais yields parecem bons demais para serem recorrentes.</p>
-        <div class="proof-strip" aria-label="Sinais de confiança"><span>Fluxo de caixa previsível</span><span>Oportunidades ocultas</span><span>Alertas de risco</span><span>Dados no navegador</span></div>
-        <div class="value-panel" aria-label="Argumentos em movimento sobre monitoramento inteligente">
-          <div class="rolling-window">
-            <div class="rolling-track" id="rollingTrack">
-              <article class="roll-card"><div class="roll-icon">01</div><div><strong>Descubra pontos de entrada e saída</strong><span>Compare renda, preço médio, recorrência e eventos para agir com mais contexto, não só com preço na tela.</span></div></article>
-              <article class="roll-card"><div class="roll-icon">02</div><div><strong>Antecipe as safras de dividendos</strong><span>Veja meses fortes, meses de seca e proventos a receber antes que o caixa surpreenda você.</span></div></article>
-              <article class="roll-card"><div class="roll-icon">03</div><div><strong>Fuja de armadilhas de yield</strong><span>Identifique pagamentos fora da curva, eventos extraordinários e rendas que podem não se repetir.</span></div></article>
-              <article class="roll-card"><div class="roll-icon">04</div><div><strong>Monitore seu fluxo de caixa 24/7</strong><span>Transforme arquivos da B3 em um radar vivo de renda recebida, renda futura e previsibilidade.</span></div></article>
-              <article class="roll-card"><div class="roll-icon">05</div><div><strong>Encontre oportunidades escondidas</strong><span>Cruze movimentações, proventos e eventos corporativos para revelar ativos que o olhar manual costuma perder.</span></div></article>
-              <article class="roll-card"><div class="roll-icon">06</div><div><strong>Invista com previsibilidade</strong><span>Use ratings de renda, recorrência e crescimento para priorizar ativos que ajudam a construir liberdade financeira.</span></div></article>
-              <article class="roll-card" aria-hidden="true"><div class="roll-icon">01</div><div><strong>Descubra pontos de entrada e saída</strong><span>Compare renda, preço médio, recorrência e eventos para agir com mais contexto, não só com preço na tela.</span></div></article>
-              <article class="roll-card" aria-hidden="true"><div class="roll-icon">02</div><div><strong>Antecipe as safras de dividendos</strong><span>Veja meses fortes, meses de seca e proventos a receber antes que o caixa surpreenda você.</span></div></article>
-              <article class="roll-card" aria-hidden="true"><div class="roll-icon">03</div><div><strong>Fuja de armadilhas de yield</strong><span>Identifique pagamentos fora da curva, eventos extraordinários e rendas que podem não se repetir.</span></div></article>
-              <article class="roll-card" aria-hidden="true"><div class="roll-icon">04</div><div><strong>Monitore seu fluxo de caixa 24/7</strong><span>Transforme arquivos da B3 em um radar vivo de renda recebida, renda futura e previsibilidade.</span></div></article>
-              <article class="roll-card" aria-hidden="true"><div class="roll-icon">05</div><div><strong>Encontre oportunidades escondidas</strong><span>Cruze movimentações, proventos e eventos corporativos para revelar ativos que o olhar manual costuma perder.</span></div></article>
-              <article class="roll-card" aria-hidden="true"><div class="roll-icon">06</div><div><strong>Invista com previsibilidade</strong><span>Use ratings de renda, recorrência e crescimento para priorizar ativos que ajudam a construir liberdade financeira.</span></div></article>
-            </div>
-          </div>
-          <div class="roll-hint">Passe o mouse ou toque nos cards para pausar e ler com calma.</div>
-        </div>
-      </section>
-      <aside class="login-card" aria-labelledby="loginTitle">
-        <div class="card-head"><div><h2 id="loginTitle">Entre como uma mesa institucional</h2><p>Biometria primeiro. OAuth quando fizer sentido. E-mail e senha apenas como fallback operacional.</p></div><span class="secure-dot" aria-hidden="true"></span></div>
-        <div class="auth-stack">
-          <button class="auth-btn primary" id="passkeyLogin" type="button"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 13a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 0v8m0-4h5m-5 0H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Entrar com FaceID, TouchID ou Windows Hello</button>
-          <button class="auth-btn" id="googleLogin" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.23c0-.74-.07-1.45-.2-2.13H12v4.03h5.37a4.59 4.59 0 0 1-1.99 3.01v2.5h3.22c1.89-1.74 3-4.31 3-7.41Z"/><path fill="#34A853" d="M12 22c2.7 0 4.96-.89 6.61-2.41l-3.22-2.5c-.89.6-2.03.95-3.39.95-2.6 0-4.81-1.76-5.6-4.12H3.07v2.58A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.4 13.92a6 6 0 0 1 0-3.84V7.5H3.07a10 10 0 0 0 0 9l3.33-2.58Z"/><path fill="#EA4335" d="M12 5.96c1.47 0 2.79.51 3.83 1.5l2.86-2.86A9.6 9.6 0 0 0 12 2 10 10 0 0 0 3.07 7.5l3.33 2.58C7.19 7.72 9.4 5.96 12 5.96Z"/></svg>Continuar com Google</button>
-          <button class="auth-btn" id="appleLogin" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 12.2c0-2.1 1.7-3.1 1.8-3.2-1-.1-2-.6-2.6-1.3-.7-.8-1.4-1.7-2.5-1.7-1.1 0-2.1.7-2.7.7-.6 0-1.5-.7-2.5-.7-1.3 0-2.5.8-3.2 2-1.4 2.4-.4 6 1 8 .7 1 1.5 2.1 2.6 2.1 1 0 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.7 1.1 0 1.8-1 2.5-2 .8-1.1 1.1-2.2 1.1-2.3 0 0-2.1-.8-2.1-3.6ZM13.1 4.9c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.7-1 1.6-.9 2.6 1 0 1.9-.5 2.5-1.2Z"/></svg>Continuar com Apple</button>
-        </div>
-        <div class="divider">fallback discreto</div>
-        <form id="passwordForm" autocomplete="on">
-          <div class="field"><label for="email">E-mail de acesso</label><input id="email" name="email" type="email" inputmode="email" placeholder="voce@exemplo.com" required></div>
-          <div class="field"><label for="password">Senha</label><input id="password" name="password" type="password" autocomplete="current-password" placeholder="Sua senha de acesso" required></div>
-          <button class="auth-btn" type="submit">Entrar com e-mail e senha</button>
-        </form>
-        <button class="link-btn" id="magicLink" type="button" style="margin-top:10px">Enviar magic link em vez de senha</button>
-        <div id="authStatus" class="status" role="status" aria-live="polite">Sessão protegida por expiração curta e armazenamento criptografado local.</div>
-        <div class="security-list" aria-label="Arquitetura de segurança"><div class="security-item"><b>Auto-login</b>Token válido redireciona em silêncio para o dashboard.</div><div class="security-item"><b>Vault local</b>IndexedDB com AES-GCM via Web Crypto quando disponível.</div><div class="security-item"><b>Passkeys</b>WebAuthn pronto para challenge assinado pelo servidor.</div><div class="security-item"><b>OAuth</b>Google e Apple preparados com retorno controlado.</div></div>
-      </aside>
-    </main>
-    <footer><span>v1.10.10 front door · O motor principal permanece preservado em dashboard.html</span><span>Privacidade local, autenticação moderna e redirect limpo.</span></footer>
+
+    <main id="portalMain" tabindex="-1"></main>
+
+    <footer class="footer">
+      <div><strong>Radar de Proventos</strong><span>Organize hoje os proximos eventos da sua carteira.</span></div>
+      <nav aria-label="Links complementares"><a href="/metodologia/">Metodologia</a><a href="/sobre/">Sobre</a><a href="/sistema/">Sistema legado</a><a href="/admin/">Admin</a></nav>
+    </footer>
   </div>
-  <script src="./authService.js?v=20260704-1"></script>
-  <script>
-    const DASHBOARD_URL = 'dashboard.html#sistema';
-    const SESSION_TTL_MS = 1000 * 60 * 60 * 8;
-    const AUTH_ENDPOINTS = Object.freeze({ webauthnChallenge:'/auth/webauthn/challenge', webauthnVerify:'/auth/webauthn/verify', password:'/auth/login', magicLink:'/auth/magic-link', google:'/auth/google/start', apple:'/auth/apple/start' });
-    const $ = id => document.getElementById(id);
-    const enc = new TextEncoder();
-    const dec = new TextDecoder();
-    const ui = { status(message,type=''){ const el=$('authStatus'); el.className=`status ${type ? `is-${type}` : ''}`; el.textContent=message; }, redirect(){ ui.status('Sessão validada. Abrindo dashboard...', 'ok'); window.location.assign(DASHBOARD_URL); } };
-    const authVault = (() => {
-      const dbName='radar_auth_vault', storeName='secure_session', keyName='aes_key', sessionName='session';
-      function openDb(){ return new Promise((resolve,reject)=>{ const req=indexedDB.open(dbName,1); req.onupgradeneeded=()=>req.result.createObjectStore(storeName); req.onsuccess=()=>resolve(req.result); req.onerror=()=>reject(req.error); }); }
-      async function tx(mode, action){ const db=await openDb(); return new Promise((resolve,reject)=>{ const trx=db.transaction(storeName,mode); const store=trx.objectStore(storeName); const req=action(store); req.onsuccess=()=>resolve(req.result); req.onerror=()=>reject(req.error); trx.oncomplete=()=>db.close(); }); }
-      async function getKey(){ if(!window.crypto?.subtle || !window.indexedDB) return null; const existing=await tx('readonly',s=>s.get(keyName)).catch(()=>null); if(existing) return existing; const key=await crypto.subtle.generateKey({name:'AES-GCM',length:256},false,['encrypt','decrypt']); await tx('readwrite',s=>s.put(key,keyName)); return key; }
-      async function setSession(session){ const payload={...session,expiresAt:Date.now()+SESSION_TTL_MS}; const key=await getKey(); if(!key){ localStorage.setItem(sessionName,JSON.stringify(payload)); return; } const iv=crypto.getRandomValues(new Uint8Array(12)); const cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(JSON.stringify(payload))); await tx('readwrite',s=>s.put({iv:Array.from(iv),cipher:Array.from(new Uint8Array(cipher))},sessionName)); }
-      async function getSession(){ try{ const key=await getKey(); let payload=null; if(key){ const record=await tx('readonly',s=>s.get(sessionName)); if(record?.iv && record?.cipher){ const plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:new Uint8Array(record.iv)},key,new Uint8Array(record.cipher)); payload=JSON.parse(dec.decode(plain)); } }else payload=JSON.parse(localStorage.getItem(sessionName)||'null'); if(!payload || Date.now()>Number(payload.expiresAt||0)) return null; return payload; }catch(err){ console.warn('Falha ao ler sessão local',err); return null; } }
-      return { setSession, getSession };
-    })();
-    const authApi = {
-      async postJson(url, body){ const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify(body||{})}); if(!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); },
-      async passkey(){ if(!window.PublicKeyCredential || !navigator.credentials) throw new Error('Passkeys indisponíveis neste navegador.'); let challenge; try{ challenge=await authApi.postJson(AUTH_ENDPOINTS.webauthnChallenge,{intent:'login'}); }catch(err){ challenge={publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),timeout:60000,userVerification:'preferred'},localOnly:true}; } const publicKey={...challenge.publicKey,challenge:challenge.publicKey.challenge instanceof Uint8Array ? challenge.publicKey.challenge : Uint8Array.from(atob(challenge.publicKey.challenge),c=>c.charCodeAt(0))}; const credential=await navigator.credentials.get({publicKey}); if(!credential) throw new Error('Autenticação cancelada.'); if(challenge.localOnly) return { token:`local-passkey-${Date.now()}`, user:{provider:'passkey-local'} }; return authApi.postJson(AUTH_ENDPOINTS.webauthnVerify,{id:credential.id,type:credential.type}); },
-      oauth(provider){ const target=provider==='apple' ? AUTH_ENDPOINTS.apple : AUTH_ENDPOINTS.google; const redirect=encodeURIComponent(`${location.origin}${location.pathname.replace(/index\.html$/,'')}dashboard.html#sistema`); window.location.assign(`${target}?redirect_uri=${redirect}`); },
-      async password(email,password){
-        try{
-          if(window.RadarAuthService?.isEnabled()){
-            const session = await window.RadarAuthService.signInWithPassword(email, password);
-            return { token:session.access_token, user:session.user || { email, provider:'supabase' }, saas:true };
-          }
-          return await authApi.postJson(AUTH_ENDPOINTS.password,{email,password});
-        }catch(err){
-          return { token:`local-password-${Date.now()}`, user:{email,provider:'password-local'}, localFallback:true };
-        }
-      },
-      async magicLink(email){
-        try{
-          if(window.RadarAuthService?.isEnabled()){
-            return await window.RadarAuthService.requestMagicLink(email, `${location.origin}${location.pathname.replace(/index\.html$/,'')}dashboard.html#sistema`);
-          }
-          return await authApi.postJson(AUTH_ENDPOINTS.magicLink,{email,redirect:DASHBOARD_URL});
-        }catch(err){ return { queued:true, localFallback:true }; }
-      }
-    };
-    function wireAuth(){
-      $('skipToApp').addEventListener('click', ui.redirect);
-      $('googleLogin').addEventListener('click', () => authApi.oauth('google'));
-      $('appleLogin').addEventListener('click', () => authApi.oauth('apple'));
-      $('passkeyLogin').addEventListener('click', async()=>{ try{ ui.status('Abrindo autenticação biométrica do dispositivo...', 'warn'); const session=await authApi.passkey(); await authVault.setSession(session); ui.redirect(); }catch(err){ ui.status(err.message || 'Não foi possível concluir por Passkey.', 'error'); } });
-      $('passwordForm').addEventListener('submit', async ev=>{ ev.preventDefault(); const email=$('email').value.trim(); const password=$('password').value; if(!email || !password) return; ui.status('Validando credenciais com sessão curta...', 'warn'); const session=await authApi.password(email,password); await authVault.setSession(session); if(session.localFallback) ui.status('Ambiente estático detectado. Sessão local criada para abrir o dashboard.', 'ok'); setTimeout(ui.redirect, 500); });
-      $('magicLink').addEventListener('click', async()=>{ const email=$('email').value.trim(); if(!email){ ui.status('Informe o e-mail antes de solicitar o magic link.', 'warn'); return; } ui.status('Preparando magic link seguro...', 'warn'); const result=await authApi.magicLink(email); if(result.localFallback){ await authVault.setSession({token:`local-magic-${Date.now()}`,user:{email,provider:'magic-link-local'}}); ui.status('Magic link simulado no ambiente estático. Abrindo dashboard.', 'ok'); setTimeout(ui.redirect, 600); return; } ui.status('Link seguro enviado. Confira seu e-mail para concluir o acesso.', 'ok'); });
-    }
-    function wireRollingCards(){ const track=$('rollingTrack'); if(!track) return; const pause=()=>track.classList.add('is-paused'); const play=()=>track.classList.remove('is-paused'); track.addEventListener('pointerenter',pause); track.addEventListener('pointerleave',play); track.addEventListener('focusin',pause); track.addEventListener('focusout',play); track.addEventListener('touchstart',pause,{passive:true}); }
-    function startCanvas(){ const canvas=$('networkCanvas'), ctx=canvas.getContext('2d'); if(matchMedia('(prefers-reduced-motion: reduce)').matches || !ctx) return; let w=0,h=0,points=[]; function resize(){ w=canvas.width=Math.floor(innerWidth*devicePixelRatio); h=canvas.height=Math.floor(innerHeight*devicePixelRatio); canvas.style.width=innerWidth+'px'; canvas.style.height=innerHeight+'px'; const count=Math.min(96,Math.max(38,Math.floor(innerWidth/17))); points=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.18*devicePixelRatio,vy:(Math.random()-.5)*.18*devicePixelRatio,r:(Math.random()*1.5+.6)*devicePixelRatio})); } function tick(){ ctx.clearRect(0,0,w,h); ctx.fillStyle='rgba(120,255,200,.55)'; ctx.strokeStyle='rgba(77,216,255,.13)'; for(const p of points){ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>w)p.vx*=-1; if(p.y<0||p.y>h)p.vy*=-1; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); } for(let i=0;i<points.length;i++){ for(let j=i+1;j<points.length;j++){ const a=points[i],b=points[j],d=Math.hypot(a.x-b.x,a.y-b.y); if(d<150*devicePixelRatio){ ctx.globalAlpha=1-d/(150*devicePixelRatio); ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); } } } ctx.globalAlpha=1; requestAnimationFrame(tick); } addEventListener('resize',resize,{passive:true}); resize(); tick(); }
-    async function boot(){ startCanvas(); wireAuth(); wireRollingCards(); const session=await authVault.getSession(); if(session) ui.redirect(); }
-    boot();
-  </script>
+  <script src="/platform/domain.js"></script>
+  <script src="/platform/brapiGateway.js"></script>
+  <script src="/platform/planPolicy.js"></script>
+  <script src="/platform/portfolioEngine.js"></script>
+  <script src="/platform/calendarAnalytics.js"></script>
+  <script src="/platform/accountClient.js"></script>
+  <script src="/platform/privateApp.js"></script>
+  <script src="/platform/portal.js"></script>
 </body>
 </html>
