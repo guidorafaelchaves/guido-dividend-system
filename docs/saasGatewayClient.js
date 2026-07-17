@@ -21,9 +21,5 @@
     });
   }
 
-  global.RadarSaasGateway = {
-    enabled,
-    fetchBrapiQuote,
-    requestOpenAIAnalysis
-  };
-})(window);
+  function normalizeTicker(value){
+    return String(value
