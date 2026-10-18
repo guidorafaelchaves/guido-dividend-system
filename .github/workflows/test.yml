@@ -19,4 +19,17 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
-      - run: npm test
+      - name: Plan policy
+        run: node tests/plan-policy.test.mjs
+      - name: Portfolio engine
+        run: node tests/portfolio-engine.test.mjs
+      - name: Calendar analytics
+        run: node tests/calendar-analytics.test.mjs
+      - name: Admin data center
+        run: node tests/admin-data-center.test.mjs
+      - name: Income map
+        run: node tests/income-map-methodology.test.mjs
+      - name: Asset discovery
+        run: node tests/asset-discovery.test.mjs
+      - name: Market data harmonization
+        run: node tests/market-hub.test.mjs
