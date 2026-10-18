@@ -12,14 +12,14 @@ A revisao decide se um evento canonico pode seguir para publicacao.
 
 ## Divergencias
 
-Divergencias B3 x Brapi usam `event_reconciliation_cases`.
+Divergencias B3 x Market usam `event_reconciliation_cases`.
 
 Classificacoes:
 
 - `exact_match`
 - `probable_match`
 - `new_b3_event`
-- `new_brapi_event`
+- `new_market_event`
 - `value_divergence`
 - `date_divergence`
 - `status_divergence`

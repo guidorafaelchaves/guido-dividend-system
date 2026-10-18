@@ -35,7 +35,7 @@ Veja `supabase/schema.sql`:
 Substituir gradualmente chamadas diretas:
 
 ```js
-fetch('https://market.dev/api/quote/...')
+fetch('https://www.b3.com.br/api/quote/...')
 ```
 
 por:

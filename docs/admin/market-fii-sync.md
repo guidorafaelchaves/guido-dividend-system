@@ -1,8 +1,8 @@
-# Sincronizacao Brapi FIIs
+# Sincronizacao Market FIIs
 
 ## Regra De Seguranca
 
-A Brapi nunca e chamada pelo frontend. O token fica apenas como secret do Worker.
+A Market nunca e chamada pelo frontend. O token fica apenas como secret do Worker.
 
 O navegador pode ver:
 
@@ -18,7 +18,7 @@ Nunca pode ver o token completo.
 Job canonico:
 
 ```text
-sync_brapi_fii_events
+sync_market_fii_events
 ```
 
 Caracteristicas:
@@ -36,11 +36,11 @@ Caracteristicas:
 Endpoint:
 
 ```text
-GET|POST /admin/brapi/plan
+GET|POST /admin/market/plan
 ```
 
 Retorna ativos, tamanho do lote, chamadas estimadas, lotes e estado mascarado do token.
 
 ## Publicacao
 
-Eventos Brapi entram como fonte `brapi`, passam por conciliacao e revisao. Nao publicam automaticamente quando ha divergencia com B3.
+Eventos Market entram como fonte `market`, passam por conciliacao e revisao. Nao publicam automaticamente quando ha divergencia com B3.
