@@ -1677,11 +1677,16 @@
         for(const obs of result.accepted){
           const old=state.quotes[obs.ticker]||{};
           if(old.quoteDate===obs.date&&Math.abs(Number(old.precoAtual||0)-obs.price)<0.000001&&old.source===obs.source)continue;
-          const previousClose=Number(old.precoAtual||obs.price);
+          const importedPrior=result.valid.filter(p=>p.ticker===obs.ticker&&p.date<obs.date).sort((a,b)=>b.date.localeCompare(a.date))[0];
+          const historicalPrior=(state.priceHistory?.[obs.ticker]?.points||[])
+            .filter(p=>p.date<obs.date&&Number(p.close)>0).sort((a,b)=>b.date.localeCompare(a.date))[0];
+          const previousClose=Number(importedPrior?.price||historicalPrior?.close||
+            (old.quoteDate&&old.quoteDate<obs.date?old.precoAtual:0)||
+            (old.quoteDate===obs.date?old.precoFechamentoAnterior:0)||0);
           state.quotes[obs.ticker]={
             ...old,ticker:obs.ticker,precoAtual:obs.price,precoFechamentoAnterior:previousClose,
-            variacaoDiaPct:previousClose>0?(obs.price/previousClose-1)*100:0,
-            volume:obs.volume||old.volume||0,quoteDate:obs.date,source:obs.source,
+            variacaoDiaPct:previousClose>0?(obs.price/previousClose-1)*100:null,
+            volume:obs.volume||0,quoteDate:obs.date,source:obs.source,
             updatedAt:new Date().toISOString()
           };
           if(!state.assets[obs.ticker])state.assets[obs.ticker]={
@@ -5582,8 +5587,6 @@ function renderEngineSummary(){
 
 
 
-    function getMarketToken(){return '';}
-
     async function fetchPriceHistory12m(ticker,force=false,context='history'){
   const tk=normalizeTicker(ticker),points=state.priceHistory[tk]?.points||[];
   if(!points.length)throw new Error('Sem histórico importado para '+tk+'. Importe o COTAHIST oficial.');
@@ -7669,17 +7672,19 @@ function renderEngineSummary(){
       let portal = null;
       const sourcesUsed = [];
 
-      try{
-        const token = getMarketToken();
-        if(token){
-          const res = await fetch(`/api/market/quote/${encodeURIComponent(tk)}?range=1y&interval=1d&fundamental=true&dividends=true&token=${encodeURIComponent(token)}`);
-          if(res.ok){
-            const data = await res.json();
-            marketQuote = data?.results?.[0] || null;
-            if(marketQuote) sourcesUsed.push('Market');
-          }
-        }
-      }catch(err){}
+      // Enriquecimento com a cotação harmonizada já verificada: nenhuma chamada a fornecedor.
+      if(parseNumber(quote.precoAtual)>0){
+        marketQuote={
+          symbol:tk,regularMarketPrice:quote.precoAtual,
+          regularMarketPreviousClose:quote.precoFechamentoAnterior||null,
+          regularMarketVolume:quote.volume||0,
+          historicalDataPrice:(state.priceHistory?.[tk]?.points||[]).map(p=>({
+            date:Math.floor(new Date(p.date+'T12:00:00Z').getTime()/1000),
+            close:p.close,volume:p.volume||0
+          }))
+        };
+        sourcesUsed.push('Fechamento consolidado ('+(quote.source||'cache')+')');
+      }
 
       try{
         yahoo = await fetchYahooSupplement(tk);
