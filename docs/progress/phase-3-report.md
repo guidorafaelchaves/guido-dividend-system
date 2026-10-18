@@ -19,7 +19,7 @@ A plataforma saiu da base local para um preview remoto verificavel. O Worker `pl
 - Schema remoto validado com 38 tabelas.
 - Seeds basicos de planos, roles, fontes e ativos aplicados pela migration.
 - Constraint testada: insercao de subscription com status invalido falhou como esperado.
-- BRAPI sync existe como job, mas permanece desativado por `BRAPI_SYNC_ENABLED=false` e falta `BRAPI_TOKEN`.
+- MARKET sync existe como job, mas permanece desativado por `MARKET_SYNC_ENABLED=false` e falta `MARKET_TOKEN`.
 
 ## Produto
 
@@ -76,7 +76,7 @@ Smoke remoto comprovado:
 - Producao ainda nao criada.
 - Provider de e-mail ainda nao configurado.
 - Billing sandbox ainda nao conectado a provider real.
-- Sync BRAPI desativado ate configurar secret/token.
+- Sync MARKET desativado ate configurar secret/token.
 - Frontend GitHub Pages ainda nao foi redeployado nesta fase.
 - Testes de seguranca profundos e IDOR ainda precisam virar suite automatizada.
 

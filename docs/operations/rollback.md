@@ -19,7 +19,7 @@ Desativar:
 
 - `EMAIL_ENABLED`
 - `BILLING_ENABLED`
-- `BRAPI_SYNC_ENABLED`
+- `MARKET_SYNC_ENABLED`
 
 ## Frontend
 
