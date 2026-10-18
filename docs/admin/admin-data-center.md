@@ -4,7 +4,7 @@ Data: 2026-07-13
 
 ## Papel
 
-A Central Administrativa governa a informacao financeira exibida ao publico. Ela recebe arquivos B3, sincroniza dados Brapi pelo backend, normaliza, deduplica, concilia, revisa e publica eventos canonicos.
+A Central Administrativa governa a informacao financeira exibida ao publico. Ela recebe arquivos B3, sincroniza dados Market pelo backend, normaliza, deduplica, concilia, revisa e publica eventos canonicos.
 
 ## Regra Principal
 
@@ -24,7 +24,7 @@ Estados separados:
 - `/admin/proventos/`
 - `/admin/importacoes/`
 - `/admin/importacoes/nova/`
-- `/admin/brapi/`
+- `/admin/market/`
 - `/admin/eventos/`
 - `/admin/revisao/`
 - `/admin/publicacao/`
@@ -44,7 +44,7 @@ Endpoints principais no `platform-api`:
 - `GET /admin/data-center`
 - `POST /admin/imports/b3/detect`
 - `POST /admin/imports/b3`
-- `GET|POST /admin/brapi/plan`
+- `GET|POST /admin/market/plan`
 - `GET /admin/events`
 - `POST /admin/events/approve`
 - `GET /admin/publication/prepare`
