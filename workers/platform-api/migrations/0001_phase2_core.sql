@@ -351,7 +351,7 @@ INSERT OR IGNORE INTO plans(id, name, tier, status, limits_json) VALUES
 
 INSERT OR IGNORE INTO data_sources(id, name, kind, trust_level) VALUES
   ('demo','Demo Fixture','fixture','demo'),
-  ('brapi','BRAPI','market_provider','external'),
+  ('market','MARKET','market_provider','external'),
   ('admin','Admin Curadoria','curated','curated'),
   ('legacy','Dividend System Legado','legacy','internal');
 
