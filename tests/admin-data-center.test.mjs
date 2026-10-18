@@ -35,8 +35,14 @@ for (const route of [
 }
 
 assert.ok(api.includes('B3_RADAR_ALIASES'));
-assert.ok(api.includes('sync_market_fii_events'));
-assert.ok(api.includes('MARKET_TOKEN'));
+assert.ok(api.includes('check_market_sources'));
+assert.ok(api.includes('/me/market/refresh'));
+assert.ok(api.includes('/admin/market/import'));
+assert.ok(api.includes('refreshPublicMarketSources'));
+assert.ok(!api.includes('MARKET_TOKEN'));
+assert.ok(!api.includes('brapi.dev'));
+assert.ok(fs.existsSync('public/platform/marketHub.js'));
+assert.ok(!portal.toLowerCase().includes('brapi'));
 assert.ok(!portal.includes('cfgMarketToken'));
 assert.ok(!admin.includes('cfgMarketToken'));
 assert.ok(!admin.includes('localStorage'));
