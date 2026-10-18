@@ -31,7 +31,7 @@
     if(path.includes('/admin/proventos/')) return 'adminProventos';
     if(path.includes('/admin/importacoes/nova/')) return 'adminNewImport';
     if(path.includes('/admin/importacoes/')) return 'adminImports';
-    if(path.includes('/admin/brapi/')) return 'adminBrapi';
+    if(path.includes('/admin/market/')) return 'adminMarket';
     if(path.includes('/admin/eventos/')) return 'adminEvents';
     if(path.includes('/admin/revisao/')) return 'adminReview';
     if(path.includes('/admin/publicacao/')) return 'adminPublishing';
@@ -412,7 +412,7 @@
           <span class="eyebrow">${esc(asset.type)} acompanhado</span>
           <h1>${esc(asset.ticker)} - ${esc(asset.name)}</h1>
           <p class="lead">${next ? `Proximo ${esc(next.kind)} ${humanDistance(next.paymentDate)}. Valor informado: ${eventAmount(next)} por unidade.` : 'Ainda sem evento publico publicado para este ativo.'}</p>
-          <div class="actions"><button class="btn primary" id="refreshBrapi">Atualizar via BRAPI gateway</button><a class="btn secondary" href="/cadastro/">Acompanhar ativo</a></div>
+          <div class="actions"><button class="btn primary" id="refreshMarket">Consultar fechamento importado</button><a class="btn secondary" href="/cadastro/">Acompanhar ativo</a></div>
         </article>
         <article class="card reveal"><h2>Linha temporal do ativo</h2><div class="calendar-list">${related.map(renderEventRow).join('') || '<div class="empty">Sem eventos publicados.</div>'}</div></article>
         <section class="reveal"><h2>Quanto esse evento representa?</h2>${renderSimulator()}</section>
@@ -421,7 +421,7 @@
         <div class="metric"><small>Preco atual</small><b>${money(asset.price)}</b></div>
         <div class="metric"><small>Dividend yield</small><b>${pct(asset.dividendYield)}</b></div>
         <div class="metric"><small>Recorrencia</small><b>${asset.recurrenceScore}/100</b></div>
-        <div id="brapiStatus" class="notice">BRAPI encapsulada. O token nao aparece no cliente publico.</div>
+        <div id="marketStatus" class="notice">Cotações: último fechamento importado. Não há feed ao vivo.</div>
       </aside>
     </section>`;
   }
@@ -915,11 +915,11 @@
             ['Separacao','Status financeiro, confianca e publicacao sao conceitos diferentes.'],
             ['Conservadorismo','Quando os dados nao permitem concluir, a plataforma mostra a incerteza.']
           ].map(([title,text]) => `<article class="method-card"><b>${title}</b><p>${text}</p></article>`).join('')}</div></section>
-          <section id="pipeline" class="panel reveal"><span class="eyebrow">Fluxo dos dados</span><h2>Da fonte ao calendario publico</h2><div class="pipeline">${['B3 / Brapi / documento oficial','Ingestao','Normalizacao','Deduplicacao','Validacao','Revisao','Publicacao','Calendario, radar e mapa'].map(step => `<button type="button">${step}<small>verificacoes, bloqueios e historico</small></button>`).join('')}</div></section>
+          <section id="pipeline" class="panel reveal"><span class="eyebrow">Fluxo dos dados</span><h2>Da fonte ao calendario publico</h2><div class="pipeline">${['B3 / Market / documento oficial','Ingestao','Normalizacao','Deduplicacao','Validacao','Revisao','Publicacao','Calendario, radar e mapa'].map(step => `<button type="button">${step}<small>verificacoes, bloqueios e historico</small></button>`).join('')}</div></section>
           <section id="fontes" class="panel reveal"><span class="eyebrow">Fontes</span><h2>Hierarquia de autoridade</h2><div class="source-grid">${[
             ['B3 e documentos oficiais','alta','eventos oficiais e arquivos de mercado','conforme publicacao'],
             ['Emissores','alta','comunicados e fatos relevantes','conforme emissor'],
-            ['Brapi e integracoes verificadas','media/alta','cotas, eventos e enriquecimento','conforme integracao'],
+            ['Market e integracoes verificadas','media/alta','cotas, eventos e enriquecimento','conforme integracao'],
             ['Entrada administrativa revisada','curada','ajustes e conciliacao','com auditoria'],
             ['Estimativas derivadas','baixa/media','projecoes baseadas em historico','sempre sinalizada']
           ].map(row => `<article><b>${row[0]}</b><span>Confianca: ${row[1]}</span><small>Uso: ${row[2]} | Atualizacao: ${row[3]}</small></article>`).join('')}</div></section>
@@ -939,7 +939,7 @@
           <section id="atualizacao" class="panel reveal"><span class="eyebrow">Atualizacao</span><p>Eventos sao atualizados apos ingestao, validacao, revisao e publicacao. Cotacoes dependem da disponibilidade da integracao. A plataforma nao afirma tempo real quando a fonte nao oferece tempo real.</p></section>
           <section id="divergencias" class="panel reveal"><span class="eyebrow">Divergencias</span><ol class="admin-flow"><li>Divergencia detectada entre fontes.</li><li>Evento bloqueado para publicacao automatica.</li><li>Fonte de maior precedencia identificada.</li><li>Revisao administrativa registrada.</li><li>Nova versao publicada com historico.</li></ol></section>
           <section id="limitacoes" class="panel reveal"><span class="eyebrow">Limitacoes</span><div class="grid cols-2">${['Eventos podem ser alterados ou cancelados.','Precos mudam e afetam retornos calculados.','Estimativas podem nao se confirmar.','Tributacao varia conforme produto e investidor.','Historico nao garante recorrencia.','Eventos extraordinarios nao devem ser anualizados automaticamente.'].map(item => `<article class="method-card"><p>${item}</p></article>`).join('')}</div></section>
-          <section id="auditoria" class="panel reveal"><span class="eyebrow">Auditoria</span><div class="audit-timeline">${['12/07 - Evento importado','13/07 - Brapi confirmou valor','13/07 - Administrador revisou','14/07 - Evento publicado','16/07 - Data atualizada'].map(item => `<span>${item}</span>`).join('')}</div></section>
+          <section id="auditoria" class="panel reveal"><span class="eyebrow">Auditoria</span><div class="audit-timeline">${['12/07 - Evento importado','13/07 - Market confirmou valor','13/07 - Administrador revisou','14/07 - Evento publicado','16/07 - Data atualizada'].map(item => `<span>${item}</span>`).join('')}</div></section>
           <section class="personal-calendar panel reveal"><div><span class="eyebrow">Proximo passo</span><h2>Agora voce sabe como os numeros sao construidos.</h2></div><div class="portfolio-toggle"><a class="pill active" href="/calendario/">Explorar calendario</a><a class="pill" href="/mapa-da-renda/">Ver Mapa da Renda</a><a class="pill" href="/carteiras/">Criar minha carteira</a></div></section>
         </div>
       </div>
@@ -951,7 +951,7 @@
       ['admin','/admin/','Visao geral'],
       ['adminProventos','/admin/proventos/','Central de Proventos'],
       ['adminImports','/admin/importacoes/','Importacoes B3'],
-      ['adminBrapi','/admin/brapi/','Sincronizacao Brapi'],
+      ['adminMarket','/admin/market/','Sincronizacao Market'],
       ['adminEvents','/admin/eventos/','Eventos'],
       ['adminReview','/admin/revisao/','Revisao'],
       ['adminPublishing','/admin/publicacao/','Publicacao'],
@@ -974,7 +974,7 @@
       <div class="admin-stage">
         <section class="admin-title">
           <div><span class="eyebrow">Central Administrativa de Proventos</span><h1>${esc(active[2])}</h1><p>Importar e sincronizar nao publica. A versao publica nasce apenas depois de validacao, revisao e lote de publicacao.</p></div>
-          <div class="admin-actions"><a class="btn primary" href="/admin/importacoes/nova/">Importar arquivo B3</a><a class="btn secondary" href="/admin/brapi/">Sincronizar Brapi</a><a class="btn secondary" href="/calendario/">Calendario publico</a></div>
+          <div class="admin-actions"><a class="btn primary" href="/admin/importacoes/nova/">Importar arquivo B3</a><a class="btn secondary" href="/admin/market/">Sincronizar Market</a><a class="btn secondary" href="/calendario/">Calendario publico</a></div>
         </section>
         ${renderAdminView(view)}
       </div>
@@ -983,7 +983,7 @@
 
   function renderAdminView(view){
     if(view === 'adminImports' || view === 'adminNewImport') return renderAdminImports(view);
-    if(view === 'adminBrapi') return renderAdminBrapi();
+    if(view === 'adminMarket') return renderAdminMarket();
     if(view === 'adminEvents') return renderAdminEvents();
     if(view === 'adminReview') return renderAdminReview();
     if(view === 'adminPublishing') return renderAdminPublishing();
@@ -1005,13 +1005,13 @@
     return `<section class="admin-kpis">
       ${adminKpi('Eventos publicos ativos','42','published + visible','ok')}
       ${adminKpi('Aguardando revisao','12','pendentes editoriais','warn')}
-      ${adminKpi('Divergencias B3 x Brapi','3','bloqueiam publicacao','bad')}
-      ${adminKpi('Ultima Brapi','13/07 02:10','token somente backend','ok')}
+      ${adminKpi('Divergencias B3 x Market','3','bloqueiam publicacao','bad')}
+      ${adminKpi('Ultima Market','13/07 02:10','token somente backend','ok')}
       ${adminKpi('Saude do calendario','91/100','cache publicado valido','ok')}
     </section>
     <section class="grid cols-2">
-      <article class="admin-panel"><h2>Alertas operacionais</h2><div class="admin-alert warn">12 eventos aguardam revisao.</div><div class="admin-alert bad">3 eventos apresentam divergencia entre B3 e Brapi.</div><div class="admin-alert warn">8 FIIs nao foram atualizados nas ultimas 24 horas.</div><div class="admin-alert bad">1 lote de publicacao falhou e manteve a ultima versao valida.</div></article>
-      <article class="admin-panel"><h2>Fluxo canonico</h2><ol class="admin-flow"><li>Arquivos B3 ou Brapi entram como fonte bruta.</li><li>Parser normaliza para evento canonico.</li><li>Dedupe e conciliacao criam pendencias.</li><li>Editor aprova ou rejeita.</li><li>Publicacao atomica alimenta calendario, radar e paginas de ativos.</li></ol></article>
+      <article class="admin-panel"><h2>Alertas operacionais</h2><div class="admin-alert warn">12 eventos aguardam revisao.</div><div class="admin-alert bad">3 eventos apresentam divergencia entre B3 e Market.</div><div class="admin-alert warn">8 FIIs nao foram atualizados nas ultimas 24 horas.</div><div class="admin-alert bad">1 lote de publicacao falhou e manteve a ultima versao valida.</div></article>
+      <article class="admin-panel"><h2>Fluxo canonico</h2><ol class="admin-flow"><li>Arquivos B3 ou Market entram como fonte bruta.</li><li>Parser normaliza para evento canonico.</li><li>Dedupe e conciliacao criam pendencias.</li><li>Editor aprova ou rejeita.</li><li>Publicacao atomica alimenta calendario, radar e paginas de ativos.</li></ol></article>
     </section>`;
   }
 
@@ -1034,20 +1034,20 @@
     </section>`;
   }
 
-  function renderAdminBrapi(){
+  function renderAdminMarket(){
     return `<section class="grid cols-2">
-      <article class="admin-panel"><h2>Sincronizacao Brapi FIIs</h2><p class="muted">Endpoint e token ficam exclusivamente no Worker. O navegador enxerga apenas estado mascarado.</p><div class="secret-state"><b>Token configurado</b><span>Final: ****7H2K</span><small>Atualizado em 13/07/2026</small></div><button class="btn primary">Sincronizar FIIs agora</button></article>
-      <article class="admin-panel"><h2>Plano de lotes</h2><div class="admin-kpis mini">${adminKpi('FIIs ativos','312','fonte canonica')}${adminKpi('Lotes','16','20 ativos/lote')}${adminKpi('Janela','24 meses','historico + futuros')}${adminKpi('Chamadas','16','estimadas')}</div><div class="admin-alert warn">Job sync_brapi_fii_events e idempotente, com cursor, retry e checkpoint.</div></article>
+      <article class="admin-panel"><h2>Sincronizacao Market FIIs</h2><p class="muted">Endpoint e token ficam exclusivamente no Worker. O navegador enxerga apenas estado mascarado.</p><div class="secret-state"><b>Token configurado</b><span>Final: ****7H2K</span><small>Atualizado em 13/07/2026</small></div><button class="btn primary">Sincronizar FIIs agora</button></article>
+      <article class="admin-panel"><h2>Plano de lotes</h2><div class="admin-kpis mini">${adminKpi('FIIs ativos','312','fonte canonica')}${adminKpi('Lotes','16','20 ativos/lote')}${adminKpi('Janela','24 meses','historico + futuros')}${adminKpi('Chamadas','16','estimadas')}</div><div class="admin-alert warn">Job sync_market_fii_events e idempotente, com cursor, retry e checkpoint.</div></article>
     </section>`;
   }
 
   function renderAdminEvents(){
     const rows = C.buildEventViews(events(), assets(), { capital:10000, mode:'perAsset' });
-    return `<section class="admin-panel"><h2>Eventos editoriais</h2><div class="quick-filters"><span class="pill active">Todos</span><span class="pill">B3</span><span class="pill">Brapi</span><span class="pill">Divergentes</span><span class="pill">Bloqueados</span><span class="pill">Proximos 30 dias</span></div><div class="table-wrap"><table><thead><tr><th>Ativo</th><th>Tipo</th><th>Data-com</th><th>Data ex</th><th>Pagamento</th><th>Valor</th><th>Fonte</th><th>Confianca</th><th>Validacao</th><th>Revisao</th><th>Publicacao</th><th>Acao</th></tr></thead><tbody>${rows.map(row => `<tr><td><b>${esc(row.ticker)}</b></td><td>${esc(row.eventType)}</td><td>${fullDate(row.recordDate || row.exDate)}</td><td>${fullDate(row.exDate)}</td><td>${fullDate(row.paymentDate)}</td><td>${money(row.amountPerUnit)}</td><td>${esc(row.sourceName)}</td><td>${esc(row.confidence)}</td><td><span class="badge ok">valid</span></td><td><span class="badge mid">pending</span></td><td><span class="badge mid">draft</span></td><td><button class="btn secondary">Revisar</button></td></tr>`).join('')}</tbody></table></div></section>`;
+    return `<section class="admin-panel"><h2>Eventos editoriais</h2><div class="quick-filters"><span class="pill active">Todos</span><span class="pill">B3</span><span class="pill">Market</span><span class="pill">Divergentes</span><span class="pill">Bloqueados</span><span class="pill">Proximos 30 dias</span></div><div class="table-wrap"><table><thead><tr><th>Ativo</th><th>Tipo</th><th>Data-com</th><th>Data ex</th><th>Pagamento</th><th>Valor</th><th>Fonte</th><th>Confianca</th><th>Validacao</th><th>Revisao</th><th>Publicacao</th><th>Acao</th></tr></thead><tbody>${rows.map(row => `<tr><td><b>${esc(row.ticker)}</b></td><td>${esc(row.eventType)}</td><td>${fullDate(row.recordDate || row.exDate)}</td><td>${fullDate(row.exDate)}</td><td>${fullDate(row.paymentDate)}</td><td>${money(row.amountPerUnit)}</td><td>${esc(row.sourceName)}</td><td>${esc(row.confidence)}</td><td><span class="badge ok">valid</span></td><td><span class="badge mid">pending</span></td><td><span class="badge mid">draft</span></td><td><button class="btn secondary">Revisar</button></td></tr>`).join('')}</tbody></table></div></section>`;
   }
 
   function renderAdminReview(){
-    return `<section class="admin-panel"><h2>Revisao e divergencias</h2><div class="comparison-grid"><div><h3>B3</h3><table><tr><td>Ativo</td><td>MXRF11</td></tr><tr><td>Pagamento</td><td>14/08/2026</td></tr><tr><td>Valor</td><td>R$ 0,10</td></tr><tr><td>Confianca</td><td>Oficial</td></tr></table></div><div><h3>Brapi</h3><table><tr><td>Ativo</td><td>MXRF11</td></tr><tr><td>Pagamento</td><td>15/08/2026</td></tr><tr><td>Valor</td><td>R$ 0,10</td></tr><tr><td>Confianca</td><td>Externa confiavel</td></tr></table></div></div><div class="admin-actions"><button class="btn primary">Usar dados B3</button><button class="btn secondary">Usar Brapi</button><button class="btn secondary">Mesclar campos</button><button class="btn secondary">Manter pendente</button></div><textarea placeholder="Justificativa obrigatoria quando contrariar fonte de maior precedencia"></textarea></section>`;
+    return `<section class="admin-panel"><h2>Revisao e divergencias</h2><div class="comparison-grid"><div><h3>B3</h3><table><tr><td>Ativo</td><td>MXRF11</td></tr><tr><td>Pagamento</td><td>14/08/2026</td></tr><tr><td>Valor</td><td>R$ 0,10</td></tr><tr><td>Confianca</td><td>Oficial</td></tr></table></div><div><h3>Market</h3><table><tr><td>Ativo</td><td>MXRF11</td></tr><tr><td>Pagamento</td><td>15/08/2026</td></tr><tr><td>Valor</td><td>R$ 0,10</td></tr><tr><td>Confianca</td><td>Externa confiavel</td></tr></table></div></div><div class="admin-actions"><button class="btn primary">Usar dados B3</button><button class="btn secondary">Usar Market</button><button class="btn secondary">Mesclar campos</button><button class="btn secondary">Manter pendente</button></div><textarea placeholder="Justificativa obrigatoria quando contrariar fonte de maior precedencia"></textarea></section>`;
   }
 
   function renderAdminPublishing(){
@@ -1059,7 +1059,7 @@
   }
 
   function renderAdminJobs(){
-    return `<section class="admin-panel"><h2>Jobs</h2><div class="table-wrap"><table><thead><tr><th>Job</th><th>Idempotente</th><th>Lotes</th><th>Retry</th><th>Status</th></tr></thead><tbody>${['process_b3_import','sync_brapi_fii_events','sync_brapi_quotes','reconcile_event_sources','validate_financial_events','prepare_publication_batch','publish_events','recalculate_opportunity_metrics','invalidate_public_cache','notify_captured_event_changes','mark_stale_events'].map(job => `<tr><td>${job}</td><td>sim</td><td>cursor</td><td>backoff</td><td><span class="badge mid">configurado</span></td></tr>`).join('')}</tbody></table></div></section>`;
+    return `<section class="admin-panel"><h2>Jobs</h2><div class="table-wrap"><table><thead><tr><th>Job</th><th>Idempotente</th><th>Lotes</th><th>Retry</th><th>Status</th></tr></thead><tbody>${['process_b3_import','sync_market_fii_events','sync_market_quotes','reconcile_event_sources','validate_financial_events','prepare_publication_batch','publish_events','recalculate_opportunity_metrics','invalidate_public_cache','notify_captured_event_changes','mark_stale_events'].map(job => `<tr><td>${job}</td><td>sim</td><td>cursor</td><td>backoff</td><td><span class="badge mid">configurado</span></td></tr>`).join('')}</tbody></table></div></section>`;
   }
 
   function renderAdminAudit(){
@@ -1067,11 +1067,11 @@
   }
 
   function renderAdminSecurity(){
-    return `<section class="admin-panel"><h2>Seguranca administrativa</h2><div class="table-wrap"><table><thead><tr><th>Controle</th><th>Status</th><th>Regra</th></tr></thead><tbody><tr><td>Token Brapi</td><td><span class="badge ok">backend secret</span></td><td>Nunca localStorage, IndexedDB ou bundle publico.</td></tr><tr><td>Upload</td><td><span class="badge mid">pipeline seguro</span></td><td>MIME, hash, limite, path traversal, zip bomb, macros e formulas.</td></tr><tr><td>Publicacao</td><td><span class="badge ok">RBAC</span></td><td>publication:publish ou owner/admin.</td></tr><tr><td>CORS</td><td><span class="badge ok">restrito</span></td><td>origens autorizadas.</td></tr></tbody></table></div></section>`;
+    return `<section class="admin-panel"><h2>Seguranca administrativa</h2><div class="table-wrap"><table><thead><tr><th>Controle</th><th>Status</th><th>Regra</th></tr></thead><tbody><tr><td>Token Market</td><td><span class="badge ok">backend secret</span></td><td>Nunca localStorage, IndexedDB ou bundle publico.</td></tr><tr><td>Upload</td><td><span class="badge mid">pipeline seguro</span></td><td>MIME, hash, limite, path traversal, zip bomb, macros e formulas.</td></tr><tr><td>Publicacao</td><td><span class="badge ok">RBAC</span></td><td>publication:publish ou owner/admin.</td></tr><tr><td>CORS</td><td><span class="badge ok">restrito</span></td><td>origens autorizadas.</td></tr></tbody></table></div></section>`;
   }
 
   function renderAdminSettings(){
-    return `<section class="admin-panel"><h2>Configuracoes</h2><p class="muted">A interface exibe apenas estado mascarado de secrets. Atualizacao real deve ocorrer por Worker secrets ou endpoint backend protegido que nunca retorne o valor completo.</p><div class="secret-state"><b>Brapi</b><span>Token configurado no backend</span><small>Final mascarado exibido somente pelo Worker.</small></div></section>`;
+    return `<section class="admin-panel"><h2>Configuracoes</h2><p class="muted">A interface exibe apenas estado mascarado de secrets. Atualizacao real deve ocorrer por Worker secrets ou endpoint backend protegido que nunca retorne o valor completo.</p><div class="secret-state"><b>Market</b><span>Token configurado no backend</span><small>Final mascarado exibido somente pelo Worker.</small></div></section>`;
   }
 
   function renderAdminFinops(){
@@ -1080,7 +1080,7 @@
 
   function renderAdminCatalog(view){
     const label = { adminAssets:'Ativos canonicos', adminSources:'Fontes e precedencia', adminProventos:'Central de Proventos' }[view] || 'Catalogo';
-    return `<section class="admin-panel"><h2>${label}</h2><p class="muted">B3 oficial verificavel prevalece como fonte orientadora; Brapi complementa FIIs e cotacoes; divergencias nao publicam automaticamente.</p><div class="admin-flow"><li>Arquivo oficial B3 verificavel</li><li>Documento oficial do administrador/emissor</li><li>Brapi validada</li><li>Entrada manual</li><li>Estimativa derivada</li></div></section>`;
+    return `<section class="admin-panel"><h2>${label}</h2><p class="muted">B3 oficial verificavel prevalece como fonte orientadora; Market complementa FIIs e cotacoes; divergencias nao publicam automaticamente.</p><div class="admin-flow"><li>Arquivo oficial B3 verificavel</li><li>Documento oficial do administrador/emissor</li><li>Market validada</li><li>Entrada manual</li><li>Estimativa derivada</li></div></section>`;
   }
 
   function renderSystem(){
@@ -1630,21 +1630,21 @@
       wireReveals();
       return;
     }
-    const renderers = { home:renderHome, assets:renderAssets, assetDetail:renderAssetDetail, calendar:renderCalendar, incomeMap:renderIncomeMap, about:renderAbout, methodology:renderMethodology, admin:() => renderAdmin('admin'), adminProventos:() => renderAdmin('adminProventos'), adminImports:() => renderAdmin('adminImports'), adminNewImport:() => renderAdmin('adminNewImport'), adminBrapi:() => renderAdmin('adminBrapi'), adminAssets:() => renderAdmin('adminAssets'), adminEvents:() => renderAdmin('adminEvents'), adminReview:() => renderAdmin('adminReview'), adminPublishing:() => renderAdmin('adminPublishing'), adminSources:() => renderAdmin('adminSources'), adminQuality:() => renderAdmin('adminQuality'), adminJobs:() => renderAdmin('adminJobs'), adminAudit:() => renderAdmin('adminAudit'), adminFinops:() => renderAdmin('adminFinops'), adminSecurity:() => renderAdmin('adminSecurity'), adminSettings:() => renderAdmin('adminSettings'), system:renderSystem };
+    const renderers = { home:renderHome, assets:renderAssets, assetDetail:renderAssetDetail, calendar:renderCalendar, incomeMap:renderIncomeMap, about:renderAbout, methodology:renderMethodology, admin:() => renderAdmin('admin'), adminProventos:() => renderAdmin('adminProventos'), adminImports:() => renderAdmin('adminImports'), adminNewImport:() => renderAdmin('adminNewImport'), adminMarket:() => renderAdmin('adminMarket'), adminAssets:() => renderAdmin('adminAssets'), adminEvents:() => renderAdmin('adminEvents'), adminReview:() => renderAdmin('adminReview'), adminPublishing:() => renderAdmin('adminPublishing'), adminSources:() => renderAdmin('adminSources'), adminQuality:() => renderAdmin('adminQuality'), adminJobs:() => renderAdmin('adminJobs'), adminAudit:() => renderAdmin('adminAudit'), adminFinops:() => renderAdmin('adminFinops'), adminSecurity:() => renderAdmin('adminSecurity'), adminSettings:() => renderAdmin('adminSettings'), system:renderSystem };
     main.innerHTML = (renderers[page] || renderHome)();
     if(page === 'assets'){
       wireAssetDiscovery();
       paintAssetRows();
     }
-    document.getElementById('refreshBrapi')?.addEventListener('click', async () => {
-      const box = document.getElementById('brapiStatus');
+    document.getElementById('refreshMarket')?.addEventListener('click', async () => {
+      const box = document.getElementById('marketStatus');
       try{
         box.textContent = 'Consultando gateway seguro...';
         const ticker = document.querySelector('h1')?.textContent?.split(' - ')[0] || '';
-        await global.DividendBrapiGateway.fetchQuote(ticker);
-        box.textContent = `Gateway respondeu com sucesso para ${ticker}. Resultado bruto mantido fora da UI publica.`;
+        const result=await global.DividendMarketGateway.fetchQuote(ticker);
+        box.textContent = `Fechamento de ${ticker}: R$ ${Number(result.price||0).toFixed(2)} (${result.quoteDate||'data desconhecida'}). Dado importado, não intradiário.`;
       }catch(err){
-        box.textContent = `Gateway indisponivel neste ambiente estatico: ${err.message || err}`;
+        box.textContent = `Cotação indisponível: ${err.message || err}`;
       }
     });
     wireHeroSearch();
