@@ -897,49 +897,6 @@
     <div id="tab-config" class="panel">
       <div class="split-2">
         <div class="stack">
-          <div class="card admin-config-retired hidden" style="border-left:5px solid var(--violet)">
-            <h2 class="section-title">📡 Market Data Hub</h2>
-            <div class="section-note">
-              A sincronização atualiza <b>cotações</b>, tenta trazer <b>eventos de proventos futuros</b> e agora a memória principal do aplicativo passa a ser persistida em <b>IndexedDB</b>, com espelhamento em localStorage para compatibilidade e backup.
-            </div>
-            <div class="controls" style="grid-template-columns:1fr 2.2fr 1fr 1fr 1fr 1fr">
-              <div class="field">
-                <label>fontes do Market Data Hub</label>
-                <input type="password" id="marketToken" value="" placeholder="Cole seu fontes do Market Data Hub" />
-              </div>
-              <div class="field">
-                <label>Tickers Alvo</label>
-                <input type="text" id="marketTickers" value="MXRF11, PETR4, VALE3, BBAS3, ITUB4" />
-              </div>
-              <div class="field">
-                <label>Modo refresh</label>
-                <select id="refreshMode" onchange="setRefreshMode(this.value)">
-                  <option value="smart" selected>Inteligente</option>
-                  <option value="economic">Econômico</option>
-                  <option value="live">Live</option>
-                </select>
-              </div>
-              <div class="field">
-                <button class="btn-api" style="width:100%" onclick="syncMarketSmart()">⚡ Sync Inteligente</button>
-              </div>
-              <div class="field">
-                <button class="btn-secondary" style="width:100%" onclick="refreshTopRadar()">🔥 Top Radar</button>
-              </div>
-              <div class="field">
-                <button class="btn-secondary" style="width:100%" onclick="fetchMarket(true)">🧨 Forçar Tudo</button>
-              </div>
-            </div>
-            <div class="toolbar" style="margin-top:10px">
-              <button class="btn-primary" onclick="saveMarketTokenFromInput()">Salvar fontes do Market Data Hub</button>
-              <button class="btn-outline" onclick="toggleMarketTokenVisibility()">Mostrar/Ocultar</button>
-              <button class="btn-outline-red" onclick="clearMarketToken()">Limpar token</button>
-              <span id="marketTokenStatus" class="status-chip">fontes do Market Data Hub: não salvo</span>
-            </div>
-            <div class="section-note" id="refreshHubStatus" style="margin-top:10px">
-              v24.2: datas blindadas contra placeholders irreais e gaps impossíveis. Cache primeiro, Market depois. O motor atualiza apenas tickers críticos, vencidos ou prioritários.
-            </div>
-          </div>
-
           <div class="card">
             <h2 class="section-title">📂 Importação Manual</h2>
             <div class="controls" style="grid-template-columns:2fr 1fr">
@@ -1760,8 +1717,6 @@
       }catch(e){setMarketHubStatus('Atualização incompleta: '+(e?.message||String(e)),true);}
       finally{if(btn)btn.disabled=false;}
     }
-    function ensureMarketConfigured(){return true;}
-
     const KEYS = {
       assets: 'guido_assets_v23',
       quotes: 'guido_quotes_v23',
@@ -2085,9 +2040,7 @@
 
     function buildPersistableSettings(){
       const settings = structuredClone(state.settings || {});
-      if(settings.market){
-        settings.market.token = '';
-      }
+      
       if(settings.memory){
         settings.memory.apiKey = '';
       }
@@ -2211,7 +2164,7 @@
         }
       },
       market: {
-        token: ''
+        mode: 'official-import'
       }
     };
 
@@ -3584,26 +3537,8 @@ async function refreshTickerSmart(ticker, context='radar_sync', force=false){
   saveAll();
   renderTudo();
 }
-function syncMarketSmart(){
-  if(!ensureMarketConfigured()) return;
-  normalizeState();
-  rebuildDerived();
-  const tickers = [...new Set([
-    ...getConfiguredMarketTickers(),
-    ...state.trades.map(t => t.ticker),
-    ...getOpenPositionTickers()
-  ])];
-  if(!tickers.length){ alert('Informe ao menos um ticker ou cadastre operações abertas.'); return; }
-
-  // Para preço/lucro não realizado, o clique do usuário deve atualizar cotação de verdade,
-  // não apenas aceitar cache recente. Por isso o sync manual força quote nova.
-  enqueueManyRefresh(tickers, 'radar_sync', true);
-}
-function refreshTopRadar(silent=false){
-  if(!ensureMarketConfigured(silent)) return;
-  const rows = getRadarRows().slice(0, 20).map(r => r.ticker);
-  enqueueManyRefresh(rows, 'top_radar', false);
-}
+function syncMarketSmart(){return updateAllMarketData();}
+function refreshTopRadar(){return updateAllMarketData();}
 
 function setAuthorizedAnalysisStatus(message, isError=false){
   const el = $('authorizedAnalysisStatus');
@@ -3710,7 +3645,7 @@ function updateRefreshBadge(){
   const staleCritical = Object.keys(state.marketMeta || {}).filter(tk => ['stale','critical'].includes(getTickerFreshnessMeta(tk).overallState)).length;
   const last = refreshQueue.lastRunAt ? new Date(refreshQueue.lastRunAt).toLocaleTimeString('pt-BR') : '---';
   el.innerHTML = `🔄 <b>Refresh ${mode}</b> | fila: <b>${refreshQueue.items.length}</b> | em voo: <b>${refreshQueue.inFlight.size}</b> | monitorados: <b>${tracked}</b> | vencidos/críticos: <b>${staleCritical}</b> | último ciclo: <b>${last}</b>`;
-  if(hub) hub.innerHTML = `v24: modo <b>${mode}</b> | cache primeiro, Market depois. Atualiza críticos, vencidos e prioritários.`;
+  if(hub) hub.innerHTML = `v25: consolidação oficial de arquivos, sem feed contínuo; datas dos pregões preservadas.`;
   const sel = $('refreshMode');
   if(sel && sel.value !== mode) sel.value = mode;
 }
@@ -3719,42 +3654,7 @@ function updateRefreshBadge(){
     // MARKET
     // =========================
 
-async function fetchMarket(force=true){
-  if(!ensureMarketConfigured()) return;
-  normalizeState();
-  rebuildDerived();
-  const lucroAntes = getTotalLucroNaoRealizado();
-  const beforeQuotes = structuredClone(state.quotes || {});
-
-  const tickers = [...new Set([
-    ...getConfiguredMarketTickers(),
-    ...state.trades.map(t => t.ticker)
-  ])];
-
-  if(!tickers.length){
-    alert('Informe ao menos um ticker.');
-    return;
-  }
-
-  for(const tk of tickers){
-    try{
-      await fetchSingleTickerMarket(tk, { forceHistory: force, context: force ? 'manual_force' : 'manual_sync', force });
-    }catch(err){
-      console.error('Erro Market em', tk, err);
-    }
-  }
-
-  normalizeState();
-  rebuildDerived();
-  const lucroDepois = getTotalLucroNaoRealizado();
-  saveAll();
-  renderTudo();
-  updateRefreshBadge();
-
-  const delta = lucroDepois - lucroAntes;
-  const report = buildPriceRefreshReport(beforeQuotes);
-  alert(`${force ? 'Refresh completo concluído.' : 'Sincronização concluída.'}\n\nLucro não realizado: ${formatBRL(lucroAntes)} → ${formatBRL(lucroDepois)}\nVariação: ${formatBRL(delta)}\n\nCotações das posições abertas:\n${report}`);
-}
+async function fetchMarket(){return updateAllMarketData();}
 
 async function fetchSingleTickerMarket(tk,opts={}){
   const ticker=normalizeTicker(tk),q=state.quotes[ticker];
@@ -4399,51 +4299,15 @@ async function fetchSingleTickerMarket(tk,opts={}){
 
     function getConfiguredMarketTickers(){
       const fromAdmin = state.settings?.market?.tickers || '';
-      const fromUi = $('marketTickers')?.value || '';
+      const fromUi = '';
       return String(fromAdmin || fromUi || '')
         .split(',')
         .map(x => normalizeTicker(x))
         .filter(Boolean);
     }
 
-    function maskToken(token){
-      if(!token) return 'não salvo';
-      if(token.length <= 10) return token.slice(0,3) + '••••';
-      return `${token.slice(0,6)}••••${token.slice(-4)}`;
-    }
-
-    function syncMarketTokenInput(){
-      state.settings.market = state.settings.market || { token:'' };
-      const token = state.settings.market.token || '';
-      if($('marketTickers')) $('marketTickers').value = state.settings.market.tickers || $('marketTickers').value || '';
-      updateMarketTokenStatus(token ? `fontes do Market Data Hub carregado do Admin Console: ${maskToken(token)}` : 'Sistema em manutenção ou fontes do Market Data Hub não configurado pelo administrador.');
-    }
-
-    function updateMarketTokenStatus(message){
-      const el = $('marketTokenStatus');
-      if(el) el.textContent = message;
-    }
-
-    function saveMarketTokenFromInput(){
-      state.settings.market = state.settings.market || {};
-      state.settings.market.token = ($('marketToken')?.value || '').trim();
-      saveAll();
-      updateMarketTokenStatus(state.settings.market.token ? `fontes do Market Data Hub salvo localmente: ${maskToken(state.settings.market.token)}` : 'fontes do Market Data Hub: não salvo');
-    }
-
-    function clearMarketToken(){
-      state.settings.market = state.settings.market || {};
-      state.settings.market.token = '';
-      if($('marketToken')) $('marketToken').value = '';
-      saveAll();
-      updateMarketTokenStatus('fontes do Market Data Hub removido.');
-    }
-
-    function toggleMarketTokenVisibility(){
-      const input = $('marketToken');
-      if(!input) return;
-      input.type = input.type === 'password' ? 'text' : 'password';
-    }
+    function syncMarketTokenInput(){ /* Nenhuma credencial de cotação é solicitada. */ }
+    function updateMarketTokenStatus(){ /* Sem fornecedor por token. */ }
 
     function syncAISettingsInputs(){
       if($('aiApiKey')) $('aiApiKey').value = '';
@@ -5711,7 +5575,7 @@ function renderEngineSummary(){
     Dividendos: <b>${divs}</b><br>
     Históricos 12m: <b>${Object.keys(state.priceHistory).length}</b><br>
     Refresh mode: <b>${getRefreshMode()}</b> | monitorados: <b>${tracked}</b> | vencidos/críticos: <b>${staleCritical}</b><br>
-    Economia de API (cache hits): <b>${cacheHits}</b> | chamadas Market registradas: <b>${apiCalls}</b><br>
+    Economia de API (cache hits): <b>${cacheHits}</b> | eventos de atualização registrados: <b>${apiCalls}</b><br>
     View Model integrado: <b>${integrated.rows.length}</b> tickers consolidados | posições abertas: <b>${integrated.openRows.length}</b>
   `;
 }
@@ -7512,21 +7376,15 @@ function renderEngineSummary(){
     }
 
     async function refreshRawAssetMarket(ticker){
-      const tk = normalizeTicker(ticker);
-      if(!tk) return;
-      try{
-        if(!getMarketToken()){
-          alert('Configure o fontes do Market Data Hub na Aba 1 antes de atualizar este ativo.');
-          return;
-        }
-        await fetchSingleTickerMarket(tk, { force:true, forceHistory:true, context:'raw_asset_dossier' });
-        saveAll();
-        renderTudo();
-        openRawAssetDossier(tk);
-      }catch(err){
-        console.error('Falha ao atualizar MARKET no dossiê bruto:', err);
-        alert('Não foi possível atualizar MARKET para este ativo: ' + (err?.message || String(err)));
+      const tk=normalizeTicker(ticker);
+      if(!tk)return;
+      await updateAllMarketData();
+      const q=state.quotes?.[tk];
+      if(!(parseNumber(q?.precoAtual)>0)){
+        alert('Sem fechamento para '+tk+'. Importe COTAHIST/CSV usando o Market Data Hub.');
+        return;
       }
+      openRawAssetDossier(tk);
     }
 
     function exportRawAssetDossier(ticker){
