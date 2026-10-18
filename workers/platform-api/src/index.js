@@ -15,8 +15,8 @@ const ROLE_PERMISSIONS = Object.freeze({
   free_user: ['public:read', 'profile:manage', 'watchlist:manage', 'favorites:manage', 'portfolio:manage', 'alerts:manage'],
   subscriber: ['public:read', 'profile:manage', 'watchlist:manage', 'favorites:manage', 'portfolio:manage', 'alerts:manage', 'reports:advanced'],
   premium_user: ['public:read', 'profile:manage', 'watchlist:manage', 'favorites:manage', 'portfolio:manage', 'alerts:manage', 'reports:advanced', 'ai:analysis'],
-  admin: ['admin:users', 'admin:plans', 'admin:audit', 'admin:sync', 'import:create', 'import:process', 'brapi:sync', 'event:review', 'event:edit', 'event:approve', 'publication:publish', 'publication:rollback', 'source:manage'],
-  owner: ['admin:users', 'admin:plans', 'admin:audit', 'admin:sync', 'admin:integrations', 'import:create', 'import:process', 'brapi:sync', 'event:review', 'event:edit', 'event:approve', 'publication:publish', 'publication:rollback', 'source:manage', 'settings:manage']
+  admin: ['admin:users', 'admin:plans', 'admin:audit', 'admin:sync', 'import:create', 'import:process', 'market:sync', 'event:review', 'event:edit', 'event:approve', 'publication:publish', 'publication:rollback', 'source:manage'],
+  owner: ['admin:users', 'admin:plans', 'admin:audit', 'admin:sync', 'admin:integrations', 'import:create', 'import:process', 'market:sync', 'event:review', 'event:edit', 'event:approve', 'publication:publish', 'publication:rollback', 'source:manage', 'settings:manage']
 });
 
 function json(data, status = 200, cors = {}) {
@@ -365,7 +365,7 @@ async function healthIntegrations(env, cors) {
     integrations: {
       email: { enabled: String(env.EMAIL_ENABLED || 'false') === 'true', provider: env.EMAIL_PROVIDER || 'disabled' },
       billing: { enabled: String(env.BILLING_ENABLED || 'false') === 'true', provider: env.BILLING_PROVIDER || 'disabled' },
-      brapi: { enabled: String(env.BRAPI_SYNC_ENABLED || 'false') === 'true' }
+      market: {mode:'manual-official-import',autoQuotes:false}
     }
   }, 200, cors);
 }
@@ -729,14 +729,14 @@ async function handleAdminDataCenter(request, env, cors) {
   };
   const latestPublication = await env.DB.prepare('SELECT * FROM publication_batches ORDER BY created_at DESC LIMIT 1').first().catch(() => null);
   const latestImport = await env.DB.prepare('SELECT * FROM admin_import_files ORDER BY created_at DESC LIMIT 1').first().catch(() => null);
-  const latestBrapi = await env.DB.prepare("SELECT * FROM job_runs WHERE job_name='sync_brapi_fii_events' ORDER BY created_at DESC LIMIT 1").first().catch(() => null);
+  const latestMarket = await env.DB.prepare("SELECT * FROM job_runs WHERE job_name='check_market_sources' ORDER BY created_at DESC LIMIT 1").first().catch(() => null);
   return json({
     states: ADMIN_EVENT_STATES,
     counts: {
       publicActive: await safeOne("SELECT COUNT(*) AS total FROM canonical_financial_events WHERE publication_status='published' AND public_visibility=1"),
       futureEvents: await safeOne("SELECT COUNT(*) AS total FROM canonical_financial_events WHERE payment_date >= date('now')"),
       importedToday: await safeOne("SELECT COUNT(*) AS total FROM admin_import_files WHERE date(created_at)=date('now')"),
-      syncedBrapi: await safeOne("SELECT COUNT(*) AS total FROM financial_event_sources WHERE source_type='brapi'"),
+      syncedMarket: await safeOne("SELECT COUNT(*) AS total FROM financial_event_sources WHERE source_type='market'"),
       pendingReview: await safeOne("SELECT COUNT(*) AS total FROM canonical_financial_events WHERE review_status='pending_review'"),
       blocked: await safeOne("SELECT COUNT(*) AS total FROM canonical_financial_events WHERE validation_status='blocked'"),
       divergences: await safeOne("SELECT COUNT(*) AS total FROM event_reconciliation_cases WHERE decision='pending'"),
@@ -744,12 +744,8 @@ async function handleAdminDataCenter(request, env, cors) {
     },
     latestPublication,
     latestImport,
-    latestBrapi,
-    brapi: {
-      enabled: String(env.BRAPI_SYNC_ENABLED || 'false') === 'true',
-      tokenConfigured: Boolean(env.BRAPI_TOKEN),
-      tokenTail: env.BRAPI_TOKEN ? String(env.BRAPI_TOKEN).slice(-4) : ''
-    }
+    latestMarket,
+    market: {mode:'manual-official-import',autoQuotes:false,tokenConfigured:false}
   }, 200, cors);
 }
 
@@ -820,44 +816,25 @@ async function handleCreateB3Import(request, env, cors) {
   return json({ importId: fileId, accepted, rejected, detection }, 201, cors);
 }
 
-function buildBrapiSyncPlan(env, body = {}) {
-  const symbols = Array.isArray(body.symbols) && body.symbols.length ? body.symbols.map(normalizeTicker).filter(Boolean) : ['MXRF11', 'HGLG11', 'KNRI11', 'VISC11', 'XPML11'];
-  const batchSize = Math.max(1, Math.min(20, Number(body.batchSize || env.BRAPI_BATCH_SIZE || 20)));
-  const batches = [];
-  for (let i = 0; i < symbols.length; i += batchSize) batches.push(symbols.slice(i, i + batchSize));
-  return {
-    tokenConfigured: Boolean(env.BRAPI_TOKEN),
-    tokenTail: env.BRAPI_TOKEN ? String(env.BRAPI_TOKEN).slice(-4) : '',
-    endpoint: env.BRAPI_FII_DIVIDENDS_ENDPOINT || 'backend-secret:fii-dividends-endpoint',
-    assets: symbols.length,
-    batchSize,
-    callsEstimated: batches.length,
-    batches,
-    warning: 'A Brapi nunca e consultada pelo frontend; o Worker executa lotes com token em secret.'
-  };
+function buildMarketSyncPlan(env,body={}){
+  const symbols=Array.isArray(body.symbols)?body.symbols.map(normalizeTicker).filter(Boolean):[];
+  return {source:'B3 official closing file',mode:'manual-import',
+    symbols,autoQuoteEnabled:false,tokenRequired:false,
+    action:'Importe COTAHIST/CSV no Market Data Hub. CVM/BCB apenas enriquecem informações.'};
 }
-
-async function handleBrapiSyncPlan(request, env, cors) {
-  const guard = await requireAdmin(request, env, cors);
-  if (guard.response) return guard.response;
-  const body = request.method === 'POST' ? await request.json().catch(() => ({})) : {};
-  return json(buildBrapiSyncPlan(env, body), 200, cors);
+async function handleMarketSyncPlan(request,env,cors){
+  const guard=await requireAdmin(request,env,cors);
+  if(guard.response)return guard.response;
+  const body=request.method==='POST'?await request.json().catch(()=>({})):{};
+  return json(buildMarketSyncPlan(env,body),200,cors);
 }
-
-async function syncBrapiFiiEvents(env, options = {}) {
-  const jobId = await startJob(env, 'sync_brapi_fii_events');
-  try {
-    if (String(env.BRAPI_SYNC_ENABLED || 'false') !== 'true' || !env.BRAPI_TOKEN) {
-      await finishJob(env, jobId, 'partial', 0, 0, 'BRAPI sync disabled or token missing');
-      return { jobId, status: 'partial', processed: 0, message: 'BRAPI sync disabled or token missing' };
-    }
-    const planData = buildBrapiSyncPlan(env, options);
-    await finishJob(env, jobId, 'success', planData.assets, 0);
-    return { jobId, status: 'success', plannedBatches: planData.callsEstimated, processed: planData.assets };
-  } catch (err) {
-    await finishJob(env, jobId, 'failed', 0, 1, err.message);
-    throw err;
-  }
+async function syncMarketFiiEvents(env){
+  const jobId=await startJob(env,'check_market_sources');
+  try{
+    const data=await refreshPublicMarketSources();
+    await finishJob(env,jobId,'success',data.sources.filter(x=>x.ok).length,data.sources.filter(x=>!x.ok).length);
+    return {jobId,kind:'fundamentals-catalog',sources:data.sources,quotesUpdated:0};
+  }catch(e){await finishJob(env,jobId,'failed',0,1,String(e.message||e));throw e;}
 }
 
 async function handleAdminEvents(request, env, cors) {
@@ -980,7 +957,7 @@ async function listPublishedEvents(request, env, cors) {
 
 async function runJob(name, env) {
   if (name === 'sync_quotes') return syncQuotes(env);
-  if (name === 'sync_brapi_fii_events') return syncBrapiFiiEvents(env);
+  if (name === 'check_market_sources') return syncMarketFiiEvents(env);
   if (name === 'evaluate_alerts') return evaluateAlerts(env);
   if (name === 'cleanup_expired_tokens') return cleanupExpiredTokens(env);
   throw new Error('Job desconhecido.');
@@ -1414,8 +1391,8 @@ export default {
       if (request.method === 'GET' && path === '/admin/data-center') return handleAdminDataCenter(request, env, cors);
       if (request.method === 'POST' && path === '/admin/imports/b3/detect') return handleDetectB3Import(request, env, cors);
       if (request.method === 'POST' && path === '/admin/imports/b3') return handleCreateB3Import(request, env, cors);
-      if (request.method === 'GET' && path === '/admin/brapi/plan') return handleBrapiSyncPlan(request, env, cors);
-      if (request.method === 'POST' && path === '/admin/brapi/plan') return handleBrapiSyncPlan(request, env, cors);
+      if (request.method === 'GET' && path === '/admin/market/plan') return handleMarketSyncPlan(request, env, cors);
+      if (request.method === 'POST' && path === '/admin/market/plan') return handleMarketSyncPlan(request, env, cors);
       if (request.method === 'GET' && path === '/admin/events') return handleAdminEvents(request, env, cors);
       if (request.method === 'POST' && path === '/admin/events/approve') return handleApproveEvents(request, env, cors);
       if (request.method === 'GET' && path === '/admin/publication/prepare') return handlePreparePublication(request, env, cors);
