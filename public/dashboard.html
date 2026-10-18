@@ -6,6 +6,7 @@
   <title>Guido Dividend System v1.10.4 — Dossiê Bruto de Ativos</title>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="./platform/marketHub.js?v=20261018-1"></script>
   <script src="./authService.js?v=20260704-1"></script>
   <script src="./saasGatewayClient.js?v=20260704-1"></script>
   <script src="./configManager.js?v=20260704-1"></script>
@@ -420,7 +421,7 @@
       .modal-close{top:8px;right:12px;font-size:30px}
 
       #tab-config .controls[style],#tab-central-b3 .controls[style],#tab-b3 .controls[style],#tab-fii .controls[style],#tab-decision .controls[style],#tab-radar .controls[style]{grid-template-columns:1fr!important}
-      #brapiTickers,#fiiUniverseInput,textarea{min-height:48px}
+      #marketTickers,#fiiUniverseInput,textarea{min-height:48px}
       .command-hero,.guru-panel{grid-template-columns:1fr}
       .command-kpi-grid{grid-template-columns:1fr 1fr}
       .b3-ingestion-grid{grid-template-columns:1fr}
@@ -474,7 +475,7 @@
             <div class="gwi-hero-proof">
               <span class="gwi-proof-pill">Local-first</span>
               <span class="gwi-proof-pill">B3 Ledger</span>
-              <span class="gwi-proof-pill">BRAPI opcional</span>
+              <span class="gwi-proof-pill">MARKET opcional</span>
               <span class="gwi-proof-pill">Dossiê por ativo</span>
               <span class="gwi-proof-pill">Radar de incongruências</span>
             </div>
@@ -518,7 +519,7 @@
           <div class="gwi-flow">
             <div class="gwi-step"><b>1. Arquivos B3</b><span>Movimentação real, eventos, proventos, compras, vendas e pagamentos recebidos.</span></div>
             <div class="gwi-step"><b>2. Radar futuro</b><span>Datas-com, pagamentos próximos, DY do evento e oportunidades provisionadas.</span></div>
-            <div class="gwi-step"><b>3. Mercado atual</b><span>Brapi adiciona preço, histórico, indicadores, FIIs e dados externos.</span></div>
+            <div class="gwi-step"><b>3. Mercado atual</b><span>Market adiciona preço, histórico, indicadores, FIIs e dados externos.</span></div>
             <div class="gwi-step"><b>4. Inteligência</b><span>Retorno total, renda sustentável, capital improdutivo e risco de concentração.</span></div>
             <div class="gwi-step"><b>5. Decisão</b><span>Reforçar, estudar entrada, manter, revisar, evitar ou investigar.</span></div>
           </div>
@@ -549,7 +550,7 @@
             <div class="gwi-step"><b>Sem uso oculto</b><span>As informações não são revendidas, compartilhadas ou usadas para outros fins.</span></div>
             <div class="gwi-step"><b>Controle total</b><span>O usuário pode limpar dados, exportar backup JSON e decidir quais APIs usar.</span></div>
           </div>
-          <p style="margin-top:16px">Na versão local, o sistema funciona como uma ferramenta privada: os arquivos da B3, os backups, as chaves e os parâmetros ficam sob controle do usuário. Quando há uso de Brapi ou OpenAI, a chamada ocorre apenas quando o usuário ativa essas funções e de acordo com as chaves configuradas.</p>
+          <p style="margin-top:16px">Na versão local, o sistema funciona como uma ferramenta privada: os arquivos da B3, os backups, as chaves e os parâmetros ficam sob controle do usuário. Quando há uso de Market ou OpenAI, a chamada ocorre apenas quando o usuário ativa essas funções e de acordo com as chaves configuradas.</p>
         </div>
 
         <div class="gwi-card gwi-col-12">
@@ -584,9 +585,9 @@
 
         <div class="gwi-card gwi-col-12" style="border-color:rgba(124,140,255,.34);background:radial-gradient(circle at 85% 20%,rgba(124,140,255,.17),transparent 32%),linear-gradient(180deg,rgba(13,21,36,.98),rgba(7,11,17,.98));">
           <div class="gwi-kicker">◆ Chaves de API e planos</div>
-          <h3>Brapi e OpenAI são camadas opcionais: o usuário escolhe usar as próprias chaves ou contratar configuração assistida.</h3>
+          <h3>Market e OpenAI são camadas opcionais: o usuário escolhe usar as próprias chaves ou contratar configuração assistida.</h3>
           <div class="gwi-flow" style="grid-template-columns:repeat(4,1fr)">
-            <div class="gwi-step"><b>Brapi</b><span>Preço atual, histórico, indicadores e FIIs. O usuário cria conta, gera token e cola no app.</span></div>
+            <div class="gwi-step"><b>Market</b><span>Preço atual, histórico, indicadores e FIIs. O usuário cria conta, gera token e cola no app.</span></div>
             <div class="gwi-step"><b>OpenAI</b><span>Dossiês e análises textuais. O usuário cria chave na plataforma OpenAI e controla o gasto.</span></div>
             <div class="gwi-step"><b>Plano assistido</b><span>Instalação, importação B3, configuração das chaves e primeiros testes guiados.</span></div>
             <div class="gwi-step"><b>Assinatura futura</b><span>APIs incluídas via backend/proxy protegido, com cotas, cache e cobrança mensal.</span></div>
@@ -635,7 +636,7 @@
             <div class="gwi-step"><b>4. Abrir B3 Ledger</b><span>Veja como o histórico vira carteira, renda real e pré-IR estimativo.</span></div>
             <div class="gwi-step"><b>5. Decidir</b><span>Use Inteligência Patrimonial e FII Intelligence para estudar reforços, revisões e oportunidades.</span></div>
           </div>
-          <div class="gds-callout blue"><b>Importante:</b> a demo não depende de Brapi, OpenAI ou arquivos da B3. Ela serve para ensinar a lógica. Depois, o usuário substitui os dados fictícios pelos próprios arquivos e chaves.</div>
+          <div class="gds-callout blue"><b>Importante:</b> a demo não depende de Market, OpenAI ou arquivos da B3. Ela serve para ensinar a lógica. Depois, o usuário substitui os dados fictícios pelos próprios arquivos e chaves.</div>
         </div>
 
         <div class="gwi-card gwi-col-6">
@@ -667,7 +668,7 @@
             <div class="gds-screen-bar"><span class="gds-screen-dot"></span><span class="gds-screen-dot"></span><span class="gds-screen-dot"></span><span class="gds-screen-title">Central API & Importação</span></div>
             <div class="gds-screen-body">
               <div class="gds-form-mini">
-                <div class="gds-input-mini">Token Brapi: cole aqui</div>
+                <div class="gds-input-mini">fontes do Market Data Hub: cole aqui</div>
                 <div class="gds-input-mini">Tickers: MXRF11, PETR4...</div>
                 <div class="gds-button-mini">Sync Inteligente</div>
                 <div class="gds-button-mini dark">Forçar Tudo</div>
@@ -677,8 +678,8 @@
             </div>
           </div>
           <ul class="gwi-how">
-            <li><b>O que faz:</b> recebe arquivos, configura Brapi/OpenAI, exporta backup e ajusta parâmetros do Radar.</li>
-            <li><b>Como usar:</b> comece importando backup ou eventos; depois adicione o token Brapi para enriquecer preços e indicadores.</li>
+            <li><b>O que faz:</b> recebe arquivos, configura Market/OpenAI, exporta backup e ajusta parâmetros do Radar.</li>
+            <li><b>Como usar:</b> comece importando backup ou eventos; depois adicione o fontes do Market Data Hub para enriquecer preços e indicadores.</li>
             <li><b>Leitura prática:</b> é a central de controle; sem dados ou demo, as demais abas ficam sem material para analisar.</li>
           </ul>
         </div>
@@ -774,8 +775,8 @@
             </div>
           </div>
           <ul class="gwi-how">
-            <li><b>O que faz:</b> compara FIIs da carteira com FIIs externos e cria oportunidades de estudo com Brapi e dados reais.</li>
-            <li><b>Como usar:</b> adicione FIIs da carteira, carregue radar sugerido, busque na Brapi e use multicritérios.</li>
+            <li><b>O que faz:</b> compara FIIs da carteira com FIIs externos e cria oportunidades de estudo com Market e dados reais.</li>
+            <li><b>Como usar:</b> adicione FIIs da carteira, carregue radar sugerido, busque na Market e use multicritérios.</li>
             <li><b>Leitura prática:</b> mostra quais FIIs já provaram valor na carteira e quais merecem entrar no radar.</li>
           </ul>
         </div>
@@ -809,12 +810,25 @@
       <div class="logo-badge">GDS</div>
       <div class="header-copy">
         <h1>Guido Dividend System</h1>
-        <p>v1.10.7 · Sistema proprietário de inteligência patrimonial integrada: Centro de Comando B3, Ledger, Radar de Oportunidades, FIIs, multicritérios, BRAPI e heurísticas quantitativas de proventos.</p>
+        <p>v1.10.7 · Sistema proprietário de inteligência patrimonial integrada: Centro de Comando B3, Ledger, Radar de Oportunidades, FIIs, multicritérios, MARKET e heurísticas quantitativas de proventos.</p>
       </div>
       <div class="version-pill">v1.10.7 · heurísticas quant de renda</div>
     </div>
 
-    <div class="grid-5">
+    
+        <div class="card" style="grid-column:1/-1;border:1px solid rgba(0,212,255,.45);margin-bottom:12px">
+          <h2 class="section-title">🌐 Market Data Hub — Consolidação de fontes</h2>
+          <p class="section-note">Sem token ou assinatura de cotações. Importe arquivos oficiais COTAHIST (.TXT descompactado) ou CSV com colunas ticker, data e preço. A atualização geral harmoniza os preços válidos, preserva o Ledger e consulta o catálogo público da CVM e a taxa Selic no BCB. CVM e BCB não fornecem cotação atual de ações.</p>
+          <div class="toolbar" style="margin:12px 0">
+            <label class="btn-secondary" style="cursor:pointer">📂 Adicionar arquivos B3/CSV
+              <input type="file" accept=".txt,.csv,.TXT,.CSV" multiple onchange="importMarketSourceFiles(event)" style="display:none" />
+            </label>
+            <button class="btn-api" type="button" id="marketRefreshAllBtn" onclick="updateAllMarketData()">🔄 Atualizar todo o sistema</button>
+          </div>
+          <div class="section-note" id="marketHubGlobalStatus" role="status" aria-live="polite">Pronto. Sem cotações novas importadas, o botão conserva os últimos fechamentos registrados, sem inventar preços em tempo real.</div>
+        </div>
+
+<div class="grid-5">
       <div class="card"><div class="kpi-title">Eventos no Radar</div><div class="kpi-value" id="kpiEventos">0</div></div>
       <div class="card"><div class="kpi-title">Div. Futuros 90d</div><div class="kpi-value" id="kpiDivFuturos" style="color:var(--violet)">R$ 0,00</div></div>
       <div class="card"><div class="kpi-title">Lucro Não Realizado</div><div class="kpi-value" id="kpiLucroNaoRealizado">R$ 0,00</div></div>
@@ -884,18 +898,18 @@
       <div class="split-2">
         <div class="stack">
           <div class="card admin-config-retired hidden" style="border-left:5px solid var(--violet)">
-            <h2 class="section-title">📡 Brapi Data Hub</h2>
+            <h2 class="section-title">📡 Market Data Hub</h2>
             <div class="section-note">
               A sincronização atualiza <b>cotações</b>, tenta trazer <b>eventos de proventos futuros</b> e agora a memória principal do aplicativo passa a ser persistida em <b>IndexedDB</b>, com espelhamento em localStorage para compatibilidade e backup.
             </div>
             <div class="controls" style="grid-template-columns:1fr 2.2fr 1fr 1fr 1fr 1fr">
               <div class="field">
-                <label>Token Brapi</label>
-                <input type="password" id="brapiToken" value="" placeholder="Cole seu token Brapi" />
+                <label>fontes do Market Data Hub</label>
+                <input type="password" id="marketToken" value="" placeholder="Cole seu fontes do Market Data Hub" />
               </div>
               <div class="field">
                 <label>Tickers Alvo</label>
-                <input type="text" id="brapiTickers" value="MXRF11, PETR4, VALE3, BBAS3, ITUB4" />
+                <input type="text" id="marketTickers" value="MXRF11, PETR4, VALE3, BBAS3, ITUB4" />
               </div>
               <div class="field">
                 <label>Modo refresh</label>
@@ -906,23 +920,23 @@
                 </select>
               </div>
               <div class="field">
-                <button class="btn-api" style="width:100%" onclick="syncBrapiSmart()">⚡ Sync Inteligente</button>
+                <button class="btn-api" style="width:100%" onclick="syncMarketSmart()">⚡ Sync Inteligente</button>
               </div>
               <div class="field">
                 <button class="btn-secondary" style="width:100%" onclick="refreshTopRadar()">🔥 Top Radar</button>
               </div>
               <div class="field">
-                <button class="btn-secondary" style="width:100%" onclick="fetchBrapi(true)">🧨 Forçar Tudo</button>
+                <button class="btn-secondary" style="width:100%" onclick="fetchMarket(true)">🧨 Forçar Tudo</button>
               </div>
             </div>
             <div class="toolbar" style="margin-top:10px">
-              <button class="btn-primary" onclick="saveBrapiTokenFromInput()">Salvar token Brapi</button>
-              <button class="btn-outline" onclick="toggleBrapiTokenVisibility()">Mostrar/Ocultar</button>
-              <button class="btn-outline-red" onclick="clearBrapiToken()">Limpar token</button>
-              <span id="brapiTokenStatus" class="status-chip">Token Brapi: não salvo</span>
+              <button class="btn-primary" onclick="saveMarketTokenFromInput()">Salvar fontes do Market Data Hub</button>
+              <button class="btn-outline" onclick="toggleMarketTokenVisibility()">Mostrar/Ocultar</button>
+              <button class="btn-outline-red" onclick="clearMarketToken()">Limpar token</button>
+              <span id="marketTokenStatus" class="status-chip">fontes do Market Data Hub: não salvo</span>
             </div>
             <div class="section-note" id="refreshHubStatus" style="margin-top:10px">
-              v24.2: datas blindadas contra placeholders irreais e gaps impossíveis. Cache primeiro, Brapi depois. O motor atualiza apenas tickers críticos, vencidos ou prioritários.
+              v24.2: datas blindadas contra placeholders irreais e gaps impossíveis. Cache primeiro, Market depois. O motor atualiza apenas tickers críticos, vencidos ou prioritários.
             </div>
           </div>
 
@@ -953,11 +967,11 @@
           <div class="card" style="border-left:5px solid var(--cyan)">
             <h2 class="section-title">⚡ Análise Autorizada pelo Admin</h2>
             <div class="section-note">
-              Executa, em um único comando, os motores liberados no Centro de Comando: atualização Brapi dos ativos prioritários, recálculo do radar e análise IA do ativo selecionado ou do melhor sinal atual.
+              Executa, em um único comando, os motores liberados no Centro de Comando: atualização Market dos ativos prioritários, recálculo do radar e análise IA do ativo selecionado ou do melhor sinal atual.
             </div>
             <div class="toolbar" style="margin-top:14px">
-              <button class="btn-api" id="forceAuthorizedAnalysisBtn" onclick="forceAuthorizedAnalysis()">Forçar Brapi + IA</button>
-              <button class="btn-secondary" id="forceAuthorizedBrapiOnlyBtn" onclick="forceAuthorizedBrapiOnly()">Forçar apenas Brapi</button>
+              <button class="btn-api" id="forceAuthorizedAnalysisBtn" onclick="forceAuthorizedAnalysis()">Forçar Market + IA</button>
+              <button class="btn-secondary" id="forceAuthorizedMarketOnlyBtn" onclick="forceAuthorizedMarketOnly()">Forçar apenas Market</button>
               <button class="btn-outline" onclick="openAdminSameOrigin()">Abrir Admin deste domínio</button>
               <span id="authorizedAnalysisStatus" class="status-chip">Motores aguardando comando do usuário.</span>
             </div>
@@ -998,7 +1012,7 @@
         <div class="stack">
           <div class="card admin-config-retired hidden">
             <h2 class="section-title">⚙️ Parâmetros do Score do Radar</h2>
-            <div class="section-note">O Radar continua ignorando a exposição da sua carteira real para evitar assimetria de informação. Na v23, a qualidade também incorpora <b>previsibilidade</b>, <b>padrão de pagamento</b>, <b>detecção de provento fora da curva</b> e <b>confiança do dado Brapi</b>.</div>
+            <div class="section-note">O Radar continua ignorando a exposição da sua carteira real para evitar assimetria de informação. Na v23, a qualidade também incorpora <b>previsibilidade</b>, <b>padrão de pagamento</b>, <b>detecção de provento fora da curva</b> e <b>confiança do dado Market</b>.</div>
             <div class="split-3">
               <div class="field"><label>Peso Mérito do Provento</label><input type="number" step="0.01" id="pesoRetorno" /></div>
               <div class="field"><label>Peso Consistência Histórica</label><input type="number" step="0.01" id="pesoRecorrencia" /></div>
@@ -1017,7 +1031,7 @@
 
           <div class="card admin-config-retired hidden">
             <h2 class="section-title">🤖 Integração IA Local</h2>
-            <div class="section-note">Modo single-file local: agora o app oferece duas leituras por ticker — <b>Análise completa</b> (mais ampla, focada no ativo como um todo) e <b>Análise de captura</b> (focada no evento atual). Antes de chamar a IA, o app tenta enriquecer o ticker com <b>Brapi</b> e depois com <b>Status Invest</b>, <b>Investidor10</b>, <b>Fundamentus</b> e <b>Yahoo Finance</b> em modo best-effort, salvando cache local. A chave fica salva apenas no <b>localStorage</b> deste navegador neste computador.</div>
+            <div class="section-note">Modo single-file local: agora o app oferece duas leituras por ticker — <b>Análise completa</b> (mais ampla, focada no ativo como um todo) e <b>Análise de captura</b> (focada no evento atual). Antes de chamar a IA, o app tenta enriquecer o ticker com <b>Market</b> e depois com <b>Status Invest</b>, <b>Investidor10</b>, <b>Fundamentus</b> e <b>Yahoo Finance</b> em modo best-effort, salvando cache local. A chave fica salva apenas no <b>localStorage</b> deste navegador neste computador.</div>
             <div class="controls" style="grid-template-columns:2fr 1fr 1fr 1fr">
               <div class="field">
                 <label>Chave da API OpenAI</label>
@@ -1423,7 +1437,7 @@
       <div class="card" style="border-left:5px solid var(--primary)">
         <h2 class="section-title">🧠 Sistema Proprietário de Inteligência Patrimonial</h2>
         <div class="section-note">
-          Esta camada integra <b>Radar</b>, <b>Diário de Risco</b>, <b>Fluxo</b>, <b>Operações</b>, <b>B3 Ledger</b>, <b>Brapi</b> e <b>Calendário de Eventos</b> para transformar dados brutos em decisão: comprar, reforçar, manter, vender parcial, evitar ou investigar.
+          Esta camada integra <b>Radar</b>, <b>Diário de Risco</b>, <b>Fluxo</b>, <b>Operações</b>, <b>B3 Ledger</b>, <b>Market</b> e <b>Calendário de Eventos</b> para transformar dados brutos em decisão: comprar, reforçar, manter, vender parcial, evitar ou investigar.
         </div>
         <div class="toolbar">
           <button class="btn-api" onclick="renderDecisionEngine()">Atualizar Centro de Decisão</button>
@@ -1485,7 +1499,7 @@
       <div class="card" style="border-left:5px solid var(--violet)">
         <h2 class="section-title">🏢 FII Intelligence Layer · Motor de Oportunidades</h2>
         <div class="section-note">
-          Esta aba cruza <b>FIIs da sua carteira B3</b>, <b>proventos realmente recebidos</b>, <b>eventos previstos</b>, <b>cotações/indicadores Brapi</b> e uma <b>lista de FIIs monitorados</b>. O objetivo é separar o que já funcionou na sua carteira, o que está improdutivo e quais fundos fora da carteira merecem estudo.
+          Esta aba cruza <b>FIIs da sua carteira B3</b>, <b>proventos realmente recebidos</b>, <b>eventos previstos</b>, <b>cotações/indicadores Market</b> e uma <b>lista de FIIs monitorados</b>. O objetivo é separar o que já funcionou na sua carteira, o que está improdutivo e quais fundos fora da carteira merecem estudo.
         </div>
         <div class="controls" style="grid-template-columns:2fr 1fr 1fr 1fr">
           <div class="field">
@@ -1494,7 +1508,7 @@
           </div>
           <div class="field"><label>Fonte de oportunidades</label><select id="fiiSourceMode"><option value="all">Carteira + Watchlist</option><option value="owned">Só carteira B3</option><option value="watchlist">Só watchlist externa</option></select></div>
           <div class="field"><label>Capital para simular</label><input type="number" id="fiiCapitalInput" min="0" step="100" value="2000" /></div>
-          <div class="field"><button class="btn-api" style="width:100%" onclick="refreshFIIUniverseFromBrapi()">Buscar FIIs na Brapi</button></div>
+          <div class="field"><button class="btn-api" style="width:100%" onclick="refreshFIIUniverseFromMarket()">Buscar FIIs na Market</button></div>
         </div>
         <div class="toolbar" style="margin-top:12px">
           <button class="btn-green" onclick="loadDefaultFIIWatchlist()">Carregar radar FII sugerido</button>
@@ -1530,7 +1544,7 @@
         </div>
         <div class="card">
           <h2 class="section-title">🔎 Diagnóstico de Mercado x Carteira</h2>
-          <div id="fiiDiagnosticBox" class="section-note">Aguardando dados da B3 e/ou Brapi.</div>
+          <div id="fiiDiagnosticBox" class="section-note">Aguardando dados da B3 e/ou Market.</div>
         </div>
       </div>
 
@@ -1583,7 +1597,7 @@
               <span class="raw-source-chip">B3 Ledger</span>
               <span class="raw-source-chip">Carteira reconstruída</span>
               <span class="raw-source-chip">Proventos</span>
-              <span class="raw-source-chip">BRAPI/cache</span>
+              <span class="raw-source-chip">MARKET/cache</span>
               <span class="raw-source-chip missing">Fontes externas preparadas</span>
             </div>
           </div>
@@ -1597,7 +1611,7 @@
       <div class="raw-kpis">
         <div class="card"><div class="kpi-title">Ativos identificados</div><div class="kpi-value" id="rawKpiAssets">0</div></div>
         <div class="card"><div class="kpi-title">Com posição atual</div><div class="kpi-value" id="rawKpiOpen">0</div></div>
-        <div class="card"><div class="kpi-title">Com BRAPI/cache</div><div class="kpi-value" id="rawKpiBrapi">0</div></div>
+        <div class="card"><div class="kpi-title">Com MARKET/cache</div><div class="kpi-value" id="rawKpiMarket">0</div></div>
         <div class="card"><div class="kpi-title">Com divergência factual</div><div class="kpi-value" id="rawKpiDivergences">0</div></div>
       </div>
 
@@ -1606,7 +1620,7 @@
           <div class="field"><label>Busca</label><input id="rawAssetSearch" placeholder="Ticker, nome, fonte..." onkeyup="renderRawAssetDossier()" /></div>
           <div class="field"><label>Tipo</label><select id="rawAssetTypeFilter" onchange="renderRawAssetDossier()"><option value="TODOS">Todos</option><option value="ACAO">Ações</option><option value="FII">FIIs</option><option value="OUTROS">Outros</option></select></div>
           <div class="field"><label>Status</label><select id="rawAssetStatusFilter" onchange="renderRawAssetDossier()"><option value="TODOS">Todos</option><option value="ABERTA">Posição atual</option><option value="ZERADA">Posição zerada / histórico</option></select></div>
-          <div class="field"><label>Fonte</label><select id="rawAssetSourceFilter" onchange="renderRawAssetDossier()"><option value="TODOS">Todas</option><option value="B3">B3 encontrado</option><option value="BRAPI">BRAPI/cache</option><option value="PROVENTOS">Proventos</option><option value="PENDENTE">Dados externos pendentes</option></select></div>
+          <div class="field"><label>Fonte</label><select id="rawAssetSourceFilter" onchange="renderRawAssetDossier()"><option value="TODOS">Todas</option><option value="B3">B3 encontrado</option><option value="MARKET">MARKET/cache</option><option value="PROVENTOS">Proventos</option><option value="PENDENTE">Dados externos pendentes</option></select></div>
           <div class="field"><label>Ordenar por</label><select id="rawAssetSort" onchange="renderRawAssetDossier()"><option value="value">Valor atual</option><option value="weight">Retorno por capital</option><option value="dividends">Dividendos recebidos</option><option value="return">Rentabilidade pessoal</option><option value="updated">Última atualização</option><option value="ticker">Ticker</option></select></div>
           <div class="field"><label>&nbsp;</label><button class="btn-secondary" onclick="renderRawAssetDossier()">Atualizar</button></div>
         </div>
@@ -1616,7 +1630,7 @@
       <div id="rawAssetGrid" class="raw-card-grid"></div>
     </div>
 
-    <div class="footer">Guido Dividend System v1.10.16 · Vínculo Admin-Dashboard validado por domínio com Brapi e IA autorizados</div>
+    <div class="footer">Guido Dividend System v1.10.16 · Vínculo Admin-Dashboard validado por domínio com Market e IA autorizados</div>
   </div>
 
   </section>
@@ -1629,6 +1643,125 @@
     // =========================
     // CHAVES E ESTADO
     // =========================
+
+    // Central de consolidação: sem assinatura ou token de cotações.
+    async function importMarketSourceFiles(event){
+      const input=event?.target, files=[...(input?.files||[])];
+      if(!files.length)return;
+      const hub=window.DividendMarketHub;
+      const tracked=new Set([...Object.keys(state.assets||{}),...Object.keys(state.positions||{}),
+        ...(state.trades||[]).map(x=>x.ticker),...(state.fiiUniverse||[])].map(hub.ticker).filter(Boolean));
+      const messages=[];let batch=[];
+      for(const file of files){
+        try{
+          if(!/\.(csv|txt)$/i.test(file.name))throw new Error('Descompacte o ZIP e selecione o TXT, ou importe CSV.');
+          const content=await file.text();
+          const parsed=hub.parse(content,file.name,tracked);
+          batch.push(...parsed.observations);
+          messages.push(file.name+': '+parsed.observations.length+' observações, '+parsed.skipped+' inválidas');
+        }catch(e){messages.push(file.name+': erro: '+(e?.message||e));}
+      }
+      try{
+        const total=hub.saveCandidates([...hub.getCandidates(),...batch]);
+        setMarketHubStatus('Fontes recebidas: '+messages.join(' | ')+'. Cache preparado: '+total+' observações.');
+        if(batch.length)await updateAllMarketData();
+      }catch(e){setMarketHubStatus('Erro ao importar: '+e.message,true);}
+      if(input)input.value='';
+    }
+    function setMarketHubStatus(message,error=false){
+      const el=$('marketHubGlobalStatus');
+      if(el){el.textContent=message;el.style.color=error?'var(--red)':'var(--muted)';}
+    }
+    async function marketSupplementalSources(){
+      const sources=[];
+      async function probe(name,url){
+        const ctl=new AbortController(),timeout=setTimeout(()=>ctl.abort(),6500);
+        try{
+          const res=await fetch(url,{headers:{accept:'application/json'},signal:ctl.signal});
+          if(!res.ok)throw new Error('HTTP '+res.status);
+          const data=await res.json();
+          if(name==='BCB Selic'){
+            const item=Array.isArray(data)?data[data.length-1]:null;
+            if(!item||!item.data||!item.valor)throw new Error('resposta sem observação');
+            localStorage.setItem('guido_market_bcb_selic_v1',JSON.stringify({value:item.valor,date:item.data,collectedAt:new Date().toISOString(),source:'BCB/SGS 11'}));
+          }else if(name==='CVM catálogo FII'){
+            if(!data?.success)throw new Error('catálogo não disponível');
+            localStorage.setItem('guido_market_cvm_catalog_v1',JSON.stringify({
+              updatedAt:new Date().toISOString(),name:data.result?.title||'Informe mensal FII',
+              resources:(data.result?.resources||[]).map(r=>({name:r.name,url:r.url,updated:r.last_modified})).slice(-30),
+              source:'CVM dados abertos'
+            }));
+          }
+          sources.push({name,ok:true});
+        }catch(e){sources.push({name,ok:false,reason:e?.message||String(e)});}
+        finally{clearTimeout(timeout);}
+      }
+      await Promise.all([
+        probe('BCB Selic','https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados/ultimos/1?formato=json'),
+        probe('CVM catálogo FII','https://dados.cvm.gov.br/api/3/action/package_show?id=fii-doc-inf_mensal')
+      ]);
+      return sources;
+    }
+    async function updateAllMarketData(){
+      const btn=$('marketRefreshAllBtn');
+      if(btn?.disabled)return;
+      if(btn)btn.disabled=true;
+      setMarketHubStatus('Consolidando cotações importadas e consultando fontes públicas...');
+      try{
+        const hub=window.DividendMarketHub;
+        if(!hub)throw new Error('Motor Market Data Hub indisponível.');
+        normalizeState();
+        rebuildDerived();
+        const tracked=new Set([...Object.keys(state.assets||{}),...Object.keys(state.positions||{}),
+          ...Object.keys(state.quotes||{}),...(state.trades||[]).map(x=>x.ticker),
+          ...(state.fiiUniverse||[])].map(hub.ticker).filter(Boolean));
+        const result=hub.reconcile(hub.getCandidates(),state.quotes,tracked);
+        let written=0;
+        for(const obs of result.accepted){
+          const old=state.quotes[obs.ticker]||{};
+          if(old.quoteDate===obs.date&&Math.abs(Number(old.precoAtual||0)-obs.price)<0.000001&&old.source===obs.source)continue;
+          const previousClose=Number(old.precoAtual||obs.price);
+          state.quotes[obs.ticker]={
+            ...old,ticker:obs.ticker,precoAtual:obs.price,precoFechamentoAnterior:previousClose,
+            variacaoDiaPct:previousClose>0?(obs.price/previousClose-1)*100:0,
+            volume:obs.volume||old.volume||0,quoteDate:obs.date,source:obs.source,
+            updatedAt:new Date().toISOString()
+          };
+          if(!state.assets[obs.ticker])state.assets[obs.ticker]={
+            ticker:obs.ticker,nome:obs.ticker,tipo:classifyTickerType(obs.ticker),
+            categoria:'',setor:'',moeda:'BRL',ativo:true
+          };
+          patchMarketMeta(obs.ticker,{quoteUpdatedAt:state.quotes[obs.ticker].updatedAt,lastSource:obs.source,lastError:''});
+          written++;
+        }
+        const groups={};for(const item of result.valid)(groups[item.ticker]||=[]).push(item);
+        for(const [tk,rows] of Object.entries(groups)){
+          const old=state.priceHistory[tk]||{};
+          const byDay=new Map((old.points||[]).map(p=>[p.date,p]));
+          rows.forEach(p=>byDay.set(p.date,{date:p.date,close:p.price,volume:p.volume||0}));
+          const points=[...byDay.values()].sort((a,b)=>a.date.localeCompare(b.date)).slice(-400);
+          state.priceHistory[tk]={ticker:tk,points,source:'consolidated-market-files',
+            updatedAt:new Date().toISOString()};
+        }
+        rebuildDerived();rebuildB3Derived();saveAll();renderTudo();
+        const external=await marketSupplementalSources();
+        const ok=external.filter(x=>x.ok).map(x=>x.name);
+        const failed=external.filter(x=>!x.ok).map(x=>x.name);
+        const msg='Consolidação: '+written+' cotações gravadas, '+result.conflicts.length+
+          ' divergências bloqueadas, '+result.unchanged.length+
+          ' datas antigas preservadas. Fontes públicas acessíveis: '+(ok.join(', ')||'nenhuma')+
+          '. Indisponíveis: '+(failed.join(', ')||'nenhuma')+
+          '. '+(result.valid.length?'Datas oficiais preservadas.':'Sem arquivo novo da B3: preços antigos preservados; nenhuma cotação ao vivo inferida.');
+        localStorage.setItem('guido_market_last_report_v1',JSON.stringify({
+          at:new Date().toISOString(),written,conflicts:result.conflicts,
+          unchanged:result.unchanged,external
+        }));
+        setMarketHubStatus(msg,result.conflicts.length>0);
+      }catch(e){setMarketHubStatus('Atualização incompleta: '+(e?.message||String(e)),true);}
+      finally{if(btn)btn.disabled=false;}
+    }
+    function ensureMarketConfigured(){return true;}
+
     const KEYS = {
       assets: 'guido_assets_v23',
       quotes: 'guido_quotes_v23',
@@ -1952,8 +2085,8 @@
 
     function buildPersistableSettings(){
       const settings = structuredClone(state.settings || {});
-      if(settings.brapi){
-        settings.brapi.token = '';
+      if(settings.market){
+        settings.market.token = '';
       }
       if(settings.memory){
         settings.memory.apiKey = '';
@@ -2077,7 +2210,7 @@
           instabilidade: 0.15
         }
       },
-      brapi: {
+      market: {
         token: ''
       }
     };
@@ -3418,7 +3551,7 @@ async function processRefreshQueue(){
           await refreshTickerSmart(item.ticker, item.context, item.force);
         }catch(err){
           patchMarketMeta(item.ticker, { inFlight:false, lastError: err?.message || String(err), lastErrorAt: new Date().toISOString() });
-          logRefreshTelemetry(item.ticker, item.context, 'refresh_error', 'brapi', false, err?.message || String(err));
+          logRefreshTelemetry(item.ticker, item.context, 'refresh_error', 'consolidated-cache', false, err?.message || String(err));
         }finally{
           refreshQueue.inFlight.delete(item.ticker);
           patchMarketMeta(item.ticker, { inFlight:false });
@@ -3434,7 +3567,7 @@ async function processRefreshQueue(){
   }
 }
 async function refreshTickerSmart(ticker, context='radar_sync', force=false){
-  if(!ensureBrapiConfigured(true)) return;
+  if(!ensureMarketConfigured(true)) return;
   const tk = normalizeTicker(ticker);
   const fresh = getTickerFreshnessMeta(tk);
   const needsQuote = force || ['stale','critical'].includes(fresh.quoteState) || context === 'popup_open';
@@ -3444,19 +3577,19 @@ async function refreshTickerSmart(ticker, context='radar_sync', force=false){
     logRefreshTelemetry(tk, context, 'cache_hit', 'cache', true, '');
     return;
   }
-  await fetchSingleTickerBrapi(tk, { forceHistory: needsHistory, context, force });
-  logRefreshTelemetry(tk, context, 'refresh_execute', 'brapi', true, '');
+  await fetchSingleTickerMarket(tk, { forceHistory: needsHistory, context, force });
+  logRefreshTelemetry(tk, context, 'refresh_execute', 'consolidated-cache', true, '');
   normalizeState();
   rebuildDerived();
   saveAll();
   renderTudo();
 }
-function syncBrapiSmart(){
-  if(!ensureBrapiConfigured()) return;
+function syncMarketSmart(){
+  if(!ensureMarketConfigured()) return;
   normalizeState();
   rebuildDerived();
   const tickers = [...new Set([
-    ...getConfiguredBrapiTickers(),
+    ...getConfiguredMarketTickers(),
     ...state.trades.map(t => t.ticker),
     ...getOpenPositionTickers()
   ])];
@@ -3467,7 +3600,7 @@ function syncBrapiSmart(){
   enqueueManyRefresh(tickers, 'radar_sync', true);
 }
 function refreshTopRadar(silent=false){
-  if(!ensureBrapiConfigured(silent)) return;
+  if(!ensureMarketConfigured(silent)) return;
   const rows = getRadarRows().slice(0, 20).map(r => r.ticker);
   enqueueManyRefresh(rows, 'top_radar', false);
 }
@@ -3502,10 +3635,10 @@ function getAuthorizedAnalysisTarget(){
     const match = rows.find(r => r.ticker === requested);
     return match || { ticker: requested, id: '' };
   }
-  return rows.find(r => r?.ticker) || { ticker: getOpenPositionTickers()[0] || getConfiguredBrapiTickers()[0] || '', id: '' };
+  return rows.find(r => r?.ticker) || { ticker: getOpenPositionTickers()[0] || getConfiguredMarketTickers()[0] || '', id: '' };
 }
 
-function getAuthorizedBrapiBatch(targetTicker='', opts={}){
+function getAuthorizedMarketBatch(targetTicker='', opts={}){
   const limit = Math.max(0, parseInt(opts.limit || '0', 10) || 0);
   const radarRows = sortRadarRows(buildRadarRows()).map(r => r.ticker);
   const staleOrCritical = Object.keys(state.marketMeta || {})
@@ -3514,7 +3647,7 @@ function getAuthorizedBrapiBatch(targetTicker='', opts={}){
     targetTicker,
     ...radarRows,
     ...getOpenPositionTickers(),
-    ...getConfiguredBrapiTickers(),
+    ...getConfiguredMarketTickers(),
     ...staleOrCritical,
     ...Object.keys(state.quotes || {}),
     ...Object.keys(state.assets || {})
@@ -3523,7 +3656,7 @@ function getAuthorizedBrapiBatch(targetTicker='', opts={}){
   return limit ? unique.slice(0, limit) : unique;
 }
 
-async function runAuthorizedBrapiBatch(tickers, opts={}){
+async function runAuthorizedMarketBatch(tickers, opts={}){
   let ok = 0;
   let fail = 0;
   let refreshed = 0;
@@ -3533,17 +3666,17 @@ async function runAuthorizedBrapiBatch(tickers, opts={}){
   if(!list.length) throw new Error('Nenhum ticker disponível para análise autorizada.');
   for(const tk of list){
     try{
-      setAuthorizedAnalysisStatus(`Brapi autorizado: atualizando ${tk} (${ok + fail + 1}/${list.length})...`);
+      setAuthorizedAnalysisStatus(`Market autorizado: atualizando ${tk} (${ok + fail + 1}/${list.length})...`);
       const beforeUpdatedAt = state.quotes?.[tk]?.updatedAt || '';
-      await fetchSingleTickerBrapi(tk, { forceHistory, context:'user_authorized_analysis', force:true });
+      await fetchSingleTickerMarket(tk, { forceHistory, context:'user_authorized_analysis', force:true });
       const afterQuote = state.quotes?.[tk] || {};
-      if(afterQuote.source === 'brapi' && afterQuote.updatedAt && afterQuote.updatedAt !== beforeUpdatedAt) refreshed += 1;
+      if(afterQuote.source === 'consolidated-cache' && afterQuote.updatedAt && afterQuote.updatedAt !== beforeUpdatedAt) refreshed += 1;
       else unchanged += 1;
       ok += 1;
     }catch(err){
       fail += 1;
       patchMarketMeta(tk, { inFlight:false, lastError: err?.message || String(err), lastErrorAt: new Date().toISOString() });
-      logRefreshTelemetry(tk, 'user_authorized_analysis', 'refresh_error', 'brapi', false, err?.message || String(err));
+      logRefreshTelemetry(tk, 'user_authorized_analysis', 'refresh_error', 'consolidated-cache', false, err?.message || String(err));
     }
     if((ok + fail) % 10 === 0){
       saveAll();
@@ -3559,45 +3692,14 @@ async function runAuthorizedBrapiBatch(tickers, opts={}){
   return { ok, fail, refreshed, unchanged, total:list.length };
 }
 
-async function forceAuthorizedBrapiOnly(){
-  if(!ensureBrapiConfigured()) return;
-  const btn = $('forceAuthorizedBrapiOnlyBtn');
-  const previous = btn?.textContent || '';
-  try{
-    if(btn){ btn.disabled = true; btn.textContent = 'Atualizando Brapi...'; }
-    const target = getAuthorizedAnalysisTarget();
-    const result = await runAuthorizedBrapiBatch(getAuthorizedBrapiBatch(target.ticker), { forceHistory:false });
-    setAuthorizedAnalysisStatus(`Brapi concluído: ${result.refreshed}/${result.total} cotações gravadas${result.fail ? `, ${result.fail} com falha` : ''}.`, result.refreshed === 0);
-  }catch(err){
-    setAuthorizedAnalysisStatus(err?.message || String(err), true);
-    showAdminConfigWarning(err?.message || String(err));
-  }finally{
-    if(btn){ btn.disabled = false; btn.textContent = previous || 'Forçar apenas Brapi'; }
-  }
-}
-
+async function forceAuthorizedMarketOnly(){await updateAllMarketData();}
 async function forceAuthorizedAnalysis(){
-  if(!ensureBrapiConfigured()) return;
-  if(!(state.aiSettings?.apiKey || '').trim()){
-    showAdminConfigWarning('Sistema em manutenção ou OpenAI não configurada pelo administrador.');
-    return;
+  await updateAllMarketData();
+  if(!(state.aiSettings?.apiKey||'').trim()){
+    setAuthorizedAnalysisStatus('Dados harmonizados. IA não configurada.',false);return;
   }
-  const btn = $('forceAuthorizedAnalysisBtn');
-  const previous = btn?.textContent || '';
-  try{
-    if(btn){ btn.disabled = true; btn.textContent = 'Rodando motores...'; }
-    const target = getAuthorizedAnalysisTarget();
-    if(!target.ticker) throw new Error('Nenhum ativo disponível para acionar a análise IA.');
-    const result = await runAuthorizedBrapiBatch(getAuthorizedBrapiBatch(target.ticker, { limit: 60 }), { forceHistory:false });
-    setAuthorizedAnalysisStatus(`Brapi ${result.ok}/${result.total}. Abrindo IA autorizada para ${target.ticker}...`);
-    await openAIAnalysis(target.ticker, target.id || '', 'completa');
-  }catch(err){
-    console.error(err);
-    setAuthorizedAnalysisStatus(err?.message || String(err), true);
-    showAdminConfigWarning(err?.message || String(err));
-  }finally{
-    if(btn){ btn.disabled = false; btn.textContent = previous || 'Forçar Brapi + IA'; }
-  }
+  const target=getAuthorizedAnalysisTarget();
+  if(target.ticker)await openAIAnalysis(target.ticker,target.id||'','completa');
 }
 function updateRefreshBadge(){
   const el = $('refreshStatusBadge');
@@ -3608,24 +3710,24 @@ function updateRefreshBadge(){
   const staleCritical = Object.keys(state.marketMeta || {}).filter(tk => ['stale','critical'].includes(getTickerFreshnessMeta(tk).overallState)).length;
   const last = refreshQueue.lastRunAt ? new Date(refreshQueue.lastRunAt).toLocaleTimeString('pt-BR') : '---';
   el.innerHTML = `🔄 <b>Refresh ${mode}</b> | fila: <b>${refreshQueue.items.length}</b> | em voo: <b>${refreshQueue.inFlight.size}</b> | monitorados: <b>${tracked}</b> | vencidos/críticos: <b>${staleCritical}</b> | último ciclo: <b>${last}</b>`;
-  if(hub) hub.innerHTML = `v24: modo <b>${mode}</b> | cache primeiro, Brapi depois. Atualiza críticos, vencidos e prioritários.`;
+  if(hub) hub.innerHTML = `v24: modo <b>${mode}</b> | cache primeiro, Market depois. Atualiza críticos, vencidos e prioritários.`;
   const sel = $('refreshMode');
   if(sel && sel.value !== mode) sel.value = mode;
 }
 
     // =========================
-    // BRAPI
+    // MARKET
     // =========================
 
-async function fetchBrapi(force=true){
-  if(!ensureBrapiConfigured()) return;
+async function fetchMarket(force=true){
+  if(!ensureMarketConfigured()) return;
   normalizeState();
   rebuildDerived();
   const lucroAntes = getTotalLucroNaoRealizado();
   const beforeQuotes = structuredClone(state.quotes || {});
 
   const tickers = [...new Set([
-    ...getConfiguredBrapiTickers(),
+    ...getConfiguredMarketTickers(),
     ...state.trades.map(t => t.ticker)
   ])];
 
@@ -3636,9 +3738,9 @@ async function fetchBrapi(force=true){
 
   for(const tk of tickers){
     try{
-      await fetchSingleTickerBrapi(tk, { forceHistory: force, context: force ? 'manual_force' : 'manual_sync', force });
+      await fetchSingleTickerMarket(tk, { forceHistory: force, context: force ? 'manual_force' : 'manual_sync', force });
     }catch(err){
-      console.error('Erro Brapi em', tk, err);
+      console.error('Erro Market em', tk, err);
     }
   }
 
@@ -3654,106 +3756,13 @@ async function fetchBrapi(force=true){
   alert(`${force ? 'Refresh completo concluído.' : 'Sincronização concluída.'}\n\nLucro não realizado: ${formatBRL(lucroAntes)} → ${formatBRL(lucroDepois)}\nVariação: ${formatBRL(delta)}\n\nCotações das posições abertas:\n${report}`);
 }
 
-async function fetchSingleTickerBrapi(tk, opts={}){
-  const token = getBrapiToken();
-  if(!token) throw new Error('Sistema em manutenção ou token Brapi não configurado pelo administrador.');
-  const ticker = normalizeTicker(tk);
-  const today = todayIso();
-  const lookback = new Date();
-  lookback.setDate(lookback.getDate() - 420);
-  const lookbackIso = lookback.toISOString().slice(0,10);
-
-  patchMarketMeta(ticker, { inFlight:true, lastSource:'brapi', lastContext: opts.context || 'manual_sync' });
-
-  const url = `https://brapi.dev/api/quote/${encodeURIComponent(ticker)}?dividends=true&token=${encodeURIComponent(token)}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  const r = data?.results?.[0];
-  if(!r) throw new Error(`Ticker ${ticker} sem resultado na Brapi`);
-
-  const tipo = classifyTickerType(ticker);
-  const apiPrice = parseNumber(r.regularMarketPrice);
-  const oldPrice = parseNumber(state.quotes[ticker]?.precoAtual);
-  const price = apiPrice > 0 ? apiPrice : oldPrice;
-  const prev = parseNumber(r.regularMarketPreviousClose || state.quotes[ticker]?.precoFechamentoAnterior || price);
-  const varPct = prev > 0 && price > 0 ? ((price - prev) / prev) * 100 : 0;
-
-  if(!state.assets[ticker]){
-    state.assets[ticker] = {
-      ticker,
-      nome: r.longName || r.shortName || ticker,
-      tipo,
-      setor: r.sector || '',
-      categoria: '',
-      moeda: 'BRL',
-      ativo: true
-    };
-  } else {
-    state.assets[ticker].nome = state.assets[ticker].nome || r.longName || r.shortName || ticker;
-    state.assets[ticker].tipo = state.assets[ticker].tipo || tipo;
-  }
-
-  state.quotes[ticker] = {
-    ticker,
-    precoAtual: price,
-    precoFechamentoAnterior: prev,
-    variacaoDiaPct: varPct,
-    volume: parseNumber(r.regularMarketVolume),
-    marketCap: parseNumber(r.marketCap),
-    updatedAt: new Date().toISOString(),
-    source: 'brapi'
-  };
-
-  const candidates = [];
-  const cashDivs = r.dividendsData?.cashDividends || [];
-  const divs = Array.isArray(r.dividends) ? r.dividends : [];
-  for(const d of [...cashDivs, ...divs]){
-    const ex = sanitizeMarketDate((d.exDate || d.approvedOn || '').slice(0,10));
-    const pay = sanitizeMarketDate((d.paymentDate || d.date || '').slice(0,10));
-    const val = parseNumber(d.rate || d.value || d.amount);
-    if(!val) continue;
-        if(!ex && !pay) continue;
-        if(ex && pay && isSuspiciousDividendGap(ex, pay)) continue;
-    const refDate = pay || ex;
-    if(!refDate) continue;
-    const shouldKeep = refDate >= lookbackIso || refDate >= today || ex >= lookbackIso;
-    if(shouldKeep){
-      candidates.push({
-        ticker,
-        tipoProvento: 'DIVIDENDO',
-        dataCom: ex,
-        dataPagamento: pay,
-        valorUnitario: val,
-        moeda: 'BRL',
-        origem: refDate >= today ? 'brapi' : 'brapi-hist',
-        createdAt: new Date().toISOString()
-      });
-    }
-  }
-
-  for(const d of candidates){
-    d.id = deterministicDividendId(d);
-    const idx = state.dividends.findIndex(x => x.id === d.id);
-    if(idx >= 0) state.dividends[idx] = d;
-    else state.dividends.push(d);
-  }
-
-  patchMarketMeta(ticker, {
-    quoteUpdatedAt: state.quotes[ticker].updatedAt,
-    dividendsUpdatedAt: new Date().toISOString(),
-    lastFullSyncAt: new Date().toISOString(),
-    lastSource: 'brapi',
-    inFlight:false,
-    lastError:''
-  });
-
-  if(opts.forceHistory){
-    try{
-      await fetchPriceHistory12m(ticker, true, opts.context || 'manual_sync');
-    }catch(err){
-      console.warn('Histórico 12m falhou em', ticker, err);
-    }
-  }
+async function fetchSingleTickerMarket(tk,opts={}){
+  const ticker=normalizeTicker(tk),q=state.quotes[ticker];
+  if(!(parseNumber(q?.precoAtual)>0))throw new Error('Cotação não disponível para '+ticker+'. Importe o fechamento B3/CSV.');
+  patchMarketMeta(ticker,{inFlight:false,lastSource:q.source||'consolidated-cache',
+    quoteUpdatedAt:q.updatedAt,lastContext:opts.context||'cache',lastError:''});
+  // Nunca alterar timestamps/datas ou criar proventos apenas ao ler o cache.
+  return q;
 }
 
     // =========================
@@ -4349,7 +4358,7 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       $('pesoCarteira').value = 'Ignorado no Radar';
       $('janelaFluxo').value = state.settings.radar.diasJanelaFluxo;
       $('bonusDataComMaxDias').value = state.settings.radar.bonusDataComMaxDias;
-      syncBrapiTokenInput();
+      syncMarketTokenInput();
     }
 
     async function loadAdminSystemConfig(){
@@ -4379,22 +4388,18 @@ async function fetchSingleTickerBrapi(tk, opts={}){
 
     function showAdminConfigWarning(message, silent=false){
       const finalMessage = message || 'Sistema em manutencao ou parametros nao configurados pelo administrador.';
-      updateBrapiTokenStatus(finalMessage);
+      updateMarketTokenStatus(finalMessage);
       updateAIStatus(finalMessage, true);
       const refresh = $('refreshStatusBadge');
       if(refresh) refresh.innerHTML = `⚠️ <b>${escapeHtml(finalMessage)}</b>`;
       if(!silent) alert(finalMessage);
     }
 
-    function ensureBrapiConfigured(silent=false){
-      if(getBrapiToken()) return true;
-      showAdminConfigWarning('Sistema em manutenção ou token Brapi não configurado pelo administrador.', silent);
-      return false;
-    }
+    function ensureMarketConfigured(){return true;}
 
-    function getConfiguredBrapiTickers(){
-      const fromAdmin = state.settings?.brapi?.tickers || '';
-      const fromUi = $('brapiTickers')?.value || '';
+    function getConfiguredMarketTickers(){
+      const fromAdmin = state.settings?.market?.tickers || '';
+      const fromUi = $('marketTickers')?.value || '';
       return String(fromAdmin || fromUi || '')
         .split(',')
         .map(x => normalizeTicker(x))
@@ -4407,35 +4412,35 @@ async function fetchSingleTickerBrapi(tk, opts={}){
       return `${token.slice(0,6)}••••${token.slice(-4)}`;
     }
 
-    function syncBrapiTokenInput(){
-      state.settings.brapi = state.settings.brapi || { token:'' };
-      const token = state.settings.brapi.token || '';
-      if($('brapiTickers')) $('brapiTickers').value = state.settings.brapi.tickers || $('brapiTickers').value || '';
-      updateBrapiTokenStatus(token ? `Token Brapi carregado do Admin Console: ${maskToken(token)}` : 'Sistema em manutenção ou token Brapi não configurado pelo administrador.');
+    function syncMarketTokenInput(){
+      state.settings.market = state.settings.market || { token:'' };
+      const token = state.settings.market.token || '';
+      if($('marketTickers')) $('marketTickers').value = state.settings.market.tickers || $('marketTickers').value || '';
+      updateMarketTokenStatus(token ? `fontes do Market Data Hub carregado do Admin Console: ${maskToken(token)}` : 'Sistema em manutenção ou fontes do Market Data Hub não configurado pelo administrador.');
     }
 
-    function updateBrapiTokenStatus(message){
-      const el = $('brapiTokenStatus');
+    function updateMarketTokenStatus(message){
+      const el = $('marketTokenStatus');
       if(el) el.textContent = message;
     }
 
-    function saveBrapiTokenFromInput(){
-      state.settings.brapi = state.settings.brapi || {};
-      state.settings.brapi.token = ($('brapiToken')?.value || '').trim();
+    function saveMarketTokenFromInput(){
+      state.settings.market = state.settings.market || {};
+      state.settings.market.token = ($('marketToken')?.value || '').trim();
       saveAll();
-      updateBrapiTokenStatus(state.settings.brapi.token ? `Token Brapi salvo localmente: ${maskToken(state.settings.brapi.token)}` : 'Token Brapi: não salvo');
+      updateMarketTokenStatus(state.settings.market.token ? `fontes do Market Data Hub salvo localmente: ${maskToken(state.settings.market.token)}` : 'fontes do Market Data Hub: não salvo');
     }
 
-    function clearBrapiToken(){
-      state.settings.brapi = state.settings.brapi || {};
-      state.settings.brapi.token = '';
-      if($('brapiToken')) $('brapiToken').value = '';
+    function clearMarketToken(){
+      state.settings.market = state.settings.market || {};
+      state.settings.market.token = '';
+      if($('marketToken')) $('marketToken').value = '';
       saveAll();
-      updateBrapiTokenStatus('Token Brapi removido.');
+      updateMarketTokenStatus('fontes do Market Data Hub removido.');
     }
 
-    function toggleBrapiTokenVisibility(){
-      const input = $('brapiToken');
+    function toggleMarketTokenVisibility(){
+      const input = $('marketToken');
       if(!input) return;
       input.type = input.type === 'password' ? 'text' : 'password';
     }
@@ -5505,7 +5510,7 @@ function buildIntegratedViewModel(){
       alerts.push({ level:'warning', ticker:row.ticker, message:`Operações importadas suspeitas foram ignoradas no cálculo manual: ${(row.manual.alertasCusto || []).slice(-1)[0] || 'possível arquivo de proventos importado como operação.'}` });
     }
     if(row.quantidade > 0 && !row.hasQuote){
-      alerts.push({ level:'critical', ticker:row.ticker, message:'Posição aberta sem preço atual local/Brapi.' });
+      alerts.push({ level:'critical', ticker:row.ticker, message:'Posição aberta sem preço atual local/Market.' });
     }
     if(row.freshness && ['stale','critical'].includes(row.freshness.overallState) && row.quantidade > 0){
       alerts.push({ level:'warning', ticker:row.ticker, message:`Dados de mercado ${refreshStateLabel(row.freshness.overallState).toLowerCase()} para posição aberta.` });
@@ -5660,7 +5665,7 @@ function openAssetProfileDossier(ticker){
   const profile = buildAssetIntelligenceProfiles(integrated).find(x=>x.ticker === normalizeTicker(ticker));
   if(!profile){ alert('Dossiê não encontrado para este ativo.'); return; }
   const publicFacts = [
-    profile.hasMarket ? 'Preço/mercado disponível no cache local ou BRAPI.' : 'Sem preço/fundamentos recentes no cache local.',
+    profile.hasMarket ? 'Preço/mercado disponível no cache local ou MARKET.' : 'Sem preço/fundamentos recentes no cache local.',
     profile.freshness ? `Freshness de mercado: ${refreshStateLabel(profile.freshness.overallState)}.` : 'Sem metadado de atualização de mercado.',
     profile.dividendosEventos ? `${profile.dividendosEventos} evento(s) de dividendos no calendário local.` : 'Sem eventos de dividendos previstos/importados.'
   ];
@@ -5699,71 +5704,30 @@ function renderEngineSummary(){
   const staleCritical = Object.keys(state.marketMeta || {}).filter(tk => ['stale','critical'].includes(getTickerFreshnessMeta(tk).overallState)).length;
   const telemetry = state.refreshTelemetry || [];
   const cacheHits = telemetry.filter(x => x.action === 'cache_hit' || x.action === 'history_cache_hit').length;
-  const apiCalls = telemetry.filter(x => x.sourceUsed === 'brapi' && x.success).length;
+  const apiCalls = telemetry.filter(x => x.sourceUsed === 'consolidated-cache' && x.success).length;
   $('engineSummary').innerHTML = `
     Assets: <b>${Object.keys(state.assets).length}</b><br>
     Quotes: <b>${Object.keys(state.quotes).length}</b><br>
     Dividendos: <b>${divs}</b><br>
     Históricos 12m: <b>${Object.keys(state.priceHistory).length}</b><br>
     Refresh mode: <b>${getRefreshMode()}</b> | monitorados: <b>${tracked}</b> | vencidos/críticos: <b>${staleCritical}</b><br>
-    Economia de API (cache hits): <b>${cacheHits}</b> | chamadas Brapi registradas: <b>${apiCalls}</b><br>
+    Economia de API (cache hits): <b>${cacheHits}</b> | chamadas Market registradas: <b>${apiCalls}</b><br>
     View Model integrado: <b>${integrated.rows.length}</b> tickers consolidados | posições abertas: <b>${integrated.openRows.length}</b>
   `;
 }
 
 
 
-    function getBrapiToken(){
-      return (state.settings?.brapi?.token || '').trim();
-    }
+    function getMarketToken(){return '';}
 
-    async function fetchPriceHistory12m(ticker, force=false, context='history'){
-      const tk = normalizeTicker(ticker);
-      const cache = state.priceHistory[tk];
-      const fresh = getTickerFreshnessMeta(tk);
+    async function fetchPriceHistory12m(ticker,force=false,context='history'){
+  const tk=normalizeTicker(ticker),points=state.priceHistory[tk]?.points||[];
+  if(!points.length)throw new Error('Sem histórico importado para '+tk+'. Importe o COTAHIST oficial.');
+  logRefreshTelemetry(tk,context,'history_cache_hit','consolidated-cache',true,'');
+  return points;
+}
 
-      if(!force && cache?.updatedAt && Array.isArray(cache.points) && cache.points.length && !['stale','critical'].includes(fresh.historyState)){
-        logRefreshTelemetry(tk, context, 'history_cache_hit', 'cache', true, '');
-        return cache.points;
-      }
-
-      const token = getBrapiToken();
-      const qs = new URLSearchParams({ range:'1y', interval:'1d' });
-      if(token) qs.set('token', token);
-      const url = `https://brapi.dev/api/quote/${encodeURIComponent(tk)}?${qs.toString()}`;
-      const res = await fetch(url);
-      if(!res.ok) throw new Error(`Falha ao buscar histórico (${res.status})`);
-      const data = await res.json();
-      const result = data?.results?.[0];
-      const points = (result?.historicalDataPrice || [])
-        .map(p => ({
-          date: isoFromUnix(p.date),
-          close: parseNumber(p.close || p.adjustedClose),
-          open: parseNumber(p.open),
-          high: parseNumber(p.high),
-          low: parseNumber(p.low),
-          volume: parseNumber(p.volume)
-        }))
-        .filter(p => p.date && p.close > 0)
-        .sort((a,b) => a.date.localeCompare(b.date));
-
-      state.priceHistory[tk] = {
-        ticker: tk,
-        points,
-        updatedAt: new Date().toISOString(),
-        source: 'brapi'
-      };
-      patchMarketMeta(tk, {
-        historyUpdatedAt: state.priceHistory[tk].updatedAt,
-        lastSource:'brapi',
-        lastContext: context,
-        lastError:''
-      });
-      saveAll();
-      logRefreshTelemetry(tk, context, 'history_refresh', 'brapi', true, '');
-      return points;
-    }
-
+    
     function buildDividendMarkersForChart(ticker, pricePoints){
       if(!Array.isArray(pricePoints) || !pricePoints.length) return [];
       const firstDate = pricePoints[0].date;
@@ -5885,7 +5849,7 @@ function renderEngineSummary(){
           <span class="badge b-gray">Máx: ${formatBRL(maxPrice)}</span>
           <span class="badge b-yellow">Dividendos pagos: ${markers.length}</span>
           <span class="badge ${an.previsibilidadePct>=75?'b-green':an.previsibilidadePct>=45?'b-yellow':'b-red'}">Previsibilidade: ${formatPct(an.previsibilidadePct || 0)}</span>
-          <span class="badge ${an.confiancaDadoNome==='Alta'?'b-green':an.confiancaDadoNome==='Média'?'b-yellow':'b-red'}">Credibilidade Brapi: ${an.confiancaDadoNome || 'Baixa'}</span>
+          <span class="badge ${an.confiancaDadoNome==='Alta'?'b-green':an.confiancaDadoNome==='Média'?'b-yellow':'b-red'}">Credibilidade Market: ${an.confiancaDadoNome || 'Baixa'}</span>
           <span class="badge ${an.padraoPagamento==='Mensal'||an.padraoPagamento==='Trimestral'?'b-green':an.padraoPagamento==='Irregular'?'b-yellow':'b-gray'}">Padrão: ${an.padraoPagamento || 'Insuficiente'}</span>
           ${pm > 0 ? `<span class="badge b-green">PM: ${formatBRL(pm)}</span>` : '<span class="badge b-gray">PM não informado</span>'}
         `;
@@ -7183,7 +7147,7 @@ function renderEngineSummary(){
       let rows = rowsAll;
       if(q) rows = rows.filter(x=>x.ticker.includes(q));
       if(filter !== 'TODOS') rows = rows.filter(x=>x.action === filter);
-      tb.innerHTML = rows.slice(0,600).map(r => `<tr><td><b>${r.ticker}</b><span class="mini">${r.source}</span></td><td><span class="badge ${decisionBadgeClass(r.action)}">${decisionLabel(r.action)}</span></td><td><span class="badge ${temperatureBadgeClass(r.temperatura)}">${r.temperatura}</span></td><td class="right"><b>${Number(r.confianca||0).toFixed(2)}</b></td><td class="right">${formatBRL(r.valorMercado)}</td><td class="right">${formatBRL(r.retornoTotal)}<span class="mini">${formatPct(r.retornoPct)}</span></td><td class="right">${formatBRL(r.rendaRecorrente)}<span class="mini">peso renda ${formatPct(r.pesoRenda)}</span></td><td class="right">${formatPct(r.pesoCarteira)}</td><td>${r.motivo}</td><td class="center"><button class="btn-secondary" onclick="openDecisionDossier('${r.ticker}')">Abrir</button></td></tr>`).join('') || '<tr><td colspan="10" class="center muted">Sem dados suficientes. Importe B3 Ledger, calendário de eventos e/ou cotações Brapi.</td></tr>';
+      tb.innerHTML = rows.slice(0,600).map(r => `<tr><td><b>${r.ticker}</b><span class="mini">${r.source}</span></td><td><span class="badge ${decisionBadgeClass(r.action)}">${decisionLabel(r.action)}</span></td><td><span class="badge ${temperatureBadgeClass(r.temperatura)}">${r.temperatura}</span></td><td class="right"><b>${Number(r.confianca||0).toFixed(2)}</b></td><td class="right">${formatBRL(r.valorMercado)}</td><td class="right">${formatBRL(r.retornoTotal)}<span class="mini">${formatPct(r.retornoPct)}</span></td><td class="right">${formatBRL(r.rendaRecorrente)}<span class="mini">peso renda ${formatPct(r.pesoRenda)}</span></td><td class="right">${formatPct(r.pesoCarteira)}</td><td>${r.motivo}</td><td class="center"><button class="btn-secondary" onclick="openDecisionDossier('${r.ticker}')">Abrir</button></td></tr>`).join('') || '<tr><td colspan="10" class="center muted">Sem dados suficientes. Importe B3 Ledger, calendário de eventos e/ou cotações Market.</td></tr>';
     }
     function simulateNextAllocation(){
       const box = $('decisionSimulatorBox'); if(!box) return;
@@ -7248,7 +7212,7 @@ function renderEngineSummary(){
     function rawAssetSourceLabels(item){
       const labels = [];
       if(item.hasB3) labels.push('Histórico B3 encontrado');
-      if(item.hasBrapi) labels.push('BRAPI/cache disponível');
+      if(item.hasMarket) labels.push('MARKET/cache disponível');
       if(item.hasDividends) labels.push('Proventos encontrados');
       if(item.hasAssetRecord) labels.push('Cadastro interno');
       if(item.missingDataFlags.length) labels.push('Dados externos pendentes');
@@ -7319,7 +7283,7 @@ function renderEngineSummary(){
           status: qty > 0 ? 'ABERTA' : 'ZERADA',
           lastUpdated: quote.updatedAt || b3.updatedAt || '',
           hasB3: movs.length > 0 || !!state.b3Portfolio?.[ticker],
-          hasBrapi: !!quote.source,
+          hasMarket: !!quote.source,
           hasDividends: divs.length > 0 || b3Income.length > 0,
           hasAssetRecord: !!state.assets?.[ticker],
           missingDataFlags,
@@ -7340,7 +7304,7 @@ function renderEngineSummary(){
         if(type !== 'TODOS' && r.type !== type) return false;
         if(status !== 'TODOS' && r.status !== status) return false;
         if(source === 'B3' && !r.hasB3) return false;
-        if(source === 'BRAPI' && !r.hasBrapi) return false;
+        if(source === 'MARKET' && !r.hasMarket) return false;
         if(source === 'PROVENTOS' && !r.hasDividends) return false;
         if(source === 'PENDENTE' && !r.missingDataFlags.length) return false;
         return true;
@@ -7370,7 +7334,7 @@ function renderEngineSummary(){
       const rows = rawAssetFilterIndex(all);
       if($('rawKpiAssets')) $('rawKpiAssets').textContent = String(all.length);
       if($('rawKpiOpen')) $('rawKpiOpen').textContent = String(all.filter(x=>x.status === 'ABERTA').length);
-      if($('rawKpiBrapi')) $('rawKpiBrapi').textContent = String(all.filter(x=>x.hasBrapi).length);
+      if($('rawKpiMarket')) $('rawKpiMarket').textContent = String(all.filter(x=>x.hasMarket).length);
       if($('rawKpiDivergences')) $('rawKpiDivergences').textContent = String(all.filter(x=>x.divergenceFlags.length).length);
       if($('rawAssetStatus')) $('rawAssetStatus').textContent = all.length ? `Dossiê bruto: ${rows.length} de ${all.length} ativos exibidos. Sem score, sem recomendação, apenas dados factuais e fontes.` : 'Dossiê bruto: importe B3, carteira, proventos ou cotações para formar o índice.';
       grid.innerHTML = rows.map(r => {
@@ -7397,14 +7361,14 @@ function renderEngineSummary(){
     function rawAssetSourceTableRows(dossier){
       const quote = dossier.publicMarketData.quote || {};
       const rows = [
-        { field:'Preço atual', brapi: quote.precoAtual ? formatBRL(quote.precoAtual) : 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
-        { field:'Nome', brapi: dossier.identity.name || quote.longName || quote.nome || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
-        { field:'Setor', brapi: dossier.identity.sector || quote.sector || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
-        { field:'Dividend yield', brapi: quote.dividendYield ? formatPct(parseNumber(quote.dividendYield)) : 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
-        { field:'P/L', brapi: quote.priceEarnings || quote.pe || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
-        { field:'P/VP', brapi: quote.priceToBook || quote.pb || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' }
+        { field:'Preço atual', market: quote.precoAtual ? formatBRL(quote.precoAtual) : 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
+        { field:'Nome', market: dossier.identity.name || quote.longName || quote.nome || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
+        { field:'Setor', market: dossier.identity.sector || quote.sector || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
+        { field:'Dividend yield', market: quote.dividendYield ? formatPct(parseNumber(quote.dividendYield)) : 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
+        { field:'P/L', market: quote.priceEarnings || quote.pe || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' },
+        { field:'P/VP', market: quote.priceToBook || quote.pb || 'ausente', fundamentus:'pendente', statusinvest:'pendente', yahoo:'pendente', updated: quote.updatedAt || '' }
       ];
-      return rows.map(r => `<tr><td>${escapeHtml(r.field)}</td><td>${escapeHtml(r.brapi)}</td><td>${escapeHtml(r.fundamentus)}</td><td>${escapeHtml(r.statusinvest)}</td><td>${escapeHtml(r.yahoo)}</td><td>${r.updated ? new Date(r.updated).toLocaleString('pt-BR') : '---'}</td></tr>`).join('');
+      return rows.map(r => `<tr><td>${escapeHtml(r.field)}</td><td>${escapeHtml(r.market)}</td><td>${escapeHtml(r.fundamentus)}</td><td>${escapeHtml(r.statusinvest)}</td><td>${escapeHtml(r.yahoo)}</td><td>${r.updated ? new Date(r.updated).toLocaleString('pt-BR') : '---'}</td></tr>`).join('');
     }
 
     function buildRawAssetTimeline(ticker){
@@ -7466,7 +7430,7 @@ function renderEngineSummary(){
       const lastSell = sells[sells.length - 1]?.data || '';
       const externalSources = [
         { name:'B3 Ledger', status:index.hasB3 ? 'encontrado' : 'ausente', collectedAt: movs.at(-1)?.data || '', url:'área do investidor B3 / arquivo importado' },
-        { name:'BRAPI/cache local', status:index.hasBrapi ? 'disponível' : 'pendente', collectedAt: quote.updatedAt || '', url:'https://brapi.dev/' },
+        { name:'MARKET/cache local', status:index.hasMarket ? 'disponível' : 'pendente', collectedAt: quote.updatedAt || '', url:'https://www.b3.com.br/' },
         { name:'Proventos internos', status:index.hasDividends ? 'encontrado' : 'ausente', collectedAt: calendarDivs[0]?.dataPagamento || '', url:'calendário importado/cache' },
         ...RAW_ASSET_EXTERNAL_REGISTRY.map(x => ({ name:x.name, status:'preparado para integração futura', collectedAt:'', url:x.url }))
       ];
@@ -7495,7 +7459,7 @@ function renderEngineSummary(){
         incomeHistory: { received:income, calendar:calendarDivs, totalReceived:index.totalDividends || 0 },
         result: { personalReturn:index.personalReturn || 0, personalReturnPct:index.personalReturnPct || 0, unrealized:parseNumber(b3.lucroNaoRealizado), realized:parseNumber(b3.lucroRealizado), yieldOnCost:index.investedValue > 0 ? (index.totalDividends / index.investedValue) * 100 : 0 },
         publicMarketData: { quote },
-        fundamentalsBySource: { brapi: quote, statusInvest:null, fundamentus:null, yahoo:null },
+        fundamentalsBySource: { market: quote, statusInvest:null, fundamentus:null, yahoo:null },
         externalSources,
         sourceComparison: [],
         factualDivergences:index.divergenceFlags || [],
@@ -7528,7 +7492,7 @@ function renderEngineSummary(){
           <div class="card"><div class="kpi-title">Peso na carteira</div><div class="kpi-value">${formatPct(d.currentPosition.portfolioWeight)}</div></div>
         </div>
         <div class="toolbar" style="margin-bottom:12px">
-          <button class="btn-api" onclick="refreshRawAssetBrapi('${d.ticker}')">Atualizar BRAPI deste ativo</button>
+          <button class="btn-api" onclick="refreshRawAssetMarket('${d.ticker}')">Atualizar MARKET deste ativo</button>
           <button class="btn-secondary" onclick="exportRawAssetDossier('${d.ticker}')">Exportar dossiê JSON</button>
         </div>
         <div class="split-2">
@@ -7536,7 +7500,7 @@ function renderEngineSummary(){
           <div class="card raw-modal-section"><h3>Minha história com o ativo</h3><p><b>Primeira compra:</b> ${formatDateBR(d.personalHistory.firstBuy)}<br><b>Última compra:</b> ${formatDateBR(d.personalHistory.lastBuy)}<br><b>Última venda:</b> ${formatDateBR(d.personalHistory.lastSell)}<br><b>Quantidade máxima histórica:</b> ${round(d.personalHistory.maxQty,4)}<br><b>Total comprado:</b> ${formatBRL(d.personalHistory.totalBought)}<br><b>Total vendido:</b> ${formatBRL(d.personalHistory.totalSold)}</p></div>
         </div>
         <div class="card raw-modal-section"><h3>Divergências e dados ausentes</h3><div class="raw-source-list">${divergences}</div><div class="raw-source-list" style="margin-top:8px">${missing}</div></div>
-        <div class="card raw-modal-section" style="padding:0"><div style="padding:16px"><h3>Fundamentos por fonte</h3><p class="muted">Comparação factual. Campos pendentes indicam fonte preparada, ainda sem coleta automática segura nesta versão.</p></div><div class="table-wrap"><table><thead><tr><th>Indicador</th><th>BRAPI/cache</th><th>Fundamentus</th><th>Status Invest</th><th>Yahoo</th><th>Última atualização</th></tr></thead><tbody>${rawAssetSourceTableRows(d)}</tbody></table></div></div>
+        <div class="card raw-modal-section" style="padding:0"><div style="padding:16px"><h3>Fundamentos por fonte</h3><p class="muted">Comparação factual. Campos pendentes indicam fonte preparada, ainda sem coleta automática segura nesta versão.</p></div><div class="table-wrap"><table><thead><tr><th>Indicador</th><th>MARKET/cache</th><th>Fundamentus</th><th>Status Invest</th><th>Yahoo</th><th>Última atualização</th></tr></thead><tbody>${rawAssetSourceTableRows(d)}</tbody></table></div></div>
         <div class="card raw-modal-section" style="padding:0"><div style="padding:16px"><h3>Fontes consultadas ou preparadas</h3></div><div class="table-wrap"><table><thead><tr><th>Fonte</th><th>Status</th><th>Coletado em</th><th>Origem/URL</th></tr></thead><tbody>${sourceRows}</tbody></table></div></div>
         <div class="split-2">
           <div class="card raw-modal-section" style="padding:0"><div style="padding:16px"><h3>Proventos recebidos</h3></div><div class="table-wrap"><table><thead><tr><th>Data</th><th>Movimento</th><th>Natureza</th><th class="right">Valor</th><th>Instituição</th></tr></thead><tbody>${divRows}</tbody></table></div></div>
@@ -7547,21 +7511,21 @@ function renderEngineSummary(){
       </div>`);
     }
 
-    async function refreshRawAssetBrapi(ticker){
+    async function refreshRawAssetMarket(ticker){
       const tk = normalizeTicker(ticker);
       if(!tk) return;
       try{
-        if(!getBrapiToken()){
-          alert('Configure o token BRAPI na Aba 1 antes de atualizar este ativo.');
+        if(!getMarketToken()){
+          alert('Configure o fontes do Market Data Hub na Aba 1 antes de atualizar este ativo.');
           return;
         }
-        await fetchSingleTickerBrapi(tk, { force:true, forceHistory:true, context:'raw_asset_dossier' });
+        await fetchSingleTickerMarket(tk, { force:true, forceHistory:true, context:'raw_asset_dossier' });
         saveAll();
         renderTudo();
         openRawAssetDossier(tk);
       }catch(err){
-        console.error('Falha ao atualizar BRAPI no dossiê bruto:', err);
-        alert('Não foi possível atualizar BRAPI para este ativo: ' + (err?.message || String(err)));
+        console.error('Falha ao atualizar MARKET no dossiê bruto:', err);
+        alert('Não foi possível atualizar MARKET para este ativo: ' + (err?.message || String(err)));
       }
     }
 
@@ -7842,19 +7806,19 @@ function renderEngineSummary(){
       const asset = state.assets[tk] || {};
       const quote = state.quotes[tk] || {};
       const tipo = asset.tipo || classifyTickerType(tk);
-      let brapiQuote = null;
+      let marketQuote = null;
       let yahoo = null;
       let portal = null;
       const sourcesUsed = [];
 
       try{
-        const token = getBrapiToken();
+        const token = getMarketToken();
         if(token){
-          const res = await fetch(`https://brapi.dev/api/quote/${encodeURIComponent(tk)}?range=1y&interval=1d&fundamental=true&dividends=true&token=${encodeURIComponent(token)}`);
+          const res = await fetch(`/api/market/quote/${encodeURIComponent(tk)}?range=1y&interval=1d&fundamental=true&dividends=true&token=${encodeURIComponent(token)}`);
           if(res.ok){
             const data = await res.json();
-            brapiQuote = data?.results?.[0] || null;
-            if(brapiQuote) sourcesUsed.push('Brapi');
+            marketQuote = data?.results?.[0] || null;
+            if(marketQuote) sourcesUsed.push('Market');
           }
         }
       }catch(err){}
@@ -7872,35 +7836,35 @@ function renderEngineSummary(){
       }catch(err){ portal = { portalNotes: [], fundamentals: {}, rawSnapshots: {} }; }
 
       const localHistory = Array.isArray(state.priceHistory[tk]?.points) ? state.priceHistory[tk].points.slice(-260) : [];
-      const pricePoints = (brapiQuote?.historicalDataPrice || []).map(p => ({ date: isoFromUnix(p.date), close: parseNumber(p.close) })).filter(p => p.date && p.close > 0);
+      const pricePoints = (marketQuote?.historicalDataPrice || []).map(p => ({ date: isoFromUnix(p.date), close: parseNumber(p.close) })).filter(p => p.date && p.close > 0);
       const mergedPoints = (pricePoints.length ? pricePoints : (yahoo?.priceHistory?.points || localHistory));
       const stats = percentileMove(mergedPoints);
       const localDivs = state.dividends.filter(d => d.ticker === tk).sort((a,b) => (b.dataCom || b.dataPagamento || '').localeCompare(a.dataCom || a.dataPagamento || ''));
-      const divStats = computeDividendStats(localDivs.slice(0, 24), parseNumber(brapiQuote?.regularMarketPrice || quote.precoAtual));
+      const divStats = computeDividendStats(localDivs.slice(0, 24), parseNumber(marketQuote?.regularMarketPrice || quote.precoAtual));
 
       const payload = {
         ticker: tk,
         cachedAt: new Date().toISOString(),
         sourcesUsed: [...new Set(sourcesUsed)],
         marketData: {
-          nome: brapiQuote?.longName || brapiQuote?.shortName || asset.nome || tk,
+          nome: marketQuote?.longName || marketQuote?.shortName || asset.nome || tk,
           tipo,
-          sector: brapiQuote?.sector || portal?.fundamentals?.sector || asset.setor || '',
-          regularMarketPrice: parseNumber(brapiQuote?.regularMarketPrice || quote.precoAtual),
-          previousClose: parseNumber(brapiQuote?.regularMarketPreviousClose || quote.precoFechamentoAnterior),
-          marketCap: parseNumber(brapiQuote?.marketCap || quote.marketCap),
-          volume: parseNumber(brapiQuote?.regularMarketVolume || quote.volume),
-          currency: brapiQuote?.currency || 'BRL'
+          sector: marketQuote?.sector || portal?.fundamentals?.sector || asset.setor || '',
+          regularMarketPrice: parseNumber(marketQuote?.regularMarketPrice || quote.precoAtual),
+          previousClose: parseNumber(marketQuote?.regularMarketPreviousClose || quote.precoFechamentoAnterior),
+          marketCap: parseNumber(marketQuote?.marketCap || quote.marketCap),
+          volume: parseNumber(marketQuote?.regularMarketVolume || quote.volume),
+          currency: marketQuote?.currency || 'BRL'
         },
         fundamentals: {
-          longBusinessSummary: brapiQuote?.longBusinessSummary || '',
-          marketCap: parseNumber(brapiQuote?.marketCap || quote.marketCap),
-          pe: brapiQuote?.priceEarnings?.toString?.() || portal?.fundamentals?.pe || '',
-          pb: brapiQuote?.priceToBook?.toString?.() || portal?.fundamentals?.pb || '',
-          evEbitda: brapiQuote?.enterpriseToEbitda?.toString?.() || '',
-          eps: brapiQuote?.earningsPerShare?.toString?.() || '',
-          roe: brapiQuote?.returnOnEquity?.toString?.() || '',
-          dividendYield: brapiQuote?.dividendYield?.toString?.() || portal?.fundamentals?.dividendYield || ''
+          longBusinessSummary: marketQuote?.longBusinessSummary || '',
+          marketCap: parseNumber(marketQuote?.marketCap || quote.marketCap),
+          pe: marketQuote?.priceEarnings?.toString?.() || portal?.fundamentals?.pe || '',
+          pb: marketQuote?.priceToBook?.toString?.() || portal?.fundamentals?.pb || '',
+          evEbitda: marketQuote?.enterpriseToEbitda?.toString?.() || '',
+          eps: marketQuote?.earningsPerShare?.toString?.() || '',
+          roe: marketQuote?.returnOnEquity?.toString?.() || '',
+          dividendYield: marketQuote?.dividendYield?.toString?.() || portal?.fundamentals?.dividendYield || ''
         },
         priceHistory: {
           points: mergedPoints.slice(-260),
@@ -7918,7 +7882,7 @@ function renderEngineSummary(){
         },
         portalNotes: portal?.portalNotes || [],
         rawSnapshots: portal?.rawSnapshots || {},
-        coverageSummary: summarizeCoverage({ sourcesUsed, marketData: { sector: brapiQuote?.sector || portal?.fundamentals?.sector || asset.setor || '' }, fundamentals: { pe: brapiQuote?.priceEarnings || portal?.fundamentals?.pe || '', pb: brapiQuote?.priceToBook || portal?.fundamentals?.pb || '', evEbitda: brapiQuote?.enterpriseToEbitda || '' }, portalNotes: portal?.portalNotes || [] })
+        coverageSummary: summarizeCoverage({ sourcesUsed, marketData: { sector: marketQuote?.sector || portal?.fundamentals?.sector || asset.setor || '' }, fundamentals: { pe: marketQuote?.priceEarnings || portal?.fundamentals?.pe || '', pb: marketQuote?.priceToBook || portal?.fundamentals?.pb || '', evEbitda: marketQuote?.enterpriseToEbitda || '' }, portalNotes: portal?.portalNotes || [] })
       };
       setCachedEnrichment(tk, payload);
       return payload;
@@ -8161,7 +8125,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       return `Analise o ativo ${payload.ticker} de forma completa, profissional e imparcial, como um analista de mercado.
 
 Comece sempre explicando claramente o que a empresa ou fundo faz, seu modelo de negócio, setor, mercado em que atua e como gera receita.
-Use prioritariamente os dados estruturados enviados pelo sistema, que já tentam combinar Brapi, Yahoo Finance, Status Invest, Investidor10 e Fundamentus.
+Use prioritariamente os dados estruturados enviados pelo sistema, que já tentam combinar Market, Yahoo Finance, Status Invest, Investidor10 e Fundamentus.
 NÃO diga que os dados estão indisponíveis se houver dados parciais no contexto.
 Quando houver lacunas, explique exatamente o que falta e o que já foi confirmado.
 NÃO foque apenas em dividendos.
@@ -8558,7 +8522,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       <div class="spinner"></div>
       <p>${mode === 'captura' ? 'A IA está avaliando o evento atual do radar, o contexto do ativo e a coerência da captura neste momento.' : 'A IA está montando uma leitura ampla do ativo, incluindo o que a empresa ou fundo faz, características gerais, mercado, fundamentos, riscos e tese de investimento.'}</p>
       <div class="card">
-        <p style="margin-bottom:0">Buscando e consolidando dados com prioridade para <b>Brapi</b> e complementos públicos antes de gerar a análise final.</p>
+        <p style="margin-bottom:0">Buscando e consolidando dados com prioridade para <b>Market</b> e complementos públicos antes de gerar a análise final.</p>
       </div>
     </div>
   </div>
@@ -8569,7 +8533,7 @@ Preencha integralmente os campos do JSON solicitado.`;
           const loadingHtml = `
             <h2 style="margin-top:0">Gerando ${mode === 'captura' ? 'análise de captura' : 'análise completa'}: ${escapeHtml(ticker)}</h2>
             <div class="section-note"><b>${mode === 'captura' ? 'Processando evento atual.' : 'Processando análise ampla do ativo.'}</b> ${mode === 'captura' ? 'A IA está avaliando o evento atual, o contexto do ativo e a coerência da captura neste momento.' : 'A IA está construindo uma leitura ampla do ativo, incluindo o que a empresa ou fundo faz, características gerais, mercado, fundamentos, riscos e tese de investimento.'}</div>
-            <div style="display:flex;align-items:center;gap:12px;margin:16px 0"><div style="width:28px;height:28px;border:3px solid #1B2430;border-top:3px solid #00D4FF;border-radius:50%;animation:spin 1s linear infinite"></div><div style="color:#9FB0C3">Buscando dados na Brapi e complementos públicos antes da chamada da IA...</div></div>
+            <div style="display:flex;align-items:center;gap:12px;margin:16px 0"><div style="width:28px;height:28px;border:3px solid #1B2430;border-top:3px solid #00D4FF;border-radius:50%;animation:spin 1s linear infinite"></div><div style="color:#9FB0C3">Buscando dados na Market e complementos públicos antes da chamada da IA...</div></div>
             <style>@keyframes spin{to{transform:rotate(360deg)}}
     .gwi-guide-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
     .gwi-guide-box{padding:18px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035)}
@@ -9018,103 +8982,27 @@ Preencha integralmente os campos do JSON solicitado.`;
       return { ticker, price, vpa, pvp, dy, lastDividend, liquidity, segment, management, raw };
     }
 
-    async function fetchBrapiFIIIndicatorsBatch(tickers){
-      const token = getBrapiToken();
-      if(!token || !tickers.length) return {};
-      const symbols = tickers.join(',');
-      const urls = [
-        `https://brapi.dev/api/v2/fii/indicators?symbols=${encodeURIComponent(symbols)}&token=${encodeURIComponent(token)}`,
-        `https://brapi.dev/api/v2/fii/indicators?symbols=${encodeURIComponent(symbols)}`
-      ];
-      for(const url of urls){
-        try{
-          const headers = url.includes('token=') ? {} : { Authorization: `Bearer ${token}` };
-          const res = await fetch(url, { headers });
-          if(!res.ok) continue;
-          const data = await res.json();
-          const list = data?.indicators || data?.results || data?.data || data?.fiis || [];
-          const arr = Array.isArray(list) ? list : Object.values(list || {});
-          const out = {};
-          for(const item of arr){
-            const n = normalizeFIIIndicator(item);
-            if(n?.ticker) out[n.ticker] = n;
-          }
-          if(Object.keys(out).length) return out;
-        }catch(err){
-          console.warn('Falha indicadores FII Brapi:', err);
-        }
-      }
-      return {};
-    }
+    async function fetchMarketFIIIndicatorsBatch(tickers){
+  const result={};
+  for(const tk of tickers||[]){
+    const item=state.fiiMarket?.[tk]||{};
+    if(item.vpa>0)result[tk]={ticker:tk,vpa:item.vpa,pvp:item.pvp||0,
+      dy:item.dy12m||0,price:state.quotes?.[tk]?.precoAtual||item.preco||0,raw:item.rawIndicator||{}};
+  }
+  return result;
+}
+async function fetchMarketFIIQuotesBatch(tickers){
+  const result={};
+  for(const tk of tickers||[]){
+    const q=state.quotes?.[tk]||{};
+    if(q.precoAtual>0)result[tk]={ticker:tk,price:q.precoAtual,previousClose:q.precoFechamentoAnterior||q.precoAtual,
+      variationPct:q.variacaoDiaPct||0,volume:q.volume||0,name:state.assets?.[tk]?.nome||tk,
+      dividends12m:state.analytics?.[tk]?.somaProventos12m||0,raw:q};
+  }
+  return result;
+}
 
-    async function fetchBrapiFIIQuotesBatch(tickers){
-      const token = getBrapiToken();
-      if(!token || !tickers.length) return {};
-      try{
-        const url = `https://brapi.dev/api/quote/${encodeURIComponent(tickers.join(','))}?range=12mo&interval=1d&fundamental=true&dividends=true&token=${encodeURIComponent(token)}`;
-        const res = await fetch(url);
-        if(!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        const list = data?.results || [];
-        const out = {};
-        for(const r of list){
-          const tk = normalizeTicker(r.symbol || r.shortName || r.longName);
-          if(!isFIITicker(tk)) continue;
-          const price = parseNumber(r.regularMarketPrice);
-          const prev = parseNumber(r.regularMarketPreviousClose || price);
-          const divs = r.dividendsData?.cashDividends || r.dividends || [];
-          const lastDiv = Array.isArray(divs) && divs.length ? parseNumber(divs[0].rate || divs[0].value || divs[0].amount) : 0;
-          const sumDiv12 = Array.isArray(divs) ? divs.reduce((acc,d)=>{
-            const dt = sanitizeMarketDate(String(d.paymentDate || d.date || d.exDate || d.approvedOn || '').slice(0,10));
-            const days = dt ? diffDays(dt, todayIso()) : null;
-            const recent = days !== null ? days >= -370 && days <= 10 : true;
-            return recent ? acc + parseNumber(d.rate || d.value || d.amount) : acc;
-          },0) : 0;
-          out[tk] = {
-            ticker: tk,
-            name: r.longName || r.shortName || tk,
-            price,
-            previousClose: prev,
-            variationPct: prev > 0 && price > 0 ? ((price - prev) / prev) * 100 : 0,
-            volume: parseNumber(r.regularMarketVolume),
-            marketCap: parseNumber(r.marketCap),
-            dividendYield: parseNumber(r.dividendYield) || (price > 0 && sumDiv12 > 0 ? (sumDiv12 / price) * 100 : 0),
-            dividends12m: sumDiv12,
-            lastDividend: lastDiv,
-            raw: r
-          };
-          if(price > 0){
-            state.quotes[tk] = {
-              ticker: tk,
-              precoAtual: price,
-              precoFechamentoAnterior: prev || price,
-              variacaoDiaPct: prev > 0 ? ((price - prev) / prev) * 100 : 0,
-              volume: parseNumber(r.regularMarketVolume),
-              marketCap: parseNumber(r.marketCap),
-              updatedAt: new Date().toISOString(),
-              source: 'brapi-fii'
-            };
-          }
-          if(!state.assets[tk]){
-            state.assets[tk] = { ticker:tk, nome:r.longName || r.shortName || tk, tipo:'FII', setor:'', categoria:'FII', moeda:'BRL', ativo:true };
-          } else {
-            state.assets[tk].tipo = 'FII';
-            state.assets[tk].nome = state.assets[tk].nome || r.longName || r.shortName || tk;
-          }
-        }
-        return out;
-      }catch(err){
-        console.warn('Falha cotações FII Brapi:', err);
-        return {};
-      }
-    }
-
-    async function refreshFIIUniverseFromBrapi(){
-      const token = getBrapiToken();
-      if(!token){
-        showAdminConfigWarning('Sistema em manutenção ou token Brapi não configurado pelo administrador.');
-        return;
-      }
+    async function refreshFIIUniverseFromMarket(){
       const universe = getFIIUniverseForAnalysis();
       if(!universe.length){
         alert('Informe FIIs no universo monitorado ou importe a carteira B3.');
@@ -9122,13 +9010,13 @@ Preencha integralmente os campos do JSON solicitado.`;
       }
       setFIIUniverse(universe);
       const status = $('fiiStatus');
-      if(status) status.textContent = `Brapi FII: buscando ${universe.length} FIIs...`;
+      if(status) status.textContent = `Market FII: buscando ${universe.length} FIIs...`;
 
       let loaded = 0;
       for(const group of chunkArray(universe, 20)){
         const [indicators, quotes] = await Promise.all([
-          fetchBrapiFIIIndicatorsBatch(group),
-          fetchBrapiFIIQuotesBatch(group)
+          fetchMarketFIIIndicatorsBatch(group),
+          fetchMarketFIIQuotesBatch(group)
         ]);
 
         for(const tk of group){
@@ -9148,7 +9036,7 @@ Preencha integralmente os campos do JSON solicitado.`;
             segmento: ind.segment || previous.segmento || '',
             gestor: ind.management || previous.gestor || '',
             variacaoPct: qt.variationPct || previous.variacaoPct || 0,
-            fonte: 'brapi-fii',
+            fonte: 'consolidated-cache',
             atualizadoEm: new Date().toISOString(),
             rawIndicator: ind.raw || previous.rawIndicator || null,
             rawQuote: qt.raw || previous.rawQuote || null
@@ -9159,7 +9047,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       saveFIIState();
       saveAll();
       renderTudo();
-      if(status) status.textContent = `Brapi FII: ${loaded} FIIs enriquecidos`;
+      if(status) status.textContent = `Market FII: ${loaded} FIIs enriquecidos`;
       alert(`FII Intelligence atualizado com ${loaded} FIIs.`);
     }
 
@@ -9244,7 +9132,7 @@ Preencha integralmente os campos do JSON solicitado.`;
         if(!market.atualizadoEm) {
           action = 'INVESTIGAR';
           temp = 'Frio';
-          reasons.push('indicadores Brapi ainda não enriquecidos');
+          reasons.push('indicadores Market ainda não enriquecidos');
         }
         if(!owned && market.atualizadoEm && score >= 72){
           action = 'ESTUDAR_ENTRADA';
@@ -9384,11 +9272,11 @@ Preencha integralmente os campos do JSON solicitado.`;
         • FIIs da carteira geraram ${formatBRL(ownedIncome)} em renda recorrente localizada na B3.<br>
         • ${externalBest} FIIs fora da carteira aparecem como candidatos de estudo pelo motor.<br>
         • P/VP médio monitorado: ${avgPvp ? round(avgPvp,2) : '---'}.<br>
-        • O motor privilegia dados reais da B3 para sua carteira e Brapi para ampliar o radar externo.
+        • O motor privilegia dados reais da B3 para sua carteira e Market para ampliar o radar externo.
       `;
 
       if(!rows.length){
-        tb.innerHTML = `<tr><td colspan="14" class="center muted">Nenhum FII encontrado para os filtros atuais. Carregue o radar sugerido, adicione tickers ou importe B3/Brapi.</td></tr>`;
+        tb.innerHTML = `<tr><td colspan="14" class="center muted">Nenhum FII encontrado para os filtros atuais. Carregue o radar sugerido, adicione tickers ou importe B3/Market.</td></tr>`;
       }else{
         tb.innerHTML = rows.map(r=>`
           <tr>
@@ -9455,13 +9343,13 @@ Preencha integralmente os campos do JSON solicitado.`;
         </div>
         <div class="card">
           <h3 class="section-title">🗓️ Próximos eventos de provento</h3>
-          ${futureDivs.length ? `<table><thead><tr><th>Data-Com</th><th>Pagamento</th><th class="right">Valor/Cota</th></tr></thead><tbody>${futureDivs.map(d=>`<tr><td>${formatDateBR(d.dataCom)}</td><td>${formatDateBR(d.dataPagamento)}</td><td class="right">${formatBRL(d.valorUnitario)}</td></tr>`).join('')}</tbody></table>` : '<p class="muted">Nenhum evento futuro localizado no calendário importado/Brapi.</p>'}
+          ${futureDivs.length ? `<table><thead><tr><th>Data-Com</th><th>Pagamento</th><th class="right">Valor/Cota</th></tr></thead><tbody>${futureDivs.map(d=>`<tr><td>${formatDateBR(d.dataCom)}</td><td>${formatDateBR(d.dataPagamento)}</td><td class="right">${formatBRL(d.valorUnitario)}</td></tr>`).join('')}</tbody></table>` : '<p class="muted">Nenhum evento futuro localizado no calendário importado/Market.</p>'}
         </div>
         <div class="card">
           <h3 class="section-title">🏛️ Últimos movimentos B3</h3>
           ${b3Events.length ? `<table><thead><tr><th>Data</th><th>Movimento</th><th>Natureza</th><th class="right">Qtd</th><th class="right">Valor</th></tr></thead><tbody>${b3Events.slice(0,15).map(m=>`<tr><td>${formatDateBR(m.data)}</td><td>${escapeHtml(m.movimentoOriginal||m.movimentacao||'')}</td><td>${escapeHtml(m.natureza||m.naturezaRenda||'')}</td><td class="right">${round(m.quantidade,4)}</td><td class="right">${formatBRL(m.valor)}</td></tr>`).join('')}</tbody></table>` : '<p class="muted">Sem movimentos B3 para este FII.</p>'}
         </div>
-        <div class="mini">Dados Brapi: ${market.atualizadoEm ? new Date(market.atualizadoEm).toLocaleString('pt-BR') : 'não enriquecido'}.</div>
+        <div class="mini">Dados Market: ${market.atualizadoEm ? new Date(market.atualizadoEm).toLocaleString('pt-BR') : 'não enriquecido'}.</div>
       `);
     }
 
@@ -9471,7 +9359,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       if(r.action === 'ESTUDAR_ENTRADA') parts.push('O fundo não está na carteira e surgiu como oportunidade externa; o próximo passo é validar segmento, liquidez, histórico e relatório gerencial.');
       if(r.action === 'REVISAR') parts.push('O fundo exige revisão por concentração, baixa renda recorrente ou retorno total insuficiente frente ao capital ocupado.');
       if(r.action === 'EVITAR') parts.push('A leitura atual não justifica entrada: o score é fraco ou o conjunto preço/renda/risco não compensa.');
-      if(r.action === 'INVESTIGAR') parts.push('Faltam dados suficientes da Brapi ou há lacuna entre mercado, carteira e movimentação B3.');
+      if(r.action === 'INVESTIGAR') parts.push('Faltam dados suficientes da Market ou há lacuna entre mercado, carteira e movimentação B3.');
       if(r.pvp > 1.15) parts.push('P/VP acima de 1,15 sugere prêmio relevante; exigir margem de segurança maior.');
       if(r.pvp > 0 && r.pvp < .85) parts.push('P/VP abaixo de 0,85 sugere desconto patrimonial, mas pode refletir risco estrutural.');
       if(r.dy12m > 10) parts.push('DY de mercado elevado aumenta atratividade, mas também exige checar sustentabilidade.');
@@ -9927,7 +9815,7 @@ Preencha integralmente os campos do JSON solicitado.`;
       rows = mcSortRows('decision', rows, 'confianca', 'desc');
       const head = $('tbodyDecision')?.closest('table')?.querySelector('thead tr');
       if(head) head.innerHTML = [mcHeader('decision','ticker','Ativo'), mcHeader('decision','action','Decisão'), mcHeader('decision','temperatura','Temperatura'), mcHeader('decision','confianca','Confiança','right'), mcHeader('decision','valorMercado','Valor Atual','right'), mcHeader('decision','retornoTotal','Retorno Total','right'), mcHeader('decision','rendaRecorrente','Renda Recorr.','right'), mcHeader('decision','pesoCarteira','Peso Carteira','right'), '<th>Motivo</th>', '<th class="center">Dossiê</th>'].join('');
-      tb.innerHTML = rows.slice(0,600).map(r => `<tr><td><b>${r.ticker}</b><span class="mini">${r.source}${r.mcScore!==undefined?` · MC ${round(r.mcScore,1)}`:''}</span></td><td><span class="badge ${decisionBadgeClass(r.action)}">${decisionLabel(r.action)}</span></td><td><span class="badge ${temperatureBadgeClass(r.temperatura)}">${r.temperatura}</span></td><td class="right"><b>${Number(r.confianca||0).toFixed(2)}</b></td><td class="right">${formatBRL(r.valorMercado)}</td><td class="right">${formatBRL(r.retornoTotal)}<span class="mini">${formatPct(r.retornoPct)}</span></td><td class="right">${formatBRL(r.rendaRecorrente)}<span class="mini">peso renda ${formatPct(r.pesoRenda)}</span></td><td class="right">${formatPct(r.pesoCarteira)}</td><td>${r.motivo}</td><td class="center"><button class="btn-secondary" onclick="openDecisionDossier('${r.ticker}')">Abrir</button></td></tr>`).join('') || '<tr><td colspan="10" class="center muted">Sem dados suficientes. Importe B3 Ledger, calendário de eventos e/ou cotações Brapi.</td></tr>';
+      tb.innerHTML = rows.slice(0,600).map(r => `<tr><td><b>${r.ticker}</b><span class="mini">${r.source}${r.mcScore!==undefined?` · MC ${round(r.mcScore,1)}`:''}</span></td><td><span class="badge ${decisionBadgeClass(r.action)}">${decisionLabel(r.action)}</span></td><td><span class="badge ${temperatureBadgeClass(r.temperatura)}">${r.temperatura}</span></td><td class="right"><b>${Number(r.confianca||0).toFixed(2)}</b></td><td class="right">${formatBRL(r.valorMercado)}</td><td class="right">${formatBRL(r.retornoTotal)}<span class="mini">${formatPct(r.retornoPct)}</span></td><td class="right">${formatBRL(r.rendaRecorrente)}<span class="mini">peso renda ${formatPct(r.pesoRenda)}</span></td><td class="right">${formatPct(r.pesoCarteira)}</td><td>${r.motivo}</td><td class="center"><button class="btn-secondary" onclick="openDecisionDossier('${r.ticker}')">Abrir</button></td></tr>`).join('') || '<tr><td colspan="10" class="center muted">Sem dados suficientes. Importe B3 Ledger, calendário de eventos e/ou cotações Market.</td></tr>';
     }
 
     function renderFIIIntelligence(){
@@ -9968,13 +9856,13 @@ Preencha integralmente os campos do JSON solicitado.`;
       const ownedIncome = rowsAll.filter(r=>r.owned).reduce((a,r)=>a+r.rendaRecorrente,0);
       const externalBest = rowsAll.filter(r=>!r.owned && r.score >= 70).length;
       const avgPvp = rowsAll.filter(r=>r.pvp>0).reduce((a,r)=>a+r.pvp,0) / Math.max(1, rowsAll.filter(r=>r.pvp>0).length);
-      if($('fiiDiagnosticBox')) $('fiiDiagnosticBox').innerHTML = `<b>Leitura integrada:</b><br>• FIIs da carteira geraram ${formatBRL(ownedIncome)} em renda recorrente localizada na B3.<br>• ${externalBest} FIIs fora da carteira aparecem como candidatos de estudo pelo motor.<br>• P/VP médio monitorado: ${avgPvp ? round(avgPvp,2) : '---'}.<br>• O motor privilegia dados reais da B3 para sua carteira e Brapi para ampliar o radar externo.`;
+      if($('fiiDiagnosticBox')) $('fiiDiagnosticBox').innerHTML = `<b>Leitura integrada:</b><br>• FIIs da carteira geraram ${formatBRL(ownedIncome)} em renda recorrente localizada na B3.<br>• ${externalBest} FIIs fora da carteira aparecem como candidatos de estudo pelo motor.<br>• P/VP médio monitorado: ${avgPvp ? round(avgPvp,2) : '---'}.<br>• O motor privilegia dados reais da B3 para sua carteira e Market para ampliar o radar externo.`;
       mcRenderStatus('fii', [], 'fiiStatus');
       rows = mcSortRows('fii', rows, 'score', 'desc');
       const head = $('theadFII');
       if(head) head.innerHTML = '<tr>' + [mcHeader('fii','ticker','FII'), mcHeader('fii','action','Status'), mcHeader('fii','temp','Temp.'), mcHeader('fii','segmento','Segmento'), mcHeader('fii','score','Score','right'), mcHeader('fii','precoAtual','Preço','right'), mcHeader('fii','pvpEquilibrado','P/VP Eq.','right'), mcHeader('fii','dy12m','DY 12m','right'), mcHeader('fii','yoc','YOC Real','right'), mcHeader('fii','rendaTotal','Renda B3','right'), mcHeader('fii','retornoTotal','Retorno Total','right'), mcHeader('fii','peso','Peso','right'), '<th>Diagnóstico</th>', '<th class="center">Dossiê</th>'].join('') + '</tr>';
       if(!rows.length){
-        tb.innerHTML = `<tr><td colspan="14" class="center muted">Nenhum FII encontrado para os filtros atuais. Carregue o radar sugerido, adicione tickers ou importe B3/Brapi.</td></tr>`;
+        tb.innerHTML = `<tr><td colspan="14" class="center muted">Nenhum FII encontrado para os filtros atuais. Carregue o radar sugerido, adicione tickers ou importe B3/Market.</td></tr>`;
       }else{
         tb.innerHTML = rows.map(r=>`<tr><td><b>${escapeHtml(r.ticker)}</b><span class="mini">${escapeHtml(r.nome || '')}${r.mcScore!==undefined?` · MC ${round(r.mcScore,1)}`:''}</span></td><td>${actionBadgeFII(r.action)}</td><td>${escapeHtml(r.temp)}</td><td>${escapeHtml(r.segmento || '---')}</td><td class="right"><b>${round(r.score,1)}</b></td><td class="right">${r.precoAtual ? formatBRL(r.precoAtual) : '---'}</td><td class="right">${r.pvp ? round(r.pvp,2) : '---'}</td><td class="right">${r.dy12m ? formatPct(r.dy12m) : '---'}</td><td class="right">${r.yoc ? formatPct(r.yoc) : '---'}</td><td class="right">${formatBRL(r.rendaTotal)}</td><td class="right">${formatBRL(r.retornoTotal)}</td><td class="right">${r.peso ? formatPct(r.peso) : '---'}</td><td>${escapeHtml(r.diagnosis)}</td><td class="center"><button class="btn-secondary" onclick="openFIIDossier('${r.ticker}')">Abrir</button></td></tr>`).join('');
       }
