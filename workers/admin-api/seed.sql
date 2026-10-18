@@ -25,16 +25,16 @@ INSERT INTO user_activity(user_id,activity_date,event_name) VALUES
   ('u_004',date('now','-24 day'),'dashboard_open');
 
 INSERT INTO usage_events(user_id,kind,quantity,cost_brl,created_at,source) VALUES
-  ('u_001','brapi_call',1400,38.20,datetime('now','-2 day'),'worker'),
-  ('u_002','brapi_call',1180,32.10,datetime('now','-4 day'),'worker'),
-  ('u_004','brapi_call',2300,61.50,datetime('now','-5 day'),'worker'),
+  ('u_001','market_call',1400,38.20,datetime('now','-2 day'),'worker'),
+  ('u_002','market_call',1180,32.10,datetime('now','-4 day'),'worker'),
+  ('u_004','market_call',2300,61.50,datetime('now','-5 day'),'worker'),
   ('u_001','ai_tokens',880000,126.40,datetime('now','-2 day'),'ai-gateway'),
   ('u_002','ai_tokens',540000,77.30,datetime('now','-3 day'),'ai-gateway'),
   ('u_004','ai_tokens',1220000,174.60,datetime('now','-6 day'),'ai-gateway'),
   ('system','cloud_request',48000,34.90,datetime('now','-3 day'),'cloudflare');
 
 INSERT INTO cost_events(category,amount_brl,created_at,source,note) VALUES
-  ('brapi',131.80,datetime('now','-2 day'),'manual','Consumo mensal parcial Brapi'),
+  ('market',131.80,datetime('now','-2 day'),'manual','Consumo mensal parcial Market'),
   ('ai',378.30,datetime('now','-2 day'),'manual','Tokens IA embutida'),
   ('cloud',64.90,datetime('now','-2 day'),'manual','Cloudflare Workers/D1'),
   ('support',90.00,datetime('now','-2 day'),'manual','Suporte operacional'),

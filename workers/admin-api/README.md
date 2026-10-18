@@ -93,13 +93,13 @@ npx wrangler d1 execute radar-admin-finops --remote --file seed.sql
 - Sessões expiram em 30 minutos.
 - Tokens são assinados com HMAC SHA-256 por `ADMIN_JWT_SECRET`.
 - Senha é validada por hash SHA-256 com salt armazenado em secret do Worker.
-- Secrets de Brapi, IA e provedores devem ser usados apenas no Worker ou em jobs de ingestão.
+- Secrets de Market, IA e provedores devem ser usados apenas no Worker ou em jobs de ingestão.
 
 ## Shape dos dados
 
 O painel calcula:
 
 - MRR, DAU, MAU, conversão, retenção.
-- Custo Brapi, IA, cloud, suporte e pagamento.
+- Custo Market, IA, cloud, suporte e pagamento.
 - Custo por MAU, custo variável por pagante, margem bruta, LTV, LTV/CAC e preço ideal.
 - Alertas ativos para custo por usuário, margem, retenção e aquisição.
