@@ -14,6 +14,7 @@ function corsHeaders(request, env) {
     .map(x => x.trim())
     .filter(Boolean);
   const defaults = [
+    'https://guido-dividend-system.guidorafaelchaves.workers.dev',
     'https://guido-dividend-system.pages.dev',
     'https://guidorafaelchaves.github.io'
   ];
@@ -56,24 +57,33 @@ function requireTicker(value) {
   return ticker;
 }
 
-async function handleBrapiQuote(request, env, cors) {
-  const user = await verifySupabaseUser(request, env);
-  if (!user?.id) return bad('Unauthorized', 401, cors);
-  const url = new URL(request.url);
-  const ticker = requireTicker(url.searchParams.get('ticker'));
-  const qs = new URLSearchParams({ dividends: 'true', token: env.BRAPI_TOKEN });
-  const range = url.searchParams.get('range');
-  const interval = url.searchParams.get('interval');
-  if (range) qs.set('range', range);
-  if (interval) qs.set('interval', interval);
-  const upstream = await fetch(`https://brapi.dev/api/quote/${encodeURIComponent(ticker)}?${qs.toString()}`, {
-    headers: { accept: 'application/json' }
-  });
-  const body = await upstream.text();
-  return new Response(body, {
-    status: upstream.status,
-    headers: { ...JSON_HEADERS, ...cors }
-  });
+// External official data are non-quote observations; never label them as live B3 prices.
+async function handleMarketSources(request,env,cors){
+  const user=await verifySupabaseUser(request,env);
+  if(!user?.id)return bad('Unauthorized',401,cors);
+  const sources=[
+    {id:'b3-file',kind:'closing-prices',mode:'manual-import',automatic:false},
+    {id:'cvm-open-data',kind:'fundamentals',mode:'official-open-data',automatic:true},
+    {id:'bcb-sgs',kind:'macro-interest',mode:'official-open-data',automatic:true}
+  ];
+  if(request.method==='GET')return json({sources,quoteFeedActive:false},200,cors);
+  async function read(name,url){
+    try{
+      const res=await fetch(url,{headers:{accept:'application/json'},signal:AbortSignal.timeout(7000)});
+      if(!res.ok)throw new Error('HTTP '+res.status);
+      const data=await res.json();
+      if(name==='bcb')return {source:name,ok:true,series:'SGS-11',latest:Array.isArray(data)?data.at(-1):null};
+      if(!data?.success)throw new Error('Catálogo sem sucesso');
+      return {source:name,ok:true,dataset:data.result?.name||'fii-doc-inf_mensal',
+        files:(data.result?.resources||[]).slice(-12).map(x=>({name:x.name,updated:x.last_modified,url:x.url}))};
+    }catch(e){return {source:name,ok:false,error:String(e?.message||e)};}
+  }
+  const observations=await Promise.all([
+    read('bcb','https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados/ultimos/1?formato=json'),
+    read('cvm','https://dados.cvm.gov.br/api/3/action/package_show?id=fii-doc-inf_mensal')
+  ]);
+  return json({at:new Date().toISOString(),sources,observations,
+    quoteFeedActive:false,message:'CVM e BCB não são feeds de preços da B3. Importe COTAHIST ou CSV.'},200,cors);
 }
 
 async function handleOpenAIAnalysis(request, env, cors) {
@@ -112,7 +122,8 @@ export default {
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
     const url = new URL(request.url);
     try {
-      if (request.method === 'GET' && url.pathname === '/api/brapi/quote') return handleBrapiQuote(request, env, cors);
+      if ((request.method === 'GET' || request.method === 'POST') && url.pathname === '/api/market/sources') return handleMarketSources(request, env, cors);
+      if (request.method === 'GET' && url.pathname === '/api/market/quote') return bad('Nenhum feed licenciado de cotações configurado. Importe COTAHIST/CSV.', 422, cors);
       if (request.method === 'POST' && url.pathname === '/api/openai/analysis') return handleOpenAIAnalysis(request, env, cors);
       if (request.method === 'GET' && url.pathname === '/health') return json({ ok: true, service: 'radar-saas-gateway' }, 200, cors);
       return bad('Not found', 404, cors);
