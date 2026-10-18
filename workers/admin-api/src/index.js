@@ -232,12 +232,12 @@ async function buildMetrics(env, period) {
       conversionPct: (trials + paid) > 0 ? (paid / (trials + paid)) * 100 : 0
     },
     usage: {
-      brapiCalls: usage.brapi_call || 0,
+      marketCalls: usage.market_call || 0,
       aiTokens: usage.ai_tokens || 0,
       cloudRequests: usage.cloud_request || 0
     },
     costs: {
-      brapi: costs.brapi || 0,
+      market: costs.market || 0,
       ai: costs.ai || 0,
       cloud: costs.cloud || 0,
       support: costs.support || 0,
@@ -245,7 +245,7 @@ async function buildMetrics(env, period) {
     },
     previous: { mrr: prevMrr, dau: prevDau, mau: prevMau, totalCost: previousCost },
     thresholds: {
-      brapiCostPerUser: Number(env.THRESHOLD_BRAPI_COST_PER_USER || 1.2),
+      marketCostPerUser: Number(env.THRESHOLD_MARKET_COST_PER_USER || 1.2),
       aiCostPerUser: Number(env.THRESHOLD_AI_COST_PER_USER || 2.4),
       grossMarginMin: Number(env.THRESHOLD_GROSS_MARGIN_MIN || 72),
       ltvCacMin: Number(env.THRESHOLD_LTV_CAC_MIN || 3),

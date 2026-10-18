@@ -1,10 +1,10 @@
 # Radar SaaS Gateway
 
-Camada serverless para o modo público multi-tenant. O front-end estático chama este Worker com o JWT do BaaS; o Worker valida a sessão no Supabase e só então usa os secrets de Brapi/OpenAI.
+Camada serverless para o modo público multi-tenant. O front-end estático chama este Worker com o JWT do BaaS; o Worker valida a sessão no Supabase e só então usa os secrets de Market/OpenAI.
 
 ## Rotas
 
-- `GET /api/brapi/quote?ticker=MXRF11&range=1y&interval=1d`
+- `GET /api/market/quote?ticker=MXRF11&range=1y&interval=1d`
 - `POST /api/openai/analysis`
 - `GET /health`
 
@@ -12,7 +12,7 @@ Camada serverless para o modo público multi-tenant. O front-end estático chama
 
 ```bash
 npx wrangler secret put SUPABASE_ANON_KEY
-npx wrangler secret put BRAPI_TOKEN
+npx wrangler secret put MARKET_TOKEN
 npx wrangler secret put OPENAI_API_KEY
 ```
 

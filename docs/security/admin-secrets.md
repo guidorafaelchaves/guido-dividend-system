@@ -4,7 +4,7 @@
 
 Nenhum secret fica no frontend, IndexedDB, localStorage ou bundle publico.
 
-Tokens Brapi, OpenAI e equivalentes devem ficar como Worker secrets ou armazenamento backend protegido.
+Tokens Market, OpenAI e equivalentes devem ficar como Worker secrets ou armazenamento backend protegido.
 
 ## Interface
 

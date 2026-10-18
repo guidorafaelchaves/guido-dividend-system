@@ -12,7 +12,7 @@ for (const table of [
   'raw_import_rows',
   'canonical_financial_events',
   'financial_event_sources',
-  'brapi_responses',
+  'market_responses',
   'event_reconciliation_cases',
   'publication_batches',
   'published_event_cache',
@@ -25,7 +25,7 @@ for (const route of [
   '/admin/data-center',
   '/admin/imports/b3/detect',
   '/admin/imports/b3',
-  '/admin/brapi/plan',
+  '/admin/market/plan',
   '/admin/events',
   '/admin/publication/prepare',
   '/admin/publication/publish',
@@ -35,16 +35,22 @@ for (const route of [
 }
 
 assert.ok(api.includes('B3_RADAR_ALIASES'));
-assert.ok(api.includes('sync_brapi_fii_events'));
-assert.ok(api.includes('BRAPI_TOKEN'));
-assert.ok(!portal.includes('cfgBrapiToken'));
-assert.ok(!admin.includes('cfgBrapiToken'));
+assert.ok(api.includes('check_market_sources'));
+assert.ok(api.includes('/me/market/refresh'));
+assert.ok(api.includes('/admin/market/import'));
+assert.ok(api.includes('refreshPublicMarketSources'));
+assert.ok(!api.includes('MARKET_TOKEN'));
+assert.ok(!api.includes('brapi.dev'));
+assert.ok(fs.existsSync('public/platform/marketHub.js'));
+assert.ok(!portal.toLowerCase().includes('brapi'));
+assert.ok(!portal.includes('cfgMarketToken'));
+assert.ok(!admin.includes('cfgMarketToken'));
 assert.ok(!admin.includes('localStorage'));
 assert.ok(!admin.includes('IndexedDB'));
 assert.ok(admin.includes('credenciais e tokens nao sao mais salvos'));
 assert.ok(portal.includes('Central Administrativa de Proventos'));
 assert.ok(portal.includes('Importar arquivo B3'));
-assert.ok(portal.includes('Sincronizacao Brapi'));
+assert.ok(portal.includes('Sincronizacao Market'));
 assert.ok(portal.includes('adminSavePublishedEvents'));
 assert.ok(portal.includes('adminParseXlsx'));
 assert.ok(portal.includes('DecompressionStream'));

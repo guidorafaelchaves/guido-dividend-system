@@ -14,7 +14,7 @@
     "PBKDF2_ITERATIONS": "60000",
     "EMAIL_ENABLED": "false",
     "BILLING_ENABLED": "false",
-    "BRAPI_SYNC_ENABLED": "false"
+    "MARKET_SYNC_ENABLED": "false"
   },
   "triggers": {
     "crons": [
@@ -40,7 +40,7 @@
         "PBKDF2_ITERATIONS": "60000",
         "EMAIL_ENABLED": "false",
         "BILLING_ENABLED": "false",
-        "BRAPI_SYNC_ENABLED": "false"
+        "MARKET_SYNC_ENABLED": "false"
       },
       "d1_databases": [
         {
@@ -60,7 +60,7 @@
         "PBKDF2_ITERATIONS": "120000",
         "EMAIL_ENABLED": "false",
         "BILLING_ENABLED": "false",
-        "BRAPI_SYNC_ENABLED": "false"
+        "MARKET_SYNC_ENABLED": "false"
       },
       "d1_databases": [
         {

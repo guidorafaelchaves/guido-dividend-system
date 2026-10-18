@@ -10,7 +10,7 @@
 
   const SOURCE_TRUST = Object.freeze({
     B3: 'official',
-    BRAPI: 'market-provider',
+    MARKET: 'market-provider',
     ADMIN: 'curated',
     DEMO: 'demo-fixture',
     LEGACY: 'legacy-adapter'

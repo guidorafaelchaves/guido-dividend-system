@@ -4,7 +4,7 @@ Ordem inicial:
 
 1. Arquivo oficial B3 verificavel.
 2. Documento oficial do administrador ou emissor.
-3. Brapi validada.
+3. Market validada.
 4. Entrada manual.
 5. Estimativa derivada.
 
@@ -14,6 +14,6 @@ Exemplo:
 
 ```text
 B3: pagamento em 14/08
-Brapi: pagamento em 15/08
+Market: pagamento em 15/08
 Resultado: divergencia bloqueadora para revisao.
 ```

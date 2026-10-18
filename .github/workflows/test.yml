@@ -1,0 +1,37 @@
+name: Dividend System verification
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - feat/market-data-hub-20261018
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - name: Plan policy
+        run: node tests/plan-policy.test.mjs
+      - name: Portfolio engine
+        run: node tests/portfolio-engine.test.mjs
+      - name: Calendar analytics
+        run: node tests/calendar-analytics.test.mjs
+      - name: Admin data center
+        run: node tests/admin-data-center.test.mjs
+      - name: Income map
+        run: node tests/income-map-methodology.test.mjs
+      - name: Asset discovery
+        run: node tests/asset-discovery.test.mjs
+      - name: Market data harmonization
+        run: node tests/market-hub.test.mjs
+      - name: Market data integration
+        run: node tests/market-integrity.test.mjs

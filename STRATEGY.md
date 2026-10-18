@@ -16,7 +16,7 @@ The system should answer five questions better than a spreadsheet:
 
 1. B3 movement files are the source of truth for what happened.
 2. Public event calendars are leads, not truth.
-3. Brapi and public market data enrich price, liquidity, history and indicators.
+3. Market and public market data enrich price, liquidity, history and indicators.
 4. OpenAI should explain, compare and audit. It should not invent accounting facts.
 5. Google Sheets and Docs preserve memory beyond the browser.
 

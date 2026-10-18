@@ -8,7 +8,7 @@ ticker | tipo | valor | record date | ex date | payment date | fonte | referenci
 
 Objetivo:
 
-- evitar duplicidade entre B3 e Brapi;
+- evitar duplicidade entre B3 e Market;
 - detectar republicacao;
 - preservar mudanca de data ou valor;
 - suportar eventos parcelados;

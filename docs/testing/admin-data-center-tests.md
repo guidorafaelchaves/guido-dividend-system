@@ -26,8 +26,8 @@ Verifica:
 - arquivo vazio;
 - evento cancelado;
 - ativo nao encontrado;
-- erro Brapi 401;
-- erro Brapi 429;
+- erro Market 401;
+- erro Market 429;
 - timeout;
 - lote de 20 ativos;
 - divergencia de data;

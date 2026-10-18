@@ -5,7 +5,7 @@ Baseline capturado em 2026-07-13 antes da primeira camada publica do Dividend Sy
 ## Git
 
 - Branch: `main`
-- Ultimo commit: `389b872 Fix authorized Brapi price refresh coverage`
+- Ultimo commit: `389b872 Fix authorized Market price refresh coverage`
 - Estado inicial: worktree limpo apos clone
 - Repositorio clonado em: `Dividend System/guido-dividend-system`
 
@@ -60,7 +60,7 @@ apps-script/
 - `docs/` espelha arquivos para GitHub Pages.
 - Workers:
   - `workers/admin-api`: backend seguro do Admin FinOps.
-  - `workers/saas-gateway`: gateway para BRAPI sem expor token no frontend publico.
+  - `workers/saas-gateway`: gateway para MARKET sem expor token no frontend publico.
 
 ## Rotas e Superficies Existentes
 
@@ -73,8 +73,8 @@ apps-script/
 
 - Dashboard usa IndexedDB como memoria principal e localStorage leve/fallback.
 - Configuracoes administrativas usam Web Crypto/IndexedDB quando disponivel.
-- BRAPI existe no dashboard legado e tambem via `workers/saas-gateway`.
-- Token BRAPI nao deve ser exposto no portal publico.
+- MARKET existe no dashboard legado e tambem via `workers/saas-gateway`.
+- Token MARKET nao deve ser exposto no portal publico.
 
 ## Riscos Observados
 

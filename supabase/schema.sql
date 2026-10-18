@@ -25,7 +25,7 @@ create table if not exists public.user_system_configs (
   config jsonb not null default '{}'::jsonb,
   updated_at timestamptz not null default now(),
   constraint no_client_side_secrets check (
-    coalesce(config #>> '{external,brapiToken}', '') = ''
+    coalesce(config #>> '{external,marketToken}', '') = ''
     and coalesce(config #>> '{external,sheetsApiKey}', '') = ''
     and coalesce(config #>> '{ai,openaiApiKey}', '') = ''
   )

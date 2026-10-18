@@ -15,8 +15,8 @@ const ROLE_PERMISSIONS = Object.freeze({
   free_user: ['public:read', 'profile:manage', 'watchlist:manage', 'favorites:manage', 'portfolio:manage', 'alerts:manage'],
   subscriber: ['public:read', 'profile:manage', 'watchlist:manage', 'favorites:manage', 'portfolio:manage', 'alerts:manage', 'reports:advanced'],
   premium_user: ['public:read', 'profile:manage', 'watchlist:manage', 'favorites:manage', 'portfolio:manage', 'alerts:manage', 'reports:advanced', 'ai:analysis'],
-  admin: ['admin:users', 'admin:plans', 'admin:audit', 'admin:sync', 'import:create', 'import:process', 'brapi:sync', 'event:review', 'event:edit', 'event:approve', 'publication:publish', 'publication:rollback', 'source:manage'],
-  owner: ['admin:users', 'admin:plans', 'admin:audit', 'admin:sync', 'admin:integrations', 'import:create', 'import:process', 'brapi:sync', 'event:review', 'event:edit', 'event:approve', 'publication:publish', 'publication:rollback', 'source:manage', 'settings:manage']
+  admin: ['admin:users', 'admin:plans', 'admin:audit', 'admin:sync', 'import:create', 'import:process', 'market:sync', 'event:review', 'event:edit', 'event:approve', 'publication:publish', 'publication:rollback', 'source:manage'],
+  owner: ['admin:users', 'admin:plans', 'admin:audit', 'admin:sync', 'admin:integrations', 'import:create', 'import:process', 'market:sync', 'event:review', 'event:edit', 'event:approve', 'publication:publish', 'publication:rollback', 'source:manage', 'settings:manage']
 });
 
 function json(data, status = 200, cors = {}) {
@@ -33,7 +33,7 @@ function corsHeaders(request, env) {
     .split(',')
     .map(item => item.trim())
     .filter(Boolean);
-  const defaults = ['https://guidorafaelchaves.github.io', 'https://guido-dividend-system.pages.dev', 'http://localhost:4173'];
+  const defaults = ['https://guido-dividend-system.guidorafaelchaves.workers.dev','https://guidorafaelchaves.github.io', 'https://guido-dividend-system.pages.dev', 'http://localhost:4173'];
   const isPreview = /^https:\/\/[a-z0-9-]+\.guido-dividend-system\.pages\.dev$/i.test(origin);
   if (!origin || (![...defaults, ...allowed].includes(origin) && !isPreview)) return {};
   return {
@@ -365,7 +365,7 @@ async function healthIntegrations(env, cors) {
     integrations: {
       email: { enabled: String(env.EMAIL_ENABLED || 'false') === 'true', provider: env.EMAIL_PROVIDER || 'disabled' },
       billing: { enabled: String(env.BILLING_ENABLED || 'false') === 'true', provider: env.BILLING_PROVIDER || 'disabled' },
-      brapi: { enabled: String(env.BRAPI_SYNC_ENABLED || 'false') === 'true' }
+      market: {mode:'manual-official-import',autoQuotes:false}
     }
   }, 200, cors);
 }
@@ -386,46 +386,95 @@ async function finishJob(env, id, status, itemsProcessed = 0, itemsFailed = 0, e
   `).bind(status, itemsProcessed, itemsFailed, errorMessage, id).run();
 }
 
-async function syncQuotes(env, limit = 10) {
-  const jobId = await startJob(env, 'sync_quotes');
-  let processed = 0;
-  let failed = 0;
-  try {
-    const { results } = await env.DB.prepare('SELECT id,ticker FROM assets WHERE status=? ORDER BY updated_at ASC LIMIT ?').bind('active', limit).all();
-    if (String(env.BRAPI_SYNC_ENABLED || 'false') !== 'true' || !env.BRAPI_TOKEN) {
-      await operationalLog(env, { level: 'warn', entityType: 'job', entityId: jobId, changeType: 'sync_quotes_disabled', source: 'sync_quotes', after: { reason: 'BRAPI_SYNC_ENABLED false or token missing' }, jobId });
-      await finishJob(env, jobId, 'partial', 0, 0, 'BRAPI sync disabled or token missing');
-      return { jobId, status: 'partial', processed: 0 };
-    }
-    for (const asset of results || []) {
-      try {
-        const qs = new URLSearchParams({ token: env.BRAPI_TOKEN, fundamental: 'true' });
-        const upstream = await fetch(`https://brapi.dev/api/quote/${encodeURIComponent(asset.ticker)}?${qs.toString()}`, { headers: { accept: 'application/json' }, signal: AbortSignal.timeout(8000) });
-        if (!upstream.ok) throw new Error(`BRAPI HTTP ${upstream.status}`);
-        const payload = await upstream.json();
-        const quote = payload?.results?.[0];
-        const price = Number(quote?.regularMarketPrice || 0);
-        if (!(price > 0)) throw new Error('BRAPI sem preco valido');
-        const priceCents = Math.round(price * 100);
-        const previous = await env.DB.prepare('SELECT price_cents FROM asset_quotes WHERE asset_id=? ORDER BY quoted_at DESC LIMIT 1').bind(asset.id).first();
-        const quoteId = uuid('aqt');
-        const quotedAt = new Date().toISOString();
-        await env.DB.batch([
-          env.DB.prepare('INSERT OR IGNORE INTO asset_quotes(id,asset_id,price_cents,currency,source,quoted_at) VALUES(?,?,?,?,?,?)').bind(quoteId, asset.id, priceCents, quote.currency || 'BRL', 'brapi', quotedAt),
-          env.DB.prepare('INSERT INTO asset_quote_history(id,asset_id,previous_price_cents,next_price_cents,currency,source,quality,job_id,quoted_at) VALUES(?,?,?,?,?,?,?,?,?)').bind(uuid('aqh'), asset.id, previous?.price_cents || null, priceCents, quote.currency || 'BRL', 'brapi', 'reliable_external', jobId, quotedAt)
-        ]);
-        processed++;
-      } catch (err) {
-        failed++;
-        await operationalLog(env, { level: 'error', entityType: 'asset', entityId: asset.id, changeType: 'quote_sync_failed', source: 'brapi', after: { message: err.message }, jobId });
-      }
-    }
-    await finishJob(env, jobId, failed ? 'partial' : 'success', processed, failed);
-    return { jobId, status: failed ? 'partial' : 'success', processed, failed };
-  } catch (err) {
-    await finishJob(env, jobId, 'failed', processed, failed, err.message);
-    throw err;
+async function syncQuotes(env) {
+  // No licensed real-time quote vendor is configured. Never synthesize a price.
+  const jobId=await startJob(env,'reconcile_market_quotes');
+  const row=await env.DB.prepare('SELECT COUNT(*) AS total FROM asset_quotes').first();
+  await operationalLog(env,{entityType:'market',entityId:jobId,changeType:'manual_price_feed',
+    source:'market-hub',after:{savedQuotes:Number(row?.total||0),newExternalQuotes:0},jobId});
+  await finishJob(env,jobId,'success',0,0,'No external licensed quote source; cached official imports preserved.');
+  return {jobId,status:'success',savedQuotes:Number(row?.total||0),newExternalQuotes:0,
+    message:'Sem feed de preços licenciado. Importe COTAHIST/CSV para atualizar fechamentos.'};
+}
+async function refreshPublicMarketSources(){
+  async function load(name,url){
+    try{
+      const res=await fetch(url,{signal:AbortSignal.timeout(8000),headers:{accept:'application/json'}});
+      if(!res.ok)throw new Error('HTTP '+res.status);
+      const data=await res.json();
+      if(name==='bcb-sgs')return {source:name,ok:true,kind:'macro',
+        latest:Array.isArray(data)?data.at(-1):null};
+      if(!data?.success)throw new Error('Catálogo CVM indisponível');
+      return {source:name,ok:true,kind:'fundamentals-catalog',dataset:data.result?.name,
+        resources:(data.result?.resources||[]).slice(-12).map(x=>({name:x.name,url:x.url,updatedAt:x.last_modified}))};
+    }catch(error){return {source:name,ok:false,error:String(error?.message||error)};}
   }
+  return {refreshedAt:new Date().toISOString(),priceFeed:'manual-official-close',
+    sources:await Promise.all([
+      load('bcb-sgs','https://api.bcb.gov.br/dados/serie/bcdata.sgs.11/dados/ultimos/1?formato=json'),
+      load('cvm-open-data','https://dados.cvm.gov.br/api/3/action/package_show?id=fii-doc-inf_mensal')
+    ])};
+}
+async function marketSources(request,env,cors){
+  const guard=await requireUser(request,env,cors);
+  if(guard.response)return guard.response;
+  if(request.method==='GET')return json({priceFeed:'manual-official-close',
+    catalog:[{source:'B3',kind:'closing-price',method:'user-import-only'},
+      {source:'CVM',kind:'fundamentals',method:'official-open-data'},
+      {source:'BCB',kind:'macro',method:'official-open-data'}]},200,cors);
+  const data=await refreshPublicMarketSources();
+  await audit(env,{userId:guard.user.id,action:'market.refresh',entityType:'market',after:{sources:data.sources.map(x=>({source:x.source,ok:x.ok}))}});
+  return json(data,200,cors);
+}
+async function marketQuotes(request,env,cors){
+  const guard=await requireUser(request,env,cors);
+  if(guard.response)return guard.response;
+  const sql='SELECT a.ticker,q.price_cents,q.currency,q.source,q.quoted_at FROM assets a JOIN asset_quotes q ON q.asset_id=a.id WHERE q.id=(SELECT last.id FROM asset_quotes last WHERE last.asset_id=a.id ORDER BY last.quoted_at DESC,last.created_at DESC LIMIT 1) ORDER BY a.ticker LIMIT 1500';
+  const {results}=await env.DB.prepare(sql).all();
+  return json({quotes:(results||[]).map(x=>({ticker:x.ticker,price:x.price_cents/100,
+    currency:x.currency,source:x.source,quoteDate:String(x.quoted_at).slice(0,10)})),
+    timing:'last imported closing price, not real-time'},200,cors);
+}
+async function importOfficialMarketQuotes(request,env,cors){
+  const guard=await requireAdmin(request,env,cors);
+  if(guard.response)return guard.response;
+  const body=await request.json().catch(()=>({}));
+  if(body.source!=='b3-official-file'&&body.source!=='manual-csv')
+    return bad('Fonte deve ser b3-official-file ou manual-csv.',422,cors);
+  const rows=Array.isArray(body.quotes)?body.quotes:[];
+  if(!rows.length||rows.length>300)return bad('Envie 1 a 300 cotações por lote.',422,cors);
+  let imported=0;const blocked=[],rejected=[];
+  const today=new Date().toISOString().slice(0,10);
+  for(const raw of rows){
+    const ticker=normalizeTicker(raw.ticker),date=String(raw.date||'');
+    const price=Number(raw.price);
+    const parsedDate=new Date(date+'T12:00:00Z');
+    if(!/^[A-Z0-9]{4,12}$/.test(ticker)||!/^\d{4}-\d{2}-\d{2}$/.test(date)||
+      !Number.isFinite(parsedDate.getTime())||parsedDate.toISOString().slice(0,10)!==date||date>today||
+      !Number.isFinite(price)||price<=0||price>1000000){
+      rejected.push(ticker||'(sem ticker)');continue;
+    }
+    const asset=await env.DB.prepare('SELECT id FROM assets WHERE ticker=?').bind(ticker).first();
+    if(!asset){rejected.push(ticker+' (ativo não cadastrado)');continue;}
+    const quoteAt=date+'T20:00:00.000Z';
+    const previous=await env.DB.prepare('SELECT price_cents,source,quoted_at FROM asset_quotes WHERE asset_id=? ORDER BY quoted_at DESC LIMIT 1').bind(asset.id).first();
+    const cents=Math.round(price*100);
+    if(previous&&String(previous.quoted_at).slice(0,10)>date){rejected.push(ticker+' (mais antiga)');continue;}
+    if(previous&&String(previous.quoted_at).slice(0,10)===date&&
+      Math.abs(cents-previous.price_cents)/Math.max(1,previous.price_cents)>.01){
+      blocked.push({ticker,date,existing:previous.price_cents/100,candidate:price});continue;
+    }
+    const id=uuid('aqt');
+    const write=await env.DB.prepare('INSERT OR IGNORE INTO asset_quotes(id,asset_id,price_cents,currency,source,quoted_at) VALUES(?,?,?,?,?,?)').bind(id,asset.id,cents,'BRL',body.source,quoteAt).run();
+    if(write.meta?.changes){
+      await env.DB.prepare('INSERT INTO asset_quote_history(id,asset_id,previous_price_cents,next_price_cents,currency,source,quality,job_id,quoted_at) VALUES(?,?,?,?,?,?,?,?,?)')
+        .bind(uuid('aqh'),asset.id,previous?.price_cents||null,cents,'BRL',body.source,'official-file-user-import',null,quoteAt).run();
+      imported++;
+    }
+  }
+  await audit(env,{userId:guard.user.id,action:'market.import',entityType:'market',
+    after:{source:body.source,imported,blocked:blocked.length,rejected:rejected.length}});
+  return json({imported,blocked,rejected,total:rows.length,source:body.source},200,cors);
 }
 
 async function evaluateAlerts(env) {
@@ -680,14 +729,14 @@ async function handleAdminDataCenter(request, env, cors) {
   };
   const latestPublication = await env.DB.prepare('SELECT * FROM publication_batches ORDER BY created_at DESC LIMIT 1').first().catch(() => null);
   const latestImport = await env.DB.prepare('SELECT * FROM admin_import_files ORDER BY created_at DESC LIMIT 1').first().catch(() => null);
-  const latestBrapi = await env.DB.prepare("SELECT * FROM job_runs WHERE job_name='sync_brapi_fii_events' ORDER BY created_at DESC LIMIT 1").first().catch(() => null);
+  const latestMarket = await env.DB.prepare("SELECT * FROM job_runs WHERE job_name='check_market_sources' ORDER BY created_at DESC LIMIT 1").first().catch(() => null);
   return json({
     states: ADMIN_EVENT_STATES,
     counts: {
       publicActive: await safeOne("SELECT COUNT(*) AS total FROM canonical_financial_events WHERE publication_status='published' AND public_visibility=1"),
       futureEvents: await safeOne("SELECT COUNT(*) AS total FROM canonical_financial_events WHERE payment_date >= date('now')"),
       importedToday: await safeOne("SELECT COUNT(*) AS total FROM admin_import_files WHERE date(created_at)=date('now')"),
-      syncedBrapi: await safeOne("SELECT COUNT(*) AS total FROM financial_event_sources WHERE source_type='brapi'"),
+      syncedMarket: await safeOne("SELECT COUNT(*) AS total FROM financial_event_sources WHERE source_type='market'"),
       pendingReview: await safeOne("SELECT COUNT(*) AS total FROM canonical_financial_events WHERE review_status='pending_review'"),
       blocked: await safeOne("SELECT COUNT(*) AS total FROM canonical_financial_events WHERE validation_status='blocked'"),
       divergences: await safeOne("SELECT COUNT(*) AS total FROM event_reconciliation_cases WHERE decision='pending'"),
@@ -695,12 +744,8 @@ async function handleAdminDataCenter(request, env, cors) {
     },
     latestPublication,
     latestImport,
-    latestBrapi,
-    brapi: {
-      enabled: String(env.BRAPI_SYNC_ENABLED || 'false') === 'true',
-      tokenConfigured: Boolean(env.BRAPI_TOKEN),
-      tokenTail: env.BRAPI_TOKEN ? String(env.BRAPI_TOKEN).slice(-4) : ''
-    }
+    latestMarket,
+    market: {mode:'manual-official-import',autoQuotes:false,tokenConfigured:false}
   }, 200, cors);
 }
 
@@ -771,44 +816,25 @@ async function handleCreateB3Import(request, env, cors) {
   return json({ importId: fileId, accepted, rejected, detection }, 201, cors);
 }
 
-function buildBrapiSyncPlan(env, body = {}) {
-  const symbols = Array.isArray(body.symbols) && body.symbols.length ? body.symbols.map(normalizeTicker).filter(Boolean) : ['MXRF11', 'HGLG11', 'KNRI11', 'VISC11', 'XPML11'];
-  const batchSize = Math.max(1, Math.min(20, Number(body.batchSize || env.BRAPI_BATCH_SIZE || 20)));
-  const batches = [];
-  for (let i = 0; i < symbols.length; i += batchSize) batches.push(symbols.slice(i, i + batchSize));
-  return {
-    tokenConfigured: Boolean(env.BRAPI_TOKEN),
-    tokenTail: env.BRAPI_TOKEN ? String(env.BRAPI_TOKEN).slice(-4) : '',
-    endpoint: env.BRAPI_FII_DIVIDENDS_ENDPOINT || 'backend-secret:fii-dividends-endpoint',
-    assets: symbols.length,
-    batchSize,
-    callsEstimated: batches.length,
-    batches,
-    warning: 'A Brapi nunca e consultada pelo frontend; o Worker executa lotes com token em secret.'
-  };
+function buildMarketSyncPlan(env,body={}){
+  const symbols=Array.isArray(body.symbols)?body.symbols.map(normalizeTicker).filter(Boolean):[];
+  return {source:'B3 official closing file',mode:'manual-import',
+    symbols,autoQuoteEnabled:false,tokenRequired:false,
+    action:'Importe COTAHIST/CSV no Market Data Hub. CVM/BCB apenas enriquecem informações.'};
 }
-
-async function handleBrapiSyncPlan(request, env, cors) {
-  const guard = await requireAdmin(request, env, cors);
-  if (guard.response) return guard.response;
-  const body = request.method === 'POST' ? await request.json().catch(() => ({})) : {};
-  return json(buildBrapiSyncPlan(env, body), 200, cors);
+async function handleMarketSyncPlan(request,env,cors){
+  const guard=await requireAdmin(request,env,cors);
+  if(guard.response)return guard.response;
+  const body=request.method==='POST'?await request.json().catch(()=>({})):{};
+  return json(buildMarketSyncPlan(env,body),200,cors);
 }
-
-async function syncBrapiFiiEvents(env, options = {}) {
-  const jobId = await startJob(env, 'sync_brapi_fii_events');
-  try {
-    if (String(env.BRAPI_SYNC_ENABLED || 'false') !== 'true' || !env.BRAPI_TOKEN) {
-      await finishJob(env, jobId, 'partial', 0, 0, 'BRAPI sync disabled or token missing');
-      return { jobId, status: 'partial', processed: 0, message: 'BRAPI sync disabled or token missing' };
-    }
-    const planData = buildBrapiSyncPlan(env, options);
-    await finishJob(env, jobId, 'success', planData.assets, 0);
-    return { jobId, status: 'success', plannedBatches: planData.callsEstimated, processed: planData.assets };
-  } catch (err) {
-    await finishJob(env, jobId, 'failed', 0, 1, err.message);
-    throw err;
-  }
+async function syncMarketFiiEvents(env){
+  const jobId=await startJob(env,'check_market_sources');
+  try{
+    const data=await refreshPublicMarketSources();
+    await finishJob(env,jobId,'success',data.sources.filter(x=>x.ok).length,data.sources.filter(x=>!x.ok).length);
+    return {jobId,kind:'fundamentals-catalog',sources:data.sources,quotesUpdated:0};
+  }catch(e){await finishJob(env,jobId,'failed',0,1,String(e.message||e));throw e;}
 }
 
 async function handleAdminEvents(request, env, cors) {
@@ -931,7 +957,7 @@ async function listPublishedEvents(request, env, cors) {
 
 async function runJob(name, env) {
   if (name === 'sync_quotes') return syncQuotes(env);
-  if (name === 'sync_brapi_fii_events') return syncBrapiFiiEvents(env);
+  if (name === 'check_market_sources') return syncMarketFiiEvents(env);
   if (name === 'evaluate_alerts') return evaluateAlerts(env);
   if (name === 'cleanup_expired_tokens') return cleanupExpiredTokens(env);
   throw new Error('Job desconhecido.');
@@ -1309,7 +1335,7 @@ export default {
     const hour = new Date(event.scheduledTime || Date.now()).getUTCHours();
     ctx.waitUntil((async () => {
       await cleanupExpiredTokens(env);
-      if (hour >= 10 && hour <= 22) await syncQuotes(env, 10);
+      // Quotes only change on authorized import; scheduled tasks never scrape the B3.
       await evaluateAlerts(env);
     })());
   },
@@ -1325,6 +1351,10 @@ export default {
       if (request.method === 'GET' && path === '/health/db') return healthDb(env, cors);
       if (request.method === 'GET' && path === '/health/integrations') return healthIntegrations(env, cors);
       if (request.method === 'GET' && path === '/public/events') return listPublishedEvents(request, env, cors);
+      if (request.method === 'GET' && path === '/me/market/sources') return marketSources(request, env, cors);
+      if (request.method === 'POST' && path === '/me/market/refresh') return marketSources(request, env, cors);
+      if (request.method === 'GET' && path === '/me/market/quotes') return marketQuotes(request, env, cors);
+      if (request.method === 'POST' && path === '/admin/market/import') return importOfficialMarketQuotes(request, env, cors);
       if (request.method === 'GET' && path === '/debug/runtime') return debugRuntime(env, cors);
       if (request.method === 'GET' && path === '/debug/password') return debugPassword(env, cors);
       if (request.method === 'GET' && path === '/debug/write') return debugWrite(env, cors);
@@ -1361,8 +1391,8 @@ export default {
       if (request.method === 'GET' && path === '/admin/data-center') return handleAdminDataCenter(request, env, cors);
       if (request.method === 'POST' && path === '/admin/imports/b3/detect') return handleDetectB3Import(request, env, cors);
       if (request.method === 'POST' && path === '/admin/imports/b3') return handleCreateB3Import(request, env, cors);
-      if (request.method === 'GET' && path === '/admin/brapi/plan') return handleBrapiSyncPlan(request, env, cors);
-      if (request.method === 'POST' && path === '/admin/brapi/plan') return handleBrapiSyncPlan(request, env, cors);
+      if (request.method === 'GET' && path === '/admin/market/plan') return handleMarketSyncPlan(request, env, cors);
+      if (request.method === 'POST' && path === '/admin/market/plan') return handleMarketSyncPlan(request, env, cors);
       if (request.method === 'GET' && path === '/admin/events') return handleAdminEvents(request, env, cors);
       if (request.method === 'POST' && path === '/admin/events/approve') return handleApproveEvents(request, env, cors);
       if (request.method === 'GET' && path === '/admin/publication/prepare') return handlePreparePublication(request, env, cors);

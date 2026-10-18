@@ -9,5 +9,5 @@ OPENAI_DEFAULT_MODEL = "gpt-4o-mini"
 
 # Secrets:
 # npx wrangler secret put SUPABASE_ANON_KEY
-# npx wrangler secret put BRAPI_TOKEN
+# npx wrangler secret put MARKET_TOKEN
 # npx wrangler secret put OPENAI_API_KEY

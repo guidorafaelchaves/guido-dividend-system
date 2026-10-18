@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS canonical_financial_events (
   currency TEXT NOT NULL DEFAULT 'BRL',
   financial_status TEXT NOT NULL CHECK(financial_status IN ('announced','provisioned','confirmed','estimated','projected','paid','cancelled')),
   recurrence TEXT NOT NULL DEFAULT 'unknown' CHECK(recurrence IN ('monthly','quarterly','semiannual','annual','irregular','extraordinary','unknown')),
-  source_type TEXT NOT NULL CHECK(source_type IN ('b3_file','brapi','manual','official_document')),
+  source_type TEXT NOT NULL CHECK(source_type IN ('b3_file','market','manual','official_document')),
   source_id TEXT,
   source_name TEXT NOT NULL,
   source_reference TEXT,
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS financial_event_sources (
   FOREIGN KEY(canonical_event_id) REFERENCES canonical_financial_events(id)
 );
 
-CREATE TABLE IF NOT EXISTS brapi_responses (
+CREATE TABLE IF NOT EXISTS market_responses (
   id TEXT PRIMARY KEY,
   job_id TEXT,
   batch_no INTEGER NOT NULL DEFAULT 0,
@@ -120,11 +120,11 @@ CREATE TABLE IF NOT EXISTS event_reconciliation_cases (
   id TEXT PRIMARY KEY,
   canonical_event_id TEXT,
   b3_source_id TEXT,
-  brapi_source_id TEXT,
-  classification TEXT NOT NULL CHECK(classification IN ('exact_match','probable_match','new_b3_event','new_brapi_event','value_divergence','date_divergence','status_divergence','possible_duplicate','unmatched')),
+  market_source_id TEXT,
+  classification TEXT NOT NULL CHECK(classification IN ('exact_match','probable_match','new_b3_event','new_market_event','value_divergence','date_divergence','status_divergence','possible_duplicate','unmatched')),
   severity TEXT NOT NULL DEFAULT 'warning' CHECK(severity IN ('info','warning','error','publication_blocker')),
   fields_json TEXT NOT NULL DEFAULT '{}',
-  decision TEXT NOT NULL DEFAULT 'pending' CHECK(decision IN ('pending','use_b3','use_brapi','merge','reject','keep_pending')),
+  decision TEXT NOT NULL DEFAULT 'pending' CHECK(decision IN ('pending','use_b3','use_market','merge','reject','keep_pending')),
   justification TEXT NOT NULL DEFAULT '',
   decided_by_user_id TEXT,
   decided_at TEXT,

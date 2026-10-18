@@ -6,7 +6,7 @@
 - D1: local simulation
 - Origins: `http://localhost:4173`, `http://localhost:8787`
 - Secrets: `.dev.vars`, nunca versionado
-- Flags: e-mail, billing e BRAPI sync desativados por padrao
+- Flags: e-mail, billing e MARKET sync desativados por padrao
 
 ## Preview
 
@@ -16,7 +16,7 @@
 - D1 id: `3c1067a2-8806-4283-8dbd-8c71e2f36b2a`
 - Origins: GitHub Pages, Cloudflare Pages e localhost de teste
 - Secret aplicado: `SESSION_SECRET`
-- Flags atuais: `EMAIL_ENABLED=false`, `BILLING_ENABLED=false`, `BRAPI_SYNC_ENABLED=false`
+- Flags atuais: `EMAIL_ENABLED=false`, `BILLING_ENABLED=false`, `MARKET_SYNC_ENABLED=false`
 
 ## Production
 

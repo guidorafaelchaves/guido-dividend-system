@@ -3,7 +3,13 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 
 const code = fs.readFileSync('public/platform/calendarAnalytics.js', 'utf8');
-const context = { window: {} };
+// Historical test fixtures are dated July/August 2026. Pin the reference clock
+// so opportunity-score expectations remain deterministic in later months.
+class FixtureDate extends Date {
+  constructor(...args) { super(...(args.length ? args : ['2026-07-13T12:00:00Z'])); }
+  static now() { return Date.parse('2026-07-13T12:00:00Z'); }
+}
+const context = { window: {}, Date: FixtureDate };
 vm.createContext(context);
 vm.runInContext(code, context);
 

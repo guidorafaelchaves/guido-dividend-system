@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS user_activity (
 CREATE TABLE IF NOT EXISTS usage_events (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id TEXT NOT NULL,
-  kind TEXT NOT NULL CHECK(kind IN ('brapi_call','ai_tokens','cloud_request')),
+  kind TEXT NOT NULL CHECK(kind IN ('market_call','ai_tokens','cloud_request')),
   quantity REAL NOT NULL DEFAULT 0,
   cost_brl REAL NOT NULL DEFAULT 0,
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS usage_events (
 
 CREATE TABLE IF NOT EXISTS cost_events (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  category TEXT NOT NULL CHECK(category IN ('brapi','ai','cloud','support','payment')),
+  category TEXT NOT NULL CHECK(category IN ('market','ai','cloud','support','payment')),
   amount_brl REAL NOT NULL DEFAULT 0,
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   source TEXT NOT NULL DEFAULT 'manual',

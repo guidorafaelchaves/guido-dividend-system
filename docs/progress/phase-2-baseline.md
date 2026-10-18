@@ -5,7 +5,7 @@ Auditoria factual capturada em 2026-07-13 antes da implementacao da Fase 2.
 ## Estado Do Repositorio
 
 - Branch ativa: `main`
-- Ultimo commit remoto/local: `389b872 Fix authorized Brapi price refresh coverage`
+- Ultimo commit remoto/local: `389b872 Fix authorized Market price refresh coverage`
 - Worktree antes da Fase 2: contem alteracoes da Fase 1 ainda nao commitadas.
 - `npm run check`: passa.
 - Lint dedicado: inexistente.
@@ -24,12 +24,12 @@ Auditoria factual capturada em 2026-07-13 antes da implementacao da Fase 2.
 - Admin FinOps legado preservado em `admin.html`.
 - Feature flags publicas em `public/platform/domain.js`.
 - Modelo canonico inicial de ativos e eventos em `public/platform/domain.js`.
-- Gateway BRAPI preparado no frontend e Worker `workers/saas-gateway`.
+- Gateway MARKET preparado no frontend e Worker `workers/saas-gateway`.
 
 ## Funcionalidades Parcialmente Concluidas
 
 - Painel administrativo publico: existe como console inicial, mas ainda nao gerencia usuarios/planos/assinaturas.
-- Integracao BRAPI: existe, mas ainda depende de fluxos separados e nao grava dados canonicos persistentes da plataforma.
+- Integracao MARKET: existe, mas ainda depende de fluxos separados e nao grava dados canonicos persistentes da plataforma.
 - Persistencia: IndexedDB/localStorage no legado e D1 administrativo; ainda faltava banco de usuarios/produto.
 - Autenticacao: existe Admin FinOps e gateway Supabase para SaaS, mas nao havia conta gratuita propria da plataforma.
 

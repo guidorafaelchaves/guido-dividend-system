@@ -5,7 +5,7 @@ Capturado em 2026-07-13.
 ## Commit Base
 
 - Branch: `main`
-- Commit base: `389b872 Fix authorized Brapi price refresh coverage`
+- Commit base: `389b872 Fix authorized Market price refresh coverage`
 - Estado: mudancas das Fases 1 e 2 ainda pendentes no worktree.
 
 ## Comandos Executados
@@ -30,7 +30,7 @@ Capturado em 2026-07-13.
 - E-mail transacional.
 - Billing.
 - Jobs automaticos.
-- Sync BRAPI canonico.
+- Sync MARKET canonico.
 - Smoke tests remotos.
 
 ## Servicos Externos Ausentes No Inicio
@@ -39,12 +39,12 @@ Capturado em 2026-07-13.
 - `SESSION_SECRET` remoto.
 - Provider de e-mail.
 - Provider de cobranca sandbox.
-- Token BRAPI para sync job.
+- Token MARKET para sync job.
 
 ## Variaveis/Secrets Exigidos
 
 - `SESSION_SECRET` obrigatorio.
-- `BRAPI_TOKEN` opcional para sync.
+- `MARKET_TOKEN` opcional para sync.
 - `EMAIL_API_KEY` opcional, gated por `EMAIL_ENABLED`.
 - `BILLING_WEBHOOK_SECRET` opcional, gated por `BILLING_ENABLED`.
 
@@ -62,4 +62,4 @@ Capturado em 2026-07-13.
 4. Configurar `SESSION_SECRET`.
 5. Rodar smoke tests remotos.
 6. Validar jobs e health checks.
-7. Documentar pendencias de e-mail, billing e BRAPI token.
+7. Documentar pendencias de e-mail, billing e MARKET token.

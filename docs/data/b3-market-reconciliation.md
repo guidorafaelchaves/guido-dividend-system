@@ -1,4 +1,4 @@
-# Conciliacao B3 x Brapi
+# Conciliacao B3 x Market
 
 Campos comparados:
 
@@ -17,7 +17,7 @@ Resultados possiveis:
 - correspondencia exata;
 - correspondencia provavel;
 - novo evento B3;
-- novo evento Brapi;
+- novo evento Market;
 - divergencia de valor;
 - divergencia de data;
 - divergencia de status;

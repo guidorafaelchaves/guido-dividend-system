@@ -12,8 +12,8 @@
     version: 1,
     updatedAt: '',
     external: {
-      brapiToken: '',
-      brapiTickers: 'MXRF11, PETR4, VALE3, BBAS3, ITUB4',
+      marketToken: '',
+      marketTickers: 'MXRF11, PETR4, VALE3, BBAS3, ITUB4',
       refreshMode: 'smart',
       sheetsApiUrl: '',
       sheetsApiKey: '',
@@ -62,8 +62,8 @@
 
   function normalizeConfig(input){
     const cfg = mergeConfig(input);
-    cfg.external.brapiToken = String(cfg.external.brapiToken || '').trim();
-    cfg.external.brapiTickers = String(cfg.external.brapiTickers || DEFAULT_CONFIG.external.brapiTickers).trim();
+    cfg.external.marketToken = ''; // cotações dependem de fontes verificadas, não de credenciais
+    cfg.external.marketTickers = String(cfg.external.marketTickers || DEFAULT_CONFIG.external.marketTickers).trim();
     cfg.external.refreshMode = ['smart','economic','live'].includes(cfg.external.refreshMode) ? cfg.external.refreshMode : 'smart';
     cfg.external.sheetsApiUrl = String(cfg.external.sheetsApiUrl || '').trim();
     cfg.external.sheetsApiKey = String(cfg.external.sheetsApiKey || '').trim();
@@ -90,7 +90,7 @@
       ...cfg,
       external: {
         ...cfg.external,
-        brapiToken: '',
+        marketToken: '',
         sheetsApiKey: ''
       },
       ai: {
@@ -244,7 +244,7 @@
   function validate(config){
     const cfg = normalizeConfig(config);
     const missing = [];
-    if(!cfg.external.brapiToken) missing.push('Token Brapi');
+    
     if(!cfg.ai.openaiApiKey) missing.push('Chave OpenAI');
     if(!cfg.external.sheetsApiUrl) missing.push('URL Sheets/Docs');
     return {
@@ -268,10 +268,10 @@
     appState.settings.radar.pesos.carteira = 0;
     appState.settings.radar.diasJanelaFluxo = cfg.radar.diasJanelaFluxo;
     appState.settings.radar.bonusDataComMaxDias = cfg.radar.bonusDataComMaxDias;
-    appState.settings.brapi = appState.settings.brapi || {};
-    appState.settings.brapi.token = cfg.external.brapiToken;
-    appState.settings.brapi.tickers = cfg.external.brapiTickers;
-    appState.settings.brapi.refreshMode = cfg.external.refreshMode;
+    appState.settings.market = appState.settings.market || {};
+    appState.settings.market.token = '';
+    appState.settings.market.tickers = cfg.external.marketTickers;
+    appState.settings.market.refreshMode = cfg.external.refreshMode;
     appState.settings.memory = {
       apiUrl: cfg.external.sheetsApiUrl,
       apiKey: cfg.external.sheetsApiKey,
