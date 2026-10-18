@@ -90,14 +90,22 @@
     return [...map.values()].sort((a,b)=>a.date.localeCompare(b.date));
   }
   function reconcile(observations,existing={},tickers=null){
-    const valid=dedupe(observations).filter(v=>!tickers||!tickers.size||tickers.has(v.ticker));
-    const groups=new Map();for(const v of valid){const a=groups.get(v.ticker)||[];a.push(v);groups.set(v.ticker,a);}
+    const raw=(observations||[]).map(row).filter(v=>v&&(!tickers||!tickers.size||tickers.has(v.ticker)));
+    const valid=dedupe(raw);
+    const groups=new Map();
+    for(const v of valid){const a=groups.get(v.ticker)||[];a.push(v);groups.set(v.ticker,a);}
     const accepted=[],conflicts=[],unchanged=[];
     for(const [t,group] of groups){
       group.sort((a,b)=>b.date.localeCompare(a.date)||(SOURCE_RANK[b.source]||0)-(SOURCE_RANK[a.source]||0));
       const best=group[0],prev=existing[t]||{};
-      const prevDate=iso(prev.quoteDate||prev.marketDate);
-      const oldPrice=number(prev.precoAtual);
+      const incoming=raw.filter(v=>v.ticker===t&&v.date===best.date);
+      const divergent=incoming.find(v=>Math.abs(v.price-best.price)/Math.max(0.01,best.price)>.01);
+      if(divergent){
+        conflicts.push({ticker:t,date:best.date,existing:divergent.price,candidate:best.price,
+          source:best.source,otherSource:divergent.source,gapPct:100*Math.abs(divergent.price-best.price)/best.price});
+        continue;
+      }
+      const prevDate=iso(prev.quoteDate||prev.marketDate),oldPrice=number(prev.precoAtual);
       if(prevDate&&prevDate>best.date){unchanged.push(t);continue;}
       if(prevDate===best.date&&oldPrice>0){
         const gap=Math.abs(oldPrice-best.price)/oldPrice;
