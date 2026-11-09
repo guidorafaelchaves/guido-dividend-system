@@ -40,12 +40,18 @@ def mapping(csv_text, metrics):
     lookup={}
     conflicted=set()
     seen=set()
+    rows_scanned=0
+    fii_rows=0
+    rejected_identity=0
     for row in reader:
+        rows_scanned += 1
         if str(row.get("classe","")).strip().lower()!="fii":
             continue
+        fii_rows += 1
         ticker=str(row.get("ticker","")).strip().upper()
         cnpj=normalize_cnpj(row.get("cnpj"))
         if not re.fullmatch(r"[A-Z]{4}11",ticker) or not cnpj:
+            rejected_identity += 1
             continue
         pair=(ticker,cnpj)
         if pair in seen:
@@ -81,21 +87,22 @@ def mapping(csv_text, metrics):
     records.sort(key=lambda r:r["ticker"])
     if len(records)!=len({r["ticker"] for r in records}):
         raise ValueError("Duplicidade de ticker no resultado")
-    return records,{"tickerPairsValidated":len(lookup),"conflictingTickers":len(conflicted),"ambiguousCnpjs":len(ambiguous),
+    return records,{"csvRowsScanned":rows_scanned,"fiiRowsSeen":fii_rows,"rejectedIdentityRows":rejected_identity,"tickerPairsValidated":len(lookup),"conflictingTickers":len(conflicted),"ambiguousCnpjs":len(ambiguous),
                     "fiisWithCvmMetrics":len(records),"cvmFundsUnmatched":len(metrics)-len(records)}
 
 def main():
     payload=json.loads(METRICS.read_text(encoding="utf-8"))
     if payload.get("schemaVersion")!=1 or payload.get("dataType")!="monthly-fii-accounting":
         raise ValueError("Dados da CVM ausentes ou com esquema incompatível")
-    req=urllib.request.Request(SOURCE,headers={"User-Agent":"GuidoDividendSystem/1.0"})
+    req=urllib.request.Request(SOURCE,headers={"User-Agent":"Mozilla/5.0 (compatible; GuidoDividendSystem/1.0; public-licensed-dataset)","Accept":"text/csv,application/octet-stream;q=0.9,*/*;q=0.1"})
     with urllib.request.urlopen(req,timeout=45) as res:
         data=res.read(8*1024*1024+1)
     if len(data)>8*1024*1024:
         raise ValueError("CSV de identificação excede tamanho permitido")
     records,quality=mapping(data.decode("utf-8-sig"),payload["metrics"])
+    print("Diagnóstico de correspondência:", quality, flush=True)
     if len(records)<30:
-        raise ValueError("Cobertura muito pequena: não publicar mapeamento")
+        raise ValueError("Cobertura muito pequena (<30): não publicar mapeamento; verificar os CNPJs e a fonte CSV")
     result={"schemaVersion":1,"dataType":"monthly-fii-accounting-by-ticker",
             "accountingSource":"CVM, informes mensais FII",
             "identitySource":SOURCE,"attribution":ATTRIBUTION,
