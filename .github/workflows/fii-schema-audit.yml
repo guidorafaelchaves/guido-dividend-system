@@ -4,6 +4,8 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/fii-schema-audit.yml'
+      - 'scripts/refresh_cvm_fii.py'
+      - 'scripts/audit_cvm_fii_schema.py'
   workflow_dispatch:
 permissions:
   contents: write
