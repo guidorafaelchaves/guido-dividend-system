@@ -32,7 +32,7 @@ jobs:
       - name: Testar coletores antes da sincronização
         run: node --test tests/daily-ingestion.test.mjs
       - name: Testar parser financeiro CVM com ZIP sintético
-        run: python3 -m unittest discover -s tests -p 'test_cvm_fii.py' -v
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
       - name: Atualizar catálogo oficial CVM
         run: node scripts/refresh-cvm-catalog.mjs
       - name: Extrair métricas contábeis de FIIs do informe CVM 2026
