@@ -33,3 +33,16 @@ Obter ligação ticker ↔ ISIN ↔ classe de fundo e usar o valor patrimonial p
 ## Primeira execução bem-sucedida — 09/11/2026
 
 O fluxo independente confirmou 1.172 linhas cadastrais, 532 FIIs, 527 pares ticker/CNPJ aceitos e 357 vínculos com métricas CVM. Trinta e cinco CNPJs com múltiplos tickers foram excluídos por ambiguidade. Resultado publicado em `public/data/cvm-fii-by-ticker.json` e `docs/data/cvm-fii-by-ticker.json`.
+
+## VPA conciliado — execução 09/11/2026
+
+A execução GitHub Actions 42566859892 concluiu os 7 testes do parser, extraiu o arquivo de 2026 da CVM e refez o vínculo ticker/CNPJ.
+
+Cobertura verificada:
+- 1.427 fundos na base contábil; 904 com VPA validado.
+- 357 tickers de FII vinculados por CNPJ; 302 com VPA validado.
+- Exemplo de setembro/2026: MXRF11 R$ 9,352547, HGLG11 R$ 165,476630, KNRI11 R$ 163,639521.
+
+A regra do VPA exige que PL / cotas emitidas coincida, com tolerância de 2%, com `Valor_Patrimonial_Cotas` do informe CVM da mesma competência; divergências de PL/cotas entre arquivos da mesma competência bloqueiam a publicação daquele VPA. Campos vazios não são estimados.
+
+O painel do ativo pode mostrar o VPA quando `navValidated=true`. Não calcula P/VP sem preço de fechamento de origem autorizada e sem garantir cronologia da publicação do informe.
