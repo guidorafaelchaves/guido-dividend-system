@@ -1,0 +1,30 @@
+name: Auditar campos oficiais dos FIIs CVM
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fii-schema-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: fii-schema-audit
+  cancel-in-progress: false
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Identificar colunas reais dos arquivos oficiais CVM
+        env:
+          CVM_FII_YEAR: '2026'
+        run: python3 scripts/audit_cvm_fii_schema.py
+      - name: Publicar diagnóstico dos cabeçalhos
+        run: |
+          mkdir -p docs/data
+          cp public/data/cvm-fii-schema-audit.json docs/data/cvm-fii-schema-audit.json
+          git add public/data/cvm-fii-schema-audit.json docs/data/cvm-fii-schema-audit.json
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name="radar-eod-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: audita colunas oficiais CVM FII"
+          git push
