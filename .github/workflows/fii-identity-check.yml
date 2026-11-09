@@ -24,7 +24,7 @@ jobs:
         id: mapping
         if: ${{ steps.tests.outcome == 'success' }}
         continue-on-error: true
-        run: python3 scripts/map-cvm-fii-tickers.py
+        run: python3 scripts/map_cvm_fii_tickers.py
       - name: Registrar resultado da tentativa
         if: ${{ always() }}
         env:
