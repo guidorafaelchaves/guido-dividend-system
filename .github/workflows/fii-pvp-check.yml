@@ -1,0 +1,50 @@
+name: Validar cálculo P/VP de FIIs
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fii-pvp-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: fii-pvp-check
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Testar cálculo e bloqueios de P/VP
+        id: tests
+        continue-on-error: true
+        run: |
+          node --test tests/fii-pvp.test.mjs 2>&1 | tee /tmp/fii-pvp-test.log
+          exit ${PIPESTATUS[0]}
+      - name: Publicar evidência da execução
+        if: ${{ always() }}
+        env:
+          TEST_OUTCOME: ${{ steps.tests.outcome }}
+        run: |
+          node --input-type=module <<'JS'
+          import {mkdir,readFile,writeFile} from 'node:fs/promises';
+          const lines=(await readFile('/tmp/fii-pvp-test.log','utf8').catch(()=>'' )).split('\n');
+          const status={schemaVersion:1,testSuite:'fii-pvp',outcome:process.env.TEST_OUTCOME,
+            runId:process.env.GITHUB_RUN_ID,checkedAtUtc:new Date().toISOString(),
+            logTail:lines.slice(-20)};
+          await mkdir('public/data',{recursive:true});
+          await writeFile('public/data/fii-pvp-test-status.json',JSON.stringify(status,null,2)+'\n');
+          JS
+          mkdir -p docs/data
+          cp public/data/fii-pvp-test-status.json docs/data/fii-pvp-test-status.json
+          git add public/data/fii-pvp-test-status.json docs/data/fii-pvp-test-status.json
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name="radar-eod-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "ci: registra teste de P/VP de FIIs"
+          git push
+      - name: Marcar falha quando teste não passar
+        if: ${{ steps.tests.outcome != 'success' }}
+        run: exit 1
