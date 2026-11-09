@@ -4,7 +4,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/radar-eod.yml'
-      - 'scripts/refresh-cvm-fii.py'
+      - 'scripts/refresh_cvm_fii.py'
       - 'scripts/refresh-cvm-catalog.mjs'
       - 'scripts/refresh-radar-eod.mjs'
       - 'tests/test_cvm_fii.py'
@@ -41,7 +41,7 @@ jobs:
         continue-on-error: true
         env:
           CVM_FII_YEAR: '2026'
-        run: python3 scripts/refresh-cvm-fii.py
+        run: python3 scripts/refresh_cvm_fii.py
       - name: Cruzar CNPJ e ticker com último informe CVM válido
         id: mapping
         if: ${{ always() && (steps.fii.outcome == 'success' || steps.fii.outcome == 'failure') }}
