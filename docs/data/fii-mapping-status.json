@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "checkedAtUtc": "2026-11-09T05:07:49+00:00",
-  "githubRunId": "42565496376",
+  "checkedAtUtc": "2026-11-09T05:29:20+00:00",
+  "githubRunId": "42567582866",
   "source": "GitHub Actions - Radar CVM",
-  "cvmMetricsStep": "previous-validated-snapshot",
+  "cvmMetricsStep": "success",
   "mappingStep": "success",
   "hasPublishedSnapshot": true,
   "coverage": {
@@ -14,7 +14,7 @@
     "conflictingTickers": 0,
     "ambiguousCnpjs": 35,
     "fiisWithCvmMetrics": 357,
-    "cvmFundsUnmatched": 1058
+    "cvmFundsUnmatched": 1070
   },
   "notes": "Vínculos ticker/CNPJ confirmados pelo processo de cruzamento"
 }

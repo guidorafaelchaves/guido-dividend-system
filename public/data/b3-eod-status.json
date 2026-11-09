@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "dataType": "b3-eod-feed-status",
+  "checkedAtUtc": "2026-11-09T05:29:20.924Z",
+  "githubRunId": "42567582866",
+  "feedConfiguredAndRightsConfirmed": false,
+  "feedStepOutcome": "skipped",
+  "latestPublishedSnapshot": null,
+  "status": "awaiting-authorized-feed",
+  "note": "O snapshot antigo permanece datado; sem autorização de armazenamento, cálculo e exibição de dados B3 não há publicação."
+}
