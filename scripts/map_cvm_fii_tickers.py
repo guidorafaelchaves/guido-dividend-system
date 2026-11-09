@@ -82,7 +82,7 @@ def mapping(csv_text, metrics):
         if metric.get("referenceDate") is None:
             continue
         record={"ticker":ticker,"cnpj":cnpj,"referenceDate":metric["referenceDate"]}
-        for field in ("netAssets","units","holders","navReported","navCalculated"):
+        for field in ("netAssets","units","holders","navReported","navCalculated","navValidated"):
             if field in metric:
                 record[field]=metric[field]
         records.append(record)
