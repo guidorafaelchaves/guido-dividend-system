@@ -23,7 +23,7 @@ if (!source || !/^\d{4}-\d{2}-\d{2}$/.test(tradeDate) || Number.isNaN(Date.parse
 }
 const todayBR = new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const ageDays = (Date.parse(todayBR+'T12:00:00Z')-Date.parse(tradeDate+'T12:00:00Z'))/86400000;
-if (ageDays < 0 || ageDays > 7) throw new Error('Data de pregão futura ou excessivamente antiga.');
+if (ageDays < 1 || ageDays > 7) throw new Error('A publicação exige pregão anterior (D-1) e idade máxima de 7 dias.');
 const seen = new Set();
 const quotes = input.quotes.map((r) => {
   const ticker = String(r.ticker || '').trim().toUpperCase();
