@@ -40,6 +40,36 @@ class MonthlyFiiTests(unittest.TestCase):
         self.assertEqual(records[0]["units"],100)
         self.assertEqual(records[0]["navCalculated"],14)
 
+
+    def test_real_2026_layout_and_reconciliation(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/"test.zip"
+            with zipfile.ZipFile(path,"w") as z:
+                z.writestr("inf_mensal_fii_complemento_2026.csv",
+                    ("CNPJ_Fundo_Classe;Data_Referencia;Patrimonio_Liquido;Cotas_Emitidas;Total_Numero_Cotistas\n"
+                     "11222333000181;2026-09-01;1400,00;100;51\n").encode("latin-1"))
+                z.writestr("inf_mensal_fii_geral_2026.csv",
+                    ("CNPJ_Fundo_Classe;Data_Referencia;Quantidade_Cotas_Emitidas\n"
+                     "11222333000181;2026-09-01;100\n").encode("latin-1"))
+            records,files,rows=extract(path,2026)
+        self.assertEqual(files,2)
+        self.assertEqual(records[0]["units"],100)
+        self.assertEqual(records[0]["holders"],51)
+        self.assertEqual(records[0]["navCalculated"],14)
+
+    def test_conflicting_units_suppress_nav(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/"test.zip"
+            with zipfile.ZipFile(path,"w") as z:
+                z.writestr("complemento.csv",
+                    ("CNPJ_Fundo_Classe;Data_Referencia;Patrimonio_Liquido;Cotas_Emitidas\n"
+                     "11222333000181;2026-09-01;1400;100\n").encode("latin-1"))
+                z.writestr("geral.csv",
+                    ("CNPJ_Fundo_Classe;Data_Referencia;Quantidade_Cotas_Emitidas\n"
+                     "11222333000181;2026-09-01;200\n").encode("latin-1"))
+            records,files,rows=extract(path,2026)
+        self.assertNotIn("navCalculated",records[0])
+
     def test_source_validation(self):
         catalog={"datasets":[{"id":"fii-doc-inf_mensal","resources":[{"url":"https://evil.example/inf_mensal_fii_2026.zip"}]}]}
         with self.assertRaises(ValueError):
