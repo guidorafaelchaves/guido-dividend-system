@@ -19,7 +19,7 @@
   async function render(){
     const host=document.querySelector('#portalApp');
     if(!host)return;
-    const [cvm,eod,fii,mappingStatus,mapping]=await Promise.all([read('/data/cvm-catalog.json'),read('/data/radar-eod.json'),read('/data/cvm-fii-metrics.json'),read('/data/fii-mapping-status.json'),read('/data/cvm-fii-by-ticker.json')]);
+    const [cvm,eod,fii,mappingStatus,mapping,b3Status]=await Promise.all([read('/data/cvm-catalog.json'),read('/data/radar-eod.json'),read('/data/cvm-fii-metrics.json'),read('/data/fii-mapping-status.json'),read('/data/cvm-fii-by-ticker.json'),read('/data/b3-eod-status.json')]);
     const strip=el('aside','');
     strip.setAttribute('aria-label','Transparência das fontes de dados');
     strip.style.cssText='padding:9px 18px;background:#0c211d;color:#d1e7dc;border-bottom:1px solid #305448;font:12px/1.5 system-ui,sans-serif;display:flex;gap:14px;flex-wrap:wrap;align-items:center';
@@ -44,6 +44,7 @@
     const eodValid=eod?.schemaVersion===1&&eod?.market==='B3'&&eod?.source&&eod?.count>0&&dateBR(eod.tradeDate);
     strip.appendChild(el('span',eodValid?
       'Fechamento B3 D-1: '+dateBR(eod.tradeDate)+' · '+eod.count+' ativos · '+eod.source:
+      b3Status?.status==='provider-error'?'B3 D-1: falha na fonte de fechamento autorizada':
       'B3 D-1: aguardando fonte autorizada; sem cotação automática'));
     const header=host.querySelector('header');
     if(header)header.insertAdjacentElement('afterend',strip);
