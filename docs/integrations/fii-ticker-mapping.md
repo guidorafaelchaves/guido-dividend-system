@@ -29,3 +29,7 @@ Licença do cadastro: https://creativecommons.org/licenses/by/4.0/
 ## Próximo requisito antes de produzir P/VP
 
 Obter ligação ticker ↔ ISIN ↔ classe de fundo e usar o valor patrimonial por cota correto da mesma classe, assim como fechamento autorizado, com data posterior à divulgação do informe.
+
+## Primeira execução bem-sucedida — 09/11/2026
+
+O fluxo independente confirmou 1.172 linhas cadastrais, 532 FIIs, 527 pares ticker/CNPJ aceitos e 357 vínculos com métricas CVM. Trinta e cinco CNPJs com múltiplos tickers foram excluídos por ambiguidade. Resultado publicado em `public/data/cvm-fii-by-ticker.json` e `docs/data/cvm-fii-by-ticker.json`.
