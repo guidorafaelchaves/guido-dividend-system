@@ -13,18 +13,52 @@ concurrency:
 jobs:
   auditoria:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Identificar colunas reais dos arquivos oficiais CVM
+        id: audit
+        continue-on-error: true
         env:
           CVM_FII_YEAR: '2026'
-        run: python3 scripts/audit_cvm_fii_schema.py
-      - name: Publicar diagnóstico dos cabeçalhos
+        run: |
+          python3 scripts/audit_cvm_fii_schema.py 2>&1 | tee /tmp/cvm-fii-audit.log
+          exit ${PIPESTATUS[0]}
+      - name: Registrar status verificável no repositório
+        if: ${{ always() }}
+        env:
+          AUDIT_OUTCOME: ${{ steps.audit.outcome }}
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib,datetime
+          p=pathlib.Path('public/data/cvm-fii-audit-status.json')
+          p.parent.mkdir(parents=True,exist_ok=True)
+          log=pathlib.Path('/tmp/cvm-fii-audit.log')
+          lines=log.read_text(errors='replace').splitlines() if log.exists() else []
+          status={
+            'schemaVersion':1,
+            'dataType':'fii-schema-audit-status',
+            'outcome':os.getenv('AUDIT_OUTCOME','unknown'),
+            'runId':os.getenv('GITHUB_RUN_ID'),
+            'checkedAtUtc':datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds'),
+            'diagnosticTail':lines[-15:] if os.getenv('AUDIT_OUTCOME')!='success' else []
+          }
+          p.write_text(json.dumps(status,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('Auditoria CVM:',status['outcome'],'execução',status['runId'])
+          PY
+      - name: Publicar relatório e diagnóstico
+        if: ${{ always() }}
         run: |
           mkdir -p docs/data
-          cp public/data/cvm-fii-schema-audit.json docs/data/cvm-fii-schema-audit.json
-          git add public/data/cvm-fii-schema-audit.json docs/data/cvm-fii-schema-audit.json
+          cp public/data/cvm-fii-audit-status.json docs/data/cvm-fii-audit-status.json
+          git add public/data/cvm-fii-audit-status.json docs/data/cvm-fii-audit-status.json
+          if [ -f public/data/cvm-fii-schema-audit.json ]; then
+            cp public/data/cvm-fii-schema-audit.json docs/data/cvm-fii-schema-audit.json
+            git add public/data/cvm-fii-schema-audit.json docs/data/cvm-fii-schema-audit.json
+          fi
           if git diff --cached --quiet; then exit 0; fi
-          git -c user.name="radar-eod-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: audita colunas oficiais CVM FII"
+          git -c user.name="radar-eod-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: publica auditoria e diagnóstico CVM FII"
           git push
+      - name: Falhar explicitamente se auditoria falhar
+        if: ${{ steps.audit.outcome == 'failure' }}
+        run: exit 1
