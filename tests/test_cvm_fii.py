@@ -25,6 +25,21 @@ class MonthlyFiiTests(unittest.TestCase):
         self.assertEqual(records[0]["navCalculated"],13)
         self.assertNotIn("ticker",records[0])
 
+    def test_merge_same_cnpj_and_month_across_csv_files(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/"test.zip"
+            with zipfile.ZipFile(path,"w") as z:
+                z.writestr("patrimonio.csv",
+                    b"CNPJ_FUNDO;DT_COMPTC;VL_PATRIM_LIQ\\n12345678000190;2026-06-30;1400\\n")
+                z.writestr("cotas.csv",
+                    b"CNPJ_FUNDO;DT_COMPTC;QT_COTAS\\n12345678000190;2026-06-30;100\\n")
+            records,files,rows=extract(path,2026)
+        self.assertEqual(files,2)
+        self.assertEqual(rows,2)
+        self.assertEqual(records[0]["netAssets"],1400)
+        self.assertEqual(records[0]["units"],100)
+        self.assertEqual(records[0]["navCalculated"],14)
+
     def test_source_validation(self):
         catalog={"datasets":[{"id":"fii-doc-inf_mensal","resources":[{"url":"https://evil.example/inf_mensal_fii_2026.zip"}]}]}
         with self.assertRaises(ValueError):
