@@ -4,6 +4,10 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/radar-eod.yml'
+      - 'scripts/refresh-cvm-fii.py'
+      - 'scripts/refresh-cvm-catalog.mjs'
+      - 'scripts/refresh-radar-eod.mjs'
+      - 'tests/test_cvm_fii.py'
   schedule:
     # 08:00 de Brasilia (UTC-3), de segunda a sexta, equivale a 11:00 UTC.
     # Dados B3, se disponíveis, são sempre do pregão anterior.
