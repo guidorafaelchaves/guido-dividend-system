@@ -33,11 +33,11 @@ ALIASES = {
     "cnpj": ["CNPJ_FUNDO", "CNPJ_FUNDO_CLASSE", "CNPJ", "CNPJ_FUNDO_IMOBILIARIO"],
     "referenceDate": ["DT_COMPTC", "DT_REFER", "DT_REFERENCIA", "DATA_REFERENCIA", "DATA_BASE", "DATACOMPETENCIA"],
     "netAssets": ["VL_PATRIM_LIQ", "VL_PATRIMONIO_LIQUIDO", "PATRIMONIOLIQUIDO"],
-    "units": ["QT_COTAS", "QT_COTAS_EMITIDAS", "QTD_COTAS", "NUM_COTAS_EMITIDAS", "QUANTIDADE_COTAS_EMITIDAS"],
-    "holders": ["NR_COTST", "NR_COTISTAS", "NUM_COTISTAS", "QUANTIDADE_COTISTAS"],
+    "units": ["QT_COTAS", "COTAS_EMITIDAS", "QUANTIDADE_COTAS_EMITIDAS", "QT_COTAS_EMITIDAS", "QTD_COTAS", "NUM_COTAS_EMITIDAS", "QUANTIDADE_COTAS_EMITIDAS"],
+    "holders": ["NR_COTST", "TOTAL_NUMERO_COTISTAS", "NR_COTISTAS", "NUM_COTISTAS", "QUANTIDADE_COTISTAS"],
     "navReported": ["VL_PATRIM_COTA", "VL_PATRIMONIAL_COTA", "VALOR_PATRIMONIAL_COTA"],
 }
-ALIASES = {key: {normal(v) for v in values} for key,values in ALIASES.items()}
+ALIASES = {key: [normal(v) for v in values] for key,values in ALIASES.items()}
 
 def canonical_cnpj(value):
     digits = re.sub(r"\D", "", str(value or ""))
@@ -74,6 +74,7 @@ def select_columns(fields):
 
 def extract(zip_path, year):
     selected = {}
+    invalid_nav = set()
     scanned = 0
     accepted = 0
     with zipfile.ZipFile(zip_path) as archive:
@@ -123,11 +124,16 @@ def extract(zip_path, year):
                         for field,value in record.items():
                             if field not in prev:
                                 prev[field] = value
+                            elif field in ("netAssets","units") and prev[field] != value:
+                                # Valores conflitantes para a mesma competência exigem
+                                # revisão humana; não publicar VPA calculado desse fundo.
+                                invalid_nav.add((cnpj,ref))
                     accepted += 1
     if not scanned or not selected:
         raise ValueError("Nenhum CSV com colunas financeiras reconhecidas; esquema oficial exige revisão")
     for record in selected.values():
-        if record.get("units",0)>0 and "netAssets" in record:
+        if (record.get("units",0)>0 and record.get("netAssets",0)>0
+                and (record["cnpj"],record["referenceDate"]) not in invalid_nav):
             record["navCalculated"] = round(record["netAssets"]/record["units"],6)
     return sorted(selected.values(), key=lambda r:r["cnpj"]), scanned, accepted
 
