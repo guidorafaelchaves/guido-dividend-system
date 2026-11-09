@@ -1,0 +1,7090 @@
+{
+  "schemaVersion": 1,
+  "source": "CVM - Informe Mensal Estruturado FII",
+  "dataType": "monthly-fii-accounting",
+  "year": 2026,
+  "sourceUrl": "https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip",
+  "coverage": {
+    "funds": 1415,
+    "filesWithRecognizedSchema": 2,
+    "observationsValidated": 19265
+  },
+  "metrics": [
+    {
+      "cnpj": "00332266000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 257301573.06
+    },
+    {
+      "cnpj": "00613094000174",
+      "referenceDate": "2026-09-01",
+      "units": 758400
+    },
+    {
+      "cnpj": "00762723000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 96009308.62
+    },
+    {
+      "cnpj": "00868235000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 122885465.88
+    },
+    {
+      "cnpj": "01201140000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 521895159.04
+    },
+    {
+      "cnpj": "01235622000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4050860498.36
+    },
+    {
+      "cnpj": "01356517000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 193028077.41
+    },
+    {
+      "cnpj": "01497954000114",
+      "referenceDate": "2026-09-01",
+      "netAssets": 163828923.41
+    },
+    {
+      "cnpj": "01601918000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 47760052.68
+    },
+    {
+      "cnpj": "01633741000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13381593.74
+    },
+    {
+      "cnpj": "01636325000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 307091928.33
+    },
+    {
+      "cnpj": "01657856000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 41518236.64
+    },
+    {
+      "cnpj": "01964775000140",
+      "referenceDate": "2026-10-01",
+      "netAssets": 1598446.33
+    },
+    {
+      "cnpj": "02508235000114",
+      "referenceDate": "2026-09-01",
+      "netAssets": 262589920.46
+    },
+    {
+      "cnpj": "03251720000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 268599979.79
+    },
+    {
+      "cnpj": "03507519000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 630741094.19
+    },
+    {
+      "cnpj": "03683056000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 704023458.84
+    },
+    {
+      "cnpj": "03855441000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 144316227.19
+    },
+    {
+      "cnpj": "04066582000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 65802292.47
+    },
+    {
+      "cnpj": "04141645000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 346273496.91
+    },
+    {
+      "cnpj": "04644612000178",
+      "referenceDate": "2026-10-01",
+      "netAssets": 28402720.83
+    },
+    {
+      "cnpj": "04722883000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 665165896.44
+    },
+    {
+      "cnpj": "05437916000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162330715.92
+    },
+    {
+      "cnpj": "05562312000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 118307262.97
+    },
+    {
+      "cnpj": "06175262000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 56862994.03
+    },
+    {
+      "cnpj": "07000400000146",
+      "referenceDate": "2026-01-01",
+      "netAssets": 4408674.69
+    },
+    {
+      "cnpj": "07122725000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 227387825.62
+    },
+    {
+      "cnpj": "07224019000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 896436604.19
+    },
+    {
+      "cnpj": "07583627000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5066687956.69
+    },
+    {
+      "cnpj": "07789135000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4313209299.56
+    },
+    {
+      "cnpj": "08014513000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 326078250.58
+    },
+    {
+      "cnpj": "08098114000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 756483432.69
+    },
+    {
+      "cnpj": "08417532000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 189506831.28
+    },
+    {
+      "cnpj": "08431747000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3025454936.25
+    },
+    {
+      "cnpj": "08693497000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 341230161.62
+    },
+    {
+      "cnpj": "08696175000197",
+      "referenceDate": "2026-10-01",
+      "netAssets": 185899358.46
+    },
+    {
+      "cnpj": "08706065000169",
+      "referenceDate": "2026-09-01",
+      "netAssets": 421447657.5
+    },
+    {
+      "cnpj": "08924783000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2199341303.2
+    },
+    {
+      "cnpj": "08971868000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3524426.06
+    },
+    {
+      "cnpj": "09006914000134",
+      "referenceDate": "2026-09-01",
+      "netAssets": 133118098.5
+    },
+    {
+      "cnpj": "09072017000129",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1780836081.23
+    },
+    {
+      "cnpj": "09150967000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4871895.04
+    },
+    {
+      "cnpj": "09276964000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 464535605.73
+    },
+    {
+      "cnpj": "09326861000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 64796744.87
+    },
+    {
+      "cnpj": "09517273000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162011590.2
+    },
+    {
+      "cnpj": "09552812000114",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1017180185.65
+    },
+    {
+      "cnpj": "10347985000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 265844582.72
+    },
+    {
+      "cnpj": "10375382000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162544253.21
+    },
+    {
+      "cnpj": "10427246000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 201022516.93
+    },
+    {
+      "cnpj": "10456799000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1129067102.2
+    },
+    {
+      "cnpj": "10522648000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 38870645.65
+    },
+    {
+      "cnpj": "10869155000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 674026120.74
+    },
+    {
+      "cnpj": "10991914000115",
+      "referenceDate": "2026-10-01",
+      "netAssets": 108317812.43
+    },
+    {
+      "cnpj": "11044355000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 247759594.64
+    },
+    {
+      "cnpj": "11160521000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1520653870.85
+    },
+    {
+      "cnpj": "11179118000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 154881395.68
+    },
+    {
+      "cnpj": "11233841000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 401307916.65
+    },
+    {
+      "cnpj": "11260134000168",
+      "referenceDate": "2026-06-01",
+      "netAssets": 88394914.2
+    },
+    {
+      "cnpj": "11268335000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 159252241.41
+    },
+    {
+      "cnpj": "11274415000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 104968668.74
+    },
+    {
+      "cnpj": "11281322000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 29462889.31
+    },
+    {
+      "cnpj": "11326746000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 427117513.9
+    },
+    {
+      "cnpj": "11602654000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 436650473.97
+    },
+    {
+      "cnpj": "11664201000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1320375898.89
+    },
+    {
+      "cnpj": "11728688000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7546017797.39
+    },
+    {
+      "cnpj": "11769604000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1239151724.56
+    },
+    {
+      "cnpj": "11827568000105",
+      "referenceDate": "2026-10-01",
+      "netAssets": 52963225.59
+    },
+    {
+      "cnpj": "11839593000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7535098792.61
+    },
+    {
+      "cnpj": "11945604000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3103882.45
+    },
+    {
+      "cnpj": "12005956000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4615296750.95
+    },
+    {
+      "cnpj": "12323955000169",
+      "referenceDate": "2026-09-01",
+      "netAssets": 197499697.36
+    },
+    {
+      "cnpj": "12401858000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 298934071.8
+    },
+    {
+      "cnpj": "12516185000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 811532260.01
+    },
+    {
+      "cnpj": "12681340000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 165436414.88
+    },
+    {
+      "cnpj": "12804013000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 189043508.62
+    },
+    {
+      "cnpj": "12809972000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 130330452.91
+    },
+    {
+      "cnpj": "12811222000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16528689.93
+    },
+    {
+      "cnpj": "12887506000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 23008226.9
+    },
+    {
+      "cnpj": "12969125000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 195466330.16
+    },
+    {
+      "cnpj": "12978943000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 790601922.02
+    },
+    {
+      "cnpj": "12989974000129",
+      "referenceDate": "2026-10-01",
+      "netAssets": 6923006700.56
+    },
+    {
+      "cnpj": "13000836000138",
+      "referenceDate": "2026-09-01",
+      "netAssets": 21066623.58
+    },
+    {
+      "cnpj": "13022994000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1356958569.87
+    },
+    {
+      "cnpj": "13125823000195",
+      "referenceDate": "2026-10-01",
+      "netAssets": 10080674.11
+    },
+    {
+      "cnpj": "13320290000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 330480631.92
+    },
+    {
+      "cnpj": "13371132000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2107968723.47
+    },
+    {
+      "cnpj": "13500306000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 74171847.58
+    },
+    {
+      "cnpj": "13509993000173",
+      "referenceDate": "2026-10-01",
+      "netAssets": 14240341.29
+    },
+    {
+      "cnpj": "13551286000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 218795661.48
+    },
+    {
+      "cnpj": "13555918000149",
+      "referenceDate": "2026-10-01",
+      "netAssets": 111216082.51
+    },
+    {
+      "cnpj": "13584584000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 247339808.78
+    },
+    {
+      "cnpj": "13598226000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 444052148.56
+    },
+    {
+      "cnpj": "13703596000138",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7839054.12
+    },
+    {
+      "cnpj": "13726079000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1269680177.91
+    },
+    {
+      "cnpj": "13842683000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14485201.22
+    },
+    {
+      "cnpj": "13920018000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 83363732.46
+    },
+    {
+      "cnpj": "13974819000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 68600370.6
+    },
+    {
+      "cnpj": "14056001000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8491885.6
+    },
+    {
+      "cnpj": "14074706000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 706115552.56
+    },
+    {
+      "cnpj": "14080689000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11038499.44
+    },
+    {
+      "cnpj": "14088246000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 94653996.03
+    },
+    {
+      "cnpj": "14149745000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 726728455.29
+    },
+    {
+      "cnpj": "14217108000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 407188509.29
+    },
+    {
+      "cnpj": "14376247000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 109861249.76
+    },
+    {
+      "cnpj": "14410722000129",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1600084303.5
+    },
+    {
+      "cnpj": "14413342000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 318121099.39
+    },
+    {
+      "cnpj": "14423780000197",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11077659.02
+    },
+    {
+      "cnpj": "14609653000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49544289.33
+    },
+    {
+      "cnpj": "14631148000139",
+      "referenceDate": "2026-10-01",
+      "netAssets": 68957206.98
+    },
+    {
+      "cnpj": "14721889000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 271256937.31
+    },
+    {
+      "cnpj": "14788492000136",
+      "referenceDate": "2026-09-01",
+      "netAssets": 943062348.52
+    },
+    {
+      "cnpj": "14793782000178",
+      "referenceDate": "2026-09-01",
+      "netAssets": 71369989.71
+    },
+    {
+      "cnpj": "15006267000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 130182414.37
+    },
+    {
+      "cnpj": "15006286000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 225472247.95
+    },
+    {
+      "cnpj": "15098422000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 167057111.95
+    },
+    {
+      "cnpj": "15333306000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162038297.13
+    },
+    {
+      "cnpj": "15348117000138",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100451986.67
+    },
+    {
+      "cnpj": "15447108000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2026700317.91
+    },
+    {
+      "cnpj": "15447110000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1046891297.92
+    },
+    {
+      "cnpj": "15461076000191",
+      "referenceDate": "2026-10-01",
+      "netAssets": 107510105.6
+    },
+    {
+      "cnpj": "15463207000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 847014914.84
+    },
+    {
+      "cnpj": "15489509000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 834191550.78
+    },
+    {
+      "cnpj": "15538445000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 96733116.88
+    },
+    {
+      "cnpj": "15570431000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 48179722.81
+    },
+    {
+      "cnpj": "15576907000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1759215426.83
+    },
+    {
+      "cnpj": "15798220000180",
+      "referenceDate": "2026-08-01",
+      "netAssets": 124940616.79
+    },
+    {
+      "cnpj": "15799397000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 125445402.16
+    },
+    {
+      "cnpj": "16543270000189",
+      "referenceDate": "2026-10-01",
+      "netAssets": 15593138.96
+    },
+    {
+      "cnpj": "16671412000193",
+      "referenceDate": "2026-09-01",
+      "netAssets": 593213367.4
+    },
+    {
+      "cnpj": "16685929000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 467428595.02
+    },
+    {
+      "cnpj": "16706958000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10984431830.65
+    },
+    {
+      "cnpj": "16802320000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 58775613.57
+    },
+    {
+      "cnpj": "16802360000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1718081.72
+    },
+    {
+      "cnpj": "16841067000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7838858.27
+    },
+    {
+      "cnpj": "16915968000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 658014855.72
+    },
+    {
+      "cnpj": "16924913000134",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3110008.9
+    },
+    {
+      "cnpj": "16929519000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11920092.08
+    },
+    {
+      "cnpj": "17007443000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 75079814.29
+    },
+    {
+      "cnpj": "17025970000144",
+      "referenceDate": "2026-09-01",
+      "netAssets": 689866327.01
+    },
+    {
+      "cnpj": "17098794000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 126431792.11
+    },
+    {
+      "cnpj": "17144039000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 101711638.06
+    },
+    {
+      "cnpj": "17156502000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 357822499.28
+    },
+    {
+      "cnpj": "17161979000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 664587924.75
+    },
+    {
+      "cnpj": "17282011000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 678163761.91
+    },
+    {
+      "cnpj": "17308805000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40174246.58
+    },
+    {
+      "cnpj": "17311079000174",
+      "referenceDate": "2026-09-01",
+      "netAssets": 56281768.23
+    },
+    {
+      "cnpj": "17329029000114",
+      "referenceDate": "2026-09-01",
+      "netAssets": 227531862.94
+    },
+    {
+      "cnpj": "17374696000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 564363859.59
+    },
+    {
+      "cnpj": "17554274000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3338022866.46
+    },
+    {
+      "cnpj": "17568605000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 345051392.76
+    },
+    {
+      "cnpj": "17590518000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 200016276.33
+    },
+    {
+      "cnpj": "17655102000148",
+      "referenceDate": "2026-10-01",
+      "netAssets": 415120805.35
+    },
+    {
+      "cnpj": "17655115000117",
+      "referenceDate": "2026-10-01",
+      "netAssets": 653079112.18
+    },
+    {
+      "cnpj": "17854016000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 56137789.73
+    },
+    {
+      "cnpj": "17870926000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 74372169.46
+    },
+    {
+      "cnpj": "18085673000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 154426728.3
+    },
+    {
+      "cnpj": "18259637000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 30771985.21
+    },
+    {
+      "cnpj": "18289950000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100384106.65
+    },
+    {
+      "cnpj": "18307582000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1637080263.27
+    },
+    {
+      "cnpj": "18308516000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 596071387.99
+    },
+    {
+      "cnpj": "18311024000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12709654.17
+    },
+    {
+      "cnpj": "18312285000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 381607991.82
+    },
+    {
+      "cnpj": "18330535000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 279675319.97
+    },
+    {
+      "cnpj": "18369510000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 94231831.32
+    },
+    {
+      "cnpj": "18497672000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1022029.25
+    },
+    {
+      "cnpj": "18647268000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17124193.56
+    },
+    {
+      "cnpj": "18730914000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 78323482.36
+    },
+    {
+      "cnpj": "18874965000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 169499506.2
+    },
+    {
+      "cnpj": "18929353000136",
+      "referenceDate": "2026-10-01",
+      "netAssets": 43385370.93
+    },
+    {
+      "cnpj": "18950957000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3911115063.77
+    },
+    {
+      "cnpj": "18979895000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3037334444.47
+    },
+    {
+      "cnpj": "19026454000160",
+      "referenceDate": "2026-10-01",
+      "netAssets": 178291700.8
+    },
+    {
+      "cnpj": "19107604000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40711668.64
+    },
+    {
+      "cnpj": "19131224000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 58768665.68
+    },
+    {
+      "cnpj": "19213231000101",
+      "referenceDate": "2026-08-01",
+      "netAssets": 13030784.31
+    },
+    {
+      "cnpj": "19239245000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4664257.89
+    },
+    {
+      "cnpj": "19249956000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 15640709.14
+    },
+    {
+      "cnpj": "19249989000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 109261212.09
+    },
+    {
+      "cnpj": "19267845000176",
+      "referenceDate": "2026-10-01",
+      "netAssets": 102500897.35
+    },
+    {
+      "cnpj": "19419994000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3528786074.99
+    },
+    {
+      "cnpj": "19628741000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49265925.92
+    },
+    {
+      "cnpj": "19722048000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "19872996000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 752898593.72
+    },
+    {
+      "cnpj": "19878616000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 678650665.95
+    },
+    {
+      "cnpj": "20019120000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 528472960.76
+    },
+    {
+      "cnpj": "20118470000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 899360619.22
+    },
+    {
+      "cnpj": "20118492000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 873926203.0
+    },
+    {
+      "cnpj": "20118507000151",
+      "referenceDate": "2026-09-01",
+      "netAssets": 101916114.9
+    },
+    {
+      "cnpj": "20132453000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 102634453.91
+    },
+    {
+      "cnpj": "20216935000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 356038662.2
+    },
+    {
+      "cnpj": "20265467000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19204633.83
+    },
+    {
+      "cnpj": "20680775000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2607255735.92
+    },
+    {
+      "cnpj": "20717355000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 43511781.53
+    },
+    {
+      "cnpj": "20748515000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2067077191.13
+    },
+    {
+      "cnpj": "20820603000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 137487714.57
+    },
+    {
+      "cnpj": "21044600000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 420282387.72
+    },
+    {
+      "cnpj": "21067825000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 290677123.03
+    },
+    {
+      "cnpj": "21085863000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 757063235.46
+    },
+    {
+      "cnpj": "21126204000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 374826055.16
+    },
+    {
+      "cnpj": "21156164000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 444294079.81
+    },
+    {
+      "cnpj": "21408063000151",
+      "referenceDate": "2026-09-01",
+      "netAssets": 966978628.89
+    },
+    {
+      "cnpj": "21500481000174",
+      "referenceDate": "2026-10-01",
+      "netAssets": 70739040.0
+    },
+    {
+      "cnpj": "21500500000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 526771896.61
+    },
+    {
+      "cnpj": "21500514000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 39438440.02
+    },
+    {
+      "cnpj": "21826249000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7281115.49
+    },
+    {
+      "cnpj": "21862783000192",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2668101.88
+    },
+    {
+      "cnpj": "21917235000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 224537004.61
+    },
+    {
+      "cnpj": "22003469000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 131375850.07
+    },
+    {
+      "cnpj": "22081808000183",
+      "referenceDate": "2026-08-01",
+      "netAssets": 1042587.25
+    },
+    {
+      "cnpj": "22169671000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 60282922.86
+    },
+    {
+      "cnpj": "22169716000150",
+      "referenceDate": "2026-06-01",
+      "netAssets": 1313489.09
+    },
+    {
+      "cnpj": "22211522000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 72875596.35
+    },
+    {
+      "cnpj": "22219335000138",
+      "referenceDate": "2026-09-01",
+      "netAssets": 530964091.79
+    },
+    {
+      "cnpj": "22340978000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 348971668.89
+    },
+    {
+      "cnpj": "22459737000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 75109898.67
+    },
+    {
+      "cnpj": "22503991000168",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7773204.19
+    },
+    {
+      "cnpj": "22646161000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 247926643.43
+    },
+    {
+      "cnpj": "22862226000134",
+      "referenceDate": "2026-09-01",
+      "netAssets": 81344093.87
+    },
+    {
+      "cnpj": "23120006000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12483752.43
+    },
+    {
+      "cnpj": "23120027000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 189418182.84
+    },
+    {
+      "cnpj": "23179381000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 46188235.57
+    },
+    {
+      "cnpj": "23426470000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 508900326.97
+    },
+    {
+      "cnpj": "23532837000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 974652184.73
+    },
+    {
+      "cnpj": "23533796000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 609071223.92
+    },
+    {
+      "cnpj": "23537203000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 110456259.2
+    },
+    {
+      "cnpj": "23538112000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 51302814.4
+    },
+    {
+      "cnpj": "23570871000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 505560367.28
+    },
+    {
+      "cnpj": "23648935000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1611186191.3
+    },
+    {
+      "cnpj": "23740527000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1216321426.81
+    },
+    {
+      "cnpj": "23740595000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 254738813.65
+    },
+    {
+      "cnpj": "23768027000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 401415583.74
+    },
+    {
+      "cnpj": "23781211000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2274518052.52
+    },
+    {
+      "cnpj": "23876086000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6613229.37
+    },
+    {
+      "cnpj": "23964843000103",
+      "referenceDate": "2026-06-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "23964908000110",
+      "referenceDate": "2026-01-01",
+      "netAssets": 21231406.84
+    },
+    {
+      "cnpj": "24514406000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 260559079.5
+    },
+    {
+      "cnpj": "24796967000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14069442.0
+    },
+    {
+      "cnpj": "24853044000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1629464052.36
+    },
+    {
+      "cnpj": "24853060000115",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40968502.73
+    },
+    {
+      "cnpj": "24960430000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7616349771.86
+    },
+    {
+      "cnpj": "24976492000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 481669033.39
+    },
+    {
+      "cnpj": "25032881000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2540702305.14
+    },
+    {
+      "cnpj": "26091656000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 327581393.6
+    },
+    {
+      "cnpj": "26191053000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 94057644.66
+    },
+    {
+      "cnpj": "26269251000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10698736.9
+    },
+    {
+      "cnpj": "26452053000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 624858235.8
+    },
+    {
+      "cnpj": "26452179000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 41774753.08
+    },
+    {
+      "cnpj": "26499833000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2390831749.1
+    },
+    {
+      "cnpj": "26502794000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5366764195.65
+    },
+    {
+      "cnpj": "26502810000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 50908976.9
+    },
+    {
+      "cnpj": "26545627000111",
+      "referenceDate": "2026-10-01",
+      "netAssets": 221654171.57
+    },
+    {
+      "cnpj": "26614291000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3808729945.92
+    },
+    {
+      "cnpj": "26642727000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 249975686.8
+    },
+    {
+      "cnpj": "26642834000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 126634037.81
+    },
+    {
+      "cnpj": "26681370000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 512304330.56
+    },
+    {
+      "cnpj": "26813118000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32060786.56
+    },
+    {
+      "cnpj": "26846134000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 27039462.31
+    },
+    {
+      "cnpj": "26846280000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12312866.7
+    },
+    {
+      "cnpj": "26990011000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 27388909.44
+    },
+    {
+      "cnpj": "27368617000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 244757224.38
+    },
+    {
+      "cnpj": "27368863000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 9612712.79
+    },
+    {
+      "cnpj": "27445482000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 243376916.55
+    },
+    {
+      "cnpj": "27486542000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 506117858.87
+    },
+    {
+      "cnpj": "27538422000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 155526551.15
+    },
+    {
+      "cnpj": "27538477000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 65720831.69
+    },
+    {
+      "cnpj": "27539651000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 149859174.3
+    },
+    {
+      "cnpj": "27590950000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1607720.3
+    },
+    {
+      "cnpj": "27771547000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11714533.95
+    },
+    {
+      "cnpj": "27771586000144",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10478812.38
+    },
+    {
+      "cnpj": "27773327000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 338331616.97
+    },
+    {
+      "cnpj": "27882272000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10425349.15
+    },
+    {
+      "cnpj": "28108193000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10296278.96
+    },
+    {
+      "cnpj": "28152272000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2351772267.49
+    },
+    {
+      "cnpj": "28216384000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 22675872.18
+    },
+    {
+      "cnpj": "28267530000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6444177.66
+    },
+    {
+      "cnpj": "28267555000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 323972880.83
+    },
+    {
+      "cnpj": "28267696000136",
+      "referenceDate": "2026-09-01",
+      "netAssets": 428629406.87
+    },
+    {
+      "cnpj": "28516301000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 780695964.87
+    },
+    {
+      "cnpj": "28516325000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 345515543.57
+    },
+    {
+      "cnpj": "28548288000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6035402288.12
+    },
+    {
+      "cnpj": "28693595000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 119433686.44
+    },
+    {
+      "cnpj": "28729197000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1599245061.07
+    },
+    {
+      "cnpj": "28737771000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1757564858.6
+    },
+    {
+      "cnpj": "28757546000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6904091273.75
+    },
+    {
+      "cnpj": "28851767000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 127813670.22
+    },
+    {
+      "cnpj": "28893734000166",
+      "referenceDate": "2026-04-01",
+      "netAssets": 1030926.37
+    },
+    {
+      "cnpj": "28899178000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6128351.84
+    },
+    {
+      "cnpj": "29242809000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 684214.78
+    },
+    {
+      "cnpj": "29242844000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14658327.04
+    },
+    {
+      "cnpj": "29299737000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13916538.91
+    },
+    {
+      "cnpj": "29467977000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1519787769.93
+    },
+    {
+      "cnpj": "29641226000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3176116740.57
+    },
+    {
+      "cnpj": "29852732000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1417094578.1
+    },
+    {
+      "cnpj": "30017492000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 153239171.99
+    },
+    {
+      "cnpj": "30048651000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 119045341.89
+    },
+    {
+      "cnpj": "30091444000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 609653898.67
+    },
+    {
+      "cnpj": "30091506000114",
+      "referenceDate": "2026-09-01",
+      "netAssets": 320617495.15
+    },
+    {
+      "cnpj": "30130708000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3118507748.03
+    },
+    {
+      "cnpj": "30166700000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1272185743.63
+    },
+    {
+      "cnpj": "30178506000156",
+      "referenceDate": "2026-09-01",
+      "netAssets": 117575011.28
+    },
+    {
+      "cnpj": "30230870000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 212583174.34
+    },
+    {
+      "cnpj": "30248129000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 386077402.61
+    },
+    {
+      "cnpj": "30248158000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 387704243.64
+    },
+    {
+      "cnpj": "30248180000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2300600343.75
+    },
+    {
+      "cnpj": "30258790000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 91172627.34
+    },
+    {
+      "cnpj": "30492505000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 262401743.5
+    },
+    {
+      "cnpj": "30495165000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 276900681.77
+    },
+    {
+      "cnpj": "30567216000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 694457237.14
+    },
+    {
+      "cnpj": "30578275000178",
+      "referenceDate": "2026-06-01",
+      "netAssets": 9201737.59
+    },
+    {
+      "cnpj": "30578351000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 75653300.56
+    },
+    {
+      "cnpj": "30578417000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 762237505.68
+    },
+    {
+      "cnpj": "30629603000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1942767073.51
+    },
+    {
+      "cnpj": "30642032000151",
+      "referenceDate": "2026-09-01",
+      "netAssets": 94511136.82
+    },
+    {
+      "cnpj": "30647758000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 190103465.05
+    },
+    {
+      "cnpj": "30654849000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 303116937.89
+    },
+    {
+      "cnpj": "30816679000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 97155370.91
+    },
+    {
+      "cnpj": "30846692000154",
+      "referenceDate": "2026-09-01",
+      "netAssets": 147379581.73
+    },
+    {
+      "cnpj": "30871660000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 573749319.21
+    },
+    {
+      "cnpj": "30871698000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 202314237.13
+    },
+    {
+      "cnpj": "30871716000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162055917.66
+    },
+    {
+      "cnpj": "30982880000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 89507878.08
+    },
+    {
+      "cnpj": "30982923000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 88804153.92
+    },
+    {
+      "cnpj": "30982974000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 264838264.3
+    },
+    {
+      "cnpj": "30983020000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 325145580.44
+    },
+    {
+      "cnpj": "31145875000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 824944974.2
+    },
+    {
+      "cnpj": "31152015000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49688833.94
+    },
+    {
+      "cnpj": "31161410000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 115989700.3
+    },
+    {
+      "cnpj": "31373514000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2396107.13
+    },
+    {
+      "cnpj": "31469385000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 82946811.68
+    },
+    {
+      "cnpj": "31508219000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32060535.21
+    },
+    {
+      "cnpj": "31524769000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 237425447.34
+    },
+    {
+      "cnpj": "31524789000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 471093605.01
+    },
+    {
+      "cnpj": "31544493000154",
+      "referenceDate": "2026-09-01",
+      "netAssets": 581327981.6
+    },
+    {
+      "cnpj": "31544514000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "31547782000107",
+      "referenceDate": "2026-10-01",
+      "netAssets": 272641535.73
+    },
+    {
+      "cnpj": "31547989000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 147557414.89
+    },
+    {
+      "cnpj": "31713934000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 29615732.44
+    },
+    {
+      "cnpj": "31772231000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 440804302.58
+    },
+    {
+      "cnpj": "31887401000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 55149529.21
+    },
+    {
+      "cnpj": "31894369000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 222143712.5
+    },
+    {
+      "cnpj": "31907591000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 287285686.71
+    },
+    {
+      "cnpj": "31962875000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8219333913.02
+    },
+    {
+      "cnpj": "32000013000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 179252838.83
+    },
+    {
+      "cnpj": "32006821000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 177178612.87
+    },
+    {
+      "cnpj": "32065364000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 444733628.5
+    },
+    {
+      "cnpj": "32140405000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 143885484.37
+    },
+    {
+      "cnpj": "32177294000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 42368231.53
+    },
+    {
+      "cnpj": "32222912000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 31522470.18
+    },
+    {
+      "cnpj": "32274163000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 766833915.29
+    },
+    {
+      "cnpj": "32274197000143",
+      "referenceDate": "2026-10-01",
+      "netAssets": 897139863.06
+    },
+    {
+      "cnpj": "32274553000129",
+      "referenceDate": "2026-10-01",
+      "netAssets": 566223379.0
+    },
+    {
+      "cnpj": "32275252000110",
+      "referenceDate": "2026-07-01",
+      "netAssets": 27331640.66
+    },
+    {
+      "cnpj": "32287811000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 118208619.25
+    },
+    {
+      "cnpj": "32317313000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 29301630.7
+    },
+    {
+      "cnpj": "32388168000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 38093915.72
+    },
+    {
+      "cnpj": "32400250000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1382846839.04
+    },
+    {
+      "cnpj": "32441656000136",
+      "referenceDate": "2026-09-01",
+      "netAssets": 42073058.2
+    },
+    {
+      "cnpj": "32527552000149",
+      "referenceDate": "2026-09-01",
+      "netAssets": 59798431.84
+    },
+    {
+      "cnpj": "32527626000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 370627662.77
+    },
+    {
+      "cnpj": "32667306000192",
+      "referenceDate": "2026-01-01",
+      "netAssets": 32165525.62
+    },
+    {
+      "cnpj": "32754734000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 363976148.12
+    },
+    {
+      "cnpj": "32892018000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2113802120.42
+    },
+    {
+      "cnpj": "32903621000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1393018567.18
+    },
+    {
+      "cnpj": "32903661000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 317494256.47
+    },
+    {
+      "cnpj": "33046142000149",
+      "referenceDate": "2026-09-01",
+      "netAssets": 888218917.76
+    },
+    {
+      "cnpj": "33354650000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 342225605.38
+    },
+    {
+      "cnpj": "33554611000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7997660.42
+    },
+    {
+      "cnpj": "33701455000193",
+      "referenceDate": "2026-09-01",
+      "netAssets": 81326906.21
+    },
+    {
+      "cnpj": "33701485000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 58456.97
+    },
+    {
+      "cnpj": "33701501000154",
+      "referenceDate": "2026-09-01",
+      "netAssets": 119604982.79
+    },
+    {
+      "cnpj": "33701887000102",
+      "referenceDate": "2026-10-01",
+      "netAssets": 58767698.93
+    },
+    {
+      "cnpj": "33842871000101",
+      "referenceDate": "2026-10-01",
+      "netAssets": 17982015.61
+    },
+    {
+      "cnpj": "33884145000151",
+      "referenceDate": "2026-09-01",
+      "netAssets": 70820887.21
+    },
+    {
+      "cnpj": "33884197000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 44414379.39
+    },
+    {
+      "cnpj": "34027774000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 272041.91
+    },
+    {
+      "cnpj": "34081631000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 71100092.07
+    },
+    {
+      "cnpj": "34081637000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 204031549.12
+    },
+    {
+      "cnpj": "34197700000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40455130.4
+    },
+    {
+      "cnpj": "34197776000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25693775.72
+    },
+    {
+      "cnpj": "34197811000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1080192774.02
+    },
+    {
+      "cnpj": "34508872000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1059506107.99
+    },
+    {
+      "cnpj": "34508959000154",
+      "referenceDate": "2026-07-01",
+      "netAssets": 96334105.53
+    },
+    {
+      "cnpj": "34509007000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 101403416.06
+    },
+    {
+      "cnpj": "34547078000142",
+      "referenceDate": "2026-08-01",
+      "netAssets": 73336051.91
+    },
+    {
+      "cnpj": "34598181000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 480366223.08
+    },
+    {
+      "cnpj": "34691520000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 670979417.77
+    },
+    {
+      "cnpj": "34691925000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162400559.12
+    },
+    {
+      "cnpj": "34736474000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 271023284.06
+    },
+    {
+      "cnpj": "34736510000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32809225.69
+    },
+    {
+      "cnpj": "34835191000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 134541502.86
+    },
+    {
+      "cnpj": "34847042000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 141523252.2
+    },
+    {
+      "cnpj": "34867728000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 111418139.38
+    },
+    {
+      "cnpj": "34895711000193",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7248109.57
+    },
+    {
+      "cnpj": "34895752000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 116003089.54
+    },
+    {
+      "cnpj": "34895894000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 98424558.59
+    },
+    {
+      "cnpj": "35360651000177",
+      "referenceDate": "2026-09-01",
+      "netAssets": 160998732.53
+    },
+    {
+      "cnpj": "35360687000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 226228285.15
+    },
+    {
+      "cnpj": "35449574000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 67287284.73
+    },
+    {
+      "cnpj": "35507262000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 468714641.42
+    },
+    {
+      "cnpj": "35507457000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1292779269.12
+    },
+    {
+      "cnpj": "35507610000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 526028140.48
+    },
+    {
+      "cnpj": "35586415000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 663295760.06
+    },
+    {
+      "cnpj": "35652081000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 145204929.88
+    },
+    {
+      "cnpj": "35652102000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2843198565.73
+    },
+    {
+      "cnpj": "35652174000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12110010.21
+    },
+    {
+      "cnpj": "35652227000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19792777.08
+    },
+    {
+      "cnpj": "35652252000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 51191140.17
+    },
+    {
+      "cnpj": "35652278000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1030241946.34
+    },
+    {
+      "cnpj": "35688460000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 301936067.11
+    },
+    {
+      "cnpj": "35689497000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 147438693.15
+    },
+    {
+      "cnpj": "35689670000141",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34696757.13
+    },
+    {
+      "cnpj": "35689733000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 37460131.13
+    },
+    {
+      "cnpj": "35704849000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 199136625.09
+    },
+    {
+      "cnpj": "35705463000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 628982687.39
+    },
+    {
+      "cnpj": "35705542000144",
+      "referenceDate": "2026-09-01",
+      "netAssets": 250266093.93
+    },
+    {
+      "cnpj": "35725659000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 43429363.95
+    },
+    {
+      "cnpj": "35754164000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1587987.19
+    },
+    {
+      "cnpj": "35755044000106",
+      "referenceDate": "2026-08-01",
+      "netAssets": 25122665.12
+    },
+    {
+      "cnpj": "35755232000134",
+      "referenceDate": "2026-09-01",
+      "netAssets": 18641854.17
+    },
+    {
+      "cnpj": "35765826000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 365305888.33
+    },
+    {
+      "cnpj": "35765889000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 530892317.1
+    },
+    {
+      "cnpj": "35765907000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3442423906.69
+    },
+    {
+      "cnpj": "35819314000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 35864869.06
+    },
+    {
+      "cnpj": "35820768000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 72721771.98
+    },
+    {
+      "cnpj": "35864448000138",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2086450423.72
+    },
+    {
+      "cnpj": "35880201000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 220634860.98
+    },
+    {
+      "cnpj": "35940506000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1015622.88
+    },
+    {
+      "cnpj": "36098375000183",
+      "referenceDate": "2026-09-01",
+      "netAssets": 121024000.61
+    },
+    {
+      "cnpj": "36200654000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 407182126.12
+    },
+    {
+      "cnpj": "36200701000111",
+      "referenceDate": "2026-10-01",
+      "netAssets": 9060845.53
+    },
+    {
+      "cnpj": "36244015000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 345416830.2
+    },
+    {
+      "cnpj": "36258924000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32875730.78
+    },
+    {
+      "cnpj": "36293425000183",
+      "referenceDate": "2026-09-01",
+      "netAssets": 66356016.1
+    },
+    {
+      "cnpj": "36312025000178",
+      "referenceDate": "2026-09-01",
+      "netAssets": 131959307.5
+    },
+    {
+      "cnpj": "36312772000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 47871303.83
+    },
+    {
+      "cnpj": "36368925000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 396971297.83
+    },
+    {
+      "cnpj": "36420742000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1197934587.1
+    },
+    {
+      "cnpj": "36445551000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19300829.93
+    },
+    {
+      "cnpj": "36445587000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 97469418.87
+    },
+    {
+      "cnpj": "36501128000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1890863033.13
+    },
+    {
+      "cnpj": "36501159000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 210241013.6
+    },
+    {
+      "cnpj": "36501181000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 155815045.68
+    },
+    {
+      "cnpj": "36501198000134",
+      "referenceDate": "2026-07-01",
+      "netAssets": 58569775.08
+    },
+    {
+      "cnpj": "36501210000100",
+      "referenceDate": "2026-10-01",
+      "netAssets": 165536400.86
+    },
+    {
+      "cnpj": "36501233000115",
+      "referenceDate": "2026-09-01",
+      "netAssets": 349139356.36
+    },
+    {
+      "cnpj": "36501249000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1040151172.79
+    },
+    {
+      "cnpj": "36517660000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 73281950.93
+    },
+    {
+      "cnpj": "36532530000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17217458.8
+    },
+    {
+      "cnpj": "36642219000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 781500481.18
+    },
+    {
+      "cnpj": "36642244000115",
+      "referenceDate": "2026-01-01",
+      "netAssets": 693765025.57
+    },
+    {
+      "cnpj": "36642275000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 250807226.04
+    },
+    {
+      "cnpj": "36642293000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 508419976.09
+    },
+    {
+      "cnpj": "36642311000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 227151685.26
+    },
+    {
+      "cnpj": "36655973000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1107392681.74
+    },
+    {
+      "cnpj": "36669535000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7238991.15
+    },
+    {
+      "cnpj": "36669660000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 447537378.35
+    },
+    {
+      "cnpj": "36673421000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 9641284.65
+    },
+    {
+      "cnpj": "36731458000168",
+      "referenceDate": "2026-09-01",
+      "netAssets": 58549451.65
+    },
+    {
+      "cnpj": "36741215000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 85508291.76
+    },
+    {
+      "cnpj": "36771692000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1360757796.78
+    },
+    {
+      "cnpj": "36814809000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 26571484.47
+    },
+    {
+      "cnpj": "36846817000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1416766.74
+    },
+    {
+      "cnpj": "36885948000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 132739621.92
+    },
+    {
+      "cnpj": "36885989000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 146000042.27
+    },
+    {
+      "cnpj": "36930464000144",
+      "referenceDate": "2026-09-01",
+      "netAssets": 788941579.41
+    },
+    {
+      "cnpj": "36969658000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100662447.15
+    },
+    {
+      "cnpj": "37087810000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1352011367.62
+    },
+    {
+      "cnpj": "37112770000136",
+      "referenceDate": "2026-08-01",
+      "netAssets": 28241916.22
+    },
+    {
+      "cnpj": "37180091000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 268053648.19
+    },
+    {
+      "cnpj": "37262531000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 86784584.44
+    },
+    {
+      "cnpj": "37262752000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 215265867.05
+    },
+    {
+      "cnpj": "37266902000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 22004473.87
+    },
+    {
+      "cnpj": "37295919000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2602784653.49
+    },
+    {
+      "cnpj": "37295952000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 82482341.05
+    },
+    {
+      "cnpj": "37433832000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17700148.1
+    },
+    {
+      "cnpj": "37899356000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 114845652.99
+    },
+    {
+      "cnpj": "37899400000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12975060.56
+    },
+    {
+      "cnpj": "37899479000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 177990460.89
+    },
+    {
+      "cnpj": "37931298000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 85645306.55
+    },
+    {
+      "cnpj": "37950819000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 571617593.96
+    },
+    {
+      "cnpj": "38082796000141",
+      "referenceDate": "2026-09-01",
+      "netAssets": 15739387.63
+    },
+    {
+      "cnpj": "38293862000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 139152458.6
+    },
+    {
+      "cnpj": "38293897000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 135221148.46
+    },
+    {
+      "cnpj": "38293921000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 165130082.33
+    },
+    {
+      "cnpj": "38294086000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 611354315.26
+    },
+    {
+      "cnpj": "38294329000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 55002763.93
+    },
+    {
+      "cnpj": "38376805000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14310210.3
+    },
+    {
+      "cnpj": "38456508000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 51245748.91
+    },
+    {
+      "cnpj": "38456598000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17430113.21
+    },
+    {
+      "cnpj": "38498758000174",
+      "referenceDate": "2026-09-01",
+      "netAssets": 203853104.88
+    },
+    {
+      "cnpj": "38658984000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 381382043.6
+    },
+    {
+      "cnpj": "39317176000107",
+      "referenceDate": "2026-10-01",
+      "netAssets": 91180000.6
+    },
+    {
+      "cnpj": "39332032000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 109192948.97
+    },
+    {
+      "cnpj": "39347413000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 142600053.36
+    },
+    {
+      "cnpj": "39583723000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 122317146.54
+    },
+    {
+      "cnpj": "39591218000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 69346014.38
+    },
+    {
+      "cnpj": "39714024000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 598839122.78
+    },
+    {
+      "cnpj": "39753295000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 386742404.61
+    },
+    {
+      "cnpj": "39863059000149",
+      "referenceDate": "2026-09-01",
+      "netAssets": 84987761.48
+    },
+    {
+      "cnpj": "40010015000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 28836681.13
+    },
+    {
+      "cnpj": "40011225000168",
+      "referenceDate": "2026-09-01",
+      "netAssets": 335093563.65
+    },
+    {
+      "cnpj": "40011234000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 67920990.88
+    },
+    {
+      "cnpj": "40011251000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 84994393.31
+    },
+    {
+      "cnpj": "40011279000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 23973024.67
+    },
+    {
+      "cnpj": "40011324000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 250462592.09
+    },
+    {
+      "cnpj": "40041603000156",
+      "referenceDate": "2026-09-01",
+      "netAssets": 39598569.07
+    },
+    {
+      "cnpj": "40041711000129",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5211401.3
+    },
+    {
+      "cnpj": "40041723000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 206105350.76
+    },
+    {
+      "cnpj": "40054838000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7006743.48
+    },
+    {
+      "cnpj": "40054913000105",
+      "referenceDate": "2026-10-01",
+      "netAssets": 9599682.16
+    },
+    {
+      "cnpj": "40063899000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 152995274.61
+    },
+    {
+      "cnpj": "40067483000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 149141943.96
+    },
+    {
+      "cnpj": "40102445000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 74388973.03
+    },
+    {
+      "cnpj": "40189596000134",
+      "referenceDate": "2026-09-01",
+      "netAssets": 216546209.77
+    },
+    {
+      "cnpj": "40225262000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 306251807.02
+    },
+    {
+      "cnpj": "40346049000115",
+      "referenceDate": "2026-09-01",
+      "netAssets": 410558430.1
+    },
+    {
+      "cnpj": "40414001000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 57425078.41
+    },
+    {
+      "cnpj": "40502694000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "40575940000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 164633042.17
+    },
+    {
+      "cnpj": "40837664000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 23581149.89
+    },
+    {
+      "cnpj": "40886241000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 441075931.67
+    },
+    {
+      "cnpj": "40886521000102",
+      "referenceDate": "2026-10-01",
+      "netAssets": 117749836.78
+    },
+    {
+      "cnpj": "40887170000154",
+      "referenceDate": "2026-09-01",
+      "netAssets": 21559241.19
+    },
+    {
+      "cnpj": "40944707000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 46647732.44
+    },
+    {
+      "cnpj": "40944736000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 9199277.58
+    },
+    {
+      "cnpj": "41076380000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 106591592.11
+    },
+    {
+      "cnpj": "41076564000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2916513511.19
+    },
+    {
+      "cnpj": "41076710000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 403470954.37
+    },
+    {
+      "cnpj": "41076748000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 192521873.13
+    },
+    {
+      "cnpj": "41076823000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 86643662.03
+    },
+    {
+      "cnpj": "41076851000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 136045030.62
+    },
+    {
+      "cnpj": "41080968000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 35689222.84
+    },
+    {
+      "cnpj": "41081336000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2061021921.13
+    },
+    {
+      "cnpj": "41081356000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 45690008.41
+    },
+    {
+      "cnpj": "41081374000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 196832741.07
+    },
+    {
+      "cnpj": "41088458000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1373396734.64
+    },
+    {
+      "cnpj": "41088534000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32167859.06
+    },
+    {
+      "cnpj": "41114606000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 324960169.8
+    },
+    {
+      "cnpj": "41199975000178",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13356592.04
+    },
+    {
+      "cnpj": "41218404000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19823353.01
+    },
+    {
+      "cnpj": "41219028000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 46466331.8
+    },
+    {
+      "cnpj": "41219454000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 342020524.95
+    },
+    {
+      "cnpj": "41251077000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3305222.52
+    },
+    {
+      "cnpj": "41251337000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 78963512.6
+    },
+    {
+      "cnpj": "41251371000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 82827848.01
+    },
+    {
+      "cnpj": "41256643000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 297319613.43
+    },
+    {
+      "cnpj": "41269052000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 265438023.64
+    },
+    {
+      "cnpj": "41320997000144",
+      "referenceDate": "2026-09-01",
+      "netAssets": 124440902.64
+    },
+    {
+      "cnpj": "41325993000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 26459968.59
+    },
+    {
+      "cnpj": "41394946000167",
+      "referenceDate": "2026-09-01",
+      "netAssets": 330767470.88
+    },
+    {
+      "cnpj": "41650310000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 158559996.59
+    },
+    {
+      "cnpj": "41650319000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 174607182.02
+    },
+    {
+      "cnpj": "41650365000149",
+      "referenceDate": "2026-09-01",
+      "netAssets": 43262727.78
+    },
+    {
+      "cnpj": "41673349000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 52325541.6
+    },
+    {
+      "cnpj": "41673359000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 213073397.19
+    },
+    {
+      "cnpj": "41776296000114",
+      "referenceDate": "2026-08-01",
+      "netAssets": 68524292.72
+    },
+    {
+      "cnpj": "41778415000178",
+      "referenceDate": "2026-09-01",
+      "netAssets": 155355162.8
+    },
+    {
+      "cnpj": "41820693000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 154773206.19
+    },
+    {
+      "cnpj": "41833763000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 892830309.85
+    },
+    {
+      "cnpj": "41833876000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 88163968.34
+    },
+    {
+      "cnpj": "41969521000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49426214.74
+    },
+    {
+      "cnpj": "41969537000141",
+      "referenceDate": "2026-09-01",
+      "netAssets": 38382102.71
+    },
+    {
+      "cnpj": "41978140000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 87051048.66
+    },
+    {
+      "cnpj": "41978154000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 50425634.79
+    },
+    {
+      "cnpj": "41978168000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 159717145.67
+    },
+    {
+      "cnpj": "42031201000104",
+      "referenceDate": "2026-10-01",
+      "netAssets": 93768465.39
+    },
+    {
+      "cnpj": "42066916000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 156677845.71
+    },
+    {
+      "cnpj": "42085661000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 691170408.71
+    },
+    {
+      "cnpj": "42273236000141",
+      "referenceDate": "2026-10-01",
+      "netAssets": 25878648.48
+    },
+    {
+      "cnpj": "42273290000197",
+      "referenceDate": "2026-09-01",
+      "netAssets": 257947433.34
+    },
+    {
+      "cnpj": "42273325000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 183431654.0
+    },
+    {
+      "cnpj": "42408956000177",
+      "referenceDate": "2026-10-01",
+      "netAssets": 86721693.28
+    },
+    {
+      "cnpj": "42432327000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 46029202.95
+    },
+    {
+      "cnpj": "42463823000101",
+      "referenceDate": "2026-08-01",
+      "netAssets": 174329049.96
+    },
+    {
+      "cnpj": "42502802000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 346800904.32
+    },
+    {
+      "cnpj": "42502842000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 349494936.21
+    },
+    {
+      "cnpj": "42516999000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17773714.32
+    },
+    {
+      "cnpj": "42517145000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 41302796.64
+    },
+    {
+      "cnpj": "42537492000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 87167949.17
+    },
+    {
+      "cnpj": "42537540000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 159332429.93
+    },
+    {
+      "cnpj": "42537601000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100840639.34
+    },
+    {
+      "cnpj": "42592868000178",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2156003.54
+    },
+    {
+      "cnpj": "42592916000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 28169466.82
+    },
+    {
+      "cnpj": "42628319000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2002480975.43
+    },
+    {
+      "cnpj": "42737059000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16100772.54
+    },
+    {
+      "cnpj": "42737077000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 73871384.91
+    },
+    {
+      "cnpj": "42754342000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1958623526.99
+    },
+    {
+      "cnpj": "42754362000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2531005740.01
+    },
+    {
+      "cnpj": "42869853000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34149451.39
+    },
+    {
+      "cnpj": "42869869000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 123837111.26
+    },
+    {
+      "cnpj": "42869879000152",
+      "referenceDate": "2026-10-01",
+      "netAssets": 146804483.78
+    },
+    {
+      "cnpj": "42869892000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 120416004.77
+    },
+    {
+      "cnpj": "42888583000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 346188978.64
+    },
+    {
+      "cnpj": "42922127000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 47194765.62
+    },
+    {
+      "cnpj": "42923317000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12135046.8
+    },
+    {
+      "cnpj": "43008233000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1017210703.07
+    },
+    {
+      "cnpj": "43008884000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 154781286.07
+    },
+    {
+      "cnpj": "43009610000169",
+      "referenceDate": "2026-09-01",
+      "netAssets": 387919521.38
+    },
+    {
+      "cnpj": "43010485000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 354982983.26
+    },
+    {
+      "cnpj": "43010543000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 189127786.0
+    },
+    {
+      "cnpj": "43010601000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 147498366.25
+    },
+    {
+      "cnpj": "43010844000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 714375122.29
+    },
+    {
+      "cnpj": "43011068000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 302254824.69
+    },
+    {
+      "cnpj": "43101312000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 390909205.31
+    },
+    {
+      "cnpj": "43164799000164",
+      "referenceDate": "2026-08-01",
+      "netAssets": 996082.87
+    },
+    {
+      "cnpj": "43564551000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 38943111.68
+    },
+    {
+      "cnpj": "43565147000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 218051921.79
+    },
+    {
+      "cnpj": "43617647000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1060270274.19
+    },
+    {
+      "cnpj": "43617702000121",
+      "referenceDate": "2026-10-01",
+      "netAssets": 30279430.93
+    },
+    {
+      "cnpj": "43619174000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 18845829.66
+    },
+    {
+      "cnpj": "43619218000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 534897322.07
+    },
+    {
+      "cnpj": "43671250000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 118415879.15
+    },
+    {
+      "cnpj": "43671358000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 42984818.24
+    },
+    {
+      "cnpj": "43740825000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 127850317.17
+    },
+    {
+      "cnpj": "43741150000169",
+      "referenceDate": "2026-09-01",
+      "netAssets": 122428329.8
+    },
+    {
+      "cnpj": "43741171000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1814685273.7
+    },
+    {
+      "cnpj": "43741195000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1541470376.87
+    },
+    {
+      "cnpj": "43790197000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 59847046.69
+    },
+    {
+      "cnpj": "43862625000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12023203.68
+    },
+    {
+      "cnpj": "43867361000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 241519535.94
+    },
+    {
+      "cnpj": "43867799000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 517310006.66
+    },
+    {
+      "cnpj": "43951744000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 364300940.23
+    },
+    {
+      "cnpj": "43951785000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 342103509.69
+    },
+    {
+      "cnpj": "43951817000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 871717737.05
+    },
+    {
+      "cnpj": "43951851000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100491368.63
+    },
+    {
+      "cnpj": "43951875000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 30958260.59
+    },
+    {
+      "cnpj": "43951941000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 587200868.08
+    },
+    {
+      "cnpj": "43951970000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 413748153.37
+    },
+    {
+      "cnpj": "43985938000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 290495322.36
+    },
+    {
+      "cnpj": "44002561000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 904302246.31
+    },
+    {
+      "cnpj": "44107380000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 54314784.95
+    },
+    {
+      "cnpj": "44302072000169",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8561131.24
+    },
+    {
+      "cnpj": "44395062000115",
+      "referenceDate": "2026-09-01",
+      "netAssets": 136801916.65
+    },
+    {
+      "cnpj": "44428541000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 70401515.89
+    },
+    {
+      "cnpj": "44514162000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3953603.68
+    },
+    {
+      "cnpj": "44527494000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 78844597.84
+    },
+    {
+      "cnpj": "44584965000144",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10220775.44
+    },
+    {
+      "cnpj": "44585121000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10668245.63
+    },
+    {
+      "cnpj": "44625562000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1223346831.47
+    },
+    {
+      "cnpj": "44625612000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 508022124.98
+    },
+    {
+      "cnpj": "44625657000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 985698198.27
+    },
+    {
+      "cnpj": "44669639000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19149045.61
+    },
+    {
+      "cnpj": "44669674000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 722782309.24
+    },
+    {
+      "cnpj": "44674528000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 158597922.9
+    },
+    {
+      "cnpj": "44680435000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 64027090.93
+    },
+    {
+      "cnpj": "44680449000113",
+      "referenceDate": "2026-06-01",
+      "netAssets": 5151823.21
+    },
+    {
+      "cnpj": "44683052000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7883086.51
+    },
+    {
+      "cnpj": "44705818000185",
+      "referenceDate": "2026-10-01",
+      "netAssets": 30998574.77
+    },
+    {
+      "cnpj": "44728323000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 24659551.46
+    },
+    {
+      "cnpj": "44728452000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3630181.96
+    },
+    {
+      "cnpj": "44728520000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100528096.58
+    },
+    {
+      "cnpj": "45063985000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 322236608.58
+    },
+    {
+      "cnpj": "45105676000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 95786752.85
+    },
+    {
+      "cnpj": "45105714000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 394809607.01
+    },
+    {
+      "cnpj": "45106274000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 227186086.4
+    },
+    {
+      "cnpj": "45106312000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 196595841.97
+    },
+    {
+      "cnpj": "45106376000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34886141.32
+    },
+    {
+      "cnpj": "45120786000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 95546049.44
+    },
+    {
+      "cnpj": "45123401000177",
+      "referenceDate": "2026-09-01",
+      "netAssets": 51025331.27
+    },
+    {
+      "cnpj": "45123465000178",
+      "referenceDate": "2026-09-01",
+      "netAssets": 191574129.84
+    },
+    {
+      "cnpj": "45188033000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 37908986.2
+    },
+    {
+      "cnpj": "45188066000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 202365594.79
+    },
+    {
+      "cnpj": "45188099000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32495767.8
+    },
+    {
+      "cnpj": "45188124000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7466850.92
+    },
+    {
+      "cnpj": "45188176000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1935382440.88
+    },
+    {
+      "cnpj": "45188199000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13423295.26
+    },
+    {
+      "cnpj": "45254732000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 96257765.17
+    },
+    {
+      "cnpj": "45338646000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 289388938.08
+    },
+    {
+      "cnpj": "45727531000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 161426214.84
+    },
+    {
+      "cnpj": "45742299000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14303987.97
+    },
+    {
+      "cnpj": "45777119000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 44974953.7
+    },
+    {
+      "cnpj": "46027189000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5421043.85
+    },
+    {
+      "cnpj": "46078492000139",
+      "referenceDate": "2026-08-01",
+      "netAssets": 5638128.62
+    },
+    {
+      "cnpj": "46079965000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 994783.14
+    },
+    {
+      "cnpj": "46157247000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 95068756.36
+    },
+    {
+      "cnpj": "46157348000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1998930.32
+    },
+    {
+      "cnpj": "46285299000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5637746.32
+    },
+    {
+      "cnpj": "46322850000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 98568417.5
+    },
+    {
+      "cnpj": "46334715000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 114098021.61
+    },
+    {
+      "cnpj": "46437903000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 477280295.05
+    },
+    {
+      "cnpj": "46449786000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16161508.19
+    },
+    {
+      "cnpj": "46716709000199",
+      "referenceDate": "2026-07-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "46879122000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2374613.09
+    },
+    {
+      "cnpj": "46965606000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 18749183.72
+    },
+    {
+      "cnpj": "47085640000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1699357.35
+    },
+    {
+      "cnpj": "47102860000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 123508356.67
+    },
+    {
+      "cnpj": "47136369000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 21670856.2
+    },
+    {
+      "cnpj": "47142218000144",
+      "referenceDate": "2026-07-01",
+      "netAssets": 12832207.01
+    },
+    {
+      "cnpj": "47154849000183",
+      "referenceDate": "2026-09-01",
+      "netAssets": 213993938.94
+    },
+    {
+      "cnpj": "47669336000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19106700.68
+    },
+    {
+      "cnpj": "47896665000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1405890291.96
+    },
+    {
+      "cnpj": "48373413000148",
+      "referenceDate": "2026-10-01",
+      "netAssets": 305220824.96
+    },
+    {
+      "cnpj": "48373428000106",
+      "referenceDate": "2026-10-01",
+      "netAssets": 68251574.42
+    },
+    {
+      "cnpj": "48389780000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 292886042.06
+    },
+    {
+      "cnpj": "48904259000193",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17185231.05
+    },
+    {
+      "cnpj": "48916699000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 703109091.15
+    },
+    {
+      "cnpj": "48961539000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25045070.63
+    },
+    {
+      "cnpj": "48964604000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1747121.78
+    },
+    {
+      "cnpj": "48969543000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 152987707.7
+    },
+    {
+      "cnpj": "48978731000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34725938.05
+    },
+    {
+      "cnpj": "48978797000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 23315468.78
+    },
+    {
+      "cnpj": "48978859000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1261205338.73
+    },
+    {
+      "cnpj": "48984698000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14192439.96
+    },
+    {
+      "cnpj": "49005348000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 429331187.57
+    },
+    {
+      "cnpj": "49005570000163",
+      "referenceDate": "2026-08-01",
+      "netAssets": 61620968.84
+    },
+    {
+      "cnpj": "49112611000110",
+      "referenceDate": "2026-02-01",
+      "netAssets": 106753891.84
+    },
+    {
+      "cnpj": "49152919000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 262372783.94
+    },
+    {
+      "cnpj": "49184940000177",
+      "referenceDate": "2026-09-01",
+      "netAssets": 153013970.0
+    },
+    {
+      "cnpj": "49318661000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1518347.55
+    },
+    {
+      "cnpj": "49592781000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 346922775.8
+    },
+    {
+      "cnpj": "49640601000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 22226199.21
+    },
+    {
+      "cnpj": "49649500000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 21733597.81
+    },
+    {
+      "cnpj": "49893516000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 161486814.51
+    },
+    {
+      "cnpj": "49916958000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 160597555.45
+    },
+    {
+      "cnpj": "49996755000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34226754.53
+    },
+    {
+      "cnpj": "50027615000180",
+      "referenceDate": "2026-06-01",
+      "netAssets": 18028251.1
+    },
+    {
+      "cnpj": "50041467000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8002804.49
+    },
+    {
+      "cnpj": "50117874000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 68827572.6
+    },
+    {
+      "cnpj": "50135849000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 81904378.52
+    },
+    {
+      "cnpj": "50143549000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 83392193.71
+    },
+    {
+      "cnpj": "50180894000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 382433795.68
+    },
+    {
+      "cnpj": "50275622000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 21193692.43
+    },
+    {
+      "cnpj": "50352284000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 239523174.67
+    },
+    {
+      "cnpj": "50375550000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6282478.67
+    },
+    {
+      "cnpj": "50385179000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 289206968.86
+    },
+    {
+      "cnpj": "50399189000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12148518.28
+    },
+    {
+      "cnpj": "50479122000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1405296222.11
+    },
+    {
+      "cnpj": "50492450000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 45230801.96
+    },
+    {
+      "cnpj": "50522058000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 88164576.29
+    },
+    {
+      "cnpj": "50555700000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 58171773.42
+    },
+    {
+      "cnpj": "50659134000197",
+      "referenceDate": "2026-09-01",
+      "netAssets": 223446974.82
+    },
+    {
+      "cnpj": "50686473000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49537950.51
+    },
+    {
+      "cnpj": "50701686000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1033400032.38
+    },
+    {
+      "cnpj": "50716077000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 50000.23
+    },
+    {
+      "cnpj": "50718891000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 267199482.71
+    },
+    {
+      "cnpj": "50718976000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 232955648.26
+    },
+    {
+      "cnpj": "50750438000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 697190178.3
+    },
+    {
+      "cnpj": "50808042000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 424081980.75
+    },
+    {
+      "cnpj": "50876919000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16950981.4
+    },
+    {
+      "cnpj": "50918320000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 55335417.34
+    },
+    {
+      "cnpj": "50939923000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12376552.0
+    },
+    {
+      "cnpj": "50940230000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7795804.48
+    },
+    {
+      "cnpj": "50957247000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 815150542.48
+    },
+    {
+      "cnpj": "51067062000151",
+      "referenceDate": "2026-09-01",
+      "netAssets": 583664519.71
+    },
+    {
+      "cnpj": "51192125000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 109590337.08
+    },
+    {
+      "cnpj": "51226569000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 46085658.52
+    },
+    {
+      "cnpj": "51294441000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 389496447.85
+    },
+    {
+      "cnpj": "51295092000115",
+      "referenceDate": "2026-09-01",
+      "netAssets": 53207970.65
+    },
+    {
+      "cnpj": "51303221000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7014010.68
+    },
+    {
+      "cnpj": "51326818000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34244632.21
+    },
+    {
+      "cnpj": "51381999000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10735008.11
+    },
+    {
+      "cnpj": "51385048000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 230957514.67
+    },
+    {
+      "cnpj": "51385174000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 30264857.88
+    },
+    {
+      "cnpj": "51392366000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 26215321.5
+    },
+    {
+      "cnpj": "51407683000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16499802.34
+    },
+    {
+      "cnpj": "51413518000198",
+      "referenceDate": "2026-09-01",
+      "units": 10000
+    },
+    {
+      "cnpj": "51416131000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8900989.8
+    },
+    {
+      "cnpj": "51472985000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 351061081.91
+    },
+    {
+      "cnpj": "51476870000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 169254090.99
+    },
+    {
+      "cnpj": "51601636000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 208488744.86
+    },
+    {
+      "cnpj": "51646298000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 298197362.04
+    },
+    {
+      "cnpj": "51665327000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 144646213.83
+    },
+    {
+      "cnpj": "51666294000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 276433265.72
+    },
+    {
+      "cnpj": "51672980000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7872250.59
+    },
+    {
+      "cnpj": "51710043000100",
+      "referenceDate": "2026-04-01",
+      "netAssets": 92098322.5
+    },
+    {
+      "cnpj": "51734924000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 419320361.27
+    },
+    {
+      "cnpj": "51753261000113",
+      "referenceDate": "2026-06-01",
+      "netAssets": 11459349.05
+    },
+    {
+      "cnpj": "51786271000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 219646022.23
+    },
+    {
+      "cnpj": "51802350000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 357109327.34
+    },
+    {
+      "cnpj": "51817522000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100892946.46
+    },
+    {
+      "cnpj": "51868778000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 139159000.12
+    },
+    {
+      "cnpj": "51870412000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 437111090.88
+    },
+    {
+      "cnpj": "51889479000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 221726170.47
+    },
+    {
+      "cnpj": "51890054000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 360356230.84
+    },
+    {
+      "cnpj": "51951316000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12168634.87
+    },
+    {
+      "cnpj": "51991587000189",
+      "referenceDate": "2026-10-01",
+      "netAssets": 209926406.89
+    },
+    {
+      "cnpj": "51991713000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 9990663.29
+    },
+    {
+      "cnpj": "52101897000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 37053512.52
+    },
+    {
+      "cnpj": "52153014000149",
+      "referenceDate": "2026-09-01",
+      "netAssets": 93019366.32
+    },
+    {
+      "cnpj": "52219978000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1033143034.02
+    },
+    {
+      "cnpj": "52227760000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 170695136.04
+    },
+    {
+      "cnpj": "52241939000141",
+      "referenceDate": "2026-09-01",
+      "netAssets": 259447313.89
+    },
+    {
+      "cnpj": "52270671000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 544553055.15
+    },
+    {
+      "cnpj": "52321885000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1058054069.48
+    },
+    {
+      "cnpj": "52324762000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2987661.99
+    },
+    {
+      "cnpj": "52353292000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 396138033.1
+    },
+    {
+      "cnpj": "52355496000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 60296215.36
+    },
+    {
+      "cnpj": "52355764000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1224489.77
+    },
+    {
+      "cnpj": "52355865000174",
+      "referenceDate": "2026-09-01",
+      "netAssets": 30608842.76
+    },
+    {
+      "cnpj": "52356865000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 21840955.5
+    },
+    {
+      "cnpj": "52357468000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 350943872.61
+    },
+    {
+      "cnpj": "52366833000174",
+      "referenceDate": "2026-10-01",
+      "netAssets": 120359114.54
+    },
+    {
+      "cnpj": "52371756000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 600699628.86
+    },
+    {
+      "cnpj": "52446271000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8516897.94
+    },
+    {
+      "cnpj": "52521137000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7450554.28
+    },
+    {
+      "cnpj": "52551605000174",
+      "referenceDate": "2026-09-01",
+      "netAssets": 997775989.09
+    },
+    {
+      "cnpj": "52589406000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2477524.78
+    },
+    {
+      "cnpj": "52610191000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32961286.51
+    },
+    {
+      "cnpj": "52610289000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16957229.54
+    },
+    {
+      "cnpj": "52635194000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49851751.59
+    },
+    {
+      "cnpj": "52649350000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10597739.64
+    },
+    {
+      "cnpj": "52649680000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 33246484.39
+    },
+    {
+      "cnpj": "52713882000136",
+      "referenceDate": "2026-09-01",
+      "netAssets": 71648041.89
+    },
+    {
+      "cnpj": "52714934000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 67640515.26
+    },
+    {
+      "cnpj": "52889976000160",
+      "referenceDate": "2026-04-01",
+      "netAssets": 2296662.96
+    },
+    {
+      "cnpj": "52890292000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 48682143.59
+    },
+    {
+      "cnpj": "52904581000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14200910.4
+    },
+    {
+      "cnpj": "52966340000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 90244976.13
+    },
+    {
+      "cnpj": "53018363000110",
+      "referenceDate": "2026-02-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "53072782000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 143600929.98
+    },
+    {
+      "cnpj": "53076137000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 50635672.44
+    },
+    {
+      "cnpj": "53076143000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13132584.3
+    },
+    {
+      "cnpj": "53076746000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 103274319.88
+    },
+    {
+      "cnpj": "53087126000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 82169981.19
+    },
+    {
+      "cnpj": "53095823000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 29965581.78
+    },
+    {
+      "cnpj": "53123631000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5712173.03
+    },
+    {
+      "cnpj": "53127942000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4935151.43
+    },
+    {
+      "cnpj": "53137434000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 59682458.75
+    },
+    {
+      "cnpj": "53178634000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8779807.55
+    },
+    {
+      "cnpj": "53179110000129",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17392553.13
+    },
+    {
+      "cnpj": "53190891000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 23109860.08
+    },
+    {
+      "cnpj": "53191611000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 125182360.9
+    },
+    {
+      "cnpj": "53193237000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 98988045.57
+    },
+    {
+      "cnpj": "53211851000140",
+      "referenceDate": "2026-06-01",
+      "netAssets": 143759099.06
+    },
+    {
+      "cnpj": "53249951000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 33651084.11
+    },
+    {
+      "cnpj": "53250967000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34831564.93
+    },
+    {
+      "cnpj": "53251006000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 165959337.49
+    },
+    {
+      "cnpj": "53251715000183",
+      "referenceDate": "2026-09-01",
+      "netAssets": 33645207.91
+    },
+    {
+      "cnpj": "53251882000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 33442235.58
+    },
+    {
+      "cnpj": "53260548000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 35279144.47
+    },
+    {
+      "cnpj": "53275496000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 58980073.2
+    },
+    {
+      "cnpj": "53294563000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8216332.97
+    },
+    {
+      "cnpj": "53305536000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49997449.43
+    },
+    {
+      "cnpj": "53309565000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 319326670.74
+    },
+    {
+      "cnpj": "53317751000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3986863.86
+    },
+    {
+      "cnpj": "53322282000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 147453414.6
+    },
+    {
+      "cnpj": "53322347000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 127993134.08
+    },
+    {
+      "cnpj": "53372824000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 262255581.29
+    },
+    {
+      "cnpj": "53391567000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 30117761.52
+    },
+    {
+      "cnpj": "53391653000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 211963052.27
+    },
+    {
+      "cnpj": "53463715000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 155339883.01
+    },
+    {
+      "cnpj": "53466467000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 248929941.75
+    },
+    {
+      "cnpj": "53507204000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 454124.06
+    },
+    {
+      "cnpj": "53523736000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 45807349.82
+    },
+    {
+      "cnpj": "53645729000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7832388.35
+    },
+    {
+      "cnpj": "53654501000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 243648637.19
+    },
+    {
+      "cnpj": "53656482000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 298575985.78
+    },
+    {
+      "cnpj": "53724231000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 395994069.4
+    },
+    {
+      "cnpj": "53730029000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 102438608.47
+    },
+    {
+      "cnpj": "53764894000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16562857.03
+    },
+    {
+      "cnpj": "53866393000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 165839100.77
+    },
+    {
+      "cnpj": "53866872000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 38999345.43
+    },
+    {
+      "cnpj": "54010546000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 125513169.74
+    },
+    {
+      "cnpj": "54045925000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14342870.47
+    },
+    {
+      "cnpj": "54064962000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 31563976.08
+    },
+    {
+      "cnpj": "54088529000138",
+      "referenceDate": "2026-09-01",
+      "netAssets": 48344967.18
+    },
+    {
+      "cnpj": "54089614000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 50125319.98
+    },
+    {
+      "cnpj": "54089708000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 53902049.11
+    },
+    {
+      "cnpj": "54134474000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 145879622.14
+    },
+    {
+      "cnpj": "54174907000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14708091.15
+    },
+    {
+      "cnpj": "54250318000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49143388.68
+    },
+    {
+      "cnpj": "54250610000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 58596754.14
+    },
+    {
+      "cnpj": "54275309000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12412766.17
+    },
+    {
+      "cnpj": "54306150000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11907226.58
+    },
+    {
+      "cnpj": "54315465000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 26724868.52
+    },
+    {
+      "cnpj": "54375187000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 964371522.8
+    },
+    {
+      "cnpj": "54386365000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 189430091.19
+    },
+    {
+      "cnpj": "54417489000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 113513891.81
+    },
+    {
+      "cnpj": "54419040000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12525504.99
+    },
+    {
+      "cnpj": "54422883000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 192126247.0
+    },
+    {
+      "cnpj": "54483412000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 239870264.57
+    },
+    {
+      "cnpj": "54485027000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40714470.88
+    },
+    {
+      "cnpj": "54500419000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1078952.84
+    },
+    {
+      "cnpj": "54505336000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 26134774.3
+    },
+    {
+      "cnpj": "54505439000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 68943875.57
+    },
+    {
+      "cnpj": "54557596000154",
+      "referenceDate": "2026-09-01",
+      "netAssets": 64796538.69
+    },
+    {
+      "cnpj": "54564113000149",
+      "referenceDate": "2026-09-01",
+      "netAssets": 22887720.39
+    },
+    {
+      "cnpj": "54620584000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6906357.59
+    },
+    {
+      "cnpj": "54635245000114",
+      "referenceDate": "2026-09-01",
+      "netAssets": 137898752.75
+    },
+    {
+      "cnpj": "54635301000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 53037927.13
+    },
+    {
+      "cnpj": "54645216000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 302592059.06
+    },
+    {
+      "cnpj": "54660460000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 80296962.8
+    },
+    {
+      "cnpj": "54675539000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 69200527.22
+    },
+    {
+      "cnpj": "54698848000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 41505956.19
+    },
+    {
+      "cnpj": "54866214000174",
+      "referenceDate": "2026-09-01",
+      "netAssets": 209547890.44
+    },
+    {
+      "cnpj": "54869435000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 70189705.21
+    },
+    {
+      "cnpj": "55034258000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19114289.66
+    },
+    {
+      "cnpj": "55074554000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 71261165.95
+    },
+    {
+      "cnpj": "55089373000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 15211591.41
+    },
+    {
+      "cnpj": "55115058000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4919119.61
+    },
+    {
+      "cnpj": "55154961000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 9589731.17
+    },
+    {
+      "cnpj": "55177440000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 132674295.42
+    },
+    {
+      "cnpj": "55293694000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12607048.97
+    },
+    {
+      "cnpj": "55296764000168",
+      "referenceDate": "2026-09-01",
+      "netAssets": 115733622.87
+    },
+    {
+      "cnpj": "55302190000193",
+      "referenceDate": "2026-09-01",
+      "netAssets": 105769181.19
+    },
+    {
+      "cnpj": "55314110000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 735232.29
+    },
+    {
+      "cnpj": "55314271000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 37455192.73
+    },
+    {
+      "cnpj": "55315760000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 401560388.25
+    },
+    {
+      "cnpj": "55346193000129",
+      "referenceDate": "2026-09-01",
+      "netAssets": 24750001.82
+    },
+    {
+      "cnpj": "55431577000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 132750630.82
+    },
+    {
+      "cnpj": "55435378000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 24772235.17
+    },
+    {
+      "cnpj": "55611150000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 23711304.83
+    },
+    {
+      "cnpj": "55661358000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 26640837.36
+    },
+    {
+      "cnpj": "55729232000177",
+      "referenceDate": "2026-09-01",
+      "netAssets": 68728905.8
+    },
+    {
+      "cnpj": "55753193000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 170676259.71
+    },
+    {
+      "cnpj": "55768096000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 148879080.18
+    },
+    {
+      "cnpj": "55793516000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 46957938.68
+    },
+    {
+      "cnpj": "55944877000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 37541160.17
+    },
+    {
+      "cnpj": "55948693000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 53200156.93
+    },
+    {
+      "cnpj": "55969466000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 83843946.65
+    },
+    {
+      "cnpj": "55985251000164",
+      "referenceDate": "2026-09-01",
+      "units": 6700
+    },
+    {
+      "cnpj": "55985307000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 126082196.42
+    },
+    {
+      "cnpj": "55985359000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1577891.37
+    },
+    {
+      "cnpj": "55987139000162",
+      "referenceDate": "2026-02-01",
+      "netAssets": 106788293.0
+    },
+    {
+      "cnpj": "56008757000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13382235.27
+    },
+    {
+      "cnpj": "56012069000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 185491951.34
+    },
+    {
+      "cnpj": "56028598000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19520545.35
+    },
+    {
+      "cnpj": "56053824000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 245476826.92
+    },
+    {
+      "cnpj": "56061587000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 45354155.83
+    },
+    {
+      "cnpj": "56073063000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2488944.27
+    },
+    {
+      "cnpj": "56174611000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 256474931.58
+    },
+    {
+      "cnpj": "56191016000183",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7974644.31
+    },
+    {
+      "cnpj": "56212023000114",
+      "referenceDate": "2026-09-01",
+      "netAssets": 161617370.43
+    },
+    {
+      "cnpj": "56303820000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14253003.91
+    },
+    {
+      "cnpj": "56304155000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 35939316.3
+    },
+    {
+      "cnpj": "56414379000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 36962428.83
+    },
+    {
+      "cnpj": "56430935000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 169129007.8
+    },
+    {
+      "cnpj": "56524816000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 78995656.81
+    },
+    {
+      "cnpj": "56805391000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 460352355.15
+    },
+    {
+      "cnpj": "56883420000118",
+      "referenceDate": "2026-08-01",
+      "netAssets": 1042587.25
+    },
+    {
+      "cnpj": "56978773000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 38523979.88
+    },
+    {
+      "cnpj": "56990470000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 123712320.03
+    },
+    {
+      "cnpj": "56992328000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3465803457.26
+    },
+    {
+      "cnpj": "57077139000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 90057456.18
+    },
+    {
+      "cnpj": "57109161000135",
+      "referenceDate": "2026-07-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "57109239000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 22653575.56
+    },
+    {
+      "cnpj": "57136514000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8984138.2
+    },
+    {
+      "cnpj": "57170846000197",
+      "referenceDate": "2026-09-01",
+      "netAssets": 80779029.94
+    },
+    {
+      "cnpj": "57216258000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 280780824.02
+    },
+    {
+      "cnpj": "57231494000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 106048208.57
+    },
+    {
+      "cnpj": "57244407000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 408121232.63
+    },
+    {
+      "cnpj": "57285563000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 58887091.68
+    },
+    {
+      "cnpj": "57300503000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 475277365.36
+    },
+    {
+      "cnpj": "57300684000164",
+      "referenceDate": "2026-07-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "57350504000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 41354516.08
+    },
+    {
+      "cnpj": "57376810000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 279232225.94
+    },
+    {
+      "cnpj": "57378678000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17259769.73
+    },
+    {
+      "cnpj": "57457407000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1081832842.98
+    },
+    {
+      "cnpj": "57466934000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1729824596.42
+    },
+    {
+      "cnpj": "57469492000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 118336185.65
+    },
+    {
+      "cnpj": "57495006000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8083157.25
+    },
+    {
+      "cnpj": "57519008000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 30083811.48
+    },
+    {
+      "cnpj": "57545219000193",
+      "referenceDate": "2026-02-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "57567076000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1231981392.47
+    },
+    {
+      "cnpj": "57583846000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 70059739.76
+    },
+    {
+      "cnpj": "57593613000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 482186608.26
+    },
+    {
+      "cnpj": "57640413000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 24073086.47
+    },
+    {
+      "cnpj": "57682963000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 182262194.81
+    },
+    {
+      "cnpj": "57683576000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 91326131.74
+    },
+    {
+      "cnpj": "57811221000167",
+      "referenceDate": "2026-09-01",
+      "netAssets": 187461310.84
+    },
+    {
+      "cnpj": "57882804000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 102173463.89
+    },
+    {
+      "cnpj": "57904514000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "57909000000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 28061140.48
+    },
+    {
+      "cnpj": "57927297000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 60797444.72
+    },
+    {
+      "cnpj": "57965466000149",
+      "referenceDate": "2026-09-01",
+      "netAssets": 117827749.15
+    },
+    {
+      "cnpj": "57976696000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25357573.21
+    },
+    {
+      "cnpj": "57977051000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 110115178.46
+    },
+    {
+      "cnpj": "57979459000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 876633241.22
+    },
+    {
+      "cnpj": "57986419000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 23391615.09
+    },
+    {
+      "cnpj": "58019792000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16485373.19
+    },
+    {
+      "cnpj": "58022479000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12670248.58
+    },
+    {
+      "cnpj": "58054129000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49985646.74
+    },
+    {
+      "cnpj": "58099321000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 39921379.96
+    },
+    {
+      "cnpj": "58160171000168",
+      "referenceDate": "2026-09-01",
+      "netAssets": 26160349.54
+    },
+    {
+      "cnpj": "58197921000176",
+      "referenceDate": "2026-06-01",
+      "netAssets": 37559182.12
+    },
+    {
+      "cnpj": "58198613000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 192433013.66
+    },
+    {
+      "cnpj": "58239657000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1856895.81
+    },
+    {
+      "cnpj": "58250751000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34164044.4
+    },
+    {
+      "cnpj": "58263012000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 44976073.47
+    },
+    {
+      "cnpj": "58268583000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 333055327.43
+    },
+    {
+      "cnpj": "58290688000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 124909674.78
+    },
+    {
+      "cnpj": "58316418000192",
+      "referenceDate": "2026-09-01",
+      "netAssets": 367636117.21
+    },
+    {
+      "cnpj": "58350082000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 65801474.69
+    },
+    {
+      "cnpj": "58366499000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 21350495.05
+    },
+    {
+      "cnpj": "58372239000172",
+      "referenceDate": "2026-10-01",
+      "netAssets": 31495410.25
+    },
+    {
+      "cnpj": "58378463000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 157990178.8
+    },
+    {
+      "cnpj": "58410974000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13054934.04
+    },
+    {
+      "cnpj": "58478226000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 68121017.31
+    },
+    {
+      "cnpj": "58478291000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19738492.7
+    },
+    {
+      "cnpj": "58495684000120",
+      "referenceDate": "2026-04-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "58496557000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 36454374.56
+    },
+    {
+      "cnpj": "58501860000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 197192912.51
+    },
+    {
+      "cnpj": "58523596000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3614215.76
+    },
+    {
+      "cnpj": "58523711000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34981374.75
+    },
+    {
+      "cnpj": "58544087000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 35726374.24
+    },
+    {
+      "cnpj": "58548730000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 106392121.9
+    },
+    {
+      "cnpj": "58561054000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11884109.16
+    },
+    {
+      "cnpj": "58561237000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 47622100.06
+    },
+    {
+      "cnpj": "58561306000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5194851.32
+    },
+    {
+      "cnpj": "58561581000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6201655.33
+    },
+    {
+      "cnpj": "58564382000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10891905.03
+    },
+    {
+      "cnpj": "58564425000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11054428.4
+    },
+    {
+      "cnpj": "58568605000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13285506.81
+    },
+    {
+      "cnpj": "58580017000145",
+      "referenceDate": "2026-10-01",
+      "netAssets": 60798432.0
+    },
+    {
+      "cnpj": "58643797000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 124559230.28
+    },
+    {
+      "cnpj": "58863998000138",
+      "referenceDate": "2026-09-01",
+      "netAssets": 497781467.97
+    },
+    {
+      "cnpj": "58927139000165",
+      "referenceDate": "2026-07-01",
+      "units": 10
+    },
+    {
+      "cnpj": "59030677000115",
+      "referenceDate": "2026-09-01",
+      "netAssets": 57641131.81
+    },
+    {
+      "cnpj": "59090726000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 496458203.92
+    },
+    {
+      "cnpj": "59137499000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1179011.91
+    },
+    {
+      "cnpj": "59137587000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 221118625.58
+    },
+    {
+      "cnpj": "59139645000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 60806388.41
+    },
+    {
+      "cnpj": "59158574000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 427157727.52
+    },
+    {
+      "cnpj": "59196234000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 330462965.92
+    },
+    {
+      "cnpj": "59202651000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 36337685.56
+    },
+    {
+      "cnpj": "59255025000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11818252.64
+    },
+    {
+      "cnpj": "59269477000110",
+      "referenceDate": "2026-04-01",
+      "netAssets": 13561149.93
+    },
+    {
+      "cnpj": "59306587000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 35528667.51
+    },
+    {
+      "cnpj": "59337307000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 56872851.14
+    },
+    {
+      "cnpj": "59436431000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 462554858.13
+    },
+    {
+      "cnpj": "59604698000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 181782163.2
+    },
+    {
+      "cnpj": "59658166000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 853985259.61
+    },
+    {
+      "cnpj": "59663265000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 65772193.55
+    },
+    {
+      "cnpj": "59669570000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 47076945.67
+    },
+    {
+      "cnpj": "59678443000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2583856769.98
+    },
+    {
+      "cnpj": "59678586000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 85648591.75
+    },
+    {
+      "cnpj": "59680687000104",
+      "referenceDate": "2026-03-01",
+      "netAssets": 128679118.7
+    },
+    {
+      "cnpj": "59693395000106",
+      "referenceDate": "2026-05-01",
+      "netAssets": 13298479.24
+    },
+    {
+      "cnpj": "59718930000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25687215.58
+    },
+    {
+      "cnpj": "59890241000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5164694.96
+    },
+    {
+      "cnpj": "59891323000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1548145.85
+    },
+    {
+      "cnpj": "59891409000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1565870.92
+    },
+    {
+      "cnpj": "59987139000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 547688649.14
+    },
+    {
+      "cnpj": "60027987000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1027017988.66
+    },
+    {
+      "cnpj": "60077386000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 51010238.59
+    },
+    {
+      "cnpj": "60079651000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 165891129.35
+    },
+    {
+      "cnpj": "60117144000154",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5453669.16
+    },
+    {
+      "cnpj": "60127177000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 56023939.95
+    },
+    {
+      "cnpj": "60176399000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1733438496.38
+    },
+    {
+      "cnpj": "60195941000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 39269706.83
+    },
+    {
+      "cnpj": "60220343000193",
+      "referenceDate": "2026-09-01",
+      "netAssets": 94410247.86
+    },
+    {
+      "cnpj": "60329826000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 393083294.48
+    },
+    {
+      "cnpj": "60355424000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 126556698.28
+    },
+    {
+      "cnpj": "60373688000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 154781619.11
+    },
+    {
+      "cnpj": "60413964000193",
+      "referenceDate": "2026-09-01",
+      "netAssets": 396268722.75
+    },
+    {
+      "cnpj": "60452726000197",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25695622.08
+    },
+    {
+      "cnpj": "60480984000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 33037716.09
+    },
+    {
+      "cnpj": "60513922000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 234599229.6
+    },
+    {
+      "cnpj": "60522814000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 988097.41
+    },
+    {
+      "cnpj": "60535430000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 406837164.38
+    },
+    {
+      "cnpj": "60551924000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 355141414.92
+    },
+    {
+      "cnpj": "60619575000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 206685978.67
+    },
+    {
+      "cnpj": "60619652000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 311104665.35
+    },
+    {
+      "cnpj": "60750887000167",
+      "referenceDate": "2026-09-01",
+      "netAssets": 250689232.74
+    },
+    {
+      "cnpj": "60801196000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 41406103.41
+    },
+    {
+      "cnpj": "60868732000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12748879.27
+    },
+    {
+      "cnpj": "60871972000183",
+      "referenceDate": "2026-09-01",
+      "netAssets": 168490776.01
+    },
+    {
+      "cnpj": "60922008000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1105771690.87
+    },
+    {
+      "cnpj": "60958603000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 43910743.2
+    },
+    {
+      "cnpj": "61007289000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 243234983.98
+    },
+    {
+      "cnpj": "61008232000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 244254028.29
+    },
+    {
+      "cnpj": "61090977000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 96854228.14
+    },
+    {
+      "cnpj": "61103762000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 84018133.53
+    },
+    {
+      "cnpj": "61112477000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 189189714.01
+    },
+    {
+      "cnpj": "61232706000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 101057610.82
+    },
+    {
+      "cnpj": "61238364000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 729634226.47
+    },
+    {
+      "cnpj": "61245120000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 505108127.51
+    },
+    {
+      "cnpj": "61247681000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 33672224.79
+    },
+    {
+      "cnpj": "61248346000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2309946.49
+    },
+    {
+      "cnpj": "61250889000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 399029174.64
+    },
+    {
+      "cnpj": "61271000000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25010447.76
+    },
+    {
+      "cnpj": "61272053000156",
+      "referenceDate": "2026-10-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "61272325000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 299436676.69
+    },
+    {
+      "cnpj": "61293720000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 79429070.74
+    },
+    {
+      "cnpj": "61305758000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 26233718.94
+    },
+    {
+      "cnpj": "61305996000138",
+      "referenceDate": "2026-09-01",
+      "netAssets": 29266563.38
+    },
+    {
+      "cnpj": "61424730000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 366653617.17
+    },
+    {
+      "cnpj": "61453937000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 170738556.17
+    },
+    {
+      "cnpj": "61455116000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 330177555.77
+    },
+    {
+      "cnpj": "61458257000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40658700.65
+    },
+    {
+      "cnpj": "61458298000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 42252790.25
+    },
+    {
+      "cnpj": "61516271000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 433760927.79
+    },
+    {
+      "cnpj": "61516444000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17101794.52
+    },
+    {
+      "cnpj": "61518537000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 159778002.82
+    },
+    {
+      "cnpj": "61530579000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12940918.77
+    },
+    {
+      "cnpj": "61537964000168",
+      "referenceDate": "2026-09-01",
+      "netAssets": 57102022.21
+    },
+    {
+      "cnpj": "61594920000170",
+      "referenceDate": "2026-06-01",
+      "netAssets": 263731.52
+    },
+    {
+      "cnpj": "61667274000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 44084122.56
+    },
+    {
+      "cnpj": "61702958000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19303203.84
+    },
+    {
+      "cnpj": "61761762000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 246018301.13
+    },
+    {
+      "cnpj": "61762309000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 78674011.36
+    },
+    {
+      "cnpj": "61769663000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 242357100.9
+    },
+    {
+      "cnpj": "61781547000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 117961446.76
+    },
+    {
+      "cnpj": "61793651000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 236878686.74
+    },
+    {
+      "cnpj": "61796062000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4911523.37
+    },
+    {
+      "cnpj": "61816615000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8216806.46
+    },
+    {
+      "cnpj": "61820010000168",
+      "referenceDate": "2026-09-01",
+      "netAssets": 221753890.25
+    },
+    {
+      "cnpj": "61839325000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4010015.56
+    },
+    {
+      "cnpj": "61848349000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 431159349.05
+    },
+    {
+      "cnpj": "61865925000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 217725874.86
+    },
+    {
+      "cnpj": "61876419000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25601955.04
+    },
+    {
+      "cnpj": "61911799000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 913520561.74
+    },
+    {
+      "cnpj": "61912292000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 231617462.12
+    },
+    {
+      "cnpj": "61918522000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 720182003.4
+    },
+    {
+      "cnpj": "61922643000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 569221436.7
+    },
+    {
+      "cnpj": "61974505000141",
+      "referenceDate": "2026-09-01",
+      "netAssets": 44150225.74
+    },
+    {
+      "cnpj": "62017234000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 581498862.26
+    },
+    {
+      "cnpj": "62021906000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 503923707.36
+    },
+    {
+      "cnpj": "62064773000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 338798459.45
+    },
+    {
+      "cnpj": "62082124000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 135008642.85
+    },
+    {
+      "cnpj": "62105992000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32692372.5
+    },
+    {
+      "cnpj": "62145710000167",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1143861.53
+    },
+    {
+      "cnpj": "62161749000178",
+      "referenceDate": "2026-09-01",
+      "netAssets": 133897838.76
+    },
+    {
+      "cnpj": "62173370000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 35571581.1
+    },
+    {
+      "cnpj": "62173916000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 434308559.48
+    },
+    {
+      "cnpj": "62203816000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5513234.95
+    },
+    {
+      "cnpj": "62206618000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2436506078.31
+    },
+    {
+      "cnpj": "62235730000129",
+      "referenceDate": "2026-09-01",
+      "netAssets": 156138867.07
+    },
+    {
+      "cnpj": "62236181000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3887181.14
+    },
+    {
+      "cnpj": "62252669000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 117756735.28
+    },
+    {
+      "cnpj": "62254106000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32668706.52
+    },
+    {
+      "cnpj": "62293353000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 190003937.49
+    },
+    {
+      "cnpj": "62296221000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16812454.69
+    },
+    {
+      "cnpj": "62305611000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 189317380.51
+    },
+    {
+      "cnpj": "62308074000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 791591165.58
+    },
+    {
+      "cnpj": "62334936000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 35663345.65
+    },
+    {
+      "cnpj": "62363267000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 231798329.61
+    },
+    {
+      "cnpj": "62364712000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 113401817.6
+    },
+    {
+      "cnpj": "62385601000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 68183022.03
+    },
+    {
+      "cnpj": "62429810000115",
+      "referenceDate": "2026-09-01",
+      "netAssets": 209956780.76
+    },
+    {
+      "cnpj": "62452316000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 39430146.61
+    },
+    {
+      "cnpj": "62455533000115",
+      "referenceDate": "2026-09-01",
+      "netAssets": 57793229.5
+    },
+    {
+      "cnpj": "62502267000134",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1179742.12
+    },
+    {
+      "cnpj": "62526654000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 948749821.94
+    },
+    {
+      "cnpj": "62529006000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 135761031.14
+    },
+    {
+      "cnpj": "62547973000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14215401.16
+    },
+    {
+      "cnpj": "62572251000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 153424427.57
+    },
+    {
+      "cnpj": "62572288000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 59930950.19
+    },
+    {
+      "cnpj": "62603652000178",
+      "referenceDate": "2026-09-01",
+      "netAssets": 242111205.13
+    },
+    {
+      "cnpj": "62662477000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 91320867.13
+    },
+    {
+      "cnpj": "62683216000156",
+      "referenceDate": "2026-09-01",
+      "netAssets": 363511814.53
+    },
+    {
+      "cnpj": "62731360000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 176988881.37
+    },
+    {
+      "cnpj": "62736870000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 53232504.28
+    },
+    {
+      "cnpj": "62739410000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 298209026.19
+    },
+    {
+      "cnpj": "62754323000128",
+      "referenceDate": "2026-10-01",
+      "netAssets": 13177927.23
+    },
+    {
+      "cnpj": "62805438000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 439730.0
+    },
+    {
+      "cnpj": "62808826000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 24801652.63
+    },
+    {
+      "cnpj": "62811491000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 83259503.09
+    },
+    {
+      "cnpj": "62855536000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 442193843.98
+    },
+    {
+      "cnpj": "62864543000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 73409749.06
+    },
+    {
+      "cnpj": "62883138000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 263743866.5
+    },
+    {
+      "cnpj": "62894743000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1444742106.13
+    },
+    {
+      "cnpj": "62935643000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 329023669.92
+    },
+    {
+      "cnpj": "62950991000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1899358702.01
+    },
+    {
+      "cnpj": "62951756000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 61054522.74
+    },
+    {
+      "cnpj": "62952567000115",
+      "referenceDate": "2026-07-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "62959750000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 122218016.26
+    },
+    {
+      "cnpj": "62962772000161",
+      "referenceDate": "2026-05-01",
+      "netAssets": 482663.8
+    },
+    {
+      "cnpj": "62992889000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1174698867.83
+    },
+    {
+      "cnpj": "62995191000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 338736980.7
+    },
+    {
+      "cnpj": "62995712000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1062407778.39
+    },
+    {
+      "cnpj": "63009499000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 314448570.82
+    },
+    {
+      "cnpj": "63032672000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 149376096.64
+    },
+    {
+      "cnpj": "63034061000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 250987083.08
+    },
+    {
+      "cnpj": "63034711000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 27159859.96
+    },
+    {
+      "cnpj": "63051078000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 57718123.2
+    },
+    {
+      "cnpj": "63104203000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 199206871.72
+    },
+    {
+      "cnpj": "63105082000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13533061.89
+    },
+    {
+      "cnpj": "63134454000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 170701462.56
+    },
+    {
+      "cnpj": "63168672000120",
+      "referenceDate": "2026-09-01",
+      "units": 30
+    },
+    {
+      "cnpj": "63186685000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 129337518.97
+    },
+    {
+      "cnpj": "63225091000183",
+      "referenceDate": "2026-09-01",
+      "netAssets": 64709726.13
+    },
+    {
+      "cnpj": "63240822000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1166368226.9
+    },
+    {
+      "cnpj": "63249022000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 94103634.34
+    },
+    {
+      "cnpj": "63266685000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 329724069.33
+    },
+    {
+      "cnpj": "63279000000192",
+      "referenceDate": "2026-09-01",
+      "netAssets": 55185928.56
+    },
+    {
+      "cnpj": "63279539000141",
+      "referenceDate": "2026-08-01",
+      "netAssets": 953217.97
+    },
+    {
+      "cnpj": "63286011000108",
+      "referenceDate": "2026-10-01",
+      "netAssets": 49290372.36
+    },
+    {
+      "cnpj": "63320393000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 54029906.67
+    },
+    {
+      "cnpj": "63327294000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16431067.93
+    },
+    {
+      "cnpj": "63352779000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 181546373.08
+    },
+    {
+      "cnpj": "63360692000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25789978.89
+    },
+    {
+      "cnpj": "63375304000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 466328628.96
+    },
+    {
+      "cnpj": "63393767000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19167997.92
+    },
+    {
+      "cnpj": "63416131000174",
+      "referenceDate": "2026-09-01",
+      "netAssets": 60841742.14
+    },
+    {
+      "cnpj": "63420458000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 353807148.96
+    },
+    {
+      "cnpj": "63429256000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34453220.81
+    },
+    {
+      "cnpj": "63441263000156",
+      "referenceDate": "2026-09-01",
+      "netAssets": 250624253.96
+    },
+    {
+      "cnpj": "63460267000181",
+      "referenceDate": "2026-10-01",
+      "netAssets": 8032238.48
+    },
+    {
+      "cnpj": "63461382000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 123779560.2
+    },
+    {
+      "cnpj": "63492653000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 33934859.94
+    },
+    {
+      "cnpj": "63496639000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 570174360.55
+    },
+    {
+      "cnpj": "63505786000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 46128246.2
+    },
+    {
+      "cnpj": "63566516000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1856944.16
+    },
+    {
+      "cnpj": "63573987000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 84526572.37
+    },
+    {
+      "cnpj": "63574240000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 85404745.44
+    },
+    {
+      "cnpj": "63574892000154",
+      "referenceDate": "2026-09-01",
+      "netAssets": 67269335.36
+    },
+    {
+      "cnpj": "63601980000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 440533806.34
+    },
+    {
+      "cnpj": "63602404000175",
+      "referenceDate": "2026-06-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "63616278000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 91984115.66
+    },
+    {
+      "cnpj": "63616390000149",
+      "referenceDate": "2026-09-01",
+      "netAssets": 125272848.72
+    },
+    {
+      "cnpj": "63626722000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 690543115.32
+    },
+    {
+      "cnpj": "63638368000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2752822984.33
+    },
+    {
+      "cnpj": "63638435000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 303187026.99
+    },
+    {
+      "cnpj": "63638500000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 303251159.48
+    },
+    {
+      "cnpj": "63638558000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 707227918.66
+    },
+    {
+      "cnpj": "63669622000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 144063437.3
+    },
+    {
+      "cnpj": "63680695000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 51443139.1
+    },
+    {
+      "cnpj": "63700460000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 354550280.18
+    },
+    {
+      "cnpj": "63756393000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 38511374.59
+    },
+    {
+      "cnpj": "63757906000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 85677167.11
+    },
+    {
+      "cnpj": "63759978000151",
+      "referenceDate": "2026-09-01",
+      "netAssets": 368024874.15
+    },
+    {
+      "cnpj": "63779981000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5353614.49
+    },
+    {
+      "cnpj": "63787107000141",
+      "referenceDate": "2026-09-01",
+      "netAssets": 125775825.54
+    },
+    {
+      "cnpj": "63787222000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 231905622.63
+    },
+    {
+      "cnpj": "63787595000197",
+      "referenceDate": "2026-09-01",
+      "netAssets": 149816180.48
+    },
+    {
+      "cnpj": "63787833000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 9130810.5
+    },
+    {
+      "cnpj": "63791163000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 182000085.34
+    },
+    {
+      "cnpj": "63801471000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 80380591.55
+    },
+    {
+      "cnpj": "63806554000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 424276936.69
+    },
+    {
+      "cnpj": "63811693000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 210074776.19
+    },
+    {
+      "cnpj": "63812442000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 0.0
+    },
+    {
+      "cnpj": "63821784000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 45243513.03
+    },
+    {
+      "cnpj": "63848135000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 101057127.04
+    },
+    {
+      "cnpj": "63852839000178",
+      "referenceDate": "2026-09-01",
+      "netAssets": 23235752.24
+    },
+    {
+      "cnpj": "63879307000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5495689.07
+    },
+    {
+      "cnpj": "63879740000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 141736246.04
+    },
+    {
+      "cnpj": "63918369000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 759420553.89
+    },
+    {
+      "cnpj": "63933215000185",
+      "referenceDate": "2026-10-01",
+      "netAssets": 8065580.56
+    },
+    {
+      "cnpj": "63941672000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 153347873.91
+    },
+    {
+      "cnpj": "63946968000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 379541454.74
+    },
+    {
+      "cnpj": "63952812000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 105281355.72
+    },
+    {
+      "cnpj": "63952986000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11376003.31
+    },
+    {
+      "cnpj": "63954054000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 947691311.59
+    },
+    {
+      "cnpj": "63973003000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 103185967.53
+    },
+    {
+      "cnpj": "63976969000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100529833.45
+    },
+    {
+      "cnpj": "63992956000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 188497113.19
+    },
+    {
+      "cnpj": "64012870000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 105548764.82
+    },
+    {
+      "cnpj": "64030930000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 242541817.58
+    },
+    {
+      "cnpj": "64030981000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 222375756.57
+    },
+    {
+      "cnpj": "64031021000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 909280511.13
+    },
+    {
+      "cnpj": "64056494000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 80774852.56
+    },
+    {
+      "cnpj": "64083111000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 9112459.13
+    },
+    {
+      "cnpj": "64089566000114",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32202850.41
+    },
+    {
+      "cnpj": "64099959000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 634668965.12
+    },
+    {
+      "cnpj": "64137795000167",
+      "referenceDate": "2026-09-01",
+      "netAssets": 78913553.06
+    },
+    {
+      "cnpj": "64144327000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8706315.52
+    },
+    {
+      "cnpj": "64145714000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 44651877.39
+    },
+    {
+      "cnpj": "64145927000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 83202941.88
+    },
+    {
+      "cnpj": "64156203000154",
+      "referenceDate": "2026-09-01",
+      "netAssets": 28794382.65
+    },
+    {
+      "cnpj": "64280202000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 83633521.58
+    },
+    {
+      "cnpj": "64357284000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14393319.26
+    },
+    {
+      "cnpj": "64542109000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 565472419.8
+    },
+    {
+      "cnpj": "64581643000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 124076919.24
+    },
+    {
+      "cnpj": "64607895000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 468718828.97
+    },
+    {
+      "cnpj": "64607978000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 296165999.53
+    },
+    {
+      "cnpj": "64634907000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 392849382.7
+    },
+    {
+      "cnpj": "64635947000151",
+      "referenceDate": "2026-09-01",
+      "netAssets": 421293434.98
+    },
+    {
+      "cnpj": "64636299000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40447934.65
+    },
+    {
+      "cnpj": "64722519000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 539082546.3
+    },
+    {
+      "cnpj": "64739777000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 735758156.65
+    },
+    {
+      "cnpj": "64768430000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2736846.97
+    },
+    {
+      "cnpj": "64776566000192",
+      "referenceDate": "2026-09-01",
+      "netAssets": 224487380.64
+    },
+    {
+      "cnpj": "64790666000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 91850664.55
+    },
+    {
+      "cnpj": "64851907000147",
+      "referenceDate": "2026-10-01",
+      "netAssets": 5089459.75
+    },
+    {
+      "cnpj": "64889548000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 234991217.85
+    },
+    {
+      "cnpj": "64987074000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 96872264.79
+    },
+    {
+      "cnpj": "65055239000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 154001524.72
+    },
+    {
+      "cnpj": "65060467000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 58949797.68
+    },
+    {
+      "cnpj": "65112490000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11251499.3
+    },
+    {
+      "cnpj": "65131846000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2785618.85
+    },
+    {
+      "cnpj": "65133202000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 66711124.15
+    },
+    {
+      "cnpj": "65196656000177",
+      "referenceDate": "2026-09-01",
+      "netAssets": 756491360.64
+    },
+    {
+      "cnpj": "65254272000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 75687809.93
+    },
+    {
+      "cnpj": "65261977000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 186447113.87
+    },
+    {
+      "cnpj": "65275189000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 39956041.41
+    },
+    {
+      "cnpj": "65325740000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 289640882.42
+    },
+    {
+      "cnpj": "65326215000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 286924103.48
+    },
+    {
+      "cnpj": "65331709000115",
+      "referenceDate": "2026-09-01",
+      "netAssets": 649551779.94
+    },
+    {
+      "cnpj": "65427709000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4881852.51
+    },
+    {
+      "cnpj": "65456922000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 20434119.51
+    },
+    {
+      "cnpj": "65511886000183",
+      "referenceDate": "2026-09-01",
+      "netAssets": 119575578.61
+    },
+    {
+      "cnpj": "65600446000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 883785787.06
+    },
+    {
+      "cnpj": "65629469000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 98020843.83
+    },
+    {
+      "cnpj": "65654231000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 33682248.06
+    },
+    {
+      "cnpj": "65676386000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13092919.83
+    },
+    {
+      "cnpj": "65680221000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49855693.12
+    },
+    {
+      "cnpj": "65782151000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 47411668.16
+    },
+    {
+      "cnpj": "65787500000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 158780550.67
+    },
+    {
+      "cnpj": "65788132000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 431903440.05
+    },
+    {
+      "cnpj": "65793850000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 825963.0
+    },
+    {
+      "cnpj": "65794271000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 83407467.86
+    },
+    {
+      "cnpj": "65794655000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 27792892.58
+    },
+    {
+      "cnpj": "65837970000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 376065026.21
+    },
+    {
+      "cnpj": "65838122000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 88072975.45
+    },
+    {
+      "cnpj": "65842323000178",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40607598.03
+    },
+    {
+      "cnpj": "65870565000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 798970959.75
+    },
+    {
+      "cnpj": "65920467000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 273961729.82
+    },
+    {
+      "cnpj": "65923811000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16956884.72
+    },
+    {
+      "cnpj": "65974097000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 15942572.52
+    },
+    {
+      "cnpj": "66038922000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 251525930.72
+    },
+    {
+      "cnpj": "66060256000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12722160.03
+    },
+    {
+      "cnpj": "66170151000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8607.49
+    },
+    {
+      "cnpj": "66173986000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 30430704.55
+    },
+    {
+      "cnpj": "66174532000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16317419.89
+    },
+    {
+      "cnpj": "66197624000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 42267296.24
+    },
+    {
+      "cnpj": "66218014000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1631233.48
+    },
+    {
+      "cnpj": "66234807000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32930613.02
+    },
+    {
+      "cnpj": "66285471000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 71994445.86
+    },
+    {
+      "cnpj": "66286953000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4268589.15
+    },
+    {
+      "cnpj": "66287781000155",
+      "referenceDate": "2026-05-01",
+      "netAssets": 93007000.41
+    },
+    {
+      "cnpj": "66287969000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1002297.11
+    },
+    {
+      "cnpj": "66298955000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 244071214.1
+    },
+    {
+      "cnpj": "66334070000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 223900299.75
+    },
+    {
+      "cnpj": "66362379000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1054345397.38
+    },
+    {
+      "cnpj": "66392053000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49076503.63
+    },
+    {
+      "cnpj": "66425993000151",
+      "referenceDate": "2026-09-01",
+      "netAssets": 84815235.94
+    },
+    {
+      "cnpj": "66579728000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10508348.69
+    },
+    {
+      "cnpj": "66629246000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 188424402.88
+    },
+    {
+      "cnpj": "66661365000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 50277616.95
+    },
+    {
+      "cnpj": "66688948000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 55103806.15
+    },
+    {
+      "cnpj": "66712223000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 110469565.05
+    },
+    {
+      "cnpj": "66722105000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2818511355.35
+    },
+    {
+      "cnpj": "66743243000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 66057534.86
+    },
+    {
+      "cnpj": "66755248000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10036194.76
+    },
+    {
+      "cnpj": "66765117000174",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10231295.4
+    },
+    {
+      "cnpj": "66794896000136",
+      "referenceDate": "2026-09-01",
+      "netAssets": 64172412.41
+    },
+    {
+      "cnpj": "66813698000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 733389042.14
+    },
+    {
+      "cnpj": "66819928000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6976628.39
+    },
+    {
+      "cnpj": "66833974000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 360208889.04
+    },
+    {
+      "cnpj": "66834028000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 403524702.53
+    },
+    {
+      "cnpj": "66834081000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 109512222.47
+    },
+    {
+      "cnpj": "66834129000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 50255808.2
+    },
+    {
+      "cnpj": "66834182000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 434281527.25
+    },
+    {
+      "cnpj": "66868478000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 307239824.08
+    },
+    {
+      "cnpj": "66873762000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 20496304.53
+    },
+    {
+      "cnpj": "66959502000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 45199971.66
+    },
+    {
+      "cnpj": "66961207000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2744446.19
+    },
+    {
+      "cnpj": "66961964000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 63026685.19
+    },
+    {
+      "cnpj": "66965056000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 42846798.95
+    },
+    {
+      "cnpj": "66974704000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 841906692.23
+    },
+    {
+      "cnpj": "66987515000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 52005528.17
+    },
+    {
+      "cnpj": "66992565000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 319006669.13
+    },
+    {
+      "cnpj": "67001147000177",
+      "referenceDate": "2026-10-01",
+      "netAssets": 26092711.5
+    },
+    {
+      "cnpj": "67016721000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 943794.44
+    },
+    {
+      "cnpj": "67045944000156",
+      "referenceDate": "2026-09-01",
+      "netAssets": 293009552.13
+    },
+    {
+      "cnpj": "67046949000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 77550059.27
+    },
+    {
+      "cnpj": "67064406000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1136429637.46
+    },
+    {
+      "cnpj": "67091763000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 398377465.0
+    },
+    {
+      "cnpj": "67107247000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 22934146.09
+    },
+    {
+      "cnpj": "67108880000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 332018564.48
+    },
+    {
+      "cnpj": "67113366000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 480003.17
+    },
+    {
+      "cnpj": "67113582000193",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25538788.23
+    },
+    {
+      "cnpj": "67145252000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 142760477.72
+    },
+    {
+      "cnpj": "67149599000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 626191016.84
+    },
+    {
+      "cnpj": "67219946000114",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16551676.67
+    },
+    {
+      "cnpj": "67223988000129",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17065415.04
+    },
+    {
+      "cnpj": "67224116000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 201724632.02
+    },
+    {
+      "cnpj": "67224342000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 485122597.66
+    },
+    {
+      "cnpj": "67224455000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 150680920.16
+    },
+    {
+      "cnpj": "67254758000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 897321614.87
+    },
+    {
+      "cnpj": "67275881000124",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34370944.34
+    },
+    {
+      "cnpj": "67290511000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 149968061.83
+    },
+    {
+      "cnpj": "67368445000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 220576676.52
+    },
+    {
+      "cnpj": "67455686000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14507031.45
+    },
+    {
+      "cnpj": "67523141000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 633405089.28
+    },
+    {
+      "cnpj": "67545820000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2267609396.94
+    },
+    {
+      "cnpj": "67624043000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 53873362.32
+    },
+    {
+      "cnpj": "67681556000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 44051401.78
+    },
+    {
+      "cnpj": "67686992000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 214830561.66
+    },
+    {
+      "cnpj": "67689649000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 121747676.16
+    },
+    {
+      "cnpj": "67704827000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 437808325.99
+    },
+    {
+      "cnpj": "67758917000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49689599.3
+    },
+    {
+      "cnpj": "67783481000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25305709.26
+    },
+    {
+      "cnpj": "67809994000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 520440648.41
+    },
+    {
+      "cnpj": "67810179000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 542331516.28
+    },
+    {
+      "cnpj": "67863429000183",
+      "referenceDate": "2026-09-01",
+      "netAssets": 140407152.17
+    },
+    {
+      "cnpj": "67903762000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 405463443.66
+    },
+    {
+      "cnpj": "67939375000192",
+      "referenceDate": "2026-09-01",
+      "netAssets": 136482522.23
+    },
+    {
+      "cnpj": "67950351000134",
+      "referenceDate": "2026-09-01",
+      "netAssets": 356568893.69
+    },
+    {
+      "cnpj": "67951546000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 151588737.92
+    },
+    {
+      "cnpj": "67952825000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13423546.17
+    },
+    {
+      "cnpj": "67987944000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 48532209.39
+    },
+    {
+      "cnpj": "67988297000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 47943465.52
+    },
+    {
+      "cnpj": "68059313000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 69982142.86
+    },
+    {
+      "cnpj": "68065832000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 304142424.86
+    },
+    {
+      "cnpj": "68066032000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 405644072.6
+    },
+    {
+      "cnpj": "68066145000129",
+      "referenceDate": "2026-09-01",
+      "netAssets": 101441151.95
+    },
+    {
+      "cnpj": "68066205000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 101456259.01
+    },
+    {
+      "cnpj": "68073028000192",
+      "referenceDate": "2026-09-01",
+      "netAssets": 21836731.17
+    },
+    {
+      "cnpj": "68132550000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 24336355.79
+    },
+    {
+      "cnpj": "68147762000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1267110864.07
+    },
+    {
+      "cnpj": "68176986000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 133628009.62
+    },
+    {
+      "cnpj": "68235113000100",
+      "referenceDate": "2026-10-01",
+      "netAssets": 1258660.54
+    },
+    {
+      "cnpj": "68239830000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 93910559.51
+    },
+    {
+      "cnpj": "68246163000192",
+      "referenceDate": "2026-09-01",
+      "netAssets": 229975348.53
+    },
+    {
+      "cnpj": "68250582000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 403692765.63
+    },
+    {
+      "cnpj": "68277745000136",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5593942.26
+    },
+    {
+      "cnpj": "68278383000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 15551321.17
+    },
+    {
+      "cnpj": "68281236000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2499306.19
+    },
+    {
+      "cnpj": "68281311000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40000000.0
+    },
+    {
+      "cnpj": "68296665000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 45609770.12
+    },
+    {
+      "cnpj": "68349741000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5486028.22
+    },
+    {
+      "cnpj": "68411333000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 48426698.19
+    },
+    {
+      "cnpj": "68500379000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1918145892.01
+    },
+    {
+      "cnpj": "68577138000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 434769122.44
+    },
+    {
+      "cnpj": "68651113000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13927559.43
+    },
+    {
+      "cnpj": "68653676000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1482385.03
+    },
+    {
+      "cnpj": "68679140000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10113467.39
+    },
+    {
+      "cnpj": "68785890000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6725563.66
+    },
+    {
+      "cnpj": "68815433000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 195562800.0
+    },
+    {
+      "cnpj": "68969695000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 629070640.55
+    },
+    {
+      "cnpj": "69169489000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162981399.07
+    },
+    {
+      "cnpj": "69230038000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 70879268.03
+    },
+    {
+      "cnpj": "97521225000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5304823085.04
+    }
+  ],
+  "limitations": "Sem código de negociação, cotações, dividendos ou DY; referencial contábil por CNPJ e competência."
+}
