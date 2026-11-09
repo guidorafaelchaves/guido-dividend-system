@@ -24,7 +24,10 @@ def normalize_cnpj(value):
         return None
     # Não rejeitar CNPJs alfanuméricos hipotéticos, mas este dataset é numérico.
     def digit(seq):
-        return (11-sum(a*b for a,b in zip(seq,range(len(seq)+1,1,-1)))%11)%11%10
+        weights = ([5,4,3,2,9,8,7,6,5,4,3,2] if len(seq)==12 else
+                   [6,5,4,3,2,9,8,7,6,5,4,3,2])
+        remainder = sum(a*b for a,b in zip(seq,weights))%11
+        return 0 if remainder<2 else 11-remainder
     v=[int(x) for x in digits]
     if digit(v[:12])!=v[12] or digit(v[:13])!=v[13]:
         return None
