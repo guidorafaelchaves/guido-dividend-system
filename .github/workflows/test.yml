@@ -37,3 +37,5 @@ jobs:
         run: node tests/market-integrity.test.mjs
       - name: FII P/VP eligibility
         run: node --test tests/fii-pvp.test.mjs
+      - name: COTAHIST FII end-to-end
+        run: node --test tests/fii-cotahist-pvp.integration.test.mjs
