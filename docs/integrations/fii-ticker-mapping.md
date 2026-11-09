@@ -46,3 +46,13 @@ Cobertura verificada:
 A regra do VPA exige que PL / cotas emitidas coincida, com tolerância de 2%, com `Valor_Patrimonial_Cotas` do informe CVM da mesma competência; divergências de PL/cotas entre arquivos da mesma competência bloqueiam a publicação daquele VPA. Campos vazios não são estimados.
 
 O painel do ativo pode mostrar o VPA quando `navValidated=true`. Não calcula P/VP sem preço de fechamento de origem autorizada e sem garantir cronologia da publicação do informe.
+
+## Motor P/VP indicativo — 09/11/2026
+
+O novo `public/platform/fiiPvp.js` calcula `precoFechamento / navCalculated` apenas quando `navValidated=true`, o ticker coincide, a cotação provém de `published-d1` (feed licenciado) ou `b3-official-file` (arquivo importado pelo usuário), a data do fechamento está entre 1 e 7 dias antes da data corrente (São Paulo), e não é anterior à competência contábil.
+
+O painel `cvmFiiAssetPanel.js` consulta o `DividendMarketGateway` e mostra o P/VP com ambas as datas e fontes. Não aceita CSV manual genérico nem cache legado para calcular P/VP. O cálculo é **indicativo**, sem alegar que a competência seja a data de publicação do documento; não serve para backtesting histórico.
+
+O workflow de testes `fii-pvp-check.yml` executou os 7 testes com sucesso em https://github.com/guidorafaelchaves/guido-dividend-system/actions/runs/42567296904. Evidência em `public/data/fii-pvp-test-status.json`. A publicação de cotações B3 D-1 permanece condicionada a fonte autorizada; sem ela, o indicador fica indisponível, a menos que o usuário importe um arquivo COTAHIST B3 oficial no sistema.
+
+A hospedagem `dividend-system-next.guidorafaelchaves.chatgpt.site` não foi comprovadamente ligada a este repositório; mudanças GitHub não certificam o domínio público.
