@@ -1,11 +1,20 @@
 {
   "schemaVersion": 1,
-  "checkedAtUtc": "2026-11-09T05:06:43+00:00",
-  "githubRunId": "42565394715",
+  "checkedAtUtc": "2026-11-09T05:07:49+00:00",
+  "githubRunId": "42565496376",
   "source": "GitHub Actions - Radar CVM",
   "cvmMetricsStep": "previous-validated-snapshot",
-  "mappingStep": "skipped",
-  "hasPublishedSnapshot": false,
-  "coverage": null,
-  "notes": "Rotina não concluiu o vínculo; consultar o log do GitHub Actions. Não considerar dados históricos como atualizados."
+  "mappingStep": "success",
+  "hasPublishedSnapshot": true,
+  "coverage": {
+    "csvRowsScanned": 1172,
+    "fiiRowsSeen": 532,
+    "rejectedIdentityRows": 5,
+    "tickerPairsValidated": 527,
+    "conflictingTickers": 0,
+    "ambiguousCnpjs": 35,
+    "fiisWithCvmMetrics": 357,
+    "cvmFundsUnmatched": 1058
+  },
+  "notes": "Vínculos ticker/CNPJ confirmados pelo processo de cruzamento"
 }

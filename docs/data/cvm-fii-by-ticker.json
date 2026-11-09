@@ -1,0 +1,2164 @@
+{
+  "schemaVersion": 1,
+  "dataType": "monthly-fii-accounting-by-ticker",
+  "accountingSource": "CVM, informes mensais FII",
+  "identitySource": "https://developers.lummios.com.br/dados/universo-ativos.csv",
+  "attribution": "Dados de identificação ticker/CNPJ: Lummios, CC BY 4.0 — https://developers.lummios.com.br/dados-abertos.html",
+  "license": "CC BY 4.0 (somente identificação ticker/CNPJ Lummios)",
+  "referenceYear": 2026,
+  "coverage": {
+    "csvRowsScanned": 1172,
+    "fiiRowsSeen": 532,
+    "rejectedIdentityRows": 5,
+    "tickerPairsValidated": 527,
+    "conflictingTickers": 0,
+    "ambiguousCnpjs": 35,
+    "fiisWithCvmMetrics": 357,
+    "cvmFundsUnmatched": 1058
+  },
+  "records": [
+    {
+      "ticker": "ABCP11",
+      "cnpj": "01201140000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 521895159.04
+    },
+    {
+      "ticker": "ADSH11",
+      "cnpj": "63375304000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 466328628.96
+    },
+    {
+      "ticker": "AERO11",
+      "cnpj": "57927297000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 60797444.72
+    },
+    {
+      "ticker": "AFHI11",
+      "cnpj": "36642293000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 508419976.09
+    },
+    {
+      "ticker": "AIEC11",
+      "cnpj": "35765826000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 365305888.33
+    },
+    {
+      "ticker": "AJFI11",
+      "cnpj": "51472985000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 351061081.91
+    },
+    {
+      "ticker": "ALMI11",
+      "cnpj": "07122725000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 227387825.62
+    },
+    {
+      "ticker": "ALZR11",
+      "cnpj": "28737771000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1757564858.6
+    },
+    {
+      "ticker": "ANCR11",
+      "cnpj": "07789135000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4313209299.56
+    },
+    {
+      "ticker": "APTO11",
+      "cnpj": "42432327000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 46029202.95
+    },
+    {
+      "ticker": "APXM11",
+      "cnpj": "43010485000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 354982983.26
+    },
+    {
+      "ticker": "APXR11",
+      "cnpj": "52446271000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8516897.94
+    },
+    {
+      "ticker": "APXU11",
+      "cnpj": "52521137000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7450554.28
+    },
+    {
+      "ticker": "AQLL11",
+      "cnpj": "13555918000149",
+      "referenceDate": "2026-10-01",
+      "netAssets": 111216082.51
+    },
+    {
+      "ticker": "AROA11",
+      "cnpj": "44674528000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 158597922.9
+    },
+    {
+      "ticker": "ARRI11",
+      "cnpj": "32006821000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 177178612.87
+    },
+    {
+      "ticker": "ARTE11",
+      "cnpj": "53193237000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 98988045.57
+    },
+    {
+      "ticker": "ASRF11",
+      "cnpj": "45188033000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 37908986.2
+    },
+    {
+      "ticker": "ATSA11",
+      "cnpj": "12809972000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 130330452.91
+    },
+    {
+      "ticker": "AURB11",
+      "cnpj": "41076823000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 86643662.03
+    },
+    {
+      "ticker": "AVUR11",
+      "cnpj": "57109239000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 22653575.56
+    },
+    {
+      "ticker": "AZPL11",
+      "cnpj": "51890054000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 360356230.84
+    },
+    {
+      "ticker": "BBFI11",
+      "cnpj": "07000400000146",
+      "referenceDate": "2026-01-01",
+      "netAssets": 4408674.69
+    },
+    {
+      "ticker": "BBFO11",
+      "cnpj": "37180091000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 268053648.19
+    },
+    {
+      "ticker": "BBIG11",
+      "cnpj": "54375187000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 964371522.8
+    },
+    {
+      "ticker": "BBPO11",
+      "cnpj": "14410722000129",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1600084303.5
+    },
+    {
+      "ticker": "BBRC11",
+      "cnpj": "12681340000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 165436414.88
+    },
+    {
+      "ticker": "BCIA11",
+      "cnpj": "20216935000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 356038662.2
+    },
+    {
+      "ticker": "BCRI11",
+      "cnpj": "22219335000138",
+      "referenceDate": "2026-09-01",
+      "netAssets": 530964091.79
+    },
+    {
+      "ticker": "BICE11",
+      "cnpj": "39332032000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 109192948.97
+    },
+    {
+      "ticker": "BIME11",
+      "cnpj": "41081356000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 45690008.41
+    },
+    {
+      "ticker": "BIPD11",
+      "cnpj": "42869892000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 120416004.77
+    },
+    {
+      "ticker": "BIPE11",
+      "cnpj": "51817522000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100892946.46
+    },
+    {
+      "ticker": "BLCA11",
+      "cnpj": "41076748000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 192521873.13
+    },
+    {
+      "ticker": "BLMG11",
+      "cnpj": "34081637000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 204031549.12
+    },
+    {
+      "ticker": "BLMO11",
+      "cnpj": "34895894000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 98424558.59
+    },
+    {
+      "ticker": "BLOG11",
+      "cnpj": "49592781000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 346922775.8
+    },
+    {
+      "ticker": "BMLC11",
+      "cnpj": "14376247000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 109861249.76
+    },
+    {
+      "ticker": "BNFS11",
+      "cnpj": "15570431000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 48179722.81
+    },
+    {
+      "ticker": "BPML11",
+      "cnpj": "33046142000149",
+      "referenceDate": "2026-09-01",
+      "netAssets": 888218917.76
+    },
+    {
+      "ticker": "BRCO11",
+      "cnpj": "20748515000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2067077191.13
+    },
+    {
+      "ticker": "BRCR11",
+      "cnpj": "08924783000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2199341303.2
+    },
+    {
+      "ticker": "BRIM11",
+      "cnpj": "23964843000103",
+      "referenceDate": "2026-06-01",
+      "netAssets": 0.0
+    },
+    {
+      "ticker": "BRIP11",
+      "cnpj": "34895752000180",
+      "referenceDate": "2026-09-01",
+      "netAssets": 116003089.54
+    },
+    {
+      "ticker": "BRIX11",
+      "cnpj": "35360651000177",
+      "referenceDate": "2026-09-01",
+      "netAssets": 160998732.53
+    },
+    {
+      "ticker": "BRLA11",
+      "cnpj": "35652278000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1030241946.34
+    },
+    {
+      "ticker": "BROF11",
+      "cnpj": "48978859000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1261205338.73
+    },
+    {
+      "ticker": "BTAL11",
+      "cnpj": "36642244000115",
+      "referenceDate": "2026-01-01",
+      "netAssets": 693765025.57
+    },
+    {
+      "ticker": "BTHI11",
+      "cnpj": "64634907000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 392849382.7
+    },
+    {
+      "ticker": "BTRU11",
+      "cnpj": "08098114000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 756483432.69
+    },
+    {
+      "ticker": "BTSG11",
+      "cnpj": "36098375000183",
+      "referenceDate": "2026-09-01",
+      "netAssets": 121024000.61
+    },
+    {
+      "ticker": "BTSI11",
+      "cnpj": "36930464000144",
+      "referenceDate": "2026-09-01",
+      "netAssets": 788941579.41
+    },
+    {
+      "ticker": "BTWR11",
+      "cnpj": "20132453000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 102634453.91
+    },
+    {
+      "ticker": "BTYU11",
+      "cnpj": "54645216000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 302592059.06
+    },
+    {
+      "ticker": "BVAR11",
+      "cnpj": "21126204000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 374826055.16
+    },
+    {
+      "ticker": "BZLI11",
+      "cnpj": "14074706000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 706115552.56
+    },
+    {
+      "ticker": "CARE11",
+      "cnpj": "13584584000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 247339808.78
+    },
+    {
+      "ticker": "CBOP11",
+      "cnpj": "17144039000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 101711638.06
+    },
+    {
+      "ticker": "CCME11",
+      "cnpj": "43010844000126",
+      "referenceDate": "2026-09-01",
+      "netAssets": 714375122.29
+    },
+    {
+      "ticker": "CCVA11",
+      "cnpj": "52713882000136",
+      "referenceDate": "2026-09-01",
+      "netAssets": 71648041.89
+    },
+    {
+      "ticker": "CENU11",
+      "cnpj": "37899356000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 114845652.99
+    },
+    {
+      "ticker": "CEOC11",
+      "cnpj": "15799397000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 125445402.16
+    },
+    {
+      "ticker": "CFII11",
+      "cnpj": "41325993000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 26459968.59
+    },
+    {
+      "ticker": "CLIN11",
+      "cnpj": "49005348000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 429331187.57
+    },
+    {
+      "ticker": "CNES11",
+      "cnpj": "13551286000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 218795661.48
+    },
+    {
+      "ticker": "CPLG11",
+      "cnpj": "52371756000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 600699628.86
+    },
+    {
+      "ticker": "CPOF11",
+      "cnpj": "48916699000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 703109091.15
+    },
+    {
+      "ticker": "CPTS11",
+      "cnpj": "18979895000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3037334444.47
+    },
+    {
+      "ticker": "CRFF11",
+      "cnpj": "31887401000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 55149529.21
+    },
+    {
+      "ticker": "CTXT11",
+      "cnpj": "00762723000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 96009308.62
+    },
+    {
+      "ticker": "CVBI11",
+      "cnpj": "28729197000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1599245061.07
+    },
+    {
+      "ticker": "CXAG11",
+      "cnpj": "40189596000134",
+      "referenceDate": "2026-09-01",
+      "netAssets": 216546209.77
+    },
+    {
+      "ticker": "CXCE11",
+      "cnpj": "10991914000115",
+      "referenceDate": "2026-10-01",
+      "netAssets": 108317812.43
+    },
+    {
+      "ticker": "CXCI11",
+      "cnpj": "42066916000194",
+      "referenceDate": "2026-09-01",
+      "netAssets": 156677845.71
+    },
+    {
+      "ticker": "CXCO11",
+      "cnpj": "38658984000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 381382043.6
+    },
+    {
+      "ticker": "CXRI11",
+      "cnpj": "17098794000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 126431792.11
+    },
+    {
+      "ticker": "CXTL11",
+      "cnpj": "12887506000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 23008226.9
+    },
+    {
+      "ticker": "CYCR11",
+      "cnpj": "36501233000115",
+      "referenceDate": "2026-09-01",
+      "netAssets": 349139356.36
+    },
+    {
+      "ticker": "CYLD11",
+      "cnpj": "43010601000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 147498366.25
+    },
+    {
+      "ticker": "DAMA11",
+      "cnpj": "53866872000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 38999345.43
+    },
+    {
+      "ticker": "DAMT11",
+      "cnpj": "26642727000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 249975686.8
+    },
+    {
+      "ticker": "DEVA11",
+      "cnpj": "37087810000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1352011367.62
+    },
+    {
+      "ticker": "DOVL11",
+      "cnpj": "10522648000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 38870645.65
+    },
+    {
+      "ticker": "DPRO11",
+      "cnpj": "42922127000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 47194765.62
+    },
+    {
+      "ticker": "DVFF11",
+      "cnpj": "39863059000149",
+      "referenceDate": "2026-09-01",
+      "netAssets": 84987761.48
+    },
+    {
+      "ticker": "DVLP11",
+      "cnpj": "42537601000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100840639.34
+    },
+    {
+      "ticker": "EDFO11",
+      "cnpj": "06175262000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 56862994.03
+    },
+    {
+      "ticker": "EDGA11",
+      "cnpj": "15333306000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162038297.13
+    },
+    {
+      "ticker": "EDGE11",
+      "cnpj": "54306150000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11907226.58
+    },
+    {
+      "ticker": "EGDB11",
+      "cnpj": "53866393000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 165839100.77
+    },
+    {
+      "ticker": "EGYR11",
+      "cnpj": "36969658000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 100662447.15
+    },
+    {
+      "ticker": "EIRA11",
+      "cnpj": "59202651000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 36337685.56
+    },
+    {
+      "ticker": "EMET11",
+      "cnpj": "53523736000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 45807349.82
+    },
+    {
+      "ticker": "EQIR11",
+      "cnpj": "41076380000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 106591592.11
+    },
+    {
+      "ticker": "ERPA11",
+      "cnpj": "31469385000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 82946811.68
+    },
+    {
+      "ticker": "EURO11",
+      "cnpj": "05437916000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162330715.92
+    },
+    {
+      "ticker": "EXES11",
+      "cnpj": "41076851000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 136045030.62
+    },
+    {
+      "ticker": "FAED11",
+      "cnpj": "11179118000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 154881395.68
+    },
+    {
+      "ticker": "FAMB11",
+      "cnpj": "05562312000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 118307262.97
+    },
+    {
+      "ticker": "FATN11",
+      "cnpj": "30567216000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 694457237.14
+    },
+    {
+      "ticker": "FCFL11",
+      "cnpj": "11602654000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 436650473.97
+    },
+    {
+      "ticker": "FEXC11",
+      "cnpj": "09552812000114",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1017180185.65
+    },
+    {
+      "ticker": "FIGS11",
+      "cnpj": "17590518000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 200016276.33
+    },
+    {
+      "ticker": "FIIB11",
+      "cnpj": "14217108000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 407188509.29
+    },
+    {
+      "ticker": "FIIP11",
+      "cnpj": "08696175000197",
+      "referenceDate": "2026-10-01",
+      "netAssets": 185899358.46
+    },
+    {
+      "ticker": "FISC11",
+      "cnpj": "12804013000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 189043508.62
+    },
+    {
+      "ticker": "FISD11",
+      "cnpj": "16543270000189",
+      "referenceDate": "2026-10-01",
+      "netAssets": 15593138.96
+    },
+    {
+      "ticker": "FIVN11",
+      "cnpj": "17854016000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 56137789.73
+    },
+    {
+      "ticker": "FLCR11",
+      "cnpj": "33884145000151",
+      "referenceDate": "2026-09-01",
+      "netAssets": 70820887.21
+    },
+    {
+      "ticker": "FLFL11",
+      "cnpj": "50808042000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 424081980.75
+    },
+    {
+      "ticker": "FLMA11",
+      "cnpj": "04141645000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 346273496.91
+    },
+    {
+      "ticker": "FLRP11",
+      "cnpj": "10375382000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162544253.21
+    },
+    {
+      "ticker": "FMOF11",
+      "cnpj": "01633741000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13381593.74
+    },
+    {
+      "ticker": "FPAB11",
+      "cnpj": "03251720000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 268599979.79
+    },
+    {
+      "ticker": "FPNG11",
+      "cnpj": "17161979000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 664587924.75
+    },
+    {
+      "ticker": "FTCE11",
+      "cnpj": "01235622000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4050860498.36
+    },
+    {
+      "ticker": "FVPQ11",
+      "cnpj": "00332266000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 257301573.06
+    },
+    {
+      "ticker": "FZDA11",
+      "cnpj": "59680687000104",
+      "referenceDate": "2026-03-01",
+      "netAssets": 128679118.7
+    },
+    {
+      "ticker": "GAME11",
+      "cnpj": "41269052000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 265438023.64
+    },
+    {
+      "ticker": "GCDL11",
+      "cnpj": "56061587000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 45354155.83
+    },
+    {
+      "ticker": "GCRI11",
+      "cnpj": "38293897000161",
+      "referenceDate": "2026-09-01",
+      "netAssets": 135221148.46
+    },
+    {
+      "ticker": "GFDL11",
+      "cnpj": "58523711000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34981374.75
+    },
+    {
+      "ticker": "GGRC11",
+      "cnpj": "26614291000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3808729945.92
+    },
+    {
+      "ticker": "GLCR11",
+      "cnpj": "59669570000111",
+      "referenceDate": "2026-09-01",
+      "netAssets": 47076945.67
+    },
+    {
+      "ticker": "GLPF11",
+      "cnpj": "58378463000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 157990178.8
+    },
+    {
+      "ticker": "GRUL11",
+      "cnpj": "54483412000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 239870264.57
+    },
+    {
+      "ticker": "GSFI11",
+      "cnpj": "11769604000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1239151724.56
+    },
+    {
+      "ticker": "GTWR11",
+      "cnpj": "23740527000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1216321426.81
+    },
+    {
+      "ticker": "HAAA11",
+      "cnpj": "27445482000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 243376916.55
+    },
+    {
+      "ticker": "HABT11",
+      "cnpj": "30578417000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 762237505.68
+    },
+    {
+      "ticker": "HBCR11",
+      "cnpj": "36501159000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 210241013.6
+    },
+    {
+      "ticker": "HBRH11",
+      "cnpj": "30871698000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 202314237.13
+    },
+    {
+      "ticker": "HCHG11",
+      "cnpj": "34508959000154",
+      "referenceDate": "2026-07-01",
+      "netAssets": 96334105.53
+    },
+    {
+      "ticker": "HCRI11",
+      "cnpj": "04066582000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 65802292.47
+    },
+    {
+      "ticker": "HCST11",
+      "cnpj": "31152015000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49688833.94
+    },
+    {
+      "ticker": "HCTR11",
+      "cnpj": "30248180000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2300600343.75
+    },
+    {
+      "ticker": "HDEL11",
+      "cnpj": "44514162000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3953603.68
+    },
+    {
+      "ticker": "HDOF11",
+      "cnpj": "35688460000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 301936067.11
+    },
+    {
+      "ticker": "HFOF11",
+      "cnpj": "18307582000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1637080263.27
+    },
+    {
+      "ticker": "HGBL11",
+      "cnpj": "53466467000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 248929941.75
+    },
+    {
+      "ticker": "HGBS11",
+      "cnpj": "08431747000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3025454936.25
+    },
+    {
+      "ticker": "HGCR11",
+      "cnpj": "11160521000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1520653870.85
+    },
+    {
+      "ticker": "HGIC11",
+      "cnpj": "38456508000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 51245748.91
+    },
+    {
+      "ticker": "HGLG11",
+      "cnpj": "11728688000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7546017797.39
+    },
+    {
+      "ticker": "HGRE11",
+      "cnpj": "09072017000129",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1780836081.23
+    },
+    {
+      "ticker": "HGRU11",
+      "cnpj": "29641226000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3176116740.57
+    },
+    {
+      "ticker": "HILG11",
+      "cnpj": "34867728000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 111418139.38
+    },
+    {
+      "ticker": "HJCT11",
+      "cnpj": "62082124000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 135008642.85
+    },
+    {
+      "ticker": "HLOG11",
+      "cnpj": "27486542000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 506117858.87
+    },
+    {
+      "ticker": "HOMS11",
+      "cnpj": "55793516000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 46957938.68
+    },
+    {
+      "ticker": "HOSI11",
+      "cnpj": "34081631000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 71100092.07
+    },
+    {
+      "ticker": "HPDP11",
+      "cnpj": "35586415000173",
+      "referenceDate": "2026-09-01",
+      "netAssets": 663295760.06
+    },
+    {
+      "ticker": "HRDF11",
+      "cnpj": "16929519000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11920092.08
+    },
+    {
+      "ticker": "HREC11",
+      "cnpj": "35507262000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 468714641.42
+    },
+    {
+      "ticker": "HRES11",
+      "cnpj": "42869853000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34149451.39
+    },
+    {
+      "ticker": "HSAF11",
+      "cnpj": "67149599000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 626191016.84
+    },
+    {
+      "ticker": "HSLG11",
+      "cnpj": "32903621000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1393018567.18
+    },
+    {
+      "ticker": "HSML11",
+      "cnpj": "32892018000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2113802120.42
+    },
+    {
+      "ticker": "HTMX11",
+      "cnpj": "08706065000169",
+      "referenceDate": "2026-09-01",
+      "netAssets": 421447657.5
+    },
+    {
+      "ticker": "HUCG11",
+      "cnpj": "39347413000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 142600053.36
+    },
+    {
+      "ticker": "HUSC11",
+      "cnpj": "28851767000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 127813670.22
+    },
+    {
+      "ticker": "HUSI11",
+      "cnpj": "30017492000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 153239171.99
+    },
+    {
+      "ticker": "IBBP11",
+      "cnpj": "52551605000174",
+      "referenceDate": "2026-09-01",
+      "netAssets": 997775989.09
+    },
+    {
+      "ticker": "IBCR11",
+      "cnpj": "40011251000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 84994393.31
+    },
+    {
+      "ticker": "ICNE11",
+      "cnpj": "53137434000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 59682458.75
+    },
+    {
+      "ticker": "ICRI11",
+      "cnpj": "51294441000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 389496447.85
+    },
+    {
+      "ticker": "INDE11",
+      "cnpj": "52635194000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 49851751.59
+    },
+    {
+      "ticker": "IRIM11",
+      "cnpj": "41076564000195",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2916513511.19
+    },
+    {
+      "ticker": "ITRI11",
+      "cnpj": "52270671000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 544553055.15
+    },
+    {
+      "ticker": "JASC11",
+      "cnpj": "40886241000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 441075931.67
+    },
+    {
+      "ticker": "JFLL11",
+      "cnpj": "36501181000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 155815045.68
+    },
+    {
+      "ticker": "JPPA11",
+      "cnpj": "30982880000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 89507878.08
+    },
+    {
+      "ticker": "JPRD11",
+      "cnpj": "53072782000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 143600929.98
+    },
+    {
+      "ticker": "JSAF11",
+      "cnpj": "42085661000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 691170408.71
+    },
+    {
+      "ticker": "JSCR11",
+      "cnpj": "54866214000174",
+      "referenceDate": "2026-09-01",
+      "netAssets": 209547890.44
+    },
+    {
+      "ticker": "JSRE11",
+      "cnpj": "13371132000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2107968723.47
+    },
+    {
+      "ticker": "KCRE11",
+      "cnpj": "42502802000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 346800904.32
+    },
+    {
+      "ticker": "KEVE11",
+      "cnpj": "32317313000164",
+      "referenceDate": "2026-09-01",
+      "netAssets": 29301630.7
+    },
+    {
+      "ticker": "KFOF11",
+      "cnpj": "30091444000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 609653898.67
+    },
+    {
+      "ticker": "KISU11",
+      "cnpj": "65923811000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16956884.72
+    },
+    {
+      "ticker": "KIVO11",
+      "cnpj": "42273325000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 183431654.0
+    },
+    {
+      "ticker": "KNCR11",
+      "cnpj": "16706958000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10984431830.65
+    },
+    {
+      "ticker": "KNHF11",
+      "cnpj": "42754342000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1958623526.99
+    },
+    {
+      "ticker": "KNHY11",
+      "cnpj": "30130708000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3118507748.03
+    },
+    {
+      "ticker": "KNIP11",
+      "cnpj": "24960430000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7616349771.86
+    },
+    {
+      "ticker": "KNPR11",
+      "cnpj": "42737059000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16100772.54
+    },
+    {
+      "ticker": "KNRE11",
+      "cnpj": "14423780000197",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11077659.02
+    },
+    {
+      "ticker": "KNRI11",
+      "cnpj": "12005956000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 4615296750.95
+    },
+    {
+      "ticker": "KNSC11",
+      "cnpj": "35864448000138",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2086450423.72
+    },
+    {
+      "ticker": "KONG11",
+      "cnpj": "66743243000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 66057534.86
+    },
+    {
+      "ticker": "KORE11",
+      "cnpj": "52219978000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1033143034.02
+    },
+    {
+      "ticker": "LAFI11",
+      "cnpj": "51710043000100",
+      "referenceDate": "2026-04-01",
+      "netAssets": 92098322.5
+    },
+    {
+      "ticker": "LASC11",
+      "cnpj": "30248158000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 387704243.64
+    },
+    {
+      "ticker": "LIFE11",
+      "cnpj": "39753295000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 386742404.61
+    },
+    {
+      "ticker": "LKDV11",
+      "cnpj": "40102445000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 74388973.03
+    },
+    {
+      "ticker": "LLAO11",
+      "cnpj": "41218404000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19823353.01
+    },
+    {
+      "ticker": "LPLP11",
+      "cnpj": "37262752000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 215265867.05
+    },
+    {
+      "ticker": "LRDI11",
+      "cnpj": "41088534000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32167859.06
+    },
+    {
+      "ticker": "LRED11",
+      "cnpj": "55089373000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 15211591.41
+    },
+    {
+      "ticker": "LSOI11",
+      "cnpj": "53087126000101",
+      "referenceDate": "2026-09-01",
+      "netAssets": 82169981.19
+    },
+    {
+      "ticker": "LSOP11",
+      "cnpj": "63429256000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34453220.81
+    },
+    {
+      "ticker": "LTMT11",
+      "cnpj": "46449786000120",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16161508.19
+    },
+    {
+      "ticker": "LVBI11",
+      "cnpj": "30629603000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1942767073.51
+    },
+    {
+      "ticker": "MALL11",
+      "cnpj": "26499833000132",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2390831749.1
+    },
+    {
+      "ticker": "MANA11",
+      "cnpj": "42888583000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 346188978.64
+    },
+    {
+      "ticker": "MAXR11",
+      "cnpj": "11274415000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 104968668.74
+    },
+    {
+      "ticker": "MCCI11",
+      "cnpj": "23648935000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1611186191.3
+    },
+    {
+      "ticker": "MCEM11",
+      "cnpj": "46157247000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 95068756.36
+    },
+    {
+      "ticker": "MCHY11",
+      "cnpj": "36655973000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1107392681.74
+    },
+    {
+      "ticker": "MFII11",
+      "cnpj": "16915968000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 658014855.72
+    },
+    {
+      "ticker": "MGHT11",
+      "cnpj": "34197776000165",
+      "referenceDate": "2026-09-01",
+      "netAssets": 25693775.72
+    },
+    {
+      "ticker": "MIDW11",
+      "cnpj": "63992956000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 188497113.19
+    },
+    {
+      "ticker": "MMPD11",
+      "cnpj": "41080968000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 35689222.84
+    },
+    {
+      "ticker": "MMVE11",
+      "cnpj": "41251337000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 78963512.6
+    },
+    {
+      "ticker": "MXRF11",
+      "cnpj": "97521225000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5304823085.04
+    },
+    {
+      "ticker": "NAUI11",
+      "cnpj": "49649500000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 21733597.81
+    },
+    {
+      "ticker": "NCHB11",
+      "cnpj": "18085673000157",
+      "referenceDate": "2026-09-01",
+      "netAssets": 154426728.3
+    },
+    {
+      "ticker": "NCRI11",
+      "cnpj": "40041603000156",
+      "referenceDate": "2026-09-01",
+      "netAssets": 39598569.07
+    },
+    {
+      "ticker": "NEWL11",
+      "cnpj": "32527626000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 370627662.77
+    },
+    {
+      "ticker": "NSLU11",
+      "cnpj": "08014513000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 326078250.58
+    },
+    {
+      "ticker": "NVHO11",
+      "cnpj": "17025970000144",
+      "referenceDate": "2026-09-01",
+      "netAssets": 689866327.01
+    },
+    {
+      "ticker": "OCRE11",
+      "cnpj": "44680435000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 64027090.93
+    },
+    {
+      "ticker": "ONDV11",
+      "cnpj": "52966340000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 90244976.13
+    },
+    {
+      "ticker": "ORPD11",
+      "cnpj": "19107604000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40711668.64
+    },
+    {
+      "ticker": "OUJP11",
+      "cnpj": "26091656000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 327581393.6
+    },
+    {
+      "ticker": "OULG11",
+      "cnpj": "13974819000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 68600370.6
+    },
+    {
+      "ticker": "PABY11",
+      "cnpj": "00613094000174",
+      "referenceDate": "2026-09-01",
+      "units": 758400
+    },
+    {
+      "ticker": "PATA11",
+      "cnpj": "53764894000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 16562857.03
+    },
+    {
+      "ticker": "PATC11",
+      "cnpj": "30048651000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 119045341.89
+    },
+    {
+      "ticker": "PATL11",
+      "cnpj": "35754164000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1587987.19
+    },
+    {
+      "ticker": "PDBM11",
+      "cnpj": "56978773000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 38523979.88
+    },
+    {
+      "ticker": "PEMA11",
+      "cnpj": "34736510000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32809225.69
+    },
+    {
+      "ticker": "PLRI11",
+      "cnpj": "14080689000116",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11038499.44
+    },
+    {
+      "ticker": "PMFO11",
+      "cnpj": "50135849000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 81904378.52
+    },
+    {
+      "ticker": "PMIS11",
+      "cnpj": "51868778000158",
+      "referenceDate": "2026-09-01",
+      "netAssets": 139159000.12
+    },
+    {
+      "ticker": "PNDL11",
+      "cnpj": "37899400000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 12975060.56
+    },
+    {
+      "ticker": "PNPR11",
+      "cnpj": "26813118000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32060786.56
+    },
+    {
+      "ticker": "PNRC11",
+      "cnpj": "46157348000198",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1998930.32
+    },
+    {
+      "ticker": "PORD11",
+      "cnpj": "17156502000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 357822499.28
+    },
+    {
+      "ticker": "PQAG11",
+      "cnpj": "12978943000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 790601922.02
+    },
+    {
+      "ticker": "PQDP11",
+      "cnpj": "10869155000112",
+      "referenceDate": "2026-09-01",
+      "netAssets": 674026120.74
+    },
+    {
+      "ticker": "PRSN11",
+      "cnpj": "14056001000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 8491885.6
+    },
+    {
+      "ticker": "PRSV11",
+      "cnpj": "11281322000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 29462889.31
+    },
+    {
+      "ticker": "PULV11",
+      "cnpj": "53018363000110",
+      "referenceDate": "2026-02-01",
+      "netAssets": 0.0
+    },
+    {
+      "ticker": "PVBI11",
+      "cnpj": "35652102000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2843198565.73
+    },
+    {
+      "ticker": "QAGR11",
+      "cnpj": "32754734000152",
+      "referenceDate": "2026-09-01",
+      "netAssets": 363976148.12
+    },
+    {
+      "ticker": "RBDS11",
+      "cnpj": "11945604000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3103882.45
+    },
+    {
+      "ticker": "RBFY11",
+      "cnpj": "62662477000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 91320867.13
+    },
+    {
+      "ticker": "RBHY11",
+      "cnpj": "37899479000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 177990460.89
+    },
+    {
+      "ticker": "RBIR11",
+      "cnpj": "31161410000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 115989700.3
+    },
+    {
+      "ticker": "RBRD11",
+      "cnpj": "09006914000134",
+      "referenceDate": "2026-09-01",
+      "netAssets": 133118098.5
+    },
+    {
+      "ticker": "RBRI11",
+      "cnpj": "32441656000136",
+      "referenceDate": "2026-09-01",
+      "netAssets": 42073058.2
+    },
+    {
+      "ticker": "RBRK11",
+      "cnpj": "53391653000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 211963052.27
+    },
+    {
+      "ticker": "RBRL11",
+      "cnpj": "35705463000133",
+      "referenceDate": "2026-09-01",
+      "netAssets": 628982687.39
+    },
+    {
+      "ticker": "RBRP11",
+      "cnpj": "21408063000151",
+      "referenceDate": "2026-09-01",
+      "netAssets": 966978628.89
+    },
+    {
+      "ticker": "RBRR11",
+      "cnpj": "29467977000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1519787769.93
+    },
+    {
+      "ticker": "RBRS11",
+      "cnpj": "36517660000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 73281950.93
+    },
+    {
+      "ticker": "RBRX11",
+      "cnpj": "41088458000121",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1373396734.64
+    },
+    {
+      "ticker": "RBTS11",
+      "cnpj": "29299737000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 13916538.91
+    },
+    {
+      "ticker": "RCFA11",
+      "cnpj": "27771586000144",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10478812.38
+    },
+    {
+      "ticker": "RCFF11",
+      "cnpj": "35689670000141",
+      "referenceDate": "2026-09-01",
+      "netAssets": 34696757.13
+    },
+    {
+      "ticker": "RCRI11",
+      "cnpj": "60801196000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 41406103.41
+    },
+    {
+      "ticker": "RDLI11",
+      "cnpj": "53391567000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 30117761.52
+    },
+    {
+      "ticker": "RECM11",
+      "cnpj": "56430935000162",
+      "referenceDate": "2026-09-01",
+      "netAssets": 169129007.8
+    },
+    {
+      "ticker": "RECT11",
+      "cnpj": "32274163000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 766833915.29
+    },
+    {
+      "ticker": "REIT11",
+      "cnpj": "16841067000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 7838858.27
+    },
+    {
+      "ticker": "RELG11",
+      "cnpj": "37112770000136",
+      "referenceDate": "2026-08-01",
+      "netAssets": 28241916.22
+    },
+    {
+      "ticker": "REME11",
+      "cnpj": "63051078000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 57718123.2
+    },
+    {
+      "ticker": "RENV11",
+      "cnpj": "54174907000104",
+      "referenceDate": "2026-09-01",
+      "netAssets": 14708091.15
+    },
+    {
+      "ticker": "RFOF11",
+      "cnpj": "34027774000128",
+      "referenceDate": "2026-09-01",
+      "netAssets": 272041.91
+    },
+    {
+      "ticker": "RINV11",
+      "cnpj": "44625612000145",
+      "referenceDate": "2026-09-01",
+      "netAssets": 508022124.98
+    },
+    {
+      "ticker": "RMBS11",
+      "cnpj": "58366499000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 21350495.05
+    },
+    {
+      "ticker": "RNGO11",
+      "cnpj": "15006286000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 225472247.95
+    },
+    {
+      "ticker": "ROOF11",
+      "cnpj": "38456598000109",
+      "referenceDate": "2026-09-01",
+      "netAssets": 17430113.21
+    },
+    {
+      "ticker": "RPRI11",
+      "cnpj": "42502842000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 349494936.21
+    },
+    {
+      "ticker": "RRCI11",
+      "cnpj": "35689733000160",
+      "referenceDate": "2026-09-01",
+      "netAssets": 37460131.13
+    },
+    {
+      "ticker": "RSPD11",
+      "cnpj": "19249989000108",
+      "referenceDate": "2026-09-01",
+      "netAssets": 109261212.09
+    },
+    {
+      "ticker": "RVBI11",
+      "cnpj": "35507457000171",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1292779269.12
+    },
+    {
+      "ticker": "RZAK11",
+      "cnpj": "36642219000131",
+      "referenceDate": "2026-09-01",
+      "netAssets": 781500481.18
+    },
+    {
+      "ticker": "RZTR11",
+      "cnpj": "36501128000186",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1890863033.13
+    },
+    {
+      "ticker": "RZZI11",
+      "cnpj": "54134474000155",
+      "referenceDate": "2026-09-01",
+      "netAssets": 145879622.14
+    },
+    {
+      "ticker": "SAPI11",
+      "cnpj": "51646298000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 298197362.04
+    },
+    {
+      "ticker": "SCPF11",
+      "cnpj": "01657856000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 41518236.64
+    },
+    {
+      "ticker": "SEED11",
+      "cnpj": "35689497000181",
+      "referenceDate": "2026-09-01",
+      "netAssets": 147438693.15
+    },
+    {
+      "ticker": "SEQR11",
+      "cnpj": "09517273000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 162011590.2
+    },
+    {
+      "ticker": "SHPH11",
+      "cnpj": "03507519000159",
+      "referenceDate": "2026-09-01",
+      "netAssets": 630741094.19
+    },
+    {
+      "ticker": "SHPP11",
+      "cnpj": "59090726000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 496458203.92
+    },
+    {
+      "ticker": "SJAU11",
+      "cnpj": "27771547000147",
+      "referenceDate": "2026-09-01",
+      "netAssets": 11714533.95
+    },
+    {
+      "ticker": "SNCI11",
+      "cnpj": "41076710000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 403470954.37
+    },
+    {
+      "ticker": "SNEL11",
+      "cnpj": "43741171000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1814685273.7
+    },
+    {
+      "ticker": "SNFF11",
+      "cnpj": "40011225000168",
+      "referenceDate": "2026-09-01",
+      "netAssets": 335093563.65
+    },
+    {
+      "ticker": "SNME11",
+      "cnpj": "52227760000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 170695136.04
+    },
+    {
+      "ticker": "SOFF11",
+      "cnpj": "57811221000167",
+      "referenceDate": "2026-09-01",
+      "netAssets": 187461310.84
+    },
+    {
+      "ticker": "SOLR11",
+      "cnpj": "22169671000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 60282922.86
+    },
+    {
+      "ticker": "SPDE11",
+      "cnpj": "43741150000169",
+      "referenceDate": "2026-09-01",
+      "netAssets": 122428329.8
+    },
+    {
+      "ticker": "SPMO11",
+      "cnpj": "40225262000179",
+      "referenceDate": "2026-09-01",
+      "netAssets": 306251807.02
+    },
+    {
+      "ticker": "SPTW11",
+      "cnpj": "43951941000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 587200868.08
+    },
+    {
+      "ticker": "SPXS11",
+      "cnpj": "43010543000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 189127786.0
+    },
+    {
+      "ticker": "SRVD11",
+      "cnpj": "38082796000141",
+      "referenceDate": "2026-09-01",
+      "netAssets": 15739387.63
+    },
+    {
+      "ticker": "STRX11",
+      "cnpj": "11044355000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 247759594.64
+    },
+    {
+      "ticker": "STYI11",
+      "cnpj": "59678586000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 85648591.75
+    },
+    {
+      "ticker": "TCIN11",
+      "cnpj": "34197700000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 40455130.4
+    },
+    {
+      "ticker": "TELM11",
+      "cnpj": "45188099000135",
+      "referenceDate": "2026-09-01",
+      "netAssets": 32495767.8
+    },
+    {
+      "ticker": "TGAR11",
+      "cnpj": "25032881000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 2540702305.14
+    },
+    {
+      "ticker": "TJKB11",
+      "cnpj": "39714024000148",
+      "referenceDate": "2026-09-01",
+      "netAssets": 598839122.78
+    },
+    {
+      "ticker": "TMPS11",
+      "cnpj": "42737077000199",
+      "referenceDate": "2026-09-01",
+      "netAssets": 73871384.91
+    },
+    {
+      "ticker": "TOPP11",
+      "cnpj": "56805391000176",
+      "referenceDate": "2026-09-01",
+      "netAssets": 460352355.15
+    },
+    {
+      "ticker": "TORD11",
+      "cnpj": "30230870000118",
+      "referenceDate": "2026-09-01",
+      "netAssets": 212583174.34
+    },
+    {
+      "ticker": "TRCO11",
+      "cnpj": "62173370000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 35571581.1
+    },
+    {
+      "ticker": "TRNT11",
+      "cnpj": "04722883000102",
+      "referenceDate": "2026-09-01",
+      "netAssets": 665165896.44
+    },
+    {
+      "ticker": "TRXB11",
+      "cnpj": "36368925000137",
+      "referenceDate": "2026-09-01",
+      "netAssets": 396971297.83
+    },
+    {
+      "ticker": "TRXF11",
+      "cnpj": "63134454000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 170701462.56
+    },
+    {
+      "ticker": "TRXY11",
+      "cnpj": "43985938000110",
+      "referenceDate": "2026-09-01",
+      "netAssets": 290495322.36
+    },
+    {
+      "ticker": "TSER11",
+      "cnpj": "34847042000184",
+      "referenceDate": "2026-09-01",
+      "netAssets": 141523252.2
+    },
+    {
+      "ticker": "TSNC11",
+      "cnpj": "17007443000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 75079814.29
+    },
+    {
+      "ticker": "URHF11",
+      "cnpj": "52649350000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 10597739.64
+    },
+    {
+      "ticker": "URPR11",
+      "cnpj": "34508872000187",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1059506107.99
+    },
+    {
+      "ticker": "VCJR11",
+      "cnpj": "32400250000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1382846839.04
+    },
+    {
+      "ticker": "VCRI11",
+      "cnpj": "41081374000166",
+      "referenceDate": "2026-09-01",
+      "netAssets": 196832741.07
+    },
+    {
+      "ticker": "VCRR11",
+      "cnpj": "40041723000153",
+      "referenceDate": "2026-09-01",
+      "netAssets": 206105350.76
+    },
+    {
+      "ticker": "VERE11",
+      "cnpj": "08693497000182",
+      "referenceDate": "2026-09-01",
+      "netAssets": 341230161.62
+    },
+    {
+      "ticker": "VGHF11",
+      "cnpj": "36771692000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1360757796.78
+    },
+    {
+      "ticker": "VGII11",
+      "cnpj": "52649680000172",
+      "referenceDate": "2026-09-01",
+      "netAssets": 33246484.39
+    },
+    {
+      "ticker": "VGIP11",
+      "cnpj": "34197811000146",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1080192774.02
+    },
+    {
+      "ticker": "VGIR11",
+      "cnpj": "29852732000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1417094578.1
+    },
+    {
+      "ticker": "VGRI11",
+      "cnpj": "53656482000107",
+      "referenceDate": "2026-09-01",
+      "netAssets": 298575985.78
+    },
+    {
+      "ticker": "VILG11",
+      "cnpj": "24853044000122",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1629464052.36
+    },
+    {
+      "ticker": "VINO11",
+      "cnpj": "12516185000170",
+      "referenceDate": "2026-09-01",
+      "netAssets": 811532260.01
+    },
+    {
+      "ticker": "VISC11",
+      "cnpj": "17554274000125",
+      "referenceDate": "2026-09-01",
+      "netAssets": 3338022866.46
+    },
+    {
+      "ticker": "VIUR11",
+      "cnpj": "36445587000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 97469418.87
+    },
+    {
+      "ticker": "VJFD11",
+      "cnpj": "15489509000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 834191550.78
+    },
+    {
+      "ticker": "VOTS11",
+      "cnpj": "17870926000130",
+      "referenceDate": "2026-09-01",
+      "netAssets": 74372169.46
+    },
+    {
+      "ticker": "VPSI11",
+      "cnpj": "14721889000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 271256937.31
+    },
+    {
+      "ticker": "VRTA11",
+      "cnpj": "11664201000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 1320375898.89
+    },
+    {
+      "ticker": "VRTM11",
+      "cnpj": "51870412000113",
+      "referenceDate": "2026-09-01",
+      "netAssets": 437111090.88
+    },
+    {
+      "ticker": "VSHO11",
+      "cnpj": "23740595000117",
+      "referenceDate": "2026-09-01",
+      "netAssets": 254738813.65
+    },
+    {
+      "ticker": "VSLH11",
+      "cnpj": "36244015000142",
+      "referenceDate": "2026-09-01",
+      "netAssets": 345416830.2
+    },
+    {
+      "ticker": "VTPL11",
+      "cnpj": "15098422000119",
+      "referenceDate": "2026-09-01",
+      "netAssets": 167057111.95
+    },
+    {
+      "ticker": "VVDI11",
+      "cnpj": "66661365000175",
+      "referenceDate": "2026-09-01",
+      "netAssets": 50277616.95
+    },
+    {
+      "ticker": "VVRI11",
+      "cnpj": "49184940000177",
+      "referenceDate": "2026-09-01",
+      "netAssets": 153013970.0
+    },
+    {
+      "ticker": "VXXV11",
+      "cnpj": "30982974000189",
+      "referenceDate": "2026-09-01",
+      "netAssets": 264838264.3
+    },
+    {
+      "ticker": "WHGR11",
+      "cnpj": "41256643000188",
+      "referenceDate": "2026-09-01",
+      "netAssets": 297319613.43
+    },
+    {
+      "ticker": "WPLZ11",
+      "cnpj": "09326861000139",
+      "referenceDate": "2026-09-01",
+      "netAssets": 64796744.87
+    },
+    {
+      "ticker": "WTSP11",
+      "cnpj": "28693595000127",
+      "referenceDate": "2026-09-01",
+      "netAssets": 119433686.44
+    },
+    {
+      "ticker": "XPCI11",
+      "cnpj": "28516301000191",
+      "referenceDate": "2026-09-01",
+      "netAssets": 780695964.87
+    },
+    {
+      "ticker": "XPCM11",
+      "cnpj": "16802320000103",
+      "referenceDate": "2026-09-01",
+      "netAssets": 58775613.57
+    },
+    {
+      "ticker": "XPIN11",
+      "cnpj": "28516325000140",
+      "referenceDate": "2026-09-01",
+      "netAssets": 345515543.57
+    },
+    {
+      "ticker": "XPLG11",
+      "cnpj": "26502794000185",
+      "referenceDate": "2026-09-01",
+      "netAssets": 5366764195.65
+    },
+    {
+      "ticker": "XPML11",
+      "cnpj": "28757546000100",
+      "referenceDate": "2026-09-01",
+      "netAssets": 6904091273.75
+    },
+    {
+      "ticker": "XPSF11",
+      "cnpj": "30983020000190",
+      "referenceDate": "2026-09-01",
+      "netAssets": 325145580.44
+    },
+    {
+      "ticker": "XTED11",
+      "cnpj": "15006267000163",
+      "referenceDate": "2026-09-01",
+      "netAssets": 130182414.37
+    },
+    {
+      "ticker": "YEES11",
+      "cnpj": "51385174000150",
+      "referenceDate": "2026-09-01",
+      "netAssets": 30264857.88
+    },
+    {
+      "ticker": "YUFI11",
+      "cnpj": "36445551000106",
+      "referenceDate": "2026-09-01",
+      "netAssets": 19300829.93
+    },
+    {
+      "ticker": "ZAGH11",
+      "cnpj": "63034711000105",
+      "referenceDate": "2026-09-01",
+      "netAssets": 27159859.96
+    },
+    {
+      "ticker": "ZAVC11",
+      "cnpj": "52101897000143",
+      "referenceDate": "2026-09-01",
+      "netAssets": 37053512.52
+    },
+    {
+      "ticker": "ZAVI11",
+      "cnpj": "40575940000123",
+      "referenceDate": "2026-09-01",
+      "netAssets": 164633042.17
+    },
+    {
+      "ticker": "ZIFI11",
+      "cnpj": "35820768000196",
+      "referenceDate": "2026-09-01",
+      "netAssets": 72721771.98
+    }
+  ],
+  "limitations": "Sem preço e sem dividendos. VPA exige validação do método e competência; ticker não é correspondência oficial B3."
+}
