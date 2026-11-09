@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/fii-vpa-rebuild.yml'
+      - 'scripts/refresh_cvm_fii.py'
+      - 'scripts/map_cvm_fii_tickers.py'
+      - 'tests/test_cvm_fii.py'
   workflow_dispatch:
 permissions:
   contents: write
