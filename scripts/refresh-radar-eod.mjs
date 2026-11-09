@@ -5,8 +5,10 @@ import { mkdir, writeFile } from 'node:fs/promises';
 
 const endpoint = process.env.RADAR_EOD_FEED_URL;
 const permission = process.env.RADAR_EOD_PUBLICATION_ALLOWED === 'true';
+const usageRights = process.env.RADAR_EOD_USAGE_RIGHTS_CONFIRMED === 'true';
 if (!endpoint) throw new Error('RADAR_EOD_FEED_URL não configurado: nenhuma cotação será publicada.');
 if (!permission) throw new Error('Confirme a licença de redistribuição em RADAR_EOD_PUBLICATION_ALLOWED=true.');
+if (!usageRights) throw new Error('Confirme permissão contratual para armazenamento, cálculo de indicadores e uso em produto em RADAR_EOD_USAGE_RIGHTS_CONFIRMED=true.');
 const url = new URL(endpoint);
 if (url.protocol !== 'https:') throw new Error('O feed deve usar HTTPS.');
 const headers = { accept: 'application/json' };
