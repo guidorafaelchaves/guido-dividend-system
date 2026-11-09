@@ -8,6 +8,8 @@ on:
       - 'scripts/refresh-cvm-catalog.mjs'
       - 'scripts/refresh-radar-eod.mjs'
       - 'tests/test_cvm_fii.py'
+      - 'scripts/map-cvm-fii-tickers.py'
+      - 'tests/test_fii_ticker_mapping.py'
   schedule:
     # 08:00 de Brasilia (UTC-3), de segunda a sexta, equivale a 11:00 UTC.
     # Dados B3, se disponíveis, são sempre do pregão anterior.
@@ -39,6 +41,14 @@ jobs:
         env:
           CVM_FII_YEAR: '2026'
         run: python3 scripts/refresh-cvm-fii.py
+      - name: Cruzar CNPJ e ticker quando houver métricas CVM
+        id: mapping
+        if: ${{ steps.fii.outcome == 'success' }}
+        continue-on-error: true
+        run: python3 scripts/map-cvm-fii-tickers.py
+      - name: Avisar se o mapeamento não pôde ser publicado
+        if: ${{ steps.fii.outcome == 'success' && steps.mapping.outcome == 'failure' }}
+        run: echo "::warning::Vínculo ticker/CNPJ não publicado; confira fonte cadastral e validações."
       - name: Sinalizar incompatibilidade do esquema de FII
         if: ${{ steps.fii.outcome == 'failure' }}
         run: echo "::warning::Extração de FIIs falhou. Nenhum indicador novo será publicado; consulte o log e verifique o esquema CSV."
@@ -66,11 +76,13 @@ jobs:
           mkdir -p docs/data
           cp public/data/cvm-catalog.json docs/data/cvm-catalog.json
           if [ -f public/data/cvm-fii-metrics.json ]; then cp public/data/cvm-fii-metrics.json docs/data/cvm-fii-metrics.json; fi
+          if [ -f public/data/cvm-fii-by-ticker.json ]; then cp public/data/cvm-fii-by-ticker.json docs/data/cvm-fii-by-ticker.json; fi
           if [ -f public/data/radar-eod.json ]; then cp public/data/radar-eod.json docs/data/radar-eod.json; fi
       - name: Publicar somente arquivos alterados
         run: |
           git add public/data/cvm-catalog.json docs/data/cvm-catalog.json
           if [ -f public/data/cvm-fii-metrics.json ]; then git add public/data/cvm-fii-metrics.json docs/data/cvm-fii-metrics.json; fi
+          if [ -f public/data/cvm-fii-by-ticker.json ]; then git add public/data/cvm-fii-by-ticker.json docs/data/cvm-fii-by-ticker.json; fi
           if [ -f public/data/radar-eod.json ]; then git add public/data/radar-eod.json docs/data/radar-eod.json; fi
           if git diff --cached --quiet; then
             echo "Sem dados novos."
