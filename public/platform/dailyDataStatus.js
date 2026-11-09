@@ -35,7 +35,9 @@
     const mapped=mapping?.schemaVersion===1&&mapping?.dataType==='monthly-fii-accounting-by-ticker'&&Array.isArray(mapping.records)&&mapping.records.length>0;
     const mappedCount=mapped?mapping.records.length:0;
     strip.appendChild(el('span',mapped?
-      'Ticker/CNPJ: '+mappedCount+' FIIs associados · cadastro Lummios CC BY 4.0':
+      'Ticker/CNPJ: '+mappedCount+' FIIs no último arquivo publicado'+
+      (mappingStatus?.mappingStep==='failure'?' (sincronização recente falhou)':'')+
+      ' · Lummios CC BY 4.0':
       mappingStatus?.mappingStep==='failure'?
       'Ticker/CNPJ: sincronização falhou; consulte diagnóstico no GitHub':
       'Ticker/CNPJ: aguardando primeira publicação validada'));
