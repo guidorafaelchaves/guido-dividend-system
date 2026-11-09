@@ -31,8 +31,13 @@
      panel.appendChild(text('p','CNPJ: '+row.cnpj+' · Competência: '+date));
      if(Number.isFinite(row.netAssets)&&row.netAssets>=0)panel.appendChild(text('p','Patrimônio líquido informado: '+money(row.netAssets)));
      if(Number.isFinite(row.holders)&&row.holders>=0)panel.appendChild(text('p','Cotistas informados: '+Math.round(row.holders).toLocaleString('pt-BR')));
+     if(row.navValidated===true && Number.isFinite(row.navCalculated) && row.navCalculated>0){
+       panel.appendChild(text('p','Valor patrimonial por cota conciliado: '+money(row.navCalculated)));
+     } else {
+       panel.appendChild(text('p','Valor patrimonial por cota: aguardando conciliação oficial dos campos.'));
+     }
      // Quantidade de cotas pode representar a classe, não o fundo inteiro: não derivar P/VP.
-     panel.appendChild(text('small','Fonte contábil: CVM (informe mensal). Identificação ticker/CNPJ: Lummios, CC BY 4.0. Dados não são cotações nem dividendos. Valor patrimonial por cota e P/VP dependem de validação de classe e período.'));
+     panel.appendChild(text('small','Fonte contábil: CVM (informe mensal). Identificação ticker/CNPJ: Lummios, CC BY 4.0. Dados não são cotações nem dividendos. P/VP indisponível até fechamento de mercado autorizado, classe confirmada e cronologia da divulgação validada.'));
      const link=document.createElement('a');link.href='https://developers.lummios.com.br/dados-abertos.html';link.textContent='Fonte e licença dos identificadores';link.target='_blank';link.rel='noopener noreferrer';link.style.cssText='display:block;margin-top:8px';panel.appendChild(link);
    }catch(err){
      panel.replaceChildren(text('h2','Dados contábeis CVM — FII'),text('p','Dados contábeis por ticker ainda indisponíveis. Não alteramos os indicadores existentes.'));
