@@ -6,7 +6,7 @@
     {
       "id": "fii-doc-inf_mensal",
       "title": "FII: Documentos: Informe Mensal Estruturado",
-      "metadataUpdated": "2026-11-02T11:01:32.821937",
+      "metadataUpdated": "2026-11-09T11:01:28.550996",
       "license": "odc-odbl",
       "datasetUrl": "https://dados.cvm.gov.br/dataset/fii-doc-inf_mensal",
       "resources": [
@@ -20,31 +20,31 @@
           "name": "Informes Mensais Estruturados de Fundos de Investimento Imobiliário (2022)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2022.zip",
-          "lastModified": "2026-11-02T08:01:32.002046"
+          "lastModified": "2026-11-09T08:01:27.765545"
         },
         {
           "name": "Informes Mensais Estruturados de Fundos de Investimento Imobiliário (2023)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2023.zip",
-          "lastModified": "2026-11-02T08:01:32.183991"
+          "lastModified": "2026-11-09T08:01:27.940497"
         },
         {
           "name": "Informes Mensais Estruturados de Fundos de Investimento Imobiliário (2024)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2024.zip",
-          "lastModified": "2026-11-02T08:01:32.373000"
+          "lastModified": "2026-11-09T08:01:28.118529"
         },
         {
           "name": "Informes Mensais Estruturados de Fundos de Investimento Imobiliário (2025)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2025.zip",
-          "lastModified": "2026-11-02T08:01:32.566665"
+          "lastModified": "2026-11-09T08:01:28.306080"
         },
         {
           "name": "Informes Mensais Estruturados de Fundos de Investimento Imobiliário (2026)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip",
-          "lastModified": "2026-11-02T08:01:32.743050"
+          "lastModified": "2026-11-09T08:01:28.477946"
         },
         {
           "name": "Dicionário de Dados",
@@ -57,7 +57,7 @@
     {
       "id": "cia_aberta-cad",
       "title": "Cias Abertas: Informação Cadastral",
-      "metadataUpdated": "2026-11-07T11:00:36.328195",
+      "metadataUpdated": "2026-11-09T11:01:06.953612",
       "license": "odc-odbl",
       "datasetUrl": "https://dados.cvm.gov.br/dataset/cia_aberta-cad",
       "resources": [
@@ -65,7 +65,7 @@
           "name": "Cias Abertas",
           "format": "CSV",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/CAD/DADOS/cad_cia_aberta.csv",
-          "lastModified": "2026-11-07T08:00:36.259980"
+          "lastModified": "2026-11-09T08:01:06.875936"
         },
         {
           "name": "Dicionário de Dados",
@@ -78,7 +78,7 @@
     {
       "id": "cia_aberta-doc-dfp",
       "title": "Cias Abertas: Documentos: Formulário de Demonstrações Financeiras Padronizadas (DFP)",
-      "metadataUpdated": "2026-11-02T11:01:10.955198",
+      "metadataUpdated": "2026-11-09T11:01:09.425704",
       "license": "odc-odbl",
       "datasetUrl": "https://dados.cvm.gov.br/dataset/cia_aberta-doc-dfp",
       "resources": [
@@ -92,31 +92,31 @@
           "name": "Formulários de Demonstrações Financeiras Padronizadas de Cias Abertas (2022)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2022.zip",
-          "lastModified": "2026-11-02T08:01:10.114352"
+          "lastModified": "2026-11-09T08:01:08.483763"
         },
         {
           "name": "Formulários de Demonstrações Financeiras Padronizadas de Cias Abertas (2023)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2023.zip",
-          "lastModified": "2026-11-02T08:01:10.317473"
+          "lastModified": "2026-11-09T08:01:08.671262"
         },
         {
           "name": "Formulários de Demonstrações Financeiras Padronizadas de Cias Abertas (2024)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2024.zip",
-          "lastModified": "2026-11-02T08:01:10.489356"
+          "lastModified": "2026-11-09T08:01:08.858769"
         },
         {
           "name": "Formulários de Demonstrações Financeiras Padronizadas de Cias Abertas (2025)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2025.zip",
-          "lastModified": "2026-11-02T08:01:10.678975"
+          "lastModified": "2026-11-09T08:01:09.175577"
         },
         {
           "name": "Formulários de Demonstrações Financeiras Padronizadas de Cias Abertas (2026)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/DFP/DADOS/dfp_cia_aberta_2026.zip",
-          "lastModified": "2026-11-02T08:01:10.872595"
+          "lastModified": "2026-11-09T08:01:09.347461"
         },
         {
           "name": "Dicionário de Dados",
@@ -129,7 +129,7 @@
     {
       "id": "cia_aberta-doc-itr",
       "title": "Cias Abertas: Documentos: Formulário de Informações Trimestrais (ITR)",
-      "metadataUpdated": "2026-11-02T11:01:14.586866",
+      "metadataUpdated": "2026-11-09T11:01:12.884617",
       "license": "odc-odbl",
       "datasetUrl": "https://dados.cvm.gov.br/dataset/cia_aberta-doc-itr",
       "resources": [
@@ -143,31 +143,31 @@
           "name": "Formulários de Informações Trimestrais de Cias Abertas (2022)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2022.zip",
-          "lastModified": "2026-11-02T08:01:13.740075"
+          "lastModified": "2026-11-09T08:01:12.083314"
         },
         {
           "name": "Formulários de Informações Trimestrais de Cias Abertas (2023)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2023.zip",
-          "lastModified": "2026-11-02T08:01:13.980144"
+          "lastModified": "2026-11-09T08:01:12.259337"
         },
         {
           "name": "Formulários de Informações Trimestrais de Cias Abertas (2024)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2024.zip",
-          "lastModified": "2026-11-02T08:01:14.152006"
+          "lastModified": "2026-11-09T08:01:12.431215"
         },
         {
           "name": "Formulários de Informações Trimestrais de Cias Abertas (2025)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2025.zip",
-          "lastModified": "2026-11-02T08:01:14.323890"
+          "lastModified": "2026-11-09T08:01:12.603094"
         },
         {
           "name": "Formulários de Informações Trimestrais de Cias Abertas (2026)",
           "format": "ZIP",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/DOC/ITR/DADOS/itr_cia_aberta_2026.zip",
-          "lastModified": "2026-11-02T08:01:14.516065"
+          "lastModified": "2026-11-09T08:01:12.806212"
         },
         {
           "name": "Dicionário de Dados",
