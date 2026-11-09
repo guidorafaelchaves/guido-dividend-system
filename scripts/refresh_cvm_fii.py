@@ -35,7 +35,7 @@ ALIASES = {
     "netAssets": ["VL_PATRIM_LIQ", "VL_PATRIMONIO_LIQUIDO", "PATRIMONIOLIQUIDO"],
     "units": ["QT_COTAS", "COTAS_EMITIDAS", "QUANTIDADE_COTAS_EMITIDAS", "QT_COTAS_EMITIDAS", "QTD_COTAS", "NUM_COTAS_EMITIDAS", "QUANTIDADE_COTAS_EMITIDAS"],
     "holders": ["NR_COTST", "TOTAL_NUMERO_COTISTAS", "NR_COTISTAS", "NUM_COTISTAS", "QUANTIDADE_COTISTAS"],
-    "navReported": ["VL_PATRIM_COTA", "VL_PATRIMONIAL_COTA", "VALOR_PATRIMONIAL_COTA"],
+    "navReported": ["VL_PATRIM_COTA", "VL_PATRIMONIAL_COTA", "VALOR_PATRIMONIAL_COTA", "VALOR_PATRIMONIAL_COTAS"],
 }
 ALIASES = {key: [normal(v) for v in values] for key,values in ALIASES.items()}
 
@@ -134,7 +134,13 @@ def extract(zip_path, year):
     for record in selected.values():
         if (record.get("units",0)>0 and record.get("netAssets",0)>0
                 and (record["cnpj"],record["referenceDate"]) not in invalid_nav):
-            record["navCalculated"] = round(record["netAssets"]/record["units"],6)
+            calc = record["netAssets"]/record["units"]
+            reported = record.get("navReported",0)
+            # Nunca publicar VPA sem conciliação com o número por cota
+            # declarado no informe oficial do mesmo fundo e competência.
+            if reported>0 and abs(calc-reported)/reported <= 0.02:
+                record["navCalculated"] = round(calc,6)
+                record["navValidated"] = True
     return sorted(selected.values(), key=lambda r:r["cnpj"]), scanned, accepted
 
 def official_resource(catalog, year):
