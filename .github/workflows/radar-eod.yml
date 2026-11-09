@@ -21,11 +21,21 @@ jobs:
           node-version: '22'
       - name: Atualizar catálogo oficial CVM
         run: node scripts/refresh-cvm-catalog.mjs
-      - name: Consultar B3 D-1 somente se houver feed e licença
-        if: ${{ env.FEED_CONFIGURED == 'true' && env.PUBLICATION_ALLOWED == 'true' }}
+      - name: Verificar disponibilidade da fonte B3 autorizada
+        id: feed
         env:
-          FEED_CONFIGURED: ${{ secrets.RADAR_EOD_FEED_URL != '' }}
-          PUBLICATION_ALLOWED: ${{ vars.RADAR_EOD_PUBLICATION_ALLOWED }}
+          RADAR_EOD_FEED_URL: ${{ secrets.RADAR_EOD_FEED_URL }}
+          RADAR_EOD_PUBLICATION_ALLOWED: ${{ vars.RADAR_EOD_PUBLICATION_ALLOWED }}
+        run: |
+          if [ -n "$RADAR_EOD_FEED_URL" ] && [ "$RADAR_EOD_PUBLICATION_ALLOWED" = "true" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "B3 não configurada; mantendo último fechamento sem alteração."
+          fi
+      - name: Consultar B3 D-1 somente se houver feed e licença
+        if: ${{ steps.feed.outputs.enabled == 'true' }}
+        env:
           RADAR_EOD_FEED_URL: ${{ secrets.RADAR_EOD_FEED_URL }}
           RADAR_EOD_FEED_TOKEN: ${{ secrets.RADAR_EOD_FEED_TOKEN }}
           RADAR_EOD_PUBLICATION_ALLOWED: ${{ vars.RADAR_EOD_PUBLICATION_ALLOWED }}
