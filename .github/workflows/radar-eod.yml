@@ -8,7 +8,7 @@ on:
       - 'scripts/refresh-cvm-catalog.mjs'
       - 'scripts/refresh-radar-eod.mjs'
       - 'tests/test_cvm_fii.py'
-      - 'scripts/map-cvm-fii-tickers.py'
+      - 'scripts/map_cvm_fii_tickers.py'
       - 'tests/test_fii_ticker_mapping.py'
       - 'scripts/report-fii-mapping-status.py'
   schedule:
@@ -51,7 +51,7 @@ jobs:
             echo "::error::Não existe arquivo contábil CVM validado."
             exit 1
           fi
-          python3 scripts/map-cvm-fii-tickers.py
+          python3 scripts/map_cvm_fii_tickers.py
       - name: Avisar se o mapeamento não pôde ser publicado
         if: ${{ always() && steps.mapping.outcome == 'failure' }}
         run: echo "::warning::Vínculo ticker/CNPJ não publicado; confira fonte cadastral e validações."
