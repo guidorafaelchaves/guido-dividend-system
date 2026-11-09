@@ -7,6 +7,7 @@ on:
       - 'scripts/refresh_cvm_fii.py'
       - 'scripts/refresh-cvm-catalog.mjs'
       - 'scripts/refresh-radar-eod.mjs'
+      - 'scripts/report-b3-eod-status.mjs'
       - 'tests/test_cvm_fii.py'
       - 'scripts/map_cvm_fii_tickers.py'
       - 'tests/test_fii_ticker_mapping.py'
