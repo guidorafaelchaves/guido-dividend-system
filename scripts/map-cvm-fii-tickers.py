@@ -9,6 +9,8 @@ import io
 import json
 import re
 import urllib.request
+import urllib.error
+import time
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -95,8 +97,25 @@ def main():
     if payload.get("schemaVersion")!=1 or payload.get("dataType")!="monthly-fii-accounting":
         raise ValueError("Dados da CVM ausentes ou com esquema incompatível")
     req=urllib.request.Request(SOURCE,headers={"User-Agent":"Mozilla/5.0 (compatible; GuidoDividendSystem/1.0; public-licensed-dataset)","Accept":"text/csv,application/octet-stream;q=0.9,*/*;q=0.1"})
-    with urllib.request.urlopen(req,timeout=45) as res:
-        data=res.read(8*1024*1024+1)
+    data=None
+    for attempt in range(1,4):
+        try:
+            with urllib.request.urlopen(req,timeout=45) as res:
+                status=res.status
+                content_type=res.headers.get("Content-Type","")
+                data=res.read(8*1024*1024+1)
+                print(f"Fonte cadastral: HTTP {status}, tipo {content_type}, {len(data)} bytes",flush=True)
+            break
+        except urllib.error.HTTPError as err:
+            print(f"Tentativa {attempt}/3: HTTP {err.code} em {SOURCE}",flush=True)
+            if err.code in (401,403,404):
+                raise RuntimeError("Fonte cadastral indisponível ou acesso restrito: HTTP "+str(err.code)) from err
+        except (urllib.error.URLError,TimeoutError) as err:
+            print(f"Tentativa {attempt}/3: erro de rede: {err}",flush=True)
+        if attempt<3:
+            time.sleep(2*attempt)
+    if data is None:
+        raise RuntimeError("Falha no download da fonte cadastral após três tentativas")
     if len(data)>8*1024*1024:
         raise ValueError("CSV de identificação excede tamanho permitido")
     records,quality=mapping(data.decode("utf-8-sig"),payload["metrics"])
