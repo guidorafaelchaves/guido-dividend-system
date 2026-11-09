@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "dataType": "fii-cvm-schema-audit",
   "sourceUrl": "https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip",
-  "inspectedAtUtc": "2026-11-09T05:15:38+00:00",
+  "inspectedAtUtc": "2026-11-09T05:16:36+00:00",
   "csvFiles": [
     {
       "file": "inf_mensal_fii_ativo_passivo_2026.csv",
@@ -123,8 +123,8 @@
         "cnpj": "CNPJ_Fundo_Classe",
         "referenceDate": "Data_Referencia",
         "netAssets": "Patrimonio_Liquido",
-        "units": null,
-        "holders": null,
+        "units": "Cotas_Emitidas",
+        "holders": "Total_Numero_Cotistas",
         "navReported": null
       },
       "financialCandidateHeaders": [
