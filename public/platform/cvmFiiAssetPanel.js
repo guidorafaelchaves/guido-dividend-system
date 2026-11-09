@@ -63,7 +63,7 @@
        const input=document.createElement('input');
        input.type='file';input.accept='.txt,.TXT';input.id='fiiCotahistFile';
        input.setAttribute('aria-label','Selecionar arquivo oficial COTAHIST TXT da B3');
-       const uploadHint=text('small','Importar COTAHIST TXT oficial B3 (somente neste navegador; nenhuma cotação é enviada ao servidor).');
+       const uploadHint=text('small','Importar COTAHIST TXT obtido diretamente da B3. O sistema verifica o formato, mas não autentica a origem do arquivo; processamento apenas neste navegador.');
        const importStatus=text('p','');
        importStatus.setAttribute('role','status');
        wrap.appendChild(uploadHint);
@@ -87,7 +87,7 @@
              throw Error('Origem ou ticker incompatível.');
            const old=global.DividendMarketHub.getCandidates();
            global.DividendMarketHub.saveCandidates([...old,...observations]);
-           importStatus.textContent='Arquivo processado: '+observations.length+' observações oficiais para '+ticker+'.';
+           importStatus.textContent='Arquivo processado: '+observations.length+' observações no formato COTAHIST para '+ticker+'.';
            await updatePvp();
          }catch(error){
            importStatus.textContent='Importação não concluída: '+String(error?.message||error);
