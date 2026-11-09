@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-11-09T05:06:43+00:00",
+  "githubRunId": "42565394715",
+  "source": "GitHub Actions - Radar CVM",
+  "cvmMetricsStep": "previous-validated-snapshot",
+  "mappingStep": "skipped",
+  "hasPublishedSnapshot": false,
+  "coverage": null,
+  "notes": "Rotina não concluiu o vínculo; consultar o log do GitHub Actions. Não considerar dados históricos como atualizados."
+}
