@@ -19,7 +19,7 @@
   async function render(){
     const host=document.querySelector('#portalApp');
     if(!host)return;
-    const [cvm,eod,fii]=await Promise.all([read('/data/cvm-catalog.json'),read('/data/radar-eod.json'),read('/data/cvm-fii-metrics.json')]);
+    const [cvm,eod,fii,mappingStatus,mapping]=await Promise.all([read('/data/cvm-catalog.json'),read('/data/radar-eod.json'),read('/data/cvm-fii-metrics.json'),read('/data/fii-mapping-status.json'),read('/data/cvm-fii-by-ticker.json')]);
     const strip=el('aside','');
     strip.setAttribute('aria-label','Transparência das fontes de dados');
     strip.style.cssText='padding:9px 18px;background:#0c211d;color:#d1e7dc;border-bottom:1px solid #305448;font:12px/1.5 system-ui,sans-serif;display:flex;gap:14px;flex-wrap:wrap;align-items:center';
@@ -32,6 +32,13 @@
     strip.appendChild(el('span',metricsValid?
       'FIIs CVM: '+fii.coverage.funds+' fundos com métricas contábeis por CNPJ (não são dividendos)':
       'FIIs CVM: métricas contábeis ainda não extraídas'));
+    const mapped=mapping?.schemaVersion===1&&mapping?.dataType==='monthly-fii-accounting-by-ticker'&&Array.isArray(mapping.records)&&mapping.records.length>0;
+    const mappedCount=mapped?mapping.records.length:0;
+    strip.appendChild(el('span',mapped?
+      'Ticker/CNPJ: '+mappedCount+' FIIs associados · cadastro Lummios CC BY 4.0':
+      mappingStatus?.mappingStep==='failure'?
+      'Ticker/CNPJ: sincronização falhou; consulte diagnóstico no GitHub':
+      'Ticker/CNPJ: aguardando primeira publicação validada'));
     const eodValid=eod?.schemaVersion===1&&eod?.market==='B3'&&eod?.source&&eod?.count>0&&dateBR(eod.tradeDate);
     strip.appendChild(el('span',eodValid?
       'Fechamento B3 D-1: '+dateBR(eod.tradeDate)+' · '+eod.count+' ativos · '+eod.source:
