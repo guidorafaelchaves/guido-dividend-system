@@ -1,0 +1,47 @@
+name: Validar COTAHIST e P/VP de FIIs
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fii-cotahist-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Testar pipeline importação COTAHIST para P/VP
+        id: tests
+        continue-on-error: true
+        run: |
+          node --test tests/fii-cotahist-pvp.integration.test.mjs 2>&1 | tee /tmp/fii-cotahist.log
+          exit ${PIPESTATUS[0]}
+      - name: Publicar resultado do teste
+        if: ${{ always() }}
+        env:
+          TEST_OUTCOME: ${{ steps.tests.outcome }}
+        run: |
+          node --input-type=module <<'JS'
+          import {mkdir,readFile,writeFile} from 'node:fs/promises';
+          const log=(await readFile('/tmp/fii-cotahist.log','utf8').catch(()=>'')).split('\n');
+          const result={schemaVersion:1,testSuite:'fii-cotahist-to-pvp',
+            outcome:process.env.TEST_OUTCOME,runId:process.env.GITHUB_RUN_ID,
+            checkedAtUtc:new Date().toISOString(),logTail:log.slice(-22)};
+          await mkdir('public/data',{recursive:true});
+          await writeFile('public/data/fii-cotahist-test-status.json',JSON.stringify(result,null,2)+'\n');
+          JS
+          mkdir -p docs/data
+          cp public/data/fii-cotahist-test-status.json docs/data/fii-cotahist-test-status.json
+          git add public/data/fii-cotahist-test-status.json docs/data/fii-cotahist-test-status.json
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name="radar-eod-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "ci: valida importação COTAHIST e PVP"
+          git push
+      - name: Retornar falha quando integração não passar
+        if: ${{ steps.tests.outcome != 'success' }}
+        run: exit 1
