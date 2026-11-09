@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "dataType": "fii-vpa-rebuild-status",
+  "runId": "42566653254",
+  "checkedAtUtc": "2026-11-09T05:19:44+00:00",
+  "tests": "failure",
+  "cvm": "skipped",
+  "tickers": "skipped",
+  "metrics": {
+    "records": 1415,
+    "withUnits": 5,
+    "withHolders": 0,
+    "withValidatedNav": 0
+  },
+  "mapped": {
+    "records": 357,
+    "withUnits": 1,
+    "withHolders": 0,
+    "withValidatedNav": 0
+  },
+  "testsLogTail": [
+    "ERROR: test_parse_and_restatements (test_cvm_fii.MonthlyFiiTests.test_parse_and_restatements)",
+    "----------------------------------------------------------------------",
+    "Traceback (most recent call last):",
+    "  File \"/home/runner/work/guido-dividend-system/guido-dividend-system/tests/test_cvm_fii.py\", line 25, in test_parse_and_restatements",
+    "    self.assertEqual(records[0][\"navCalculated\"],13)",
+    "                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^",
+    "KeyError: 'navCalculated'",
+    "",
+    "----------------------------------------------------------------------",
+    "Ran 7 tests in 0.006s",
+    "",
+    "FAILED (errors=1)"
+  ]
+}
