@@ -49,9 +49,11 @@ test('B3: rejeita pregão atual mesmo que o fornecedor responda com sucesso',asy
     const priorFetch=globalThis.fetch;
     const priorUrl=process.env.RADAR_EOD_FEED_URL;
     const priorPermission=process.env.RADAR_EOD_PUBLICATION_ALLOWED;
+    const priorRights=process.env.RADAR_EOD_USAGE_RIGHTS_CONFIRMED;
     try {
       process.env.RADAR_EOD_FEED_URL='https://feeds.example/closing';
       process.env.RADAR_EOD_PUBLICATION_ALLOWED='true';
+      process.env.RADAR_EOD_USAGE_RIGHTS_CONFIRMED='true';
       const today=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
       globalThis.fetch=async()=>new Response(JSON.stringify({
         source:'Fornecedor fictício',tradeDate:today,
@@ -62,6 +64,7 @@ test('B3: rejeita pregão atual mesmo que o fornecedor responda com sucesso',asy
       globalThis.fetch=priorFetch;
       if(priorUrl===undefined)delete process.env.RADAR_EOD_FEED_URL;else process.env.RADAR_EOD_FEED_URL=priorUrl;
       if(priorPermission===undefined)delete process.env.RADAR_EOD_PUBLICATION_ALLOWED;else process.env.RADAR_EOD_PUBLICATION_ALLOWED=priorPermission;
+      if(priorRights===undefined)delete process.env.RADAR_EOD_USAGE_RIGHTS_CONFIRMED;else process.env.RADAR_EOD_USAGE_RIGHTS_CONFIRMED=priorRights;
     }
   });
 });
