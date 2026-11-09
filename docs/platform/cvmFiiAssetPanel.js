@@ -36,7 +36,26 @@
      } else {
        panel.appendChild(text('p','Valor patrimonial por cota: aguardando conciliação oficial dos campos.'));
      }
-     // Quantidade de cotas pode representar a classe, não o fundo inteiro: não derivar P/VP.
+     const pvpOutput=text('p','P/VP: aguardando fechamento oficial B3 D-1.');
+     panel.appendChild(pvpOutput);
+     if(row.navValidated===true && Number.isFinite(row.navCalculated) && row.navCalculated>0){
+       try {
+         const quote=await global.DividendMarketGateway?.fetchQuote?.(ticker);
+         const result=global.DividendFiiPvp?.calculate?.(row,quote);
+         if(result?.ok){
+           pvpOutput.textContent='P/VP indicativo: '+result.pvp.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:3})+
+             '× · fechamento '+result.quoteDate+' ('+result.priceSource+') · VPA CVM '+result.referenceDate+
+             '. Competência não é data de divulgação; indicador não é retrospectivo.';
+         } else {
+           pvpOutput.textContent='P/VP indisponível: '+(result?.reason||'fonte de fechamento não verificada.');
+         }
+       } catch {
+         pvpOutput.textContent='P/VP indisponível: falta fechamento B3 oficial ou licenciado para este ticker.';
+       }
+     } else {
+       pvpOutput.textContent='P/VP indisponível: valor patrimonial por cota ainda não validado.';
+     }
+
      panel.appendChild(text('small','Fonte contábil: CVM (informe mensal). Identificação ticker/CNPJ: Lummios, CC BY 4.0. Dados não são cotações nem dividendos. P/VP indisponível até fechamento de mercado autorizado, classe confirmada e cronologia da divulgação validada.'));
      const link=document.createElement('a');link.href='https://developers.lummios.com.br/dados-abertos.html';link.textContent='Fonte e licença dos identificadores';link.target='_blank';link.rel='noopener noreferrer';link.style.cssText='display:block;margin-top:8px';panel.appendChild(link);
    }catch(err){
