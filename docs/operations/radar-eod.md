@@ -1,32 +1,44 @@
-# Atualização diária do Radar (fechamento B3)
+# Radar: sincronização diária CVM + B3 D-1
 
-A rotina `.github/workflows/radar-eod.yml` roda às **23h de Brasília**, de segunda a sexta-feira (02:00 UTC do dia seguinte). Pode ser atrasada pelo GitHub. Não consulta preço em tempo real.
+## Rotina no repositório
 
-## Ativação (pendente)
-1. Contrate ou habilite uma fonte com licença que permita uso e **publicação no site**. Plano pessoal do Dados B3 não concede redistribuição pública.
-2. Configure o secret `RADAR_EOD_FEED_URL` com endpoint HTTPS retornando JSON.
-3. Configure `RADAR_EOD_FEED_TOKEN` se a fonte exigir bearer token.
-4. Só depois de verificar a licença, configure a variável de Actions `RADAR_EOD_PUBLICATION_ALLOWED=true`.
-5. Execute manualmente pelo GitHub Actions uma vez para testar. Consulte o log e o arquivo `public/data/radar-eod.json`.
-6. Integre o frontend com `/data/radar-eod.json` apenas após confirmar que o domínio publicado é o mesmo projeto e que a licença cobre sua audiência.
+Workflow: `.github/workflows/radar-eod.yml`.
+Horário: **08h de Brasília, segunda a sexta-feira** (`0 11 * * 1-5` UTC).
+O GitHub Actions pode atrasar o início agendado.
 
-Contrato JSON esperado:
+1. `scripts/refresh-cvm-catalog.mjs`: consulta a API CKAN oficial da CVM, valida os recursos HTTPS e salva `public/data/cvm-catalog.json`.
+   Conjuntos: cadastro de companhias abertas, DFP, ITR e informes mensais de FII. O arquivo registra **metadados e URLs dos relatórios**, não valores financeiros calculados.
+2. `scripts/refresh-radar-eod.mjs`: somente se houver feed HTTPS autorizado e licença confirmada, valida um lote de fechamentos B3 **do pregão anterior**, e salva `public/data/radar-eod.json`.
+3. Commit dos JSONs alterados, sem sobrescrever último fechamento em caso de falha.
+4. Cotações não são inventadas, e catálogo CVM não é apresentado como provento ou cotação.
+
+## Pré-requisitos da etapa B3 — ainda pendente
+
+- Secret GitHub Actions `RADAR_EOD_FEED_URL`: URL HTTPS de fornecedor autorizado com JSON.
+- Secret opcional `RADAR_EOD_FEED_TOKEN`: bearer token.
+- Variável GitHub Actions `RADAR_EOD_PUBLICATION_ALLOWED=true`: somente após a licença permitir publicação/redistribuição.
+- Caso ausentes, **o workflow atualiza apenas a CVM**; o passo B3 é omitido.
+
+Contrato esperado pelo parser B3:
 
 ```json
 {
-  "source": "Fornecedor licenciado",
+  "source": "Fornecedor autorizado",
   "tradeDate": "2026-11-06",
-  "quotes": [
-    {"ticker": "PETR4", "close": 40.23, "volume": 200000}
-  ]
+  "quotes": [{"ticker": "ABCD3", "close": 10.50, "volume": 100000}]
 }
 ```
 
-Exemplo ilustrativo apenas; não são dados de mercado reais. O feed de produção deve conter ao menos 10 tickers.
+O exemplo é fictício. Em produção, o lote deve conter pelo menos dez ativos distintos, com preços positivos, sem datas futuras e com antiguidade de 1 a 7 dias corridos. Uma data anterior pode refletir feriados/finais de semana, portanto os clientes devem mostrar a **data efetiva do pregão**, não presumir atualização diária das cotações.
 
-Validações: preço positivo, ticker válido, sem duplicação, pregão não futuro e não mais antigo que 7 dias; falha não sobrescreve o snapshot anterior. O commit é idempotente por data e conteúdo. Sem feed ou licença, o workflow falha explicitamente — não inventa dados.
+## Limites atuais
 
-## Limites
-- Este mecanismo **não conecta automaticamente** a versão hospedada em `dividend-system-next.guidorafaelchaves.chatgpt.site`: seu deploy precisa ser identificado.
-- Indicadores e proventos não são fornecidos por este snapshot; o arquivo contém apenas fechamentos e volume opcional.
-- É preciso confirmar a disponibilidade do fechamento às 23h com o fornecedor; em caso de atraso, o job terá data antiga e poderá ser repetido manualmente.
+- CVM: nesta primeira etapa, coleta-se catálogo/metadados, não extração de ZIPs nem valores patrimoniais. Isso ainda não atualiza indicadores ou proventos do Radar.
+- B3: inexiste URL autorizada configurada, e o arquivo de fechamentos não é produzido até ativação. Distribuição D-1 não significa acesso gratuito às fontes.
+- Os novos JSONs são publicados **no repositório**. Falta confirmar se a hospedagem `dividend-system-next.guidorafaelchaves.chatgpt.site` é derivada dele. Sem essa confirmação, a atualização no endereço do usuário não está comprovada.
+- O frontend ainda não consome esses arquivos. A integração visual requer acesso ao código/deploy exato.
+
+Fontes oficiais:
+- https://dados.cvm.gov.br/dataset/fii-doc-inf_mensal
+- https://dados.cvm.gov.br/api/3/action/package_show?id=fii-doc-inf_mensal
+- https://www.b3.com.br/pt_br/market-data-e-indices/servicos-de-dados/market-data/distribuidores/perguntas-frequentes/
