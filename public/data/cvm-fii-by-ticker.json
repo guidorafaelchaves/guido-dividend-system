@@ -14,2150 +14,3771 @@
     "conflictingTickers": 0,
     "ambiguousCnpjs": 35,
     "fiisWithCvmMetrics": 357,
-    "cvmFundsUnmatched": 1058
+    "cvmFundsUnmatched": 1070
   },
   "records": [
     {
       "ticker": "ABCP11",
       "cnpj": "01201140000190",
       "referenceDate": "2026-09-01",
-      "netAssets": 521895159.04
+      "netAssets": 521895159.04,
+      "units": 4709082,
+      "holders": 12926,
+      "navReported": 110.827367,
+      "navCalculated": 110.827367,
+      "navValidated": true
     },
     {
       "ticker": "ADSH11",
       "cnpj": "63375304000153",
       "referenceDate": "2026-09-01",
-      "netAssets": 466328628.96
+      "netAssets": 466328628.96,
+      "units": 46972156,
+      "holders": 210,
+      "navReported": 9.927767,
+      "navCalculated": 9.927767,
+      "navValidated": true
     },
     {
       "ticker": "AERO11",
       "cnpj": "57927297000152",
       "referenceDate": "2026-09-01",
-      "netAssets": 60797444.72
+      "netAssets": 60797444.72,
+      "units": 627261,
+      "holders": 44,
+      "navReported": 96.925275,
+      "navCalculated": 96.925275,
+      "navValidated": true
     },
     {
       "ticker": "AFHI11",
       "cnpj": "36642293000158",
       "referenceDate": "2026-09-01",
-      "netAssets": 508419976.09
+      "netAssets": 508419976.09,
+      "units": 5288811,
+      "holders": 40640,
+      "navReported": 96.131243,
+      "navCalculated": 96.131243,
+      "navValidated": true
     },
     {
       "ticker": "AIEC11",
       "cnpj": "35765826000126",
       "referenceDate": "2026-09-01",
-      "netAssets": 365305888.33
+      "netAssets": 365305888.33,
+      "units": 4824987,
+      "holders": 10398,
+      "navReported": 75.711269,
+      "navCalculated": 75.711269,
+      "navValidated": true
     },
     {
       "ticker": "AJFI11",
       "cnpj": "51472985000199",
       "referenceDate": "2026-09-01",
-      "netAssets": 351061081.91
+      "netAssets": 351061081.91,
+      "units": 33625978,
+      "holders": 9002,
+      "navReported": 10.440175,
+      "navCalculated": 10.440175,
+      "navValidated": true
     },
     {
       "ticker": "ALMI11",
       "cnpj": "07122725000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 227387825.62
+      "netAssets": 227387825.62,
+      "units": 111177,
+      "holders": 1813,
+      "navReported": 2045.277581,
+      "navCalculated": 2045.277581,
+      "navValidated": true
     },
     {
       "ticker": "ALZR11",
       "cnpj": "28737771000185",
       "referenceDate": "2026-09-01",
-      "netAssets": 1757564858.6
+      "netAssets": 1757564858.6,
+      "units": 164369501,
+      "holders": 213940,
+      "navReported": 10.692768,
+      "navCalculated": 10.692768,
+      "navValidated": true
     },
     {
       "ticker": "ANCR11",
       "cnpj": "07789135000127",
       "referenceDate": "2026-09-01",
-      "netAssets": 4313209299.56
+      "netAssets": 4313209299.56,
+      "holders": 250,
+      "navReported": 120.290158
     },
     {
       "ticker": "APTO11",
       "cnpj": "42432327000182",
       "referenceDate": "2026-09-01",
-      "netAssets": 46029202.95
+      "netAssets": 46029202.95,
+      "units": 4612227,
+      "holders": 7306,
+      "navReported": 9.979822,
+      "navCalculated": 9.979822,
+      "navValidated": true
     },
     {
       "ticker": "APXM11",
       "cnpj": "43010485000107",
       "referenceDate": "2026-09-01",
-      "netAssets": 354982983.26
+      "netAssets": 354982983.26,
+      "units": 2829142,
+      "holders": 744,
+      "navReported": 125.473724,
+      "navCalculated": 125.473724,
+      "navValidated": true
     },
     {
       "ticker": "APXR11",
       "cnpj": "52446271000179",
       "referenceDate": "2026-09-01",
-      "netAssets": 8516897.94
+      "netAssets": 8516897.94,
+      "units": 109567,
+      "holders": 185,
+      "navReported": 77.732328,
+      "navCalculated": 77.732328,
+      "navValidated": true
     },
     {
       "ticker": "APXU11",
       "cnpj": "52521137000195",
       "referenceDate": "2026-09-01",
-      "netAssets": 7450554.28
+      "netAssets": 7450554.28,
+      "units": 101542,
+      "holders": 50,
+      "navReported": 73.374114,
+      "navCalculated": 73.374114,
+      "navValidated": true
     },
     {
       "ticker": "AQLL11",
       "cnpj": "13555918000149",
       "referenceDate": "2026-10-01",
-      "netAssets": 111216082.51
+      "netAssets": 111216082.51,
+      "holders": 83,
+      "navReported": 762.704774
     },
     {
       "ticker": "AROA11",
       "cnpj": "44674528000111",
       "referenceDate": "2026-09-01",
-      "netAssets": 158597922.9
+      "netAssets": 158597922.9,
+      "units": 167926832,
+      "holders": 6704,
+      "navReported": 0.944447,
+      "navCalculated": 0.944447,
+      "navValidated": true
     },
     {
       "ticker": "ARRI11",
       "cnpj": "32006821000121",
       "referenceDate": "2026-09-01",
-      "netAssets": 177178612.87
+      "netAssets": 177178612.87,
+      "units": 20726973,
+      "holders": 22376,
+      "navReported": 8.548215,
+      "navCalculated": 8.548215,
+      "navValidated": true
     },
     {
       "ticker": "ARTE11",
       "cnpj": "53193237000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 98988045.57
+      "netAssets": 98988045.57,
+      "units": 9499643,
+      "holders": 1563,
+      "navReported": 10.420186,
+      "navCalculated": 10.420186,
+      "navValidated": true
     },
     {
       "ticker": "ASRF11",
       "cnpj": "45188033000145",
       "referenceDate": "2026-09-01",
-      "netAssets": 37908986.2
+      "netAssets": 37908986.2,
+      "units": 4000,
+      "holders": 103,
+      "navReported": 9477.24655,
+      "navCalculated": 9477.24655,
+      "navValidated": true
     },
     {
       "ticker": "ATSA11",
       "cnpj": "12809972000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 130330452.91
+      "netAssets": 130330452.91,
+      "units": 1751141,
+      "holders": 302,
+      "navReported": 74.426019,
+      "navCalculated": 74.426019,
+      "navValidated": true
     },
     {
       "ticker": "AURB11",
       "cnpj": "41076823000188",
       "referenceDate": "2026-09-01",
-      "netAssets": 86643662.03
+      "netAssets": 86643662.03,
+      "units": 1085780,
+      "holders": 20,
+      "navReported": 79.798543,
+      "navCalculated": 79.798543,
+      "navValidated": true
     },
     {
       "ticker": "AVUR11",
       "cnpj": "57109239000111",
       "referenceDate": "2026-09-01",
-      "netAssets": 22653575.56
+      "netAssets": 22653575.56,
+      "units": 251500,
+      "holders": 22,
+      "navReported": 90.073859,
+      "navCalculated": 90.073859,
+      "navValidated": true
     },
     {
       "ticker": "AZPL11",
       "cnpj": "51890054000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 360356230.84
+      "netAssets": 360356230.84,
+      "units": 41922689,
+      "holders": 5595,
+      "navReported": 8.595733,
+      "navCalculated": 8.595733,
+      "navValidated": true
     },
     {
       "ticker": "BBFI11",
       "cnpj": "07000400000146",
       "referenceDate": "2026-01-01",
-      "netAssets": 4408674.69
+      "netAssets": 4408674.69,
+      "units": 130000,
+      "holders": 5522,
+      "navReported": 33.912882,
+      "navCalculated": 33.912882,
+      "navValidated": true
     },
     {
       "ticker": "BBFO11",
       "cnpj": "37180091000102",
       "referenceDate": "2026-09-01",
-      "netAssets": 268053648.19
+      "netAssets": 268053648.19,
+      "units": 4003900,
+      "holders": 11006,
+      "navReported": 66.948138,
+      "navCalculated": 66.948138,
+      "navValidated": true
     },
     {
       "ticker": "BBIG11",
       "cnpj": "54375187000137",
       "referenceDate": "2026-09-01",
-      "netAssets": 964371522.8
+      "netAssets": 964371522.8,
+      "units": 99120994,
+      "holders": 36803,
+      "navReported": 9.729236,
+      "navCalculated": 9.729236,
+      "navValidated": true
     },
     {
       "ticker": "BBPO11",
       "cnpj": "14410722000129",
       "referenceDate": "2026-09-01",
-      "netAssets": 1600084303.5
+      "netAssets": 1600084303.5,
+      "units": 15919690,
+      "holders": 56222,
+      "navReported": 100.509765,
+      "navCalculated": 100.509765,
+      "navValidated": true
     },
     {
       "ticker": "BBRC11",
       "cnpj": "12681340000104",
       "referenceDate": "2026-09-01",
-      "netAssets": 165436414.88
+      "netAssets": 165436414.88,
+      "units": 1590000,
+      "holders": 8085,
+      "navReported": 104.04806,
+      "navCalculated": 104.04806,
+      "navValidated": true
     },
     {
       "ticker": "BCIA11",
       "cnpj": "20216935000117",
       "referenceDate": "2026-09-01",
-      "netAssets": 356038662.2
+      "netAssets": 356038662.2,
+      "units": 3719038,
+      "holders": 18733,
+      "navReported": 95.734075,
+      "navCalculated": 95.734075,
+      "navValidated": true
     },
     {
       "ticker": "BCRI11",
       "cnpj": "22219335000138",
       "referenceDate": "2026-09-01",
-      "netAssets": 530964091.79
+      "netAssets": 530964091.79,
+      "units": 6257873,
+      "holders": 39384,
+      "navReported": 84.847374,
+      "navCalculated": 84.847374,
+      "navValidated": true
     },
     {
       "ticker": "BICE11",
       "cnpj": "39332032000120",
       "referenceDate": "2026-09-01",
-      "netAssets": 109192948.97
+      "netAssets": 109192948.97,
+      "units": 133414,
+      "holders": 119,
+      "navReported": 818.451954,
+      "navCalculated": 818.451954,
+      "navValidated": true
     },
     {
       "ticker": "BIME11",
       "cnpj": "41081356000184",
       "referenceDate": "2026-09-01",
-      "netAssets": 45690008.41
+      "netAssets": 45690008.41,
+      "units": 5845602,
+      "holders": 7520,
+      "navReported": 7.816134,
+      "navCalculated": 7.816134,
+      "navValidated": true
     },
     {
       "ticker": "BIPD11",
       "cnpj": "42869892000101",
       "referenceDate": "2026-09-01",
-      "netAssets": 120416004.77
+      "netAssets": 120416004.77,
+      "units": 110439,
+      "holders": 112,
+      "navReported": 1090.339507,
+      "navCalculated": 1090.339507,
+      "navValidated": true
     },
     {
       "ticker": "BIPE11",
       "cnpj": "51817522000111",
       "referenceDate": "2026-09-01",
-      "netAssets": 100892946.46
+      "netAssets": 100892946.46,
+      "units": 96250,
+      "holders": 103,
+      "navReported": 1048.238405,
+      "navCalculated": 1048.238405,
+      "navValidated": true
     },
     {
       "ticker": "BLCA11",
       "cnpj": "41076748000155",
       "referenceDate": "2026-09-01",
-      "netAssets": 192521873.13
+      "netAssets": 192521873.13,
+      "units": 1600000,
+      "holders": 497,
+      "navReported": 120.326171,
+      "navCalculated": 120.326171,
+      "navValidated": true
     },
     {
       "ticker": "BLMG11",
       "cnpj": "34081637000171",
       "referenceDate": "2026-09-01",
-      "netAssets": 204031549.12
+      "netAssets": 204031549.12,
+      "units": 4500000,
+      "holders": 12118,
+      "navReported": 45.340344,
+      "navCalculated": 45.340344,
+      "navValidated": true
     },
     {
       "ticker": "BLMO11",
       "cnpj": "34895894000147",
       "referenceDate": "2026-09-01",
-      "netAssets": 98424558.59
+      "netAssets": 98424558.59,
+      "units": 994814,
+      "holders": 256,
+      "navReported": 98.937649,
+      "navCalculated": 98.937649,
+      "navValidated": true
     },
     {
       "ticker": "BLOG11",
       "cnpj": "49592781000140",
       "referenceDate": "2026-09-01",
-      "netAssets": 346922775.8
+      "netAssets": 346922775.8,
+      "units": 30796704,
+      "holders": 111,
+      "navReported": 11.264932,
+      "navCalculated": 11.264932,
+      "navValidated": true
     },
     {
       "ticker": "BMLC11",
       "cnpj": "14376247000111",
       "referenceDate": "2026-09-01",
-      "netAssets": 109861249.76
+      "netAssets": 109861249.76,
+      "units": 998405,
+      "holders": 1163,
+      "navReported": 110.036758,
+      "navCalculated": 110.036758,
+      "navValidated": true
     },
     {
       "ticker": "BNFS11",
       "cnpj": "15570431000160",
       "referenceDate": "2026-09-01",
-      "netAssets": 48179722.81
+      "netAssets": 48179722.81,
+      "units": 700000,
+      "holders": 4796,
+      "navReported": 68.828175,
+      "navCalculated": 68.828175,
+      "navValidated": true
     },
     {
       "ticker": "BPML11",
       "cnpj": "33046142000149",
       "referenceDate": "2026-09-01",
-      "netAssets": 888218917.76
+      "netAssets": 888218917.76,
+      "units": 7441745,
+      "holders": 6751,
+      "navReported": 119.356269,
+      "navCalculated": 119.356269,
+      "navValidated": true
     },
     {
       "ticker": "BRCO11",
       "cnpj": "20748515000181",
       "referenceDate": "2026-09-01",
-      "netAssets": 2067077191.13
+      "netAssets": 2067077191.13,
+      "holders": 137937,
+      "navReported": 114.701872
     },
     {
       "ticker": "BRCR11",
       "cnpj": "08924783000101",
       "referenceDate": "2026-09-01",
-      "netAssets": 2199341303.2
+      "netAssets": 2199341303.2,
+      "units": 26638202,
+      "holders": 107748,
+      "navReported": 82.563429,
+      "navCalculated": 82.563429,
+      "navValidated": true
     },
     {
       "ticker": "BRIM11",
       "cnpj": "23964843000103",
       "referenceDate": "2026-06-01",
-      "netAssets": 0.0
+      "netAssets": 0.0,
+      "units": 0,
+      "holders": 714,
+      "navReported": 0.0
     },
     {
       "ticker": "BRIP11",
       "cnpj": "34895752000180",
       "referenceDate": "2026-09-01",
-      "netAssets": 116003089.54
+      "netAssets": 116003089.54,
+      "units": 215475,
+      "holders": 380,
+      "navReported": 538.359854,
+      "navCalculated": 538.359854,
+      "navValidated": true
     },
     {
       "ticker": "BRIX11",
       "cnpj": "35360651000177",
       "referenceDate": "2026-09-01",
-      "netAssets": 160998732.53
+      "netAssets": 160998732.53,
+      "holders": 103,
+      "navReported": 1315.126551
     },
     {
       "ticker": "BRLA11",
       "cnpj": "35652278000128",
       "referenceDate": "2026-09-01",
-      "netAssets": 1030241946.34
+      "netAssets": 1030241946.34,
+      "units": 5605574,
+      "holders": 588,
+      "navReported": 183.788841,
+      "navCalculated": 183.788841,
+      "navValidated": true
     },
     {
       "ticker": "BROF11",
       "cnpj": "48978859000104",
       "referenceDate": "2026-09-01",
-      "netAssets": 1261205338.73
+      "netAssets": 1261205338.73,
+      "units": 11610812,
+      "holders": 10609,
+      "navReported": 108.623354,
+      "navCalculated": 108.623354,
+      "navValidated": true
     },
     {
       "ticker": "BTAL11",
       "cnpj": "36642244000115",
       "referenceDate": "2026-01-01",
-      "netAssets": 693765025.57
+      "netAssets": 693765025.57,
+      "units": 5982736,
+      "holders": 38037,
+      "navReported": 115.961163,
+      "navCalculated": 115.961163,
+      "navValidated": true
     },
     {
       "ticker": "BTHI11",
       "cnpj": "64634907000195",
       "referenceDate": "2026-09-01",
-      "netAssets": 392849382.7
+      "netAssets": 392849382.7,
+      "units": 3800000,
+      "holders": 1,
+      "navReported": 103.381417,
+      "navCalculated": 103.381417,
+      "navValidated": true
     },
     {
       "ticker": "BTRU11",
       "cnpj": "08098114000128",
       "referenceDate": "2026-09-01",
-      "netAssets": 756483432.69
+      "netAssets": 756483432.69,
+      "units": 8898724,
+      "holders": 808,
+      "navReported": 85.010327,
+      "navCalculated": 85.010327,
+      "navValidated": true
     },
     {
       "ticker": "BTSG11",
       "cnpj": "36098375000183",
       "referenceDate": "2026-09-01",
-      "netAssets": 121024000.61
+      "netAssets": 121024000.61,
+      "units": 775015,
+      "holders": 106,
+      "navReported": 156.156978,
+      "navCalculated": 156.156978,
+      "navValidated": true
     },
     {
       "ticker": "BTSI11",
       "cnpj": "36930464000144",
       "referenceDate": "2026-09-01",
-      "netAssets": 788941579.41
+      "netAssets": 788941579.41,
+      "units": 6373961,
+      "holders": 227,
+      "navReported": 123.775715,
+      "navCalculated": 123.775715,
+      "navValidated": true
     },
     {
       "ticker": "BTWR11",
       "cnpj": "20132453000189",
       "referenceDate": "2026-09-01",
-      "netAssets": 102634453.91
+      "netAssets": 102634453.91,
+      "holders": 122,
+      "navReported": 126.823545
     },
     {
       "ticker": "BTYU11",
       "cnpj": "54645216000133",
       "referenceDate": "2026-09-01",
-      "netAssets": 302592059.06
+      "netAssets": 302592059.06,
+      "units": 300000,
+      "holders": 290,
+      "navReported": 1008.640197,
+      "navCalculated": 1008.640197,
+      "navValidated": true
     },
     {
       "ticker": "BVAR11",
       "cnpj": "21126204000143",
       "referenceDate": "2026-09-01",
-      "netAssets": 374826055.16
+      "netAssets": 374826055.16,
+      "units": 625540,
+      "holders": 127,
+      "navReported": 599.203976,
+      "navCalculated": 599.203976,
+      "navValidated": true
     },
     {
       "ticker": "BZLI11",
       "cnpj": "14074706000102",
       "referenceDate": "2026-09-01",
-      "netAssets": 706115552.56
+      "netAssets": 706115552.56,
+      "holders": 18,
+      "navReported": 16.126605
     },
     {
       "ticker": "CARE11",
       "cnpj": "13584584000131",
       "referenceDate": "2026-09-01",
-      "netAssets": 247339808.78
+      "netAssets": 247339808.78,
+      "holders": 6893,
+      "navReported": 34.3469
     },
     {
       "ticker": "CBOP11",
       "cnpj": "17144039000185",
       "referenceDate": "2026-09-01",
-      "netAssets": 101711638.06
+      "netAssets": 101711638.06,
+      "units": 1415000,
+      "holders": 1931,
+      "navReported": 71.881016,
+      "navCalculated": 71.881016,
+      "navValidated": true
     },
     {
       "ticker": "CCME11",
       "cnpj": "43010844000126",
       "referenceDate": "2026-09-01",
-      "netAssets": 714375122.29
+      "netAssets": 714375122.29,
+      "units": 67797053,
+      "holders": 9268,
+      "navReported": 10.536964,
+      "navCalculated": 10.536964,
+      "navValidated": true
     },
     {
       "ticker": "CCVA11",
       "cnpj": "52713882000136",
       "referenceDate": "2026-09-01",
-      "netAssets": 71648041.89
+      "netAssets": 71648041.89,
+      "units": 627724,
+      "holders": 1,
+      "navReported": 114.139402,
+      "navCalculated": 114.139402,
+      "navValidated": true
     },
     {
       "ticker": "CENU11",
       "cnpj": "37899356000119",
       "referenceDate": "2026-09-01",
-      "netAssets": 114845652.99
+      "netAssets": 114845652.99,
+      "units": 1139780,
+      "holders": 27,
+      "navReported": 100.761246,
+      "navCalculated": 100.761246,
+      "navValidated": true
     },
     {
       "ticker": "CEOC11",
       "cnpj": "15799397000109",
       "referenceDate": "2026-09-01",
-      "netAssets": 125445402.16
+      "netAssets": 125445402.16,
+      "units": 1815696,
+      "holders": 3489,
+      "navReported": 69.08943,
+      "navCalculated": 69.08943,
+      "navValidated": true
     },
     {
       "ticker": "CFII11",
       "cnpj": "41325993000159",
       "referenceDate": "2026-09-01",
-      "netAssets": 26459968.59
+      "netAssets": 26459968.59,
+      "units": 126319,
+      "holders": 106,
+      "navReported": 209.469427,
+      "navCalculated": 209.469427,
+      "navValidated": true
     },
     {
       "ticker": "CLIN11",
       "cnpj": "49005348000160",
       "referenceDate": "2026-09-01",
-      "netAssets": 429331187.57
+      "netAssets": 429331187.57,
+      "units": 4346763,
+      "holders": 11157,
+      "navReported": 98.770323,
+      "navCalculated": 98.770323,
+      "navValidated": true
     },
     {
       "ticker": "CNES11",
       "cnpj": "13551286000145",
       "referenceDate": "2026-09-01",
-      "netAssets": 218795661.48
+      "netAssets": 218795661.48,
+      "units": 34134825,
+      "holders": 71804,
+      "navReported": 6.409749,
+      "navCalculated": 6.409749,
+      "navValidated": true
     },
     {
       "ticker": "CPLG11",
       "cnpj": "52371756000140",
       "referenceDate": "2026-09-01",
-      "netAssets": 600699628.86
+      "netAssets": 600699628.86,
+      "units": 56355750,
+      "holders": 5916,
+      "navReported": 10.659065,
+      "navCalculated": 10.659065,
+      "navValidated": true
     },
     {
       "ticker": "CPOF11",
       "cnpj": "48916699000160",
       "referenceDate": "2026-09-01",
-      "netAssets": 703109091.15
+      "netAssets": 703109091.15,
+      "units": 5489284,
+      "holders": 119,
+      "navReported": 128.087578,
+      "navCalculated": 128.087578,
+      "navValidated": true
     },
     {
       "ticker": "CPTS11",
       "cnpj": "18979895000113",
       "referenceDate": "2026-09-01",
-      "netAssets": 3037334444.47
+      "netAssets": 3037334444.47,
+      "units": 363503147,
+      "holders": 397804,
+      "navReported": 8.355731,
+      "navCalculated": 8.355731,
+      "navValidated": true
     },
     {
       "ticker": "CRFF11",
       "cnpj": "31887401000139",
       "referenceDate": "2026-09-01",
-      "netAssets": 55149529.21
+      "netAssets": 55149529.21,
+      "units": 690040,
+      "holders": 1142,
+      "navReported": 79.922221,
+      "navCalculated": 79.922221,
+      "navValidated": true
     },
     {
       "ticker": "CTXT11",
       "cnpj": "00762723000128",
       "referenceDate": "2026-09-01",
-      "netAssets": 96009308.62
+      "netAssets": 96009308.62,
+      "units": 6514887,
+      "holders": 2225,
+      "navReported": 14.736911,
+      "navCalculated": 14.736911,
+      "navValidated": true
     },
     {
       "ticker": "CVBI11",
       "cnpj": "28729197000113",
       "referenceDate": "2026-09-01",
-      "netAssets": 1599245061.07
+      "netAssets": 1599245061.07,
+      "units": 17011707,
+      "holders": 112355,
+      "navReported": 94.0085,
+      "navCalculated": 94.0085,
+      "navValidated": true
     },
     {
       "ticker": "CXAG11",
       "cnpj": "40189596000134",
       "referenceDate": "2026-09-01",
-      "netAssets": 216546209.77
+      "netAssets": 216546209.77,
+      "units": 2090621,
+      "holders": 11075,
+      "navReported": 103.57985,
+      "navCalculated": 103.57985,
+      "navValidated": true
     },
     {
       "ticker": "CXCE11",
       "cnpj": "10991914000115",
       "referenceDate": "2026-10-01",
-      "netAssets": 108317812.43
+      "netAssets": 108317812.43,
+      "units": 1712950,
+      "holders": 2737,
+      "navReported": 63.234661,
+      "navCalculated": 63.234661,
+      "navValidated": true
     },
     {
       "ticker": "CXCI11",
       "cnpj": "42066916000194",
       "referenceDate": "2026-09-01",
-      "netAssets": 156677845.71
+      "netAssets": 156677845.71,
+      "units": 2057726,
+      "holders": 5343,
+      "navReported": 76.141258,
+      "navCalculated": 76.141258,
+      "navValidated": true
     },
     {
       "ticker": "CXCO11",
       "cnpj": "38658984000175",
       "referenceDate": "2026-09-01",
-      "netAssets": 381382043.6
+      "netAssets": 381382043.6,
+      "units": 3924500,
+      "holders": 11613,
+      "navReported": 97.179779,
+      "navCalculated": 97.179779,
+      "navValidated": true
     },
     {
       "ticker": "CXRI11",
       "cnpj": "17098794000170",
       "referenceDate": "2026-09-01",
-      "netAssets": 126431792.11
+      "netAssets": 126431792.11,
+      "units": 1575760,
+      "holders": 1670,
+      "navReported": 80.235437,
+      "navCalculated": 80.235437,
+      "navValidated": true
     },
     {
       "ticker": "CXTL11",
       "cnpj": "12887506000143",
       "referenceDate": "2026-09-01",
-      "netAssets": 23008226.9
+      "netAssets": 23008226.9,
+      "units": 53597,
+      "holders": 548,
+      "navReported": 429.281992,
+      "navCalculated": 429.281992,
+      "navValidated": true
     },
     {
       "ticker": "CYCR11",
       "cnpj": "36501233000115",
       "referenceDate": "2026-09-01",
-      "netAssets": 349139356.36
+      "netAssets": 349139356.36,
+      "units": 36549445,
+      "holders": 16728,
+      "navReported": 9.552521,
+      "navCalculated": 9.552521,
+      "navValidated": true
     },
     {
       "ticker": "CYLD11",
       "cnpj": "43010601000198",
       "referenceDate": "2026-09-01",
-      "netAssets": 147498366.25
+      "netAssets": 147498366.25,
+      "units": 1241847,
+      "holders": 133,
+      "navReported": 118.77338,
+      "navCalculated": 118.77338,
+      "navValidated": true
     },
     {
       "ticker": "DAMA11",
       "cnpj": "53866872000101",
       "referenceDate": "2026-09-01",
-      "netAssets": 38999345.43
+      "netAssets": 38999345.43,
+      "units": 5537031,
+      "holders": 975,
+      "navReported": 7.043368,
+      "navCalculated": 7.043368,
+      "navValidated": true
     },
     {
       "ticker": "DAMT11",
       "cnpj": "26642727000166",
       "referenceDate": "2026-09-01",
-      "netAssets": 249975686.8
+      "netAssets": 249975686.8,
+      "units": 17779747,
+      "holders": 572,
+      "navReported": 14.059575,
+      "navCalculated": 14.059575,
+      "navValidated": true
     },
     {
       "ticker": "DEVA11",
       "cnpj": "37087810000137",
       "referenceDate": "2026-09-01",
-      "netAssets": 1352011367.62
+      "netAssets": 1352011367.62,
+      "units": 14044908,
+      "holders": 70765,
+      "navReported": 96.263455,
+      "navCalculated": 96.263455,
+      "navValidated": true
     },
     {
       "ticker": "DOVL11",
       "cnpj": "10522648000181",
       "referenceDate": "2026-09-01",
-      "netAssets": 38870645.65
+      "netAssets": 38870645.65,
+      "holders": 101,
+      "navReported": 585.348332
     },
     {
       "ticker": "DPRO11",
       "cnpj": "42922127000108",
       "referenceDate": "2026-09-01",
-      "netAssets": 47194765.62
+      "netAssets": 47194765.62,
+      "units": 5003220,
+      "holders": 831,
+      "navReported": 9.432878,
+      "navCalculated": 9.432878,
+      "navValidated": true
     },
     {
       "ticker": "DVFF11",
       "cnpj": "39863059000149",
       "referenceDate": "2026-09-01",
-      "netAssets": 84987761.48
+      "netAssets": 84987761.48,
+      "units": 11009500,
+      "holders": 2328,
+      "navReported": 7.719493,
+      "navCalculated": 7.719493,
+      "navValidated": true
     },
     {
       "ticker": "DVLP11",
       "cnpj": "42537601000188",
       "referenceDate": "2026-09-01",
-      "netAssets": 100840639.34
+      "netAssets": 100840639.34,
+      "holders": 311,
+      "navReported": 141.734802
     },
     {
       "ticker": "EDFO11",
       "cnpj": "06175262000173",
       "referenceDate": "2026-09-01",
-      "netAssets": 56862994.03
+      "netAssets": 56862994.03,
+      "units": 298500,
+      "holders": 440,
+      "navReported": 190.495792,
+      "navCalculated": 190.495792,
+      "navValidated": true
     },
     {
       "ticker": "EDGA11",
       "cnpj": "15333306000137",
       "referenceDate": "2026-09-01",
-      "netAssets": 162038297.13
+      "netAssets": 162038297.13,
+      "units": 3812055,
+      "holders": 3445,
+      "navReported": 42.50681,
+      "navCalculated": 42.50681,
+      "navValidated": true
     },
     {
       "ticker": "EDGE11",
       "cnpj": "54306150000157",
       "referenceDate": "2026-09-01",
-      "netAssets": 11907226.58
+      "netAssets": 11907226.58,
+      "holders": 116,
+      "navReported": 1041.372493
     },
     {
       "ticker": "EGDB11",
       "cnpj": "53866393000187",
       "referenceDate": "2026-09-01",
-      "netAssets": 165839100.77
+      "netAssets": 165839100.77,
+      "units": 116686,
+      "holders": 2843,
+      "navReported": 1421.242486,
+      "navCalculated": 1421.242486,
+      "navValidated": true
     },
     {
       "ticker": "EGYR11",
       "cnpj": "36969658000153",
       "referenceDate": "2026-09-01",
-      "netAssets": 100662447.15
+      "netAssets": 100662447.15,
+      "holders": 88,
+      "navReported": 132.041774
     },
     {
       "ticker": "EIRA11",
       "cnpj": "59202651000107",
       "referenceDate": "2026-09-01",
-      "netAssets": 36337685.56
+      "netAssets": 36337685.56,
+      "units": 346289,
+      "holders": 270,
+      "navReported": 104.934565,
+      "navCalculated": 104.934565,
+      "navValidated": true
     },
     {
       "ticker": "EMET11",
       "cnpj": "53523736000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 45807349.82
+      "netAssets": 45807349.82,
+      "units": 5000000,
+      "holders": 281,
+      "navReported": 9.16147,
+      "navCalculated": 9.16147,
+      "navValidated": true
     },
     {
       "ticker": "EQIR11",
       "cnpj": "41076380000125",
       "referenceDate": "2026-09-01",
-      "netAssets": 106591592.11
+      "netAssets": 106591592.11,
+      "units": 10909315,
+      "holders": 9110,
+      "navReported": 9.770695,
+      "navCalculated": 9.770695,
+      "navValidated": true
     },
     {
       "ticker": "ERPA11",
       "cnpj": "31469385000164",
       "referenceDate": "2026-09-01",
-      "netAssets": 82946811.68
+      "netAssets": 82946811.68,
+      "units": 500922,
+      "holders": 839,
+      "navReported": 165.588279,
+      "navCalculated": 165.588279,
+      "navValidated": true
     },
     {
       "ticker": "EURO11",
       "cnpj": "05437916000127",
       "referenceDate": "2026-09-01",
-      "netAssets": 162330715.92
+      "netAssets": 162330715.92,
+      "units": 409883,
+      "holders": 1882,
+      "navReported": 396.041592,
+      "navCalculated": 396.041592,
+      "navValidated": true
     },
     {
       "ticker": "EXES11",
       "cnpj": "41076851000103",
       "referenceDate": "2026-09-01",
-      "netAssets": 136045030.62
+      "netAssets": 136045030.62,
+      "units": 14101454,
+      "holders": 3140,
+      "navReported": 9.647589,
+      "navCalculated": 9.647589,
+      "navValidated": true
     },
     {
       "ticker": "FAED11",
       "cnpj": "11179118000145",
       "referenceDate": "2026-09-01",
-      "netAssets": 154881395.68
+      "netAssets": 154881395.68,
+      "units": 692377,
+      "holders": 3803,
+      "navReported": 223.695177,
+      "navCalculated": 223.695177,
+      "navValidated": true
     },
     {
       "ticker": "FAMB11",
       "cnpj": "05562312000102",
       "referenceDate": "2026-09-01",
-      "netAssets": 118307262.97
+      "netAssets": 118307262.97,
+      "units": 122538,
+      "holders": 1846,
+      "navReported": 965.474081,
+      "navCalculated": 965.474081,
+      "navValidated": true
     },
     {
       "ticker": "FATN11",
       "cnpj": "30567216000102",
       "referenceDate": "2026-09-01",
-      "netAssets": 694457237.14
+      "netAssets": 694457237.14,
+      "units": 7140944,
+      "holders": 31679,
+      "navReported": 97.250061,
+      "navCalculated": 97.250061,
+      "navValidated": true
     },
     {
       "ticker": "FCFL11",
       "cnpj": "11602654000101",
       "referenceDate": "2026-09-01",
-      "netAssets": 436650473.97
+      "netAssets": 436650473.97,
+      "units": 3474010,
+      "holders": 2760,
+      "navReported": 125.690621,
+      "navCalculated": 125.690621,
+      "navValidated": true
     },
     {
       "ticker": "FEXC11",
       "cnpj": "09552812000114",
       "referenceDate": "2026-09-01",
-      "netAssets": 1017180185.65
+      "netAssets": 1017180185.65,
+      "units": 99521172,
+      "holders": 214761,
+      "navReported": 10.220742,
+      "navCalculated": 10.220742,
+      "navValidated": true
     },
     {
       "ticker": "FIGS11",
       "cnpj": "17590518000125",
       "referenceDate": "2026-09-01",
-      "netAssets": 200016276.33
+      "netAssets": 200016276.33,
+      "units": 2850000,
+      "holders": 10892,
+      "navReported": 70.18115,
+      "navCalculated": 70.18115,
+      "navValidated": true
     },
     {
       "ticker": "FIIB11",
       "cnpj": "14217108000145",
       "referenceDate": "2026-09-01",
-      "netAssets": 407188509.29
+      "netAssets": 407188509.29,
+      "units": 685000,
+      "holders": 13483,
+      "navReported": 594.43578,
+      "navCalculated": 594.43578,
+      "navValidated": true
     },
     {
       "ticker": "FIIP11",
       "cnpj": "08696175000197",
       "referenceDate": "2026-10-01",
-      "netAssets": 185899358.46
+      "netAssets": 185899358.46,
+      "units": 927162,
+      "holders": 5696,
+      "navReported": 200.503643,
+      "navCalculated": 200.503643,
+      "navValidated": true
     },
     {
       "ticker": "FISC11",
       "cnpj": "12804013000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 189043508.62
+      "netAssets": 189043508.62,
+      "units": 1699996,
+      "holders": 215,
+      "navReported": 111.202326,
+      "navCalculated": 111.202326,
+      "navValidated": true
     },
     {
       "ticker": "FISD11",
       "cnpj": "16543270000189",
       "referenceDate": "2026-10-01",
-      "netAssets": 15593138.96
+      "netAssets": 15593138.96,
+      "holders": 22,
+      "navReported": 14.53786
     },
     {
       "ticker": "FIVN11",
       "cnpj": "17854016000164",
       "referenceDate": "2026-09-01",
-      "netAssets": 56137789.73
+      "netAssets": 56137789.73,
+      "units": 9412630,
+      "holders": 4192,
+      "navReported": 5.964092,
+      "navCalculated": 5.964092,
+      "navValidated": true
     },
     {
       "ticker": "FLCR11",
       "cnpj": "33884145000151",
       "referenceDate": "2026-09-01",
-      "netAssets": 70820887.21
+      "netAssets": 70820887.21,
+      "units": 751844,
+      "holders": 2569,
+      "navReported": 94.196252,
+      "navCalculated": 94.196252,
+      "navValidated": true
     },
     {
       "ticker": "FLFL11",
       "cnpj": "50808042000121",
       "referenceDate": "2026-09-01",
-      "netAssets": 424081980.75
+      "netAssets": 424081980.75,
+      "units": 3454262,
+      "holders": 1,
+      "navReported": 122.770647,
+      "navCalculated": 122.770647,
+      "navValidated": true
     },
     {
       "ticker": "FLMA11",
       "cnpj": "04141645000103",
       "referenceDate": "2026-09-01",
-      "netAssets": 346273496.91
+      "netAssets": 346273496.91,
+      "units": 1380670,
+      "holders": 10431,
+      "navReported": 250.801058,
+      "navCalculated": 250.801058,
+      "navValidated": true
     },
     {
       "ticker": "FLRP11",
       "cnpj": "10375382000191",
       "referenceDate": "2026-09-01",
-      "netAssets": 162544253.21
+      "netAssets": 162544253.21,
+      "units": 7750000,
+      "holders": 1836,
+      "navReported": 20.973452,
+      "navCalculated": 20.973452,
+      "navValidated": true
     },
     {
       "ticker": "FMOF11",
       "cnpj": "01633741000172",
       "referenceDate": "2026-09-01",
-      "netAssets": 13381593.74
+      "netAssets": 13381593.74,
+      "units": 508008,
+      "holders": 384,
+      "navReported": 26.341305,
+      "navCalculated": 26.341305,
+      "navValidated": true
     },
     {
       "ticker": "FPAB11",
       "cnpj": "03251720000118",
       "referenceDate": "2026-09-01",
-      "netAssets": 268599979.79
+      "netAssets": 268599979.79,
+      "units": 750000,
+      "holders": 641,
+      "navReported": 358.133306,
+      "navCalculated": 358.133306,
+      "navValidated": true
     },
     {
       "ticker": "FPNG11",
       "cnpj": "17161979000182",
       "referenceDate": "2026-09-01",
-      "netAssets": 664587924.75
+      "netAssets": 664587924.75,
+      "units": 3043447,
+      "holders": 137,
+      "navReported": 218.366847,
+      "navCalculated": 218.366847,
+      "navValidated": true
     },
     {
       "ticker": "FTCE11",
       "cnpj": "01235622000161",
       "referenceDate": "2026-09-01",
-      "netAssets": 4050860498.36
+      "netAssets": 4050860498.36,
+      "holders": 124,
+      "navReported": 2991.468003
     },
     {
       "ticker": "FVPQ11",
       "cnpj": "00332266000131",
       "referenceDate": "2026-09-01",
-      "netAssets": 257301573.06
+      "netAssets": 257301573.06,
+      "units": 2800149,
+      "holders": 3272,
+      "navReported": 91.888529,
+      "navCalculated": 91.888529,
+      "navValidated": true
     },
     {
       "ticker": "FZDA11",
       "cnpj": "59680687000104",
       "referenceDate": "2026-03-01",
-      "netAssets": 128679118.7
+      "netAssets": 128679118.7,
+      "holders": 24,
+      "navReported": 94.620339
     },
     {
       "ticker": "GAME11",
       "cnpj": "41269052000145",
       "referenceDate": "2026-09-01",
-      "netAssets": 265438023.64
+      "netAssets": 265438023.64,
+      "units": 28426127,
+      "holders": 20301,
+      "navReported": 9.337819,
+      "navCalculated": 9.337819,
+      "navValidated": true
     },
     {
       "ticker": "GCDL11",
       "cnpj": "56061587000101",
       "referenceDate": "2026-09-01",
-      "netAssets": 45354155.83
+      "netAssets": 45354155.83,
+      "units": 396111,
+      "holders": 2028,
+      "navReported": 114.498602,
+      "navCalculated": 114.498602,
+      "navValidated": true
     },
     {
       "ticker": "GCRI11",
       "cnpj": "38293897000161",
       "referenceDate": "2026-09-01",
-      "netAssets": 135221148.46
+      "netAssets": 135221148.46,
+      "units": 1453859,
+      "holders": 3854,
+      "navReported": 93.008434,
+      "navCalculated": 93.008434,
+      "navValidated": true
     },
     {
       "ticker": "GFDL11",
       "cnpj": "58523711000120",
       "referenceDate": "2026-09-01",
-      "netAssets": 34981374.75
+      "netAssets": 34981374.75,
+      "units": 349155,
+      "holders": 2375,
+      "navReported": 100.188669,
+      "navCalculated": 100.188669,
+      "navValidated": true
     },
     {
       "ticker": "GGRC11",
       "cnpj": "26614291000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 3808729945.92
+      "netAssets": 3808729945.92,
+      "units": 345353918,
+      "holders": 423361,
+      "navReported": 11.028483,
+      "navCalculated": 11.028483,
+      "navValidated": true
     },
     {
       "ticker": "GLCR11",
       "cnpj": "59669570000111",
       "referenceDate": "2026-09-01",
-      "netAssets": 47076945.67
+      "netAssets": 47076945.67,
+      "units": 498110,
+      "holders": 913,
+      "navReported": 94.511143,
+      "navCalculated": 94.511143,
+      "navValidated": true
     },
     {
       "ticker": "GLPF11",
       "cnpj": "58378463000171",
       "referenceDate": "2026-09-01",
-      "netAssets": 157990178.8
+      "netAssets": 157990178.8,
+      "units": 1505000,
+      "holders": 2500,
+      "navReported": 104.976863,
+      "navCalculated": 104.976863,
+      "navValidated": true
     },
     {
       "ticker": "GRUL11",
       "cnpj": "54483412000159",
       "referenceDate": "2026-09-01",
-      "netAssets": 239870264.57
+      "netAssets": 239870264.57,
+      "units": 24700000,
+      "holders": 5094,
+      "navReported": 9.711347,
+      "navCalculated": 9.711347,
+      "navValidated": true
     },
     {
       "ticker": "GSFI11",
       "cnpj": "11769604000113",
       "referenceDate": "2026-09-01",
-      "netAssets": 1239151724.56
+      "netAssets": 1239151724.56,
+      "holders": 6815,
+      "navReported": 12.893504
     },
     {
       "ticker": "GTWR11",
       "cnpj": "23740527000158",
       "referenceDate": "2026-09-01",
-      "netAssets": 1216321426.81
+      "netAssets": 1216321426.81,
+      "units": 12000000,
+      "holders": 31863,
+      "navReported": 101.360119,
+      "navCalculated": 101.360119,
+      "navValidated": true
     },
     {
       "ticker": "HAAA11",
       "cnpj": "27445482000140",
       "referenceDate": "2026-09-01",
-      "netAssets": 243376916.55
+      "netAssets": 243376916.55,
+      "units": 3455000,
+      "holders": 211,
+      "navReported": 70.441944,
+      "navCalculated": 70.441944,
+      "navValidated": true
     },
     {
       "ticker": "HABT11",
       "cnpj": "30578417000105",
       "referenceDate": "2026-09-01",
-      "netAssets": 762237505.68
+      "netAssets": 762237505.68,
+      "units": 8126783,
+      "holders": 54048,
+      "navReported": 93.793264,
+      "navCalculated": 93.793264,
+      "navValidated": true
     },
     {
       "ticker": "HBCR11",
       "cnpj": "36501159000137",
       "referenceDate": "2026-09-01",
-      "netAssets": 210241013.6
+      "netAssets": 210241013.6,
+      "units": 1600000,
+      "holders": 78,
+      "navReported": 131.400633,
+      "navCalculated": 131.400633,
+      "navValidated": true
     },
     {
       "ticker": "HBRH11",
       "cnpj": "30871698000181",
       "referenceDate": "2026-09-01",
-      "netAssets": 202314237.13
+      "netAssets": 202314237.13,
+      "units": 2823180,
+      "holders": 485,
+      "navReported": 71.661827,
+      "navCalculated": 71.661827,
+      "navValidated": true
     },
     {
       "ticker": "HCHG11",
       "cnpj": "34508959000154",
       "referenceDate": "2026-07-01",
-      "netAssets": 96334105.53
+      "netAssets": 96334105.53,
+      "units": 1200000,
+      "holders": 519,
+      "navReported": 80.278421,
+      "navCalculated": 80.278421,
+      "navValidated": true
     },
     {
       "ticker": "HCRI11",
       "cnpj": "04066582000160",
       "referenceDate": "2026-09-01",
-      "netAssets": 65802292.47
+      "netAssets": 65802292.47,
+      "units": 200000,
+      "holders": 2996,
+      "navReported": 329.011462,
+      "navCalculated": 329.011462,
+      "navValidated": true
     },
     {
       "ticker": "HCST11",
       "cnpj": "31152015000107",
       "referenceDate": "2026-09-01",
-      "netAssets": 49688833.94
+      "netAssets": 49688833.94,
+      "holders": 65,
+      "navReported": 57.053373
     },
     {
       "ticker": "HCTR11",
       "cnpj": "30248180000196",
       "referenceDate": "2026-09-01",
-      "netAssets": 2300600343.75
+      "netAssets": 2300600343.75,
+      "holders": 116362,
+      "navReported": 104.174027
     },
     {
       "ticker": "HDEL11",
       "cnpj": "44514162000113",
       "referenceDate": "2026-09-01",
-      "netAssets": 3953603.68
+      "netAssets": 3953603.68,
+      "units": 840000,
+      "holders": 132,
+      "navReported": 4.706671,
+      "navCalculated": 4.706671,
+      "navValidated": true
     },
     {
       "ticker": "HDOF11",
       "cnpj": "35688460000139",
       "referenceDate": "2026-09-01",
-      "netAssets": 301936067.11
+      "netAssets": 301936067.11,
+      "units": 3370000,
+      "holders": 119,
+      "navReported": 89.595272,
+      "navCalculated": 89.595272,
+      "navValidated": true
     },
     {
       "ticker": "HFOF11",
       "cnpj": "18307582000119",
       "referenceDate": "2026-09-01",
-      "netAssets": 1637080263.27
+      "netAssets": 1637080263.27,
+      "units": 217780000,
+      "holders": 86715,
+      "navReported": 7.517129,
+      "navCalculated": 7.517129,
+      "navValidated": true
     },
     {
       "ticker": "HGBL11",
       "cnpj": "53466467000198",
       "referenceDate": "2026-09-01",
-      "netAssets": 248929941.75
+      "netAssets": 248929941.75,
+      "units": 26261802,
+      "holders": 4829,
+      "navReported": 9.478784,
+      "navCalculated": 9.478784,
+      "navValidated": true
     },
     {
       "ticker": "HGBS11",
       "cnpj": "08431747000106",
       "referenceDate": "2026-09-01",
-      "netAssets": 3025454936.25
+      "netAssets": 3025454936.25,
+      "units": 144355726,
+      "holders": 205484,
+      "navReported": 20.95833,
+      "navCalculated": 20.95833,
+      "navValidated": true
     },
     {
       "ticker": "HGCR11",
       "cnpj": "11160521000122",
       "referenceDate": "2026-09-01",
-      "netAssets": 1520653870.85
+      "netAssets": 1520653870.85,
+      "units": 15418106,
+      "holders": 100853,
+      "navReported": 98.6278,
+      "navCalculated": 98.6278,
+      "navValidated": true
     },
     {
       "ticker": "HGIC11",
       "cnpj": "38456508000171",
       "referenceDate": "2026-09-01",
-      "netAssets": 51245748.91
+      "netAssets": 51245748.91,
+      "holders": 771,
+      "navReported": 110.752059
     },
     {
       "ticker": "HGLG11",
       "cnpj": "11728688000147",
       "referenceDate": "2026-09-01",
-      "netAssets": 7546017797.39
+      "netAssets": 7546017797.39,
+      "units": 45601713,
+      "holders": 613837,
+      "navReported": 165.47663,
+      "navCalculated": 165.47663,
+      "navValidated": true
     },
     {
       "ticker": "HGRE11",
       "cnpj": "09072017000129",
       "referenceDate": "2026-09-01",
-      "netAssets": 1780836081.23
+      "netAssets": 1780836081.23,
+      "units": 11817767,
+      "holders": 142235,
+      "navReported": 150.691419,
+      "navCalculated": 150.691419,
+      "navValidated": true
     },
     {
       "ticker": "HGRU11",
       "cnpj": "29641226000153",
       "referenceDate": "2026-09-01",
-      "netAssets": 3176116740.57
+      "netAssets": 3176116740.57,
+      "units": 24834204,
+      "holders": 233809,
+      "navReported": 127.892834,
+      "navCalculated": 127.892834,
+      "navValidated": true
     },
     {
       "ticker": "HILG11",
       "cnpj": "34867728000137",
       "referenceDate": "2026-09-01",
-      "netAssets": 111418139.38
+      "netAssets": 111418139.38,
+      "holders": 104,
+      "navReported": 211.719473
     },
     {
       "ticker": "HJCT11",
       "cnpj": "62082124000110",
       "referenceDate": "2026-09-01",
-      "netAssets": 135008642.85
+      "netAssets": 135008642.85,
+      "units": 1296249,
+      "holders": 154,
+      "navReported": 104.153325,
+      "navCalculated": 104.153325,
+      "navValidated": true
     },
     {
       "ticker": "HLOG11",
       "cnpj": "27486542000172",
       "referenceDate": "2026-09-01",
-      "netAssets": 506117858.87
+      "netAssets": 506117858.87,
+      "units": 42500000,
+      "holders": 3983,
+      "navReported": 11.908656,
+      "navCalculated": 11.908656,
+      "navValidated": true
     },
     {
       "ticker": "HOMS11",
       "cnpj": "55793516000122",
       "referenceDate": "2026-09-01",
-      "netAssets": 46957938.68
+      "netAssets": 46957938.68,
+      "units": 529951,
+      "holders": 2857,
+      "navReported": 88.608076,
+      "navCalculated": 88.608076,
+      "navValidated": true
     },
     {
       "ticker": "HOSI11",
       "cnpj": "34081631000102",
       "referenceDate": "2026-09-01",
-      "netAssets": 71100092.07
+      "netAssets": 71100092.07,
+      "units": 573450,
+      "holders": 941,
+      "navReported": 123.986559,
+      "navCalculated": 123.986559,
+      "navValidated": true
     },
     {
       "ticker": "HPDP11",
       "cnpj": "35586415000173",
       "referenceDate": "2026-09-01",
-      "netAssets": 663295760.06
+      "netAssets": 663295760.06,
+      "units": 7050992,
+      "holders": 571,
+      "navReported": 94.071268,
+      "navCalculated": 94.071268,
+      "navValidated": true
     },
     {
       "ticker": "HRDF11",
       "cnpj": "16929519000199",
       "referenceDate": "2026-09-01",
-      "netAssets": 11920092.08
+      "netAssets": 11920092.08,
+      "units": 1517425,
+      "holders": 812,
+      "navReported": 7.855474,
+      "navCalculated": 7.855474,
+      "navValidated": true
     },
     {
       "ticker": "HREC11",
       "cnpj": "35507262000121",
       "referenceDate": "2026-09-01",
-      "netAssets": 468714641.42
+      "netAssets": 468714641.42,
+      "units": 51685917,
+      "holders": 2338,
+      "navReported": 9.068517,
+      "navCalculated": 9.068517,
+      "navValidated": true
     },
     {
       "ticker": "HRES11",
       "cnpj": "42869853000104",
       "referenceDate": "2026-09-01",
-      "netAssets": 34149451.39
+      "netAssets": 34149451.39,
+      "holders": 135,
+      "navReported": 72.931222
     },
     {
       "ticker": "HSAF11",
       "cnpj": "67149599000109",
       "referenceDate": "2026-09-01",
-      "netAssets": 626191016.84
+      "netAssets": 626191016.84,
+      "units": 702827,
+      "holders": 3,
+      "navReported": 890.960388,
+      "navCalculated": 890.960388,
+      "navValidated": true
     },
     {
       "ticker": "HSLG11",
       "cnpj": "32903621000171",
       "referenceDate": "2026-09-01",
-      "netAssets": 1393018567.18
+      "netAssets": 1393018567.18,
+      "units": 12660067,
+      "holders": 40132,
+      "navReported": 110.03248,
+      "navCalculated": 110.03248,
+      "navValidated": true
     },
     {
       "ticker": "HSML11",
       "cnpj": "32892018000131",
       "referenceDate": "2026-09-01",
-      "netAssets": 2113802120.42
+      "netAssets": 2113802120.42,
+      "units": 21329976,
+      "holders": 188108,
+      "navReported": 99.10007,
+      "navCalculated": 99.10007,
+      "navValidated": true
     },
     {
       "ticker": "HTMX11",
       "cnpj": "08706065000169",
       "referenceDate": "2026-09-01",
-      "netAssets": 421447657.5
+      "netAssets": 421447657.5,
+      "units": 2888094,
+      "holders": 32970,
+      "navReported": 145.92588,
+      "navCalculated": 145.92588,
+      "navValidated": true
     },
     {
       "ticker": "HUCG11",
       "cnpj": "39347413000182",
       "referenceDate": "2026-09-01",
-      "netAssets": 142600053.36
+      "netAssets": 142600053.36,
+      "units": 1120448,
+      "holders": 249,
+      "navReported": 127.270568,
+      "navCalculated": 127.270568,
+      "navValidated": true
     },
     {
       "ticker": "HUSC11",
       "cnpj": "28851767000143",
       "referenceDate": "2026-09-01",
-      "netAssets": 127813670.22
+      "netAssets": 127813670.22,
+      "units": 850821,
+      "holders": 766,
+      "navReported": 150.223925,
+      "navCalculated": 150.223925,
+      "navValidated": true
     },
     {
       "ticker": "HUSI11",
       "cnpj": "30017492000199",
       "referenceDate": "2026-09-01",
-      "netAssets": 153239171.99
+      "netAssets": 153239171.99,
+      "units": 116362,
+      "holders": 105,
+      "navReported": 1316.917653,
+      "navCalculated": 1316.917653,
+      "navValidated": true
     },
     {
       "ticker": "IBBP11",
       "cnpj": "52551605000174",
       "referenceDate": "2026-09-01",
-      "netAssets": 997775989.09
+      "netAssets": 997775989.09,
+      "holders": 871,
+      "navReported": 9.330462
     },
     {
       "ticker": "IBCR11",
       "cnpj": "40011251000196",
       "referenceDate": "2026-09-01",
-      "netAssets": 84994393.31
+      "netAssets": 84994393.31,
+      "units": 958423,
+      "holders": 3537,
+      "navReported": 88.681504,
+      "navCalculated": 88.681504,
+      "navValidated": true
     },
     {
       "ticker": "ICNE11",
       "cnpj": "53137434000102",
       "referenceDate": "2026-09-01",
-      "netAssets": 59682458.75
+      "netAssets": 59682458.75,
+      "units": 120000,
+      "holders": 14,
+      "navReported": 497.353823,
+      "navCalculated": 497.353823,
+      "navValidated": true
     },
     {
       "ticker": "ICRI11",
       "cnpj": "51294441000184",
       "referenceDate": "2026-09-01",
-      "netAssets": 389496447.85
+      "netAssets": 389496447.85,
+      "units": 3857359,
+      "holders": 11181,
+      "navReported": 100.974902,
+      "navCalculated": 100.974902,
+      "navValidated": true
     },
     {
       "ticker": "INDE11",
       "cnpj": "52635194000103",
       "referenceDate": "2026-09-01",
-      "netAssets": 49851751.59
+      "netAssets": 49851751.59,
+      "units": 447921,
+      "holders": 181,
+      "navReported": 111.295857,
+      "navCalculated": 111.295857,
+      "navValidated": true
     },
     {
       "ticker": "IRIM11",
       "cnpj": "41076564000195",
       "referenceDate": "2026-09-01",
-      "netAssets": 2916513511.19
+      "netAssets": 2916513511.19,
+      "units": 35225947,
+      "holders": 195004,
+      "navReported": 82.794467,
+      "navCalculated": 82.794467,
+      "navValidated": true
     },
     {
       "ticker": "ITRI11",
       "cnpj": "52270671000176",
       "referenceDate": "2026-09-01",
-      "netAssets": 544553055.15
+      "netAssets": 544553055.15,
+      "units": 6250000,
+      "holders": 17887,
+      "navReported": 87.128489,
+      "navCalculated": 87.128489,
+      "navValidated": true
     },
     {
       "ticker": "JASC11",
       "cnpj": "40886241000102",
       "referenceDate": "2026-09-01",
-      "netAssets": 441075931.67
+      "netAssets": 441075931.67,
+      "units": 3851187,
+      "holders": 165,
+      "navReported": 114.529866,
+      "navCalculated": 114.529866,
+      "navValidated": true
     },
     {
       "ticker": "JFLL11",
       "cnpj": "36501181000187",
       "referenceDate": "2026-09-01",
-      "netAssets": 155815045.68
+      "netAssets": 155815045.68,
+      "units": 1500598,
+      "holders": 1916,
+      "navReported": 103.835301,
+      "navCalculated": 103.835301,
+      "navValidated": true
     },
     {
       "ticker": "JPPA11",
       "cnpj": "30982880000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 89507878.08
+      "netAssets": 89507878.08,
+      "units": 904050,
+      "holders": 5728,
+      "navReported": 99.007663,
+      "navCalculated": 99.007663,
+      "navValidated": true
     },
     {
       "ticker": "JPRD11",
       "cnpj": "53072782000130",
       "referenceDate": "2026-09-01",
-      "netAssets": 143600929.98
+      "netAssets": 143600929.98,
+      "units": 1458962,
+      "holders": 111,
+      "navReported": 98.426779,
+      "navCalculated": 98.426779,
+      "navValidated": true
     },
     {
       "ticker": "JSAF11",
       "cnpj": "42085661000107",
       "referenceDate": "2026-09-01",
-      "netAssets": 691170408.71
+      "netAssets": 691170408.71,
+      "units": 77523290,
+      "holders": 25767,
+      "navReported": 8.915649,
+      "navCalculated": 8.915649,
+      "navValidated": true
     },
     {
       "ticker": "JSCR11",
       "cnpj": "54866214000174",
       "referenceDate": "2026-09-01",
-      "netAssets": 209547890.44
+      "netAssets": 209547890.44,
+      "units": 22137100,
+      "holders": 3377,
+      "navReported": 9.465914,
+      "navCalculated": 9.465914,
+      "navValidated": true
     },
     {
       "ticker": "JSRE11",
       "cnpj": "13371132000171",
       "referenceDate": "2026-09-01",
-      "netAssets": 2107968723.47
+      "netAssets": 2107968723.47,
+      "units": 20767328,
+      "holders": 81821,
+      "navReported": 101.50409,
+      "navCalculated": 101.50409,
+      "navValidated": true
     },
     {
       "ticker": "KCRE11",
       "cnpj": "42502802000140",
       "referenceDate": "2026-09-01",
-      "netAssets": 346800904.32
+      "netAssets": 346800904.32,
+      "units": 36000000,
+      "holders": 16320,
+      "navReported": 9.633358,
+      "navCalculated": 9.633358,
+      "navValidated": true
     },
     {
       "ticker": "KEVE11",
       "cnpj": "32317313000164",
       "referenceDate": "2026-09-01",
-      "netAssets": 29301630.7
+      "netAssets": 29301630.7,
+      "holders": 414,
+      "navReported": 198.384786
     },
     {
       "ticker": "KFOF11",
       "cnpj": "30091444000140",
       "referenceDate": "2026-09-01",
-      "netAssets": 609653898.67
+      "netAssets": 609653898.67,
+      "units": 7014565,
+      "holders": 26203,
+      "navReported": 86.912574,
+      "navCalculated": 86.912574,
+      "navValidated": true
     },
     {
       "ticker": "KISU11",
       "cnpj": "65923811000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 16956884.72
+      "netAssets": 16956884.72,
+      "units": 1710342,
+      "holders": 104,
+      "navReported": 9.914324,
+      "navCalculated": 9.914324,
+      "navValidated": true
     },
     {
       "ticker": "KIVO11",
       "cnpj": "42273325000198",
       "referenceDate": "2026-09-01",
-      "netAssets": 183431654.0
+      "netAssets": 183431654.0,
+      "units": 2222736,
+      "holders": 7222,
+      "navReported": 82.525164,
+      "navCalculated": 82.525164,
+      "navValidated": true
     },
     {
       "ticker": "KNCR11",
       "cnpj": "16706958000132",
       "referenceDate": "2026-09-01",
-      "netAssets": 10984431830.65
+      "netAssets": 10984431830.65,
+      "units": 107089622,
+      "holders": 593709,
+      "navReported": 102.572328,
+      "navCalculated": 102.572328,
+      "navValidated": true
     },
     {
       "ticker": "KNHF11",
       "cnpj": "42754342000147",
       "referenceDate": "2026-09-01",
-      "netAssets": 1958623526.99
+      "netAssets": 1958623526.99,
+      "units": 19663235,
+      "holders": 71433,
+      "navReported": 99.608408,
+      "navCalculated": 99.608408,
+      "navValidated": true
     },
     {
       "ticker": "KNHY11",
       "cnpj": "30130708000128",
       "referenceDate": "2026-09-01",
-      "netAssets": 3118507748.03
+      "netAssets": 3118507748.03,
+      "units": 31173083,
+      "holders": 27439,
+      "navReported": 100.038477,
+      "navCalculated": 100.038477,
+      "navValidated": true
     },
     {
       "ticker": "KNIP11",
       "cnpj": "24960430000113",
       "referenceDate": "2026-09-01",
-      "netAssets": 7616349771.86
+      "netAssets": 7616349771.86,
+      "units": 80078186,
+      "holders": 71743,
+      "navReported": 95.111417,
+      "navCalculated": 95.111417,
+      "navValidated": true
     },
     {
       "ticker": "KNPR11",
       "cnpj": "42737059000107",
       "referenceDate": "2026-09-01",
-      "netAssets": 16100772.54
+      "netAssets": 16100772.54,
+      "units": 579911,
+      "holders": 1266,
+      "navReported": 27.764213,
+      "navCalculated": 27.764213,
+      "navValidated": true
     },
     {
       "ticker": "KNRE11",
       "cnpj": "14423780000197",
       "referenceDate": "2026-09-01",
-      "netAssets": 11077659.02
+      "netAssets": 11077659.02,
+      "holders": 5206,
+      "navReported": 0.59727
     },
     {
       "ticker": "KNRI11",
       "cnpj": "12005956000165",
       "referenceDate": "2026-09-01",
-      "netAssets": 4615296750.95
+      "netAssets": 4615296750.95,
+      "units": 28204047,
+      "holders": 313851,
+      "navReported": 163.639521,
+      "navCalculated": 163.639521,
+      "navValidated": true
     },
     {
       "ticker": "KNSC11",
       "cnpj": "35864448000138",
       "referenceDate": "2026-09-01",
-      "netAssets": 2086450423.72
+      "netAssets": 2086450423.72,
+      "units": 235725514,
+      "holders": 271384,
+      "navReported": 8.851186,
+      "navCalculated": 8.851186,
+      "navValidated": true
     },
     {
       "ticker": "KONG11",
       "cnpj": "66743243000128",
       "referenceDate": "2026-09-01",
-      "netAssets": 66057534.86
+      "netAssets": 66057534.86,
+      "units": 688230,
+      "holders": 177,
+      "navReported": 95.981772,
+      "navCalculated": 95.981772,
+      "navValidated": true
     },
     {
       "ticker": "KORE11",
       "cnpj": "52219978000142",
       "referenceDate": "2026-09-01",
-      "netAssets": 1033143034.02
+      "netAssets": 1033143034.02,
+      "units": 9625000,
+      "holders": 29926,
+      "navReported": 107.339536,
+      "navCalculated": 107.339536,
+      "navValidated": true
     },
     {
       "ticker": "LAFI11",
       "cnpj": "51710043000100",
       "referenceDate": "2026-04-01",
-      "netAssets": 92098322.5
+      "netAssets": 92098322.5,
+      "units": 771287,
+      "holders": 1279,
+      "navReported": 119.408628,
+      "navCalculated": 119.408628,
+      "navValidated": true
     },
     {
       "ticker": "LASC11",
       "cnpj": "30248158000146",
       "referenceDate": "2026-09-01",
-      "netAssets": 387704243.64
+      "netAssets": 387704243.64,
+      "units": 2940298,
+      "holders": 557,
+      "navReported": 131.858826,
+      "navCalculated": 131.858826,
+      "navValidated": true
     },
     {
       "ticker": "LIFE11",
       "cnpj": "39753295000102",
       "referenceDate": "2026-09-01",
-      "netAssets": 386742404.61
+      "netAssets": 386742404.61,
+      "units": 39761584,
+      "holders": 20861,
+      "navReported": 9.726534,
+      "navCalculated": 9.726534,
+      "navValidated": true
     },
     {
       "ticker": "LKDV11",
       "cnpj": "40102445000105",
       "referenceDate": "2026-09-01",
-      "netAssets": 74388973.03
+      "netAssets": 74388973.03,
+      "units": 66811,
+      "holders": 100,
+      "navReported": 1113.424032,
+      "navCalculated": 1113.424032,
+      "navValidated": true
     },
     {
       "ticker": "LLAO11",
       "cnpj": "41218404000133",
       "referenceDate": "2026-09-01",
-      "netAssets": 19823353.01
+      "netAssets": 19823353.01,
+      "units": 361140,
+      "holders": 78,
+      "navReported": 54.891048,
+      "navCalculated": 54.891048,
+      "navValidated": true
     },
     {
       "ticker": "LPLP11",
       "cnpj": "37262752000130",
       "referenceDate": "2026-09-01",
-      "netAssets": 215265867.05
+      "netAssets": 215265867.05,
+      "units": 801344,
+      "holders": 40,
+      "navReported": 268.631034,
+      "navCalculated": 268.631034,
+      "navValidated": true
     },
     {
       "ticker": "LRDI11",
       "cnpj": "41088534000107",
       "referenceDate": "2026-09-01",
-      "netAssets": 32167859.06
+      "netAssets": 32167859.06,
+      "units": 370244,
+      "holders": 156,
+      "navReported": 86.882864,
+      "navCalculated": 86.882864,
+      "navValidated": true
     },
     {
       "ticker": "LRED11",
       "cnpj": "55089373000172",
       "referenceDate": "2026-09-01",
-      "netAssets": 15211591.41
+      "netAssets": 15211591.41,
+      "holders": 30,
+      "navReported": 10.7977
     },
     {
       "ticker": "LSOI11",
       "cnpj": "53087126000101",
       "referenceDate": "2026-09-01",
-      "netAssets": 82169981.19
+      "netAssets": 82169981.19,
+      "units": 5365285,
+      "holders": 45,
+      "navReported": 15.31512,
+      "navCalculated": 15.31512,
+      "navValidated": true
     },
     {
       "ticker": "LSOP11",
       "cnpj": "63429256000139",
       "referenceDate": "2026-09-01",
-      "netAssets": 34453220.81
+      "netAssets": 34453220.81,
+      "units": 3150000,
+      "holders": 6,
+      "navReported": 10.93753,
+      "navCalculated": 10.93753,
+      "navValidated": true
     },
     {
       "ticker": "LTMT11",
       "cnpj": "46449786000120",
       "referenceDate": "2026-09-01",
-      "netAssets": 16161508.19
+      "netAssets": 16161508.19,
+      "holders": 225,
+      "navReported": 94.13702
     },
     {
       "ticker": "LVBI11",
       "cnpj": "30629603000118",
       "referenceDate": "2026-09-01",
-      "netAssets": 1942767073.51
+      "netAssets": 1942767073.51,
+      "units": 16118565,
+      "holders": 125693,
+      "navReported": 120.529779,
+      "navCalculated": 120.529779,
+      "navValidated": true
     },
     {
       "ticker": "MALL11",
       "cnpj": "26499833000132",
       "referenceDate": "2026-09-01",
-      "netAssets": 2390831749.1
+      "netAssets": 2390831749.1,
+      "units": 20102819,
+      "holders": 138207,
+      "navReported": 118.930173,
+      "navCalculated": 118.930173,
+      "navValidated": true
     },
     {
       "ticker": "MANA11",
       "cnpj": "42888583000189",
       "referenceDate": "2026-09-01",
-      "netAssets": 346188978.64
+      "netAssets": 346188978.64,
+      "units": 37536140,
+      "holders": 37966,
+      "navReported": 9.222818,
+      "navCalculated": 9.222818,
+      "navValidated": true
     },
     {
       "ticker": "MAXR11",
       "cnpj": "11274415000170",
       "referenceDate": "2026-09-01",
-      "netAssets": 104968668.74
+      "netAssets": 104968668.74,
+      "units": 1125655,
+      "holders": 3324,
+      "navReported": 93.25119,
+      "navCalculated": 93.25119,
+      "navValidated": true
     },
     {
       "ticker": "MCCI11",
       "cnpj": "23648935000184",
       "referenceDate": "2026-09-01",
-      "netAssets": 1611186191.3
+      "netAssets": 1611186191.3,
+      "units": 16960024,
+      "holders": 124176,
+      "navReported": 94.999051,
+      "navCalculated": 94.999051,
+      "navValidated": true
     },
     {
       "ticker": "MCEM11",
       "cnpj": "46157247000117",
       "referenceDate": "2026-09-01",
-      "netAssets": 95068756.36
+      "netAssets": 95068756.36,
+      "units": 3421350,
+      "holders": 228,
+      "navReported": 27.786913,
+      "navCalculated": 27.786913,
+      "navValidated": true
     },
     {
       "ticker": "MCHY11",
       "cnpj": "36655973000106",
       "referenceDate": "2026-09-01",
-      "netAssets": 1107392681.74
+      "netAssets": 1107392681.74,
+      "units": 111598921,
+      "holders": 92560,
+      "navReported": 9.922969,
+      "navCalculated": 9.922969,
+      "navValidated": true
     },
     {
       "ticker": "MFII11",
       "cnpj": "16915968000188",
       "referenceDate": "2026-09-01",
-      "netAssets": 658014855.72
+      "netAssets": 658014855.72,
+      "units": 6800000,
+      "holders": 30574,
+      "navReported": 96.766891,
+      "navCalculated": 96.766891,
+      "navValidated": true
     },
     {
       "ticker": "MGHT11",
       "cnpj": "34197776000165",
       "referenceDate": "2026-09-01",
-      "netAssets": 25693775.72
+      "netAssets": 25693775.72,
+      "units": 1313784,
+      "holders": 2991,
+      "navReported": 19.557078,
+      "navCalculated": 19.557078,
+      "navValidated": true
     },
     {
       "ticker": "MIDW11",
       "cnpj": "63992956000137",
       "referenceDate": "2026-09-01",
-      "netAssets": 188497113.19
+      "netAssets": 188497113.19,
+      "units": 18900000,
+      "holders": 101,
+      "navReported": 9.973392,
+      "navCalculated": 9.973392,
+      "navValidated": true
     },
     {
       "ticker": "MMPD11",
       "cnpj": "41080968000152",
       "referenceDate": "2026-09-01",
-      "netAssets": 35689222.84
+      "netAssets": 35689222.84,
+      "units": 530497,
+      "holders": 104,
+      "navReported": 67.27507,
+      "navCalculated": 67.27507,
+      "navValidated": true
     },
     {
       "ticker": "MMVE11",
       "cnpj": "41251337000159",
       "referenceDate": "2026-09-01",
-      "netAssets": 78963512.6
+      "netAssets": 78963512.6,
+      "units": 515101,
+      "holders": 110,
+      "navReported": 153.297145,
+      "navCalculated": 153.297145,
+      "navValidated": true
     },
     {
       "ticker": "MXRF11",
       "cnpj": "97521225000125",
       "referenceDate": "2026-09-01",
-      "netAssets": 5304823085.04
+      "netAssets": 5304823085.04,
+      "units": 567206273,
+      "holders": 1570595,
+      "navReported": 9.352547,
+      "navCalculated": 9.352547,
+      "navValidated": true
     },
     {
       "ticker": "NAUI11",
       "cnpj": "49649500000148",
       "referenceDate": "2026-09-01",
-      "netAssets": 21733597.81
+      "netAssets": 21733597.81,
+      "units": 51735,
+      "holders": 109,
+      "navReported": 420.094671,
+      "navCalculated": 420.094671,
+      "navValidated": true
     },
     {
       "ticker": "NCHB11",
       "cnpj": "18085673000157",
       "referenceDate": "2026-09-01",
-      "netAssets": 154426728.3
+      "netAssets": 154426728.3,
+      "units": 15281388,
+      "holders": 9836,
+      "navReported": 10.105543,
+      "navCalculated": 10.105543,
+      "navValidated": true
     },
     {
       "ticker": "NCRI11",
       "cnpj": "40041603000156",
       "referenceDate": "2026-09-01",
-      "netAssets": 39598569.07
+      "netAssets": 39598569.07,
+      "units": 3949999,
+      "holders": 1372,
+      "navReported": 10.024957,
+      "navCalculated": 10.024957,
+      "navValidated": true
     },
     {
       "ticker": "NEWL11",
       "cnpj": "32527626000147",
       "referenceDate": "2026-09-01",
-      "netAssets": 370627662.77
+      "netAssets": 370627662.77,
+      "units": 2810193,
+      "holders": 6817,
+      "navReported": 131.886907,
+      "navCalculated": 131.886907,
+      "navValidated": true
     },
     {
       "ticker": "NSLU11",
       "cnpj": "08014513000163",
       "referenceDate": "2026-09-01",
-      "netAssets": 326078250.58
+      "netAssets": 326078250.58,
+      "units": 1293286,
+      "holders": 5223,
+      "navReported": 252.131586,
+      "navCalculated": 252.131586,
+      "navValidated": true
     },
     {
       "ticker": "NVHO11",
       "cnpj": "17025970000144",
       "referenceDate": "2026-09-01",
-      "netAssets": 689866327.01
+      "netAssets": 689866327.01,
+      "units": 41494533,
+      "holders": 1642,
+      "navReported": 16.625475,
+      "navCalculated": 16.625475,
+      "navValidated": true
     },
     {
       "ticker": "OCRE11",
       "cnpj": "44680435000108",
       "referenceDate": "2026-09-01",
-      "netAssets": 64027090.93
+      "netAssets": 64027090.93,
+      "units": 482986,
+      "holders": 435,
+      "navReported": 132.565107,
+      "navCalculated": 132.565107,
+      "navValidated": true
     },
     {
       "ticker": "ONDV11",
       "cnpj": "52966340000175",
       "referenceDate": "2026-09-01",
-      "netAssets": 90244976.13
+      "netAssets": 90244976.13,
+      "units": 8358357,
+      "holders": 497,
+      "navReported": 10.796976,
+      "navCalculated": 10.796976,
+      "navValidated": true
     },
     {
       "ticker": "ORPD11",
       "cnpj": "19107604000160",
       "referenceDate": "2026-09-01",
-      "netAssets": 40711668.64
+      "netAssets": 40711668.64,
+      "units": 290000,
+      "holders": 6,
+      "navReported": 140.385064,
+      "navCalculated": 140.385064,
+      "navValidated": true
     },
     {
       "ticker": "OUJP11",
       "cnpj": "26091656000150",
       "referenceDate": "2026-09-01",
-      "netAssets": 327581393.6
+      "netAssets": 327581393.6,
+      "units": 3252384,
+      "holders": 22554,
+      "navReported": 100.720393,
+      "navCalculated": 100.720393,
+      "navValidated": true
     },
     {
       "ticker": "OULG11",
       "cnpj": "13974819000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 68600370.6
+      "netAssets": 68600370.6,
+      "holders": 2701,
+      "navReported": 27.944673
     },
     {
       "ticker": "PABY11",
       "cnpj": "00613094000174",
       "referenceDate": "2026-09-01",
-      "units": 758400
+      "units": 758400,
+      "holders": 584
     },
     {
       "ticker": "PATA11",
       "cnpj": "53764894000152",
       "referenceDate": "2026-09-01",
-      "netAssets": 16562857.03
+      "netAssets": 16562857.03,
+      "units": 1702007,
+      "holders": 435,
+      "navReported": 9.731368,
+      "navCalculated": 9.731368,
+      "navValidated": true
     },
     {
       "ticker": "PATC11",
       "cnpj": "30048651000112",
       "referenceDate": "2026-09-01",
-      "netAssets": 119045341.89
+      "netAssets": 119045341.89,
+      "units": 3477434,
+      "holders": 3999,
+      "navReported": 34.233674,
+      "navCalculated": 34.233674,
+      "navValidated": true
     },
     {
       "ticker": "PATL11",
       "cnpj": "35754164000199",
       "referenceDate": "2026-09-01",
-      "netAssets": 1587987.19
+      "netAssets": 1587987.19,
+      "units": 4991535,
+      "holders": 33551,
+      "navReported": 0.318136,
+      "navCalculated": 0.318136,
+      "navValidated": true
     },
     {
       "ticker": "PDBM11",
       "cnpj": "56978773000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 38523979.88
+      "netAssets": 38523979.88,
+      "units": 340000,
+      "holders": 119,
+      "navReported": 113.305823,
+      "navCalculated": 113.305823,
+      "navValidated": true
     },
     {
       "ticker": "PEMA11",
       "cnpj": "34736510000143",
       "referenceDate": "2026-09-01",
-      "netAssets": 32809225.69
+      "netAssets": 32809225.69,
+      "units": 552000,
+      "holders": 273,
+      "navReported": 59.437003,
+      "navCalculated": 59.437003,
+      "navValidated": true
     },
     {
       "ticker": "PLRI11",
       "cnpj": "14080689000116",
       "referenceDate": "2026-09-01",
-      "netAssets": 11038499.44
+      "netAssets": 11038499.44,
+      "units": 954304,
+      "holders": 711,
+      "navReported": 11.567068,
+      "navCalculated": 11.567068,
+      "navValidated": true
     },
     {
       "ticker": "PMFO11",
       "cnpj": "50135849000140",
       "referenceDate": "2026-09-01",
-      "netAssets": 81904378.52
+      "netAssets": 81904378.52,
+      "units": 975907,
+      "holders": 197,
+      "navReported": 83.926418,
+      "navCalculated": 83.926418,
+      "navValidated": true
     },
     {
       "ticker": "PMIS11",
       "cnpj": "51868778000158",
       "referenceDate": "2026-09-01",
-      "netAssets": 139159000.12
+      "netAssets": 139159000.12,
+      "units": 14803242,
+      "holders": 6208,
+      "navReported": 9.400576,
+      "navCalculated": 9.400576,
+      "navValidated": true
     },
     {
       "ticker": "PNDL11",
       "cnpj": "37899400000190",
       "referenceDate": "2026-09-01",
-      "netAssets": 12975060.56
+      "netAssets": 12975060.56,
+      "units": 144332,
+      "holders": 57,
+      "navReported": 89.897324,
+      "navCalculated": 89.897324,
+      "navValidated": true
     },
     {
       "ticker": "PNPR11",
       "cnpj": "26813118000122",
       "referenceDate": "2026-09-01",
-      "netAssets": 32060786.56
+      "netAssets": 32060786.56,
+      "holders": 13,
+      "navReported": 35.709722
     },
     {
       "ticker": "PNRC11",
       "cnpj": "46157348000198",
       "referenceDate": "2026-09-01",
-      "netAssets": 1998930.32
+      "netAssets": 1998930.32,
+      "units": 410100,
+      "holders": 103,
+      "navReported": 4.874251,
+      "navCalculated": 4.874251,
+      "navValidated": true
     },
     {
       "ticker": "PORD11",
       "cnpj": "17156502000109",
       "referenceDate": "2026-09-01",
-      "netAssets": 357822499.28
+      "netAssets": 357822499.28,
+      "units": 37283750,
+      "holders": 50442,
+      "navReported": 9.597278,
+      "navCalculated": 9.597278,
+      "navValidated": true
     },
     {
       "ticker": "PQAG11",
       "cnpj": "12978943000172",
       "referenceDate": "2026-09-01",
-      "netAssets": 790601922.02
+      "netAssets": 790601922.02,
+      "units": 13991890,
+      "holders": 477,
+      "navReported": 56.504298,
+      "navCalculated": 56.504298,
+      "navValidated": true
     },
     {
       "ticker": "PQDP11",
       "cnpj": "10869155000112",
       "referenceDate": "2026-09-01",
-      "netAssets": 674026120.74
+      "netAssets": 674026120.74,
+      "units": 259104,
+      "holders": 2865,
+      "navReported": 2601.372888,
+      "navCalculated": 2601.372888,
+      "navValidated": true
     },
     {
       "ticker": "PRSN11",
       "cnpj": "14056001000162",
       "referenceDate": "2026-09-01",
-      "netAssets": 8491885.6
+      "netAssets": 8491885.6,
+      "holders": 484,
+      "navReported": 26.280521
     },
     {
       "ticker": "PRSV11",
       "cnpj": "11281322000172",
       "referenceDate": "2026-09-01",
-      "netAssets": 29462889.31
+      "netAssets": 29462889.31,
+      "units": 317000,
+      "holders": 783,
+      "navReported": 92.942868,
+      "navCalculated": 92.942868,
+      "navValidated": true
     },
     {
       "ticker": "PULV11",
       "cnpj": "53018363000110",
       "referenceDate": "2026-02-01",
-      "netAssets": 0.0
+      "netAssets": 0.0,
+      "units": 0,
+      "holders": 0,
+      "navReported": 0.0
     },
     {
       "ticker": "PVBI11",
       "cnpj": "35652102000176",
       "referenceDate": "2026-09-01",
-      "netAssets": 2843198565.73
+      "netAssets": 2843198565.73,
+      "units": 27130067,
+      "holders": 179158,
+      "navReported": 104.798804,
+      "navCalculated": 104.798804,
+      "navValidated": true
     },
     {
       "ticker": "QAGR11",
       "cnpj": "32754734000152",
       "referenceDate": "2026-09-01",
-      "netAssets": 363976148.12
+      "netAssets": 363976148.12,
+      "units": 5452634,
+      "holders": 13114,
+      "navReported": 66.752353,
+      "navCalculated": 66.752353,
+      "navValidated": true
     },
     {
       "ticker": "RBDS11",
       "cnpj": "11945604000127",
       "referenceDate": "2026-09-01",
-      "netAssets": 3103882.45
+      "netAssets": 3103882.45,
+      "units": 126523,
+      "holders": 801,
+      "navReported": 24.53216,
+      "navCalculated": 24.53216,
+      "navValidated": true
     },
     {
       "ticker": "RBFY11",
       "cnpj": "62662477000190",
       "referenceDate": "2026-09-01",
-      "netAssets": 91320867.13
+      "netAssets": 91320867.13,
+      "units": 969847,
+      "holders": 87,
+      "navReported": 94.160076,
+      "navCalculated": 94.160076,
+      "navValidated": true
     },
     {
       "ticker": "RBHY11",
       "cnpj": "37899479000150",
       "referenceDate": "2026-09-01",
-      "netAssets": 177990460.89
+      "netAssets": 177990460.89,
+      "units": 1893505,
+      "holders": 3445,
+      "navReported": 94.000523,
+      "navCalculated": 94.000523,
+      "navValidated": true
     },
     {
       "ticker": "RBIR11",
       "cnpj": "31161410000148",
       "referenceDate": "2026-09-01",
-      "netAssets": 115989700.3
+      "netAssets": 115989700.3,
+      "units": 1528615,
+      "holders": 1435,
+      "navReported": 75.878949,
+      "navCalculated": 75.878949,
+      "navValidated": true
     },
     {
       "ticker": "RBRD11",
       "cnpj": "09006914000134",
       "referenceDate": "2026-09-01",
-      "netAssets": 133118098.5
+      "netAssets": 133118098.5,
+      "units": 1851786,
+      "holders": 7312,
+      "navReported": 71.886329,
+      "navCalculated": 71.886329,
+      "navValidated": true
     },
     {
       "ticker": "RBRI11",
       "cnpj": "32441656000136",
       "referenceDate": "2026-09-01",
-      "netAssets": 42073058.2
+      "netAssets": 42073058.2,
+      "units": 139665,
+      "holders": 139,
+      "navReported": 301.242675,
+      "navCalculated": 301.242675,
+      "navValidated": true
     },
     {
       "ticker": "RBRK11",
       "cnpj": "53391653000105",
       "referenceDate": "2026-09-01",
-      "netAssets": 211963052.27
+      "netAssets": 211963052.27,
+      "units": 1832784,
+      "holders": 19,
+      "navReported": 115.650864,
+      "navCalculated": 115.650864,
+      "navValidated": true
     },
     {
       "ticker": "RBRL11",
       "cnpj": "35705463000133",
       "referenceDate": "2026-09-01",
-      "netAssets": 628982687.39
+      "netAssets": 628982687.39,
+      "units": 6687035,
+      "holders": 15362,
+      "navReported": 94.060026,
+      "navCalculated": 94.060026,
+      "navValidated": true
     },
     {
       "ticker": "RBRP11",
       "cnpj": "21408063000151",
       "referenceDate": "2026-09-01",
-      "netAssets": 966978628.89
+      "netAssets": 966978628.89,
+      "holders": 47766,
+      "navReported": 79.395992
     },
     {
       "ticker": "RBRR11",
       "cnpj": "29467977000103",
       "referenceDate": "2026-09-01",
-      "netAssets": 1519787769.93
+      "netAssets": 1519787769.93,
+      "units": 16300275,
+      "holders": 136486,
+      "navReported": 93.23694,
+      "navCalculated": 93.23694,
+      "navValidated": true
     },
     {
       "ticker": "RBRS11",
       "cnpj": "36517660000191",
       "referenceDate": "2026-09-01",
-      "netAssets": 73281950.93
+      "netAssets": 73281950.93,
+      "units": 764452,
+      "holders": 838,
+      "navReported": 95.86207,
+      "navCalculated": 95.86207,
+      "navValidated": true
     },
     {
       "ticker": "RBRX11",
       "cnpj": "41088458000121",
       "referenceDate": "2026-09-01",
-      "netAssets": 1373396734.64
+      "netAssets": 1373396734.64,
+      "units": 146354302,
+      "holders": 127536,
+      "navReported": 9.384054,
+      "navCalculated": 9.384054,
+      "navValidated": true
     },
     {
       "ticker": "RBTS11",
       "cnpj": "29299737000139",
       "referenceDate": "2026-09-01",
-      "netAssets": 13916538.91
+      "netAssets": 13916538.91,
+      "units": 56525,
+      "holders": 124,
+      "navReported": 246.201484,
+      "navCalculated": 246.201484,
+      "navValidated": true
     },
     {
       "ticker": "RCFA11",
       "cnpj": "27771586000144",
       "referenceDate": "2026-09-01",
-      "netAssets": 10478812.38
+      "netAssets": 10478812.38,
+      "holders": 279,
+      "navReported": 17.945443
     },
     {
       "ticker": "RCFF11",
       "cnpj": "35689670000141",
       "referenceDate": "2026-09-01",
-      "netAssets": 34696757.13
+      "netAssets": 34696757.13,
+      "units": 323200,
+      "holders": 112,
+      "navReported": 107.353828,
+      "navCalculated": 107.353828,
+      "navValidated": true
     },
     {
       "ticker": "RCRI11",
       "cnpj": "60801196000145",
       "referenceDate": "2026-09-01",
-      "netAssets": 41406103.41
+      "netAssets": 41406103.41,
+      "units": 422144,
+      "holders": 397,
+      "navReported": 98.085259,
+      "navCalculated": 98.085259,
+      "navValidated": true
     },
     {
       "ticker": "RDLI11",
       "cnpj": "53391567000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 30117761.52
+      "netAssets": 30117761.52,
+      "units": 1924193,
+      "holders": 300,
+      "navReported": 15.652152,
+      "navCalculated": 15.652152,
+      "navValidated": true
     },
     {
       "ticker": "RECM11",
       "cnpj": "56430935000162",
       "referenceDate": "2026-09-01",
-      "netAssets": 169129007.8
+      "netAssets": 169129007.8,
+      "units": 19050458,
+      "holders": 4560,
+      "navReported": 8.87795,
+      "navCalculated": 8.87795,
+      "navValidated": true
     },
     {
       "ticker": "RECT11",
       "cnpj": "32274163000159",
       "referenceDate": "2026-09-01",
-      "netAssets": 766833915.29
+      "netAssets": 766833915.29,
+      "units": 8543493,
+      "holders": 44981,
+      "navReported": 89.756487,
+      "navCalculated": 89.756487,
+      "navValidated": true
     },
     {
       "ticker": "REIT11",
       "cnpj": "16841067000199",
       "referenceDate": "2026-09-01",
-      "netAssets": 7838858.27
+      "netAssets": 7838858.27,
+      "units": 26291,
+      "holders": 58,
+      "navReported": 298.157479,
+      "navCalculated": 298.157479,
+      "navValidated": true
     },
     {
       "ticker": "RELG11",
       "cnpj": "37112770000136",
       "referenceDate": "2026-08-01",
-      "netAssets": 28241916.22
+      "netAssets": 28241916.22,
+      "units": 358379,
+      "holders": 3370,
+      "navReported": 78.804607,
+      "navCalculated": 78.804607,
+      "navValidated": true
     },
     {
       "ticker": "REME11",
       "cnpj": "63051078000155",
       "referenceDate": "2026-09-01",
-      "netAssets": 57718123.2
+      "netAssets": 57718123.2,
+      "units": 655087,
+      "holders": 2624,
+      "navReported": 88.107569,
+      "navCalculated": 88.107569,
+      "navValidated": true
     },
     {
       "ticker": "RENV11",
       "cnpj": "54174907000104",
       "referenceDate": "2026-09-01",
-      "netAssets": 14708091.15
+      "netAssets": 14708091.15,
+      "units": 1026794,
+      "holders": 898,
+      "navReported": 14.324286,
+      "navCalculated": 14.324286,
+      "navValidated": true
     },
     {
       "ticker": "RFOF11",
       "cnpj": "34027774000128",
       "referenceDate": "2026-09-01",
-      "netAssets": 272041.91
+      "netAssets": 272041.91,
+      "holders": 3285,
+      "navReported": 0.354587
     },
     {
       "ticker": "RINV11",
       "cnpj": "44625612000145",
       "referenceDate": "2026-09-01",
-      "netAssets": 508022124.98
+      "netAssets": 508022124.98,
+      "units": 5031676,
+      "holders": 4967,
+      "navReported": 100.964793,
+      "navCalculated": 100.964793,
+      "navValidated": true
     },
     {
       "ticker": "RMBS11",
       "cnpj": "58366499000135",
       "referenceDate": "2026-09-01",
-      "netAssets": 21350495.05
+      "netAssets": 21350495.05,
+      "units": 2536202,
+      "holders": 4313,
+      "navReported": 8.418294,
+      "navCalculated": 8.418294,
+      "navValidated": true
     },
     {
       "ticker": "RNGO11",
       "cnpj": "15006286000190",
       "referenceDate": "2026-09-01",
-      "netAssets": 225472247.95
+      "netAssets": 225472247.95,
+      "units": 2676000,
+      "holders": 6265,
+      "navReported": 84.257193,
+      "navCalculated": 84.257193,
+      "navValidated": true
     },
     {
       "ticker": "ROOF11",
       "cnpj": "38456598000109",
       "referenceDate": "2026-09-01",
-      "netAssets": 17430113.21
+      "netAssets": 17430113.21,
+      "units": 77495,
+      "holders": 82,
+      "navReported": 224.919197,
+      "navCalculated": 224.919197,
+      "navValidated": true
     },
     {
       "ticker": "RPRI11",
       "cnpj": "42502842000191",
       "referenceDate": "2026-09-01",
-      "netAssets": 349494936.21
+      "netAssets": 349494936.21,
+      "units": 3471728,
+      "holders": 4574,
+      "navReported": 100.66887,
+      "navCalculated": 100.66887,
+      "navValidated": true
     },
     {
       "ticker": "RRCI11",
       "cnpj": "35689733000160",
       "referenceDate": "2026-09-01",
-      "netAssets": 37460131.13
+      "netAssets": 37460131.13,
+      "units": 481757,
+      "holders": 1289,
+      "navReported": 77.757316,
+      "navCalculated": 77.757316,
+      "navValidated": true
     },
     {
       "ticker": "RSPD11",
       "cnpj": "19249989000108",
       "referenceDate": "2026-09-01",
-      "netAssets": 109261212.09
+      "netAssets": 109261212.09,
+      "units": 149011,
+      "holders": 194,
+      "navReported": 733.242593,
+      "navCalculated": 733.242593,
+      "navValidated": true
     },
     {
       "ticker": "RVBI11",
       "cnpj": "35507457000171",
       "referenceDate": "2026-09-01",
-      "netAssets": 1292779269.12
+      "netAssets": 1292779269.12,
+      "units": 18399378,
+      "holders": 79431,
+      "navReported": 70.262118,
+      "navCalculated": 70.262118,
+      "navValidated": true
     },
     {
       "ticker": "RZAK11",
       "cnpj": "36642219000131",
       "referenceDate": "2026-09-01",
-      "netAssets": 781500481.18
+      "netAssets": 781500481.18,
+      "units": 8807885,
+      "holders": 42653,
+      "navReported": 88.727371,
+      "navCalculated": 88.727371,
+      "navValidated": true
     },
     {
       "ticker": "RZTR11",
       "cnpj": "36501128000186",
       "referenceDate": "2026-09-01",
-      "netAssets": 1890863033.13
+      "netAssets": 1890863033.13,
+      "units": 18851720,
+      "holders": 145497,
+      "navReported": 100.301884,
+      "navCalculated": 100.301884,
+      "navValidated": true
     },
     {
       "ticker": "RZZI11",
       "cnpj": "54134474000155",
       "referenceDate": "2026-09-01",
-      "netAssets": 145879622.14
+      "netAssets": 145879622.14,
+      "units": 111541,
+      "holders": 116,
+      "navReported": 1307.856502,
+      "navCalculated": 1307.856502,
+      "navValidated": true
     },
     {
       "ticker": "SAPI11",
       "cnpj": "51646298000142",
       "referenceDate": "2026-09-01",
-      "netAssets": 298197362.04
+      "netAssets": 298197362.04,
+      "units": 29563321,
+      "holders": 13035,
+      "navReported": 10.086734,
+      "navCalculated": 10.086734,
+      "navValidated": true
     },
     {
       "ticker": "SCPF11",
       "cnpj": "01657856000105",
       "referenceDate": "2026-09-01",
-      "netAssets": 41518236.64
+      "netAssets": 41518236.64,
+      "units": 4200000,
+      "holders": 4209,
+      "navReported": 9.885294,
+      "navCalculated": 9.885294,
+      "navValidated": true
     },
     {
       "ticker": "SEED11",
       "cnpj": "35689497000181",
       "referenceDate": "2026-09-01",
-      "netAssets": 147438693.15
+      "netAssets": 147438693.15,
+      "units": 1640000,
+      "holders": 131,
+      "navReported": 89.901642,
+      "navCalculated": 89.901642,
+      "navValidated": true
     },
     {
       "ticker": "SEQR11",
       "cnpj": "09517273000182",
       "referenceDate": "2026-09-01",
-      "netAssets": 162011590.2
+      "netAssets": 162011590.2,
+      "holders": 3850,
+      "navReported": 97.263638
     },
     {
       "ticker": "SHPH11",
       "cnpj": "03507519000159",
       "referenceDate": "2026-09-01",
-      "netAssets": 630741094.19
+      "netAssets": 630741094.19,
+      "units": 608950,
+      "holders": 2007,
+      "navReported": 1035.784702,
+      "navCalculated": 1035.784702,
+      "navValidated": true
     },
     {
       "ticker": "SHPP11",
       "cnpj": "59090726000105",
       "referenceDate": "2026-09-01",
-      "netAssets": 496458203.92
+      "netAssets": 496458203.92,
+      "units": 51067415,
+      "holders": 135,
+      "navReported": 9.721624,
+      "navCalculated": 9.721624,
+      "navValidated": true
     },
     {
       "ticker": "SJAU11",
       "cnpj": "27771547000147",
       "referenceDate": "2026-09-01",
-      "netAssets": 11714533.95
+      "netAssets": 11714533.95,
+      "holders": 914,
+      "navReported": 14.76824
     },
     {
       "ticker": "SNCI11",
       "cnpj": "41076710000182",
       "referenceDate": "2026-09-01",
-      "netAssets": 403470954.37
+      "netAssets": 403470954.37,
+      "units": 4200000,
+      "holders": 34004,
+      "navReported": 96.064513,
+      "navCalculated": 96.064513,
+      "navValidated": true
     },
     {
       "ticker": "SNEL11",
       "cnpj": "43741171000184",
       "referenceDate": "2026-09-01",
-      "netAssets": 1814685273.7
+      "netAssets": 1814685273.7,
+      "units": 227034697,
+      "holders": 141612,
+      "navReported": 7.992987,
+      "navCalculated": 7.992987,
+      "navValidated": true
     },
     {
       "ticker": "SNFF11",
       "cnpj": "40011225000168",
       "referenceDate": "2026-09-01",
-      "netAssets": 335093563.65
+      "netAssets": 335093563.65,
+      "units": 4020635,
+      "holders": 24809,
+      "navReported": 83.343443,
+      "navCalculated": 83.343443,
+      "navValidated": true
     },
     {
       "ticker": "SNME11",
       "cnpj": "52227760000130",
       "referenceDate": "2026-09-01",
-      "netAssets": 170695136.04
+      "netAssets": 170695136.04,
+      "units": 17452102,
+      "holders": 9880,
+      "navReported": 9.780778,
+      "navCalculated": 9.780778,
+      "navValidated": true
     },
     {
       "ticker": "SOFF11",
       "cnpj": "57811221000167",
       "referenceDate": "2026-09-01",
-      "netAssets": 187461310.84
+      "netAssets": 187461310.84,
+      "holders": 309,
+      "navReported": 102.163853
     },
     {
       "ticker": "SOLR11",
       "cnpj": "22169671000113",
       "referenceDate": "2026-09-01",
-      "netAssets": 60282922.86
+      "netAssets": 60282922.86,
+      "holders": 53,
+      "navReported": 888.583169
     },
     {
       "ticker": "SPDE11",
       "cnpj": "43741150000169",
       "referenceDate": "2026-09-01",
-      "netAssets": 122428329.8
+      "netAssets": 122428329.8,
+      "holders": 120,
+      "navReported": 1339.478353
     },
     {
       "ticker": "SPMO11",
       "cnpj": "40225262000179",
       "referenceDate": "2026-09-01",
-      "netAssets": 306251807.02
+      "netAssets": 306251807.02,
+      "units": 1815877,
+      "holders": 15,
+      "navReported": 168.652286,
+      "navCalculated": 168.652286,
+      "navValidated": true
     },
     {
       "ticker": "SPTW11",
       "cnpj": "43951941000113",
       "referenceDate": "2026-09-01",
-      "netAssets": 587200868.08
+      "netAssets": 587200868.08,
+      "holders": 1,
+      "navReported": 2.092447
     },
     {
       "ticker": "SPXS11",
       "cnpj": "43010543000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 189127786.0
+      "netAssets": 189127786.0,
+      "units": 20189040,
+      "holders": 19094,
+      "navReported": 9.367844,
+      "navCalculated": 9.367844,
+      "navValidated": true
     },
     {
       "ticker": "SRVD11",
       "cnpj": "38082796000141",
       "referenceDate": "2026-09-01",
-      "netAssets": 15739387.63
+      "netAssets": 15739387.63,
+      "holders": 108,
+      "navReported": 0.163465
     },
     {
       "ticker": "STRX11",
       "cnpj": "11044355000107",
       "referenceDate": "2026-09-01",
-      "netAssets": 247759594.64
+      "netAssets": 247759594.64,
+      "units": 1613559,
+      "holders": 111,
+      "navReported": 153.548519,
+      "navCalculated": 153.548519,
+      "navValidated": true
     },
     {
       "ticker": "STYI11",
       "cnpj": "59678586000190",
       "referenceDate": "2026-09-01",
-      "netAssets": 85648591.75
+      "netAssets": 85648591.75,
+      "holders": 131,
+      "navReported": 970.753287
     },
     {
       "ticker": "TCIN11",
       "cnpj": "34197700000130",
       "referenceDate": "2026-09-01",
-      "netAssets": 40455130.4
+      "netAssets": 40455130.4,
+      "holders": 108,
+      "navReported": 47.390345
     },
     {
       "ticker": "TELM11",
       "cnpj": "45188099000135",
       "referenceDate": "2026-09-01",
-      "netAssets": 32495767.8
+      "netAssets": 32495767.8,
+      "units": 3100500,
+      "holders": 487,
+      "navReported": 10.480815,
+      "navCalculated": 10.480815,
+      "navValidated": true
     },
     {
       "ticker": "TGAR11",
       "cnpj": "25032881000153",
       "referenceDate": "2026-09-01",
-      "netAssets": 2540702305.14
+      "netAssets": 2540702305.14,
+      "holders": 123842,
+      "navReported": 107.803196
     },
     {
       "ticker": "TJKB11",
       "cnpj": "39714024000148",
       "referenceDate": "2026-09-01",
-      "netAssets": 598839122.78
+      "netAssets": 598839122.78,
+      "units": 2143824,
+      "holders": 853,
+      "navReported": 279.332223,
+      "navCalculated": 279.332223,
+      "navValidated": true
     },
     {
       "ticker": "TMPS11",
       "cnpj": "42737077000199",
       "referenceDate": "2026-09-01",
-      "netAssets": 73871384.91
+      "netAssets": 73871384.91,
+      "units": 978968,
+      "holders": 1860,
+      "navReported": 75.458427,
+      "navCalculated": 75.458427,
+      "navValidated": true
     },
     {
       "ticker": "TOPP11",
       "cnpj": "56805391000176",
       "referenceDate": "2026-09-01",
-      "netAssets": 460352355.15
+      "netAssets": 460352355.15,
+      "units": 4528240,
+      "holders": 4115,
+      "navReported": 101.662534,
+      "navCalculated": 101.662534,
+      "navValidated": true
     },
     {
       "ticker": "TORD11",
       "cnpj": "30230870000118",
       "referenceDate": "2026-09-01",
-      "netAssets": 212583174.34
+      "netAssets": 212583174.34,
+      "holders": 42940,
+      "navReported": 36.718294
     },
     {
       "ticker": "TRCO11",
       "cnpj": "62173370000188",
       "referenceDate": "2026-09-01",
-      "netAssets": 35571581.1
+      "netAssets": 35571581.1,
+      "units": 3600000,
+      "holders": 4,
+      "navReported": 9.880995,
+      "navCalculated": 9.880995,
+      "navValidated": true
     },
     {
       "ticker": "TRNT11",
       "cnpj": "04722883000102",
       "referenceDate": "2026-09-01",
-      "netAssets": 665165896.44
+      "netAssets": 665165896.44,
+      "units": 3935562,
+      "holders": 490,
+      "navReported": 169.014209,
+      "navCalculated": 169.014209,
+      "navValidated": true
     },
     {
       "ticker": "TRXB11",
       "cnpj": "36368925000137",
       "referenceDate": "2026-09-01",
-      "netAssets": 396971297.83
+      "netAssets": 396971297.83,
+      "units": 4066022,
+      "holders": 898,
+      "navReported": 97.63137,
+      "navCalculated": 97.63137,
+      "navValidated": true
     },
     {
       "ticker": "TRXF11",
       "cnpj": "63134454000175",
       "referenceDate": "2026-09-01",
-      "netAssets": 170701462.56
+      "netAssets": 170701462.56,
+      "holders": 1,
+      "navReported": 0.74626
     },
     {
       "ticker": "TRXY11",
       "cnpj": "43985938000110",
       "referenceDate": "2026-09-01",
-      "netAssets": 290495322.36
+      "netAssets": 290495322.36,
+      "units": 35467014,
+      "holders": 4328,
+      "navReported": 8.190577,
+      "navCalculated": 8.190577,
+      "navValidated": true
     },
     {
       "ticker": "TSER11",
       "cnpj": "34847042000184",
       "referenceDate": "2026-09-01",
-      "netAssets": 141523252.2
+      "netAssets": 141523252.2,
+      "units": 1485504,
+      "holders": 1,
+      "navReported": 95.269519,
+      "navCalculated": 95.269519,
+      "navValidated": true
     },
     {
       "ticker": "TSNC11",
       "cnpj": "17007443000107",
       "referenceDate": "2026-09-01",
-      "netAssets": 75079814.29
+      "netAssets": 75079814.29,
+      "units": 1086780,
+      "holders": 109,
+      "navReported": 69.084648,
+      "navCalculated": 69.084648,
+      "navValidated": true
     },
     {
       "ticker": "URHF11",
       "cnpj": "52649350000187",
       "referenceDate": "2026-09-01",
-      "netAssets": 10597739.64
+      "netAssets": 10597739.64,
+      "units": 110417,
+      "holders": 353,
+      "navReported": 95.979239,
+      "navCalculated": 95.979239,
+      "navValidated": true
     },
     {
       "ticker": "URPR11",
       "cnpj": "34508872000187",
       "referenceDate": "2026-09-01",
-      "netAssets": 1059506107.99
+      "netAssets": 1059506107.99,
+      "units": 11733895,
+      "holders": 53172,
+      "navReported": 90.294494,
+      "navCalculated": 90.294494,
+      "navValidated": true
     },
     {
       "ticker": "VCJR11",
       "cnpj": "32400250000105",
       "referenceDate": "2026-09-01",
-      "netAssets": 1382846839.04
+      "netAssets": 1382846839.04,
+      "units": 14723970,
+      "holders": 26875,
+      "navReported": 93.91807,
+      "navCalculated": 93.91807,
+      "navValidated": true
     },
     {
       "ticker": "VCRI11",
       "cnpj": "41081374000166",
       "referenceDate": "2026-09-01",
-      "netAssets": 196832741.07
+      "netAssets": 196832741.07,
+      "units": 20543663,
+      "holders": 12198,
+      "navReported": 9.58119,
+      "navCalculated": 9.58119,
+      "navValidated": true
     },
     {
       "ticker": "VCRR11",
       "cnpj": "40041723000153",
       "referenceDate": "2026-09-01",
-      "netAssets": 206105350.76
+      "netAssets": 206105350.76,
+      "units": 2000000,
+      "holders": 2450,
+      "navReported": 103.052675,
+      "navCalculated": 103.052675,
+      "navValidated": true
     },
     {
       "ticker": "VERE11",
       "cnpj": "08693497000182",
       "referenceDate": "2026-09-01",
-      "netAssets": 341230161.62
+      "netAssets": 341230161.62,
+      "holders": 109,
+      "navReported": 532.701405
     },
     {
       "ticker": "VGHF11",
       "cnpj": "36771692000119",
       "referenceDate": "2026-09-01",
-      "netAssets": 1360757796.78
+      "netAssets": 1360757796.78,
+      "units": 164721683,
+      "holders": 280719,
+      "navReported": 8.260951,
+      "navCalculated": 8.260951,
+      "navValidated": true
     },
     {
       "ticker": "VGII11",
       "cnpj": "52649680000172",
       "referenceDate": "2026-09-01",
-      "netAssets": 33246484.39
+      "netAssets": 33246484.39,
+      "units": 518865,
+      "holders": 8,
+      "navReported": 64.075404,
+      "navCalculated": 64.075404,
+      "navValidated": true
     },
     {
       "ticker": "VGIP11",
       "cnpj": "34197811000146",
       "referenceDate": "2026-09-01",
-      "netAssets": 1080192774.02
+      "netAssets": 1080192774.02,
+      "units": 11787247,
+      "holders": 80988,
+      "navReported": 91.640802,
+      "navCalculated": 91.640802,
+      "navValidated": true
     },
     {
       "ticker": "VGIR11",
       "cnpj": "29852732000191",
       "referenceDate": "2026-09-01",
-      "netAssets": 1417094578.1
+      "netAssets": 1417094578.1,
+      "units": 146101287,
+      "holders": 288799,
+      "navReported": 9.699398,
+      "navCalculated": 9.699398,
+      "navValidated": true
     },
     {
       "ticker": "VGRI11",
       "cnpj": "53656482000107",
       "referenceDate": "2026-09-01",
-      "netAssets": 298575985.78
+      "netAssets": 298575985.78,
+      "units": 35021736,
+      "holders": 25229,
+      "navReported": 8.525448,
+      "navCalculated": 8.525448,
+      "navValidated": true
     },
     {
       "ticker": "VILG11",
       "cnpj": "24853044000122",
       "referenceDate": "2026-09-01",
-      "netAssets": 1629464052.36
+      "netAssets": 1629464052.36,
+      "units": 14997396,
+      "holders": 148559,
+      "navReported": 108.649798,
+      "navCalculated": 108.649798,
+      "navValidated": true
     },
     {
       "ticker": "VINO11",
       "cnpj": "12516185000170",
       "referenceDate": "2026-09-01",
-      "netAssets": 811532260.01
+      "netAssets": 811532260.01,
+      "units": 82826295,
+      "holders": 120401,
+      "navReported": 9.798003,
+      "navCalculated": 9.798003,
+      "navValidated": true
     },
     {
       "ticker": "VISC11",
       "cnpj": "17554274000125",
       "referenceDate": "2026-09-01",
-      "netAssets": 3338022866.46
+      "netAssets": 3338022866.46,
+      "holders": 346772,
+      "navReported": 115.788427
     },
     {
       "ticker": "VIUR11",
       "cnpj": "36445587000190",
       "referenceDate": "2026-09-01",
-      "netAssets": 97469418.87
+      "netAssets": 97469418.87,
+      "units": 26946220,
+      "holders": 33086,
+      "navReported": 3.617183,
+      "navCalculated": 3.617183,
+      "navValidated": true
     },
     {
       "ticker": "VJFD11",
       "cnpj": "15489509000117",
       "referenceDate": "2026-09-01",
-      "netAssets": 834191550.78
+      "netAssets": 834191550.78,
+      "holders": 106,
+      "navReported": 171.076585
     },
     {
       "ticker": "VOTS11",
       "cnpj": "17870926000130",
       "referenceDate": "2026-09-01",
-      "netAssets": 74372169.46
+      "netAssets": 74372169.46,
+      "units": 827913,
+      "holders": 558,
+      "navReported": 89.830899,
+      "navCalculated": 89.830899,
+      "navValidated": true
     },
     {
       "ticker": "VPSI11",
       "cnpj": "14721889000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 271256937.31
+      "netAssets": 271256937.31,
+      "units": 8071897,
+      "holders": 125,
+      "navReported": 33.605104,
+      "navCalculated": 33.605104,
+      "navValidated": true
     },
     {
       "ticker": "VRTA11",
       "cnpj": "11664201000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 1320375898.89
+      "netAssets": 1320375898.89,
+      "units": 15592424,
+      "holders": 99501,
+      "navReported": 84.680605,
+      "navCalculated": 84.680605,
+      "navValidated": true
     },
     {
       "ticker": "VRTM11",
       "cnpj": "51870412000113",
       "referenceDate": "2026-09-01",
-      "netAssets": 437111090.88
+      "netAssets": 437111090.88,
+      "units": 46971245,
+      "holders": 11615,
+      "navReported": 9.305929,
+      "navCalculated": 9.305929,
+      "navValidated": true
     },
     {
       "ticker": "VSHO11",
       "cnpj": "23740595000117",
       "referenceDate": "2026-09-01",
-      "netAssets": 254738813.65
+      "netAssets": 254738813.65,
+      "units": 2098800,
+      "holders": 2738,
+      "navReported": 121.373553,
+      "navCalculated": 121.373553,
+      "navValidated": true
     },
     {
       "ticker": "VSLH11",
       "cnpj": "36244015000142",
       "referenceDate": "2026-09-01",
-      "netAssets": 345416830.2
+      "netAssets": 345416830.2,
+      "units": 29864091,
+      "holders": 58582,
+      "navReported": 11.566293,
+      "navCalculated": 11.566293,
+      "navValidated": true
     },
     {
       "ticker": "VTPL11",
       "cnpj": "15098422000119",
       "referenceDate": "2026-09-01",
-      "netAssets": 167057111.95
+      "netAssets": 167057111.95,
+      "units": 1386242,
+      "holders": 125,
+      "navReported": 120.510785,
+      "navCalculated": 120.510785,
+      "navValidated": true
     },
     {
       "ticker": "VVDI11",
       "cnpj": "66661365000175",
       "referenceDate": "2026-09-01",
-      "netAssets": 50277616.95
+      "netAssets": 50277616.95,
+      "units": 5000000,
+      "holders": 123,
+      "navReported": 10.055523,
+      "navCalculated": 10.055523,
+      "navValidated": true
     },
     {
       "ticker": "VVRI11",
       "cnpj": "49184940000177",
       "referenceDate": "2026-09-01",
-      "netAssets": 153013970.0
+      "netAssets": 153013970.0,
+      "units": 17571430,
+      "holders": 368,
+      "navReported": 8.708111,
+      "navCalculated": 8.708111,
+      "navValidated": true
     },
     {
       "ticker": "VXXV11",
       "cnpj": "30982974000189",
       "referenceDate": "2026-09-01",
-      "netAssets": 264838264.3
+      "netAssets": 264838264.3,
+      "units": 513895,
+      "holders": 16,
+      "navReported": 515.354818,
+      "navCalculated": 515.354818,
+      "navValidated": true
     },
     {
       "ticker": "WHGR11",
       "cnpj": "41256643000188",
       "referenceDate": "2026-09-01",
-      "netAssets": 297319613.43
+      "netAssets": 297319613.43,
+      "holders": 14838,
+      "navReported": 9.618141
     },
     {
       "ticker": "WPLZ11",
       "cnpj": "09326861000139",
       "referenceDate": "2026-09-01",
-      "netAssets": 64796744.87
+      "netAssets": 64796744.87,
+      "units": 1186683,
+      "holders": 1398,
+      "navReported": 54.603247,
+      "navCalculated": 54.603247,
+      "navValidated": true
     },
     {
       "ticker": "WTSP11",
       "cnpj": "28693595000127",
       "referenceDate": "2026-09-01",
-      "netAssets": 119433686.44
+      "netAssets": 119433686.44,
+      "units": 1238572,
+      "holders": 246,
+      "navReported": 96.428537,
+      "navCalculated": 96.428537,
+      "navValidated": true
     },
     {
       "ticker": "XPCI11",
       "cnpj": "28516301000191",
       "referenceDate": "2026-09-01",
-      "netAssets": 780695964.87
+      "netAssets": 780695964.87,
+      "holders": 82392,
+      "navReported": 89.719163
     },
     {
       "ticker": "XPCM11",
       "cnpj": "16802320000103",
       "referenceDate": "2026-09-01",
-      "netAssets": 58775613.57
+      "netAssets": 58775613.57,
+      "holders": 14914,
+      "navReported": 15.976874
     },
     {
       "ticker": "XPIN11",
       "cnpj": "28516325000140",
       "referenceDate": "2026-09-01",
-      "netAssets": 345515543.57
+      "netAssets": 345515543.57,
+      "units": 7150422,
+      "holders": 35843,
+      "navReported": 48.321,
+      "navCalculated": 48.321,
+      "navValidated": true
     },
     {
       "ticker": "XPLG11",
       "cnpj": "26502794000185",
       "referenceDate": "2026-09-01",
-      "netAssets": 5366764195.65
+      "netAssets": 5366764195.65,
+      "holders": 364309,
+      "navReported": 104.431873
     },
     {
       "ticker": "XPML11",
       "cnpj": "28757546000100",
       "referenceDate": "2026-09-01",
-      "netAssets": 6904091273.75
+      "netAssets": 6904091273.75,
+      "units": 64308055,
+      "holders": 795394,
+      "navReported": 107.359665,
+      "navCalculated": 107.359665,
+      "navValidated": true
     },
     {
       "ticker": "XPSF11",
       "cnpj": "30983020000190",
       "referenceDate": "2026-09-01",
-      "netAssets": 325145580.44
+      "netAssets": 325145580.44,
+      "units": 43302140,
+      "holders": 52589,
+      "navReported": 7.508765,
+      "navCalculated": 7.508765,
+      "navValidated": true
     },
     {
       "ticker": "XTED11",
       "cnpj": "15006267000163",
       "referenceDate": "2026-09-01",
-      "netAssets": 130182414.37
+      "netAssets": 130182414.37,
+      "units": 9900000,
+      "holders": 2434,
+      "navReported": 13.149739,
+      "navCalculated": 13.149739,
+      "navValidated": true
     },
     {
       "ticker": "YEES11",
       "cnpj": "51385174000150",
       "referenceDate": "2026-09-01",
-      "netAssets": 30264857.88
+      "netAssets": 30264857.88,
+      "units": 300000,
+      "holders": 136,
+      "navReported": 100.88286,
+      "navCalculated": 100.88286,
+      "navValidated": true
     },
     {
       "ticker": "YUFI11",
       "cnpj": "36445551000106",
       "referenceDate": "2026-09-01",
-      "netAssets": 19300829.93
+      "netAssets": 19300829.93,
+      "units": 492650,
+      "holders": 56,
+      "navReported": 39.17757,
+      "navCalculated": 39.17757,
+      "navValidated": true
     },
     {
       "ticker": "ZAGH11",
       "cnpj": "63034711000105",
       "referenceDate": "2026-09-01",
-      "netAssets": 27159859.96
+      "netAssets": 27159859.96,
+      "holders": 1,
+      "navReported": 150.769384
     },
     {
       "ticker": "ZAVC11",
       "cnpj": "52101897000143",
       "referenceDate": "2026-09-01",
-      "netAssets": 37053512.52
+      "netAssets": 37053512.52,
+      "holders": 883,
+      "navReported": 10.343149
     },
     {
       "ticker": "ZAVI11",
       "cnpj": "40575940000123",
       "referenceDate": "2026-09-01",
-      "netAssets": 164633042.17
+      "netAssets": 164633042.17,
+      "units": 11733220,
+      "holders": 2505,
+      "navReported": 14.031361,
+      "navCalculated": 14.031361,
+      "navValidated": true
     },
     {
       "ticker": "ZIFI11",
       "cnpj": "35820768000196",
       "referenceDate": "2026-09-01",
-      "netAssets": 72721771.98
+      "netAssets": 72721771.98,
+      "units": 47485,
+      "holders": 86,
+      "navReported": 1531.468295,
+      "navCalculated": 1531.468295,
+      "navValidated": true
     }
   ],
   "limitations": "Sem preço e sem dividendos. VPA exige validação do método e competência; ticker não é correspondência oficial B3."

@@ -1,35 +1,43 @@
 {
   "schemaVersion": 1,
   "dataType": "fii-vpa-rebuild-status",
-  "runId": "42566653254",
-  "checkedAtUtc": "2026-11-09T05:19:44+00:00",
-  "tests": "failure",
-  "cvm": "skipped",
-  "tickers": "skipped",
+  "runId": "42566859892",
+  "checkedAtUtc": "2026-11-09T05:21:50+00:00",
+  "tests": "success",
+  "cvm": "success",
+  "tickers": "success",
   "metrics": {
-    "records": 1415,
-    "withUnits": 5,
-    "withHolders": 0,
-    "withValidatedNav": 0
+    "records": 1427,
+    "withUnits": 911,
+    "withHolders": 1427,
+    "withValidatedNav": 904
   },
   "mapped": {
     "records": 357,
-    "withUnits": 1,
-    "withHolders": 0,
-    "withValidatedNav": 0
+    "withUnits": 303,
+    "withHolders": 357,
+    "withValidatedNav": 302
   },
   "testsLogTail": [
-    "ERROR: test_parse_and_restatements (test_cvm_fii.MonthlyFiiTests.test_parse_and_restatements)",
-    "----------------------------------------------------------------------",
-    "Traceback (most recent call last):",
-    "  File \"/home/runner/work/guido-dividend-system/guido-dividend-system/tests/test_cvm_fii.py\", line 25, in test_parse_and_restatements",
-    "    self.assertEqual(records[0][\"navCalculated\"],13)",
-    "                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^",
-    "KeyError: 'navCalculated'",
+    "test_conflicting_units_suppress_nav (test_cvm_fii.MonthlyFiiTests.test_conflicting_units_suppress_nav) ... ok",
+    "test_inconsistent_reported_nav_is_suppressed (test_cvm_fii.MonthlyFiiTests.test_inconsistent_reported_nav_is_suppressed) ... ok",
+    "test_merge_same_cnpj_and_month_across_csv_files (test_cvm_fii.MonthlyFiiTests.test_merge_same_cnpj_and_month_across_csv_files) ... ok",
+    "test_numeric (test_cvm_fii.MonthlyFiiTests.test_numeric) ... ok",
+    "test_parse_and_restatements (test_cvm_fii.MonthlyFiiTests.test_parse_and_restatements) ... ok",
+    "test_real_2026_layout_and_reconciliation (test_cvm_fii.MonthlyFiiTests.test_real_2026_layout_and_reconciliation) ... ok",
+    "test_source_validation (test_cvm_fii.MonthlyFiiTests.test_source_validation) ... ok",
     "",
     "----------------------------------------------------------------------",
-    "Ran 7 tests in 0.006s",
+    "Ran 7 tests in 0.005s",
     "",
-    "FAILED (errors=1)"
+    "OK"
+  ],
+  "ingestionLogTail": [
+    "FII CVM: 1427 fundos, 19429 linhas validadas, período 2026"
+  ],
+  "tickersLogTail": [
+    "Fonte cadastral: HTTP 200, tipo text/csv; charset=utf-8, 122790 bytes",
+    "Diagnóstico de correspondência: {'csvRowsScanned': 1172, 'fiiRowsSeen': 532, 'rejectedIdentityRows': 5, 'tickerPairsValidated': 527, 'conflictingTickers': 0, 'ambiguousCnpjs': 35, 'fiisWithCvmMetrics': 357, 'cvmFundsUnmatched': 1070}",
+    "FIIs cruzados: {'csvRowsScanned': 1172, 'fiiRowsSeen': 532, 'rejectedIdentityRows': 5, 'tickerPairsValidated': 527, 'conflictingTickers': 0, 'ambiguousCnpjs': 35, 'fiisWithCvmMetrics': 357, 'cvmFundsUnmatched': 1070}"
   ]
 }
