@@ -40,10 +40,15 @@ jobs:
           RADAR_EOD_FEED_TOKEN: ${{ secrets.RADAR_EOD_FEED_TOKEN }}
           RADAR_EOD_PUBLICATION_ALLOWED: ${{ vars.RADAR_EOD_PUBLICATION_ALLOWED }}
         run: node scripts/refresh-radar-eod.mjs
+      - name: Espelhar dados no diretório do GitHub Pages
+        run: |
+          mkdir -p docs/data
+          cp public/data/cvm-catalog.json docs/data/cvm-catalog.json
+          if [ -f public/data/radar-eod.json ]; then cp public/data/radar-eod.json docs/data/radar-eod.json; fi
       - name: Publicar somente arquivos alterados
         run: |
-          git add public/data/cvm-catalog.json
-          if [ -f public/data/radar-eod.json ]; then git add public/data/radar-eod.json; fi
+          git add public/data/cvm-catalog.json docs/data/cvm-catalog.json
+          if [ -f public/data/radar-eod.json ]; then git add public/data/radar-eod.json docs/data/radar-eod.json; fi
           if git diff --cached --quiet; then
             echo "Sem dados novos."
             exit 0
