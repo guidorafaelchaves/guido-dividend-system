@@ -36,9 +36,13 @@
      } else {
        panel.appendChild(text('p','Valor patrimonial por cota: aguardando conciliação oficial dos campos.'));
      }
-     const pvpOutput=text('p','P/VP: aguardando fechamento oficial B3 D-1.');
+     const pvpOutput=text('p','P/VP: verificando fechamento de mercado...');
      panel.appendChild(pvpOutput);
-     if(row.navValidated===true && Number.isFinite(row.navCalculated) && row.navCalculated>0){
+     async function updatePvp(){
+       if(row.navValidated!==true || !Number.isFinite(row.navCalculated) || row.navCalculated<=0){
+         pvpOutput.textContent='P/VP indisponível: valor patrimonial por cota ainda não validado.';
+         return;
+       }
        try {
          const quote=await global.DividendMarketGateway?.fetchQuote?.(ticker);
          const result=global.DividendFiiPvp?.calculate?.(row,quote);
@@ -52,8 +56,43 @@
        } catch {
          pvpOutput.textContent='P/VP indisponível: falta fechamento B3 oficial ou licenciado para este ticker.';
        }
-     } else {
-       pvpOutput.textContent='P/VP indisponível: valor patrimonial por cota ainda não validado.';
+     }
+     await updatePvp();
+     if(row.navValidated===true && Number.isFinite(row.navCalculated) && row.navCalculated>0){
+       const wrap=document.createElement('div');
+       const input=document.createElement('input');
+       input.type='file';input.accept='.txt,.TXT';input.id='fiiCotahistFile';
+       input.setAttribute('aria-label','Selecionar arquivo oficial COTAHIST TXT da B3');
+       const uploadHint=text('small','Importar COTAHIST TXT oficial B3 (somente neste navegador; nenhuma cotação é enviada ao servidor).');
+       const importStatus=text('p','');
+       importStatus.setAttribute('role','status');
+       wrap.appendChild(uploadHint);
+       wrap.appendChild(input);
+       wrap.appendChild(importStatus);
+       panel.appendChild(wrap);
+       input.addEventListener('change',async()=>{
+         const file=input.files?.[0];
+         if(!file)return;
+         input.disabled=true;
+         importStatus.textContent='Validando arquivo oficial COTAHIST e procurando '+ticker+'...';
+         try{
+           if(file.size>90*1024*1024)throw Error('Arquivo maior que 90 MB. Escolha o COTAHIST TXT descompactado do pregão.');
+           if(!global.DividendMarketHub?.parseCotahist||!global.DividendMarketHub?.saveCandidates)
+             throw Error('Importador local B3 indisponível.');
+           const raw=await file.text();
+           const parsed=global.DividendMarketHub.parseCotahist(raw,new Set([ticker]));
+           const observations=parsed.observations||[];
+           if(!observations.length)throw Error('Nenhum fechamento à vista (mercado 010) encontrado para '+ticker+'.');
+           if(observations.some(x=>x.ticker!==ticker||x.source!=='b3-official-file'))
+             throw Error('Origem ou ticker incompatível.');
+           const old=global.DividendMarketHub.getCandidates();
+           global.DividendMarketHub.saveCandidates([...old,...observations]);
+           importStatus.textContent='Arquivo processado: '+observations.length+' observações oficiais para '+ticker+'.';
+           await updatePvp();
+         }catch(error){
+           importStatus.textContent='Importação não concluída: '+String(error?.message||error);
+         }finally{input.value='';input.disabled=false;}
+       });
      }
 
      panel.appendChild(text('small','Fonte contábil: CVM (informe mensal). Identificação ticker/CNPJ: Lummios, CC BY 4.0. Dados não são cotações nem dividendos. P/VP indisponível até fechamento de mercado autorizado, classe confirmada e cronologia da divulgação validada.'));
