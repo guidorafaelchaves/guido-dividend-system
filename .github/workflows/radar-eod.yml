@@ -69,20 +69,35 @@ jobs:
         env:
           RADAR_EOD_FEED_URL: ${{ secrets.RADAR_EOD_FEED_URL }}
           RADAR_EOD_PUBLICATION_ALLOWED: ${{ vars.RADAR_EOD_PUBLICATION_ALLOWED }}
+          RADAR_EOD_USAGE_RIGHTS_CONFIRMED: ${{ vars.RADAR_EOD_USAGE_RIGHTS_CONFIRMED }}
         run: |
-          if [ -n "$RADAR_EOD_FEED_URL" ] && [ "$RADAR_EOD_PUBLICATION_ALLOWED" = "true" ]; then
+          if [ -n "$RADAR_EOD_FEED_URL" ] && [ "$RADAR_EOD_PUBLICATION_ALLOWED" = "true" ] && [ "$RADAR_EOD_USAGE_RIGHTS_CONFIRMED" = "true" ]; then
             echo "enabled=true" >> "$GITHUB_OUTPUT"
           else
             echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "B3 não configurada; mantendo último fechamento sem alteração."
+            echo "B3 bloqueada: falta feed ou confirmação de direitos de distribuição/uso em produto; mantendo último fechamento."
           fi
       - name: Consultar B3 D-1 somente se houver feed e licença
+        id: b3
         if: ${{ steps.feed.outputs.enabled == 'true' }}
+        continue-on-error: true
         env:
           RADAR_EOD_FEED_URL: ${{ secrets.RADAR_EOD_FEED_URL }}
           RADAR_EOD_FEED_TOKEN: ${{ secrets.RADAR_EOD_FEED_TOKEN }}
           RADAR_EOD_PUBLICATION_ALLOWED: ${{ vars.RADAR_EOD_PUBLICATION_ALLOWED }}
+          RADAR_EOD_USAGE_RIGHTS_CONFIRMED: ${{ vars.RADAR_EOD_USAGE_RIGHTS_CONFIRMED }}
         run: node scripts/refresh-radar-eod.mjs
+      - name: Registrar estado da fonte B3 e cobertura FIIs
+        if: ${{ always() && steps.feed.outcome != '' }}
+        env:
+          B3_FEED_ENABLED: ${{ steps.feed.outputs.enabled }}
+          B3_STEP_OUTCOME: ${{ steps.b3.outcome }}
+          B3_RUN_ID: ${{ github.run_id }}
+        run: node scripts/report-b3-eod-status.mjs
+      - name: Avisar quando fonte B3 configurada falhar
+        if: ${{ steps.feed.outputs.enabled == 'true' && steps.b3.outcome == 'failure' }}
+        run: echo "::warning::Feed B3 falhou; CVM será publicada sem atualizar cotações."
+
       - name: Espelhar dados no diretório do GitHub Pages
         run: |
           mkdir -p docs/data
@@ -91,6 +106,7 @@ jobs:
           if [ -f public/data/cvm-fii-metrics.json ]; then cp public/data/cvm-fii-metrics.json docs/data/cvm-fii-metrics.json; fi
           if [ -f public/data/cvm-fii-by-ticker.json ]; then cp public/data/cvm-fii-by-ticker.json docs/data/cvm-fii-by-ticker.json; fi
           if [ -f public/data/radar-eod.json ]; then cp public/data/radar-eod.json docs/data/radar-eod.json; fi
+          if [ -f public/data/b3-eod-status.json ]; then cp public/data/b3-eod-status.json docs/data/b3-eod-status.json; fi
       - name: Publicar somente arquivos alterados
         run: |
           git add public/data/cvm-catalog.json docs/data/cvm-catalog.json
@@ -98,6 +114,7 @@ jobs:
           if [ -f public/data/cvm-fii-metrics.json ]; then git add public/data/cvm-fii-metrics.json docs/data/cvm-fii-metrics.json; fi
           if [ -f public/data/cvm-fii-by-ticker.json ]; then git add public/data/cvm-fii-by-ticker.json docs/data/cvm-fii-by-ticker.json; fi
           if [ -f public/data/radar-eod.json ]; then git add public/data/radar-eod.json docs/data/radar-eod.json; fi
+          if [ -f public/data/b3-eod-status.json ]; then git add public/data/b3-eod-status.json docs/data/b3-eod-status.json; fi
           if git diff --cached --quiet; then
             echo "Sem dados novos."
             exit 0
