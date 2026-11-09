@@ -1,5 +1,9 @@
 name: Radar - CVM e B3 D-1
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/radar-eod.yml'
   schedule:
     # 08:00 de Brasilia (UTC-3), de segunda a sexta, equivale a 11:00 UTC.
     # Dados B3, se disponíveis, são sempre do pregão anterior.
@@ -19,6 +23,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Testar coletores antes da sincronização
+        run: node --test tests/daily-ingestion.test.mjs
       - name: Atualizar catálogo oficial CVM
         run: node scripts/refresh-cvm-catalog.mjs
       - name: Verificar disponibilidade da fonte B3 autorizada
