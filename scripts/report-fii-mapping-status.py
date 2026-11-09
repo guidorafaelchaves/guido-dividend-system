@@ -2,6 +2,7 @@
 """Publica estado da ingestão sem credenciais, preservando distinção entre arquivo e atualização."""
 import json
 import os
+from datetime import datetime, timezone
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
@@ -28,6 +29,8 @@ if status == "success" and not valid:
 # Falha de rede/parser não torna os dados antigos novos.
 result = {
     "schemaVersion": 1,
+    "checkedAtUtc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    "githubRunId": os.environ.get("GITHUB_RUN_ID"),
     "source": "GitHub Actions - Radar CVM",
     "cvmMetricsStep": cvm,
     "mappingStep": status,
