@@ -27,6 +27,15 @@ jobs:
         run: node --test tests/daily-ingestion.test.mjs
       - name: Atualizar catálogo oficial CVM
         run: node scripts/refresh-cvm-catalog.mjs
+      - name: Extrair métricas contábeis de FIIs do informe CVM 2026
+        id: fii
+        continue-on-error: true
+        env:
+          CVM_FII_YEAR: '2026'
+        run: python3 scripts/refresh-cvm-fii.py
+      - name: Sinalizar incompatibilidade do esquema de FII
+        if: ${{ steps.fii.outcome == 'failure' }}
+        run: echo "::warning::Extração de FIIs falhou. Nenhum indicador novo será publicado; consulte o log e verifique o esquema CSV."
       - name: Verificar disponibilidade da fonte B3 autorizada
         id: feed
         env:
@@ -50,10 +59,12 @@ jobs:
         run: |
           mkdir -p docs/data
           cp public/data/cvm-catalog.json docs/data/cvm-catalog.json
+          if [ -f public/data/cvm-fii-metrics.json ]; then cp public/data/cvm-fii-metrics.json docs/data/cvm-fii-metrics.json; fi
           if [ -f public/data/radar-eod.json ]; then cp public/data/radar-eod.json docs/data/radar-eod.json; fi
       - name: Publicar somente arquivos alterados
         run: |
           git add public/data/cvm-catalog.json docs/data/cvm-catalog.json
+          if [ -f public/data/cvm-fii-metrics.json ]; then git add public/data/cvm-fii-metrics.json docs/data/cvm-fii-metrics.json; fi
           if [ -f public/data/radar-eod.json ]; then git add public/data/radar-eod.json docs/data/radar-eod.json; fi
           if git diff --cached --quiet; then
             echo "Sem dados novos."
