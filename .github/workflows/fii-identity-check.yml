@@ -1,0 +1,55 @@
+name: Diagnosticar ticker-CNPJ FIIs
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fii-identity-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: fii-identity-check
+  cancel-in-progress: false
+jobs:
+  cruzamento:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar CNPJ e regras de mapeamento
+        id: tests
+        continue-on-error: true
+        run: python3 -m unittest discover -s tests -p 'test_fii_ticker_mapping.py' -v
+      - name: Produzir arquivo de tickers a partir do último CVM validado
+        id: mapping
+        if: ${{ steps.tests.outcome == 'success' }}
+        continue-on-error: true
+        run: python3 scripts/map-cvm-fii-tickers.py
+      - name: Registrar resultado da tentativa
+        if: ${{ always() }}
+        env:
+          FII_CVM_OUTCOME: previous-validated-snapshot
+          FII_MAPPING_OUTCOME: ${{ steps.mapping.outcome }}
+        run: python3 scripts/report-fii-mapping-status.py
+      - name: Publicar arquivos e status
+        if: ${{ always() }}
+        run: |
+          mkdir -p docs/data
+          cp public/data/fii-mapping-status.json docs/data/fii-mapping-status.json
+          git add public/data/fii-mapping-status.json docs/data/fii-mapping-status.json
+          if [ -s public/data/cvm-fii-by-ticker.json ]; then
+            cp public/data/cvm-fii-by-ticker.json docs/data/cvm-fii-by-ticker.json
+            git add public/data/cvm-fii-by-ticker.json docs/data/cvm-fii-by-ticker.json
+          fi
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name="radar-eod-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: publica resultado de cruzamento FII"
+          git push
+      - name: Resumo do resultado
+        if: ${{ always() }}
+        env:
+          TESTS: ${{ steps.tests.outcome }}
+          MAPPING: ${{ steps.mapping.outcome }}
+        run: |
+          echo "Testes: $TESTS" >> "$GITHUB_STEP_SUMMARY"
+          echo "Vínculo ticker/CNPJ: $MAPPING" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$MAPPING" != "success" ]; then exit 1; fi
