@@ -8,11 +8,11 @@ from refresh_cvm_fii import extract, canonical_cnpj, numeric, official_resource
 
 class MonthlyFiiTests(unittest.TestCase):
     def test_parse_and_restatements(self):
-        csv_text = ("CNPJ_FUNDO;DT_COMPTC;VL_PATRIM_LIQ;QT_COTAS;NR_COTST\n"
-                    "12.345.678/0001-90;2026-05-31;1250,50;100;25\n"
-                    "12.345.678/0001-90;2026-06-30;1300,00;100;30\n"
-                    "12.345.678/0001-90;2026-06-30;1400,00;100;31\n"
-                    "12.345.678/0001-90;2027-01-31;1500,00;100;35\n")
+        csv_text = ("CNPJ_FUNDO;DT_COMPTC;VL_PATRIM_LIQ;QT_COTAS;NR_COTST;VALOR_PATRIMONIAL_COTAS\n"
+                    "12.345.678/0001-90;2026-05-31;1250,50;100;25;12,505\n"
+                    "12.345.678/0001-90;2026-06-30;1300,00;100;30;13\n"
+                    "12.345.678/0001-90;2026-06-30;1400,00;100;31;14\n"
+                    "12.345.678/0001-90;2027-01-31;1500,00;100;35;15\n")
         with tempfile.TemporaryDirectory() as folder:
             path=Path(folder)/"test.zip"
             with zipfile.ZipFile(path,"w") as z:
@@ -30,7 +30,7 @@ class MonthlyFiiTests(unittest.TestCase):
             path=Path(folder)/"test.zip"
             with zipfile.ZipFile(path,"w") as z:
                 z.writestr("patrimonio.csv",
-                    b"CNPJ_FUNDO;DT_COMPTC;VL_PATRIM_LIQ\n12345678000190;2026-06-30;1400\n")
+                    b"CNPJ_FUNDO;DT_COMPTC;VL_PATRIM_LIQ;VALOR_PATRIMONIAL_COTAS\n12345678000190;2026-06-30;1400;14\n")
                 z.writestr("cotas.csv",
                     b"CNPJ_FUNDO;DT_COMPTC;QT_COTAS\n12345678000190;2026-06-30;100\n")
             records,files,rows=extract(path,2026)
@@ -46,8 +46,8 @@ class MonthlyFiiTests(unittest.TestCase):
             path=Path(folder)/"test.zip"
             with zipfile.ZipFile(path,"w") as z:
                 z.writestr("inf_mensal_fii_complemento_2026.csv",
-                    ("CNPJ_Fundo_Classe;Data_Referencia;Patrimonio_Liquido;Cotas_Emitidas;Total_Numero_Cotistas\n"
-                     "11222333000181;2026-09-01;1400,00;100;51\n").encode("latin-1"))
+                    ("CNPJ_Fundo_Classe;Data_Referencia;Patrimonio_Liquido;Cotas_Emitidas;Total_Numero_Cotistas;Valor_Patrimonial_Cotas\n"
+                     "11222333000181;2026-09-01;1400,00;100;51;14\n").encode("latin-1"))
                 z.writestr("inf_mensal_fii_geral_2026.csv",
                     ("CNPJ_Fundo_Classe;Data_Referencia;Quantidade_Cotas_Emitidas\n"
                      "11222333000181;2026-09-01;100\n").encode("latin-1"))
@@ -56,6 +56,7 @@ class MonthlyFiiTests(unittest.TestCase):
         self.assertEqual(records[0]["units"],100)
         self.assertEqual(records[0]["holders"],51)
         self.assertEqual(records[0]["navCalculated"],14)
+        self.assertTrue(records[0]["navValidated"])
 
     def test_conflicting_units_suppress_nav(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -67,6 +68,17 @@ class MonthlyFiiTests(unittest.TestCase):
                 z.writestr("geral.csv",
                     ("CNPJ_Fundo_Classe;Data_Referencia;Quantidade_Cotas_Emitidas\n"
                      "11222333000181;2026-09-01;200\n").encode("latin-1"))
+            records,files,rows=extract(path,2026)
+        self.assertNotIn("navCalculated",records[0])
+
+
+    def test_inconsistent_reported_nav_is_suppressed(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/"test.zip"
+            with zipfile.ZipFile(path,"w") as z:
+                z.writestr("complemento.csv",
+                    ("CNPJ_Fundo_Classe;Data_Referencia;Patrimonio_Liquido;Cotas_Emitidas;Valor_Patrimonial_Cotas\n"
+                     "11222333000181;2026-09-01;1400;100;20\n").encode("latin-1"))
             records,files,rows=extract(path,2026)
         self.assertNotIn("navCalculated",records[0])
 
