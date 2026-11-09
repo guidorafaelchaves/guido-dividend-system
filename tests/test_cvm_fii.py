@@ -22,7 +22,7 @@ class MonthlyFiiTests(unittest.TestCase):
         self.assertEqual(rows,3)
         self.assertEqual(records[0]["referenceDate"],"2026-06-30")
         self.assertEqual(records[0]["netAssets"],1300)
-        self.assertEqual(records[0]["navCalculated"],13)
+        self.assertNotIn("navCalculated",records[0])  # reapresentação conflitante sem versão identificável
         self.assertNotIn("ticker",records[0])
 
     def test_merge_same_cnpj_and_month_across_csv_files(self):
