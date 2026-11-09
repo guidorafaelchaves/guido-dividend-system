@@ -1,0 +1,35 @@
+name: Radar B3 - fechamento diário
+on:
+  schedule:
+    # 23:00 Brasilia (UTC-3) de segunda a sexta = 02:00 UTC de terça a sábado.
+    - cron: '0 2 * * 2-6'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: radar-eod
+  cancel-in-progress: false
+jobs:
+  fechamento:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar e gerar snapshot do feed autorizado
+        env:
+          RADAR_EOD_FEED_URL: ${{ secrets.RADAR_EOD_FEED_URL }}
+          RADAR_EOD_FEED_TOKEN: ${{ secrets.RADAR_EOD_FEED_TOKEN }}
+          RADAR_EOD_PUBLICATION_ALLOWED: ${{ vars.RADAR_EOD_PUBLICATION_ALLOWED }}
+        run: node scripts/refresh-radar-eod.mjs
+      - name: Publicar apenas quando o arquivo mudar
+        run: |
+          git add public/data/radar-eod.json
+          if git diff --cached --quiet; then
+            echo "Sem alterações no fechamento."
+            exit 0
+          fi
+          git -c user.name="radar-eod-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: atualiza fechamento B3"
+          git push
