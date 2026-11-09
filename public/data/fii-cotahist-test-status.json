@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "testSuite": "fii-cotahist-to-pvp",
+  "outcome": "success",
+  "runId": "42568155118",
+  "checkedAtUtc": "2026-11-09T05:35:16.455Z",
+  "logTail": [
+    "# Subtest: não usa ticker de outro FII no cálculo de P/VP",
+    "ok 3 - não usa ticker de outro FII no cálculo de P/VP",
+    "  ---",
+    "  duration_ms: 0.178885",
+    "  type: 'test'",
+    "  ...",
+    "# Subtest: CSV de preços manuais não satisfaz fonte oficial para P/VP",
+    "ok 4 - CSV de preços manuais não satisfaz fonte oficial para P/VP",
+    "  ---",
+    "  duration_ms: 0.667717",
+    "  type: 'test'",
+    "  ...",
+    "1..4",
+    "# tests 4",
+    "# suites 0",
+    "# pass 4",
+    "# fail 0",
+    "# cancelled 0",
+    "# skipped 0",
+    "# todo 0",
+    "# duration_ms 116.18544",
+    ""
+  ]
+}
