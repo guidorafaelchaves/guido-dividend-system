@@ -112,16 +112,23 @@ def extract(zip_path, year):
                         record[key] = int(n) if key in ("units","holders") else round(n,6)
                     if len(record) == 2:
                         continue
-                    if record.get("units",0)>0 and "netAssets" in record:
-                        record["navCalculated"] = round(record["netAssets"]/record["units"],6)
                     key = cnpj
                     prev = selected.get(key)
-                    # Reapresentação: para datas iguais, preferir registro com mais métricas não vazias.
-                    if prev is None or (ref,len(record))>(prev["referenceDate"],len(prev)):
+                    if prev is None or ref > prev["referenceDate"]:
                         selected[key] = record
+                    elif ref == prev["referenceDate"]:
+                        # O ZIP da CVM pode distribuir colunas entre CSVs distintos.
+                        # Unir somente mesma competência; conflito no mesmo campo
+                        # mantém a primeira observação até revisão de reapresentação.
+                        for field,value in record.items():
+                            if field not in prev:
+                                prev[field] = value
                     accepted += 1
     if not scanned or not selected:
         raise ValueError("Nenhum CSV com colunas financeiras reconhecidas; esquema oficial exige revisão")
+    for record in selected.values():
+        if record.get("units",0)>0 and "netAssets" in record:
+            record["navCalculated"] = round(record["netAssets"]/record["units"],6)
     return sorted(selected.values(), key=lambda r:r["cnpj"]), scanned, accepted
 
 def official_resource(catalog, year):
