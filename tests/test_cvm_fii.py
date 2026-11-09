@@ -30,9 +30,9 @@ class MonthlyFiiTests(unittest.TestCase):
             path=Path(folder)/"test.zip"
             with zipfile.ZipFile(path,"w") as z:
                 z.writestr("patrimonio.csv",
-                    b"CNPJ_FUNDO;DT_COMPTC;VL_PATRIM_LIQ\\n12345678000190;2026-06-30;1400\\n")
+                    b"CNPJ_FUNDO;DT_COMPTC;VL_PATRIM_LIQ\n12345678000190;2026-06-30;1400\n")
                 z.writestr("cotas.csv",
-                    b"CNPJ_FUNDO;DT_COMPTC;QT_COTAS\\n12345678000190;2026-06-30;100\\n")
+                    b"CNPJ_FUNDO;DT_COMPTC;QT_COTAS\n12345678000190;2026-06-30;100\n")
             records,files,rows=extract(path,2026)
         self.assertEqual(files,2)
         self.assertEqual(rows,2)
