@@ -42,19 +42,24 @@ jobs:
         env:
           CVM_FII_YEAR: '2026'
         run: python3 scripts/refresh-cvm-fii.py
-      - name: Cruzar CNPJ e ticker quando houver métricas CVM
+      - name: Cruzar CNPJ e ticker com último informe CVM válido
         id: mapping
-        if: ${{ steps.fii.outcome == 'success' }}
+        if: ${{ always() && (steps.fii.outcome == 'success' || steps.fii.outcome == 'failure') }}
         continue-on-error: true
-        run: python3 scripts/map-cvm-fii-tickers.py
+        run: |
+          if [ ! -s public/data/cvm-fii-metrics.json ]; then
+            echo "::error::Não existe arquivo contábil CVM validado."
+            exit 1
+          fi
+          python3 scripts/map-cvm-fii-tickers.py
       - name: Avisar se o mapeamento não pôde ser publicado
-        if: ${{ steps.fii.outcome == 'success' && steps.mapping.outcome == 'failure' }}
+        if: ${{ always() && steps.mapping.outcome == 'failure' }}
         run: echo "::warning::Vínculo ticker/CNPJ não publicado; confira fonte cadastral e validações."
       - name: Sinalizar incompatibilidade do esquema de FII
         if: ${{ steps.fii.outcome == 'failure' }}
         run: echo "::warning::Extração de FIIs falhou. Nenhum indicador novo será publicado; consulte o log e verifique o esquema CSV."
       - name: Publicar diagnóstico da associação CNPJ e ticker
-        if: ${{ always() && steps.fii.outcome != '' }}
+        if: ${{ always() && steps.mapping.outcome != '' }}
         env:
           FII_CVM_OUTCOME: ${{ steps.fii.outcome }}
           FII_MAPPING_OUTCOME: ${{ steps.mapping.outcome }}
