@@ -110,7 +110,10 @@ def universe(csv_text):
         if ticker in tickers and tickers[ticker]["cnpj"]!=cnpj:
             conflicts.add(ticker)
         else:
-            tickers[ticker]={"cnpj":cnpj,"name":str(row.get("nome","")).strip()[:160],"sector":str(row.get("setor","")).strip()[:100]}
+            name=str(row.get("nome","")).strip()[:160]
+            asset_class="FIAGRO" if "fiagro" in name.casefold() else "FII_CANDIDATE"
+            tickers[ticker]={"cnpj":cnpj,"name":name,"sector":str(row.get("setor","")).strip()[:100],
+                             "assetClass":asset_class}
     for ticker in conflicts:
         del tickers[ticker]
     return [{"ticker":t,**data,"identityStatus":"third-party-catalog-unverified-b3"}
@@ -163,10 +166,13 @@ def main():
     tmp.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     tmp.replace(OUTPUT)
     universe_output=ROOT/"public/data/fii-universe.json"
+    fiagro_count=sum(row["assetClass"]=="FIAGRO" for row in all_fiis)
     universe_payload={"schemaVersion":1,"dataType":"fii-ticker-cnpj-catalog","source":SOURCE,
         "attribution":ATTRIBUTION,"license":"CC BY 4.0",
-        "count":len(all_fiis),"records":all_fiis,
-        "limitations":"Identificacao cadastral de terceiro; nao comprova listagem ativa na B3. Sem precos, dividendos ou DY."}
+        "count":len(all_fiis),"fiiCandidates":len(all_fiis)-fiagro_count,"fiagroCandidates":fiagro_count,
+        "classificationMethod":"FIAGRO identificado por nome; demais sao candidatos FII, sem confirmacao individual B3",
+        "records":all_fiis,
+        "limitations":"Identificacao cadastral de terceiro; inclui FIAGROs. Nao comprova listagem ativa na B3. Sem precos, dividendos ou DY."}
     universe_tmp=universe_output.with_suffix(".json.tmp")
     universe_tmp.write_text(json.dumps(universe_payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     universe_tmp.replace(universe_output)
