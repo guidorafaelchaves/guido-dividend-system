@@ -1555,7 +1555,7 @@
     const paint = () => {
       const q = input.value.trim().toLowerCase();
       const rows = assets().filter(asset => `${asset.ticker} ${asset.name} ${asset.type}`.toLowerCase().includes(q || ' ')).slice(0, 5);
-      results.innerHTML = rows.map(asset => `<a class="search-chip" href="/ativos/${esc(asset.ticker)}/">${esc(asset.ticker)} <span>${esc(asset.name)}</span></a>`).join('') || '<span class="search-chip">Nenhum ativo encontrado</span>';
+      results.innerHTML = rows.map(asset => `<a class="search-chip" href="/ativos/?ticker=${esc(asset.ticker)}">${esc(asset.ticker)} <span>${esc(asset.name)}</span></a>`).join('') || '<span class="search-chip">Nenhum ativo encontrado</span>';
     };
     input.addEventListener('input', paint);
     document.getElementById('heroSearchForm')?.addEventListener('submit', ev => {
