@@ -257,6 +257,7 @@
     </section>`;
   }
 
+  let assetCatalogLimit=100;
   function paintAssetRows(){
     const data = assetDiscoveryData();
     const q = (document.getElementById('assetSearch')?.value || '').toLowerCase();
@@ -281,11 +282,16 @@
     if(body) body.innerHTML = rows.length ? rows.slice(0, 12).map(renderDiscoveryAssetCard).join('') : '<div class="empty">Nenhum ativo possui evento publicado com estes criterios. Amplie o periodo, remova filtro de retorno ou veja o catalogo completo.</div>';
     const catalog = document.getElementById('assetCatalogRows');
     if(catalog){
-      const candidates=(includeEmpty || q.trim()?data.all:data.withFuture).filter(row=>{
+      const universe=(intent==='fii'||intent==='cvm')?sourceRows:(includeEmpty||q.trim()?data.all:data.withFuture);
+      const candidates=universe.filter(row=>{
         const hay=`${row.ticker} ${row.asset.name} ${row.asset.sector} ${row.asset.type} ${row.asset.cnpj || ''}`.toLowerCase();
         return !q.trim() || hay.includes(q.trim());
       });
-      catalog.innerHTML=candidates.slice(0,100).map(renderAssetCatalogRow).join('');
+      catalog.innerHTML=candidates.slice(0,assetCatalogLimit).map(renderAssetCatalogRow).join('');
+      const summary=document.getElementById('assetCatalogSummary');
+      if(summary)summary.textContent=`Exibindo ${Math.min(candidates.length,assetCatalogLimit)} de ${candidates.length} ativos com estes filtros.`;
+      const more=document.getElementById('assetCatalogMore');
+      if(more)more.hidden=candidates.length<=assetCatalogLimit;
     }
     wireReveals();
   }
@@ -297,10 +303,12 @@
       button.classList.add('active');
       const input = document.getElementById('assetIntent');
       if(input) input.value = button.dataset.intent || 'upcoming';
+      assetCatalogLimit=100;
       paintAssetRows();
     }));
-    document.getElementById('assetSearch')?.addEventListener('input', paintAssetRows);
-    document.getElementById('includeEmptyAssets')?.addEventListener('change', paintAssetRows);
+    document.getElementById('assetSearch')?.addEventListener('input',()=>{assetCatalogLimit=100;paintAssetRows();});
+    document.getElementById('includeEmptyAssets')?.addEventListener('change',()=>{assetCatalogLimit=100;paintAssetRows();});
+    document.getElementById('assetCatalogMore')?.addEventListener('click',()=>{assetCatalogLimit+=100;paintAssetRows();});
     document.addEventListener('click', ev => {
       const capture = ev.target.closest('.asset-capture');
       if(capture){
