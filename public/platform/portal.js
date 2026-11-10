@@ -470,7 +470,10 @@
   }
 
   function renderEventRow(event){
-    return `<div class="event-row"><strong>${humanDistance(event.paymentDate)}</strong><div><b>${esc(event.ticker)} - ${esc(event.kind)}</b><br><span class="muted">Data-com: ${fullDate(event.exDate)} | Pagamento: ${fullDate(event.paymentDate)} | Fonte: ${esc(event.source)}</span></div><div>${statusChip(event.status)}<br><span class="event-value">${eventAmount(event)}</span></div></div>`;
+    const docConfirmed=event.verificationStatus==='human-reviewed-announcement';
+    const safeSource=docConfirmed && /^https:\/\//i.test(event.sourceUrl||'')
+      ? ` | <a href="${esc(event.sourceUrl)}" target="_blank" rel="noopener noreferrer">Documento revisado</a>` : '';
+    return `<div class="event-row"><strong>${humanDistance(event.paymentDate)}</strong><div><b>${esc(event.ticker)} - ${esc(event.kind)}</b><br><span class="muted">Data-com: ${fullDate(event.exDate)} | Pagamento informado: ${fullDate(event.paymentDate)} | Fonte: ${esc(event.source)}${safeSource}</span>${docConfirmed?'<br><small class="muted">Anúncio conferido; pagamento efetivo não verificado.</small>':''}</div><div>${docConfirmed?'<span class="status confirmed">Anúncio conferido</span>':statusChip(event.status)}<br><span class="event-value">${eventAmount(event)}</span></div></div>`;
   }
 
   function calendarViews(simulation = {}){
