@@ -39,6 +39,8 @@ jobs:
         run: node tests/event-deduplication.test.mjs
       - name: FII catalog and classification
         run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+      - name: B3 evidence freshness and detail pages
+        run: node tests/b3-evidence.test.mjs
       - name: FII P/VP eligibility
         run: node --test tests/fii-pvp.test.mjs
       - name: COTAHIST FII end-to-end
