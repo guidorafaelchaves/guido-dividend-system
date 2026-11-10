@@ -2,6 +2,37 @@
  'use strict';
  function text(tag,content){const node=document.createElement(tag);node.textContent=String(content);return node;}
  function money(n){return Number(n).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}
+ async function showB3Evidence(root,ticker){
+   const section=document.createElement('section');
+   section.className='panel reveal';
+   section.id='b3InstrumentEvidence';
+   section.style.marginTop='18px';
+   section.appendChild(text('h2','Situação cadastral B3 — evidência'));
+   const status=text('p','Sem confirmação B3: aguardando arquivo de instrumentos autorizado.');
+   section.appendChild(status);
+   root.appendChild(section);
+   try{
+     const universeResponse=await fetch('/data/fii-universe.json',{cache:'no-store'});
+     if(!universeResponse.ok)return;
+     const universe=await universeResponse.json();
+     if(universe.dataType!=='fii-ticker-cnpj-catalog'||!Array.isArray(universe.records))return;
+     const asset=universe.records.find(r=>r.ticker===ticker);
+     if(!asset){status.textContent='Ticker não encontrado no universo cadastral atual; situação B3 não verificada.';return;}
+     section.appendChild(text('p','Identificação cadastral: '+(asset.name||ticker)+' · CNPJ '+asset.cnpj+' · '+(asset.assetClass==='FIAGRO'?'FIAGRO':'FII candidato')+' (Lummios, CC BY 4.0).'));
+     if(!global.DividendB3Evidence)return;
+     const response=await fetch('/data/fii-b3-reconciliation.json',{cache:'no-store'});
+     if(!response.ok)return;
+     const payload=await response.json();
+     const result=global.DividendB3Evidence.find(payload,ticker,asset.cnpj);
+     status.textContent=global.DividendB3Evidence.label(result.status)+'.';
+     if(result.meta.valid){
+       section.appendChild(text('small','Fonte do snapshot: '+result.meta.sourceName+' · referência '+result.meta.date+
+         ' · idade '+result.meta.ageDays+' dias'+(result.meta.stale?' · evidência vencida':'')+
+         '. Cadastro não comprova transações, volume ou liquidez.'));
+     }
+     if(result.isin)section.appendChild(text('p','ISIN informado no snapshot autorizado: '+result.isin));
+   }catch(_){status.textContent='Evidência B3 não disponível ou inválida; nenhuma situação foi presumida.';}
+ }
  async function render(){
    const match=location.pathname.match(/\/ativos\/([A-Za-z0-9]{4,12})\/?(?:index\.html)?$/i);
    if(!match)return;
@@ -15,6 +46,7 @@
    panel.appendChild(text('h2','Dados contábeis CVM — FII'));
    panel.appendChild(text('p','Consultando correspondência entre ticker e CNPJ...'));
    root.appendChild(panel);
+   void showB3Evidence(root,ticker);
    try{
      const response=await fetch('/data/cvm-fii-by-ticker.json',{cache:'no-cache'});
      if(!response.ok)throw Error('Arquivo de vínculos ainda não publicado');
