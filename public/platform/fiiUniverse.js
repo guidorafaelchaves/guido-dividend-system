@@ -5,7 +5,7 @@
     if(!main) return;
     const section=document.createElement('section');
     section.className='panel reveal';
-    section.innerHTML='<span class="eyebrow">Cobertura de FIIs</span><h2>Universo cadastral de FIIs</h2><p class="muted">Identificacoes ticker/CNPJ do cadastro aberto Lummios (CC BY 4.0). Nao equivale a lista oficial de negociacao ativa na B3; valores, cotacoes e proventos nao foram inferidos.</p><input id="fiiUniverseSearch" type="search" placeholder="Filtrar por ticker ou CNPJ" aria-label="Filtrar FIIs"><p id="fiiUniverseCount" class="muted">Consultando catalogo...</p><div class="table-wrap"><table><thead><tr><th>Ticker</th><th>CNPJ</th><th>Origem</th></tr></thead><tbody id="fiiUniverseRows"></tbody></table></div>';
+    section.innerHTML='<span class="eyebrow">Cobertura de FIIs</span><h2>Universo cadastral de FIIs</h2><p class="muted">Identificacoes ticker/CNPJ do cadastro aberto Lummios (CC BY 4.0). Nao equivale a lista oficial de negociacao ativa na B3; valores, cotacoes e proventos nao foram inferidos.</p><input id="fiiUniverseSearch" type="search" placeholder="Filtrar por ticker ou CNPJ" aria-label="Filtrar FIIs"><p id="fiiUniverseCount" class="muted">Consultando catalogo...</p><div class="table-wrap"><table><thead><tr><th>Ticker</th><th>Fundo / setor</th><th>CNPJ</th></tr></thead><tbody id="fiiUniverseRows"></tbody></table></div>';
     main.appendChild(section);
     try{
       const response=await fetch('/data/fii-universe.json',{cache:'no-store'});
@@ -18,9 +18,10 @@
       const count=section.querySelector('#fiiUniverseCount');
       function render(){
         const q=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'');
-        const found=records.filter(r=>(r.ticker+r.cnpj).includes(q));
+        const found=records.filter(r=>(r.ticker+r.cnpj+(r.name||'').toUpperCase()+(r.sector||'').toUpperCase()).includes(q));
         count.textContent=found.length+' identificacoes encontradas de '+records.length+'. Exibindo ate 100 por vez. Fonte: Lummios (CC BY 4.0).';
-        body.innerHTML=found.slice(0,100).map(r=>'<tr><td><strong>'+r.ticker+'</strong></td><td>'+r.cnpj+'</td><td>Cadastro terceiro; B3 nao validada</td></tr>').join('');
+        const safe=v=>String(v||'').replace(/[&<>\"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[ch]));
+        body.innerHTML=found.slice(0,100).map(r=>'<tr><td><strong>'+safe(r.ticker)+'</strong></td><td>'+safe(r.name||'Nome indisponivel')+'<small class="muted"> '+safe(r.sector||'')+'</small></td><td>'+safe(r.cnpj)+'</td></tr>').join('');
       }
       input.addEventListener('input',render);
       render();
