@@ -71,7 +71,7 @@ def reconcile(catalog, csv_text, snapshot_date, source_name, rights_confirmed=Fa
         ticker = item["ticker"]
         candidates = by_ticker.get(ticker, [])
         unique = set(candidates)
-        entry = {"ticker": ticker, "assetClass": item.get("assetClass", "FII_CANDIDATE"),
+        entry = {"ticker": ticker, "cnpj": item["cnpj"], "assetClass": item.get("assetClass", "FII_CANDIDATE"),
                  "verificationStatus": "unverified"}
         if candidates and (None in unique or len(unique) != 1):
             entry["verificationStatus"] = "ambiguous"
