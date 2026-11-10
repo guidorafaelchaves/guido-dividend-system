@@ -54,7 +54,8 @@
         count.textContent=filtered.length+' resultados (universo: '+records.length+', incluindo FIAGROs). Exibindo 100 por vez.';
         body.innerHTML=filtered.slice(0,100).map(r=>{
           const cls=r.assetClass==='FIAGRO'||/fiagro/i.test(r.name||'')?'FIAGRO':'FII candidato';
-          const status=evidence?.get(r.ticker)?.verificationStatus||'unverified';
+          const row=evidence?.get(r.ticker);
+          const status=row&&row.cnpj===r.cnpj?row.verificationStatus:'unverified';
           return '<tr><td><strong>'+escapeHtml(r.ticker)+'</strong></td><td>'+escapeHtml(cls)+'</td><td>'+escapeHtml(r.name||'Nome indisponível')+' <small class="muted">'+escapeHtml(r.sector||'')+'</small></td><td>'+escapeHtml(r.cnpj)+'</td><td>'+escapeHtml(statuses[status]||statuses.unverified)+'</td></tr>';
         }).join('');
       }
