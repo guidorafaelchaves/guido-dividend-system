@@ -37,6 +37,8 @@ jobs:
         run: node tests/market-integrity.test.mjs
       - name: Event deduplication
         run: node tests/event-deduplication.test.mjs
+      - name: FII CVM accounting integration
+        run: node tests/fii-cvm-enrichment.test.mjs
       - name: FII integrated discovery catalog
         run: node tests/fii-catalog-discovery.test.mjs
       - name: FII catalog and classification
