@@ -77,6 +77,33 @@
     };
   }
 
+
+  // Identidade economica: mesma parcela, mesmo ativo, tipo, datas e valor.
+  // Fonte e ID nao sao parte da chave: publicacoes distintas podem se referir ao mesmo pagamento.
+  function eventIdentity(event){
+    const e=normalizeEvent(event);
+    if(!e.ticker || !e.paymentDate || !e.exDate || !(e.amount>0)) return null;
+    const kind=e.kind.toLowerCase().trim().replace(/\\s+/g,' ');
+    const amount=e.amount.toFixed(8);
+    return [e.ticker,kind,amount,e.exDate,e.paymentDate].join('|');
+  }
+  function deduplicateEvents(events){
+    const byKey=new Map();
+    const rank=e=>{
+      const source=String(e.source||'').toLowerCase();
+      return (({confirmed:4,provisioned:3,estimated:2,projected:1})[e.status]||0)*10+
+        (source.includes('official')||source.includes('b3')?5:source.includes('curated')?4:source.includes('demo')?0:2);
+    };
+    (events||[]).forEach(raw=>{
+      const e=normalizeEvent(raw);
+      // A falta de datas ou valor exige revisao, nao fusao automatica.
+      const key=eventIdentity(e)||'id:'+e.id;
+      const prev=byKey.get(key);
+      if(!prev||rank(e)>rank(prev)) byKey.set(key,e);
+    });
+    return [...byKey.values()];
+  }
+
   function statusLabel(status){
     return ({ confirmed:'Confirmado', provisioned:'Provisionado', estimated:'Estimado', projected:'Projetado' })[status] || 'Estimado';
   }
@@ -119,10 +146,10 @@
             }));
           const byId = new Map(baseEvents.map(event => [event.id, event]));
           publishedEvents.forEach(event => byId.set(event.id, event));
-          return [...byId.values()];
+          return deduplicateEvents([...byId.values()]);
         }
       }catch{}
-      return baseEvents;
+      return deduplicateEvents(baseEvents);
     }
   };
 
@@ -133,6 +160,8 @@
     normalizeTicker,
     normalizeAsset,
     normalizeEvent,
+    eventIdentity,
+    deduplicateEvents,
     statusLabel,
     assetRepository,
     eventRepository,
