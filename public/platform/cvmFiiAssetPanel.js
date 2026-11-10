@@ -39,7 +39,7 @@
    const ticker=String(queryTicker||match?.[1]||'').trim().toUpperCase();
    if(!/^[A-Z0-9]{4,12}$/.test(ticker))return;
    const root=document.getElementById('portalMain');
-   if(!root)return;
+   if(!root || document.getElementById('cvmFiiPanel'))return;
    const panel=document.createElement('section');
    panel.className='panel reveal';
    panel.id='cvmFiiPanel';
@@ -134,5 +134,6 @@
      panel.replaceChildren(text('h2','Dados contábeis CVM — FII'),text('p','Dados contábeis por ticker ainda indisponíveis. Não alteramos os indicadores existentes.'));
    }
  }
+ global.DividendFiiAssetPanel=Object.freeze({render});
  document.addEventListener('DOMContentLoaded',()=>{render();});
 })(window,document);
