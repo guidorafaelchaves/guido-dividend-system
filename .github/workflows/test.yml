@@ -37,6 +37,8 @@ jobs:
         run: node tests/market-integrity.test.mjs
       - name: Event deduplication
         run: node tests/event-deduplication.test.mjs
+      - name: FII reviewed events integration
+        run: node tests/fii-reviewed-events.test.mjs
       - name: FII document-linked distributions
         run: node tests/fii-distributions.test.mjs
       - name: FII CVM accounting integration
