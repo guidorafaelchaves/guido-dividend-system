@@ -35,8 +35,9 @@
  }
  async function render(){
    const match=location.pathname.match(/\/ativos\/([A-Za-z0-9]{4,12})\/?(?:index\.html)?$/i);
-   if(!match)return;
-   const ticker=match[1].toUpperCase();
+   const queryTicker=new URLSearchParams(location.search).get('ticker');
+   const ticker=String(queryTicker||match?.[1]||'').trim().toUpperCase();
+   if(!/^[A-Z0-9]{4,12}$/.test(ticker))return;
    const root=document.getElementById('portalMain');
    if(!root)return;
    const panel=document.createElement('section');
