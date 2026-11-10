@@ -15,7 +15,6 @@ const F=context.window.DividendFiiCatalog;
 const list=F.normalize(data);
 const selected=list.find(x=>x.ticker==='MXRF11');
 assert.ok(selected);
-F.all=undefined; // Object.freeze prevents modification; provide a wrapper below.
 const catalog={all:()=>list};
 context.window.DividendFiiCatalog=catalog;
 context.window.DividendCalendarAnalytics={};
