@@ -37,6 +37,7 @@
        payload.dataType!=='monthly-fii-accounting-by-ticker' ||
        !Array.isArray(payload.records)) return catalog.slice();
     const allowed=new Map();
+    const quarantined=new Set();
     const maxDate=today.toISOString().slice(0,10);
     for(const item of payload.records){
       const ticker=String(item.ticker||'').trim().toUpperCase();
@@ -57,10 +58,13 @@
                     navCalculated:nav,navValidated:nav!==null,
                     source:'CVM - informe mensal FII',dataType:'monthly-fii-accounting'};
       const key=ticker+'|'+cnpj;
+      if(quarantined.has(key))continue;
       const previous=allowed.get(key);
       if(!previous||ref>previous.referenceDate)allowed.set(key,record);
-      else if(ref===previous.referenceDate && JSON.stringify(record)!==JSON.stringify(previous))
+      else if(ref===previous.referenceDate && JSON.stringify(record)!==JSON.stringify(previous)){
         allowed.delete(key);
+        quarantined.add(key);
+      }
     }
     return (catalog||[]).map(asset=>{
       const observed=allowed.get(asset.ticker+'|'+asset.cnpj);
