@@ -35,6 +35,8 @@ jobs:
         run: node tests/market-hub.test.mjs
       - name: Market data integration
         run: node tests/market-integrity.test.mjs
+      - name: Event deduplication
+        run: node tests/event-deduplication.test.mjs
       - name: FII P/VP eligibility
         run: node --test tests/fii-pvp.test.mjs
       - name: COTAHIST FII end-to-end
