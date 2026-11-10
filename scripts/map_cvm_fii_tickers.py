@@ -107,14 +107,14 @@ def universe(csv_text):
         cnpj=normalize_cnpj(row.get("cnpj"))
         if not re.fullmatch(r"[A-Z]{4}11",ticker) or not cnpj:
             continue
-        if ticker in tickers and tickers[ticker]!=cnpj:
+        if ticker in tickers and tickers[ticker]["cnpj"]!=cnpj:
             conflicts.add(ticker)
         else:
-            tickers[ticker]=cnpj
+            tickers[ticker]={"cnpj":cnpj,"name":str(row.get("nome","")).strip()[:160],"sector":str(row.get("setor","")).strip()[:100]}
     for ticker in conflicts:
         del tickers[ticker]
-    return [{"ticker":t,"cnpj":c,"identityStatus":"third-party-catalog-unverified-b3"}
-            for t,c in sorted(tickers.items())]
+    return [{"ticker":t,**data,"identityStatus":"third-party-catalog-unverified-b3"}
+            for t,data in sorted(tickers.items())]
 
 def main():
     payload=json.loads(METRICS.read_text(encoding="utf-8"))
