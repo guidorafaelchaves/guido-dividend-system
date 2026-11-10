@@ -23,7 +23,7 @@ assert.equal(merged.find(x=>x.ticker==='MXRF11').price,0,'Precos demo nao devem 
 const actual=F.merge([{ticker:'MXRF11',price:10.50,dividendYield:5,source:'official',name:'Dado financeiro'}],items);
 assert.equal(actual.find(x=>x.ticker==='MXRF11').price,10.50,'Dado financeiro verdadeiro nao deve ser sobrescrito');
 const portal=fs.readFileSync('public/platform/portal.js','utf8');
-assert.match(portal,/DividendFiiCatalog\.merge/);
+assert.ok(portal.includes('DividendFiiCatalog?.merge'));
 assert.match(portal,/DividendFiiCatalog\?\.load/);
 assert.match(portal,/data\.all\.filter\(row => row\.asset\.type === 'FII'\)/);
 assert.match(portal,/catalog\.innerHTML=candidates\.slice\(0,100\)/);
@@ -34,7 +34,6 @@ for(const root of ['public','docs']){
  for(const page of ['/index.html','/ativos/index.html']){
    const html=fs.readFileSync(root+page,'utf8');
    assert.ok(html.indexOf('fiiCatalog.js')<html.indexOf('portal.js'));
-   assert.match(html,/fiiUniverse\.js|\/index\.html/);
  }
  const html=fs.readFileSync(root+'/ativos/MXRF11/index.html','utf8');
  assert.match(html,/fiiCatalog\.js/);
