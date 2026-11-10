@@ -37,6 +37,8 @@ jobs:
         run: node tests/market-integrity.test.mjs
       - name: Event deduplication
         run: node tests/event-deduplication.test.mjs
+      - name: FII integrated discovery catalog
+        run: node tests/fii-catalog-discovery.test.mjs
       - name: FII catalog and classification
         run: python3 -m unittest discover -s tests -p 'test_*.py' -v
       - name: B3 evidence freshness and detail pages
