@@ -73,6 +73,10 @@
       exDate: input.exDate || '',
       paymentDate: input.paymentDate || '',
       amount: Number(input.amount || 0),
+      sourceUrl: (typeof input.sourceUrl==='string' && /^https:\/\//i.test(input.sourceUrl)) ? input.sourceUrl : '',
+      sourceDocumentId: String(input.sourceDocumentId || ''),
+      verificationStatus: String(input.verificationStatus || ''),
+      paymentSettlementVerified: input.paymentSettlementVerified === true,
       confidence: status === EVENT_STATUS.CONFIRMED ? 1 : status === EVENT_STATUS.PROVISIONED ? .78 : status === EVENT_STATUS.ESTIMATED ? .54 : .34
     };
   }
