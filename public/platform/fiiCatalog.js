@@ -29,6 +29,45 @@
     return [...result.values()].sort((a,b)=>a.ticker.localeCompare(b.ticker));
   }
 
+  // Usa apenas observacoes contabeis da CVM com ticker, CNPJ e competencia coerentes.
+  // VPA so pode ser exibido quando conciliado no informe; nunca e cotacao,
+  // rendimento distribuido nem base suficiente para estimar dividend yield.
+  function enrichMetrics(catalog, payload, today=new Date()){
+    if(!payload || payload.schemaVersion!==1 ||
+       payload.dataType!=='monthly-fii-accounting-by-ticker' ||
+       !Array.isArray(payload.records)) return catalog.slice();
+    const allowed=new Map();
+    const maxDate=today.toISOString().slice(0,10);
+    for(const item of payload.records){
+      const ticker=String(item.ticker||'').trim().toUpperCase();
+      const cnpj=String(item.cnpj||'').replace(/\D/g,'');
+      const ref=String(item.referenceDate||'').slice(0,10);
+      if(!tickerPattern.test(ticker)||!cnpjPattern.test(cnpj)||
+         !/^\d{4}-\d{2}-\d{2}$/.test(ref)||ref>maxDate||
+         Number.isNaN(Date.parse(ref+'T12:00:00Z')))continue;
+      const numeric=(value)=>typeof value==='number'&&Number.isFinite(value)&&value>=0?value:null;
+      const netAssets=numeric(item.netAssets);
+      const holders=numeric(item.holders);
+      const units=numeric(item.units);
+      const nav=(item.navValidated===true&&typeof item.navCalculated==='number'&&
+                 Number.isFinite(item.navCalculated)&&item.navCalculated>0)?
+                 item.navCalculated:null;
+      if(netAssets===null&&holders===null&&units===null&&nav===null)continue;
+      const record={ticker,cnpj,referenceDate:ref,netAssets,holders,units,
+                    navCalculated:nav,navValidated:nav!==null,
+                    source:'CVM - informe mensal FII',dataType:'monthly-fii-accounting'};
+      const key=ticker+'|'+cnpj;
+      const previous=allowed.get(key);
+      if(!previous||ref>previous.referenceDate)allowed.set(key,record);
+      else if(ref===previous.referenceDate && JSON.stringify(record)!==JSON.stringify(previous))
+        allowed.delete(key);
+    }
+    return (catalog||[]).map(asset=>{
+      const observed=allowed.get(asset.ticker+'|'+asset.cnpj);
+      return observed?{...asset,cvm:observed}:asset;
+    });
+  }
+
   function merge(existing,catalog){
     const byTicker=new Map((existing||[]).filter(x=>x?.ticker).map(x=>[x.ticker,{...x}]));
     for(const row of catalog||[]){
@@ -51,6 +90,10 @@
       if(!response.ok)throw Error('Falha de consulta ao universo cadastral');
       records=normalize(await response.json());
       if(records.length<100)throw Error('Cobertura insuficiente');
+      try{
+        const metricsResponse=await fetch('/data/cvm-fii-by-ticker.json',{cache:'no-store'});
+        if(metricsResponse.ok)records=enrichMetrics(records,await metricsResponse.json());
+      }catch(_){ /* Catalogo de identificacao continua disponivel se CVM falhar. */ }
       state='ready';
     }catch(_){
       state='unavailable';
@@ -58,5 +101,5 @@
     }
     return records;
   }
-  global.DividendFiiCatalog=Object.freeze({load,normalize,merge,all:()=>records.slice(),state:()=>state});
+  global.DividendFiiCatalog=Object.freeze({load,normalize,enrichMetrics,merge,all:()=>records.slice(),state:()=>state});
 })(window);
