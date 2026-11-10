@@ -1651,7 +1651,10 @@
     }
     const renderers = { home:renderHome, assets:renderAssets, assetDetail:renderAssetDetail, calendar:renderCalendar, incomeMap:renderIncomeMap, about:renderAbout, methodology:renderMethodology, admin:() => renderAdmin('admin'), adminProventos:() => renderAdmin('adminProventos'), adminImports:() => renderAdmin('adminImports'), adminNewImport:() => renderAdmin('adminNewImport'), adminMarket:() => renderAdmin('adminMarket'), adminAssets:() => renderAdmin('adminAssets'), adminEvents:() => renderAdmin('adminEvents'), adminReview:() => renderAdmin('adminReview'), adminPublishing:() => renderAdmin('adminPublishing'), adminSources:() => renderAdmin('adminSources'), adminQuality:() => renderAdmin('adminQuality'), adminJobs:() => renderAdmin('adminJobs'), adminAudit:() => renderAdmin('adminAudit'), adminFinops:() => renderAdmin('adminFinops'), adminSecurity:() => renderAdmin('adminSecurity'), adminSettings:() => renderAdmin('adminSettings'), system:renderSystem };
     main.innerHTML = (renderers[page] || renderHome)();
-    if(page === 'assetDetail') global.DividendFiiAssetPanel?.render?.();
+    if(page === 'assetDetail'){
+      global.DividendFiiAssetPanel?.render?.();
+      global.DividendFiiDistributions?.render?.();
+    }
     if(page === 'assets'){
       wireAssetDiscovery();
       paintAssetRows();
