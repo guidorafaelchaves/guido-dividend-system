@@ -68,10 +68,10 @@
           event.status==='confirmed-document'&&event.paymentSettlementVerified===false&&
           event.cnpj===catalog.get(event.ticker)&&
           /^(rendimento|amortizacao)$/.test(event.kind)&&
-          /^\\d{4}-\\d{2}-\\d{2}$/.test(event.exDate)&&
-          /^\\d{4}-\\d{2}-\\d{2}$/.test(event.paymentDate)&&
+          /^\d{4}-\d{2}-\d{2}$/.test(event.exDate)&&
+          /^\d{4}-\d{2}-\d{2}$/.test(event.paymentDate)&&
           event.exDate<=event.paymentDate&&Number.isFinite(amount)&&amount>0&&
-          typeof event.sourceUrl==='string'&&/^https:\\/\\//.test(event.sourceUrl);
+          typeof event.sourceUrl==='string'&&/^https:\/\//.test(event.sourceUrl);
       }).map(event=>({...event,status:'confirmed',source:'human-reviewed-document'}));
     }catch(_){humanReviewedFiiEvents=[];}
   }
