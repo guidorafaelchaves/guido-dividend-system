@@ -83,7 +83,7 @@
   function eventIdentity(event){
     const e=normalizeEvent(event);
     if(!e.ticker || !e.paymentDate || !e.exDate || !(e.amount>0)) return null;
-    const kind=e.kind.toLowerCase().trim().replace(/\\s+/g,' ');
+    const kind=e.kind.toLowerCase().trim().replace(/\s+/g,' ');
     const amount=e.amount.toFixed(8);
     return [e.ticker,kind,amount,e.exDate,e.paymentDate].join('|');
   }
