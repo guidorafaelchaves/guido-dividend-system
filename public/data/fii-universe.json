@@ -1,0 +1,2510 @@
+{
+  "schemaVersion": 1,
+  "dataType": "fii-ticker-cnpj-catalog",
+  "source": "https://developers.lummios.com.br/dados/universo-ativos.csv",
+  "attribution": "Dados de identificação ticker/CNPJ: Lummios, CC BY 4.0 — https://developers.lummios.com.br/dados-abertos.html",
+  "license": "CC BY 4.0",
+  "count": 357,
+  "records": [
+    {
+      "ticker": "ABCP11",
+      "cnpj": "01201140000190",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ADSH11",
+      "cnpj": "63375304000153",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AERO11",
+      "cnpj": "57927297000152",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AFHI11",
+      "cnpj": "36642293000158",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AIEC11",
+      "cnpj": "35765826000126",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AJFI11",
+      "cnpj": "51472985000199",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ALMI11",
+      "cnpj": "07122725000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ALZR11",
+      "cnpj": "28737771000185",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ANCR11",
+      "cnpj": "07789135000127",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "APTO11",
+      "cnpj": "42432327000182",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "APXM11",
+      "cnpj": "43010485000107",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "APXR11",
+      "cnpj": "52446271000179",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "APXU11",
+      "cnpj": "52521137000195",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AQLL11",
+      "cnpj": "13555918000149",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AROA11",
+      "cnpj": "44674528000111",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ARRI11",
+      "cnpj": "32006821000121",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ARTE11",
+      "cnpj": "53193237000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ASRF11",
+      "cnpj": "45188033000145",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ATSA11",
+      "cnpj": "12809972000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AURB11",
+      "cnpj": "41076823000188",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AVUR11",
+      "cnpj": "57109239000111",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AZPL11",
+      "cnpj": "51890054000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BBFI11",
+      "cnpj": "07000400000146",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BBFO11",
+      "cnpj": "37180091000102",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BBIG11",
+      "cnpj": "54375187000137",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BBPO11",
+      "cnpj": "14410722000129",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BBRC11",
+      "cnpj": "12681340000104",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BCIA11",
+      "cnpj": "20216935000117",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BCRI11",
+      "cnpj": "22219335000138",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BICE11",
+      "cnpj": "39332032000120",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BIME11",
+      "cnpj": "41081356000184",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BIPD11",
+      "cnpj": "42869892000101",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BIPE11",
+      "cnpj": "51817522000111",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BLCA11",
+      "cnpj": "41076748000155",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BLMG11",
+      "cnpj": "34081637000171",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BLMO11",
+      "cnpj": "34895894000147",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BLOG11",
+      "cnpj": "49592781000140",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BMLC11",
+      "cnpj": "14376247000111",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BNFS11",
+      "cnpj": "15570431000160",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BPML11",
+      "cnpj": "33046142000149",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BRCO11",
+      "cnpj": "20748515000181",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BRCR11",
+      "cnpj": "08924783000101",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BRIM11",
+      "cnpj": "23964843000103",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BRIP11",
+      "cnpj": "34895752000180",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BRIX11",
+      "cnpj": "35360651000177",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BRLA11",
+      "cnpj": "35652278000128",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BROF11",
+      "cnpj": "48978859000104",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTAL11",
+      "cnpj": "36642244000115",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTHI11",
+      "cnpj": "64634907000195",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTRU11",
+      "cnpj": "08098114000128",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTSG11",
+      "cnpj": "36098375000183",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTSI11",
+      "cnpj": "36930464000144",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTWR11",
+      "cnpj": "20132453000189",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTYU11",
+      "cnpj": "54645216000133",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BVAR11",
+      "cnpj": "21126204000143",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BZLI11",
+      "cnpj": "14074706000102",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CARE11",
+      "cnpj": "13584584000131",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CBOP11",
+      "cnpj": "17144039000185",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CCME11",
+      "cnpj": "43010844000126",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CCVA11",
+      "cnpj": "52713882000136",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CENU11",
+      "cnpj": "37899356000119",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CEOC11",
+      "cnpj": "15799397000109",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CFII11",
+      "cnpj": "41325993000159",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CLIN11",
+      "cnpj": "49005348000160",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CNES11",
+      "cnpj": "13551286000145",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CPLG11",
+      "cnpj": "52371756000140",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CPOF11",
+      "cnpj": "48916699000160",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CPTS11",
+      "cnpj": "18979895000113",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CRFF11",
+      "cnpj": "31887401000139",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CTXT11",
+      "cnpj": "00762723000128",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CVBI11",
+      "cnpj": "28729197000113",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CXAG11",
+      "cnpj": "40189596000134",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CXCE11",
+      "cnpj": "10991914000115",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CXCI11",
+      "cnpj": "42066916000194",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CXCO11",
+      "cnpj": "38658984000175",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CXRI11",
+      "cnpj": "17098794000170",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CXTL11",
+      "cnpj": "12887506000143",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CYCR11",
+      "cnpj": "36501233000115",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CYLD11",
+      "cnpj": "43010601000198",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DAMA11",
+      "cnpj": "53866872000101",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DAMT11",
+      "cnpj": "26642727000166",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DEVA11",
+      "cnpj": "37087810000137",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DOVL11",
+      "cnpj": "10522648000181",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DPRO11",
+      "cnpj": "42922127000108",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DVFF11",
+      "cnpj": "39863059000149",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DVLP11",
+      "cnpj": "42537601000188",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EDFO11",
+      "cnpj": "06175262000173",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EDGA11",
+      "cnpj": "15333306000137",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EDGE11",
+      "cnpj": "54306150000157",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EGDB11",
+      "cnpj": "53866393000187",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EGYR11",
+      "cnpj": "36969658000153",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EIRA11",
+      "cnpj": "59202651000107",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EMET11",
+      "cnpj": "53523736000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EQIR11",
+      "cnpj": "41076380000125",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ERPA11",
+      "cnpj": "31469385000164",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EURO11",
+      "cnpj": "05437916000127",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EXES11",
+      "cnpj": "41076851000103",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FAED11",
+      "cnpj": "11179118000145",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FAMB11",
+      "cnpj": "05562312000102",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FATN11",
+      "cnpj": "30567216000102",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FCFL11",
+      "cnpj": "11602654000101",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FEXC11",
+      "cnpj": "09552812000114",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FIGS11",
+      "cnpj": "17590518000125",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FIIB11",
+      "cnpj": "14217108000145",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FIIP11",
+      "cnpj": "08696175000197",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FISC11",
+      "cnpj": "12804013000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FISD11",
+      "cnpj": "16543270000189",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FIVN11",
+      "cnpj": "17854016000164",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FLCR11",
+      "cnpj": "33884145000151",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FLFL11",
+      "cnpj": "50808042000121",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FLMA11",
+      "cnpj": "04141645000103",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FLRP11",
+      "cnpj": "10375382000191",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FMOF11",
+      "cnpj": "01633741000172",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FPAB11",
+      "cnpj": "03251720000118",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FPNG11",
+      "cnpj": "17161979000182",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FTCE11",
+      "cnpj": "01235622000161",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FVPQ11",
+      "cnpj": "00332266000131",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FZDA11",
+      "cnpj": "59680687000104",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GAME11",
+      "cnpj": "41269052000145",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GCDL11",
+      "cnpj": "56061587000101",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GCRI11",
+      "cnpj": "38293897000161",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GFDL11",
+      "cnpj": "58523711000120",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GGRC11",
+      "cnpj": "26614291000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GLCR11",
+      "cnpj": "59669570000111",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GLPF11",
+      "cnpj": "58378463000171",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GRUL11",
+      "cnpj": "54483412000159",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GSFI11",
+      "cnpj": "11769604000113",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GTWR11",
+      "cnpj": "23740527000158",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HAAA11",
+      "cnpj": "27445482000140",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HABT11",
+      "cnpj": "30578417000105",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HBCR11",
+      "cnpj": "36501159000137",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HBRH11",
+      "cnpj": "30871698000181",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HCHG11",
+      "cnpj": "34508959000154",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HCRI11",
+      "cnpj": "04066582000160",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HCST11",
+      "cnpj": "31152015000107",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HCTR11",
+      "cnpj": "30248180000196",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HDEL11",
+      "cnpj": "44514162000113",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HDOF11",
+      "cnpj": "35688460000139",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HFOF11",
+      "cnpj": "18307582000119",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGBL11",
+      "cnpj": "53466467000198",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGBS11",
+      "cnpj": "08431747000106",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGCR11",
+      "cnpj": "11160521000122",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGIC11",
+      "cnpj": "38456508000171",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGLG11",
+      "cnpj": "11728688000147",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGRE11",
+      "cnpj": "09072017000129",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGRU11",
+      "cnpj": "29641226000153",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HILG11",
+      "cnpj": "34867728000137",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HJCT11",
+      "cnpj": "62082124000110",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HLOG11",
+      "cnpj": "27486542000172",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HOMS11",
+      "cnpj": "55793516000122",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HOSI11",
+      "cnpj": "34081631000102",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HPDP11",
+      "cnpj": "35586415000173",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HRDF11",
+      "cnpj": "16929519000199",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HREC11",
+      "cnpj": "35507262000121",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HRES11",
+      "cnpj": "42869853000104",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HSAF11",
+      "cnpj": "67149599000109",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HSLG11",
+      "cnpj": "32903621000171",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HSML11",
+      "cnpj": "32892018000131",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HTMX11",
+      "cnpj": "08706065000169",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HUCG11",
+      "cnpj": "39347413000182",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HUSC11",
+      "cnpj": "28851767000143",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HUSI11",
+      "cnpj": "30017492000199",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IBBP11",
+      "cnpj": "52551605000174",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IBCR11",
+      "cnpj": "40011251000196",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ICNE11",
+      "cnpj": "53137434000102",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ICRI11",
+      "cnpj": "51294441000184",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "INDE11",
+      "cnpj": "52635194000103",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IRIM11",
+      "cnpj": "41076564000195",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ITRI11",
+      "cnpj": "52270671000176",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JASC11",
+      "cnpj": "40886241000102",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JFLL11",
+      "cnpj": "36501181000187",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JPPA11",
+      "cnpj": "30982880000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JPRD11",
+      "cnpj": "53072782000130",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JSAF11",
+      "cnpj": "42085661000107",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JSCR11",
+      "cnpj": "54866214000174",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JSRE11",
+      "cnpj": "13371132000171",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KCRE11",
+      "cnpj": "42502802000140",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KEVE11",
+      "cnpj": "32317313000164",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KFOF11",
+      "cnpj": "30091444000140",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KISU11",
+      "cnpj": "65923811000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KIVO11",
+      "cnpj": "42273325000198",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KNCR11",
+      "cnpj": "16706958000132",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KNHF11",
+      "cnpj": "42754342000147",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KNHY11",
+      "cnpj": "30130708000128",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KNIP11",
+      "cnpj": "24960430000113",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KNPR11",
+      "cnpj": "42737059000107",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KNRE11",
+      "cnpj": "14423780000197",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KNRI11",
+      "cnpj": "12005956000165",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KNSC11",
+      "cnpj": "35864448000138",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KONG11",
+      "cnpj": "66743243000128",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KORE11",
+      "cnpj": "52219978000142",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LAFI11",
+      "cnpj": "51710043000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LASC11",
+      "cnpj": "30248158000146",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LIFE11",
+      "cnpj": "39753295000102",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LKDV11",
+      "cnpj": "40102445000105",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LLAO11",
+      "cnpj": "41218404000133",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LPLP11",
+      "cnpj": "37262752000130",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LRDI11",
+      "cnpj": "41088534000107",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LRED11",
+      "cnpj": "55089373000172",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LSOI11",
+      "cnpj": "53087126000101",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LSOP11",
+      "cnpj": "63429256000139",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LTMT11",
+      "cnpj": "46449786000120",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LVBI11",
+      "cnpj": "30629603000118",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MALL11",
+      "cnpj": "26499833000132",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MANA11",
+      "cnpj": "42888583000189",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MAXR11",
+      "cnpj": "11274415000170",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MCCI11",
+      "cnpj": "23648935000184",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MCEM11",
+      "cnpj": "46157247000117",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MCHY11",
+      "cnpj": "36655973000106",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MFII11",
+      "cnpj": "16915968000188",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MGHT11",
+      "cnpj": "34197776000165",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MIDW11",
+      "cnpj": "63992956000137",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MMPD11",
+      "cnpj": "41080968000152",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MMVE11",
+      "cnpj": "41251337000159",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MXRF11",
+      "cnpj": "97521225000125",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "NAUI11",
+      "cnpj": "49649500000148",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "NCHB11",
+      "cnpj": "18085673000157",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "NCRI11",
+      "cnpj": "40041603000156",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "NEWL11",
+      "cnpj": "32527626000147",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "NSLU11",
+      "cnpj": "08014513000163",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "NVHO11",
+      "cnpj": "17025970000144",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "OCRE11",
+      "cnpj": "44680435000108",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ONDV11",
+      "cnpj": "52966340000175",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ORPD11",
+      "cnpj": "19107604000160",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "OUJP11",
+      "cnpj": "26091656000150",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "OULG11",
+      "cnpj": "13974819000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PABY11",
+      "cnpj": "00613094000174",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PATA11",
+      "cnpj": "53764894000152",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PATC11",
+      "cnpj": "30048651000112",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PATL11",
+      "cnpj": "35754164000199",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PDBM11",
+      "cnpj": "56978773000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PEMA11",
+      "cnpj": "34736510000143",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PLRI11",
+      "cnpj": "14080689000116",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PMFO11",
+      "cnpj": "50135849000140",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PMIS11",
+      "cnpj": "51868778000158",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PNDL11",
+      "cnpj": "37899400000190",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PNPR11",
+      "cnpj": "26813118000122",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PNRC11",
+      "cnpj": "46157348000198",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PORD11",
+      "cnpj": "17156502000109",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PQAG11",
+      "cnpj": "12978943000172",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PQDP11",
+      "cnpj": "10869155000112",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PRSN11",
+      "cnpj": "14056001000162",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PRSV11",
+      "cnpj": "11281322000172",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PULV11",
+      "cnpj": "53018363000110",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PVBI11",
+      "cnpj": "35652102000176",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "QAGR11",
+      "cnpj": "32754734000152",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBDS11",
+      "cnpj": "11945604000127",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBFY11",
+      "cnpj": "62662477000190",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBHY11",
+      "cnpj": "37899479000150",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBIR11",
+      "cnpj": "31161410000148",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRD11",
+      "cnpj": "09006914000134",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRI11",
+      "cnpj": "32441656000136",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRK11",
+      "cnpj": "53391653000105",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRL11",
+      "cnpj": "35705463000133",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRP11",
+      "cnpj": "21408063000151",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRR11",
+      "cnpj": "29467977000103",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRS11",
+      "cnpj": "36517660000191",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRX11",
+      "cnpj": "41088458000121",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBTS11",
+      "cnpj": "29299737000139",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RCFA11",
+      "cnpj": "27771586000144",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RCFF11",
+      "cnpj": "35689670000141",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RCRI11",
+      "cnpj": "60801196000145",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RDLI11",
+      "cnpj": "53391567000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RECM11",
+      "cnpj": "56430935000162",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RECT11",
+      "cnpj": "32274163000159",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "REIT11",
+      "cnpj": "16841067000199",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RELG11",
+      "cnpj": "37112770000136",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "REME11",
+      "cnpj": "63051078000155",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RENV11",
+      "cnpj": "54174907000104",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RFOF11",
+      "cnpj": "34027774000128",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RINV11",
+      "cnpj": "44625612000145",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RMBS11",
+      "cnpj": "58366499000135",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RNGO11",
+      "cnpj": "15006286000190",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ROOF11",
+      "cnpj": "38456598000109",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RPRI11",
+      "cnpj": "42502842000191",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RRCI11",
+      "cnpj": "35689733000160",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RSPD11",
+      "cnpj": "19249989000108",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RVBI11",
+      "cnpj": "35507457000171",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RZAK11",
+      "cnpj": "36642219000131",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RZTR11",
+      "cnpj": "36501128000186",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RZZI11",
+      "cnpj": "54134474000155",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SAPI11",
+      "cnpj": "51646298000142",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SCPF11",
+      "cnpj": "01657856000105",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SEED11",
+      "cnpj": "35689497000181",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SEQR11",
+      "cnpj": "09517273000182",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SHPH11",
+      "cnpj": "03507519000159",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SHPP11",
+      "cnpj": "59090726000105",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SJAU11",
+      "cnpj": "27771547000147",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SNCI11",
+      "cnpj": "41076710000182",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SNEL11",
+      "cnpj": "43741171000184",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SNFF11",
+      "cnpj": "40011225000168",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SNME11",
+      "cnpj": "52227760000130",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SOFF11",
+      "cnpj": "57811221000167",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SOLR11",
+      "cnpj": "22169671000113",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SPDE11",
+      "cnpj": "43741150000169",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SPMO11",
+      "cnpj": "40225262000179",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SPTW11",
+      "cnpj": "43951941000113",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SPXS11",
+      "cnpj": "43010543000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SRVD11",
+      "cnpj": "38082796000141",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "STRX11",
+      "cnpj": "11044355000107",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "STYI11",
+      "cnpj": "59678586000190",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TCIN11",
+      "cnpj": "34197700000130",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TELM11",
+      "cnpj": "45188099000135",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TGAR11",
+      "cnpj": "25032881000153",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TJKB11",
+      "cnpj": "39714024000148",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TMPS11",
+      "cnpj": "42737077000199",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TOPP11",
+      "cnpj": "56805391000176",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TORD11",
+      "cnpj": "30230870000118",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TRCO11",
+      "cnpj": "62173370000188",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TRNT11",
+      "cnpj": "04722883000102",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TRXB11",
+      "cnpj": "36368925000137",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TRXF11",
+      "cnpj": "63134454000175",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TRXY11",
+      "cnpj": "43985938000110",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TSER11",
+      "cnpj": "34847042000184",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TSNC11",
+      "cnpj": "17007443000107",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "URHF11",
+      "cnpj": "52649350000187",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "URPR11",
+      "cnpj": "34508872000187",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VCJR11",
+      "cnpj": "32400250000105",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VCRI11",
+      "cnpj": "41081374000166",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VCRR11",
+      "cnpj": "40041723000153",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VERE11",
+      "cnpj": "08693497000182",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VGHF11",
+      "cnpj": "36771692000119",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VGII11",
+      "cnpj": "52649680000172",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VGIP11",
+      "cnpj": "34197811000146",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VGIR11",
+      "cnpj": "29852732000191",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VGRI11",
+      "cnpj": "53656482000107",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VILG11",
+      "cnpj": "24853044000122",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VINO11",
+      "cnpj": "12516185000170",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VISC11",
+      "cnpj": "17554274000125",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VIUR11",
+      "cnpj": "36445587000190",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VJFD11",
+      "cnpj": "15489509000117",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VOTS11",
+      "cnpj": "17870926000130",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VPSI11",
+      "cnpj": "14721889000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VRTA11",
+      "cnpj": "11664201000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VRTM11",
+      "cnpj": "51870412000113",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VSHO11",
+      "cnpj": "23740595000117",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VSLH11",
+      "cnpj": "36244015000142",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VTPL11",
+      "cnpj": "15098422000119",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VVDI11",
+      "cnpj": "66661365000175",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VVRI11",
+      "cnpj": "49184940000177",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VXXV11",
+      "cnpj": "30982974000189",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "WHGR11",
+      "cnpj": "41256643000188",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "WPLZ11",
+      "cnpj": "09326861000139",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "WTSP11",
+      "cnpj": "28693595000127",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "XPCI11",
+      "cnpj": "28516301000191",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "XPCM11",
+      "cnpj": "16802320000103",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "XPIN11",
+      "cnpj": "28516325000140",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "XPLG11",
+      "cnpj": "26502794000185",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "XPML11",
+      "cnpj": "28757546000100",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "XPSF11",
+      "cnpj": "30983020000190",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "XTED11",
+      "cnpj": "15006267000163",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "YEES11",
+      "cnpj": "51385174000150",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "YUFI11",
+      "cnpj": "36445551000106",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ZAGH11",
+      "cnpj": "63034711000105",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ZAVC11",
+      "cnpj": "52101897000143",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ZAVI11",
+      "cnpj": "40575940000123",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ZIFI11",
+      "cnpj": "35820768000196",
+      "name": "",
+      "sector": "",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    }
+  ],
+  "limitations": "Cobertura inicial parcial: 357 identificacoes ja validadas. Pipeline automatizado ampliara a cobertura para universo cadastral. Nao comprova negociacao ativa na B3; sem cotações ou dividendos."
+}
