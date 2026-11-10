@@ -228,14 +228,14 @@
           ${adminKpi('Com eventos futuros', String(data.withFuture.length), 'protagonistas da pagina')}
           ${adminKpi('Confirmados', String(data.confirmedCount), 'eventos com maior confianca')}
           ${adminKpi('Data-com em 30 dias', String(data.recordSoonCount), 'janelas proximas')}
-          ${adminKpi('Alta recorrencia', String(data.highRecurring.length), 'fluxo mais regular')}
+          ${adminKpi('Dados contábeis CVM', String(data.all.filter(row=>row.asset.cvm).length), 'vínculos por ticker e CNPJ')}
         </div>
       </section>
       <section class="asset-intents reveal" aria-label="O que voce procura">
         <div><span class="eyebrow">O que voce procura?</span><h2>Encontre ativos pelo que eles ainda podem entregar.</h2></div>
         <div class="quick-filters">
           ${[
-            ['upcoming','Proximos pagamentos'],['recurring','Maior recorrencia'],['record','Data-com mais proxima'],['confirmed','Eventos confirmados'],['yield','Maior retorno do evento'],['fii','Todos os FIIs'],['stocks','Acoes recorrentes'],['confidence','Maior confianca']
+            ['upcoming','Proximos pagamentos'],['recurring','Maior recorrencia'],['record','Data-com mais proxima'],['confirmed','Eventos confirmados'],['yield','Maior retorno do evento'],['fii','Todos os FIIs'],['cvm','FIIs com dados CVM'],['stocks','Acoes recorrentes'],['confidence','Maior confianca']
           ].map(([key,label], index) => `<button class="pill asset-intent ${index === 0 ? 'active' : ''}" type="button" data-intent="${key}">${label}</button>`).join('')}
         </div>
         <input id="assetSearch" type="search" placeholder="Pesquise um ativo, setor, mes ou tipo de pagamento">
@@ -252,7 +252,7 @@
       </section>
       <section class="panel reveal"><span class="eyebrow">Papel no fluxo</span><h2>Ativos por funcao de renda</h2><div class="asset-role-grid">${data.roles.map(role => `<article><b>${esc(role.label)}</b><span>${role.rows.length} ativos</span><small>${esc(role.note)}</small></article>`).join('')}</div></section>
       <section class="panel reveal"><span class="eyebrow">Comparacao rapida</span><h2>Compare sem declarar vencedor</h2><div id="assetCompareBox" class="asset-compare-box">Selecione de dois a quatro ativos nos cards para comparar proximo evento, retorno, recorrencia e confianca.</div></section>
-      <section class="panel reveal"><span class="eyebrow">Catalogo completo</span><h2>Todos os ativos continuam acessiveis</h2><label class="pill"><input id="includeEmptyAssets" type="checkbox"> Incluir ativos sem evento futuro</label><div class="table-wrap"><table><thead><tr><th>Ativo</th><th>Tipo</th><th>Qualidade</th><th>Preco</th><th>Proximo fluxo</th><th>Acao</th></tr></thead><tbody id="assetCatalogRows"></tbody></table></div></section>
+      <section class="panel reveal"><span class="eyebrow">Catalogo completo</span><h2>Fundos, patrimônio e próximos eventos</h2><p class="muted">VPA e patrimônio contábil são extraídos dos informes mensais da CVM; não representam preço de mercado, provento distribuído nem dividend yield. Somente VPAs conciliados são exibidos.</p><label class="pill"><input id="includeEmptyAssets" type="checkbox"> Incluir ativos sem evento futuro</label><div class="table-wrap"><table><thead><tr><th>Ativo</th><th>Tipo</th><th>Qualidade</th><th>Preco</th><th>VPA CVM validado</th><th>Proximo fluxo</th><th>Acao</th></tr></thead><tbody id="assetCatalogRows"></tbody></table></div></section>
       <section class="personal-calendar panel reveal"><div><span class="eyebrow">Do mercado para sua carteira</span><h2>O mercado mostra eventos. O Dividend System mostra o que eles significam para voce.</h2><p class="muted">Transforme valor por unidade em valor previsto para sua posicao, retorno sobre seu preco medio, historico da sua renda e conciliacao.</p></div><div class="portfolio-toggle"><a class="pill active" href="/cadastro/">Transformar ativos em carteira acompanhada</a><a class="pill" href="/sistema/">Ver Dividend System</a></div></section>
     </section>`;
   }
@@ -269,6 +269,7 @@
       confirmed:data.withFuture.filter(row => row.next?.eventStatus === 'confirmed'),
       yield:data.highYield,
       fii:data.all.filter(row => row.asset.type === 'FII'),
+      cvm:data.all.filter(row => row.asset.cvm),
       stocks:data.withFuture.filter(row => row.asset.type === 'Acao'),
       confidence:data.withFuture.filter(row => ['confirmed','provisioned'].includes(row.next?.eventStatus))
     })[intent] || data.withFuture;
@@ -404,7 +405,9 @@
 
   function renderAssetCatalogRow(row){
     const price = row.hasPrice && !row.asset.catalogOnly ? money(row.asset.price || row.next?.currentPrice) : 'Cotacao indisponivel';
-    return `<tr><td><b>${esc(row.ticker)}</b><br><span class="muted">${esc(row.asset.name)}</span></td><td>${esc(row.asset.type)}</td><td>${esc(row.quality)}</td><td>${price}</td><td>${row.next ? `${esc(row.next.eventType)} em ${fullDate(row.next.paymentDate)}` : 'Acompanhar proximo anuncio'}</td><td><a class="btn secondary" href="/ativos/?ticker=${esc(row.ticker)}">Abrir</a></td></tr>`;
+    const accounting=row.asset.cvm;
+    const nav=accounting?.navValidated===true && accounting.navCalculated>0 ? `${money(accounting.navCalculated)}<br><small class="muted">CVM ${esc(accounting.referenceDate)}</small>` : 'Indisponível';
+    return `<tr><td><b>${esc(row.ticker)}</b><br><span class="muted">${esc(row.asset.name)}</span></td><td>${esc(row.asset.type)}</td><td>${esc(row.quality)}</td><td>${price}</td><td>${nav}</td><td>${row.next ? `${esc(row.next.eventType)} em ${fullDate(row.next.paymentDate)}` : 'Sem provento anunciado'}</td><td><a class="btn secondary" href="/ativos/?ticker=${esc(row.ticker)}">Abrir</a></td></tr>`;
   }
 
   function renderAssetDetail(){
