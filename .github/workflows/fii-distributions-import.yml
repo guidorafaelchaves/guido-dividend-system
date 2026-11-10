@@ -1,0 +1,65 @@
+name: Importar historico documental de proventos FII
+on:
+  workflow_dispatch:
+    inputs:
+      source_name:
+        description: Identificacao do fornecedor e do arquivo autorizado
+        type: string
+        required: true
+permissions:
+  contents: write
+concurrency:
+  group: fii-document-distributions
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar direitos e endereco seguro
+        env:
+          FEED_URL: ${{ secrets.FII_DISTRIBUTIONS_FEED_URL }}
+          RIGHTS: ${{ vars.FII_DISTRIBUTIONS_RIGHTS_CONFIRMED }}
+          PUBLICATION: ${{ vars.FII_DISTRIBUTIONS_PUBLICATION_ALLOWED }}
+        run: |
+          if [ "$RIGHTS" != "true" ] || [ "$PUBLICATION" != "true" ]; then
+            echo "::error::Processamento e publicacao nao foram autorizados."
+            exit 1
+          fi
+          case "$FEED_URL" in
+            https://*) ;;
+            *) echo "::error::Fonte documental HTTPS autorizada nao configurada."; exit 1;;
+          esac
+          curl --fail --location --silent --show-error --retry 2 --max-time 90 \
+            --max-filesize 16000000 "$FEED_URL" -o /tmp/fii-distributions-licensed.csv
+          test -s /tmp/fii-distributions-licensed.csv
+      - name: Validar importacao sem dados reais
+        run: python3 -m unittest discover -s tests -p test_fii_distribution_import.py -v
+      - name: Importar registros documentados
+        env:
+          SOURCE_NAME: ${{ inputs.source_name }}
+        run: |
+          python3 scripts/import_fii_distributions.py \
+            --input /tmp/fii-distributions-licensed.csv \
+            --source-name "$SOURCE_NAME" \
+            --rights-confirmed
+          mkdir -p docs/data
+          cp public/data/fii-distributions.json docs/data/fii-distributions.json
+      - name: Publicar somente alteracoes com protecao de concorrencia
+        run: |
+          git add public/data/fii-distributions.json docs/data/fii-distributions.json
+          if git diff --cached --quiet; then echo "Sem alteracoes"; exit 0; fi
+          git -c user.name="fii-distributions-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: publicar proventos FIIs com referencia documental"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "::error::Conflito de dados: snapshot anterior preservado"
+              exit 1
+            fi
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          echo "::error::Nao foi possivel sincronizar"
+          exit 1
