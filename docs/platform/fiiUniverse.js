@@ -1,38 +1,68 @@
 (function(){
   'use strict';
+  const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const statuses={
+    'observed-active':'Consta ativo no snapshot',
+    'observed-inactive':'Consta inativo no snapshot',
+    'ambiguous':'Registros conflitantes',
+    'class-conflict':'Classe divergente',
+    'unverified':'Sem confirmação B3'
+  };
   async function showUniverse(){
     const main=document.querySelector('.asset-discovery-page');
     if(!main) return;
     const section=document.createElement('section');
     section.className='panel reveal';
-    section.innerHTML='<span class="eyebrow">Cobertura de FIIs</span><h2>Fundos imobiliarios e FIAGROs</h2><p class="muted">Identificacoes ticker/CNPJ do cadastro aberto Lummios (CC BY 4.0). FIAGROs sao separados de candidatos a FII; a listagem ativa na B3 ainda nao foi confirmada. Sem cotacoes ou proventos inferidos.</p><select id="fiiUniverseClass" aria-label="Tipo de fundo"><option value="FII_CANDIDATE">FIIs candidatos</option><option value="FIAGRO">FIAGROs</option><option value="all">Todos os fundos</option></select><input id="fiiUniverseSearch" type="search" placeholder="Filtrar por ticker ou CNPJ" aria-label="Filtrar FIIs"><p id="fiiUniverseCount" class="muted">Consultando catalogo...</p><div class="table-wrap"><table><thead><tr><th>Ticker</th><th>Tipo</th><th>Fundo / setor</th><th>CNPJ</th></tr></thead><tbody id="fiiUniverseRows"></tbody></table></div>';
+    section.innerHTML=`<span class="eyebrow">Cobertura cadastral</span>
+      <h2>FIIs e FIAGROs</h2>
+      <p class="muted">Ticker, nome, CNPJ e setor: Lummios (CC BY 4.0). Os FIIs são candidatos até conciliação com arquivo B3 autorizado. FIAGROs são separados. Nenhum preço, DY ou dividendo é inferido.</p>
+      <select id="fiiUniverseClass" aria-label="Tipo de fundo"><option value="FII_CANDIDATE">FIIs candidatos</option><option value="FIAGRO">FIAGROs</option><option value="all">Todos os fundos</option></select>
+      <input id="fiiUniverseSearch" type="search" placeholder="Buscar ticker, nome, setor ou CNPJ" aria-label="Buscar fundos">
+      <p id="fiiUniverseCount" class="muted">Consultando catálogo...</p>
+      <p id="fiiB3Status" class="muted">Negociação B3 não verificada: aguardando arquivo autorizado.</p>
+      <div class="table-wrap"><table><thead><tr><th>Ticker</th><th>Tipo</th><th>Nome / setor</th><th>CNPJ</th><th>Evidência B3</th></tr></thead><tbody id="fiiUniverseRows"></tbody></table></div>`;
     main.appendChild(section);
-    try{
+    try {
       const response=await fetch('/data/fii-universe.json',{cache:'no-store'});
-      if(!response.ok) throw new Error('Catalogo indisponivel');
+      if(!response.ok) throw new Error('Catálogo indisponível');
       const payload=await response.json();
-      if(payload.dataType!=='fii-ticker-cnpj-catalog'||!Array.isArray(payload.records)) throw new Error('Formato invalido');
+      if(payload.dataType!=='fii-ticker-cnpj-catalog'||!Array.isArray(payload.records)) throw new Error('Formato inválido');
       const records=payload.records.filter(r=>/^[A-Z]{4}11$/.test(r.ticker)&&/^\d{14}$/.test(r.cnpj));
-      const input=section.querySelector('#fiiUniverseSearch');
-      const body=section.querySelector('#fiiUniverseRows');
-      const classFilter=section.querySelector('#fiiUniverseClass');
+      let evidence=null;
+      try {
+        const b3Response=await fetch('/data/fii-b3-reconciliation.json',{cache:'no-store'});
+        if(b3Response.ok){
+          const data=await b3Response.json();
+          if(data.dataType==='fii-b3-reconciliation' && data.rightsConfirmed===true && Array.isArray(data.records)){
+            const accepted=Object.keys(statuses);
+            evidence=new Map(data.records.filter(r=>accepted.includes(r.verificationStatus)).map(r=>[r.ticker,r]));
+            section.querySelector('#fiiB3Status').textContent='Snapshot B3 autorizado: '+data.snapshotDate+' | '+data.sourceName+'. Presença no cadastro não comprova negociação realizada ou liquidez.';
+          }
+        }
+      } catch (_) { /* Fonte opcional: nao confirmar nada sem dados. */ }
+      const search=section.querySelector('#fiiUniverseSearch');
+      const filter=section.querySelector('#fiiUniverseClass');
       const count=section.querySelector('#fiiUniverseCount');
+      const body=section.querySelector('#fiiUniverseRows');
       function render(){
-        const q=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'');
-        const found=records.filter(r=>{
-          const assetClass=r.assetClass || (/fiagro/i.test(r.name||'')?'FIAGRO':'FII_CANDIDATE');
-          return (classFilter.value==='all'||classFilter.value===assetClass) &&
-            (r.ticker+r.cnpj+(r.name||'').toUpperCase()+(r.sector||'').toUpperCase()).includes(q);
+        const q=search.value.trim().toUpperCase();
+        const filtered=records.filter(r=>{
+          const cls=r.assetClass||(/fiagro/i.test(r.name||'')?'FIAGRO':'FII_CANDIDATE');
+          const hay=[r.ticker,r.cnpj,r.name||'',r.sector||''].join(' ').toUpperCase();
+          return (filter.value==='all'||filter.value===cls)&&hay.includes(q);
         });
-        count.textContent=found.length+' identificacoes encontradas de '+records.length+' no total (inclui FIAGRO). Exibindo ate 100 por vez. Fonte: Lummios (CC BY 4.0).';
-        const safe=v=>String(v||'').replace(/[&<>\"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[ch]));
-        body.innerHTML=found.slice(0,100).map(r=>'<tr><td><strong>'+safe(r.ticker)+'</strong></td><td>'+safe(r.assetClass==='FIAGRO'||/fiagro/i.test(r.name||'')?'FIAGRO':'FII candidato')+'</td><td>'+safe(r.name||'Nome indisponivel')+'<small class="muted"> '+safe(r.sector||'')+'</small></td><td>'+safe(r.cnpj)+'</td></tr>').join('');
+        count.textContent=filtered.length+' resultados (universo: '+records.length+', incluindo FIAGROs). Exibindo 100 por vez.';
+        body.innerHTML=filtered.slice(0,100).map(r=>{
+          const cls=r.assetClass==='FIAGRO'||/fiagro/i.test(r.name||'')?'FIAGRO':'FII candidato';
+          const status=evidence?.get(r.ticker)?.verificationStatus||'unverified';
+          return '<tr><td><strong>'+escapeHtml(r.ticker)+'</strong></td><td>'+escapeHtml(cls)+'</td><td>'+escapeHtml(r.name||'Nome indisponível')+' <small class="muted">'+escapeHtml(r.sector||'')+'</small></td><td>'+escapeHtml(r.cnpj)+'</td><td>'+escapeHtml(statuses[status]||statuses.unverified)+'</td></tr>';
+        }).join('');
       }
-      input.addEventListener('input',render);
-      classFilter.addEventListener('change',render);
+      search.addEventListener('input',render);
+      filter.addEventListener('change',render);
       render();
-    }catch(err){
-      section.querySelector('#fiiUniverseCount').textContent='Catalogo indisponivel no momento; os dados anteriores permanecem preservados.';
+    }catch(_){
+      section.querySelector('#fiiUniverseCount').textContent='Catálogo indisponível; nenhum dado fictício foi apresentado.';
     }
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',showUniverse);
