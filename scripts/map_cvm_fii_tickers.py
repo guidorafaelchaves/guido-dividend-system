@@ -95,7 +95,7 @@ def mapping(csv_text, metrics):
 
 def universe(csv_text):
     """Catalogo de identificacoes de FIIs sem dependencia de informe contabil CVM."""
-    reader=csv.DictReader(io.StringIO(csv_text.lstrip("\\ufeff")))
+    reader=csv.DictReader(io.StringIO(csv_text.lstrip("\ufeff")))
     if not reader.fieldnames or not {"ticker","cnpj","classe"}.issubset(reader.fieldnames):
         raise ValueError("CSV de universo com colunas obrigatorias ausentes")
     tickers={}
@@ -168,7 +168,7 @@ def main():
         "count":len(all_fiis),"records":all_fiis,
         "limitations":"Identificacao cadastral de terceiro; nao comprova listagem ativa na B3. Sem precos, dividendos ou DY."}
     universe_tmp=universe_output.with_suffix(".json.tmp")
-    universe_tmp.write_text(json.dumps(universe_payload,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    universe_tmp.write_text(json.dumps(universe_payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     universe_tmp.replace(universe_output)
     print("FIIs no universo:",len(all_fiis))
     print("FIIs cruzados:",quality)
