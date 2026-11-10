@@ -123,4 +123,21 @@ jobs:
             exit 0
           fi
           git -c user.name="radar-eod-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: sincroniza Radar CVM e B3 D-1"
-          git push
+          # O codigo pode receber commits enquanto o coletor baixa os dados.
+          # Reaplicar o snapshot sobre o HEAD mais novo sem force-push.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "::error::Conflito em arquivos de dados: publicacao suspensa sem sobrescrever concorrentes."
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              echo "Snapshot publicado no HEAD atualizado (tentativa $attempt)."
+              exit 0
+            fi
+            echo "::warning::Novo commit concorrente; repetindo sincronizacao ($attempt/5)."
+            sleep $((attempt * 2))
+          done
+          echo "::error::Nao foi possivel publicar apos 5 tentativas. Dados locais nao publicados."
+          exit 1
