@@ -165,7 +165,7 @@
             <input id="heroSearch" type="search" placeholder="Pesquise um ativo, empresa ou titulo" autocomplete="off">
             <button class="btn primary" type="submit">Pesquisar</button>
           </form>
-          <div class="search-results" id="heroSearchResults" aria-live="polite">${assets().slice(0,3).map(a => `<a class="search-chip" href="/ativos/${esc(a.ticker)}/">${esc(a.ticker)} <span>${esc(a.type)}</span></a>`).join('')}</div>
+          <div class="search-results" id="heroSearchResults" aria-live="polite">${assets().slice(0,3).map(a => `<a class="search-chip" href="/ativos/?ticker=${esc(a.ticker)}">${esc(a.ticker)} <span>${esc(a.type)}</span></a>`).join('')}</div>
         </div>
         ${renderHeroRadar()}
       </section>
@@ -248,7 +248,7 @@
       </section>
       <section class="asset-lanes reveal">
         <article class="panel"><span class="eyebrow">Maiores retornos de evento</span><h2>Recorrentes e extraordinarios separados na leitura</h2>${data.highYield.slice(0,5).map(renderCompactAssetFlow).join('')}</article>
-        <article class="panel"><span class="eyebrow">Quem pode pagar em cada mes?</span><h2>Ativos por periodo</h2><div class="asset-months">${data.months.slice(0,4).map(month => `<div><b>${esc(monthLabel(month.month))}</b><span>${month.rows.length} ativos</span>${month.rows.slice(0,4).map(row => `<a href="/ativos/${esc(row.ticker)}/">${esc(row.ticker)}</a>`).join('')}<a class="btn secondary" href="/calendario/">Abrir no calendario</a></div>`).join('')}</div></article>
+        <article class="panel"><span class="eyebrow">Quem pode pagar em cada mes?</span><h2>Ativos por periodo</h2><div class="asset-months">${data.months.slice(0,4).map(month => `<div><b>${esc(monthLabel(month.month))}</b><span>${month.rows.length} ativos</span>${month.rows.slice(0,4).map(row => `<a href="/ativos/?ticker=${esc(row.ticker)}">${esc(row.ticker)}</a>`).join('')}<a class="btn secondary" href="/calendario/">Abrir no calendario</a></div>`).join('')}</div></article>
       </section>
       <section class="panel reveal"><span class="eyebrow">Papel no fluxo</span><h2>Ativos por funcao de renda</h2><div class="asset-role-grid">${data.roles.map(role => `<article><b>${esc(role.label)}</b><span>${role.rows.length} ativos</span><small>${esc(role.note)}</small></article>`).join('')}</div></section>
       <section class="panel reveal"><span class="eyebrow">Comparacao rapida</span><h2>Compare sem declarar vencedor</h2><div id="assetCompareBox" class="asset-compare-box">Selecione de dois a quatro ativos nos cards para comparar proximo evento, retorno, recorrencia e confianca.</div></section>
@@ -380,14 +380,14 @@
     const price = next?.currentPrice || row.asset.price;
     const simulatedIncome = next && price ? money((10000 / price) * next.amountPerUnit) : 'indisponivel';
     return `<article class="discovery-asset-card ${row.quality === 'Cadastro incompleto' ? 'muted-card' : ''}">
-      <div class="event-top"><div><a class="ticker" href="/ativos/${esc(row.ticker)}/">${esc(row.ticker)}</a><div class="event-kind">${esc(row.asset.name)} - ${esc(row.asset.sector)}</div></div><span class="pill">${esc(row.asset.type)}</span></div>
+      <div class="event-top"><div><a class="ticker" href="/ativos/?ticker=${esc(row.ticker)}">${esc(row.ticker)}</a><div class="event-kind">${esc(row.asset.name)} - ${esc(row.asset.sector)}</div></div><span class="pill">${esc(row.asset.type)}</span></div>
       <div class="asset-flow-next"><span>Proximo fluxo</span><b>${next ? esc(next.eventType) : 'Nenhum evento futuro publicado'}</b><small>${next ? `${money(next.amountPerUnit)} por unidade | ${next.eventYieldPercent === null ? 'retorno indisponivel' : pct(next.eventYieldPercent)}` : `Recorrencia historica: ${row.asset.recurrenceScore ? `${row.asset.recurrenceScore}/100` : 'dados insuficientes'}`}</small></div>
       <div class="event-meta"><div><span>Data-com</span><b>${next ? fullDate(next.recordDate || next.exDate) : '-'}</b></div><div><span>Pagamento</span><b>${next ? fullDate(next.paymentDate) : '-'}</b></div></div>
       <div class="asset-reason"><b>Em destaque porque:</b><span>${next ? `${next.eventStatus === 'confirmed' ? 'evento confirmado' : 'evento publicado'}, ${next.regularity}, ${humanDistance(next.paymentDate)}` : row.quality}</span></div>
       <div class="asset-proof">${esc(next?.sourceName || row.asset.source || 'fonte nao informada')} - ${next?.updatedAt ? `atualizado ${fullDate(next.updatedAt)}` : 'atualizacao nao informada'} - ${esc(row.quality)}</div>
       <div class="asset-card-actions">
         ${next ? `<button class="btn primary asset-capture" type="button" data-event-id="${esc(next.eventId)}" data-ticker="${esc(row.ticker)}">Capturar evento</button>` : `<a class="btn primary" href="/cadastro/">Acompanhar anuncio</a>`}
-        <a class="btn secondary" href="/ativos/${esc(row.ticker)}/">Abrir ativo</a>
+        <a class="btn secondary" href="/ativos/?ticker=${esc(row.ticker)}">Abrir ativo</a>
         <label class="pill"><input class="asset-compare-check" type="checkbox" value="${esc(row.ticker)}"> Comparar</label>
       </div>
       <p class="muted">Com R$ 10.000 neste ativo: aproximadamente ${simulatedIncome} brutos neste evento. Nao e recomendacao.</p>
@@ -404,7 +404,7 @@
 
   function renderAssetCatalogRow(row){
     const price = row.hasPrice && !row.asset.catalogOnly ? money(row.asset.price || row.next?.currentPrice) : 'Cotacao indisponivel';
-    return `<tr><td><b>${esc(row.ticker)}</b><br><span class="muted">${esc(row.asset.name)}</span></td><td>${esc(row.asset.type)}</td><td>${esc(row.quality)}</td><td>${price}</td><td>${row.next ? `${esc(row.next.eventType)} em ${fullDate(row.next.paymentDate)}` : 'Acompanhar proximo anuncio'}</td><td><a class="btn secondary" href="/ativos/${esc(row.ticker)}/">Abrir</a></td></tr>`;
+    return `<tr><td><b>${esc(row.ticker)}</b><br><span class="muted">${esc(row.asset.name)}</span></td><td>${esc(row.asset.type)}</td><td>${esc(row.quality)}</td><td>${price}</td><td>${row.next ? `${esc(row.next.eventType)} em ${fullDate(row.next.paymentDate)}` : 'Acompanhar proximo anuncio'}</td><td><a class="btn secondary" href="/ativos/?ticker=${esc(row.ticker)}">Abrir</a></td></tr>`;
   }
 
   function renderAssetDetail(){
@@ -422,7 +422,7 @@
           <div class="actions"><button class="btn primary" id="refreshMarket">Consultar fechamento importado</button><a class="btn secondary" href="/cadastro/">Acompanhar ativo</a></div>
         </article>
         <article class="card reveal"><h2>Linha temporal do ativo</h2><div class="calendar-list">${related.map(renderEventRow).join('') || '<div class="empty">Sem eventos publicados.</div>'}</div></article>
-        <section class="reveal"><h2>Quanto esse evento representa?</h2>${renderSimulator()}</section>
+        <section class="reveal"><h2>Quanto esse evento representa?</h2>${next ? renderSimulator() : '<p class="muted">Ainda não há provento verificado para simular neste ativo.</p>'}</section>
       </div>
       <aside class="panel grid reveal">
         <div class="metric"><small>Preco atual</small><b>${asset.price>0 && !asset.catalogOnly?money(asset.price):"Sem cotação validada"}</b></div>
@@ -545,7 +545,7 @@
       <div class="table-wrap operations-table"><table>
         <thead><tr><th>Ativo</th><th>Datas</th><th>Evento</th><th>Yield</th><th>Qualidade operacional</th><th>Acao</th></tr></thead>
         <tbody>${sorted.map(event => `<tr class="operations-row ${event.eventId === selectedId ? 'selected' : ''}" data-compare-event-id="${esc(event.eventId)}">
-          <td><a class="asset-link" href="/ativos/${esc(event.ticker)}/">${esc(event.ticker)}</a><br><span class="muted">${esc(event.assetName)}</span></td>
+          <td><a class="asset-link" href="/ativos/?ticker=${esc(event.ticker)}">${esc(event.ticker)}</a><br><span class="muted">${esc(event.assetName)}</span></td>
           <td><span class="cell-kv"><b>COM</b>${fullDate(event.recordDate || event.exDate)}</span><span class="cell-kv"><b>EX</b>${fullDate(event.exDate)}</span><span class="cell-kv"><b>PGTO</b>${fullDate(event.paymentDate)} <small>${humanDistance(event.paymentDate)}</small></span></td>
           <td><b>${esc(event.eventType)}</b><br><span class="muted">${money(event.amountPerUnit)} por unidade</span></td>
           <td><span class="cell-kv"><b>Evento</b>${event.eventYieldPercent === null ? '-' : pct(event.eventYieldPercent)}</span><span class="cell-kv"><b>Equiv.</b>${event.equivalentYieldPercent === null ? '-' : pct(event.equivalentYieldPercent)}</span></td>
@@ -1640,6 +1640,7 @@
     }
     const renderers = { home:renderHome, assets:renderAssets, assetDetail:renderAssetDetail, calendar:renderCalendar, incomeMap:renderIncomeMap, about:renderAbout, methodology:renderMethodology, admin:() => renderAdmin('admin'), adminProventos:() => renderAdmin('adminProventos'), adminImports:() => renderAdmin('adminImports'), adminNewImport:() => renderAdmin('adminNewImport'), adminMarket:() => renderAdmin('adminMarket'), adminAssets:() => renderAdmin('adminAssets'), adminEvents:() => renderAdmin('adminEvents'), adminReview:() => renderAdmin('adminReview'), adminPublishing:() => renderAdmin('adminPublishing'), adminSources:() => renderAdmin('adminSources'), adminQuality:() => renderAdmin('adminQuality'), adminJobs:() => renderAdmin('adminJobs'), adminAudit:() => renderAdmin('adminAudit'), adminFinops:() => renderAdmin('adminFinops'), adminSecurity:() => renderAdmin('adminSecurity'), adminSettings:() => renderAdmin('adminSettings'), system:renderSystem };
     main.innerHTML = (renderers[page] || renderHome)();
+    if(page === 'assetDetail') global.DividendFiiAssetPanel?.render?.();
     if(page === 'assets'){
       wireAssetDiscovery();
       paintAssetRows();
