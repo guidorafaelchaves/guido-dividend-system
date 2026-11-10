@@ -3,7 +3,7 @@ from datetime import date
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
-from import_fii_distributions import normalize
+from import_fii_distributions import normalize, merge_history
 
 class DistributionImportTests(unittest.TestCase):
     def setUp(self):
@@ -43,6 +43,31 @@ class DistributionImportTests(unittest.TestCase):
         wrong_kind=self.row.replace("RENDIMENTO","VPA")
         no_doc=self.row.replace("DOC-1001","")
         self.assertEqual(self.run_import(wrong_kind+no_doc)["coverage"]["accepted"],0)
+
+    def test_preserves_old_payments_across_imports(self):
+        old=self.run_import(self.row)
+        newer=self.run_import(self.row.replace("2026-10-15","2026-11-03")
+            .replace("2026-10-25","2026-11-07")
+            .replace("2026-10-10","2026-11-01")
+            .replace("DOC-1001","DOC-2002").replace("/1001","/2002"))
+        merged=merge_history(old,newer,self.catalog)
+        self.assertEqual(len(merged["records"]),2)
+        self.assertEqual(merged["coverage"]["historicalRecordsPreserved"],1)
+
+    def test_quarantines_conflicting_documents_across_imports(self):
+        old=self.run_import(self.row)
+        changed=self.run_import(self.row.replace("DOC-1001","DOC-9999").replace("/1001","/9999"))
+        merged=merge_history(old,changed,self.catalog)
+        self.assertEqual(merged["records"],[])
+        self.assertEqual(merged["coverage"]["conflictsAcrossImports"],1)
+
+    def test_past_data_with_new_cnpj_does_not_carry_over(self):
+        old=self.run_import(self.row)
+        current={"dataType":"fii-ticker-cnpj-catalog",
+                 "records":[{"ticker":"MXRF11","cnpj":"00000000000000"}]}
+        newer={"dataType":"fii-document-linked-distributions","rightsConfirmed":True,
+               "coverage":{"accepted":0},"records":[]}
+        self.assertEqual(merge_history(old,newer,current)["records"],[])
 
     def test_requires_rights(self):
         with self.assertRaises(PermissionError):
