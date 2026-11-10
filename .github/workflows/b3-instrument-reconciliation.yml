@@ -1,0 +1,71 @@
+name: Reconciliar instrumentos B3 autorizados
+on:
+  workflow_dispatch:
+    inputs:
+      snapshot_date:
+        description: "Data de referência do arquivo autorizado (AAAA-MM-DD)"
+        required: true
+        type: string
+      source_name:
+        description: "Identificação documental do fornecedor ou arquivo B3"
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: fii-b3-instruments
+  cancel-in-progress: false
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Garantir direitos e origem autorizada
+        env:
+          URL: ${{ secrets.B3_INSTRUMENTS_FEED_URL }}
+          RIGHTS: ${{ vars.B3_INSTRUMENTS_RIGHTS_CONFIRMED }}
+          PUBLICATION: ${{ vars.B3_INSTRUMENTS_PUBLICATION_ALLOWED }}
+        run: |
+          if [ "$RIGHTS" != "true" ] || [ "$PUBLICATION" != "true" ]; then
+            echo "::error::Autorizacoes de uso e publicacao ainda nao confirmadas."
+            exit 1
+          fi
+          case "$URL" in
+            https://*) ;;
+            *) echo "::error::Configure um feed autorizado HTTPS."; exit 1 ;;
+          esac
+          curl --fail --location --silent --show-error --retry 2 --max-time 90 --max-filesize 32000000 \
+            "$URL" --output /tmp/b3-instruments-authorized.csv
+          test -s /tmp/b3-instruments-authorized.csv
+      - name: Validar regras de conciliacao
+        run: python3 -m unittest discover -s tests -p 'test_b3_instrument_reconciliation.py' -v
+      - name: Reconciliar snapshot autorizado sem inferir negociacao
+        env:
+          SNAPSHOT_DATE: ${{ inputs.snapshot_date }}
+          SOURCE_NAME: ${{ inputs.source_name }}
+        run: |
+          python3 scripts/reconcile_b3_instruments.py \
+            --input /tmp/b3-instruments-authorized.csv \
+            --snapshot-date "$SNAPSHOT_DATE" \
+            --source-name "$SOURCE_NAME" \
+            --rights-confirmed
+          mkdir -p docs/data
+          cp public/data/fii-b3-reconciliation.json docs/data/fii-b3-reconciliation.json
+      - name: Publicar resultado com proteção contra commits simultaneos
+        run: |
+          git add public/data/fii-b3-reconciliation.json docs/data/fii-b3-reconciliation.json
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name="radar-b3-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: conciliar cadastro autorizado B3 e FIIs"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "::error::Conflito na reconciliacao, nenhuma sobrescrita efetuada."
+              exit 1
+            fi
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          echo "::error::Falha ao publicar snapshot após cinco tentativas."
+          exit 1
