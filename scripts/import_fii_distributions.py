@@ -103,6 +103,42 @@ def normalize(catalog, raw, source_name, rights_confirmed=False, now=None):
                           "Amortizacao nao entra em dividend yield. Sem precos ou DY inferidos.",
             "records":records}
 
+def merge_history(previous, incoming, catalog):
+    """Acumula registros documentais sem apagar periodos anteriores.
+
+    Se duas fontes apresentarem documentos distintos para a MESMA parcela,
+    a parcela entra em quarentena: nao publicar versao arbitraria.
+    """
+    if not isinstance(previous,dict) or previous.get("dataType")!="fii-document-linked-distributions" or previous.get("rightsConfirmed") is not True:
+        return incoming
+    latest_identity={r.get("ticker"):r.get("cnpj") for r in catalog.get("records",[])}
+    by_key={}
+    conflicts=set()
+    for record in [*previous.get("records",[]),*incoming.get("records",[])]:
+        if record.get("cnpj")!=latest_identity.get(record.get("ticker")):
+            continue
+        if record.get("verificationStatus")!="document-linked-unverified-content":
+            continue
+        key=(record.get("ticker"),record.get("kind"),record.get("exDate"),
+             record.get("paymentDate"),str(record.get("amountDecimal")))
+        if not all(key) or key in conflicts:
+            continue
+        prev=by_key.get(key)
+        if prev and (prev.get("sourceDocumentId")!=record.get("sourceDocumentId")
+                     or prev.get("sourceUrl")!=record.get("sourceUrl")):
+            conflicts.add(key)
+            del by_key[key]
+        elif not prev:
+            by_key[key]=record
+    result={**incoming}
+    result["records"]=sorted(by_key.values(),key=lambda r:(r["ticker"],r["exDate"],r["paymentDate"],r["kind"]))
+    result["coverage"]={**incoming["coverage"],
+        "accepted":len(result["records"]),
+        "conflictsAcrossImports":len(conflicts),
+        "historicalRecordsPreserved":max(0,len(result["records"])-len(incoming["records"]))}
+    result["historyMerge"]="Preserva periodos anteriores para mesmo ticker/CNPJ, com conflitos removidos."
+    return result
+
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--input",required=True,type=Path)
@@ -118,6 +154,9 @@ def main():
         raise ValueError("Arquivo vazio ou maior que 16 MiB")
     catalog=json.loads(args.catalog.read_text(encoding="utf-8"))
     result=normalize(catalog,raw.decode("utf-8-sig"),args.source_name,True)
+    if args.output.exists():
+        previous=json.loads(args.output.read_text(encoding="utf-8"))
+        result=merge_history(previous,result,catalog)
     result["inputSha256"]=hashlib.sha256(raw).hexdigest()
     if not result["records"]:
         raise ValueError("Nenhum rendimento elegivel: snapshot anterior preservado.")
