@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "dataType": "fii-vpa-rebuild-status",
-  "runId": "42738919282",
-  "checkedAtUtc": "2026-11-10T01:53:24+00:00",
+  "runId": "42741839881",
+  "checkedAtUtc": "2026-11-10T02:18:31+00:00",
   "tests": "success",
   "cvm": "success",
   "tickers": "success",
@@ -28,7 +28,7 @@
     "test_source_validation (test_cvm_fii.MonthlyFiiTests.test_source_validation) ... ok",
     "",
     "----------------------------------------------------------------------",
-    "Ran 7 tests in 0.004s",
+    "Ran 7 tests in 0.006s",
     "",
     "OK"
   ],
