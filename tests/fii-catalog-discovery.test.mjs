@@ -26,7 +26,7 @@ const portal=fs.readFileSync('public/platform/portal.js','utf8');
 assert.ok(portal.includes('DividendFiiCatalog?.merge'));
 assert.match(portal,/DividendFiiCatalog\?\.load/);
 assert.match(portal,/data\.all\.filter\(row => row\.asset\.type === 'FII'\)/);
-assert.match(portal,/catalog\.innerHTML=candidates\.slice\(0,100\)/);
+assert.match(portal,/catalog\.innerHTML=candidates\.slice\(0,assetCatalogLimit\)/);
 assert.match(portal,/\/ativos\/\?ticker=/);
 assert.match(portal,/DividendFiiUniverse\?\.show/);
 assert.match(fs.readFileSync('public/platform/cvmFiiAssetPanel.js','utf8'),/queryTicker/);
