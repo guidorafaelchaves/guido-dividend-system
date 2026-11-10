@@ -10,9 +10,10 @@
   };
   async function showUniverse(){
     const main=document.querySelector('.asset-discovery-page');
-    if(!main) return;
+    if(!main || document.getElementById('fiiUniverseCatalogue')) return;
     const section=document.createElement('section');
     section.className='panel reveal';
+    section.id='fiiUniverseCatalogue';
     section.innerHTML=`<span class="eyebrow">Cobertura cadastral</span>
       <h2>FIIs e FIAGROs</h2>
       <p class="muted">Ticker, nome, CNPJ e setor: Lummios (CC BY 4.0). Os FIIs são candidatos até conciliação com arquivo B3 autorizado. FIAGROs são separados. Nenhum preço, DY ou dividendo é inferido.</p>
@@ -69,6 +70,7 @@
       section.querySelector('#fiiUniverseCount').textContent='Catálogo indisponível; nenhum dado fictício foi apresentado.';
     }
   }
+  window.DividendFiiUniverse=Object.freeze({show:showUniverse});
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',showUniverse);
   else showUniverse();
 })();
