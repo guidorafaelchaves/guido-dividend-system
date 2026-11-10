@@ -16,9 +16,9 @@ class ReconciliationTests(unittest.TestCase):
     def setUp(self):
         self.isin = test_isin()
         self.catalog = {"dataType":"fii-ticker-cnpj-catalog","records":[
-            {"ticker":"MXRF11","assetClass":"FII_CANDIDATE"},
-            {"ticker":"SNAG11","assetClass":"FIAGRO"},
-            {"ticker":"HGLG11","assetClass":"FII_CANDIDATE"},
+            {"ticker":"MXRF11","cnpj":"11222333000181","assetClass":"FII_CANDIDATE"},
+            {"ticker":"SNAG11","cnpj":"11222333000181","assetClass":"FIAGRO"},
+            {"ticker":"HGLG11","cnpj":"11222333000181","assetClass":"FII_CANDIDATE"},
         ]}
 
     def reconcile(self, body):
