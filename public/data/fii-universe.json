@@ -4,2507 +4,3697 @@
   "source": "https://developers.lummios.com.br/dados/universo-ativos.csv",
   "attribution": "Dados de identificação ticker/CNPJ: Lummios, CC BY 4.0 — https://developers.lummios.com.br/dados-abertos.html",
   "license": "CC BY 4.0",
-  "count": 357,
+  "count": 527,
   "records": [
+    {
+      "ticker": "AAZQ11",
+      "cnpj": "44625826000111",
+      "name": "AZ QUEST SOLE FIAGRO - IMOBILIÁRIO",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
     {
       "ticker": "ABCP11",
       "cnpj": "01201140000190",
-      "name": "",
-      "sector": "",
+      "name": "GRAND PLAZA SHOPPING FII DE RESPONSABILIDADE LIMITADA",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ADSH11",
       "cnpj": "63375304000153",
-      "name": "",
-      "sector": "",
+      "name": "AD SHOPPING FII RESP LIMITADA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AEFI11",
+      "cnpj": "13873457000152",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO RB RENDA EDUCACIONAL",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "AERO11",
       "cnpj": "57927297000152",
-      "name": "",
-      "sector": "",
+      "name": "FII HCO OPPS AERO I",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AFCR11",
+      "cnpj": "32065364000146",
+      "name": "CARTESIA RECEBÍVEIS IMOBILIÁRIOS FII RESP LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "AFHI11",
       "cnpj": "36642293000158",
-      "name": "",
-      "sector": "",
+      "name": "AF INVEST CRI FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AFOF11",
+      "cnpj": "34847063000108",
+      "name": "ALIANZA MULTI FII",
+      "sector": "Títulos e Val. Mob.",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AGCX11",
+      "cnpj": "15576907000170",
+      "name": "RIO BRAVO RENDA VAREJO FII DE RESPONSABILIDADE LIMITADA",
+      "sector": "Varejo",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "AGRX11",
+      "cnpj": "43951911000107",
+      "name": "FUNDO DE INVESTIMENTO EXES ARAGUAIA FIAGRO IMOBILIARIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "AIEC11",
       "cnpj": "35765826000126",
-      "name": "",
-      "sector": "",
+      "name": "ARCH EDIFICIOS CORPORATIVOS FII",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "AJFI11",
       "cnpj": "51472985000199",
-      "name": "",
-      "sector": "",
+      "name": "AJ MALLS FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ALMI11",
       "cnpj": "07122725000100",
-      "name": "",
-      "sector": "",
+      "name": "TORRE ALMIRANTE FII",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ALZC11",
+      "cnpj": "40011324000140",
+      "name": "ALIANZA CRÉDITO FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ALZR11",
       "cnpj": "28737771000185",
-      "name": "",
-      "sector": "",
+      "name": "ALIANZA TRUST FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ANCR11",
       "cnpj": "07789135000127",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO ANCAR IC",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "APTO11",
       "cnpj": "42432327000182",
-      "name": "",
-      "sector": "",
+      "name": "NAVI RESIDENCIAL FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "APXM11",
       "cnpj": "43010485000107",
-      "name": "",
-      "sector": "",
+      "name": "APEX MALLS FII",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "APXR11",
       "cnpj": "52446271000179",
-      "name": "",
-      "sector": "",
+      "name": "APEX REALTY FII",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "APXU11",
       "cnpj": "52521137000195",
-      "name": "",
-      "sector": "",
+      "name": "APEX URB FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "AQLL11",
       "cnpj": "13555918000149",
-      "name": "",
-      "sector": "",
+      "name": "AQUILLA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ARCT11",
+      "cnpj": "28267696000136",
+      "name": "RIZA ARCTIUM FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "AROA11",
       "cnpj": "44674528000111",
-      "name": "",
-      "sector": "",
+      "name": "FII AROEIRA 333 RENDA LOGISTICA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ARRI11",
       "cnpj": "32006821000121",
-      "name": "",
-      "sector": "",
+      "name": "OPEN K ATIVOS E RECEBIVEIS IMOBILIARIOS",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ARTE11",
       "cnpj": "53193237000100",
-      "name": "",
-      "sector": "",
+      "name": "ARTEMIS FII",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ASMT11",
+      "cnpj": "38293921000162",
+      "name": "DAYCOVAL RE MULTIESTRATÉGIA FII RL",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ASRF11",
       "cnpj": "45188033000145",
-      "name": "",
-      "sector": "",
+      "name": "DAYCOVAL RET FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ATSA11",
       "cnpj": "12809972000100",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE ATRIUM SHOPPING SANTO ANDRÉ FUNDO DE INVEST IMOB",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "AURB11",
       "cnpj": "41076823000188",
-      "name": "",
-      "sector": "",
+      "name": "ALIANZA URBAN FII RL",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "AVUR11",
       "cnpj": "57109239000111",
-      "name": "",
-      "sector": "",
+      "name": "ARCH VANGUARDA UNIDADES RESIDENCIAIS FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "AZPL11",
       "cnpj": "51890054000100",
-      "name": "",
-      "sector": "",
+      "name": "AZ QUEST PANORAMA LOGISTICA FII RESP LIM",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BARI11",
+      "cnpj": "29267567000100",
+      "name": "VBI RENDIMENTOS IMOBILIARIOS I FII RESP LIMITADA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BBFI11",
       "cnpj": "07000400000146",
-      "name": "",
-      "sector": "",
+      "name": "BB PROGRESSIVO FII",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BBFO11",
       "cnpj": "37180091000102",
-      "name": "",
-      "sector": "",
+      "name": "BB FUNDO DE FUNDOS - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BBGO11",
+      "cnpj": "42592257000120",
+      "name": "BB FUNDO DE INVESTIMENTO DE CRÉDITO FIAGRO-IMOBILIÁRIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BBIG11",
       "cnpj": "54375187000137",
-      "name": "",
-      "sector": "",
+      "name": "BB PREMIUM MALLS FII DE RESPONSABILIDADE LIMITADA",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BBPO11",
       "cnpj": "14410722000129",
-      "name": "",
-      "sector": "",
+      "name": "TIVIO RENDA IMOBILIÁRIA",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BBRC11",
       "cnpj": "12681340000104",
-      "name": "",
-      "sector": "",
+      "name": "BB RENDA CORPORATIVA FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BBVJ11",
+      "cnpj": "10347985000180",
+      "name": "CIDADE JARDIM CONTINENTAL TOWER FII",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BCFF11",
+      "cnpj": "11026627000138",
+      "name": "FUNDO DE FUNDOS FII",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BCIA11",
       "cnpj": "20216935000117",
-      "name": "",
-      "sector": "",
+      "name": "BRADESCO CARTEIRA IMOBILIÁRIA ATIVA FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BCRI11",
       "cnpj": "22219335000138",
-      "name": "",
-      "sector": "",
+      "name": "BANESTES RECEBIVEIS IMOBILIARIOS FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BICE11",
       "cnpj": "39332032000120",
-      "name": "",
-      "sector": "",
+      "name": "BRIO CRÉDITO ESTRUTURADO - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BICR11",
+      "cnpj": "34007109000172",
+      "name": "ALIANZA TÍTULOS FII",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BIME11",
       "cnpj": "41081356000184",
-      "name": "",
-      "sector": "",
+      "name": "BRIO MULTIESTRATEGIA - FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BIPD11",
       "cnpj": "42869892000101",
-      "name": "",
-      "sector": "",
+      "name": "BRIO REAL ESTATE IV - FII",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BIPE11",
       "cnpj": "51817522000111",
-      "name": "",
-      "sector": "",
+      "name": "BRIO REAL ESTATE V - FII",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BLCA11",
       "cnpj": "41076748000155",
-      "name": "",
-      "sector": "",
+      "name": "CATUAÍ VBI FII RL",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BLCP11",
+      "cnpj": "35652060000173",
+      "name": "BLUECAP LOG FII",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BLMC11",
+      "cnpj": "38294221000192",
+      "name": "FII VBI CRÉDITO IMOBILIARIO",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BLMG11",
       "cnpj": "34081637000171",
-      "name": "",
-      "sector": "",
+      "name": "BLUEMACAW LOGÍSTICA FUNDO INVESTIMENTO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BLMO11",
       "cnpj": "34895894000147",
-      "name": "",
-      "sector": "",
+      "name": "VBI OFFICE FUND II FII",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BLMR11",
+      "cnpj": "36368869000130",
+      "name": "VBI RENDA+ FOF FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BLOG11",
       "cnpj": "49592781000140",
-      "name": "",
-      "sector": "",
+      "name": "BLUECAP LOG FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BLUR11",
+      "cnpj": "38051307000194",
+      "name": "FII BLUE RECEBÍVEIS",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BMLC11",
       "cnpj": "14376247000111",
-      "name": "",
-      "sector": "",
+      "name": "BM BRASCAN LAJES FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BNFS11",
       "cnpj": "15570431000160",
-      "name": "",
-      "sector": "",
+      "name": "BANRISUL NOVAS FRONTEIRAS FII",
+      "sector": "Varejo",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BPFF11",
+      "cnpj": "17324357000128",
+      "name": "FII BRASIL PLURAL ABSOLUTO FUNDOS DE FUNDOS",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BPML11",
       "cnpj": "33046142000149",
-      "name": "",
-      "sector": "",
+      "name": "BTGP SHOPPINGS FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BPRP11",
+      "cnpj": "29800650000101",
+      "name": "BRLPROP FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BRCO11",
       "cnpj": "20748515000181",
-      "name": "",
-      "sector": "",
+      "name": "BRESCO LOGISTICA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BRCR11",
       "cnpj": "08924783000101",
-      "name": "",
-      "sector": "",
+      "name": "BC FUND FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BREV11",
+      "cnpj": "26195121000120",
+      "name": "BRAZIL REAL ESTATE VICTORY FUND I - FII",
+      "sector": "Híbrido",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BRIM11",
       "cnpj": "23964843000103",
-      "name": "",
-      "sector": "",
+      "name": "BRIO REAL ESTATE II",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BRIP11",
       "cnpj": "34895752000180",
-      "name": "",
-      "sector": "",
+      "name": "BRIO REAL ESTATE III FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BRIX11",
       "cnpj": "35360651000177",
-      "name": "",
-      "sector": "",
+      "name": "BE IN RIO FII RESP LTDA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BRLA11",
       "cnpj": "35652278000128",
-      "name": "",
-      "sector": "",
+      "name": "RAIZZ RENDA LOG FII",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BROF11",
       "cnpj": "48978859000104",
-      "name": "",
-      "sector": "",
+      "name": "BRPR CORPORATE FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BTAL11",
       "cnpj": "36642244000115",
-      "name": "",
-      "sector": "",
+      "name": "BTGP AGRO LOG FII",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTCR11",
+      "cnpj": "29787928000140",
+      "name": "BTGP CRED IMOBIL FII",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BTHI11",
       "cnpj": "64634907000195",
-      "name": "",
-      "sector": "",
+      "name": "RIZA FORTIX PRE FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTLG11",
+      "cnpj": "11839593000109",
+      "name": "BTGP LOGISTICA FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTML11",
+      "cnpj": "36501210000100",
+      "name": "BARRA MALLS FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Shoppings",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "BTRA11",
+      "cnpj": "41076607000132",
+      "name": "TERRAS AGRICOLAS FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BTRU11",
       "cnpj": "08098114000128",
-      "name": "",
-      "sector": "",
+      "name": "BTG RENDA URB FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BTSG11",
       "cnpj": "36098375000183",
-      "name": "",
-      "sector": "",
+      "name": "BTSP I FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BTSI11",
       "cnpj": "36930464000144",
-      "name": "",
-      "sector": "",
+      "name": "BTSP II FUNDO DE INVESTIMENTO IMOBILIÁRI",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BTWR11",
       "cnpj": "20132453000189",
-      "name": "",
-      "sector": "",
+      "name": "BTOWERS FUNDO INVESTIMENTO IMOBILIARIO",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BTYU11",
       "cnpj": "54645216000133",
-      "name": "",
-      "sector": "",
+      "name": "FII BTGP YOU",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BVAR11",
       "cnpj": "21126204000143",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO BRASIL VAREJO",
+      "sector": "Varejo",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "BZLI11",
       "cnpj": "14074706000102",
-      "name": "",
-      "sector": "",
+      "name": "SUPREME REALTY FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CACR11",
+      "cnpj": "32065364000146",
+      "name": "CARTESIA RECEBÍVEIS IMOBILIÁRIOS FII RESP LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CARE11",
       "cnpj": "13584584000131",
-      "name": "",
-      "sector": "",
+      "name": "BRAZILIAN GRAVEYARD AND DEATH CARE SERVICES FUNDO DE INV.",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CBOP11",
       "cnpj": "17144039000185",
-      "name": "",
-      "sector": "",
+      "name": "CASTELLO BRANCO OFFICE PARK  - FII",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CCME11",
       "cnpj": "43010844000126",
-      "name": "",
-      "sector": "",
+      "name": "CANUMA CAPITAL FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CCRF11",
+      "cnpj": "40011268000143",
+      "name": "RBR CRI - FII",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CCVA11",
       "cnpj": "52713882000136",
-      "name": "",
-      "sector": "",
+      "name": "CANUMA RENDA FII",
+      "sector": "Hospital",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CENU11",
       "cnpj": "37899356000119",
-      "name": "",
-      "sector": "",
+      "name": "FII CENU",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CEOC11",
       "cnpj": "15799397000109",
-      "name": "",
-      "sector": "",
+      "name": "CEO CYRELA FII",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CFHI11",
+      "cnpj": "34508923000170",
+      "name": "CF2 FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CFII11",
       "cnpj": "41325993000159",
-      "name": "",
-      "sector": "",
+      "name": "CF3 FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CJCT11",
+      "cnpj": "10347985000180",
+      "name": "CIDADE JARDIM CONTINENTAL TOWER FII",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CLIN11",
       "cnpj": "49005348000160",
-      "name": "",
-      "sector": "",
+      "name": "CLAVE INDICES FII RL",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CNES11",
       "cnpj": "13551286000145",
-      "name": "",
-      "sector": "",
+      "name": "CENESP FII",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CORM11",
+      "cnpj": "38293921000162",
+      "name": "DAYCOVAL RE MULTIESTRATÉGIA FII RL",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CPFF11",
+      "cnpj": "34081611000123",
+      "name": "CAPITANIA FOF FII RL",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CPLG11",
       "cnpj": "52371756000140",
-      "name": "",
-      "sector": "",
+      "name": "CAPITANIA LOGISTICA FII",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CPOF11",
       "cnpj": "48916699000160",
-      "name": "",
-      "sector": "",
+      "name": "CAPITÂNIA OFFICE FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CPTR11",
+      "cnpj": "42537579000176",
+      "name": "CAPITANIA FIAGRO RL",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CPTS11",
       "cnpj": "18979895000113",
-      "name": "",
-      "sector": "",
+      "name": "CAPITANIA SEC II FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CPUR11",
+      "cnpj": "34691520000100",
+      "name": "CAPITANIA HBC II FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "CRAA11",
+      "cnpj": "48903610000121",
+      "name": "SPARTA FIAGRO RL",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CRFF11",
       "cnpj": "31887401000139",
-      "name": "",
-      "sector": "",
+      "name": "CX RIO BRAVO FUNDO DE FUNDOS DE INVESTIMENTO IMOBILIÁRIO II",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CTXT11",
       "cnpj": "00762723000128",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INV. IMOBILIARIO CENTRO TEXTIL INTERNACIONAL",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CVBI11",
       "cnpj": "28729197000113",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA CREDITO IMOBILIARIO INDICE DE PRECOS FII RESP LTDA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CXAG11",
       "cnpj": "40189596000134",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO CAIXA AGENCIAS",
+      "sector": "Varejo",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CXCE11",
       "cnpj": "10991914000115",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIARIO CAIXA CEDAE",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CXCI11",
       "cnpj": "42066916000194",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO CAIXA CARTEIRA IMOBILIÁRIA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CXCO11",
       "cnpj": "38658984000175",
-      "name": "",
-      "sector": "",
+      "name": "FII CAIXA IMÓVEIS CORPORATIVOS",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CXRI11",
       "cnpj": "17098794000170",
-      "name": "",
-      "sector": "",
+      "name": "CAIXA RIO BRAVO FUNDO DE FUNDOS DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CXTL11",
       "cnpj": "12887506000143",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIARIO CAIXA SEQ LOGISTICA RENDA",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CYCR11",
       "cnpj": "36501233000115",
-      "name": "",
-      "sector": "",
+      "name": "CYRELA CRÉDITO - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "CYLD11",
       "cnpj": "43010601000198",
-      "name": "",
-      "sector": "",
+      "name": "CYRELA LOG FII RL",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "DAMA11",
       "cnpj": "53866872000101",
-      "name": "",
-      "sector": "",
+      "name": "DAMA FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "DAMT11",
       "cnpj": "26642727000166",
-      "name": "",
-      "sector": "",
+      "name": "DIAMANTE FII RL",
+      "sector": "Shoppings",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DCRA11",
+      "cnpj": "42888360000111",
+      "name": "FIAGRO DEVANT",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "DEVA11",
       "cnpj": "37087810000137",
-      "name": "",
-      "sector": "",
+      "name": "DEVANT RECEBÍVEIS IMOBILIÁRIOS FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DMAC11",
+      "cnpj": "30579348000146",
+      "name": "MAC FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DOMC11",
+      "cnpj": "17374696000119",
+      "name": "FII PLANNER 2553 - LABINA MULTI ATIVOS FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "DOVL11",
       "cnpj": "10522648000181",
-      "name": "",
-      "sector": "",
+      "name": "DOVEL FII",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "DPRO11",
       "cnpj": "42922127000108",
-      "name": "",
-      "sector": "",
+      "name": "DEVANT PROPERTIES FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "DRIT11",
+      "cnpj": "10456810000100",
+      "name": "DRIT11 FII",
+      "sector": "Lajes Corporativas",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "DVFF11",
       "cnpj": "39863059000149",
-      "name": "",
-      "sector": "",
+      "name": "DEVANT FII DE RESPONSABILIDADE LIMITADA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "DVLP11",
       "cnpj": "42537601000188",
-      "name": "",
-      "sector": "",
+      "name": "FII SPECIALE REAL ESTATE DEV",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "EDFO11",
       "cnpj": "06175262000173",
-      "name": "",
-      "sector": "",
+      "name": "FII EDIFÍCIO OURINVEST",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "EDGA11",
       "cnpj": "15333306000137",
-      "name": "",
-      "sector": "",
+      "name": "GALERIA FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "EDGE11",
       "cnpj": "54306150000157",
-      "name": "",
-      "sector": "",
+      "name": "EDGE FII RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EGAF11",
+      "cnpj": "41224330000148",
+      "name": "FII ECOAGRO I - FIAGRO",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "EGDB11",
       "cnpj": "53866393000187",
-      "name": "",
-      "sector": "",
+      "name": "FII DE DESENVO DE ESCRITÓRIOS BOUTIQUE RESPONSABILIDADE LTDA",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "EGYR11",
       "cnpj": "36969658000153",
-      "name": "",
-      "sector": "",
+      "name": "ENERGY RESORT FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "EIRA11",
       "cnpj": "59202651000107",
-      "name": "",
-      "sector": "",
+      "name": "AROEIRA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "EMET11",
       "cnpj": "53523736000100",
-      "name": "",
-      "sector": "",
+      "name": "EMET MULTIESTRATEGIA FII RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EQIA11",
+      "cnpj": "42537438000153",
+      "name": "NCH CRA FIAGRO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "EQIR11",
       "cnpj": "41076380000125",
-      "name": "",
-      "sector": "",
+      "name": "EQI CRI FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ERPA11",
       "cnpj": "31469385000164",
-      "name": "",
-      "sector": "",
+      "name": "EUROPA 105 FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "EURO11",
       "cnpj": "05437916000127",
-      "name": "",
-      "sector": "",
+      "name": "F.I.I EUROPAR RESPONSABILIDADE LIMITADA",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "EVBI11",
+      "cnpj": "34691520000100",
+      "name": "CAPITANIA HBC II FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "EXES11",
       "cnpj": "41076851000103",
-      "name": "",
-      "sector": "",
+      "name": "EXES CRI FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FAED11",
       "cnpj": "11179118000145",
-      "name": "",
-      "sector": "",
+      "name": "ANHANGUERA FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FAMB11",
       "cnpj": "05562312000102",
-      "name": "",
-      "sector": "",
+      "name": "FII EDIFÍCIO ALMIRANTE BARROSO RL",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FATN11",
       "cnpj": "30567216000102",
-      "name": "",
-      "sector": "",
+      "name": "BRC RENDA CORPORATIVA FII - RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FCFL11",
       "cnpj": "11602654000101",
-      "name": "",
-      "sector": "",
+      "name": "CAMPUS FARIA LIM FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FEXC11",
       "cnpj": "09552812000114",
-      "name": "",
-      "sector": "",
+      "name": "BTG CRÉDITO IMOB FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FFCI11",
+      "cnpj": "03683056000186",
+      "name": "FUNDO DE INV. IMOBILIÁRIO RIO BRAVO RENDA CORPORATIVA",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FGAA11",
+      "cnpj": "42405905000191",
+      "name": "FG AGRO FI NAS CADEIAS PROD AGROIND FIAGRO IMOBILIARIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FIGS11",
       "cnpj": "17590518000125",
-      "name": "",
-      "sector": "",
+      "name": "GENERAL SHOPPING ATIVO E RENDA FUNDO DE INVEST IMOB",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FIIB11",
       "cnpj": "14217108000145",
-      "name": "",
-      "sector": "",
+      "name": "F.I.I. INDUSTRIAL DO BRASIL RESPONSABILIDADE LIMITADA",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FIIP11",
       "cnpj": "08696175000197",
-      "name": "",
-      "sector": "",
+      "name": "RB CAPITAL RENDA I FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FISC11",
       "cnpj": "12804013000100",
-      "name": "",
-      "sector": "",
+      "name": "FII SC 401 - RESPONSABILIDADE LIMITADA",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FISD11",
       "cnpj": "16543270000189",
-      "name": "",
-      "sector": "",
+      "name": "SÃO DOMINGOS FUNDO DE INVESTIMENTO IMOBILIARIO- FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FIVN11",
       "cnpj": "17854016000164",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO VIDA NOVA - FII",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FLCR11",
       "cnpj": "33884145000151",
-      "name": "",
-      "sector": "",
+      "name": "FARIA LIMA CAPITAL RECEBÍVEIS IMOBILIÁRIOS I - FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FLFL11",
       "cnpj": "50808042000121",
-      "name": "",
-      "sector": "",
+      "name": "VBI TR FARIA LIMA 4440 FI IMOB",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FLMA11",
       "cnpj": "04141645000103",
-      "name": "",
-      "sector": "",
+      "name": "FII CONTINENTAL SQUARE FARIA LIMA - RESP. LIMITADA",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FLRP11",
       "cnpj": "10375382000191",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE FLORIPA SHOPPING FII",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FMOF11",
       "cnpj": "01633741000172",
-      "name": "",
-      "sector": "",
+      "name": "FII MEMORIAL OFFICE RESP LTDA",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FOFT11",
+      "cnpj": "16875388000104",
+      "name": "HEDGE TOP FOFII 2 FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FPAB11",
       "cnpj": "03251720000118",
-      "name": "",
-      "sector": "",
+      "name": "FII PROJ AGUA BRANCA",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FPNG11",
       "cnpj": "17161979000182",
-      "name": "",
-      "sector": "",
+      "name": "FII PEDRA NEGRA RENDA IMOBILIÁRIA - RESP. LIMITADA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FRBR11",
+      "cnpj": "30166700000111",
+      "name": "PATRIA CREDITO FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FTCE11",
       "cnpj": "01235622000161",
-      "name": "",
-      "sector": "",
+      "name": "OPPORTUNITY FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FVBI11",
+      "cnpj": "13022993000144",
+      "name": "FII VBI FL 4440",
+      "sector": "Lajes Corporativas",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FVPQ11",
       "cnpj": "00332266000131",
-      "name": "",
-      "sector": "",
+      "name": "VIA PARQUE SHOPPING FII RESP LTDA",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "FZDA11",
       "cnpj": "59680687000104",
-      "name": "",
-      "sector": "",
+      "name": "TANE FZMG FIAGRO",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "FZDB11",
+      "cnpj": "49489928000170",
+      "name": "051 AGRO FAZ III FDO INV NAS CAD PROD AGRO - FIAGRO",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GALG11",
+      "cnpj": "37295919000160",
+      "name": "FII GUARDIAL LOGISTICA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "GAME11",
       "cnpj": "41269052000145",
-      "name": "",
-      "sector": "",
+      "name": "FII GUARDIAN MULTIESTRATÉGIA",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GARE11",
+      "cnpj": "37295919000160",
+      "name": "FII GUARDIAL LOGISTICA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "GCDL11",
       "cnpj": "56061587000101",
-      "name": "",
-      "sector": "",
+      "name": "FII GALAPAGOS DESENVOLVIMENTO RESP LTDA",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GCFF11",
+      "cnpj": "35652154000142",
+      "name": "FII GALAPAGOS FOF",
+      "sector": "Títulos e Val. Mob.",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GCRA11",
+      "cnpj": "37037297000170",
+      "name": "GALAPAGOS RECEBIVEIS DO AGRONEGOCIO - FIAGRO - IMOBILIARIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "GCRI11",
       "cnpj": "38293897000161",
-      "name": "",
-      "sector": "",
+      "name": "GALAPAGOS CRI FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "GFDL11",
       "cnpj": "58523711000120",
-      "name": "",
-      "sector": "",
+      "name": "FII GALAPAGOS F DESENV LOGIST RESP LTDA",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "GGRC11",
       "cnpj": "26614291000100",
-      "name": "",
-      "sector": "",
+      "name": "ZAGROS RENDA IMOBILIÁRIA FII RESPONSABIL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "GLCR11",
       "cnpj": "59669570000111",
-      "name": "",
-      "sector": "",
+      "name": "FII GALAPAGOS HEDGE FUND",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GLOG11",
+      "cnpj": "36501198000134",
+      "name": "GENIAL LOGÍSTICA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "GLPF11",
       "cnpj": "58378463000171",
-      "name": "",
-      "sector": "",
+      "name": "FII GALAPAGOS FEEDER LOGIST RESP LTDA",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GRAV11",
+      "cnpj": "22459737000100",
+      "name": "GRAVATAI SHOPPING FII DE RESPONSABILIDADE LIMITADA",
+      "sector": "Shoppings",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GRLV11",
+      "cnpj": "17143998000186",
+      "name": "GR LOUVEIRA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "GRUL11",
       "cnpj": "54483412000159",
-      "name": "",
-      "sector": "",
+      "name": "ICATU VAN GRU LOG FII",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GRWA11",
+      "cnpj": "47240671000193",
+      "name": "GREENWICH FIAGRO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "GSFI11",
       "cnpj": "11769604000113",
-      "name": "",
-      "sector": "",
+      "name": "FII PLANNER 2557 - GSFI FII",
+      "sector": "Shoppings",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GTLG11",
+      "cnpj": "36200677000110",
+      "name": "GTIS BRAZIL LOGISTICS FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "GTWR11",
       "cnpj": "23740527000158",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO GREEN TOWERS",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "GWIR11",
+      "cnpj": "14733211000148",
+      "name": "HEDGE SHOPPING PRAÇA DA MOÇA FUNDO DE INVEST IMOBILIÁRIO",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HAAA11",
       "cnpj": "27445482000140",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE AAA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HABT11",
       "cnpj": "30578417000105",
-      "name": "",
-      "sector": "",
+      "name": "HABITAT RECEBÍVEIS PULVERIZADOS FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HBCR11",
       "cnpj": "36501159000137",
-      "name": "",
-      "sector": "",
+      "name": "FII HBC RENDA URBANA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HBRH11",
       "cnpj": "30871698000181",
-      "name": "",
-      "sector": "",
+      "name": "V2 MULTI RENDA FII RESP LIMITADA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HBTT11",
+      "cnpj": "26846202000142",
+      "name": "FUNDO INVESTIMENTO IMOBILIÁRIO HABITAT I",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HCHG11",
       "cnpj": "34508959000154",
-      "name": "",
-      "sector": "",
+      "name": "FII HECTARE RECEBÍVEIS HIGH GRADE",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HCRI11",
       "cnpj": "04066582000160",
-      "name": "",
-      "sector": "",
+      "name": "HOSPITAL CRIANCA FII",
+      "sector": "Hospital",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HCST11",
       "cnpj": "31152015000107",
-      "name": "",
-      "sector": "",
+      "name": "FII HECTARE STUDENT HOUSING",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HCTR11",
       "cnpj": "30248180000196",
-      "name": "",
-      "sector": "",
+      "name": "FII HECTARE CE",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HDEL11",
       "cnpj": "44514162000113",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE DESENVOLVIMENTO LOGÍSTICO FUNDO DE INV IMOB",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HDOF11",
       "cnpj": "35688460000139",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE PALADIN DESIGN OFFICES FUNDO DE INVESTIMENTO IMOB",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HFOF11",
       "cnpj": "18307582000119",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE TOP FOFII 3 FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGAG11",
+      "cnpj": "40343867000164",
+      "name": "HIGH FIAGRO IMOBILIARIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HGBL11",
       "cnpj": "53466467000198",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE BRASIL LOGÍSTICO INDUSTRIAL FII DE RESP LIMITADA",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HGBS11",
       "cnpj": "08431747000106",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE BRASIL SHOPPING FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HGCR11",
       "cnpj": "11160521000122",
-      "name": "",
-      "sector": "",
+      "name": "PÁTRIA RECEBÍVEIS IMOBILIÁRIOS - FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGFF11",
+      "cnpj": "32784898000122",
+      "name": "PATRIA IMOBILIÁRIO FOF - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HGIC11",
       "cnpj": "38456508000171",
-      "name": "",
-      "sector": "",
+      "name": "HGI FII RESP LIMITADA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGJH11",
+      "cnpj": "11260134000168",
+      "name": "PÁTRIA PRIME OFFICES - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HGLG11",
       "cnpj": "11728688000147",
-      "name": "",
-      "sector": "",
+      "name": "PÁTRIA LOG - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HGPO11",
+      "cnpj": "11260134000168",
+      "name": "PÁTRIA PRIME OFFICES - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HGRE11",
       "cnpj": "09072017000129",
-      "name": "",
-      "sector": "",
+      "name": "PÁTRIA ESCRITÓRIOS FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HGRU11",
       "cnpj": "29641226000153",
-      "name": "",
-      "sector": "",
+      "name": "PÁTRIA RENDA URBANA - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HILG11",
       "cnpj": "34867728000137",
-      "name": "",
-      "sector": "",
+      "name": "HIRE LOG I  FII RESP LIMITADA",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HJCT11",
       "cnpj": "62082124000110",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE JHSF CAPITAL PRIME OFFICES FII RESP LTDA",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HLOG11",
       "cnpj": "27486542000172",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE LOGÍSTICA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HMOC11",
+      "cnpj": "14733211000148",
+      "name": "HEDGE SHOPPING PRAÇA DA MOÇA FUNDO DE INVEST IMOBILIÁRIO",
+      "sector": "Shoppings",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "HOFC11",
+      "cnpj": "31894369000119",
+      "name": "HEDGE OFFICE INCOME FUNDO DE INVESTIMENTO IMOB",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HOMS11",
       "cnpj": "55793516000122",
-      "name": "",
-      "sector": "",
+      "name": "FII ROOFTOP III",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HOSI11",
       "cnpj": "34081631000102",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO HOUSI",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HPDP11",
       "cnpj": "35586415000173",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE SHOPPING PARQUE DOM PEDRO FII",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HRDF11",
       "cnpj": "16929519000199",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE REALTY DEVELOPMENT FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HREC11",
       "cnpj": "35507262000121",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE RECEBÍVEIS IMOBILIÁRIOS FUNDO DE INVESTIMENTO IMOB",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HRES11",
       "cnpj": "42869853000104",
-      "name": "",
-      "sector": "",
+      "name": "FII HIRE RESIDENCIAL I - FII - RESP LIMI",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HSAF11",
       "cnpj": "67149599000109",
-      "name": "",
-      "sector": "",
+      "name": "HSI RENDA LOGISTICA CDI CETIPADO FII RESP LIMITADA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HSLG11",
       "cnpj": "32903621000171",
-      "name": "",
-      "sector": "",
+      "name": "HSI LOGÍSTICA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HSML11",
       "cnpj": "32892018000131",
-      "name": "",
-      "sector": "",
+      "name": "HSI - MALLS FII RESP. LIMITADA",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HTMX11",
       "cnpj": "08706065000169",
-      "name": "",
-      "sector": "",
+      "name": "HOTEL MAXINVEST FII",
+      "sector": "Hotel",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HUCG11",
       "cnpj": "39347413000182",
-      "name": "",
-      "sector": "",
+      "name": "F.I.I HOSPITAL UNIMED CAMPINA GRANDE RESPONS.LIMITADA",
+      "sector": "Hospital",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HUSC11",
       "cnpj": "28851767000143",
-      "name": "",
-      "sector": "",
+      "name": "FII HOSPITAL UNIMED SUL CAPIXABA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "HUSI11",
       "cnpj": "30017492000199",
-      "name": "",
-      "sector": "",
+      "name": "HUSI FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Hospital",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IAAG11",
+      "cnpj": "42692399000169",
+      "name": "INTER AMERRA - FIAGRO - IMOBILIÁRIO",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IAGR11",
+      "cnpj": "44286898000181",
+      "name": "SFI FIAGRO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "IBBP11",
       "cnpj": "52551605000174",
-      "name": "",
-      "sector": "",
+      "name": "INVISTA DESENV VI FII RESP LTDA",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "IBCR11",
       "cnpj": "40011251000196",
-      "name": "",
-      "sector": "",
+      "name": "CRI BREI FII RL",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IBFF11",
+      "cnpj": "33721517000129",
+      "name": "FOF INTEG BREI FII",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ICNE11",
       "cnpj": "53137434000102",
-      "name": "",
-      "sector": "",
+      "name": "ÍCONE - FII RESPONSABILIDADE LIMITADA",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ICRI11",
       "cnpj": "51294441000184",
-      "name": "",
-      "sector": "",
+      "name": "ITAÚ CRÉDITO IMOBILIÁRIO IPCA FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IDFI11",
+      "cnpj": "32774914000104",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIARIO DE UNIDADES AUTONOMAS",
+      "sector": "Títulos e Val. Mob.",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IDGR11",
+      "cnpj": "44177538000141",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIARIO DE UNIDADES AUTONOMAS II",
+      "sector": "Híbrido",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IFID11",
+      "cnpj": "36312772000106",
+      "name": "INTER TEVA ÍNDICE DE PAPEL FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IFIE11",
+      "cnpj": "36293425000183",
+      "name": "INTER TEVA ÍNDICE DE TIJOLO FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "INDE11",
       "cnpj": "52635194000103",
-      "name": "",
-      "sector": "",
+      "name": "INTER DESENVOLVIMENTO FII",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "INLG11",
+      "cnpj": "34598181000111",
+      "name": "INTER LOGÍSTICO FII",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "INRD11",
+      "cnpj": "34835191000123",
+      "name": "INTER RESIDENCE FII",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "IRDM11",
+      "cnpj": "28830325000110",
+      "name": "IRIDIUM REC IMOB FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "IRIM11",
       "cnpj": "41076564000195",
-      "name": "",
-      "sector": "",
+      "name": "IRIDIUM CRI FII RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ITIP11",
+      "cnpj": "36312772000106",
+      "name": "INTER TEVA ÍNDICE DE PAPEL FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ITIT11",
+      "cnpj": "36293425000183",
+      "name": "INTER TEVA ÍNDICE DE TIJOLO FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ITRI11",
       "cnpj": "52270671000176",
-      "name": "",
-      "sector": "",
+      "name": "ITAÚ TOTAL RETURN FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "JASC11",
       "cnpj": "40886241000102",
-      "name": "",
-      "sector": "",
+      "name": "JASC RENDA FII RL",
+      "sector": "Varejo",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JBFO11",
+      "cnpj": "36615915000159",
+      "name": "JBFO FOF FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "JFLL11",
       "cnpj": "36501181000187",
-      "name": "",
-      "sector": "",
+      "name": "JFL LIVING FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JGPX11",
+      "cnpj": "42888292000190",
+      "name": "JGP CRÉD. FIAGRO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "JPPA11",
       "cnpj": "30982880000100",
-      "name": "",
-      "sector": "",
+      "name": "JPP CAPITAL RECEBÍVEIS IMOBILIÁRIOS FII RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JPPC11",
+      "cnpj": "17216625000198",
+      "name": "JPP CAPITAL FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "JPRD11",
       "cnpj": "53072782000130",
-      "name": "",
-      "sector": "",
+      "name": "JPR DS FII DE RESPONSABILIDADE LIMITADA",
+      "sector": "Hospital",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "JRDM11",
+      "cnpj": "14879856000193",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII SHOPPING JARDIM SUL",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "JSAF11",
       "cnpj": "42085661000107",
-      "name": "",
-      "sector": "",
+      "name": "JS ATIVOS FINANCEIROS FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "JSCR11",
       "cnpj": "54866214000174",
-      "name": "",
-      "sector": "",
+      "name": "JS RECEBÍVEIS FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "JSRE11",
       "cnpj": "13371132000171",
-      "name": "",
-      "sector": "",
+      "name": "JS REAL ESTATE MULTIGESTÃO FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KCRE11",
       "cnpj": "42502802000140",
-      "name": "",
-      "sector": "",
+      "name": "KINEA CREDITAS FII RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KDOL11",
+      "cnpj": "51641681000108",
+      "name": "KINEA AGRO INCOME USD FIAGRO IMOBI RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KEVE11",
       "cnpj": "32317313000164",
-      "name": "",
-      "sector": "",
+      "name": "EVEN II KINEA FII RESPONSABILIDADE LIMITADA",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KFOF11",
       "cnpj": "30091444000140",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE FUNDOS DE INVESTIMENTO IMOBILIÁRIO KINEA FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KINP11",
+      "cnpj": "24070076000151",
+      "name": "EVEN PERMUTA KINEA FII FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KISU11",
       "cnpj": "65923811000100",
-      "name": "",
-      "sector": "",
+      "name": "FII RIVIERA RESIDENCIAL RESPONSABILIDADE LIMITADA",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KIVO11",
       "cnpj": "42273325000198",
-      "name": "",
-      "sector": "",
+      "name": "KILIMA VOLKANO RECEBIVEIS IMOBILIARIOS FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KNCR11",
       "cnpj": "16706958000132",
-      "name": "",
-      "sector": "",
+      "name": "KINEA RENDIMENTOS IMOBILIARIOS FII RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KNHF11",
       "cnpj": "42754342000147",
-      "name": "",
-      "sector": "",
+      "name": "KINEA HEDGE FUND FII RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KNHY11",
       "cnpj": "30130708000128",
-      "name": "",
-      "sector": "",
+      "name": "KINEA HIGH YIELD CRI FII RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KNIP11",
       "cnpj": "24960430000113",
-      "name": "",
-      "sector": "",
+      "name": "KINEA INDICES DE PREÇOS FII RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KNPR11",
       "cnpj": "42737059000107",
-      "name": "",
-      "sector": "",
+      "name": "KINEA PREMIUM PROPERTIES FII RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KNRE11",
       "cnpj": "14423780000197",
-      "name": "",
-      "sector": "",
+      "name": "KINEA II REAL ESTATE EQUITY FII RESPONSABILIDADE LIMITADA",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KNRI11",
       "cnpj": "12005956000165",
-      "name": "",
-      "sector": "",
+      "name": "KINEA RENDA IMOBILIARIA FII RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KNSC11",
       "cnpj": "35864448000138",
-      "name": "",
-      "sector": "",
+      "name": "KINEA SECURITIES FII RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KONG11",
       "cnpj": "66743243000128",
-      "name": "",
-      "sector": "",
+      "name": "CAP ARTON JP FII",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "KOPA11",
+      "cnpj": "51475461000151",
+      "name": "KINEA OPORTUNIDADES AGRO I FIAGRO IMOBILIÁRIO",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "KORE11",
       "cnpj": "52219978000142",
-      "name": "",
-      "sector": "",
+      "name": "KINEA OPORTUNIDADES REAL ESTATE FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LAFI11",
       "cnpj": "51710043000100",
-      "name": "",
-      "sector": "",
+      "name": "LAVOURA I FIAGRO IMOBILIÁRIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LASC11",
       "cnpj": "30248158000146",
-      "name": "",
-      "sector": "",
+      "name": "LEGATUS FII RL",
+      "sector": "Shoppings",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LGCP11",
+      "cnpj": "34598181000111",
+      "name": "INTER LOGÍSTICO FII",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LIFE11",
       "cnpj": "39753295000102",
-      "name": "",
-      "sector": "",
+      "name": "FII LIFE CAPITAL PARTNERS",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LKDV11",
       "cnpj": "40102445000105",
-      "name": "",
-      "sector": "",
+      "name": "DEVELOPMENT V1 FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LLAO11",
       "cnpj": "41218404000133",
-      "name": "",
-      "sector": "",
+      "name": "BS2 ALLINVESTMENTS FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LPLP11",
       "cnpj": "37262752000130",
-      "name": "",
-      "sector": "",
+      "name": "LAGO DA PEDRA - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LRDI11",
       "cnpj": "41088534000107",
-      "name": "",
-      "sector": "",
+      "name": "LEBLON REALTY FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LRED11",
       "cnpj": "55089373000172",
-      "name": "",
-      "sector": "",
+      "name": "FII LCP RE DEVELOPMENT RESP LTDA",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LSAG11",
+      "cnpj": "42592476000109",
+      "name": "LESTE FIAGRO - IMOBILIÁRIO",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LSOI11",
       "cnpj": "53087126000101",
-      "name": "",
-      "sector": "",
+      "name": "LCP SPECIAL OPPORTUNITIES I FII RESPONSABILIDADE ILIMITADA",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LSOP11",
       "cnpj": "63429256000139",
-      "name": "",
-      "sector": "",
+      "name": "LCP SPECIAL OPPORTUNITIES III",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LSPA11",
+      "cnpj": "31847293000170",
+      "name": "LESTE RIVA EQUITY PREFERENCIAL I FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LTMT11",
       "cnpj": "46449786000120",
-      "name": "",
-      "sector": "",
+      "name": "SPECIALE BLUE REAL ASSET FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "LUGG11",
+      "cnpj": "34835191000123",
+      "name": "INTER RESIDENCE FII",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "LVBI11",
       "cnpj": "30629603000118",
-      "name": "",
-      "sector": "",
+      "name": "VBI LOGISTICO FII RL",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MALL11",
       "cnpj": "26499833000132",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA MALLS FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MANA11",
       "cnpj": "42888583000189",
-      "name": "",
-      "sector": "",
+      "name": "MANATÍ CAPITAL HEDGE FUND FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MATV11",
+      "cnpj": "41076678000135",
+      "name": "MORE GESTAOATIVA FII",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MAXR11",
       "cnpj": "11274415000170",
-      "name": "",
-      "sector": "",
+      "name": "MAX RETAIL FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MBRF11",
+      "cnpj": "13500306000159",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO RB OPORTUNIDADES - FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MCCI11",
       "cnpj": "23648935000184",
-      "name": "",
-      "sector": "",
+      "name": "MAUA CAP RE FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MCEM11",
       "cnpj": "46157247000117",
-      "name": "",
-      "sector": "",
+      "name": "MERITO CEMITERIOS FII RESPONSABILIDADE LIMITADA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MCHY11",
       "cnpj": "36655973000106",
-      "name": "",
-      "sector": "",
+      "name": "MAUÁ CAP REAL FII RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MFAI11",
+      "cnpj": "32397369000176",
+      "name": "MÉRITO FUNDOS E AÇÕES IMOBILIÁRIAS FII",
+      "sector": "Híbrido",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MFCR11",
+      "cnpj": "45403337000188",
+      "name": "MERITO RECEBIVEIS IMOBILIARIOS FII",
+      "sector": "Híbrido",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MFII11",
       "cnpj": "16915968000188",
-      "name": "",
-      "sector": "",
+      "name": "MÉRITO DESENVOLVIMENTO IMOBILIÁRIO FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MGCR11",
+      "cnpj": "35652204000191",
+      "name": "FII MOGNO CRI",
+      "sector": "Títulos e Val. Mob.",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MGFF11",
+      "cnpj": "29216463000177",
+      "name": "FII MOGNO FOF",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MGHT11",
       "cnpj": "34197776000165",
-      "name": "",
-      "sector": "",
+      "name": "TZDK FII RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MGIM11",
+      "cnpj": "36642099000172",
+      "name": "MOGNO RE FII",
+      "sector": "Híbrido",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MGLG11",
+      "cnpj": "40041711000129",
+      "name": "SUNO LOG FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MIDW11",
       "cnpj": "63992956000137",
-      "name": "",
-      "sector": "",
+      "name": "MIDWAY MALL FUNDO DE INVESTIMENTO IMOBILIÁRIO RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MINT11",
+      "cnpj": "19872887000136",
+      "name": "MINT EDUCACIONAL FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MMPD11",
       "cnpj": "41080968000152",
-      "name": "",
-      "sector": "",
+      "name": "MAUA MPD FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MMVE11",
       "cnpj": "41251337000159",
-      "name": "",
-      "sector": "",
+      "name": "MARESIAS IMOBILIÁRIAS FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MORC11",
+      "cnpj": "40102474000169",
+      "name": "MORE RECEBIVEIS IMOBILIARIOS FII",
+      "sector": "Títulos e Val. Mob.",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "MORE11",
+      "cnpj": "34197727000122",
+      "name": "MORE REAL ESTATE FOF FII",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "MXRF11",
       "cnpj": "97521225000125",
-      "name": "",
-      "sector": "",
+      "name": "FII MAXI RENDA RL",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "NAUI11",
       "cnpj": "49649500000148",
-      "name": "",
-      "sector": "",
+      "name": "TEN DESENVOLVIMENTO FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "NCHB11",
       "cnpj": "18085673000157",
-      "name": "",
-      "sector": "",
+      "name": "FYTO RECEB FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "NCRA11",
+      "cnpj": "42537438000153",
+      "name": "NCH CRA FIAGRO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "NCRI11",
       "cnpj": "40041603000156",
-      "name": "",
-      "sector": "",
+      "name": "NAVI CREDITO IMOBILIARIO - FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "NEWL11",
       "cnpj": "32527626000147",
-      "name": "",
-      "sector": "",
+      "name": "NEWPORT LOGISTICA FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "NEWU11",
+      "cnpj": "14793782000178",
+      "name": "NEWPORT RENDA URBANA FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "NEXG11",
+      "cnpj": "52044477000172",
+      "name": "NEX CREDITO AGRO FIAGRO IMOBILIARIO",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "NPAR11",
+      "cnpj": "24814916000143",
+      "name": "FII - FUNDO DE INVESTIMENTO IMOBILIÁRIO NESTPAR",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "NSLU11",
       "cnpj": "08014513000163",
-      "name": "",
-      "sector": "",
+      "name": "HNS LOURDES FII",
+      "sector": "Hospital",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "NVHO11",
       "cnpj": "17025970000144",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIARIO - FII NOVO HORIZONTE",
+      "sector": "Hospital",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "OCRE11",
       "cnpj": "44680435000108",
-      "name": "",
-      "sector": "",
+      "name": "OCTO FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "OIAG11",
+      "cnpj": "41218352000103",
+      "name": "OURINVEST INNOVATION FIAGRO IMOBILIARIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ONDV11",
       "cnpj": "52966340000175",
-      "name": "",
-      "sector": "",
+      "name": "ONDA DESENVOLVIMENTO IMOBILIÁRIO FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "ONEF11",
+      "cnpj": "12948291000123",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO THE ONE",
+      "sector": "Lajes Corporativas",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ORPD11",
       "cnpj": "19107604000160",
-      "name": "",
-      "sector": "",
+      "name": "OURO REC DESENVOLVIMENTO IMOBILIÁRIO I FII - FII DE RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "OUCY11",
+      "cnpj": "28516650000103",
+      "name": "FUNDO DE INVESTIMENTO IMOB OURINVEST RENDA ESTRUTURADA",
+      "sector": "Híbrido",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "OUFF11",
+      "cnpj": "30791386000168",
+      "name": "FUNDO DE INVESTIMENTO IMOB OURINVEST FUNDO DE FUNDOS",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "OUJP11",
       "cnpj": "26091656000150",
-      "name": "",
-      "sector": "",
+      "name": "OURINVEST JPP FUNDO DE INVESTIMENTO IMOBILIÁRIO RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "OULG11",
       "cnpj": "13974819000100",
-      "name": "",
-      "sector": "",
+      "name": "FII OURINVEST LOGISTICA - RESPONSABILIDADE LIMITADA",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "OURE11",
+      "cnpj": "28516650000103",
+      "name": "FUNDO DE INVESTIMENTO IMOB OURINVEST RENDA ESTRUTURADA",
+      "sector": "Híbrido",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PABY11",
       "cnpj": "00613094000174",
-      "name": "",
-      "sector": "",
+      "name": "FII PANAMBY",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PATA11",
       "cnpj": "53764894000152",
-      "name": "",
-      "sector": "",
+      "name": "PATAGONIA CAPITAL MULTIESTRATEGIA FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PATC11",
       "cnpj": "30048651000112",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA EDIFICIOS CORPORATIVOS FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PATL11",
       "cnpj": "35754164000199",
-      "name": "",
-      "sector": "",
+      "name": "PÁTRIA LOGÍSTICA FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PDBM11",
       "cnpj": "56978773000100",
-      "name": "",
-      "sector": "",
+      "name": "PDB MALLS FII RESPONSABILIDADE LTDA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PEMA11",
       "cnpj": "34736510000143",
-      "name": "",
-      "sector": "",
+      "name": "PERFORMA REAL ESTATE - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PLCA11",
+      "cnpj": "41272747000186",
+      "name": "PLURAL BRB CRÉDITO AGRO - FIAGRO - IMOBILIÁRIO",
+      "sector": "Títulos e Val. Mob.",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PLCR11",
+      "cnpj": "32527683000126",
+      "name": "PLURAL RECEBÍVEIS FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PLOG11",
+      "cnpj": "36501198000134",
+      "name": "GENIAL LOGÍSTICA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PLRI11",
       "cnpj": "14080689000116",
-      "name": "",
-      "sector": "",
+      "name": "POLO FII RECEBIVEIS IMOBILIARIOS I",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PMFO11",
       "cnpj": "50135849000140",
-      "name": "",
-      "sector": "",
+      "name": "SPECIALE REAL ESTATE FOF FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PMIS11",
       "cnpj": "51868778000158",
-      "name": "",
-      "sector": "",
+      "name": "PARAMIS HEDGE FUND FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PNCR11",
+      "cnpj": "50569855000106",
+      "name": "PANORAMA CREDITO RESIDENCIAL FII",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PNDL11",
       "cnpj": "37899400000190",
-      "name": "",
-      "sector": "",
+      "name": "PANORAMA DESENVOLVIMENTO LOGÍSTICO - FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PNPR11",
       "cnpj": "26813118000122",
-      "name": "",
-      "sector": "",
+      "name": "PANORAMA PROPERTIES - FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PNRC11",
       "cnpj": "46157348000198",
-      "name": "",
-      "sector": "",
+      "name": "PANORAMA REAL ESTATE CREDITO FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PORD11",
       "cnpj": "17156502000109",
-      "name": "",
-      "sector": "",
+      "name": "POLO CREDITO IMOBILIARIO - FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PQAG11",
       "cnpj": "12978943000172",
-      "name": "",
-      "sector": "",
+      "name": "PARQUE ANHANGUERA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PQDP11",
       "cnpj": "10869155000112",
-      "name": "",
-      "sector": "",
+      "name": "PDPSC FII",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PRSN11",
       "cnpj": "14056001000162",
-      "name": "",
-      "sector": "",
+      "name": "PERSONALE I FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PRSV11",
       "cnpj": "11281322000172",
-      "name": "",
-      "sector": "",
+      "name": "PRESIDENTE VARGAS FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PULV11",
       "cnpj": "53018363000110",
-      "name": "",
-      "sector": "",
+      "name": "FII RBR CRED PULVERIZADO RESPON LIMITADA",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "PURB11",
+      "cnpj": "36501210000100",
+      "name": "BARRA MALLS FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "PVBI11",
       "cnpj": "35652102000176",
-      "name": "",
-      "sector": "",
+      "name": "VBI PRIME FII RL",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "QAGR11",
       "cnpj": "32754734000152",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA AGRO FII RL",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "QAMI11",
+      "cnpj": "32400264000129",
+      "name": "QUASAR CREDITO FII",
+      "sector": "Títulos e Val. Mob.",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "QMFF11",
+      "cnpj": "34736432000187",
+      "name": "QUATÁ IMOB FUNDO DE FUNDOS - FUNDO DE INV. IMOBILIÁRIO",
+      "sector": "Títulos e Val. Mob.",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBBV11",
+      "cnpj": "16915868000151",
+      "name": "JHSF RIO BRAVO FAZENDA BOA VISTA CAPITAL PROTEGIDO FII",
+      "sector": "Títulos e Val. Mob.",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBCB11",
+      "cnpj": "12659641000131",
+      "name": "RIO BRAVO CREDITO IMOBILIARIO I FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBCO11",
+      "cnpj": "31894369000119",
+      "name": "HEDGE OFFICE INCOME FUNDO DE INVESTIMENTO IMOB",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBDS11",
       "cnpj": "11945604000127",
-      "name": "",
-      "sector": "",
+      "name": "RB CAPITAL DESENVOLVIMENTO RESIDENCIAL II FII - FII",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBED11",
+      "cnpj": "13873457000152",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO RB RENDA EDUCACIONAL",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBFF11",
+      "cnpj": "17329029000114",
+      "name": "RIO BRAVO FUNDOS DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBFM11",
+      "cnpj": "17329029000114",
+      "name": "RIO BRAVO FUNDOS DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBFY11",
       "cnpj": "62662477000190",
-      "name": "",
-      "sector": "",
+      "name": "RIO BRAVO FOR YOU FII",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBGS11",
+      "cnpj": "13652006000195",
+      "name": "RB GEN SHOPPING SULACAP FUNDO DE INVESTIMENTO IMOB. - FII",
+      "sector": "Shoppings",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBHG11",
+      "cnpj": "30647758000187",
+      "name": "RIO BRAVO CRÉDITO IMOBILIÁRIO HIGH GRADE FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBHY11",
       "cnpj": "37899479000150",
-      "name": "",
-      "sector": "",
+      "name": "RIO BRAVO CRÉDITO IMOB HIGH YIELD FUNDO DE INV. IMOB. - FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBIR11",
       "cnpj": "31161410000148",
-      "name": "",
-      "sector": "",
+      "name": "RB CAPITAL DESENVOLVIMENTO RESIDENCIAL IV FII",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBIV11",
+      "cnpj": "30647758000187",
+      "name": "RIO BRAVO CRÉDITO IMOBILIÁRIO HIGH GRADE FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBOP11",
+      "cnpj": "13500306000159",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO RB OPORTUNIDADES - FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBRD11",
       "cnpj": "09006914000134",
-      "name": "",
-      "sector": "",
+      "name": "RB CAPITAL RENDA II - FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRF11",
+      "cnpj": "27529279000151",
+      "name": "RBR ALPHA FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBRI11",
       "cnpj": "32441656000136",
-      "name": "",
-      "sector": "",
+      "name": "RBR DESEN III FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBRK11",
       "cnpj": "53391653000105",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA PRIME FII",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBRL11",
       "cnpj": "35705463000133",
-      "name": "",
-      "sector": "",
+      "name": "PÁTRIA LOGÍSTICA II FII",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRM11",
+      "cnpj": "26314437000193",
+      "name": "FII RBR DESENV",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBRP11",
       "cnpj": "21408063000151",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIARIO PÁTRIA PROPERTIES",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBRR11",
       "cnpj": "29467977000103",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA HIGH G FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBRS11",
       "cnpj": "36517660000191",
-      "name": "",
-      "sector": "",
+      "name": "RIO BRAVO RENDA RESIDENCIAL FII",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBRX11",
       "cnpj": "41088458000121",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA PLUS MULT FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBRY11",
+      "cnpj": "30166700000111",
+      "name": "PATRIA CREDITO FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RBTS11",
       "cnpj": "29299737000139",
-      "name": "",
-      "sector": "",
+      "name": "RB CAPITAL TFO SITUS FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBVA11",
+      "cnpj": "15576907000170",
+      "name": "RIO BRAVO RENDA VAREJO FII DE RESPONSABILIDADE LIMITADA",
+      "sector": "Varejo",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RBVO11",
+      "cnpj": "15769670000144",
+      "name": "RIO BRAVO CREDITO IMOBILIARIO II FI IMOBILIARIO",
+      "sector": "Lajes Corporativas",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RCFA11",
       "cnpj": "27771586000144",
-      "name": "",
-      "sector": "",
+      "name": "GRUPO RCFA FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RCFF11",
       "cnpj": "35689670000141",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA D FEEDER FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RCRB11",
+      "cnpj": "03683056000186",
+      "name": "FUNDO DE INV. IMOBILIÁRIO RIO BRAVO RENDA CORPORATIVA",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RCRI11",
       "cnpj": "60801196000145",
-      "name": "",
-      "sector": "",
+      "name": "RCRI FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RDES11",
+      "cnpj": "14793782000178",
+      "name": "NEWPORT RENDA URBANA FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RDLI11",
       "cnpj": "53391567000100",
-      "name": "",
-      "sector": "",
+      "name": "RBR DESENV LOG I FII",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RDPD11",
+      "cnpj": "23120027000113",
+      "name": "V2 RECEBÍVEIS FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RECM11",
       "cnpj": "56430935000162",
-      "name": "",
-      "sector": "",
+      "name": "REC MULTIESTRATÉGIA - FII RESPONSABILIDADE LTDA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RECR11",
+      "cnpj": "28152272000126",
+      "name": "FII REC RECEBIVEIS IMOBILIARIOS",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RECT11",
       "cnpj": "32274163000159",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO REC RENDA IMOBILIARIA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RECX11",
+      "cnpj": "36642356000176",
+      "name": "REC FOF FII",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "REIT11",
       "cnpj": "16841067000199",
-      "name": "",
-      "sector": "",
+      "name": "SINGULARE FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RELG11",
       "cnpj": "37112770000136",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO REC LOGÍSTICA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "REME11",
       "cnpj": "63051078000155",
-      "name": "",
-      "sector": "",
+      "name": "RB MULTIESTRATÉGIA IMOBILIÁRIA FII RESPONSABILIDADE LIMITADA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RENV11",
       "cnpj": "54174907000104",
-      "name": "",
-      "sector": "",
+      "name": "CPV ENERGIA FUNDO DE INVESTIMENTO IMOBILIÁRIO RESP LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RFOF11",
       "cnpj": "34027774000128",
-      "name": "",
-      "sector": "",
+      "name": "FII RB CAPITAL I FOF",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RINV11",
       "cnpj": "44625612000145",
-      "name": "",
-      "sector": "",
+      "name": "RINV FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RMAI11",
+      "cnpj": "17374696000119",
+      "name": "FII PLANNER 2553 - LABINA MULTI ATIVOS FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RMBS11",
       "cnpj": "58366499000135",
-      "name": "",
-      "sector": "",
+      "name": "REC MASTER FUNDO DE CRI COTAS AMORTIZÁVEIS FII RESP LTDA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RNDP11",
+      "cnpj": "15394563000189",
+      "name": "BB RENDA DE PAPÉIS IMOBILIÁRIOS FUNDO DE INVESTIMENTO IMOBIL",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RNGO11",
       "cnpj": "15006286000190",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO RIO NEGRO",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ROOF11",
       "cnpj": "38456598000109",
-      "name": "",
-      "sector": "",
+      "name": "FII ROOFTOP I",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RPRI11",
       "cnpj": "42502842000191",
-      "name": "",
-      "sector": "",
+      "name": "RBR PREMIUM RECEBÍVEIS IMOB FUNDO INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RRCI11",
       "cnpj": "35689733000160",
-      "name": "",
-      "sector": "",
+      "name": "XLPR FII RESPONSABILIDADE LIMITADA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RSPD11",
       "cnpj": "19249989000108",
-      "name": "",
-      "sector": "",
+      "name": "RB CAPITAL DESENVOLVIMENTO RESIDENCIAL III FII - FII",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RVBI11",
       "cnpj": "35507457000171",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA SECURITIES FII - RESPONSABILIDADE LIMITADA",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RZAG11",
+      "cnpj": "40413979000144",
+      "name": "FIAGRO RIZA AGRO IMOBILIÁRIO",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RZAK11",
       "cnpj": "36642219000131",
-      "name": "",
-      "sector": "",
+      "name": "RIZA AKIN FII RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "RZAT11",
+      "cnpj": "28267696000136",
+      "name": "RIZA ARCTIUM FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RZTR11",
       "cnpj": "36501128000186",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO RIZA TERRAX",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "RZZI11",
       "cnpj": "54134474000155",
-      "name": "",
-      "sector": "",
+      "name": "RAIZZ DESENV II FII",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SAAG11",
+      "cnpj": "16915840000114",
+      "name": "SANTANDER AGÊNCIAS FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SADI11",
+      "cnpj": "32903521000145",
+      "name": "SAM - SANTANDER PAPEIS IMOBILIARIOS CDI FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SAPI11",
       "cnpj": "51646298000142",
-      "name": "",
-      "sector": "",
+      "name": "SAM - SANTANDER PAPEIS IMOBILIARIOS FII RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SARE11",
+      "cnpj": "32903702000171",
+      "name": "SAM - SANTANDER RENDA DE ALUGUEIS FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SCPF11",
       "cnpj": "01657856000105",
-      "name": "",
-      "sector": "",
+      "name": "SCP - FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Shoppings",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SDIL11",
+      "cnpj": "16671412000193",
+      "name": "TELLUS RIO BRAVO RENDA LOGISTICA FII DE RESP LTDA",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SDIP11",
+      "cnpj": "26681370000125",
+      "name": "FII TELLUS PROP",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SEED11",
       "cnpj": "35689497000181",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE SEED FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SEQR11",
       "cnpj": "09517273000182",
-      "name": "",
-      "sector": "",
+      "name": "SEQUÓIA III RENDA IMOBILIÁRIA FII",
+      "sector": "Logística",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SHOP11",
+      "cnpj": "22459737000100",
+      "name": "GRAVATAI SHOPPING FII DE RESPONSABILIDADE LIMITADA",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SHPH11",
       "cnpj": "03507519000159",
-      "name": "",
-      "sector": "",
+      "name": "SHOPPING PÁTIO HIGIENÓPOLIS FII DE RESPONSABILIDADE LIMITADA",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SHPP11",
       "cnpj": "59090726000105",
-      "name": "",
-      "sector": "",
+      "name": "SHOP PT PAULISTA FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SIGR11",
+      "cnpj": "40011324000140",
+      "name": "ALIANZA CRÉDITO FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SJAU11",
       "cnpj": "27771547000147",
-      "name": "",
-      "sector": "",
+      "name": "SJ AU LOGÍSTICA FII",
+      "sector": "Hospital",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SNAG11",
+      "cnpj": "28152777000190",
+      "name": "SUNO AGRO - FIAGRO - IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SNCI11",
       "cnpj": "41076710000182",
-      "name": "",
-      "sector": "",
+      "name": "SUNO CRI FII RL",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SNEL11",
       "cnpj": "43741171000184",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO SUNO ENERGIAS LIMPAS",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SNFF11",
       "cnpj": "40011225000168",
-      "name": "",
-      "sector": "",
+      "name": "SUNO FOF FII RL",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SNFZ11",
+      "cnpj": "53313475000102",
+      "name": "SUNO FAZENDAS FIAGRO-IMOBILIARIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "SNLG11",
+      "cnpj": "40041711000129",
+      "name": "SUNO LOG FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SNME11",
       "cnpj": "52227760000130",
-      "name": "",
-      "sector": "",
+      "name": "SUNO MULT FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SOFF11",
       "cnpj": "57811221000167",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTOS IMOBILIARIO SOFIA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SOLR11",
       "cnpj": "22169671000113",
-      "name": "",
-      "sector": "",
+      "name": "SOLARIUM FII - FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SPDE11",
       "cnpj": "43741150000169",
-      "name": "",
-      "sector": "",
+      "name": "WHG FINVEST SP REALTY FII",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SPMO11",
       "cnpj": "40225262000179",
-      "name": "",
-      "sector": "",
+      "name": "SUPREMO FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SPTW11",
       "cnpj": "43951941000113",
-      "name": "",
-      "sector": "",
+      "name": "FLFC FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SPXS11",
       "cnpj": "43010543000100",
-      "name": "",
-      "sector": "",
+      "name": "SPX REAL ESTATE FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "SRVD11",
       "cnpj": "38082796000141",
-      "name": "",
-      "sector": "",
+      "name": "SERRA SUL FUNDO DE INVESTIMENTO IMOBILIÁRIO RESP ILIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "STRX11",
       "cnpj": "11044355000107",
-      "name": "",
-      "sector": "",
+      "name": "STARX FII RESPONSABILIDADE LIMITADA",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "STYI11",
       "cnpj": "59678586000190",
-      "name": "",
-      "sector": "",
+      "name": "STRIVO YIELD FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TBOF11",
+      "cnpj": "17365105000147",
+      "name": "TB OFFICE FII",
+      "sector": "Lajes Corporativas",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TCIN11",
       "cnpj": "34197700000130",
-      "name": "",
-      "sector": "",
+      "name": "G5 CIDADE NOVA FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TELM11",
       "cnpj": "45188099000135",
-      "name": "",
-      "sector": "",
+      "name": "TELLUS MULTI FII RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TEPP11",
+      "cnpj": "26681370000125",
+      "name": "FII TELLUS PROP",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TFOF11",
+      "cnpj": "20834884000197",
+      "name": "HEDGE TOP FOFII FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TGAR11",
       "cnpj": "25032881000153",
-      "name": "",
-      "sector": "",
+      "name": "FII TG ATIVO REAL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "THRA11",
+      "cnpj": "13966653000171",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO FII CYRELA THERA CORPORATE",
+      "sector": "Lajes Corporativas",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TJKB11",
       "cnpj": "39714024000148",
-      "name": "",
-      "sector": "",
+      "name": "TJK RENDA IMOBILIARIA FII - RESPONSABILIDADE LIMITADA",
+      "sector": "Hospital",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TMPS11",
       "cnpj": "42737077000199",
-      "name": "",
-      "sector": "",
+      "name": "ITAÚ TEMPUS FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TOPP11",
       "cnpj": "56805391000176",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA TOP OFF FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TORD11",
       "cnpj": "30230870000118",
-      "name": "",
-      "sector": "",
+      "name": "TORDESILHAS EI FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TOUR11",
+      "cnpj": "30578316000126",
+      "name": "FII TOURMALET II",
+      "sector": "Residencial",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TRBL11",
+      "cnpj": "16671412000193",
+      "name": "TELLUS RIO BRAVO RENDA LOGISTICA FII DE RESP LTDA",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TRCO11",
       "cnpj": "62173370000188",
-      "name": "",
-      "sector": "",
+      "name": "FII TORRE RIO CLARO OFFICES - RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TRNT11",
       "cnpj": "04722883000102",
-      "name": "",
-      "sector": "",
+      "name": "TORRE NORTE FII",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TRXB11",
       "cnpj": "36368925000137",
-      "name": "",
-      "sector": "",
+      "name": "TRX REAL ESTATE II FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TRXF11",
       "cnpj": "63134454000175",
-      "name": "",
-      "sector": "",
+      "name": "LIQUIDEZ PROJETOS GD FI IMOBILIÁRIO RESP LIMITADA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "TRXL11",
+      "cnpj": "11839593000109",
+      "name": "BTGP LOGISTICA FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TRXY11",
       "cnpj": "43985938000110",
-      "name": "",
-      "sector": "",
+      "name": "TRX HEDGE FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TSER11",
       "cnpj": "34847042000184",
-      "name": "",
-      "sector": "",
+      "name": "PRIME OFFICES FUNDO DE INVESTIMENTO IMOBILIÁRIO - RESP LTDA",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "TSNC11",
       "cnpj": "17007443000107",
-      "name": "",
-      "sector": "",
+      "name": "TRANSINC FII RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "UBSR11",
+      "cnpj": "28152272000126",
+      "name": "FII REC RECEBIVEIS IMOBILIARIOS",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "URHF11",
       "cnpj": "52649350000187",
-      "name": "",
-      "sector": "",
+      "name": "URCA HEDGE FUND MULTIESTRATÉGIA IMOBILIÁ",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "URPR11",
       "cnpj": "34508872000187",
-      "name": "",
-      "sector": "",
+      "name": "URCA PRIME RENDA FI IMOBILIÁRIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VCJR11",
       "cnpj": "32400250000105",
-      "name": "",
-      "sector": "",
+      "name": "VECTIS JUROS REAL FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VCRA11",
+      "cnpj": "42502827000143",
+      "name": "VECTIS DATAGRO CRÉD AGRONEGÓCIO FI NAS CADEIAS PROD AGRO IMO",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VCRI11",
       "cnpj": "41081374000166",
-      "name": "",
-      "sector": "",
+      "name": "VINCI CREDIT SECURITIES FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VCRR11",
       "cnpj": "40041723000153",
-      "name": "",
-      "sector": "",
+      "name": "PATRIA RENDA RESIDENCIAL FII RESPONSABILIDADE LIMITADA I",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VERE11",
       "cnpj": "08693497000182",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO VEREDA",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VGHF11",
       "cnpj": "36771692000119",
-      "name": "",
-      "sector": "",
+      "name": "VALORA HEDGE FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VGIA11",
+      "cnpj": "41081088000109",
+      "name": "VALORA CRA FIAGRO RL",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VGII11",
       "cnpj": "52649680000172",
-      "name": "",
-      "sector": "",
+      "name": "VALORA CRI INFRA FII II",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VGIP11",
       "cnpj": "34197811000146",
-      "name": "",
-      "sector": "",
+      "name": "VALORA CRI FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VGIR11",
       "cnpj": "29852732000191",
-      "name": "",
-      "sector": "",
+      "name": "VALORA CRI CDI FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VGRI11",
       "cnpj": "53656482000107",
-      "name": "",
-      "sector": "",
+      "name": "VALORA RENDA IMOBILIARIA FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VIFI11",
+      "cnpj": "31547855000160",
+      "name": "VINCI INSTRUMENTOS FINANCEIROS FII",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VILG11",
       "cnpj": "24853044000122",
-      "name": "",
-      "sector": "",
+      "name": "VINCI LOGISTICA FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VINO11",
       "cnpj": "12516185000170",
-      "name": "",
-      "sector": "",
+      "name": "VINCI OFFICES FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VISC11",
       "cnpj": "17554274000125",
-      "name": "",
-      "sector": "",
+      "name": "VINCI SHOPPING CENTERS FUNDO DE INVESTIMENTO IMOBILIÁRIO-FII",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VIUR11",
       "cnpj": "36445587000190",
-      "name": "",
-      "sector": "",
+      "name": "VINCI IMÓVEIS URBANOS FII - RESP LTDA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VJFD11",
       "cnpj": "15489509000117",
-      "name": "",
-      "sector": "",
+      "name": "JFDCAM FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VLOL11",
+      "cnpj": "15296696000112",
+      "name": "VILA OLIMPIA FUNDO DE INVESTIMENTO IMOBILIARIO - FII",
+      "sector": "Lajes Corporativas",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VOTS11",
       "cnpj": "17870926000130",
-      "name": "",
-      "sector": "",
+      "name": "TIVIO SECURITIES FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VPPR11",
+      "cnpj": "30654849000140",
+      "name": "V2 PRIME PROPERTIES. FII",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VPSI11",
       "cnpj": "14721889000100",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIARIO POLO SHOPPING INDAIATUBA",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VRTA11",
       "cnpj": "11664201000100",
-      "name": "",
-      "sector": "",
+      "name": "FATOR VERITA FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VRTM11",
       "cnpj": "51870412000113",
-      "name": "",
-      "sector": "",
+      "name": "FATOR VERITA MULTIESTRATÉGIA FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VSEC11",
+      "cnpj": "10347505000180",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO VOTORANTIM SECURITIES",
+      "sector": "Títulos e Val. Mob.",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VSHO11",
       "cnpj": "23740595000117",
-      "name": "",
-      "sector": "",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO VOTORANTIM SHOPPING",
+      "sector": "Shoppings",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VSLH11",
       "cnpj": "36244015000142",
-      "name": "",
-      "sector": "",
+      "name": "VERSALHES RECEBÍVEIS IMOBILIÁRIOS FII",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VTLT11",
+      "cnpj": "27368600000163",
+      "name": "FUNDO DE INVESTIMENTO IMOBILIÁRIO VOTORANTIM LOGÍSTICA",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VTPL11",
       "cnpj": "15098422000119",
-      "name": "",
-      "sector": "",
+      "name": "PLUS FII",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VVCR11",
+      "cnpj": "23120027000113",
+      "name": "V2 RECEBÍVEIS FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VVDI11",
       "cnpj": "66661365000175",
-      "name": "",
-      "sector": "",
+      "name": "V2 RECEBIVEIS CDI FII RESPONSABILIDADE LIMITADA",
+      "sector": "Outros",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "VVPR11",
+      "cnpj": "33045581000137",
+      "name": "V2 PROPERTIES FII",
+      "sector": "Híbrido",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VVRI11",
       "cnpj": "49184940000177",
-      "name": "",
-      "sector": "",
+      "name": "V2 RENDA IMOB FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "VXXV11",
       "cnpj": "30982974000189",
-      "name": "",
-      "sector": "",
+      "name": "GENESIS MULTIESTRATÉGIA  FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "WHGR11",
       "cnpj": "41256643000188",
-      "name": "",
-      "sector": "",
+      "name": "WHG REAL ESTATE FII",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "WPLZ11",
       "cnpj": "09326861000139",
-      "name": "",
-      "sector": "",
+      "name": "SHOPPING WEST PLAZA FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Shoppings",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "WSEC11",
+      "cnpj": "43440579000116",
+      "name": "WARREN SECURITIES FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "WTSP11",
       "cnpj": "28693595000127",
-      "name": "",
-      "sector": "",
+      "name": "FII OURINVEST RE I - RESPONSABILIDADE LIMITADA",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "XPCA11",
+      "cnpj": "41269527000101",
+      "name": "XP CRÉDITO AGRÍCOLA-FUNDO DE INVESTIMENTO NAS CADEIAS PROD",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "XPCI11",
       "cnpj": "28516301000191",
-      "name": "",
-      "sector": "",
+      "name": "XP CREDITO IMOBILIÁRIO FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "XPCM11",
       "cnpj": "16802320000103",
-      "name": "",
-      "sector": "",
+      "name": "XP CORPORATE MACAÉ FUNDO DE INVESTIMENTO IMOBILIÁRIO",
+      "sector": "Escritórios",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "XPGA11",
+      "cnpj": "13811400000129",
+      "name": "XP RECEBÍVEIS FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Híbrido",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "XPIN11",
       "cnpj": "28516325000140",
-      "name": "",
-      "sector": "",
+      "name": "INVISTA INDUSTRIAL FII",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "XPLG11",
       "cnpj": "26502794000185",
-      "name": "",
-      "sector": "",
+      "name": "XP LOG FII RL",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "XPML11",
       "cnpj": "28757546000100",
-      "name": "",
-      "sector": "",
+      "name": "XP MALLS FII",
+      "sector": "Shoppings",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "XPPR11",
+      "cnpj": "30654849000140",
+      "name": "V2 PRIME PROPERTIES. FII",
+      "sector": "Escritórios",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "XPSF11",
       "cnpj": "30983020000190",
-      "name": "",
-      "sector": "",
+      "name": "XP SELECTION FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "XTED11",
       "cnpj": "15006267000163",
-      "name": "",
-      "sector": "",
+      "name": "V2 ED CORP FII RL",
+      "sector": "Multicategoria",
+      "identityStatus": "third-party-catalog-unverified-b3"
+    },
+    {
+      "ticker": "YCHY11",
+      "cnpj": "28267696000136",
+      "name": "RIZA ARCTIUM FII RL",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "YEES11",
       "cnpj": "51385174000150",
-      "name": "",
-      "sector": "",
+      "name": "HEDGE YEES HABITAÇÕES ECONÔMICAS FII",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "YUFI11",
       "cnpj": "36445551000106",
-      "name": "",
-      "sector": "",
+      "name": "YUCA FUNDO DE INVESTIMENTO IMOBILIARIO",
+      "sector": "Residencial",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ZAGH11",
       "cnpj": "63034711000105",
-      "name": "",
-      "sector": "",
+      "name": "CL MARIA LOPRETE FI IMOBILIÁRIO - FII",
+      "sector": "Logística",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ZAVC11",
       "cnpj": "52101897000143",
-      "name": "",
-      "sector": "",
+      "name": "ZAVIT CREDITO IMOBILIARIO FII RESP LIMITADA",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ZAVI11",
       "cnpj": "40575940000123",
-      "name": "",
-      "sector": "",
+      "name": "FII ZAVIT REAL ESTATE FUND",
+      "sector": "Multicategoria",
       "identityStatus": "third-party-catalog-unverified-b3"
     },
     {
       "ticker": "ZIFI11",
       "cnpj": "35820768000196",
-      "name": "",
-      "sector": "",
+      "name": "ZION CAPITAL FUNDO DE INVESTIMENTO IMOBILIÁRIO - FII RL",
+      "sector": "Outros",
       "identityStatus": "third-party-catalog-unverified-b3"
     }
   ],
-  "limitations": "Cobertura inicial parcial: 357 identificacoes ja validadas. Pipeline automatizado ampliara a cobertura para universo cadastral. Nao comprova negociacao ativa na B3; sem cotações ou dividendos."
+  "limitations": "Identificacao cadastral de terceiro; nao comprova listagem ativa na B3. Sem precos, dividendos ou DY."
 }
