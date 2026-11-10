@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "dataType": "fii-vpa-rebuild-status",
-  "runId": "42566859892",
-  "checkedAtUtc": "2026-11-09T05:21:50+00:00",
+  "runId": "42738645221",
+  "checkedAtUtc": "2026-11-10T01:50:59+00:00",
   "tests": "success",
   "cvm": "success",
   "tickers": "success",
@@ -38,6 +38,7 @@
   "tickersLogTail": [
     "Fonte cadastral: HTTP 200, tipo text/csv; charset=utf-8, 122790 bytes",
     "Diagnóstico de correspondência: {'csvRowsScanned': 1172, 'fiiRowsSeen': 532, 'rejectedIdentityRows': 5, 'tickerPairsValidated': 527, 'conflictingTickers': 0, 'ambiguousCnpjs': 35, 'fiisWithCvmMetrics': 357, 'cvmFundsUnmatched': 1070}",
+    "FIIs no universo: 527",
     "FIIs cruzados: {'csvRowsScanned': 1172, 'fiiRowsSeen': 532, 'rejectedIdentityRows': 5, 'tickerPairsValidated': 527, 'conflictingTickers': 0, 'ambiguousCnpjs': 35, 'fiisWithCvmMetrics': 357, 'cvmFundsUnmatched': 1070}"
   ]
 }
