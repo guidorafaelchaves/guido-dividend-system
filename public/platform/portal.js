@@ -13,7 +13,7 @@
     const path = location.pathname.replace(/\/index\.html$/,'/').replace(/\/+$/,'/') || '/';
     if(path === '/' || path.endsWith('/guido-dividend-system/')) return 'home';
     if(path.includes('/ativos/') && path.split('/').filter(Boolean).length >= 2) return 'assetDetail';
-    if(path.includes('/ativos/')) return 'assets';
+    if(path.includes('/ativos/')) return new URLSearchParams(location.search).has('ticker') ? 'assetDetail' : 'assets';
     if(path.includes('/calendario/')) return 'calendar';
     if(path.includes('/mapa-da-renda/')) return 'incomeMap';
     if(path.includes('/sobre/')) return 'about';
@@ -49,7 +49,8 @@
   }
 
   function assets(){
-    return D.assetRepository.all().map(D.normalizeAsset);
+    const base=D.assetRepository.all().map(D.normalizeAsset);
+    return global.DividendFiiCatalog?.merge(base,global.DividendFiiCatalog.all())||base;
   }
 
   function events(){
@@ -234,7 +235,7 @@
         <div><span class="eyebrow">O que voce procura?</span><h2>Encontre ativos pelo que eles ainda podem entregar.</h2></div>
         <div class="quick-filters">
           ${[
-            ['upcoming','Proximos pagamentos'],['recurring','Maior recorrencia'],['record','Data-com mais proxima'],['confirmed','Eventos confirmados'],['yield','Maior retorno do evento'],['fii','FIIs mensais'],['stocks','Acoes recorrentes'],['confidence','Maior confianca']
+            ['upcoming','Proximos pagamentos'],['recurring','Maior recorrencia'],['record','Data-com mais proxima'],['confirmed','Eventos confirmados'],['yield','Maior retorno do evento'],['fii','Todos os FIIs'],['stocks','Acoes recorrentes'],['confidence','Maior confianca']
           ].map(([key,label], index) => `<button class="pill asset-intent ${index === 0 ? 'active' : ''}" type="button" data-intent="${key}">${label}</button>`).join('')}
         </div>
         <input id="assetSearch" type="search" placeholder="Pesquise um ativo, setor, mes ou tipo de pagamento">
@@ -267,18 +268,24 @@
       record:data.byRecordDate,
       confirmed:data.withFuture.filter(row => row.next?.eventStatus === 'confirmed'),
       yield:data.highYield,
-      fii:data.withFuture.filter(row => row.asset.type === 'FII'),
+      fii:data.all.filter(row => row.asset.type === 'FII'),
       stocks:data.withFuture.filter(row => row.asset.type === 'Acao'),
       confidence:data.withFuture.filter(row => ['confirmed','provisioned'].includes(row.next?.eventStatus))
     })[intent] || data.withFuture;
     const rows = sourceRows.filter(row => {
-      const hay = `${row.ticker} ${row.asset.name} ${row.asset.sector} ${row.asset.type} ${row.next?.eventType || ''} ${row.next?.regularity || ''} ${row.monthLabel || ''}`.toLowerCase();
+      const hay = `${row.ticker} ${row.asset.name} ${row.asset.sector} ${row.asset.type} ${row.asset.cnpj || ''} ${row.next?.eventType || ''} ${row.next?.regularity || ''} ${row.monthLabel || ''}`.toLowerCase();
       return !q || hay.includes(q);
     });
     const body = document.getElementById('assetRows');
     if(body) body.innerHTML = rows.length ? rows.slice(0, 12).map(renderDiscoveryAssetCard).join('') : '<div class="empty">Nenhum ativo possui evento publicado com estes criterios. Amplie o periodo, remova filtro de retorno ou veja o catalogo completo.</div>';
     const catalog = document.getElementById('assetCatalogRows');
-    if(catalog) catalog.innerHTML = (includeEmpty ? data.all : data.withFuture).slice(0, 80).map(renderAssetCatalogRow).join('');
+    if(catalog){
+      const candidates=(includeEmpty || q.trim()?data.all:data.withFuture).filter(row=>{
+        const hay=`${row.ticker} ${row.asset.name} ${row.asset.sector} ${row.asset.type} ${row.asset.cnpj || ''}`.toLowerCase();
+        return !q.trim() || hay.includes(q.trim());
+      });
+      catalog.innerHTML=candidates.slice(0,100).map(renderAssetCatalogRow).join('');
+    }
     wireReveals();
   }
 
@@ -388,7 +395,7 @@
   }
 
   function renderCompactAssetFlow(row){
-    return `<div class="event-capture-row"><div><b>${esc(row.ticker)}</b><br><span class="muted">${row.next ? `${fullDate(row.next.recordDate || row.next.exDate)} | ${row.next.eventYieldPercent === null ? 'sem retorno calculado' : pct(row.next.eventYieldPercent)}` : row.quality}</span></div><a class="btn secondary" href="/ativos/${esc(row.ticker)}/">Abrir</a></div>`;
+    return `<div class="event-capture-row"><div><b>${esc(row.ticker)}</b><br><span class="muted">${row.next ? `${fullDate(row.next.recordDate || row.next.exDate)} | ${row.next.eventYieldPercent === null ? 'sem retorno calculado' : pct(row.next.eventYieldPercent)}` : row.quality}</span></div><a class="btn secondary" href="/ativos/?ticker=${esc(row.ticker)}">Abrir</a></div>`;
   }
 
   function renderRecurringAsset(row){
@@ -396,14 +403,14 @@
   }
 
   function renderAssetCatalogRow(row){
-    const price = row.hasPrice ? money(row.asset.price || row.next?.currentPrice) : 'Cotacao indisponivel';
+    const price = row.hasPrice && !row.asset.catalogOnly ? money(row.asset.price || row.next?.currentPrice) : 'Cotacao indisponivel';
     return `<tr><td><b>${esc(row.ticker)}</b><br><span class="muted">${esc(row.asset.name)}</span></td><td>${esc(row.asset.type)}</td><td>${esc(row.quality)}</td><td>${price}</td><td>${row.next ? `${esc(row.next.eventType)} em ${fullDate(row.next.paymentDate)}` : 'Acompanhar proximo anuncio'}</td><td><a class="btn secondary" href="/ativos/${esc(row.ticker)}/">Abrir</a></td></tr>`;
   }
 
   function renderAssetDetail(){
     const parts = location.pathname.split('/').filter(Boolean);
-    const ticker = D.normalizeTicker(parts[parts.indexOf('ativos') + 1] || new URLSearchParams(location.search).get('ticker') || 'MXRF11');
-    const asset = assetByTicker(ticker) || assets()[0];
+    const ticker = D.normalizeTicker(new URLSearchParams(location.search).get('ticker') || parts[parts.indexOf('ativos') + 1] || 'MXRF11');
+    const asset = assetByTicker(ticker) || D.normalizeAsset({ticker,name:ticker,type:'Não identificado',source:'unknown'});
     const related = events().filter(event => event.ticker === asset.ticker);
     const next = related[0];
     return `<section class="split">
@@ -418,9 +425,9 @@
         <section class="reveal"><h2>Quanto esse evento representa?</h2>${renderSimulator()}</section>
       </div>
       <aside class="panel grid reveal">
-        <div class="metric"><small>Preco atual</small><b>${money(asset.price)}</b></div>
-        <div class="metric"><small>Dividend yield</small><b>${pct(asset.dividendYield)}</b></div>
-        <div class="metric"><small>Recorrencia</small><b>${asset.recurrenceScore}/100</b></div>
+        <div class="metric"><small>Preco atual</small><b>${asset.price>0 && !asset.catalogOnly?money(asset.price):"Sem cotação validada"}</b></div>
+        <div class="metric"><small>Dividend yield</small><b>${asset.dividendYield>0 && !asset.catalogOnly?pct(asset.dividendYield):"Não disponível"}</b></div>
+        <div class="metric"><small>Recorrencia</small><b>${asset.recurrenceScore>0 && !asset.catalogOnly?asset.recurrenceScore+"/100":"Sem histórico validado"}</b></div>
         <div id="marketStatus" class="notice">Cotações: último fechamento importado. Não há feed ao vivo.</div>
       </aside>
     </section>`;
@@ -1621,6 +1628,7 @@
   async function mount(){
     setActiveNav();
     const page = routeFromPath();
+    if(page==='assets'||page==='assetDetail'||page==='home') await global.DividendFiiCatalog?.load?.();
     const main = document.getElementById('portalMain');
     const privateRoutes = { login:'login', register:'register', privateDashboard:'dashboard', favorites:'favorites', watchlist:'watchlist', agenda:'agenda', notifications:'notifications', portfolios:'portfolios', newPortfolio:'newPortfolio', account:'account' };
     if(privateRoutes[page]){
