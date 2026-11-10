@@ -92,6 +92,30 @@ def mapping(csv_text, metrics):
     return records,{"csvRowsScanned":rows_scanned,"fiiRowsSeen":fii_rows,"rejectedIdentityRows":rejected_identity,"tickerPairsValidated":len(lookup),"conflictingTickers":len(conflicted),"ambiguousCnpjs":len(ambiguous),
                     "fiisWithCvmMetrics":len(records),"cvmFundsUnmatched":len(metrics)-len(records)}
 
+
+def universe(csv_text):
+    """Catalogo de identificacoes de FIIs sem dependencia de informe contabil CVM."""
+    reader=csv.DictReader(io.StringIO(csv_text.lstrip("\\ufeff")))
+    if not reader.fieldnames or not {"ticker","cnpj","classe"}.issubset(reader.fieldnames):
+        raise ValueError("CSV de universo com colunas obrigatorias ausentes")
+    tickers={}
+    conflicts=set()
+    for row in reader:
+        if str(row.get("classe","")).strip().lower()!="fii":
+            continue
+        ticker=str(row.get("ticker","")).strip().upper()
+        cnpj=normalize_cnpj(row.get("cnpj"))
+        if not re.fullmatch(r"[A-Z]{4}11",ticker) or not cnpj:
+            continue
+        if ticker in tickers and tickers[ticker]!=cnpj:
+            conflicts.add(ticker)
+        else:
+            tickers[ticker]=cnpj
+    for ticker in conflicts:
+        del tickers[ticker]
+    return [{"ticker":t,"cnpj":c,"identityStatus":"third-party-catalog-unverified-b3"}
+            for t,c in sorted(tickers.items())]
+
 def main():
     payload=json.loads(METRICS.read_text(encoding="utf-8"))
     if payload.get("schemaVersion")!=1 or payload.get("dataType")!="monthly-fii-accounting":
@@ -118,7 +142,11 @@ def main():
         raise RuntimeError("Falha no download da fonte cadastral após três tentativas")
     if len(data)>8*1024*1024:
         raise ValueError("CSV de identificação excede tamanho permitido")
-    records,quality=mapping(data.decode("utf-8-sig"),payload["metrics"])
+    csv_text=data.decode("utf-8-sig")
+    records,quality=mapping(csv_text,payload["metrics"])
+    all_fiis=universe(csv_text)
+    if len(all_fiis)<100:
+        raise ValueError("Cobertura de FIIs muito pequena; preservar catalogo anterior")
     print("Diagnóstico de correspondência:", quality, flush=True)
     if len(records)<30:
         raise ValueError("Cobertura muito pequena (<30): não publicar mapeamento; verificar os CNPJs e a fonte CSV")
@@ -134,6 +162,15 @@ def main():
     tmp=OUTPUT.with_suffix(".json.tmp")
     tmp.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     tmp.replace(OUTPUT)
+    universe_output=ROOT/"public/data/fii-universe.json"
+    universe_payload={"schemaVersion":1,"dataType":"fii-ticker-cnpj-catalog","source":SOURCE,
+        "attribution":ATTRIBUTION,"license":"CC BY 4.0",
+        "count":len(all_fiis),"records":all_fiis,
+        "limitations":"Identificacao cadastral de terceiro; nao comprova listagem ativa na B3. Sem precos, dividendos ou DY."}
+    universe_tmp=universe_output.with_suffix(".json.tmp")
+    universe_tmp.write_text(json.dumps(universe_payload,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    universe_tmp.replace(universe_output)
+    print("FIIs no universo:",len(all_fiis))
     print("FIIs cruzados:",quality)
 
 if __name__=="__main__":
