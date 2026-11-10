@@ -1,0 +1,48 @@
+name: Corrigir URLs publicadas no GitHub Pages
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+permissions:
+  contents: write
+concurrency:
+  group: github-pages-paths
+  cancel-in-progress: false
+jobs:
+  fix-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Conferir regras de URLs
+        run: python3 -m unittest discover -s tests -p test_github_pages_paths.py -v
+      - name: Corrigir URLs absolutas de docs/ para subpasta do GitHub Pages
+        run: |
+          python3 scripts/fix_github_pages_paths.py
+          python3 scripts/fix_github_pages_paths.py --check
+      - name: Versionar correcoes
+        run: |
+          git add docs/
+          if git diff --cached --quiet; then
+            echo "Nenhuma URL para corrigir."
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "fix(pages): servir assets e rotas pelo prefixo do repositorio"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "::error::Conflito ao atualizar os caminhos; nenhuma sobrescrita forçada."
+              exit 1
+            fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 2))
+          done
+          exit 1
