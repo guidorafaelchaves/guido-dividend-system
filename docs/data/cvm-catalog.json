@@ -57,7 +57,7 @@
     {
       "id": "cia_aberta-cad",
       "title": "Cias Abertas: Informação Cadastral",
-      "metadataUpdated": "2026-11-09T11:01:06.953612",
+      "metadataUpdated": "2026-11-10T11:00:54.790258",
       "license": "odc-odbl",
       "datasetUrl": "https://dados.cvm.gov.br/dataset/cia_aberta-cad",
       "resources": [
@@ -65,7 +65,7 @@
           "name": "Cias Abertas",
           "format": "CSV",
           "url": "https://dados.cvm.gov.br/dados/CIA_ABERTA/CAD/DADOS/cad_cia_aberta.csv",
-          "lastModified": "2026-11-09T08:01:06.875936"
+          "lastModified": "2026-11-10T08:00:54.709268"
         },
         {
           "name": "Dicionário de Dados",
