@@ -1643,6 +1643,7 @@
     if(page === 'assets'){
       wireAssetDiscovery();
       paintAssetRows();
+      global.DividendFiiUniverse?.show?.();
     }
     document.getElementById('refreshMarket')?.addEventListener('click', async () => {
       const box = document.getElementById('marketStatus');
