@@ -53,8 +53,33 @@
     return global.DividendFiiCatalog?.merge(base,global.DividendFiiCatalog.all())||base;
   }
 
+  let humanReviewedFiiEvents=[];
+  async function loadHumanReviewedFiiEvents(){
+    humanReviewedFiiEvents=[];
+    try{
+      const response=await fetch('/data/fii-reviewed-events.json',{cache:'no-store'});
+      if(!response.ok)return;
+      const payload=await response.json();
+      if(payload.schemaVersion!==1||payload.dataType!=='fii-reviewed-events'||!Array.isArray(payload.events))return;
+      const catalog=new Map((global.DividendFiiCatalog?.all?.()||[]).map(x=>[x.ticker,x.cnpj]));
+      humanReviewedFiiEvents=payload.events.filter(event=>{
+        const amount=Number(event.amount);
+        return event.verificationStatus==='human-reviewed-announcement'&&
+          event.status==='confirmed-document'&&event.paymentSettlementVerified===false&&
+          event.cnpj===catalog.get(event.ticker)&&
+          /^(rendimento|amortizacao)$/.test(event.kind)&&
+          /^\\d{4}-\\d{2}-\\d{2}$/.test(event.exDate)&&
+          /^\\d{4}-\\d{2}-\\d{2}$/.test(event.paymentDate)&&
+          event.exDate<=event.paymentDate&&Number.isFinite(amount)&&amount>0&&
+          typeof event.sourceUrl==='string'&&/^https:\\/\\//.test(event.sourceUrl);
+      }).map(event=>({...event,status:'confirmed',source:'human-reviewed-document'}));
+    }catch(_){humanReviewedFiiEvents=[];}
+  }
   function events(){
-    return (D.publishedEventRepository || D.eventRepository).all().map(D.normalizeEvent);
+    const base=(D.publishedEventRepository || D.eventRepository).all().map(D.normalizeEvent);
+    // Nao confundir fixture com provento real quando existe anuncio revisado.
+    const withReview=base.filter(event=>!(event.source==='demo-fixture'&&humanReviewedFiiEvents.some(reviewed=>reviewed.ticker===event.ticker)));
+    return D.deduplicateEvents([...withReview,...humanReviewedFiiEvents]).map(D.normalizeEvent);
   }
 
   function assetByTicker(ticker){
@@ -1639,7 +1664,10 @@
   async function mount(){
     setActiveNav();
     const page = routeFromPath();
-    if(page==='assets'||page==='assetDetail'||page==='home') await global.DividendFiiCatalog?.load?.();
+    if(['assets','assetDetail','home','calendar','incomeMap'].includes(page)){
+      await global.DividendFiiCatalog?.load?.();
+      await loadHumanReviewedFiiEvents();
+    }
     const main = document.getElementById('portalMain');
     const privateRoutes = { login:'login', register:'register', privateDashboard:'dashboard', favorites:'favorites', watchlist:'watchlist', agenda:'agenda', notifications:'notifications', portfolios:'portfolios', newPortfolio:'newPortfolio', account:'account' };
     if(privateRoutes[page]){
