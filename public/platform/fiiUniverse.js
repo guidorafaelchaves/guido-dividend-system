@@ -29,14 +29,17 @@
       if(payload.dataType!=='fii-ticker-cnpj-catalog'||!Array.isArray(payload.records)) throw new Error('Formato inválido');
       const records=payload.records.filter(r=>/^[A-Z]{4}11$/.test(r.ticker)&&/^\d{14}$/.test(r.cnpj));
       let evidence=null;
+      let snapshotDate='';
       try {
         const b3Response=await fetch('/data/fii-b3-reconciliation.json',{cache:'no-store'});
         if(b3Response.ok){
           const data=await b3Response.json();
-          if(data.dataType==='fii-b3-reconciliation' && data.rightsConfirmed===true && Array.isArray(data.records)){
+          if(globalThis.DividendB3Evidence?.evaluate(data).valid){
             const accepted=Object.keys(statuses);
             evidence=new Map(data.records.filter(r=>accepted.includes(r.verificationStatus)).map(r=>[r.ticker,r]));
-            section.querySelector('#fiiB3Status').textContent='Snapshot B3 autorizado: '+data.snapshotDate+' | '+data.sourceName+'. Presença no cadastro não comprova negociação realizada ou liquidez.';
+            snapshotDate=data.snapshotDate;
+            const info=window.DividendB3Evidence.evaluate(data);
+            section.querySelector('#fiiB3Status').textContent='Snapshot B3: '+data.snapshotDate+' | '+data.sourceName+' | '+info.ageDays+' dias'+(info.stale?' (DESATUALIZADO)':'')+'. Cadastro não comprova negociações realizadas.';
           }
         }
       } catch (_) { /* Fonte opcional: nao confirmar nada sem dados. */ }
@@ -55,7 +58,7 @@
         body.innerHTML=filtered.slice(0,100).map(r=>{
           const cls=r.assetClass==='FIAGRO'||/fiagro/i.test(r.name||'')?'FIAGRO':'FII candidato';
           const row=evidence?.get(r.ticker);
-          const status=row&&row.cnpj===r.cnpj?row.verificationStatus:'unverified';
+          const status=window.DividendB3Evidence?.find({schemaVersion:1,dataType:'fii-b3-reconciliation',rightsConfirmed:true,snapshotDate:snapshotDate,records:row?[row]:[]},r.ticker,r.cnpj)?.status||'unverified';
           return '<tr><td><strong>'+escapeHtml(r.ticker)+'</strong></td><td>'+escapeHtml(cls)+'</td><td>'+escapeHtml(r.name||'Nome indisponível')+' <small class="muted">'+escapeHtml(r.sector||'')+'</small></td><td>'+escapeHtml(r.cnpj)+'</td><td>'+escapeHtml(statuses[status]||statuses.unverified)+'</td></tr>';
         }).join('');
       }
