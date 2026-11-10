@@ -90,12 +90,12 @@
   async function load(){
     if(state==='ready')return records;
     try{
-      const response=await fetch('/data/fii-universe.json',{cache:'no-store'});
+      const response=await fetch('/guido-dividend-system/data/fii-universe.json',{cache:'no-store'});
       if(!response.ok)throw Error('Falha de consulta ao universo cadastral');
       records=normalize(await response.json());
       if(records.length<100)throw Error('Cobertura insuficiente');
       try{
-        const metricsResponse=await fetch('/data/cvm-fii-by-ticker.json',{cache:'no-store'});
+        const metricsResponse=await fetch('/guido-dividend-system/data/cvm-fii-by-ticker.json',{cache:'no-store'});
         if(metricsResponse.ok)records=enrichMetrics(records,await metricsResponse.json());
       }catch(_){ /* Catalogo de identificacao continua disponivel se CVM falhar. */ }
       state='ready';

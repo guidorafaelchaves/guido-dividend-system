@@ -7,13 +7,13 @@
 
   function privateNav(){
     return `<nav class="private-nav">
-      <a href="/meu-painel/">Meu painel</a>
-      <a href="/watchlist/">Watchlist</a>
-      <a href="/favoritos/">Favoritos</a>
-      <a href="/minha-agenda/">Minha agenda</a>
-      <a href="/notificacoes/">Notificacoes</a>
-      <a href="/carteiras/">Carteiras</a>
-      <a href="/conta/perfil/">Conta</a>
+      <a href="/guido-dividend-system/meu-painel/">Meu painel</a>
+      <a href="/guido-dividend-system/watchlist/">Watchlist</a>
+      <a href="/guido-dividend-system/favoritos/">Favoritos</a>
+      <a href="/guido-dividend-system/minha-agenda/">Minha agenda</a>
+      <a href="/guido-dividend-system/notificacoes/">Notificacoes</a>
+      <a href="/guido-dividend-system/carteiras/">Carteiras</a>
+      <a href="/guido-dividend-system/conta/perfil/">Conta</a>
     </nav>`;
   }
 
@@ -22,7 +22,7 @@
       <span class="eyebrow">Conta gratuita</span>
       <h1>Transforme o mercado em uma agenda pessoal.</h1>
       <p class="lead">Entre para salvar ativos, acompanhar datas, receber alertas internos e organizar sua carteira sem bloquear a exploracao publica.</p>
-      <div class="actions"><a class="btn primary" href="/entrar/">Entrar</a><a class="btn secondary" href="/cadastro/">Criar conta</a></div>
+      <div class="actions"><a class="btn primary" href="/guido-dividend-system/entrar/">Entrar</a><a class="btn secondary" href="/guido-dividend-system/cadastro/">Criar conta</a></div>
     </section>`;
   }
 
@@ -64,7 +64,7 @@
       try{
         status.textContent = 'Validando no backend...';
         if(mode === 'register') await api().register(input); else await api().login(input);
-        location.href = '/meu-painel/';
+        location.href = '/guido-dividend-system/meu-painel/';
       }catch(err){
         status.textContent = err.message || String(err);
       }
@@ -143,7 +143,7 @@
 
   async function portfolios(){
     const data = await api().request('/portfolios');
-    return `${privateNav()}<section class="section-head"><div><h1>Carteiras</h1><p>Base pessoal para posicoes, movimentacoes e renda.</p></div><a class="btn primary" href="/carteiras/nova/">Nova carteira</a></section><section class="grid cols-3">${data.portfolios.map(p => `<article class="card"><h3>${esc(p.name)}</h3><p>${esc(p.objective || 'Sem objetivo definido')}<br>Meta: ${money(p.target_income_cents)} - ${p.transaction_count} movimentacoes</p></article>`).join('') || '<div class="empty">Crie sua primeira carteira para organizar posicoes, movimentacoes e renda passiva.</div>'}</section>`;
+    return `${privateNav()}<section class="section-head"><div><h1>Carteiras</h1><p>Base pessoal para posicoes, movimentacoes e renda.</p></div><a class="btn primary" href="/guido-dividend-system/carteiras/nova/">Nova carteira</a></section><section class="grid cols-3">${data.portfolios.map(p => `<article class="card"><h3>${esc(p.name)}</h3><p>${esc(p.objective || 'Sem objetivo definido')}<br>Meta: ${money(p.target_income_cents)} - ${p.transaction_count} movimentacoes</p></article>`).join('') || '<div class="empty">Crie sua primeira carteira para organizar posicoes, movimentacoes e renda passiva.</div>'}</section>`;
   }
 
   function newPortfolio(){
@@ -154,7 +154,7 @@
     document.getElementById('portfolioForm')?.addEventListener('submit', async ev => {
       ev.preventDefault();
       await api().request('/portfolios', { method:'POST', body:{ name:document.getElementById('portfolioName').value, objective:document.getElementById('portfolioObjective').value, targetIncomeCents:Math.round(Number(document.getElementById('portfolioTarget').value || 0) * 100) } });
-      location.href = '/carteiras/';
+      location.href = '/guido-dividend-system/carteiras/';
     });
   }
 

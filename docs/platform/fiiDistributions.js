@@ -39,7 +39,7 @@
     try{
       const asset=global.DividendFiiCatalog?.all().find(r=>r.ticker===ticker);
       if(!asset?.cnpj){status.textContent='Ativo sem vínculo cadastral ticker/CNPJ validado para essa consulta.';return;}
-      const response=await fetch('/data/fii-distributions.json',{cache:'no-store'});
+      const response=await fetch('/guido-dividend-system/data/fii-distributions.json',{cache:'no-store'});
       if(!response.ok){status.textContent='Ainda não existe histórico documental autorizado publicado para este fundo.';return;}
       const payload=await response.json();
       const records=filter(payload,ticker,asset.cnpj);

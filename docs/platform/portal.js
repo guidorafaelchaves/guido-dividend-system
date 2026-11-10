@@ -12,39 +12,39 @@
   function routeFromPath(){
     const path = location.pathname.replace(/\/index\.html$/,'/').replace(/\/+$/,'/') || '/';
     if(path === '/' || path.endsWith('/guido-dividend-system/')) return 'home';
-    if(path.includes('/ativos/') && path.split('/').filter(Boolean).length >= 2) return 'assetDetail';
-    if(path.includes('/ativos/')) return new URLSearchParams(location.search).has('ticker') ? 'assetDetail' : 'assets';
-    if(path.includes('/calendario/')) return 'calendar';
-    if(path.includes('/mapa-da-renda/')) return 'incomeMap';
-    if(path.includes('/sobre/')) return 'about';
-    if(path.includes('/metodologia/')) return 'methodology';
-    if(path.includes('/entrar/')) return 'login';
-    if(path.includes('/cadastro/')) return 'register';
-    if(path.includes('/meu-painel/')) return 'privateDashboard';
-    if(path.includes('/favoritos/')) return 'favorites';
-    if(path.includes('/watchlist/')) return 'watchlist';
-    if(path.includes('/minha-agenda/')) return 'agenda';
-    if(path.includes('/notificacoes/')) return 'notifications';
-    if(path.includes('/carteiras/nova/')) return 'newPortfolio';
-    if(path.includes('/carteiras/')) return 'portfolios';
-    if(path.includes('/conta/')) return 'account';
-    if(path.includes('/admin/proventos/')) return 'adminProventos';
-    if(path.includes('/admin/importacoes/nova/')) return 'adminNewImport';
-    if(path.includes('/admin/importacoes/')) return 'adminImports';
-    if(path.includes('/admin/market/')) return 'adminMarket';
-    if(path.includes('/admin/eventos/')) return 'adminEvents';
-    if(path.includes('/admin/revisao/')) return 'adminReview';
-    if(path.includes('/admin/publicacao/')) return 'adminPublishing';
-    if(path.includes('/admin/ativos/')) return 'adminAssets';
-    if(path.includes('/admin/fontes/')) return 'adminSources';
-    if(path.includes('/admin/qualidade/')) return 'adminQuality';
-    if(path.includes('/admin/jobs/')) return 'adminJobs';
-    if(path.includes('/admin/auditoria/')) return 'adminAudit';
-    if(path.includes('/admin/finops/')) return 'adminFinops';
-    if(path.includes('/admin/configuracoes/')) return 'adminSettings';
-    if(path.includes('/admin/seguranca/')) return 'adminSecurity';
-    if(path.includes('/admin/')) return 'admin';
-    if(path.includes('/sistema/')) return 'system';
+    if(path.includes('/guido-dividend-system/ativos/') && path.split('/').filter(Boolean).length >= 2) return 'assetDetail';
+    if(path.includes('/guido-dividend-system/ativos/')) return new URLSearchParams(location.search).has('ticker') ? 'assetDetail' : 'assets';
+    if(path.includes('/guido-dividend-system/calendario/')) return 'calendar';
+    if(path.includes('/guido-dividend-system/mapa-da-renda/')) return 'incomeMap';
+    if(path.includes('/guido-dividend-system/sobre/')) return 'about';
+    if(path.includes('/guido-dividend-system/metodologia/')) return 'methodology';
+    if(path.includes('/guido-dividend-system/entrar/')) return 'login';
+    if(path.includes('/guido-dividend-system/cadastro/')) return 'register';
+    if(path.includes('/guido-dividend-system/meu-painel/')) return 'privateDashboard';
+    if(path.includes('/guido-dividend-system/favoritos/')) return 'favorites';
+    if(path.includes('/guido-dividend-system/watchlist/')) return 'watchlist';
+    if(path.includes('/guido-dividend-system/minha-agenda/')) return 'agenda';
+    if(path.includes('/guido-dividend-system/notificacoes/')) return 'notifications';
+    if(path.includes('/guido-dividend-system/carteiras/nova/')) return 'newPortfolio';
+    if(path.includes('/guido-dividend-system/carteiras/')) return 'portfolios';
+    if(path.includes('/guido-dividend-system/conta/')) return 'account';
+    if(path.includes('/guido-dividend-system/admin/proventos/')) return 'adminProventos';
+    if(path.includes('/guido-dividend-system/admin/importacoes/nova/')) return 'adminNewImport';
+    if(path.includes('/guido-dividend-system/admin/importacoes/')) return 'adminImports';
+    if(path.includes('/guido-dividend-system/admin/market/')) return 'adminMarket';
+    if(path.includes('/guido-dividend-system/admin/eventos/')) return 'adminEvents';
+    if(path.includes('/guido-dividend-system/admin/revisao/')) return 'adminReview';
+    if(path.includes('/guido-dividend-system/admin/publicacao/')) return 'adminPublishing';
+    if(path.includes('/guido-dividend-system/admin/ativos/')) return 'adminAssets';
+    if(path.includes('/guido-dividend-system/admin/fontes/')) return 'adminSources';
+    if(path.includes('/guido-dividend-system/admin/qualidade/')) return 'adminQuality';
+    if(path.includes('/guido-dividend-system/admin/jobs/')) return 'adminJobs';
+    if(path.includes('/guido-dividend-system/admin/auditoria/')) return 'adminAudit';
+    if(path.includes('/guido-dividend-system/admin/finops/')) return 'adminFinops';
+    if(path.includes('/guido-dividend-system/admin/configuracoes/')) return 'adminSettings';
+    if(path.includes('/guido-dividend-system/admin/seguranca/')) return 'adminSecurity';
+    if(path.includes('/guido-dividend-system/admin/')) return 'admin';
+    if(path.includes('/guido-dividend-system/sistema/')) return 'system';
     return 'home';
   }
 
@@ -57,7 +57,7 @@
   async function loadHumanReviewedFiiEvents(){
     humanReviewedFiiEvents=[];
     try{
-      const response=await fetch('/data/fii-reviewed-events.json',{cache:'no-store'});
+      const response=await fetch('/guido-dividend-system/data/fii-reviewed-events.json',{cache:'no-store'});
       if(!response.ok)return;
       const payload=await response.json();
       if(payload.schemaVersion!==1||payload.dataType!=='fii-reviewed-events'||!Array.isArray(payload.events))return;
@@ -182,15 +182,15 @@
           <h1>O futuro da renda passiva, organizado por data.</h1>
           <p class="lead">Explore dividendos, rendimentos e juros anunciados. Entenda o grau de confirmacao e reuna os eventos relevantes em uma agenda financeira clara.</p>
           <div class="actions">
-            <a class="btn primary" href="/calendario/">Explorar proximos pagamentos</a>
+            <a class="btn primary" href="/guido-dividend-system/calendario/">Explorar proximos pagamentos</a>
             <a class="btn secondary" href="#como-funciona">Ver como funciona</a>
-            <a class="btn ghost" href="/sistema/">Acessar meu Dividend System</a>
+            <a class="btn ghost" href="/guido-dividend-system/sistema/">Acessar meu Dividend System</a>
           </div>
           <form class="hero-search" id="heroSearchForm" role="search">
             <input id="heroSearch" type="search" placeholder="Pesquise um ativo, empresa ou titulo" autocomplete="off">
             <button class="btn primary" type="submit">Pesquisar</button>
           </form>
-          <div class="search-results" id="heroSearchResults" aria-live="polite">${assets().slice(0,3).map(a => `<a class="search-chip" href="/ativos/?ticker=${esc(a.ticker)}">${esc(a.ticker)} <span>${esc(a.type)}</span></a>`).join('')}</div>
+          <div class="search-results" id="heroSearchResults" aria-live="polite">${assets().slice(0,3).map(a => `<a class="search-chip" href="/guido-dividend-system/ativos/?ticker=${esc(a.ticker)}">${esc(a.ticker)} <span>${esc(a.type)}</span></a>`).join('')}</div>
         </div>
         ${renderHeroRadar()}
       </section>
@@ -273,12 +273,12 @@
       </section>
       <section class="asset-lanes reveal">
         <article class="panel"><span class="eyebrow">Maiores retornos de evento</span><h2>Recorrentes e extraordinarios separados na leitura</h2>${data.highYield.slice(0,5).map(renderCompactAssetFlow).join('')}</article>
-        <article class="panel"><span class="eyebrow">Quem pode pagar em cada mes?</span><h2>Ativos por periodo</h2><div class="asset-months">${data.months.slice(0,4).map(month => `<div><b>${esc(monthLabel(month.month))}</b><span>${month.rows.length} ativos</span>${month.rows.slice(0,4).map(row => `<a href="/ativos/?ticker=${esc(row.ticker)}">${esc(row.ticker)}</a>`).join('')}<a class="btn secondary" href="/calendario/">Abrir no calendario</a></div>`).join('')}</div></article>
+        <article class="panel"><span class="eyebrow">Quem pode pagar em cada mes?</span><h2>Ativos por periodo</h2><div class="asset-months">${data.months.slice(0,4).map(month => `<div><b>${esc(monthLabel(month.month))}</b><span>${month.rows.length} ativos</span>${month.rows.slice(0,4).map(row => `<a href="/guido-dividend-system/ativos/?ticker=${esc(row.ticker)}">${esc(row.ticker)}</a>`).join('')}<a class="btn secondary" href="/guido-dividend-system/calendario/">Abrir no calendario</a></div>`).join('')}</div></article>
       </section>
       <section class="panel reveal"><span class="eyebrow">Papel no fluxo</span><h2>Ativos por funcao de renda</h2><div class="asset-role-grid">${data.roles.map(role => `<article><b>${esc(role.label)}</b><span>${role.rows.length} ativos</span><small>${esc(role.note)}</small></article>`).join('')}</div></section>
       <section class="panel reveal"><span class="eyebrow">Comparacao rapida</span><h2>Compare sem declarar vencedor</h2><div id="assetCompareBox" class="asset-compare-box">Selecione de dois a quatro ativos nos cards para comparar proximo evento, retorno, recorrencia e confianca.</div></section>
       <section class="panel reveal"><span class="eyebrow">Catalogo completo</span><h2>Fundos, patrimônio e próximos eventos</h2><p class="muted">VPA e patrimônio contábil são extraídos dos informes mensais da CVM; não representam preço de mercado, provento distribuído nem dividend yield. Somente VPAs conciliados são exibidos.</p><label class="pill"><input id="includeEmptyAssets" type="checkbox"> Incluir ativos sem evento futuro</label><div class="table-wrap"><table><thead><tr><th>Ativo</th><th>Tipo</th><th>Qualidade</th><th>Preco</th><th>VPA CVM validado</th><th>Proximo fluxo</th><th>Acao</th></tr></thead><tbody id="assetCatalogRows"></tbody></table></div><p id="assetCatalogSummary" class="muted"></p><button type="button" class="btn secondary" id="assetCatalogMore" hidden>Mostrar mais 100 ativos</button></section>
-      <section class="personal-calendar panel reveal"><div><span class="eyebrow">Do mercado para sua carteira</span><h2>O mercado mostra eventos. O Dividend System mostra o que eles significam para voce.</h2><p class="muted">Transforme valor por unidade em valor previsto para sua posicao, retorno sobre seu preco medio, historico da sua renda e conciliacao.</p></div><div class="portfolio-toggle"><a class="pill active" href="/cadastro/">Transformar ativos em carteira acompanhada</a><a class="pill" href="/sistema/">Ver Dividend System</a></div></section>
+      <section class="personal-calendar panel reveal"><div><span class="eyebrow">Do mercado para sua carteira</span><h2>O mercado mostra eventos. O Dividend System mostra o que eles significam para voce.</h2><p class="muted">Transforme valor por unidade em valor previsto para sua posicao, retorno sobre seu preco medio, historico da sua renda e conciliacao.</p></div><div class="portfolio-toggle"><a class="pill active" href="/guido-dividend-system/cadastro/">Transformar ativos em carteira acompanhada</a><a class="pill" href="/guido-dividend-system/sistema/">Ver Dividend System</a></div></section>
     </section>`;
   }
 
@@ -338,7 +338,7 @@
       const capture = ev.target.closest('.asset-capture');
       if(capture){
         const status = document.getElementById('assetCaptureStatus');
-        if(status) status.innerHTML = `<b>${esc(capture.dataset.ticker || 'Evento')} capturado como intencao.</b> Crie uma conta gratuita para receber alertas de data-com, confirmacao, alteracao e pagamento. <a href="/cadastro/">Criar conta gratuita</a>`;
+        if(status) status.innerHTML = `<b>${esc(capture.dataset.ticker || 'Evento')} capturado como intencao.</b> Crie uma conta gratuita para receber alertas de data-com, confirmacao, alteracao e pagamento. <a href="/guido-dividend-system/cadastro/">Criar conta gratuita</a>`;
       }
     });
     document.addEventListener('change', ev => {
@@ -414,14 +414,14 @@
     const price = next?.currentPrice || row.asset.price;
     const simulatedIncome = next && price ? money((10000 / price) * next.amountPerUnit) : 'indisponivel';
     return `<article class="discovery-asset-card ${row.quality === 'Cadastro incompleto' ? 'muted-card' : ''}">
-      <div class="event-top"><div><a class="ticker" href="/ativos/?ticker=${esc(row.ticker)}">${esc(row.ticker)}</a><div class="event-kind">${esc(row.asset.name)} - ${esc(row.asset.sector)}</div></div><span class="pill">${esc(row.asset.type)}</span></div>
+      <div class="event-top"><div><a class="ticker" href="/guido-dividend-system/ativos/?ticker=${esc(row.ticker)}">${esc(row.ticker)}</a><div class="event-kind">${esc(row.asset.name)} - ${esc(row.asset.sector)}</div></div><span class="pill">${esc(row.asset.type)}</span></div>
       <div class="asset-flow-next"><span>Proximo fluxo</span><b>${next ? esc(next.eventType) : 'Nenhum evento futuro publicado'}</b><small>${next ? `${money(next.amountPerUnit)} por unidade | ${next.eventYieldPercent === null ? 'retorno indisponivel' : pct(next.eventYieldPercent)}` : `Recorrencia historica: ${row.asset.recurrenceScore ? `${row.asset.recurrenceScore}/100` : 'dados insuficientes'}`}</small></div>
       <div class="event-meta"><div><span>Data-com</span><b>${next ? fullDate(next.recordDate || next.exDate) : '-'}</b></div><div><span>Pagamento</span><b>${next ? fullDate(next.paymentDate) : '-'}</b></div></div>
       <div class="asset-reason"><b>Em destaque porque:</b><span>${next ? `${next.eventStatus === 'confirmed' ? 'evento confirmado' : 'evento publicado'}, ${next.regularity}, ${humanDistance(next.paymentDate)}` : row.quality}</span></div>
       <div class="asset-proof">${esc(next?.sourceName || row.asset.source || 'fonte nao informada')} - ${next?.updatedAt ? `atualizado ${fullDate(next.updatedAt)}` : 'atualizacao nao informada'} - ${esc(row.quality)}</div>
       <div class="asset-card-actions">
-        ${next ? `<button class="btn primary asset-capture" type="button" data-event-id="${esc(next.eventId)}" data-ticker="${esc(row.ticker)}">Capturar evento</button>` : `<a class="btn primary" href="/cadastro/">Acompanhar anuncio</a>`}
-        <a class="btn secondary" href="/ativos/?ticker=${esc(row.ticker)}">Abrir ativo</a>
+        ${next ? `<button class="btn primary asset-capture" type="button" data-event-id="${esc(next.eventId)}" data-ticker="${esc(row.ticker)}">Capturar evento</button>` : `<a class="btn primary" href="/guido-dividend-system/cadastro/">Acompanhar anuncio</a>`}
+        <a class="btn secondary" href="/guido-dividend-system/ativos/?ticker=${esc(row.ticker)}">Abrir ativo</a>
         <label class="pill"><input class="asset-compare-check" type="checkbox" value="${esc(row.ticker)}"> Comparar</label>
       </div>
       <p class="muted">Com R$ 10.000 neste ativo: aproximadamente ${simulatedIncome} brutos neste evento. Nao e recomendacao.</p>
@@ -429,7 +429,7 @@
   }
 
   function renderCompactAssetFlow(row){
-    return `<div class="event-capture-row"><div><b>${esc(row.ticker)}</b><br><span class="muted">${row.next ? `${fullDate(row.next.recordDate || row.next.exDate)} | ${row.next.eventYieldPercent === null ? 'sem retorno calculado' : pct(row.next.eventYieldPercent)}` : row.quality}</span></div><a class="btn secondary" href="/ativos/?ticker=${esc(row.ticker)}">Abrir</a></div>`;
+    return `<div class="event-capture-row"><div><b>${esc(row.ticker)}</b><br><span class="muted">${row.next ? `${fullDate(row.next.recordDate || row.next.exDate)} | ${row.next.eventYieldPercent === null ? 'sem retorno calculado' : pct(row.next.eventYieldPercent)}` : row.quality}</span></div><a class="btn secondary" href="/guido-dividend-system/ativos/?ticker=${esc(row.ticker)}">Abrir</a></div>`;
   }
 
   function renderRecurringAsset(row){
@@ -440,7 +440,7 @@
     const price = row.hasPrice && !row.asset.catalogOnly ? money(row.asset.price || row.next?.currentPrice) : 'Cotacao indisponivel';
     const accounting=row.asset.cvm;
     const nav=accounting?.navValidated===true && accounting.navCalculated>0 ? `${money(accounting.navCalculated)}<br><small class="muted">CVM ${esc(accounting.referenceDate)}</small>` : 'Indisponível';
-    return `<tr><td><b>${esc(row.ticker)}</b><br><span class="muted">${esc(row.asset.name)}</span></td><td>${esc(row.asset.type)}</td><td>${esc(row.quality)}</td><td>${price}</td><td>${nav}</td><td>${row.next ? `${esc(row.next.eventType)} em ${fullDate(row.next.paymentDate)}` : 'Sem provento anunciado'}</td><td><a class="btn secondary" href="/ativos/?ticker=${esc(row.ticker)}">Abrir</a></td></tr>`;
+    return `<tr><td><b>${esc(row.ticker)}</b><br><span class="muted">${esc(row.asset.name)}</span></td><td>${esc(row.asset.type)}</td><td>${esc(row.quality)}</td><td>${price}</td><td>${nav}</td><td>${row.next ? `${esc(row.next.eventType)} em ${fullDate(row.next.paymentDate)}` : 'Sem provento anunciado'}</td><td><a class="btn secondary" href="/guido-dividend-system/ativos/?ticker=${esc(row.ticker)}">Abrir</a></td></tr>`;
   }
 
   function renderAssetDetail(){
@@ -455,7 +455,7 @@
           <span class="eyebrow">${esc(asset.type)} acompanhado</span>
           <h1>${esc(asset.ticker)} - ${esc(asset.name)}</h1>
           <p class="lead">${next ? `Proximo ${esc(next.kind)} ${humanDistance(next.paymentDate)}. Valor informado: ${eventAmount(next)} por unidade.` : 'Ainda sem evento publico publicado para este ativo.'}</p>
-          <div class="actions"><button class="btn primary" id="refreshMarket">Consultar fechamento importado</button><a class="btn secondary" href="/cadastro/">Acompanhar ativo</a></div>
+          <div class="actions"><button class="btn primary" id="refreshMarket">Consultar fechamento importado</button><a class="btn secondary" href="/guido-dividend-system/cadastro/">Acompanhar ativo</a></div>
         </article>
         <article class="card reveal"><h2>Linha temporal do ativo</h2><div class="calendar-list">${related.map(renderEventRow).join('') || '<div class="empty">Sem eventos publicados.</div>'}</div></article>
         <section class="reveal"><h2>Quanto esse evento representa?</h2>${next ? renderSimulator() : '<p class="muted">Ainda não há provento verificado para simular neste ativo.</p>'}</section>
@@ -553,8 +553,8 @@
         <button class="pill calendar-status-filter ${state.status === 'confirmed' ? 'active' : ''}" type="button" data-status="confirmed">Confirmados ${confirmedCount}</button>
         <button class="pill calendar-window-filter ${state.windowDays === 30 ? 'active' : ''}" type="button" data-window="30">Proximos 30 dias ${next30}</button>
         <button class="pill calendar-yield-filter ${state.minYield === .8 ? 'active' : ''}" type="button" data-yield=".8">DY &gt; 0,8% ${highYield}</button>
-        <a class="pill" href="/watchlist/">Minha watchlist</a>
-        <a class="pill" href="/carteiras/">Minha carteira</a>
+        <a class="pill" href="/guido-dividend-system/watchlist/">Minha watchlist</a>
+        <a class="pill" href="/guido-dividend-system/carteiras/">Minha carteira</a>
       </div>
       <p class="muted" aria-live="polite">${filtered.length} eventos na mesa. O Opportunity Score mede qualidade operacional do evento, nao recomendacao de compra.</p>
     </section>`;
@@ -584,7 +584,7 @@
       <div class="table-wrap operations-table"><table>
         <thead><tr><th>Ativo</th><th>Datas</th><th>Evento</th><th>Yield</th><th>Qualidade operacional</th><th>Acao</th></tr></thead>
         <tbody>${sorted.map(event => `<tr class="operations-row ${event.eventId === selectedId ? 'selected' : ''}" data-compare-event-id="${esc(event.eventId)}">
-          <td><a class="asset-link" href="/ativos/?ticker=${esc(event.ticker)}">${esc(event.ticker)}</a><br><span class="muted">${esc(event.assetName)}</span></td>
+          <td><a class="asset-link" href="/guido-dividend-system/ativos/?ticker=${esc(event.ticker)}">${esc(event.ticker)}</a><br><span class="muted">${esc(event.assetName)}</span></td>
           <td><span class="cell-kv"><b>COM</b>${fullDate(event.recordDate || event.exDate)}</span><span class="cell-kv"><b>EX</b>${fullDate(event.exDate)}</span><span class="cell-kv"><b>PGTO</b>${fullDate(event.paymentDate)} <small>${humanDistance(event.paymentDate)}</small></span></td>
           <td><b>${esc(event.eventType)}</b><br><span class="muted">${money(event.amountPerUnit)} por unidade</span></td>
           <td><span class="cell-kv"><b>Evento</b>${event.eventYieldPercent === null ? '-' : pct(event.eventYieldPercent)}</span><span class="cell-kv"><b>Equiv.</b>${event.equivalentYieldPercent === null ? '-' : pct(event.equivalentYieldPercent)}</span></td>
@@ -750,7 +750,7 @@
       <div class="comparison-cta">
         <div><b>${comparison.eventIsLeader ? 'Este evento se destaca no periodo analisado.' : 'Este evento merece analise, mas nao vence todos os benchmarks.'}</b><span>Salve a comparacao e acompanhe as proximas datas sem repetir o processo.</span></div>
         <button class="btn primary capture-event" type="button" data-event-id="${esc(selected.eventId)}">Capturar evento</button>
-        <a class="btn secondary" href="/sistema/">Ver analise completa</a>
+        <a class="btn secondary" href="/guido-dividend-system/sistema/">Ver analise completa</a>
       </div>
     </section>`;
   }
@@ -797,8 +797,8 @@
           <div><span>Score</span><b>OS ${event.opportunityScore}</b></div>
         </div>
         <div class="actions">
-          ${logged ? '<a class="btn primary" href="/watchlist/">Ver na watchlist</a><a class="btn secondary" href="/carteiras/">Aplicar na minha carteira</a>' : '<a class="btn primary" href="/cadastro/">Criar conta gratuita</a><a class="btn secondary" href="/entrar/">Ja tenho conta</a>'}
-          <a class="btn ghost" href="/sistema/">Ativar Dividend System</a>
+          ${logged ? '<a class="btn primary" href="/guido-dividend-system/watchlist/">Ver na watchlist</a><a class="btn secondary" href="/guido-dividend-system/carteiras/">Aplicar na minha carteira</a>' : '<a class="btn primary" href="/guido-dividend-system/cadastro/">Criar conta gratuita</a><a class="btn secondary" href="/guido-dividend-system/entrar/">Ja tenho conta</a>'}
+          <a class="btn ghost" href="/guido-dividend-system/sistema/">Ativar Dividend System</a>
         </div>
         <p class="muted">O premium aparece quando voce quiser saber quanto este evento representa na sua carteira real, com posicao elegivel, preco medio, metas e conciliacao.</p>
       </div>
@@ -827,8 +827,8 @@
       ${renderIncomeAccumulation(filtered, state)}
       <section class="personal-calendar panel reveal">
         <div><span class="eyebrow">Impacto pessoal</span><h2>Mercado, watchlist e carteira no mesmo calendario.</h2><p class="muted">A versao publica mostra mercado e simulacao. Ao entrar, a plataforma pode restringir a watchlist, aplicar posicoes reais, preco medio, metas mensais e conciliacao sem misturar valores recebidos com previstos.</p></div>
-        <div class="portfolio-toggle" role="group" aria-label="Escopo pessoal"><a class="pill active" href="/calendario/">Mercado</a><a class="pill" href="/watchlist/">Minha watchlist</a><a class="pill" href="/carteiras/">Minha carteira</a></div>
-        <div class="goal-preview"><b>Meta mensal</b><span>Defina uma meta na area privada para separar recebido, confirmado e estimado.</span><a class="btn secondary" href="/meu-painel/">Abrir painel pessoal</a></div>
+        <div class="portfolio-toggle" role="group" aria-label="Escopo pessoal"><a class="pill active" href="/guido-dividend-system/calendario/">Mercado</a><a class="pill" href="/guido-dividend-system/watchlist/">Minha watchlist</a><a class="pill" href="/guido-dividend-system/carteiras/">Minha carteira</a></div>
+        <div class="goal-preview"><b>Meta mensal</b><span>Defina uma meta na area privada para separar recebido, confirmado e estimado.</span><a class="btn secondary" href="/guido-dividend-system/meu-painel/">Abrir painel pessoal</a></div>
       </section>`;
   }
 
@@ -919,7 +919,7 @@
         ${adminKpi('Eventos', String(data.totals.events), `${new Set(data.views.map(event => event.ticker)).size} ativos pagadores`)}
         ${adminKpi('Indice de continuidade', `${data.continuity}/100`, data.continuity >= 80 ? 'fluxo muito distribuido' : data.continuity >= 60 ? 'relativamente estavel' : data.continuity >= 40 ? 'concentracao moderada' : 'altamente concentrado')}
       </section>
-      <section class="portfolio-toggle income-universe reveal" role="group" aria-label="Universo do mapa"><a class="pill active" href="/mapa-da-renda/">Mercado</a><a class="pill" href="/cadastro/">Minha watchlist</a><a class="pill" href="/carteiras/">Minha carteira</a></section>
+      <section class="portfolio-toggle income-universe reveal" role="group" aria-label="Universo do mapa"><a class="pill active" href="/guido-dividend-system/mapa-da-renda/">Mercado</a><a class="pill" href="/guido-dividend-system/cadastro/">Minha watchlist</a><a class="pill" href="/guido-dividend-system/carteiras/">Minha carteira</a></section>
       <section class="income-heatmap reveal" aria-label="Heatmap temporal por classe">
         <div class="income-heatmap-head"><b>Classe</b>${data.months.map(month => `<b>${esc(monthLabel(month.month))}</b>`).join('')}</div>
         ${data.classes.map(type => `<div class="income-heatmap-row"><b>${esc(type)}</b>${data.months.map(month => {
@@ -934,11 +934,11 @@
       </section>
       <section class="panel reveal"><span class="eyebrow">Dependencia do fluxo</span><h2>Os 5 maiores ativos representam ${data.assetRows.slice(0,5).reduce((sum,row)=>sum+row.share,0).toFixed(1)}% da renda prevista.</h2><div class="table-wrap"><table><thead><tr><th>Ativo</th><th>Participacao</th><th>Meses pagos</th><th>Recorrencia</th><th>Status</th></tr></thead><tbody>${data.assetRows.slice(0,8).map(row => `<tr><td><b>${esc(row.ticker)}</b></td><td>${pct(row.share)}</td><td>${row.monthsPaid}</td><td>${esc(row.regularity)}</td><td>${calendarStatusChip(row.status)}</td></tr>`).join('')}</tbody></table></div></section>
       <section class="income-map-grid reveal">
-        <article class="panel"><span class="eyebrow">Onde existem lacunas?</span><h2>${data.gaps.length || 0} meses abaixo de 70% da media.</h2>${data.gaps.slice(0,4).map(gap => `<div class="gap-row"><b>${esc(monthLabel(gap.month))}</b><span>${money(gap.total)} (${money(gap.diff)} vs media)</span><a href="/calendario/">Explorar eventos</a></div>`).join('') || '<p class="muted">Nenhuma lacuna relevante no periodo analisado.</p>'}</article>
+        <article class="panel"><span class="eyebrow">Onde existem lacunas?</span><h2>${data.gaps.length || 0} meses abaixo de 70% da media.</h2>${data.gaps.slice(0,4).map(gap => `<div class="gap-row"><b>${esc(monthLabel(gap.month))}</b><span>${money(gap.total)} (${money(gap.diff)} vs media)</span><a href="/guido-dividend-system/calendario/">Explorar eventos</a></div>`).join('') || '<p class="muted">Nenhuma lacuna relevante no periodo analisado.</p>'}</article>
         <article class="panel"><span class="eyebrow">Eventos que podem preencher o fluxo</span>${data.gaps[0]?.opportunities?.map(event => `<div class="event-capture-row"><div><b>${esc(event.ticker)}</b><br><span class="muted">${fullDate(event.paymentDate)} | ${event.eventYieldPercent === null ? 'sem DY' : pct(event.eventYieldPercent)}</span></div><button class="btn secondary capture-event" data-event-id="${esc(event.eventId)}">Capturar</button></div>`).join('') || '<p class="muted">Sem eventos adicionais para o mes mais fraco.</p>'}</article>
       </section>
       <section class="calendar-narrative reveal"><span class="eyebrow">Sintese automatica</span><p>${esc(data.narrative)}</p></section>
-      <section class="personal-calendar panel reveal"><div><span class="eyebrow">Conversao contextual</span><h2>Transforme este mapa de mercado em um mapa da sua renda.</h2><p class="muted">Ao entrar, a plataforma pode trocar o universo para watchlist ou carteira real sem usar numeros ficticios.</p></div><div class="portfolio-toggle"><a class="pill active" href="/cadastro/">Criar conta gratuita</a><a class="pill" href="/calendario/">Explorar calendario</a></div></section>
+      <section class="personal-calendar panel reveal"><div><span class="eyebrow">Conversao contextual</span><h2>Transforme este mapa de mercado em um mapa da sua renda.</h2><p class="muted">Ao entrar, a plataforma pode trocar o universo para watchlist ou carteira real sem usar numeros ficticios.</p></div><div class="portfolio-toggle"><a class="pill active" href="/guido-dividend-system/cadastro/">Criar conta gratuita</a><a class="pill" href="/guido-dividend-system/calendario/">Explorar calendario</a></div></section>
     </section>`;
   }
 
@@ -986,7 +986,7 @@
           <section id="divergencias" class="panel reveal"><span class="eyebrow">Divergencias</span><ol class="admin-flow"><li>Divergencia detectada entre fontes.</li><li>Evento bloqueado para publicacao automatica.</li><li>Fonte de maior precedencia identificada.</li><li>Revisao administrativa registrada.</li><li>Nova versao publicada com historico.</li></ol></section>
           <section id="limitacoes" class="panel reveal"><span class="eyebrow">Limitacoes</span><div class="grid cols-2">${['Eventos podem ser alterados ou cancelados.','Precos mudam e afetam retornos calculados.','Estimativas podem nao se confirmar.','Tributacao varia conforme produto e investidor.','Historico nao garante recorrencia.','Eventos extraordinarios nao devem ser anualizados automaticamente.'].map(item => `<article class="method-card"><p>${item}</p></article>`).join('')}</div></section>
           <section id="auditoria" class="panel reveal"><span class="eyebrow">Auditoria</span><div class="audit-timeline">${['12/07 - Evento importado','13/07 - Market confirmou valor','13/07 - Administrador revisou','14/07 - Evento publicado','16/07 - Data atualizada'].map(item => `<span>${item}</span>`).join('')}</div></section>
-          <section class="personal-calendar panel reveal"><div><span class="eyebrow">Proximo passo</span><h2>Agora voce sabe como os numeros sao construidos.</h2></div><div class="portfolio-toggle"><a class="pill active" href="/calendario/">Explorar calendario</a><a class="pill" href="/mapa-da-renda/">Ver Mapa da Renda</a><a class="pill" href="/carteiras/">Criar minha carteira</a></div></section>
+          <section class="personal-calendar panel reveal"><div><span class="eyebrow">Proximo passo</span><h2>Agora voce sabe como os numeros sao construidos.</h2></div><div class="portfolio-toggle"><a class="pill active" href="/guido-dividend-system/calendario/">Explorar calendario</a><a class="pill" href="/guido-dividend-system/mapa-da-renda/">Ver Mapa da Renda</a><a class="pill" href="/guido-dividend-system/carteiras/">Criar minha carteira</a></div></section>
         </div>
       </div>
     </section>`;
@@ -994,33 +994,33 @@
 
   function renderAdmin(view){
     const sections = [
-      ['admin','/admin/','Visao geral'],
-      ['adminProventos','/admin/proventos/','Central de Proventos'],
-      ['adminImports','/admin/importacoes/','Importacoes B3'],
-      ['adminMarket','/admin/market/','Sincronizacao Market'],
-      ['adminEvents','/admin/eventos/','Eventos'],
-      ['adminReview','/admin/revisao/','Revisao'],
-      ['adminPublishing','/admin/publicacao/','Publicacao'],
-      ['adminAssets','/admin/ativos/','Ativos'],
-      ['adminSources','/admin/fontes/','Fontes'],
-      ['adminQuality','/admin/qualidade/','Qualidade'],
-      ['adminJobs','/admin/jobs/','Jobs'],
-      ['adminAudit','/admin/auditoria/','Auditoria'],
-      ['adminFinops','/admin/finops/','FinOps'],
-      ['adminSecurity','/admin/seguranca/','Seguranca'],
-      ['adminSettings','/admin/configuracoes/','Configuracoes']
+      ['admin','/guido-dividend-system/admin/','Visao geral'],
+      ['adminProventos','/guido-dividend-system/admin/proventos/','Central de Proventos'],
+      ['adminImports','/guido-dividend-system/admin/importacoes/','Importacoes B3'],
+      ['adminMarket','/guido-dividend-system/admin/market/','Sincronizacao Market'],
+      ['adminEvents','/guido-dividend-system/admin/eventos/','Eventos'],
+      ['adminReview','/guido-dividend-system/admin/revisao/','Revisao'],
+      ['adminPublishing','/guido-dividend-system/admin/publicacao/','Publicacao'],
+      ['adminAssets','/guido-dividend-system/admin/ativos/','Ativos'],
+      ['adminSources','/guido-dividend-system/admin/fontes/','Fontes'],
+      ['adminQuality','/guido-dividend-system/admin/qualidade/','Qualidade'],
+      ['adminJobs','/guido-dividend-system/admin/jobs/','Jobs'],
+      ['adminAudit','/guido-dividend-system/admin/auditoria/','Auditoria'],
+      ['adminFinops','/guido-dividend-system/admin/finops/','FinOps'],
+      ['adminSecurity','/guido-dividend-system/admin/seguranca/','Seguranca'],
+      ['adminSettings','/guido-dividend-system/admin/configuracoes/','Configuracoes']
     ];
     const active = sections.find(item => item[0] === view) || sections[0];
     return `<section class="admin-data-center">
       <nav class="admin-rail" aria-label="Admin">
         <strong>Admin</strong>
         ${sections.map(([key, href, label]) => `<a class="${key === view ? 'active' : ''}" href="${href}">${label}</a>`).join('')}
-        <a href="/admin.html">FinOps legado</a>
+        <a href="/guido-dividend-system/admin.html">FinOps legado</a>
       </nav>
       <div class="admin-stage">
         <section class="admin-title">
           <div><span class="eyebrow">Central Administrativa de Proventos</span><h1>${esc(active[2])}</h1><p>Importar e sincronizar nao publica. A versao publica nasce apenas depois de validacao, revisao e lote de publicacao.</p></div>
-          <div class="admin-actions"><a class="btn primary" href="/admin/importacoes/nova/">Importar arquivo B3</a><a class="btn secondary" href="/admin/market/">Sincronizar Market</a><a class="btn secondary" href="/calendario/">Calendario publico</a></div>
+          <div class="admin-actions"><a class="btn primary" href="/guido-dividend-system/admin/importacoes/nova/">Importar arquivo B3</a><a class="btn secondary" href="/guido-dividend-system/admin/market/">Sincronizar Market</a><a class="btn secondary" href="/guido-dividend-system/calendario/">Calendario publico</a></div>
         </section>
         ${renderAdminView(view)}
       </div>
@@ -1073,7 +1073,7 @@
       <div class="admin-form-row"><label>Perfil presumido<select id="adminImportProfile"><option>B3 - Radar de Proventos</option><option>B3 - Eventos Corporativos</option><option>B3 - Dividendos e JCP</option></select></label><label>Data de referencia<input id="adminImportReferenceDate" type="date"></label><label>Observacao<input id="adminImportNote" placeholder="Opcional"></label></div>
       <div id="adminImportStatus" class="notice">Selecione o arquivo B3 para detectar cabecalhos, normalizar eventos e liberar publicacao.</div>
       <div class="table-wrap"><table><thead><tr><th>Arquivo</th><th>Perfil detectado</th><th>Confianca</th><th>Linhas</th><th>Validos</th><th>Status</th></tr></thead><tbody id="adminImportRows"><tr><td colspan="6" class="muted">Nenhum arquivo carregado.</td></tr></tbody></table></div>
-      <div class="admin-actions" style="margin:12px 0"><button class="btn primary" id="adminPublishImport" type="button" disabled>Publicar eventos validados</button><a class="btn secondary" href="/calendario/">Abrir calendario publico</a><button class="btn secondary" id="adminClearPublishedEvents" type="button">Limpar cache publicado local</button></div>
+      <div class="admin-actions" style="margin:12px 0"><button class="btn primary" id="adminPublishImport" type="button" disabled>Publicar eventos validados</button><a class="btn secondary" href="/guido-dividend-system/calendario/">Abrir calendario publico</a><button class="btn secondary" id="adminClearPublishedEvents" type="button">Limpar cache publicado local</button></div>
       <div class="table-wrap"><table><thead><tr><th>Ativo</th><th>Tipo</th><th>Data COM</th><th>Data EX</th><th>Pagamento</th><th>Valor</th><th>Status</th></tr></thead><tbody id="adminImportPreview"><tr><td colspan="7" class="muted">O preview dos eventos aparece aqui antes da publicacao.</td></tr></tbody></table></div>
       <h3>Mapeamento salvo</h3>
       <div class="table-wrap"><table><thead><tr><th>Coluna original</th><th>Campo canonico</th><th>Transformacao</th></tr></thead><tbody><tr><td>Codigo Negociacao</td><td>ticker</td><td>normalizar ticker</td></tr><tr><td>Data Base</td><td>recordDate</td><td>dd/MM/yyyy</td></tr><tr><td>Valor Bruto</td><td>amountPerUnit</td><td>decimal brasileiro</td></tr></tbody></table></div>
@@ -1121,7 +1121,7 @@
   }
 
   function renderAdminFinops(){
-    return `<section class="admin-panel"><h2>FinOps preservado</h2><p>O FinOps segue disponivel no console legado, mas nao e mais o protagonista da administracao de proventos.</p><a class="btn secondary" href="/admin.html">Abrir FinOps legado</a></section>`;
+    return `<section class="admin-panel"><h2>FinOps preservado</h2><p>O FinOps segue disponivel no console legado, mas nao e mais o protagonista da administracao de proventos.</p><a class="btn secondary" href="/guido-dividend-system/admin.html">Abrir FinOps legado</a></section>`;
   }
 
   function renderAdminCatalog(view){
@@ -1459,7 +1459,7 @@
       const eventsToPublish = JSON.parse(button.dataset.events || '[]');
       const total = adminSavePublishedEvents(eventsToPublish);
       const status = document.getElementById('adminImportStatus');
-      if(status) status.innerHTML = `${eventsToPublish.length} eventos publicados no cache publico local. Total publicado: ${total}. <a href="/calendario/">Abrir calendario publico atualizado</a>.`;
+      if(status) status.innerHTML = `${eventsToPublish.length} eventos publicados no cache publico local. Total publicado: ${total}. <a href="/guido-dividend-system/calendario/">Abrir calendario publico atualizado</a>.`;
       button.disabled = true;
       button.textContent = 'Eventos publicados';
     });
@@ -1594,7 +1594,7 @@
     const paint = () => {
       const q = input.value.trim().toLowerCase();
       const rows = assets().filter(asset => `${asset.ticker} ${asset.name} ${asset.type}`.toLowerCase().includes(q || ' ')).slice(0, 5);
-      results.innerHTML = rows.map(asset => `<a class="search-chip" href="/ativos/?ticker=${esc(asset.ticker)}">${esc(asset.ticker)} <span>${esc(asset.name)}</span></a>`).join('') || '<span class="search-chip">Nenhum ativo encontrado</span>';
+      results.innerHTML = rows.map(asset => `<a class="search-chip" href="/guido-dividend-system/ativos/?ticker=${esc(asset.ticker)}">${esc(asset.ticker)} <span>${esc(asset.name)}</span></a>`).join('') || '<span class="search-chip">Nenhum ativo encontrado</span>';
     };
     input.addEventListener('input', paint);
     document.getElementById('heroSearchForm')?.addEventListener('submit', ev => {

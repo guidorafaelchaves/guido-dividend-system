@@ -24,7 +24,7 @@
       <div class="table-wrap"><table><thead><tr><th>Ticker</th><th>Tipo</th><th>Nome / setor</th><th>CNPJ</th><th>Evidência B3</th></tr></thead><tbody id="fiiUniverseRows"></tbody></table></div>`;
     main.appendChild(section);
     try {
-      const response=await fetch('/data/fii-universe.json',{cache:'no-store'});
+      const response=await fetch('/guido-dividend-system/data/fii-universe.json',{cache:'no-store'});
       if(!response.ok) throw new Error('Catálogo indisponível');
       const payload=await response.json();
       if(payload.dataType!=='fii-ticker-cnpj-catalog'||!Array.isArray(payload.records)) throw new Error('Formato inválido');
@@ -32,7 +32,7 @@
       let evidence=null;
       let snapshotDate='';
       try {
-        const b3Response=await fetch('/data/fii-b3-reconciliation.json',{cache:'no-store'});
+        const b3Response=await fetch('/guido-dividend-system/data/fii-b3-reconciliation.json',{cache:'no-store'});
         if(b3Response.ok){
           const data=await b3Response.json();
           if(globalThis.DividendB3Evidence?.evaluate(data).valid){

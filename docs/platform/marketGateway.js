@@ -11,7 +11,7 @@
   }
   async function publishedSnapshot(){
     if(!remotePromise){
-      remotePromise=global.fetch('/data/radar-eod.json',{cache:'no-cache'}).then(async response=>{
+      remotePromise=global.fetch('/guido-dividend-system/data/radar-eod.json',{cache:'no-cache'}).then(async response=>{
         if(!response.ok)return null;
         const data=await response.json();
         if(data?.schemaVersion!==1||data?.market!=='B3'||!validTradeDate(data.tradeDate)||

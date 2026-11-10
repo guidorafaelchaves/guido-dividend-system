@@ -12,7 +12,7 @@
    section.appendChild(status);
    root.appendChild(section);
    try{
-     const universeResponse=await fetch('/data/fii-universe.json',{cache:'no-store'});
+     const universeResponse=await fetch('/guido-dividend-system/data/fii-universe.json',{cache:'no-store'});
      if(!universeResponse.ok)return;
      const universe=await universeResponse.json();
      if(universe.dataType!=='fii-ticker-cnpj-catalog'||!Array.isArray(universe.records))return;
@@ -20,7 +20,7 @@
      if(!asset){status.textContent='Ticker não encontrado no universo cadastral atual; situação B3 não verificada.';return;}
      section.appendChild(text('p','Identificação cadastral: '+(asset.name||ticker)+' · CNPJ '+asset.cnpj+' · '+(asset.assetClass==='FIAGRO'?'FIAGRO':'FII candidato')+' (Lummios, CC BY 4.0).'));
      if(!global.DividendB3Evidence)return;
-     const response=await fetch('/data/fii-b3-reconciliation.json',{cache:'no-store'});
+     const response=await fetch('/guido-dividend-system/data/fii-b3-reconciliation.json',{cache:'no-store'});
      if(!response.ok)return;
      const payload=await response.json();
      const result=global.DividendB3Evidence.find(payload,ticker,asset.cnpj);
@@ -49,7 +49,7 @@
    root.appendChild(panel);
    void showB3Evidence(root,ticker);
    try{
-     const response=await fetch('/data/cvm-fii-by-ticker.json',{cache:'no-cache'});
+     const response=await fetch('/guido-dividend-system/data/cvm-fii-by-ticker.json',{cache:'no-cache'});
      if(!response.ok)throw Error('Arquivo de vínculos ainda não publicado');
      const data=await response.json();
      if(data.schemaVersion!==1||data.dataType!=='monthly-fii-accounting-by-ticker'||!Array.isArray(data.records))throw Error('Esquema de dados inválido');

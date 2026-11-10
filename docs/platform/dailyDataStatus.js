@@ -19,7 +19,7 @@
   async function render(){
     const host=document.querySelector('#portalApp');
     if(!host)return;
-    const [cvm,eod,fii,mappingStatus,mapping,b3Status]=await Promise.all([read('/data/cvm-catalog.json'),read('/data/radar-eod.json'),read('/data/cvm-fii-metrics.json'),read('/data/fii-mapping-status.json'),read('/data/cvm-fii-by-ticker.json'),read('/data/b3-eod-status.json')]);
+    const [cvm,eod,fii,mappingStatus,mapping,b3Status]=await Promise.all([read('/guido-dividend-system/data/cvm-catalog.json'),read('/guido-dividend-system/data/radar-eod.json'),read('/guido-dividend-system/data/cvm-fii-metrics.json'),read('/guido-dividend-system/data/fii-mapping-status.json'),read('/guido-dividend-system/data/cvm-fii-by-ticker.json'),read('/guido-dividend-system/data/b3-eod-status.json')]);
     const strip=el('aside','');
     strip.setAttribute('aria-label','Transparência das fontes de dados');
     strip.style.cssText='padding:9px 18px;background:#0c211d;color:#d1e7dc;border-bottom:1px solid #305448;font:12px/1.5 system-ui,sans-serif;display:flex;gap:14px;flex-wrap:wrap;align-items:center';
