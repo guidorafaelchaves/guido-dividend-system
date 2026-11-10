@@ -80,7 +80,7 @@ def normalize(catalog, raw, source_name, rights_confirmed=False, now=None):
         record={"ticker":ticker,"cnpj":cnpj,"kind":kind,"exDate":ex.isoformat(),
                 "paymentDate":pay.isoformat(),"announcementDate":announced.isoformat(),
                 "amountPerUnit":float(amount),"amountDecimal":value,
-                "sourceDocumentId":docid,"sourceUrl":url,
+                "sourceDocumentId":docid,"sourceUrl":url,"sourceName":source_name,
                 "verificationStatus":"document-linked-unverified-content"}
         if key in conflicts:continue
         prior=accepted.get(key)
@@ -113,7 +113,7 @@ def merge_history(previous, incoming, catalog):
         return incoming
     latest_identity={r.get("ticker"):r.get("cnpj") for r in catalog.get("records",[])}
     by_key={}
-    conflicts=set()
+    conflicts=set(previous.get("quarantinedKeys",[]))
     for record in [*previous.get("records",[]),*incoming.get("records",[])]:
         if record.get("cnpj")!=latest_identity.get(record.get("ticker")):
             continue
@@ -121,17 +121,19 @@ def merge_history(previous, incoming, catalog):
             continue
         key=(record.get("ticker"),record.get("kind"),record.get("exDate"),
              record.get("paymentDate"),str(record.get("amountDecimal")))
-        if not all(key) or key in conflicts:
+        key_text=json.dumps(key,ensure_ascii=False,separators=(",",":"))
+        if not all(key) or key_text in conflicts:
             continue
         prev=by_key.get(key)
         if prev and (prev.get("sourceDocumentId")!=record.get("sourceDocumentId")
                      or prev.get("sourceUrl")!=record.get("sourceUrl")):
-            conflicts.add(key)
+            conflicts.add(key_text)
             del by_key[key]
         elif not prev:
             by_key[key]=record
     result={**incoming}
     result["records"]=sorted(by_key.values(),key=lambda r:(r["ticker"],r["exDate"],r["paymentDate"],r["kind"]))
+    result["quarantinedKeys"]=sorted(conflicts)
     result["coverage"]={**incoming["coverage"],
         "accepted":len(result["records"]),
         "conflictsAcrossImports":len(conflicts),
@@ -154,6 +156,8 @@ def main():
         raise ValueError("Arquivo vazio ou maior que 16 MiB")
     catalog=json.loads(args.catalog.read_text(encoding="utf-8"))
     result=normalize(catalog,raw.decode("utf-8-sig"),args.source_name,True)
+    if not result["records"]:
+        raise ValueError("Arquivo novo sem proventos elegiveis: snapshot anterior preservado.")
     if args.output.exists():
         previous=json.loads(args.output.read_text(encoding="utf-8"))
         result=merge_history(previous,result,catalog)
