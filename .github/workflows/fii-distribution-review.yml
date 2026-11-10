@@ -1,0 +1,60 @@
+name: Revisar e publicar anuncios de proventos FII
+on:
+  workflow_dispatch:
+    inputs:
+      review_batch:
+        description: Identificador da revisao humana (sem dados pessoais)
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: fii-reviewed-events
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exigir revisao humana e fonte restrita
+        env:
+          REVIEW_URL: ${{ secrets.FII_REVIEW_CSV_URL }}
+          ATTESTED: ${{ vars.FII_REVIEW_ATTESTATION_CONFIRMED }}
+          PUBLICATION: ${{ vars.FII_REVIEW_PUBLICATION_ALLOWED }}
+        run: |
+          if [ "$ATTESTED" != "true" ] || [ "$PUBLICATION" != "true" ]; then
+            echo "::error::Aprovacao humana e autorizacao de publicacao ausentes."
+            exit 1
+          fi
+          case "$REVIEW_URL" in
+            https://*) ;;
+            *) echo "::error::Configure FII_REVIEW_CSV_URL como HTTPS restrito."; exit 1;;
+          esac
+          test -s public/data/fii-distributions.json || { echo "::error::Sem distribuicoes documentadas para revisar."; exit 1; }
+          curl --fail --location --silent --show-error --retry 2 --max-time 90 \
+            --max-filesize 4000000 "$REVIEW_URL" --output /tmp/reviewed-fii-private.csv
+          test -s /tmp/reviewed-fii-private.csv
+      - name: Validar politica de revisao
+        run: python3 -m unittest discover -s tests -p test_fii_distribution_review.py -v
+      - name: Conciliar decisoes documentais e cancelamentos
+        run: |
+          python3 scripts/review_fii_distributions.py --reviews /tmp/reviewed-fii-private.csv
+          mkdir -p docs/data
+          cp public/data/fii-reviewed-events.json docs/data/fii-reviewed-events.json
+      - name: Publicar eventos revisados e cancelamentos
+        run: |
+          git add public/data/fii-reviewed-events.json docs/data/fii-reviewed-events.json
+          if git diff --cached --quiet; then echo "Sem mudancas"; exit 0; fi
+          git -c user.name="fii-review-bot" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: aplicar revisoes documentais de proventos"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              echo "::error::Conflito de publicacao. Revisao nao foi sobrescrita."
+              exit 1
+            fi
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
