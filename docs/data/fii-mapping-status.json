@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAtUtc": "2026-11-12T18:39:20+00:00",
-  "githubRunId": "43282061001",
+  "checkedAtUtc": "2026-11-13T18:18:30+00:00",
+  "githubRunId": "43481332058",
   "source": "GitHub Actions - Radar CVM",
   "cvmMetricsStep": "success",
   "mappingStep": "success",
