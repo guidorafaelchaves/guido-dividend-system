@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAtUtc": "2026-11-20T18:55:24+00:00",
-  "githubRunId": "44797285849",
+  "checkedAtUtc": "2026-11-23T22:19:36+00:00",
+  "githubRunId": "45278560581",
   "source": "GitHub Actions - Radar CVM",
   "cvmMetricsStep": "success",
   "mappingStep": "success",
@@ -14,7 +14,7 @@
     "conflictingTickers": 0,
     "ambiguousCnpjs": 35,
     "fiisWithCvmMetrics": 357,
-    "cvmFundsUnmatched": 1088
+    "cvmFundsUnmatched": 1089
   },
   "notes": "Vínculos ticker/CNPJ confirmados pelo processo de cruzamento"
 }

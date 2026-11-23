@@ -5,9 +5,9 @@
   "year": 2026,
   "sourceUrl": "https://dados.cvm.gov.br/dados/FII/DOC/INF_MENSAL/DADOS/inf_mensal_fii_2026.zip",
   "coverage": {
-    "funds": 1445,
+    "funds": 1446,
     "filesWithRecognizedSchema": 2,
-    "observationsValidated": 21640
+    "observationsValidated": 21674
   },
   "metrics": [
     {
@@ -58,10 +58,10 @@
     },
     {
       "cnpj": "01235622000161",
-      "referenceDate": "2026-09-01",
-      "netAssets": 4050860498.36,
+      "referenceDate": "2026-10-01",
+      "netAssets": 4041291904.87,
       "holders": 124,
-      "navReported": 2991.468003
+      "navReported": 2984.401815
     },
     {
       "cnpj": "01356517000180",
@@ -628,10 +628,13 @@
     },
     {
       "cnpj": "11769604000113",
-      "referenceDate": "2026-09-01",
-      "netAssets": 1239151724.56,
-      "holders": 6815,
-      "navReported": 12.893504
+      "referenceDate": "2026-10-01",
+      "netAssets": 1655915406.99,
+      "units": 105215431,
+      "holders": 6711,
+      "navReported": 15.738332,
+      "navCalculated": 15.738332,
+      "navValidated": true
     },
     {
       "cnpj": "11827568000105",
@@ -1092,11 +1095,11 @@
     {
       "cnpj": "15447110000173",
       "referenceDate": "2026-10-01",
-      "netAssets": 1042929853.12,
+      "netAssets": 1049120821.28,
       "units": 467066304,
       "holders": 3,
-      "navReported": 2.232937,
-      "navCalculated": 2.232937,
+      "navReported": 2.246192,
+      "navCalculated": 2.246192,
       "navValidated": true
     },
     {
@@ -1401,9 +1404,9 @@
     {
       "cnpj": "17655102000148",
       "referenceDate": "2026-10-01",
-      "netAssets": 415120805.35,
+      "netAssets": 416320805.35,
       "holders": 1,
-      "navReported": 2455070.820601
+      "navReported": 2462167.754666
     },
     {
       "cnpj": "17655115000117",
@@ -1582,11 +1585,11 @@
     {
       "cnpj": "18979895000113",
       "referenceDate": "2026-10-01",
-      "netAssets": 3074552014.28,
+      "netAssets": 3062918242.47,
       "units": 363503147,
       "holders": 401045,
-      "navReported": 8.458117,
-      "navCalculated": 8.458117,
+      "navReported": 8.426112,
+      "navCalculated": 8.426112,
       "navValidated": true
     },
     {
@@ -1851,11 +1854,11 @@
     {
       "cnpj": "21500500000162",
       "referenceDate": "2026-10-01",
-      "netAssets": 689575166.5,
+      "netAssets": 689504748.54,
       "units": 3826490,
       "holders": 1,
-      "navReported": 180.210889,
-      "navCalculated": 180.210889,
+      "navReported": 180.192487,
+      "navCalculated": 180.192487,
       "navValidated": true
     },
     {
@@ -1901,10 +1904,10 @@
     },
     {
       "cnpj": "22081808000183",
-      "referenceDate": "2026-08-01",
-      "netAssets": 1042587.25,
+      "referenceDate": "2026-10-01",
+      "netAssets": 68894588.38,
       "holders": 1,
-      "navReported": 637.367876
+      "navReported": 42117.520033
     },
     {
       "cnpj": "22169671000113",
@@ -2548,11 +2551,11 @@
     {
       "cnpj": "28757546000100",
       "referenceDate": "2026-10-01",
-      "netAssets": 7065597792.34,
+      "netAssets": 7095985899.73,
       "units": 67863252,
       "holders": 800705,
-      "navReported": 104.115226,
-      "navCalculated": 104.115226,
+      "navReported": 104.56301,
+      "navCalculated": 104.56301,
       "navValidated": true
     },
     {
@@ -2807,10 +2810,10 @@
     },
     {
       "cnpj": "30642032000151",
-      "referenceDate": "2026-09-01",
-      "netAssets": 94511136.82,
+      "referenceDate": "2026-10-01",
+      "netAssets": 95224685.06,
       "holders": 1,
-      "navReported": 5238.710517
+      "navReported": 5204.557371
     },
     {
       "cnpj": "30647758000187",
@@ -3228,11 +3231,11 @@
     {
       "cnpj": "32892018000131",
       "referenceDate": "2026-10-01",
-      "netAssets": 2097756780.19,
+      "netAssets": 2120042017.33,
       "units": 21329976,
       "holders": 185526,
-      "navReported": 98.347827,
-      "navCalculated": 98.347827,
+      "navReported": 99.392611,
+      "navCalculated": 99.392611,
       "navValidated": true
     },
     {
@@ -3546,10 +3549,10 @@
     },
     {
       "cnpj": "35449574000126",
-      "referenceDate": "2026-09-01",
-      "netAssets": 67287284.73,
+      "referenceDate": "2026-10-01",
+      "netAssets": 67321637.45,
       "holders": 2,
-      "navReported": 1.156878
+      "navReported": 1.157468
     },
     {
       "cnpj": "35507262000121",
@@ -3641,11 +3644,11 @@
     {
       "cnpj": "35652278000128",
       "referenceDate": "2026-10-01",
-      "netAssets": 1023227189.79,
+      "netAssets": 1030452843.48,
       "units": 5623115,
       "holders": 592,
-      "navReported": 181.968035,
-      "navCalculated": 181.968035,
+      "navReported": 183.253027,
+      "navCalculated": 183.253027,
       "navValidated": true
     },
     {
@@ -4094,10 +4097,10 @@
     },
     {
       "cnpj": "36741215000100",
-      "referenceDate": "2026-09-01",
-      "netAssets": 85508291.76,
+      "referenceDate": "2026-10-01",
+      "netAssets": 85458012.83,
       "holders": 2,
-      "navReported": 2.741195
+      "navReported": 2.739583
     },
     {
       "cnpj": "36771692000119",
@@ -4111,12 +4114,12 @@
     },
     {
       "cnpj": "36814809000102",
-      "referenceDate": "2026-09-01",
-      "netAssets": 26571484.47,
+      "referenceDate": "2026-10-01",
+      "netAssets": 26701325.39,
       "units": 3042600,
       "holders": 5,
-      "navReported": 8.733151,
-      "navCalculated": 8.733151,
+      "navReported": 8.775825,
+      "navCalculated": 8.775825,
       "navValidated": true
     },
     {
@@ -4152,10 +4155,10 @@
     },
     {
       "cnpj": "36969658000153",
-      "referenceDate": "2026-09-01",
-      "netAssets": 100662447.15,
+      "referenceDate": "2026-10-01",
+      "netAssets": 100604629.69,
       "holders": 88,
-      "navReported": 132.041774
+      "navReported": 131.965933
     },
     {
       "cnpj": "37087810000137",
@@ -4233,10 +4236,10 @@
     },
     {
       "cnpj": "37433832000101",
-      "referenceDate": "2026-09-01",
-      "netAssets": 17700148.1,
-      "holders": 3,
-      "navReported": 55.465305
+      "referenceDate": "2026-10-01",
+      "netAssets": 17684445.38,
+      "holders": 1,
+      "navReported": 55.416098
     },
     {
       "cnpj": "37899356000119",
@@ -4286,19 +4289,19 @@
     },
     {
       "cnpj": "38082796000141",
-      "referenceDate": "2026-09-01",
-      "netAssets": 15739387.63,
+      "referenceDate": "2026-10-01",
+      "netAssets": 15723274.17,
       "holders": 108,
-      "navReported": 0.163465
+      "navReported": 0.163298
     },
     {
       "cnpj": "38293862000122",
       "referenceDate": "2026-10-01",
-      "netAssets": 137389857.62,
+      "netAssets": 139006654.15,
       "units": 1380700,
       "holders": 1,
-      "navReported": 99.507393,
-      "navCalculated": 99.507393,
+      "navReported": 100.678391,
+      "navCalculated": 100.678391,
       "navValidated": true
     },
     {
@@ -4324,11 +4327,11 @@
     {
       "cnpj": "38294086000185",
       "referenceDate": "2026-10-01",
-      "netAssets": 541089446.23,
+      "netAssets": 546232950.92,
       "units": 6778234,
       "holders": 1,
-      "navReported": 79.827496,
-      "navCalculated": 79.827496,
+      "navReported": 80.586322,
+      "navCalculated": 80.586322,
       "navValidated": true
     },
     {
@@ -4894,10 +4897,10 @@
     },
     {
       "cnpj": "41320997000144",
-      "referenceDate": "2026-09-01",
-      "netAssets": 124440902.64,
+      "referenceDate": "2026-10-01",
+      "netAssets": 113729316.58,
       "holders": 2,
-      "navReported": 9.208021
+      "navReported": 8.415415
     },
     {
       "cnpj": "41325993000159",
@@ -4988,9 +4991,9 @@
     {
       "cnpj": "41833876000104",
       "referenceDate": "2026-10-01",
-      "netAssets": 87939645.86,
+      "netAssets": 87917451.86,
       "holders": 1,
-      "navReported": 626.254539
+      "navReported": 626.096486
     },
     {
       "cnpj": "41969521000139",
@@ -5069,12 +5072,12 @@
     },
     {
       "cnpj": "42273290000197",
-      "referenceDate": "2026-09-01",
-      "netAssets": 257947433.34,
+      "referenceDate": "2026-10-01",
+      "netAssets": 260973729.95,
       "units": 141279,
       "holders": 108,
-      "navReported": 1825.801664,
-      "navCalculated": 1825.801664,
+      "navReported": 1847.222375,
+      "navCalculated": 1847.222375,
       "navValidated": true
     },
     {
@@ -5279,12 +5282,12 @@
     },
     {
       "cnpj": "42922127000108",
-      "referenceDate": "2026-09-01",
-      "netAssets": 47194765.62,
+      "referenceDate": "2026-10-01",
+      "netAssets": 47185095.14,
       "units": 5003220,
-      "holders": 831,
-      "navReported": 9.432878,
-      "navCalculated": 9.432878,
+      "holders": 821,
+      "navReported": 9.430945,
+      "navCalculated": 9.430945,
       "navValidated": true
     },
     {
@@ -5357,10 +5360,12 @@
     {
       "cnpj": "43010844000126",
       "referenceDate": "2026-10-01",
-      "netAssets": 0.0,
-      "units": 0,
+      "netAssets": 718842468.73,
+      "units": 67797053,
       "holders": 9314,
-      "navReported": 0.0
+      "navReported": 10.602857,
+      "navCalculated": 10.602857,
+      "navValidated": true
     },
     {
       "cnpj": "43011068000189",
@@ -6130,11 +6135,11 @@
     {
       "cnpj": "47896665000199",
       "referenceDate": "2026-10-01",
-      "netAssets": 1405890291.96,
+      "netAssets": 1410399796.94,
       "units": 123163844,
       "holders": 40377,
-      "navReported": 11.414797,
-      "navCalculated": 11.414797,
+      "navReported": 11.451411,
+      "navCalculated": 11.451411,
       "navValidated": true
     },
     {
@@ -6763,11 +6768,11 @@
     {
       "cnpj": "51666294000126",
       "referenceDate": "2026-10-01",
-      "netAssets": 276736468.64,
+      "netAssets": 277003980.32,
       "units": 2504500,
       "holders": 2,
-      "navReported": 110.495695,
-      "navCalculated": 110.495695,
+      "navReported": 110.602508,
+      "navCalculated": 110.602508,
       "navValidated": true
     },
     {
@@ -6951,10 +6956,10 @@
     },
     {
       "cnpj": "52321885000124",
-      "referenceDate": "2026-09-01",
-      "netAssets": 1058054069.48,
+      "referenceDate": "2026-10-01",
+      "netAssets": 1057834615.0,
       "holders": 11,
-      "navReported": 38437.586665
+      "navReported": 38429.614198
     },
     {
       "cnpj": "52324762000147",
@@ -7676,10 +7681,10 @@
     },
     {
       "cnpj": "54315465000160",
-      "referenceDate": "2026-09-01",
-      "netAssets": 26724868.52,
+      "referenceDate": "2026-10-01",
+      "netAssets": 26115329.54,
       "holders": 1,
-      "navReported": 55.896686
+      "navReported": 54.621798
     },
     {
       "cnpj": "54375187000137",
@@ -8154,10 +8159,10 @@
     },
     {
       "cnpj": "56174611000100",
-      "referenceDate": "2026-09-01",
-      "netAssets": 256474931.58,
-      "holders": 45,
-      "navReported": 2330.777849
+      "referenceDate": "2026-10-01",
+      "netAssets": 256255176.85,
+      "holders": 58,
+      "navReported": 2328.780775
     },
     {
       "cnpj": "56191016000183",
@@ -8463,11 +8468,11 @@
     {
       "cnpj": "57567076000110",
       "referenceDate": "2026-10-01",
-      "netAssets": 1231981392.47,
+      "netAssets": 1231974362.39,
       "units": 10411899,
       "holders": 1,
-      "navReported": 118.32437,
-      "navCalculated": 118.32437,
+      "navReported": 118.323695,
+      "navCalculated": 118.323695,
       "navValidated": true
     },
     {
@@ -8838,7 +8843,7 @@
     },
     {
       "cnpj": "58544087000148",
-      "referenceDate": "2026-09-01",
+      "referenceDate": "2026-10-01",
       "netAssets": 35726374.24,
       "holders": 1,
       "navReported": 2.880237
@@ -9676,7 +9681,7 @@
     },
     {
       "cnpj": "61702958000119",
-      "referenceDate": "2026-09-01",
+      "referenceDate": "2026-10-01",
       "netAssets": 19303203.84,
       "holders": 1,
       "navReported": 323733.9735
@@ -9778,7 +9783,7 @@
     },
     {
       "cnpj": "61876419000104",
-      "referenceDate": "2026-09-01",
+      "referenceDate": "2026-10-01",
       "netAssets": 25601955.04,
       "holders": 1,
       "navReported": 4139439.259598
@@ -9916,10 +9921,10 @@
     },
     {
       "cnpj": "62203816000170",
-      "referenceDate": "2026-09-01",
-      "netAssets": 5513234.95,
+      "referenceDate": "2026-10-01",
+      "netAssets": 7451046.77,
       "holders": 1,
-      "navReported": 974.420698
+      "navReported": 974.825788
     },
     {
       "cnpj": "62206618000160",
@@ -9963,12 +9968,12 @@
     },
     {
       "cnpj": "62254106000179",
-      "referenceDate": "2026-09-01",
-      "netAssets": 32668706.52,
+      "referenceDate": "2026-10-01",
+      "netAssets": 33656537.66,
       "units": 330000,
       "holders": 6,
-      "navReported": 98.99608,
-      "navCalculated": 98.99608,
+      "navReported": 101.989508,
+      "navCalculated": 101.989508,
       "navValidated": true
     },
     {
@@ -10092,7 +10097,7 @@
     },
     {
       "cnpj": "62547973000100",
-      "referenceDate": "2026-09-01",
+      "referenceDate": "2026-10-01",
       "netAssets": 14215401.16,
       "holders": 1,
       "navReported": 4465.77382
@@ -10180,7 +10185,7 @@
     },
     {
       "cnpj": "62805438000102",
-      "referenceDate": "2026-09-01",
+      "referenceDate": "2026-10-01",
       "netAssets": 439730.0,
       "holders": 1,
       "navReported": 838.223763
@@ -10415,11 +10420,11 @@
     {
       "cnpj": "63240822000160",
       "referenceDate": "2026-10-01",
-      "netAssets": 1157049624.42,
+      "netAssets": 1166044162.69,
       "units": 11470415,
       "holders": 1,
-      "navReported": 100.872516,
-      "navCalculated": 100.872516,
+      "navReported": 101.656667,
+      "navCalculated": 101.656667,
       "navValidated": true
     },
     {
@@ -10883,10 +10888,10 @@
     },
     {
       "cnpj": "63821784000139",
-      "referenceDate": "2026-09-01",
-      "netAssets": 45243513.03,
+      "referenceDate": "2026-10-01",
+      "netAssets": 45214278.73,
       "holders": 1,
-      "navReported": 992.320595
+      "navReported": 991.679402
     },
     {
       "cnpj": "63848135000121",
@@ -11149,7 +11154,7 @@
     },
     {
       "cnpj": "64357284000150",
-      "referenceDate": "2026-09-01",
+      "referenceDate": "2026-10-01",
       "netAssets": 14393319.26,
       "holders": 1,
       "navReported": 30.32013
@@ -11535,10 +11540,10 @@
     },
     {
       "cnpj": "65794655000124",
-      "referenceDate": "2026-09-01",
-      "netAssets": 27792892.58,
-      "holders": 1,
-      "navReported": 902.207574
+      "referenceDate": "2026-10-01",
+      "netAssets": 55161176.63,
+      "holders": 4,
+      "navReported": 3129.037019
     },
     {
       "cnpj": "65837970000191",
@@ -12725,6 +12730,16 @@
       "navReported": 0.868381
     },
     {
+      "cnpj": "68949992000131",
+      "referenceDate": "2026-10-01",
+      "netAssets": 87790939.63,
+      "units": 88000,
+      "holders": 5,
+      "navReported": 997.624314,
+      "navCalculated": 997.624314,
+      "navValidated": true
+    },
+    {
       "cnpj": "68969695000158",
       "referenceDate": "2026-10-01",
       "netAssets": 621311120.62,
@@ -12816,11 +12831,11 @@
     {
       "cnpj": "97521225000125",
       "referenceDate": "2026-10-01",
-      "netAssets": 5199316226.31,
+      "netAssets": 5197799914.65,
       "units": 567206273,
       "holders": 1617116,
-      "navReported": 9.166535,
-      "navCalculated": 9.166535,
+      "navReported": 9.163862,
+      "navCalculated": 9.163862,
       "navValidated": true
     }
   ],

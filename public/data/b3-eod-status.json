@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "dataType": "b3-eod-feed-status",
-  "checkedAtUtc": "2026-11-20T18:55:24.990Z",
-  "githubRunId": "44797285849",
+  "checkedAtUtc": "2026-11-23T22:19:36.698Z",
+  "githubRunId": "45278560581",
   "feedConfiguredAndRightsConfirmed": false,
   "feedStepOutcome": "skipped",
   "latestPublishedSnapshot": null,
